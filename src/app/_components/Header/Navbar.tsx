@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <Section className="sm:max-w-[1440px] 1920:max-w-[1920px]  max-w-none">
       <nav className="flex w-full items-center justify-between bg-transparent  flex-row-reverse sm:flex-row text-white  h-[77px]  sm:px-[60px] 1920:px-[136px]">
-        <div className="flex gap-[40px] items-center sm:flex sm:justify-between sm:w-full">
+        <div className="flex gap-[40px] items-center sm:flex sm:justify-between sm:w-full h-full">
           <Link
             href="/"
             className="hover:opacity-70 sm:static absolute left-1/2 -translate-x-1/2 sm:translate-x-0"
@@ -37,7 +37,7 @@ export default function Navbar() {
             />
           </Link>
           {/* desktop only  */}
-          <div className="hidden sm:block">
+          <div className="hidden sm:block h-full">
             <NavElements />
           </div>
 

@@ -190,6 +190,8 @@ export default config;
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-menubar": "^1.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/react-radio-group": "^1.2.0",
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-select": "^2.1.1",
@@ -1606,16 +1608,6 @@ export type Location = {
 
 ```ts
 export const HOME_ROUTE = "/";
-export const ABOUT_ROUTE = "/about";
-export const BRANCHES_ROUTE = "/branches";
-export const JOBS_ROUTE = "/jobs";
-export const SERVICES_ROUTE = "/services";
-export const CONTACT_ROUTE = "/contact";
-export const JOIN_US_ROUTE = "/join-us";
-export const NEWS_ROUTE = "/news";
-export const REGISTERATION_ROUTE = "/registeration";
-export const SIGNUP_ROUTE = "/signup";
-
 export const ABOUT_UNIVERSITY_ROUTE = "/about-university";
 export const COLLEGES_ROUTE = "/colleges";
 export const ACADEMIC_AFFAIRS_ROUTE = "/academic-affairs";
@@ -1623,6 +1615,63 @@ export const STUDENT_AFFAIRS_ROUTE = "/student-affairs";
 export const SERVICE_CENTERS_ROUTE = "/service-centers";
 export const E_SERVICES_ROUTE = "/e-services";
 export const RELATED_LOCATIONS_ROUTE = "/related-locations";
+
+// Colleges and Departments
+export const COLLEGE_ROUTE = (id: string) => `${COLLEGES_ROUTE}/${id}`;
+export const DEPARTMENT_ROUTE = (collegeId: string, departmentId: string) =>
+  `${COLLEGES_ROUTE}/${collegeId}/departments/${departmentId}`;
+
+// Academic Affairs
+export const SCIENTIFIC_PROMOTIONS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-promotions`;
+export const RESEARCH_PLANS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/research-plans`;
+export const EDUCATIONAL_SCHOLARSHIPS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/educational-scholarships`;
+export const ACADEMIC_CALENDAR_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/academic-calendar`;
+export const SCIENTIFIC_CONFERENCES_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-conferences`;
+export const SCIENTIFIC_PRODUCTION_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-production`;
+export const TEACHING_METHODS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/teaching-methods`;
+export const CENTRAL_LIBRARY_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/central-library`;
+export const QUALITY_ASSURANCE_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/quality-assurance`;
+export const INVENTION_PATENTS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/invention-patents`;
+export const SCHOLARSHIPS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scholarships`;
+export const GOOGLE_SCHOLAR_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/google-scholar`;
+export const RESEARCH_GATE_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/research-gate`;
+export const SCIENTIFIC_ACTIVITIES_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-activities`;
+
+// Student Affairs
+export const ADMISSION_REGISTRATION_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/admission-registration`;
+export const ADMISSION_CONDITIONS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/admission-conditions`;
+export const REGISTRATION_MECHANISM_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/registration-mechanism`;
+export const ACADEMIC_PROGRAMS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/academic-programs`;
+export const UNIVERSITY_EXAMS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/university-exams`;
+export const STUDENT_HOUSING_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-housing`;
+export const STUDENT_ACTIVITIES_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-activities`;
+export const STUDENT_INSTRUCTIONS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-instructions`;
+export const HONOR_STUDENTS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/honor-students`;
+export const STUDENT_GUIDANCE_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-guidance`;
+export const STUDENT_CLUBS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-clubs`;
+
+// Service Centers
+export const CONTINUING_EDUCATION_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/continuing-education`;
+export const CONSULTING_OFFICE_ROUTE = `${SERVICE_CENTERS_ROUTE}/consulting-office`;
+export const CULTURAL_RELATIONS_ROUTE = `${SERVICE_CENTERS_ROUTE}/cultural-relations`;
+export const MEDIA_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/media-center`;
+export const PSYCHOLOGICAL_COUNSELING_ROUTE = `${SERVICE_CENTERS_ROUTE}/psychological-counseling`;
+export const SPORTS_FACILITIES_ROUTE = `${SERVICE_CENTERS_ROUTE}/sports-facilities`;
+export const TRAINING_HALLS_ROUTE = `${SERVICE_CENTERS_ROUTE}/training-halls`;
+export const DENTAL_CLINICS_ROUTE = `${SERVICE_CENTERS_ROUTE}/dental-clinics`;
+export const PHARMACY_ROUTE = `${SERVICE_CENTERS_ROUTE}/pharmacy`;
+
+// E-Services
+export const STUDENT_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/student-portal`;
+export const FACULTY_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/faculty-portal`;
+export const ALUMNI_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/alumni-portal`;
+export const UNIVERSITY_EMAIL_ROUTE = `${E_SERVICES_ROUTE}/university-email`;
+export const DIGITAL_LIBRARY_ROUTE = `${E_SERVICES_ROUTE}/digital-library`;
+export const GRADUATES_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/graduates-portal`;
+export const TRANSCRIPT_REQUEST_ROUTE = `${E_SERVICES_ROUTE}/transcript-request`;
+export const GRADUATION_DOCUMENT_REQUEST_ROUTE = `${E_SERVICES_ROUTE}/graduation-document-request`;
+export const ACADEMIC_PERFORMANCE_REPORT_ROUTE = `${E_SERVICES_ROUTE}/academic-performance-report`;
+export const ELECTRONIC_PAYMENT_ROUTE = `${E_SERVICES_ROUTE}/electronic-payment`;
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
@@ -2354,7 +2403,7 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
 }
 
 .navbar-inclusive-background {
-  @apply absolute sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
+  @apply absolute h-full sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
 }
 
 ```
@@ -2471,6 +2520,91 @@ const useCommonStore = create<CommonState>((set) => ({
 }));
 
 export default useCommonStore;
+
+```
+
+# src\components\ScrollableContainer\UpperSection.tsx
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import Section from "../Section";
+import ScrollArrows from "../ScrollArrows";
+import { twMerge } from "tailwind-merge";
+import TitlesWrapper from "../TitlesWrapper";
+
+export default function ScrollableContainerUpperSection({
+  containerRef,
+  hideArrows = false,
+  title,
+  title2,
+  titleClass,
+  className,
+  arrowButtonsClass,
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  hideArrows?: boolean;
+  title: string;
+  title2?: string;
+  titleClass?: string;
+  className?: string;
+  arrowButtonsClass?: string;
+}) {
+  const [scrollAmount, setScrollAmount] = useState<number>();
+
+  useEffect(() => {
+    if (containerRef.current) setScrollAmount(containerRef.current.clientWidth);
+  }, [containerRef]);
+
+  return (
+    <TitlesWrapper className={twMerge("items-start", className)}>
+      {title2 && <h3 className="title-sm">{title2}</h3>}
+
+      <div className="flex items-center justify-between w-full">
+        <h5 className={twMerge("title", titleClass)}>{title}</h5>
+        {!hideArrows && (
+          <ScrollArrows
+            containerRef={containerRef}
+            useMultiples={true}
+            scrollAmount={scrollAmount}
+            wrapperClassName="gap-[8px]"
+            className={arrowButtonsClass}
+          />
+        )}
+      </div>
+    </TitlesWrapper>
+  );
+}
+
+```
+
+# src\components\ScrollableContainer\ScrollableContainer.tsx
+
+```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
+const ScrollableCardsContainer = React.forwardRef<
+  HTMLDivElement,
+  { className?: string; children: React.ReactNode; wrapperClass?: string }
+>(({ className, children, wrapperClass }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={twMerge(
+        "hide-scrollbar mx-auto max-w-screen-pure overflow-x-auto w-full",
+        wrapperClass
+      )}
+    >
+      <div className={twMerge("flex w-fit", className)}>{children}</div>
+    </div>
+  );
+});
+
+ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
+
+export { ScrollableCardsContainer };
 
 ```
 
@@ -2817,6 +2951,382 @@ const RadioGroupItem = React.forwardRef<
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
 
 export { RadioGroup, RadioGroupItem };
+
+```
+
+# src\components\ui\navigation-menu.tsx
+
+```tsx
+import * as React from "react"
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
+import { cva } from "class-variance-authority"
+import { ChevronDown } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+
+const NavigationMenu = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
+>(({ className, children, ...props }, ref) => (
+  <NavigationMenuPrimitive.Root
+    ref={ref}
+    className={cn(
+      "relative z-10 flex max-w-max flex-1 items-center justify-center",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <NavigationMenuViewport />
+  </NavigationMenuPrimitive.Root>
+))
+NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
+
+const NavigationMenuList = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.List
+    ref={ref}
+    className={cn(
+      "group flex flex-1 list-none items-center justify-center space-x-1",
+      className
+    )}
+    {...props}
+  />
+))
+NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
+
+const NavigationMenuItem = NavigationMenuPrimitive.Item
+
+const navigationMenuTriggerStyle = cva(
+  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+)
+
+const NavigationMenuTrigger = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <NavigationMenuPrimitive.Trigger
+    ref={ref}
+    className={cn(navigationMenuTriggerStyle(), "group", className)}
+    {...props}
+  >
+    {children}{" "}
+    <ChevronDown
+      className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
+      aria-hidden="true"
+    />
+  </NavigationMenuPrimitive.Trigger>
+))
+NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
+
+const NavigationMenuContent = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Content
+    ref={ref}
+    className={cn(
+      "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ",
+      className
+    )}
+    {...props}
+  />
+))
+NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
+
+const NavigationMenuLink = NavigationMenuPrimitive.Link
+
+const NavigationMenuViewport = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
+>(({ className, ...props }, ref) => (
+  <div className={cn("absolute left-0 top-full flex justify-center")}>
+    <NavigationMenuPrimitive.Viewport
+      className={cn(
+        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
+        className
+      )}
+      ref={ref}
+      {...props}
+    />
+  </div>
+))
+NavigationMenuViewport.displayName =
+  NavigationMenuPrimitive.Viewport.displayName
+
+const NavigationMenuIndicator = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Indicator
+    ref={ref}
+    className={cn(
+      "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in",
+      className
+    )}
+    {...props}
+  >
+    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
+  </NavigationMenuPrimitive.Indicator>
+))
+NavigationMenuIndicator.displayName =
+  NavigationMenuPrimitive.Indicator.displayName
+
+export {
+  navigationMenuTriggerStyle,
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+  NavigationMenuIndicator,
+  NavigationMenuViewport,
+}
+
+```
+
+# src\components\ui\menubar.tsx
+
+```tsx
+"use client";
+
+import * as React from "react";
+import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import { Check, ChevronRight, Circle } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+const MenubarMenu = MenubarPrimitive.Menu;
+
+const MenubarGroup = MenubarPrimitive.Group;
+
+const MenubarPortal = MenubarPrimitive.Portal;
+
+const MenubarSub = MenubarPrimitive.Sub;
+
+const MenubarRadioGroup = MenubarPrimitive.RadioGroup;
+
+const Menubar = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <MenubarPrimitive.Root
+    ref={ref}
+    className={cn(
+      "flex h-10 items-center space-x-1 rounded-md border bg-background p-1",
+      className
+    )}
+    {...props}
+  />
+));
+Menubar.displayName = MenubarPrimitive.Root.displayName;
+
+const MenubarTrigger = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <MenubarPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+      className
+    )}
+    {...props}
+  />
+));
+MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName;
+
+const MenubarSubTrigger = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.SubTrigger>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubTrigger> & {
+    inset?: boolean;
+  }
+>(({ className, inset, children, ...props }, ref) => (
+  <MenubarPrimitive.SubTrigger
+    ref={ref}
+    className={cn(
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  >
+    {children}
+    <ChevronRight className="ml-auto h-4 w-4" />
+  </MenubarPrimitive.SubTrigger>
+));
+MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
+
+const MenubarSubContent = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.SubContent>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubContent>
+>(({ className, ...props }, ref) => (
+  <MenubarPrimitive.SubContent
+    ref={ref}
+    className={cn(
+      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      className
+    )}
+    {...props}
+  />
+));
+MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName;
+
+const MenubarContent = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Content>
+>(
+  (
+    { className, align = "start", alignOffset = -4, sideOffset = 8, ...props },
+    ref
+  ) => (
+    <MenubarPrimitive.Portal>
+      <MenubarPrimitive.Content
+        ref={ref}
+        align={align}
+        alignOffset={alignOffset}
+        sideOffset={sideOffset}
+        className={cn(
+          "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          className
+        )}
+        {...props}
+      />
+    </MenubarPrimitive.Portal>
+  )
+);
+MenubarContent.displayName = MenubarPrimitive.Content.displayName;
+
+const MenubarItem = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Item> & {
+    inset?: boolean;
+  }
+>(({ className, inset, ...props }, ref) => (
+  <MenubarPrimitive.Item
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+));
+MenubarItem.displayName = MenubarPrimitive.Item.displayName;
+
+const MenubarCheckboxItem = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.CheckboxItem>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>
+>(({ className, children, checked, ...props }, ref) => (
+  <MenubarPrimitive.CheckboxItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    )}
+    checked={checked}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <MenubarPrimitive.ItemIndicator>
+        <Check className="h-4 w-4" />
+      </MenubarPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </MenubarPrimitive.CheckboxItem>
+));
+MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName;
+
+const MenubarRadioItem = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.RadioItem>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem>
+>(({ className, children, ...props }, ref) => (
+  <MenubarPrimitive.RadioItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className
+    )}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <MenubarPrimitive.ItemIndicator>
+        <Circle className="h-2 w-2 fill-current" />
+      </MenubarPrimitive.ItemIndicator>
+    </span>
+    {children}
+  </MenubarPrimitive.RadioItem>
+));
+MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName;
+
+const MenubarLabel = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Label> & {
+    inset?: boolean;
+  }
+>(({ className, inset, ...props }, ref) => (
+  <MenubarPrimitive.Label
+    ref={ref}
+    className={cn(
+      "px-2 py-1.5 text-sm font-semibold",
+      inset && "pl-8",
+      className
+    )}
+    {...props}
+  />
+));
+MenubarLabel.displayName = MenubarPrimitive.Label.displayName;
+
+const MenubarSeparator = React.forwardRef<
+  React.ElementRef<typeof MenubarPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <MenubarPrimitive.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+));
+MenubarSeparator.displayName = MenubarPrimitive.Separator.displayName;
+
+const MenubarShortcut = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => {
+  return (
+    <span
+      className={cn(
+        "ml-auto text-xs tracking-widest text-muted-foreground",
+        className
+      )}
+      {...props}
+    />
+  );
+};
+MenubarShortcut.displayname = "MenubarShortcut";
+
+export {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarLabel,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarPortal,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarGroup,
+  MenubarSub,
+  MenubarShortcut,
+};
 
 ```
 
@@ -3195,88 +3705,259 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
 
 ```
 
-# src\components\ScrollableContainer\UpperSection.tsx
+# src\components\FirstSection\TitleBg.tsx
+
+```tsx
+export default function TitleBg() {
+  return <div>SliderBg</div>;
+}
+
+```
+
+# src\components\FirstSection\SliderBg.tsx
 
 ```tsx
 "use client";
 
-import { useEffect, useState } from "react";
-import Section from "../Section";
-import ScrollArrows from "../ScrollArrows";
+import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import TitlesWrapper from "../TitlesWrapper";
+import ScrollArrows from "@/components/ScrollArrows";
+import { SliderElement } from "@/lib/types";
+import useScrollControl from "@/app/_hooks/useScrollControl";
+import useTextDirection from "../../app/_hooks/useTextDirection";
 
-export default function ScrollableContainerUpperSection({
+export default function SliderBg() {
+  return (
+    <ScrollableCardsContainer
+      translatedNewsItems={[
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Innovative Solutions",
+          subTitle:
+            "Transforming ideas into reality with cutting-edge technology",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Expert Team",
+          subTitle: "Dedicated professionals committed to excellence",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Global Reach",
+          subTitle: "Connecting businesses across borders",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Sustainable Future",
+          subTitle: "Driving growth with eco-friendly practices",
+        },
+      ]}
+    />
+  );
+}
+
+const ImageSection = () => {
+  return (
+    <div className="relative w-screen">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="w-full h-full absolute top-0 bg-black/70"></div>
+    </div>
+  );
+};
+
+function ScrollableCardsContainer({
+  translatedNewsItems,
+}: {
+  translatedNewsItems: SliderElement[];
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dir = useTextDirection();
+  const [scrollAmount, setScrollAmount] = useState<number>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
+    containerRef,
+    useMultiples: true,
+    baseScrollAmount: scrollAmount,
+  });
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  const autoSlide = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
+
+      if (isAtEnd) resetScrollPosition();
+      else
+        scroll({
+          direction: dir == "ltr" ? "right" : "left",
+          isLTR: dir == "ltr",
+        });
+    }
+  };
+
+  const resetInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(autoSlide, 5000);
+  };
+
+  useEffect(() => {
+    resetInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [scrollAmount]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
+  return (
+    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
+      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
+      <div
+        ref={containerRef}
+        className={twMerge(
+          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
+          "hide-scrollbar"
+        )}
+      >
+        <div className="flex w-fit h-full">
+          {translatedNewsItems.map((newsItem, index) => (
+            <ImageSection key={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TextSection({
   containerRef,
-  hideArrows = false,
-  title,
-  title2,
-  titleClass,
-  className,
-  arrowButtonsClass,
+  resetTimer,
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
-  hideArrows?: boolean;
-  title: string;
-  title2?: string;
-  titleClass?: string;
-  className?: string;
-  arrowButtonsClass?: string;
+  resetTimer: () => void;
 }) {
   const [scrollAmount, setScrollAmount] = useState<number>();
 
   useEffect(() => {
-    if (containerRef.current) setScrollAmount(containerRef.current.clientWidth);
-  }, [containerRef]);
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
 
   return (
-    <TitlesWrapper className={twMerge("items-start", className)}>
-      {title2 && <h3 className="title-sm">{title2}</h3>}
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
+      <ScrollArrows
+        containerRef={containerRef}
+        scrollAmount={scrollAmount}
+        useMultiples={true}
+        resetTimer={resetTimer}
+        className="slider-bg-arrows"
+      />
 
-      <div className="flex items-center justify-between w-full">
-        <h5 className={twMerge("title", titleClass)}>{title}</h5>
-        {!hideArrows && (
-          <ScrollArrows
-            containerRef={containerRef}
-            useMultiples={true}
-            scrollAmount={scrollAmount}
-            wrapperClassName="gap-[8px]"
-            className={arrowButtonsClass}
-          />
-        )}
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
+          التجربة العلمية
+        </h3>
+
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
+          واعد
+        </h1>
       </div>
-    </TitlesWrapper>
+    </div>
   );
 }
 
 ```
 
-# src\components\ScrollableContainer\ScrollableContainer.tsx
+# src\components\FirstSection\ImageBg.tsx
 
 ```tsx
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-const ScrollableCardsContainer = React.forwardRef<
-  HTMLDivElement,
-  { className?: string; children: React.ReactNode; wrapperClass?: string }
->(({ className, children, wrapperClass }, ref) => {
+export default function ImageBg() {
   return (
-    <div
-      ref={ref}
-      className={twMerge(
-        "hide-scrollbar mx-auto max-w-screen-pure overflow-x-auto w-full",
-        wrapperClass
-      )}
-    >
-      <div className={twMerge("flex w-fit", className)}>{children}</div>
+    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+      <TextSection />
+      <ImageSection />
     </div>
   );
-});
+}
 
-ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
+function TextSection() {
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
+          الرئيسية
+        </h3>
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          مواقع ذات صلة
+        </h1>
+      </div>
+    </div>
+  );
+}
 
-export { ScrollableCardsContainer };
+function ImageSection() {
+  return (
+    <div className="navbar-inclusive-background w-full">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\FirstSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+import { getBgComponent } from "@/lib/utils";
+
+export default function FirstSection() {
+  const pathname = usePathname();
+
+  const BgComponent = getBgComponent(pathname);
+
+  return BgComponent ? <BgComponent /> : <></>;
+}
+
+```
+
+# src\components\FirstSection\CenterizedTitle.tsx
+
+```tsx
+export default function CenterizedTitle() {
+  return <div>SliderBg</div>;
+}
 
 ```
 
@@ -3568,259 +4249,133 @@ function ContactInfo({ title, value }: { title: string; value: string }) {
 
 ```
 
-# src\components\FirstSection\TitleBg.tsx
+# src\app\_hooks\useTextDirection.ts
 
-```tsx
-export default function TitleBg() {
-  return <div>SliderBg</div>;
+```ts
+import { useLocale } from "next-intl";
+import { isRtlLang } from "rtl-detect";
+
+export type TextDirection = "ltr" | "rtl";
+
+export default function useTextDirection(): TextDirection {
+  const locale = useLocale();
+  return isRtlLang(locale) ? "rtl" : "ltr";
 }
 
 ```
 
-# src\components\FirstSection\SliderBg.tsx
+# src\app\_hooks\useScrollControl.ts
 
-```tsx
-"use client";
+```ts
+import { RefObject, useCallback, useState } from "react";
 
-import React, { useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import ScrollArrows from "@/components/ScrollArrows";
-import { SliderElement } from "@/lib/types";
-import useScrollControl from "@/app/_hooks/useScrollControl";
-import useTextDirection from "../../app/_hooks/useTextDirection";
-
-export default function SliderBg() {
-  return (
-    <ScrollableCardsContainer
-      translatedNewsItems={[
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Innovative Solutions",
-          subTitle:
-            "Transforming ideas into reality with cutting-edge technology",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Expert Team",
-          subTitle: "Dedicated professionals committed to excellence",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Global Reach",
-          subTitle: "Connecting businesses across borders",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Sustainable Future",
-          subTitle: "Driving growth with eco-friendly practices",
-        },
-      ]}
-    />
-  );
-}
-
-const ImageSection = () => {
-  return (
-    <div className="relative w-screen">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="w-full h-full absolute top-0 bg-black/70"></div>
-    </div>
-  );
-};
-
-function ScrollableCardsContainer({
-  translatedNewsItems,
-}: {
-  translatedNewsItems: SliderElement[];
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dir = useTextDirection();
-  const [scrollAmount, setScrollAmount] = useState<number>();
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
-    containerRef,
-    useMultiples: true,
-    baseScrollAmount: scrollAmount,
-  });
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  const autoSlide = () => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
-
-      if (isAtEnd) resetScrollPosition();
-      else
-        scroll({
-          direction: dir == "ltr" ? "right" : "left",
-          isLTR: dir == "ltr",
-        });
-    }
-  };
-
-  const resetInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(autoSlide, 5000);
-  };
-
-  useEffect(() => {
-    resetInterval();
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [scrollAmount]);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [handleScroll]);
-
-  return (
-    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
-      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
-      <div
-        ref={containerRef}
-        className={twMerge(
-          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
-          "hide-scrollbar"
-        )}
-      >
-        <div className="flex w-fit h-full">
-          {translatedNewsItems.map((newsItem, index) => (
-            <ImageSection key={index} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TextSection({
+function useScrollControl({
   containerRef,
+  useMultiples = false,
+  baseScrollAmount,
   resetTimer,
 }: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  resetTimer: () => void;
+  containerRef: RefObject<HTMLDivElement>;
+  useMultiples?: boolean;
+  baseScrollAmount?: number;
+  resetTimer?: () => void;
 }) {
-  const [scrollAmount, setScrollAmount] = useState<number>();
+  const [canScrollEnd, setCanScrollEnd] = useState(false);
+  const [canScrollStart, setCanScrollStart] = useState(true);
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
 
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
+  const baseScrollAmountFallback = 150;
 
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
-      <ScrollArrows
-        containerRef={containerRef}
-        scrollAmount={scrollAmount}
-        useMultiples={true}
-        resetTimer={resetTimer}
-        className="slider-bg-arrows"
-      />
+  const handleScroll = useCallback(() => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
 
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
-          التجربة العلمية
-        </h3>
+      if (isRTL) {
+        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollStart(Math.abs(scrollLeft) > 0);
+      } else {
+        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollEnd(Math.abs(scrollLeft) > 0);
+      }
+      setLastScrollPosition(Math.abs(scrollLeft));
+    }
+  }, [containerRef]);
 
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
-          واعد
-        </h1>
-      </div>
-    </div>
+  const scroll = useCallback(
+    ({ direction, isLTR }: ScrollParams) => {
+      if (containerRef.current) {
+        if (resetTimer) resetTimer();
+
+        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+
+        let targetScroll;
+
+        if (useMultiples) {
+          const currentMultiple = Math.round(
+            Math.abs(scrollLeft) /
+              (baseScrollAmount ?? containerRef.current.clientWidth)
+          );
+
+          targetScroll =
+            (currentMultiple +
+              (isLTR
+                ? direction === "right"
+                  ? 1
+                  : -1
+                : direction === "left"
+                ? 1
+                : -1)) *
+            (baseScrollAmount ?? containerRef.current.clientWidth);
+          // (baseScrollAmount * (isLTR ? -1 : 1));
+
+          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+          containerRef.current!.scrollTo({
+            left: targetScroll * (isLTR ? 1 : -1),
+            behavior: "smooth",
+          });
+        } else {
+          containerRef.current.scrollBy({
+            left:
+              direction === "left"
+                ? -(baseScrollAmount ?? baseScrollAmountFallback)
+                : baseScrollAmount ?? baseScrollAmountFallback,
+            behavior: "smooth",
+          });
+        }
+      }
+    },
+    [containerRef, useMultiples, baseScrollAmount]
   );
+
+  const resetScrollPosition = useCallback(() => {
+    if (containerRef.current) {
+      containerRef.current!.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [containerRef, useMultiples, baseScrollAmount]);
+
+  return {
+    canScrollEnd,
+    canScrollStart,
+    containerRef,
+    handleScroll,
+    scroll,
+    resetScrollPosition,
+    lastScrollPosition,
+  };
 }
 
-```
+type ScrollParams = {
+  direction: "right" | "left";
+  isLTR?: boolean;
+};
 
-# src\components\FirstSection\ImageBg.tsx
-
-```tsx
-import React from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function ImageBg() {
-  return (
-    <div className="min-h-[210px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
-      <TextSection />
-      <ImageSection />
-    </div>
-  );
-}
-
-function TextSection() {
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
-          الرئيسية
-        </h3>
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          مواقع ذات صلة
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-function ImageSection() {
-  return (
-    <div className="navbar-inclusive-background w-full">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/70"></div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\FirstSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-import { getBgComponent } from "@/lib/utils";
-
-export default function FirstSection() {
-  const pathname = usePathname();
-
-  const BgComponent = getBgComponent(pathname);
-
-  return BgComponent ? <BgComponent /> : <></>;
-}
-
-```
-
-# src\components\FirstSection\CenterizedTitle.tsx
-
-```tsx
-export default function CenterizedTitle() {
-  return <div>SliderBg</div>;
-}
+export default useScrollControl;
 
 ```
 
@@ -4231,136 +4786,6 @@ export default AboutUs;
 
 ```
 
-# src\app\_hooks\useTextDirection.ts
-
-```ts
-import { useLocale } from "next-intl";
-import { isRtlLang } from "rtl-detect";
-
-export type TextDirection = "ltr" | "rtl";
-
-export default function useTextDirection(): TextDirection {
-  const locale = useLocale();
-  return isRtlLang(locale) ? "rtl" : "ltr";
-}
-
-```
-
-# src\app\_hooks\useScrollControl.ts
-
-```ts
-import { RefObject, useCallback, useState } from "react";
-
-function useScrollControl({
-  containerRef,
-  useMultiples = false,
-  baseScrollAmount,
-  resetTimer,
-}: {
-  containerRef: RefObject<HTMLDivElement>;
-  useMultiples?: boolean;
-  baseScrollAmount?: number;
-  resetTimer?: () => void;
-}) {
-  const [canScrollEnd, setCanScrollEnd] = useState(false);
-  const [canScrollStart, setCanScrollStart] = useState(true);
-  const [lastScrollPosition, setLastScrollPosition] = useState(0);
-
-  const baseScrollAmountFallback = 150;
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
-
-      if (isRTL) {
-        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollStart(Math.abs(scrollLeft) > 0);
-      } else {
-        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollEnd(Math.abs(scrollLeft) > 0);
-      }
-      setLastScrollPosition(Math.abs(scrollLeft));
-    }
-  }, [containerRef]);
-
-  const scroll = useCallback(
-    ({ direction, isLTR }: ScrollParams) => {
-      if (containerRef.current) {
-        if (resetTimer) resetTimer();
-
-        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-        const maxScroll = scrollWidth - clientWidth;
-
-        let targetScroll;
-
-        if (useMultiples) {
-          const currentMultiple = Math.round(
-            Math.abs(scrollLeft) /
-              (baseScrollAmount ?? containerRef.current.clientWidth)
-          );
-
-          targetScroll =
-            (currentMultiple +
-              (isLTR
-                ? direction === "right"
-                  ? 1
-                  : -1
-                : direction === "left"
-                ? 1
-                : -1)) *
-            (baseScrollAmount ?? containerRef.current.clientWidth);
-          // (baseScrollAmount * (isLTR ? -1 : 1));
-
-          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-          containerRef.current!.scrollTo({
-            left: targetScroll * (isLTR ? 1 : -1),
-            behavior: "smooth",
-          });
-        } else {
-          containerRef.current.scrollBy({
-            left:
-              direction === "left"
-                ? -(baseScrollAmount ?? baseScrollAmountFallback)
-                : baseScrollAmount ?? baseScrollAmountFallback,
-            behavior: "smooth",
-          });
-        }
-      }
-    },
-    [containerRef, useMultiples, baseScrollAmount]
-  );
-
-  const resetScrollPosition = useCallback(() => {
-    if (containerRef.current) {
-      containerRef.current!.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-    }
-  }, [containerRef, useMultiples, baseScrollAmount]);
-
-  return {
-    canScrollEnd,
-    canScrollStart,
-    containerRef,
-    handleScroll,
-    scroll,
-    resetScrollPosition,
-    lastScrollPosition,
-  };
-}
-
-type ScrollParams = {
-  direction: "right" | "left";
-  isLTR?: boolean;
-};
-
-export default useScrollControl;
-
-```
-
 # src\app\[locale]\page.tsx
 
 ```tsx
@@ -4475,11 +4900,19 @@ This is a file of the type: SVG Image
 
 This is a binary file of the type: Image
 
-# public\images\common\google-play.png
+# public\images\hero\4.png
 
 This is a binary file of the type: Image
 
-# public\images\common\app-store.png
+# public\images\hero\3.png
+
+This is a binary file of the type: Image
+
+# public\images\hero\2.png
+
+This is a binary file of the type: Image
+
+# public\images\hero\1.png
 
 This is a binary file of the type: Image
 
@@ -4507,19 +4940,11 @@ This is a file of the type: SVG Image
 
 This is a binary file of the type: Image
 
-# public\images\hero\4.png
+# public\images\common\google-play.png
 
 This is a binary file of the type: Image
 
-# public\images\hero\3.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\2.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\1.png
+# public\images\common\app-store.png
 
 This is a binary file of the type: Image
 
@@ -5018,39 +5443,169 @@ import {
 import { Link, usePathname } from "@/i18n.config";
 import useCommonStore from "@/lib/zustand/common";
 import { useTranslations } from "next-intl";
-import React from "react";
+import React, { useRef } from "react";
 import { twMerge } from "tailwind-merge";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import * as paths from "@/lib/paths";
 
 const NavElements = () => {
-  let pathname = usePathname();
+  const pathname = usePathname();
   const t = useTranslations("Header.navLinks");
-  const jobsT = useTranslations("Jobs");
 
-  const navElements: NavElement[] = [
-    { label: t("home"), path: HOME_ROUTE },
-    { label: t("aboutUniversity"), path: ABOUT_UNIVERSITY_ROUTE },
-    { label: t("colleges"), path: COLLEGES_ROUTE },
-    { label: t("academicAffairs"), path: ACADEMIC_AFFAIRS_ROUTE },
-    { label: t("studentAffairs"), path: STUDENT_AFFAIRS_ROUTE },
-    { label: t("serviceCenters"), path: SERVICE_CENTERS_ROUTE },
-    { label: t("eServices"), path: E_SERVICES_ROUTE },
+  const [openedMenu, setOpenedMenu] = React.useState<number | null>();
+  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const navElements = [
+    { label: t("home"), path: paths.HOME_ROUTE },
+    { label: t("aboutUniversity"), path: paths.ABOUT_UNIVERSITY_ROUTE },
+    {
+      label: t("colleges"),
+      path: paths.COLLEGES_ROUTE,
+      subItems: [
+        {
+          label: "College 1",
+          path: paths.COLLEGE_ROUTE("1"),
+          subItems: [
+            { label: "D 1", path: paths.DEPARTMENT_ROUTE("1", "1") },
+            { label: "D 2", path: paths.DEPARTMENT_ROUTE("1", "2") },
+          ],
+        },
+        { label: "College 2", path: paths.COLLEGE_ROUTE("2") },
+      ],
+    },
+    {
+      label: t("academicAffairs"),
+      path: paths.ACADEMIC_AFFAIRS_ROUTE,
+      subItems: [
+        {
+          label: "Scientific Promotions",
+          path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
+        },
+        { label: "Research Plans", path: paths.RESEARCH_PLANS_ROUTE },
+        {
+          label: "Educational Scholarships",
+          path: paths.EDUCATIONAL_SCHOLARSHIPS_ROUTE,
+        },
+      ],
+    },
+    {
+      label: t("studentAffairs"),
+      path: paths.STUDENT_AFFAIRS_ROUTE,
+      subItems: [
+        {
+          label: "Admission & Registration",
+          path: paths.ADMISSION_REGISTRATION_ROUTE,
+        },
+        { label: "Academic Programs", path: paths.ACADEMIC_PROGRAMS_ROUTE },
+        { label: "Student Housing", path: paths.STUDENT_HOUSING_ROUTE },
+      ],
+    },
+    {
+      label: t("serviceCenters"),
+      path: paths.SERVICE_CENTERS_ROUTE,
+      subItems: [
+        {
+          label: "Continuing Education",
+          path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
+        },
+        { label: "Consulting Office", path: paths.CONSULTING_OFFICE_ROUTE },
+        { label: "Media Center", path: paths.MEDIA_CENTER_ROUTE },
+      ],
+    },
+    {
+      label: t("eServices"),
+      path: paths.E_SERVICES_ROUTE,
+      subItems: [
+        { label: "Student Portal", path: paths.STUDENT_PORTAL_ROUTE },
+        { label: "Faculty Portal", path: paths.FACULTY_PORTAL_ROUTE },
+        { label: "Alumni Portal", path: paths.ALUMNI_PORTAL_ROUTE },
+      ],
+    },
   ];
 
+  const { toggleDrawer } = useCommonStore();
+
+  const handleMouseEnter = (index: number) => {
+    setOpenedMenu(index);
+    triggerRefs.current[index]?.focus();
+  };
+
+  const handleMouseLeave = () => {
+    setOpenedMenu(null);
+  };
+
   return (
-    <ul className="mt-[61px] flex flex-col items-center  text-center text-base sm:text-sm 1920:text-base gap-[30px]  sm:mt-0 sm:flex-row sm:items-stretch sm:gap-[20px] font-light h-fit">
+    <Menubar
+      onMouseLeave={handleMouseLeave}
+      className="mt-[61px] flex flex-col items-center  text-center text-base sm:text-sm 1920:text-base gap-[30px]  sm:mt-0 sm:flex-row sm:items-stretch sm:gap-[20px] font-light h-fit bg-transparent border-0"
+    >
       {navElements.map((element, index) => (
-        <React.Fragment key={index}>
-          {index != 0 && (
-            <div className="border-e border-white/10 sm:block hidden"></div>
+        <React.Fragment key={element.path}>
+          <MenubarMenu
+            /* @ts-ignore */
+            open={openedMenu == index}
+          >
+            <MenubarTrigger
+              ref={(el) => (triggerRefs.current[index] = el)}
+              onMouseEnter={() => handleMouseEnter(index)}
+              className={twMerge(
+                "focus:bg-transparent data-[state=open]:bg-transparent p-0 h-auto focus:text-white",
+                "text-base sm:text-sm 1920:text-base font-light tracking-[-0.004em]",
+                pathname === element.path &&
+                  "relative after:absolute after:bottom-[-28px] after:start-0 after:h-0.5 after:w-[80%] after:bg-secondary after:content-['']"
+              )}
+            >
+              <Link
+                onClick={() => toggleDrawer(false)}
+                href={element.path}
+                className={twMerge(
+                  "transition-all duration-300 hover:opacity-60 "
+                )}
+              >
+                {element.label}
+              </Link>
+            </MenubarTrigger>
+            {element.subItems && (
+              <MenubarContent onMouseEnter={() => handleMouseEnter(index)}>
+                {element.subItems.map((subItem: any, subIndex) =>
+                  subItem.subItems ? (
+                    <MenubarSub key={subItem.path}>
+                      <MenubarSubTrigger>{subItem.label}</MenubarSubTrigger>
+                      <MenubarSubContent>
+                        <MenubarItem>Search the web</MenubarItem>
+                        <MenubarSeparator />
+                        <MenubarItem>Find...</MenubarItem>
+                        <MenubarItem>Find Next</MenubarItem>
+                        <MenubarItem>Find Previous</MenubarItem>
+                      </MenubarSubContent>
+                    </MenubarSub>
+                  ) : (
+                    <MenubarItem key={subItem.path}>
+                      <Link href={subItem.path} className="w-full block">
+                        {subItem.label}
+                      </Link>
+                    </MenubarItem>
+                  )
+                )}
+              </MenubarContent>
+            )}
+          </MenubarMenu>
+          {index !== navElements.length - 1 && (
+            <div className="hidden sm:block border-e border-white/10 h-4 mx-0"></div>
           )}
-          <NavElement
-            {...element}
-            // onClick={handleClick}
-            isActive={pathname === element.path}
-          />
         </React.Fragment>
       ))}
-    </ul>
+    </Menubar>
   );
 };
 
@@ -5107,12 +5662,8 @@ interface NavElement {
   tag?: string;
 }
 
-interface NavElementProps {
-  label: string;
+interface NavElementProps extends NavElement {
   className?: string;
-  path: string;
-  tag?: string;
-  // onClick: () => void;
   isActive: boolean;
 }
 
@@ -5674,6 +6225,7 @@ export default function AcademicRankings() {
 import Section from "@/components/Section";
 import ScrollableContainerUpperSection from "../../../components/ScrollableContainer/UpperSection";
 import TitlesWrapper from "@/components/TitlesWrapper";
+import { Link } from "@/i18n.config";
 
 export default function page() {
   return (
@@ -5683,64 +6235,51 @@ export default function page() {
           مواقع ذات صلة
         </h3>
         <h2 className="title">جامعة كلكامش</h2>
+        <RelatedLocationsGrid></RelatedLocationsGrid>
       </TitlesWrapper>
     </Section>
   );
 }
 
+const RelatedLocationsGrid = () => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-4 1920:grid-cols-5 gap-[22px] mt-[45px] sm:mt-[80px]">
+      {relatedLocations.map((location, index) => (
+        <div
+          key={index}
+          className="bg-white py-[40px] px-[30px] flex flex-col gap-[12px] items-center text-center justify-between"
+        >
+          <h3 className="text-[24px] font-medium leading-[1.3em]">
+            {location.title}
+          </h3>
+          <Link
+            target="_blank"
+            href={location.url}
+            className="text-[14px] text-primary font-medium leading-[1.25em]"
+          >
+            زيارة الموقع
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const relatedLocations = [
+  { title: "وزارة التعليم العالي والبحث العلمي", url: "#" },
+  { title: "دائرة التعليم الجامعي الأهلي", url: "#" },
+  { title: "اتحاد الجامعات العربية", url: "#" },
+  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
+  { title: "مركز البحوث والدراسات العراقي", url: "#" },
+  { title: "وزارة التعليم العالي والبحث العلمي", url: "#" },
+  { title: "دائرة التعليم الجامعي الأهلي", url: "#" },
+  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
+  { title: "مركز البحوث والدراسات العراقي", url: "#" },
+  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
+  { title: "مركز البحوث والدراسات العراقي", url: "#" },
+];
+
 ```
-
-# public\images\home\News\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\1.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\6.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\5.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\common\cards\uni-life.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\news.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\academic-classifications.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\about.svg
-
-This is a file of the type: SVG Image
 
 # src\app\[locale]\news\page.tsx
 
@@ -5965,6 +6504,58 @@ const Pagination: React.FC<PaginationProps> = ({
 };
 
 ```
+
+# public\images\home\News\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\1.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\6.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\5.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\common\cards\uni-life.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\news.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\academic-classifications.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\about.svg
+
+This is a file of the type: SVG Image
 
 # src\app\[locale]\news\_components\MainSubjects.tsx
 

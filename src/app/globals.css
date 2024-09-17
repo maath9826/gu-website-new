@@ -242,3 +242,23 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
 .navbar-inclusive-background {
   @apply absolute h-full sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
 }
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vanish {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
