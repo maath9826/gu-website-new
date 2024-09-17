@@ -1,0 +1,525 @@
+{
+  "Layout": {
+    "metaData": {
+      "title": "Taalem",
+      "description": "Taalem website"
+    },
+    "firstTitle": "AlZAEEM Express Delivery"
+  },
+  "Common": {
+    "cards": {
+      "uniLife": "University Life",
+      "about": "About the University",
+      "academicClassifications": "Academic Classifications",
+      "news": "News"
+    },
+    "Contact": {
+      "form": {
+        "title": "Contact Us",
+        "name": "Full Name",
+        "email": "Email Address",
+        "phoneNumber": "Phone Number",
+        "institution": "Institution Name",
+        "message": "Message",
+        "writeHere": "Write here",
+        "writeYourMessage": "Write your message here",
+        "send": "Send Message"
+      }
+    }
+  },
+  "Header": {
+    "appTitle": "Taalem",
+    "localSwitcher": {
+      "select a language": "select a language"
+    },
+    "navLinks": {
+      "home": "الرئيسية",
+      "aboutUniversity": "حول الجامعة",
+      "colleges": "الكليات",
+      "academicAffairs": "الشؤون العلمية",
+      "studentAffairs": "الشؤون الطلابية",
+      "serviceCenters": "المراكز الخدمية",
+      "eServices": "الخدمات الالكترونية"
+    },
+    "pageTitles": {
+      "home": "Home",
+      "about": "Who are we?",
+      "services": "Company Services",
+      "branches": "Company Branches",
+      "contact": "Contact us",
+      "jobs": "Vacant positions",
+      "joinUs": "Join us as a merchant",
+      "salesEmployee": "Sales employee",
+      "news": "News"
+    },
+    "cta": {
+      "joinUs": "Join Us",
+      "contactUs": "Contact Us"
+    }
+  },
+  "Home": {
+    "hero": {
+      "forFastDelivery": "For fast delivery",
+      "title": "Anytime anywhere!",
+      "subtitle": "At AlZaeem Company, we are committed to establishing effective partnerships with supporting companies, working together to advance the sector, develop it, and equip it with various capabilities and technical expertise. Our goal is to be the leading company in providing postal transport services regionally and globally.",
+      "cta": {
+        "bookSpace": "Book your space now",
+        "attendanceTickets": "Attendance Tickets"
+      }
+    },
+    "aboutUs": {
+      "title": "About AlZaeem",
+      "description": "In 2020, AlZaeem marked its inaugural launch, emerging from the Iraqi market's need for public transport and express mail services. Founded by a youthful team aware of the challenges within the local market, especially in the postal transport sector, the company has diligently provided solutions, taking initiative and leadership. Since its inception, Al-Za'eem has navigated numerous trials and challenges, including the COVID-19 pandemic with its associated lockdowns, curfews, and transportation disruptions, alongside global trade challenges. These obstacles did not deter the company and its founders, who understood that perseverance would pave the way forward and completing the journey was essential to achieving their goals.",
+      "readMore": "Read More"
+    },
+    "ourPartners": {
+      "title": "Our Partners in Success"
+    },
+    "ourServices": {
+      "title": "Our services",
+      "description": "AlZaeem specializes in cargo transportation and express mail delivery, offering specialized services driven by market demands and customer needs to deliver exceptional service in this sector.",
+      "services": [
+        {
+          "title": "Express Mail Delivery",
+          "description": "Delivery within less than 24 hours!"
+        },
+        {
+          "title": "Instant Accountability Service",
+          "description": "Instant accountability wherever and whenever the client needs."
+        },
+        {
+          "title": "Mail receiving service",
+          "description": "Direct mail pickup from the client's location."
+        },
+
+        {
+          "title": "Storage and preparation service",
+          "description": "Providing storage service for customers, and preparing goods."
+        },
+        {
+          "title": "Your marketing consultant service",
+          "description": "For training and supporting young entrepreneurs."
+        },
+        {
+          "title": "Delivery of special orders",
+          "description": "Sample text, sample text, sample text, sample text."
+        }
+      ]
+    },
+    "ourPhilosophy": {
+      "title": "The company's philosophy",
+      "subtitle": "We bear the responsibility of developing the sector.",
+      "description": "AlZaeem Company pursues the establishment of effective partnerships with supporting companies, collaborating to propel the sector forward and enhance it with diverse capabilities, expertise, and technological capacities.",
+      "stats": [
+        { "number": "1,200+", "label": "Clients" },
+        { "number": "20+", "label": "Branches" },
+        { "number": "200+", "label": "Number of Employees" },
+        { "number": "315+", "label": "Sales Representative" }
+      ]
+    },
+    "ourGoals": {
+      "title": "The company's objectives",
+      "goals": [
+        {
+          "title": "Customer satisfaction",
+          "description": "Achieving exceptional standards in transport and mail delivery, with a focus on maximizing customer satisfaction."
+        },
+        {
+          "title": "Growth",
+          "description": "Expanding regionally and globally."
+        },
+        {
+          "title": "Continuous evolution",
+          "description": "Ongoing initiative in the development of the transportation sector, postal delivery, and sales."
+        },
+        {
+          "title": "Digital transformation",
+          "description": "Solidifying digital transformation within the company and the sector."
+        },
+        {
+          "title": "Work environment",
+          "description": "Creating the optimal work environment."
+        }
+      ]
+    },
+    "ourApp": {
+      "title": "Download the AlZaeem app now from our stores.",
+      "description": "AlZaeem Company actively forges effective partnerships with supporting companies to propel the sector forward, enhancing it with diverse capabilities, expertise, and technological capacities."
+    },
+    "news": {
+      "title": "News",
+      "viewAll": "View all news",
+      "tags": {
+        "contracts": "Contracts",
+        "alzaeem": "ALZAEEM company"
+      },
+      "news": [
+        {
+          "title": "AlZaeem Company adopts the establishment of effective partnerships with supporting companies.",
+          "description": "AlZaeem Company is dedicated to establishing effective partnerships with supporting companies, contributing to advancing, developing, and expanding the sector with diverse capabilities, expertise, and technological capacities."
+        },
+        {
+          "title": "AlZaeem Company adopts the establishment of effective partnerships with supporting companies.",
+          "description": "AlZaeem Company is dedicated to establishing effective partnerships with supporting companies, contributing to advancing, developing, and expanding the sector with diverse capabilities, expertise, and technological capacities."
+        },
+        {
+          "title": "AlZaeem Company adopts the establishment of effective partnerships with supporting companies.",
+          "description": "AlZaeem Company is dedicated to establishing effective partnerships with supporting companies, contributing to advancing, developing, and expanding the sector with diverse capabilities, expertise, and technological capacities."
+        },
+        {
+          "title": "AlZaeem Company adopts the establishment of effective partnerships with supporting companies.",
+          "description": "AlZaeem Company is dedicated to establishing effective partnerships with supporting companies, contributing to advancing, developing, and expanding the sector with diverse capabilities, expertise, and technological capacities."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions (FAQs)",
+      "description": "Here are some frequently asked questions about AlZaeem Express Delivery and how it operates:",
+      "questions": [
+        {
+          "question": "What are the types of services provided by the company?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "The delivery rates?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "What is the process for tracking and processing orders?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "What are the methods of account withdrawal from the company?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "Is the return policy free of charge?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "What is the nearest branch of AlZaeem Company for me?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "Does the company provide a pickup service for receiving orders?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        },
+        {
+          "question": "How can I contact all departments of the company?",
+          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
+        }
+      ],
+      "stillHaveQuestions": {
+        "title": "Still have some questions?",
+        "description": "To get assistance, please visit our   <a href=\"/contact\" target=\"_blank\" class=\"text-foreground font-medium\">Contact Us</a> page or call our customer support hotline at <a href=\"tel:077122233828\" class=\"text-foreground font-medium\">077122233828</a>. Our dedicated team is ready to help you achieve the fastest delivery process possible."
+      }
+    },
+    "ratings": {
+      "title": "We are delighted with the feedback from our valued customers.",
+      "description": "Many diverse customer opinions about our services.",
+      "cards": [
+        {
+          "comment": "Alzaeem Express Delivery has always been one of our key partners in success, providing us with the best delivery service in terms of speed and maintaining the confidentiality of the data sent to them.",
+          "job": "Rafidain Bank",
+          "name": "Marketing Center for Q Card",
+          "stars": 5
+        },
+        {
+          "comment": "Because our goods at the Design Office for Mobile Phones include sensitive and expensive electronic devices, Alzaeem Express Delivery was our first choice due to the great care the company takes to preserve the orders. Over three years, we have not encountered any case of damage or breakage of goods, reflecting the quality and reliability of their services.",
+          "job": "",
+          "name": "AL-Tasmem Office for Mobile Phones",
+          "stars": 5
+        },
+        {
+          "comment": "You deserve all the praise for the hard and dedicated work you do day after day. At Karam Company, we highly appreciate your efforts in providing world-class service. I wish you more progress and prosperity in the future, and I look forward to continuing successful cooperation with you. Thank you from the heart for your tremendous and continuous efforts.",
+          "job": "",
+          "name": "Masnaa Al-Asaaer for Plastic Cans",
+          "stars": 5
+        },
+        {
+          "comment": "I would like to express my thanks and gratitude for the long-term cooperation and hard work that Alzaeem Company has provided over the past year. Through your commitment to providing exceptional customer service and on-time delivery, I found your staff to be dedicated and of high quality in performing their tasks, which greatly contributed to achieving successes and developing our business.",
+          "job": "",
+          "name": "Global Marketing Representative",
+          "stars": 5
+        }
+      ]
+    }
+  },
+  "Footer": {
+    "registerNow": "Register now! What are you waiting for?",
+    "bestExperience": "Get the best delivery experience for you and your customers in Iraq!",
+    "yourEmail": "Your Email",
+    "registerButton": "Register now",
+    "alzaeemApp": "ALZAEEM app",
+    "theCompany": "The company",
+    "helpCenter": "Help center",
+    "facebook": "Facebook",
+    "googlePlayDownload": "Google Play download",
+    "whoWeAre": "Who we are",
+    "commonQuestions": "Common questions",
+    "appStoreDownload": "App Store download",
+    "services": "Services",
+    "contactUs": "Contact us",
+    "instagram": "Instagram",
+    "jobs": "Jobs",
+    "registerAsMerchant": "Register as merchant",
+    "linkedin": "LinkedIn",
+    "branches": "Branches",
+    "copyright": "© 2024 ALZAEEM Express Delivery Company. All rights reserved"
+  },
+  "About": {
+    "title": "AlZAEEM Express Delivery",
+    "whoWeAre": "Who are we?",
+    "beginningAndChallenges": "The beginning and the challenges",
+    "beginningText": "In 2020, Al-Za'eem made its initial launch, emerging from the Iraqi market's demand for public transport and express mail services. Founded by a young team that understands the challenges within the local market, especially in the postal transport sector, the company worked diligently to provide solutions and take initiative in leadership.\n\nSince its inception, Al-Za'eem has faced several trials and challenges. The company navigated through the COVID-19 pandemic crisis, which brought closures, curfews, and disruptions in transportation, alongside global trade challenges. These obstacles did not deter the company and its founders, who were determined that persistence would pave the way forward and completing the journey was essential to achieving their goals.",
+    "expansionText": "Within three months of its establishment, the company successfully expanded its branches to provinces such as Babylon and Kirkuk, in addition to Baghdad, driven by its vision to strengthen its presence and meet market demands. Embracing a digital transformation strategy from the outset, Al-Za'eem developed a dedicated application for customers and delegates, providing a comprehensive system for customer service. This platform allows customers to track their orders, saving them time and effort.\n\nDespite numerous challenges, the company persevered in delivering orders and steadily expanding its operations, enhancing its capabilities and active presence in the transport and express delivery sector. Al-Za'eem continues to meet market demands, striving to improve its services and establish a unique reputation in the industry.",
+    "companyVision": "The company's vision for the future",
+    "visionStatement": "To lead in providing regional and global postal transportation services",
+    "companyValues": "The company's values",
+    "valuesDescription": "AlZaeem specializes in cargo transportation and express mail delivery, offering specialized services tailored to meet market and customer requirements.",
+    "trust": "Trust",
+    "socialResponsibility": "Social responsibility",
+    "innovation": "Innovation",
+    "excellence": "Excellence"
+  },
+  "Branches": {
+    "searchPlaceholder": "Write the name of the city",
+    "goToLocation": "Go to the location",
+    "locations": [
+      {
+        "province": "Diyala Governorate",
+        "address": "Iraq - Diyala - Baqubah near Bahraz Bridge",
+        "phoneNumbers": ["07748098522"],
+        "googleMapsLink": "https://www.google.com/maps/place/33%C2%B043'22.6%22N+44%C2%B038'49.4%22E/@33.72295,44.6444741,17z/data=!3m1!4b1!4m4!3m3!8m2!3d33.72295!4d44.647049?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Basra Governorate",
+        "address": "Iraq - Basra - Al-Zohour District, opposite the Forensic Medicine Institute",
+        "phoneNumbers": ["07723909093", "07734641436"],
+        "googleMapsLink": "https://www.google.com/maps/place/30%C2%B028'38.5%22N+47%C2%B049'24.5%22E/@30.4773598,47.8209,17z/data=!3m1!4b1!4m4!3m3!8m2!3d30.4773598!4d47.8234749?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Karbala Governorate",
+        "address": "Iraq - Karbala - Opposite the New Amusement City",
+        "phoneNumbers": ["07813335548", "07713335548"],
+        "googleMapsLink": "https://www.google.com/maps/place/32%C2%B036'12.5%22N+44%C2%B001'08.1%22E/@32.6034722,44.0189167,17z/data=!3m1!4b1!4m4!3m3!8m2!3d32.6034722!4d44.0189167?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Diwaniyah Governorate",
+        "address": "Iraq - Diwaniyah - Al-Asri District, behind the Health Directorate",
+        "phoneNumbers": ["07821594705"],
+        "googleMapsLink": "https://www.google.com/maps/place/31%C2%B059'25.3%22N+44%C2%B055'52.1%22E/@31.9903641,44.9285622,17z/data=!3m1!4b1!4m4!3m3!8m2!3d31.9903641!4d44.9311371?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Kirkuk Governorate",
+        "address": "Iraq - Kirkuk - Celebration Square, opposite Mina Pharmacy, next to Mint Leaf Cafe",
+        "phoneNumbers": ["07723506070", "07729317262"],
+        "googleMapsLink": "https://www.google.com/maps/place/35%C2%B025'43.0%22N+44%C2%B021'43.5%22E/@35.4286041,44.3594971,17z/data=!3m1!4b1!4m4!3m3!8m2!3d35.4286041!4d44.362072?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Babylon Governorate",
+        "address": "Iraq - Babylon - 60th Street, Column 300, Al-Ain Medical Complex",
+        "phoneNumbers": ["07819004425", "07723953516"],
+        "googleMapsLink": "https://www.google.com/maps/place/32%C2%B029'13.1%22N+44%C2%B024'46.3%22E/@32.4869576,44.410286,17z/data=!3m1!4b1!4m4!3m3!8m2!3d32.4869576!4d44.4128609?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Anbar Governorate",
+        "address": "Iraq - Anbar - Fallujah, Old Main Street, near Al-Abbasi Restaurant - Arab Market Building",
+        "phoneNumbers": ["07816828801"],
+        "googleMapsLink": "https://www.google.com/maps/place/33%C2%B021'01.0%22N+43%C2%B046'16.8%22E/@33.3502655,43.7687683,17z/data=!3m1!4b1!4m4!3m3!8m2!3d33.3502655!4d43.7713432?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Mosul Governorate",
+        "address": "Iraq - Mosul - Al-Tameem District, opposite Al-Ghaffar Mosque",
+        "phoneNumbers": ["07736947557"],
+        "googleMapsLink": "https://www.google.com/maps/place/36%C2%B021'17.6%22N+43%C2%B011'46.5%22E/@36.3548851,43.1936722,17z/data=!3m1!4b1!4m4!3m3!8m2!3d36.3548851!4d43.1962471?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Erbil Governorate",
+        "address": "Iraq - Erbil - Badawe, near Ahmed Darmanawi Mosque",
+        "phoneNumbers": ["07501142332", "07504430707"],
+        "googleMapsLink": "https://www.google.com/maps/place/36%C2%B009'47.8%22N+44%C2%B002'58.1%22E/@36.1632729,44.0469017,17z/data=!3m1!4b1!4m4!3m3!8m2!3d36.1632729!4d44.0494766?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Dhi Qar Governorate",
+        "address": "Iraq - Nasiriyah - Samawah Roundabout - Al-Izdihar Street - Behind Al-Haj Murtada for Ceramics",
+        "phoneNumbers": ["07827507500", "07810797976"],
+        "googleMapsLink": "https://www.google.com/maps/place/31%C2%B002'17.2%22N+46%C2%B014'15.8%22E/@31.0381165,46.2351494,17z/data=!3m1!4b1!4m4!3m3!8m2!3d31.0381165!4d46.2377243?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Duhok Governorate",
+        "address": "Iraq - Duhok - Masiqi, opposite Haji Tahir Mosque",
+        "phoneNumbers": ["07505055665", "07505555440"],
+        "googleMapsLink": "https://www.google.com/maps/place/36%C2%B052'20.3%22N+42%C2%B056'59.8%22E/@36.8723106,42.9473648,17z/data=!3m1!4b1!4m4!3m3!8m2!3d36.8723106!4d42.9499397?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Duhok Governorate",
+        "address": "Iraq - Duhok - Zakho - Semalka, near Bashar Agha",
+        "phoneNumbers": ["07505055665", "07505555440"],
+        "googleMapsLink": "https://www.google.com/maps/place/37%C2%B009'06.7%22N+42%C2%B040'55.5%22E/@37.1518517,42.6795197,17z/data=!3m1!4b1!4m4!3m3!8m2!3d37.1518517!4d42.6820946?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Baghdad Governorate",
+        "address": "Iraq - Baghdad - Kadhimiyah - Al-Mashat Street",
+        "phoneNumbers": ["07505555540", "07505055665"],
+        "googleMapsLink": "https://www.google.com/maps/search/%D9%85%D8%AF%D9%8A%D8%B1+%D8%B4%D8%B1%D9%83%D8%A9+%D8%A7%D9%84%D8%B2%D8%B9%D9%8A%D9%85_%D9%81%D8%B1%D8%B9+%D8%A7%D9%84%D9%83%D8%A7%D8%B8%D9%85%D9%8A%D8%A9%E2%80%AD/@33.3683014,44.3414993,17z?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Sulaymaniyah Governorate",
+        "address": "Iraq - Sulaymaniyah - Near Jwra Bakh Stadium",
+        "phoneNumbers": ["07828401781"],
+        "googleMapsLink": "https://www.google.com/maps/place/35%C2%B032'58.1%22N+45%C2%B025'40.9%22E/@35.5494614,45.4254456,17z/data=!3m1!4b1!4m4!3m3!8m2!3d35.5494614!4d45.4280205?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Maysan Governorate",
+        "address": "Iraq - Maysan - Al-Amarah, Al-Suhufeen area, near Al-Suhufeen Roundabout",
+        "phoneNumbers": ["07808186186", "07708186186"],
+        "googleMapsLink": "https://www.google.com/maps/place/31%C2%B052'20.1%22N+47%C2%B009'12.9%22E/@31.8722591,47.1510124,17z/data=!3m1!4b1!4m4!3m3!8m2!3d31.8722591!4d47.1535873?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      },
+      {
+        "province": "Baghdad Governorate",
+        "address": "Iraq - Baghdad - Al-Bunook - Al-Mashatel Street - opposite Baba Oglu Cafe",
+        "phoneNumbers": ["07808186186", "07708186186"],
+        "googleMapsLink": "https://www.google.com/maps/place/33%C2%B023'19.9%22N+44%C2%B023'48.4%22E/@33.3888658,44.3941976,17z/data=!3m1!4b1!4m4!3m3!8m2!3d33.3888658!4d44.3967725?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      }
+    ]
+  },
+  "Jobs": {
+    "title": "Vacant positions",
+    "description": "The Leader Company specializes in transporting goods and providing express mail services, offering its services in this sector based on market and customer requirements to deliver exceptional specialized services.",
+    "searchPlaceholder": "Write the name of the job",
+    "applyNow": "Apply now",
+    "jobListings": [
+      {
+        "title": "Sales employee",
+        "location": "Iraq - Kirkuk - opposite the New Games City",
+        "jobType": "Full time job"
+      },
+      {
+        "title": "Sales employee",
+        "location": "Iraq - Kirkuk - opposite the New Games City",
+        "jobType": "Full time job"
+      },
+      {
+        "title": "Sales employee",
+        "location": "Iraq - Kirkuk - opposite the New Games City",
+        "jobType": "Full time job"
+      },
+      {
+        "title": "Sales employee",
+        "location": "Iraq - Kirkuk - opposite the New Games City",
+        "jobType": "Full time job"
+      },
+      {
+        "title": "Sales employee",
+        "location": "Iraq - Kirkuk - opposite the New Games City",
+        "jobType": "Full time job"
+      },
+      {
+        "title": "Sales employee",
+        "location": "Iraq - Kirkuk - opposite the New Games City",
+        "jobType": "Full time job"
+      }
+    ],
+    "jobDetails": {
+      "overview": "Job Overview",
+      "jobTitle": "Job title:",
+      "description": "We are looking for a sales representative to join our team at Al-Zaheem Express Delivery. The ideal candidate will be responsible for managing customer relationships, promoting express delivery services, and achieving sales targets. Applicants should have sales experience, strong communication skills, and the ability to work in a dynamic and fast-paced environment.",
+      "jobDescription": "Job description:",
+      "qualifications": [
+        "- Academic Qualifications:",
+        "• Bachelor's degree in Business Administration, Marketing, or a related field (preferred)",
+        "• Any additional certifications in Sales or Marketing are considered an advantage."
+      ],
+      "experience": [
+        "- Work Experience:",
+        "• Minimum of two years of experience in sales, preferably in the delivery or logistics services sector",
+        "• Previous experience in achieving sales targets and the ability to develop effective sales plans."
+      ],
+      "skills": [
+        "- Required Skills:",
+        "• Strong communication and negotiation skills",
+        "• Proficiency in using Customer Relationship Management (CRM) software",
+        "• Ability to work under pressure and manage time effectively",
+        "• Capability to work within a team",
+        "• Flexibility in working hours",
+        "• Valid driver's license (preferred)",
+        "• Ability to travel within the city to communicate with clients"
+      ],
+      "applyNow": "Apply now"
+    },
+    "application": {
+      "title": "Application form",
+      "firstName": "First name*",
+      "lastName": "Last name*",
+      "thirdName": "Third name*",
+      "email": "Email*",
+      "address": "Address*",
+      "phoneNumber": "Phone number*",
+      "personalPhoto": "Personal photo*",
+      "uploadPhoto": "Upload your photo",
+      "educationalAttainment": "Educational attainment*",
+      "highSchool": "High School Degree",
+      "diploma": "Diploma",
+      "bachelors": "Bachelor's degree",
+      "others": "Others",
+      "specifyEducation": "Specify educational attainment",
+      "previousExperiences": "Previous experiences*",
+      "workInDelivery": "Have you worked in the delivery field before?*",
+      "yes": "Yes",
+      "no": "No",
+      "resume": "Your resume*",
+      "uploadResume": "Upload your resume",
+      "send": "Send",
+      "writeHere": "Write here"
+    }
+  },
+  "singleNews": {
+    "share": "Share",
+    "print": "Print",
+    "relatedNews": "Related News"
+  },
+  "JoinUs": {
+    "title": "Application Form",
+    "merchantName": "Merchant name*",
+    "businessName": "Business name*",
+    "city": "City*",
+    "area": "Area*",
+    "productsType": "Products type*",
+    "expectedOrders": "Expected number of orders*",
+    "from": "From",
+    "to": "To",
+    "phoneNumber": "Phone number*",
+    "writeHere": "Write here",
+    "send": "Send"
+  },
+  "Contact": {
+    "title": "Stay in touch with us",
+    "description": "Al-Zaeem Company specializes in transporting goods and delivering express mail, offering its services in this sector based on market and customer requirements to provide its distinctive specialized services.",
+    "form": {
+      "title": "Contact Form",
+      "name": "Name*",
+      "email": "Email*",
+      "phoneNumber": "Phone number*",
+      "city": "City*",
+      "message": "Message*",
+      "writeHere": "Write here",
+      "writeYourMessage": "Write your message here",
+      "send": "Send"
+    },
+    "contactInfo": [
+      {
+        "title": "info@zaeem.iq",
+        "icon": "ri-mail-line"
+      },
+      {
+        "title": "+964 78 000 999 88",
+        "icon": "ri-smartphone-line"
+      },
+      {
+        "title": "Iraq, Baghdad",
+        "icon": "ri-map-pin-line"
+      }
+    ]
+  }
+}
