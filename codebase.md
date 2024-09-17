@@ -1622,12 +1622,13 @@ export const ACADEMIC_AFFAIRS_ROUTE = "/academic-affairs";
 export const STUDENT_AFFAIRS_ROUTE = "/student-affairs";
 export const SERVICE_CENTERS_ROUTE = "/service-centers";
 export const E_SERVICES_ROUTE = "/e-services";
+export const RELATED_LOCATIONS_ROUTE = "/related-locations";
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
-export const IMAGE_BG_ROUTES: string[] = [];
+export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 
 export const CENTERIZED_TITLE_ROUTES: string[] = [];
 
@@ -1712,6 +1713,31 @@ export default function Wrapper({ children, ...props }: ComponentProps) {
     >
       {children}
     </div>
+  );
+}
+
+```
+
+# src\components\TitlesWrapper.tsx
+
+```tsx
+import React from "react";
+import Section from "./Section";
+import { twMerge } from "tailwind-merge";
+import Wrapper from "./Wrapper";
+
+export default function TitlesWrapper({ ...props }) {
+  return (
+    <Section>
+      <Wrapper
+        className={twMerge(
+          "mb-[22px] sm:mb-[61px] flex flex-col items-center",
+          props.className
+        )}
+      >
+        {props.children}
+      </Wrapper>
+    </Section>
   );
 }
 
@@ -2184,6 +2210,9 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
 
     /* init */
     --screen-width: 100vw;
+
+    /* others */
+    --navbar-height: 174px;
   }
 
   :root[dir="ltr"] {
@@ -2314,6 +2343,18 @@ input[type="text"][inputmode="email"]:not(:placeholder-shown),
 input[type="text"][inputmode="tel"]:not(:placeholder-shown),
 input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
   direction: ltr;
+}
+
+.title {
+  @apply text-[22px] leading-[1.25em] font-bold sm:text-[48px];
+}
+
+.title-sm {
+  @apply mb-[11px] text-[16px] leading-[1.25em] font-bold text-secondary sm:text-[26px];
+}
+
+.navbar-inclusive-background {
+  @apply absolute sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
 }
 
 ```
@@ -3154,7 +3195,7 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
 
 ```
 
-# src\components\ScrollableContainer\UpperSections.tsx
+# src\components\ScrollableContainer\UpperSection.tsx
 
 ```tsx
 "use client";
@@ -3163,8 +3204,9 @@ import { useEffect, useState } from "react";
 import Section from "../Section";
 import ScrollArrows from "../ScrollArrows";
 import { twMerge } from "tailwind-merge";
+import TitlesWrapper from "../TitlesWrapper";
 
-export default function UpperSection({
+export default function ScrollableContainerUpperSection({
   containerRef,
   hideArrows = false,
   title,
@@ -3188,27 +3230,11 @@ export default function UpperSection({
   }, [containerRef]);
 
   return (
-    <Section
-      className={twMerge(
-        "mb-[22px] sm:mb-[61px] flex flex-col items-start max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg",
-        className
-      )}
-    >
-      {title2 && (
-        <h3 className="mb-[11px] text-[16px] leading-[1.25em] font-bold text-secondary ">
-          {title2}
-        </h3>
-      )}
+    <TitlesWrapper className={twMerge("items-start", className)}>
+      {title2 && <h3 className="title-sm">{title2}</h3>}
 
       <div className="flex items-center justify-between w-full">
-        <h5
-          className={twMerge(
-            "text-[22px] leading-[1.25em] font-bold",
-            titleClass
-          )}
-        >
-          {title}
-        </h5>
+        <h5 className={twMerge("title", titleClass)}>{title}</h5>
         {!hideArrows && (
           <ScrollArrows
             containerRef={containerRef}
@@ -3219,7 +3245,7 @@ export default function UpperSection({
           />
         )}
       </div>
-    </Section>
+    </TitlesWrapper>
   );
 }
 
@@ -3318,7 +3344,7 @@ export default function LastSections() {
 "use client";
 
 import { useRef } from "react";
-import UpperSection from "../ScrollableContainer/UpperSections";
+import ScrollableContainerUpperSection from "../ScrollableContainer/UpperSection";
 import { ScrollableCardsContainer } from "../ScrollableContainer/ScrollableContainer";
 import ScrollElement from "../ScrollElement";
 import CommonCard from "@/app/_components/CardsSection/CommonCard";
@@ -3350,7 +3376,7 @@ export default function EServicesSection() {
       <Section>
         <Wrapper>
           <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-            <UpperSection
+            <ScrollableContainerUpperSection
               arrowButtonsClass="sm:hidden"
               containerRef={containerRef}
               title2="جامعة كلكامش"
@@ -3672,7 +3698,7 @@ function ScrollableCardsContainer({
       <div
         ref={containerRef}
         className={twMerge(
-          "mx-auto overflow-x-auto sm:h-[calc(100%+174px)] h-full absolute w-screen sm:top-[-174px] top-0",
+          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
           "hide-scrollbar"
         )}
       >
@@ -3728,8 +3754,44 @@ function TextSection({
 # src\components\FirstSection\ImageBg.tsx
 
 ```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
 export default function ImageBg() {
-  return <div>SliderBg</div>;
+  return (
+    <div className="min-h-[210px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+      <TextSection />
+      <ImageSection />
+    </div>
+  );
+}
+
+function TextSection() {
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
+          الرئيسية
+        </h3>
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          مواقع ذات صلة
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+function ImageSection() {
+  return (
+    <div className="navbar-inclusive-background w-full">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+  );
 }
 
 ```
@@ -3759,136 +3821,6 @@ export default function FirstSection() {
 export default function CenterizedTitle() {
   return <div>SliderBg</div>;
 }
-
-```
-
-# src\app\_hooks\useTextDirection.ts
-
-```ts
-import { useLocale } from "next-intl";
-import { isRtlLang } from "rtl-detect";
-
-export type TextDirection = "ltr" | "rtl";
-
-export default function useTextDirection(): TextDirection {
-  const locale = useLocale();
-  return isRtlLang(locale) ? "rtl" : "ltr";
-}
-
-```
-
-# src\app\_hooks\useScrollControl.ts
-
-```ts
-import { RefObject, useCallback, useState } from "react";
-
-function useScrollControl({
-  containerRef,
-  useMultiples = false,
-  baseScrollAmount,
-  resetTimer,
-}: {
-  containerRef: RefObject<HTMLDivElement>;
-  useMultiples?: boolean;
-  baseScrollAmount?: number;
-  resetTimer?: () => void;
-}) {
-  const [canScrollEnd, setCanScrollEnd] = useState(false);
-  const [canScrollStart, setCanScrollStart] = useState(true);
-  const [lastScrollPosition, setLastScrollPosition] = useState(0);
-
-  const baseScrollAmountFallback = 150;
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
-
-      if (isRTL) {
-        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollStart(Math.abs(scrollLeft) > 0);
-      } else {
-        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollEnd(Math.abs(scrollLeft) > 0);
-      }
-      setLastScrollPosition(Math.abs(scrollLeft));
-    }
-  }, [containerRef]);
-
-  const scroll = useCallback(
-    ({ direction, isLTR }: ScrollParams) => {
-      if (containerRef.current) {
-        if (resetTimer) resetTimer();
-
-        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-        const maxScroll = scrollWidth - clientWidth;
-
-        let targetScroll;
-
-        if (useMultiples) {
-          const currentMultiple = Math.round(
-            Math.abs(scrollLeft) /
-              (baseScrollAmount ?? containerRef.current.clientWidth)
-          );
-
-          targetScroll =
-            (currentMultiple +
-              (isLTR
-                ? direction === "right"
-                  ? 1
-                  : -1
-                : direction === "left"
-                ? 1
-                : -1)) *
-            (baseScrollAmount ?? containerRef.current.clientWidth);
-          // (baseScrollAmount * (isLTR ? -1 : 1));
-
-          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-          containerRef.current!.scrollTo({
-            left: targetScroll * (isLTR ? 1 : -1),
-            behavior: "smooth",
-          });
-        } else {
-          containerRef.current.scrollBy({
-            left:
-              direction === "left"
-                ? -(baseScrollAmount ?? baseScrollAmountFallback)
-                : baseScrollAmount ?? baseScrollAmountFallback,
-            behavior: "smooth",
-          });
-        }
-      }
-    },
-    [containerRef, useMultiples, baseScrollAmount]
-  );
-
-  const resetScrollPosition = useCallback(() => {
-    if (containerRef.current) {
-      containerRef.current!.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-    }
-  }, [containerRef, useMultiples, baseScrollAmount]);
-
-  return {
-    canScrollEnd,
-    canScrollStart,
-    containerRef,
-    handleScroll,
-    scroll,
-    resetScrollPosition,
-    lastScrollPosition,
-  };
-}
-
-type ScrollParams = {
-  direction: "right" | "left";
-  isLTR?: boolean;
-};
-
-export default useScrollControl;
 
 ```
 
@@ -4067,6 +3999,7 @@ import Section from "@/components/Section";
 import { Input } from "@/components/ui/input";
 import Wrapper from "@/components/Wrapper";
 import React from "react";
+import { RELATED_LOCATIONS_ROUTE } from "@/lib/paths";
 
 const Footer = () => {
   return (
@@ -4152,7 +4085,7 @@ const FooterLeft = () => {
         </ul>
         <Link
           target="_blank"
-          href="#"
+          href={RELATED_LOCATIONS_ROUTE}
           className="text-secondary text-[16px] sm:text-[18px] leading-[1.22em]"
         >
           عرض المزيد
@@ -4243,28 +4176,6 @@ export default Footer;
 
 ```
 
-# src\app\_components\FirstTitle.tsx
-
-```tsx
-"use client";
-
-import { useTranslations } from "next-intl";
-
-export default function FirstTitle() {
-  const t = useTranslations("Layout");
-
-  return (
-    <div className="mb-[6px] flex items-center gap-[8px]">
-      <div className="w-[12px] h-[12px] bg-secondary flex justify-center items-center rounded-[2px] mb-[4px]">
-        <div className="w-[8px] h-[8px] rounded-full bg-primary"></div>
-      </div>
-      <h5 className="text-sm text-white">{t("firstTitle")}</h5>
-    </div>
-  );
-}
-
-```
-
 # src\app\_components\AboutUs.tsx
 
 ```tsx
@@ -4317,6 +4228,136 @@ const AboutUs: React.FC = () => {
 };
 
 export default AboutUs;
+
+```
+
+# src\app\_hooks\useTextDirection.ts
+
+```ts
+import { useLocale } from "next-intl";
+import { isRtlLang } from "rtl-detect";
+
+export type TextDirection = "ltr" | "rtl";
+
+export default function useTextDirection(): TextDirection {
+  const locale = useLocale();
+  return isRtlLang(locale) ? "rtl" : "ltr";
+}
+
+```
+
+# src\app\_hooks\useScrollControl.ts
+
+```ts
+import { RefObject, useCallback, useState } from "react";
+
+function useScrollControl({
+  containerRef,
+  useMultiples = false,
+  baseScrollAmount,
+  resetTimer,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+  useMultiples?: boolean;
+  baseScrollAmount?: number;
+  resetTimer?: () => void;
+}) {
+  const [canScrollEnd, setCanScrollEnd] = useState(false);
+  const [canScrollStart, setCanScrollStart] = useState(true);
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+
+  const baseScrollAmountFallback = 150;
+
+  const handleScroll = useCallback(() => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
+
+      if (isRTL) {
+        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollStart(Math.abs(scrollLeft) > 0);
+      } else {
+        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollEnd(Math.abs(scrollLeft) > 0);
+      }
+      setLastScrollPosition(Math.abs(scrollLeft));
+    }
+  }, [containerRef]);
+
+  const scroll = useCallback(
+    ({ direction, isLTR }: ScrollParams) => {
+      if (containerRef.current) {
+        if (resetTimer) resetTimer();
+
+        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+
+        let targetScroll;
+
+        if (useMultiples) {
+          const currentMultiple = Math.round(
+            Math.abs(scrollLeft) /
+              (baseScrollAmount ?? containerRef.current.clientWidth)
+          );
+
+          targetScroll =
+            (currentMultiple +
+              (isLTR
+                ? direction === "right"
+                  ? 1
+                  : -1
+                : direction === "left"
+                ? 1
+                : -1)) *
+            (baseScrollAmount ?? containerRef.current.clientWidth);
+          // (baseScrollAmount * (isLTR ? -1 : 1));
+
+          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+          containerRef.current!.scrollTo({
+            left: targetScroll * (isLTR ? 1 : -1),
+            behavior: "smooth",
+          });
+        } else {
+          containerRef.current.scrollBy({
+            left:
+              direction === "left"
+                ? -(baseScrollAmount ?? baseScrollAmountFallback)
+                : baseScrollAmount ?? baseScrollAmountFallback,
+            behavior: "smooth",
+          });
+        }
+      }
+    },
+    [containerRef, useMultiples, baseScrollAmount]
+  );
+
+  const resetScrollPosition = useCallback(() => {
+    if (containerRef.current) {
+      containerRef.current!.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [containerRef, useMultiples, baseScrollAmount]);
+
+  return {
+    canScrollEnd,
+    canScrollStart,
+    containerRef,
+    handleScroll,
+    scroll,
+    resetScrollPosition,
+    lastScrollPosition,
+  };
+}
+
+type ScrollParams = {
+  direction: "right" | "left";
+  isLTR?: boolean;
+};
+
+export default useScrollControl;
 
 ```
 
@@ -4434,6 +4475,14 @@ This is a file of the type: SVG Image
 
 This is a binary file of the type: Image
 
+# public\images\common\google-play.png
+
+This is a binary file of the type: Image
+
+# public\images\common\app-store.png
+
+This is a binary file of the type: Image
+
 # public\images\about\4.svg
 
 This is a file of the type: SVG Image
@@ -4471,14 +4520,6 @@ This is a binary file of the type: Image
 This is a binary file of the type: Image
 
 # public\images\hero\1.png
-
-This is a binary file of the type: Image
-
-# public\images\common\google-play.png
-
-This is a binary file of the type: Image
-
-# public\images\common\app-store.png
 
 This is a binary file of the type: Image
 
@@ -4914,7 +4955,7 @@ import MainNewsCard from "./MainNewsCard";
 import NewsCard from "./NewsCard";
 import { NewsItem } from "@/lib/types";
 import { newsItems } from "@/lib/data";
-import UpperSection from "@/components/ScrollableContainer/UpperSections";
+import ScrollableContainerUpperSection from "@/components/ScrollableContainer/UpperSection";
 import { ScrollableCardsContainer } from "@/components/ScrollableContainer/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
 
@@ -4925,12 +4966,12 @@ const NewsSection: React.FC = () => {
   return (
     <Section>
       <div className="flex-col">
-        <UpperSection
+        <ScrollableContainerUpperSection
           title={t("title")}
           containerRef={containerRef}
           titleClass="text-[28px] sm:text-[47px] font-normal 1920:text-[62px] "
           className="sm:mb-[50px] 1920:mb-[66px] "
-        ></UpperSection>
+        ></ScrollableContainerUpperSection>
 
         <div className="flex flex-col sm:gap-[38px] 1920:gap-[50px] w-fit">
           <ScrollableCardsContainer ref={containerRef}>
@@ -5112,223 +5153,6 @@ const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
 };
 
 export default MainNewsCard;
-
-```
-
-# src\app\_components\CardsSection\HomepageCards.tsx
-
-```tsx
-import React from "react";
-import CardsMobile from "./CardsMobile";
-import CardsDesktop from "./CardsDesktop";
-
-export default function HomepageCards() {
-  return (
-    <>
-      <CardsMobile />
-      <CardsDesktop />
-    </>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\CommonCard.tsx
-
-```tsx
-import { Link } from "@/i18n.config";
-import { CardData } from "@/lib/types";
-import { twMerge } from "tailwind-merge";
-
-export default function CommonCard({
-  el,
-  index,
-  className,
-  uniqueFirstCard = true,
-}: {
-  el: CardData;
-  index: number;
-  className?: string;
-  uniqueFirstCard?: boolean;
-}) {
-  return (
-    <Link
-      href={el.href}
-      className={twMerge(
-        "flex flex-col justify-between hover:opacity-90 max-w-[343px] sm:max-w-none w-full p-[35px] h-[243px] sm:h-[265px] 1920:h-[349px]   items-start text-center transition-all duration-300 hover:shadow-lg",
-        index == 0 && uniqueFirstCard ? "bg-secondary" : "bg-white",
-        className
-      )}
-    >
-      <img
-        src={el.imgUrl}
-        alt={el.title}
-        className="w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] 1920:w-[80px] 1920:h-[80px] object-contain"
-      />
-      <div className="flex justify-between items-center w-full">
-        <h4 className="text-[24px] sm:text-[27px] 1920:text-[36px] leading-[1.2em] font-medium">
-          {el.title}
-        </h4>
-        <i className="ri-arrow-left-line flippable text-[32px] 1920:text-[45px]"></i>
-      </div>
-    </Link>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\CardsMobile.tsx
-
-```tsx
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
-import CommonCard from "./CommonCard";
-import { ScrollableCardsContainer } from "../../../components/ScrollableContainer/ScrollableContainer";
-import UpperSection from "@/components/ScrollableContainer/UpperSections";
-import ScrollElement from "@/components/ScrollElement";
-
-export default function CardsMobile() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("Common.cards");
-
-  const cardsData = [
-    {
-      title: "uniLife",
-      href: "#uniLife",
-      imgUrl: "/images/common/cards/uni-life.svg",
-    },
-    {
-      title: "about",
-      href: "#about",
-      imgUrl: "/images/common/cards/about.svg",
-    },
-    {
-      title: "academicClassifications",
-      href: "#academicClassifications",
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-    },
-    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
-  ];
-
-  const translatedElements = cardsData.map((card) => ({
-    ...card,
-    title: t(card.title),
-  }));
-
-  return (
-    <div className="mt-[30px] mb-[54px] flex-col overflow-hidden w-full sm:hidden">
-      <UpperSection
-        containerRef={containerRef}
-        title2="جامعة كلكامش"
-        title="الخدمات الالكترونية"
-      />
-      <ScrollableCardsContainer ref={containerRef}>
-        {translatedElements.map((el, index) => (
-          <ScrollElement className="flex justify-center" key={index}>
-            <CommonCard el={el} index={index} />
-          </ScrollElement>
-        ))}
-      </ScrollableCardsContainer>
-    </div>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\CardsDesktop.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import Section from "../../../components/Section";
-import { useTranslations } from "next-intl";
-import { twMerge } from "tailwind-merge";
-import { CardData } from "@/lib/types";
-import CommonCard from "./CommonCard";
-
-export default function CardsDesktop() {
-  const t = useTranslations("Common.cards");
-
-  const cardsData = [
-    {
-      title: "uniLife",
-      href: "#uniLife",
-      imgUrl: "/images/common/cards/uni-life.svg",
-    },
-    {
-      title: "about",
-      href: "#about",
-      imgUrl: "/images/common/cards/about.svg",
-    },
-    {
-      title: "academicClassifications",
-      href: "#academicClassifications",
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-    },
-    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
-  ];
-
-  const translatedElements = cardsData.map((card) => ({
-    ...card,
-    title: t(card.title),
-  }));
-
-  return (
-    <Section className="mt-[-405px] 1920:mt-[-580px] hidden sm:block relative z-10">
-      <CardsGrid translatedElements={translatedElements} />
-    </Section>
-  );
-}
-
-function CardsGrid({ translatedElements }: { translatedElements: CardData[] }) {
-  return (
-    <div className="grid grid-cols-3  gap-[38px] 1920:gap-[50px] max-w-desktop 1920:max-w-desktop-lg mx-auto mb-[125px]">
-      {translatedElements.map((el, index) => (
-        <div
-          key={index}
-          className={twMerge(
-            index == 0 &&
-              "col-span-full grid grid-cols-3 gap-[38px] 1920:gap-[50px] items-end justify-end"
-          )}
-        >
-          <CommonCard
-            key={index}
-            el={el}
-            index={index}
-            className="col-start-3"
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-```
-
-# src\app\[locale]\services\page.tsx
-
-```tsx
-import FAQ from "@/app/_components/FAQ";
-import News from "@/app/_components/News/News";
-import OurApp from "@/app/_components/OurApp";
-import OurGoals from "@/app/_components/OurGoals/OurGoals";
-import OurServices from "@/app/_components/OurServices";
-import RatingsCarousel from "@/app/_components/Ratings";
-import Section from "@/components/Section";
-import { ReactNode } from "react";
-
-export default function Services() {
-  return (
-    <main className="flex items-center flex-col mt-[45px] sm:mt-[104px]   mx-auto ">
-      <OurServices className="mt-0 sm:mt-0"></OurServices>
-      <FAQ></FAQ>
-      <OurApp></OurApp>
-    </main>
-  );
-}
 
 ```
 
@@ -5594,6 +5418,199 @@ export default function Header() {
 
 ```
 
+# src\app\_components\CardsSection\HomepageCards.tsx
+
+```tsx
+import React from "react";
+import CardsMobile from "./CardsMobile";
+import CardsDesktop from "./CardsDesktop";
+
+export default function HomepageCards() {
+  return (
+    <>
+      <CardsMobile />
+      <CardsDesktop />
+    </>
+  );
+}
+
+```
+
+# src\app\_components\CardsSection\CommonCard.tsx
+
+```tsx
+import { Link } from "@/i18n.config";
+import { CardData } from "@/lib/types";
+import { twMerge } from "tailwind-merge";
+
+export default function CommonCard({
+  el,
+  index,
+  className,
+  uniqueFirstCard = true,
+}: {
+  el: CardData;
+  index: number;
+  className?: string;
+  uniqueFirstCard?: boolean;
+}) {
+  return (
+    <Link
+      href={el.href}
+      className={twMerge(
+        "flex flex-col justify-between hover:opacity-90 max-w-[343px] sm:max-w-none w-full p-[35px] h-[243px] sm:h-[265px] 1920:h-[349px]   items-start text-center transition-all duration-300 hover:shadow-lg",
+        index == 0 && uniqueFirstCard ? "bg-secondary" : "bg-white",
+        className
+      )}
+    >
+      <img
+        src={el.imgUrl}
+        alt={el.title}
+        className="w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] 1920:w-[80px] 1920:h-[80px] object-contain"
+      />
+      <div className="flex justify-between items-center w-full">
+        <h4 className="text-[24px] sm:text-[27px] 1920:text-[36px] leading-[1.2em] font-medium">
+          {el.title}
+        </h4>
+        <i className="ri-arrow-left-line flippable text-[32px] 1920:text-[45px]"></i>
+      </div>
+    </Link>
+  );
+}
+
+```
+
+# src\app\_components\CardsSection\CardsMobile.tsx
+
+```tsx
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import CommonCard from "./CommonCard";
+import { ScrollableCardsContainer } from "../../../components/ScrollableContainer/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/ScrollableContainer/UpperSection";
+import ScrollElement from "@/components/ScrollElement";
+
+export default function CardsMobile() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Common.cards");
+
+  const cardsData = [
+    {
+      title: "uniLife",
+      href: "#uniLife",
+      imgUrl: "/images/common/cards/uni-life.svg",
+    },
+    {
+      title: "about",
+      href: "#about",
+      imgUrl: "/images/common/cards/about.svg",
+    },
+    {
+      title: "academicClassifications",
+      href: "#academicClassifications",
+      imgUrl: "/images/common/cards/academic-classifications.svg",
+    },
+    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
+  ];
+
+  const translatedElements = cardsData.map((card) => ({
+    ...card,
+    title: t(card.title),
+  }));
+
+  return (
+    <div className="mt-[30px] mb-[54px] flex-col overflow-hidden w-full sm:hidden">
+      <ScrollableContainerUpperSection
+        containerRef={containerRef}
+        title2="جامعة كلكامش"
+        title="الخدمات الالكترونية"
+      />
+      <ScrollableCardsContainer ref={containerRef}>
+        {translatedElements.map((el, index) => (
+          <ScrollElement className="flex justify-center" key={index}>
+            <CommonCard el={el} index={index} />
+          </ScrollElement>
+        ))}
+      </ScrollableCardsContainer>
+    </div>
+  );
+}
+
+```
+
+# src\app\_components\CardsSection\CardsDesktop.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import Section from "../../../components/Section";
+import { useTranslations } from "next-intl";
+import { twMerge } from "tailwind-merge";
+import { CardData } from "@/lib/types";
+import CommonCard from "./CommonCard";
+
+export default function CardsDesktop() {
+  const t = useTranslations("Common.cards");
+
+  const cardsData = [
+    {
+      title: "uniLife",
+      href: "#uniLife",
+      imgUrl: "/images/common/cards/uni-life.svg",
+    },
+    {
+      title: "about",
+      href: "#about",
+      imgUrl: "/images/common/cards/about.svg",
+    },
+    {
+      title: "academicClassifications",
+      href: "#academicClassifications",
+      imgUrl: "/images/common/cards/academic-classifications.svg",
+    },
+    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
+  ];
+
+  const translatedElements = cardsData.map((card) => ({
+    ...card,
+    title: t(card.title),
+  }));
+
+  return (
+    <Section className="mt-[-405px] 1920:mt-[-580px] hidden sm:block relative z-10">
+      <CardsGrid translatedElements={translatedElements} />
+    </Section>
+  );
+}
+
+function CardsGrid({ translatedElements }: { translatedElements: CardData[] }) {
+  return (
+    <div className="grid grid-cols-3  gap-[38px] 1920:gap-[50px] max-w-desktop 1920:max-w-desktop-lg mx-auto mb-[125px]">
+      {translatedElements.map((el, index) => (
+        <div
+          key={index}
+          className={twMerge(
+            index == 0 &&
+              "col-span-full grid grid-cols-3 gap-[38px] 1920:gap-[50px] items-end justify-end"
+          )}
+        >
+          <CommonCard
+            key={index}
+            el={el}
+            index={index}
+            className="col-start-3"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+```
+
 # src\app\_components\AcademicRankings\AcademicRankings.tsx
 
 ```tsx
@@ -5650,6 +5667,80 @@ export default function AcademicRankings() {
 }
 
 ```
+
+# src\app\[locale]\related-locations\page.tsx
+
+```tsx
+import Section from "@/components/Section";
+import ScrollableContainerUpperSection from "../../../components/ScrollableContainer/UpperSection";
+import TitlesWrapper from "@/components/TitlesWrapper";
+
+export default function page() {
+  return (
+    <Section>
+      <TitlesWrapper>
+        <h3 className="title-sm !text-primary mt-[62px] sm:mt-[151px]">
+          مواقع ذات صلة
+        </h3>
+        <h2 className="title">جامعة كلكامش</h2>
+      </TitlesWrapper>
+    </Section>
+  );
+}
+
+```
+
+# public\images\home\News\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\1.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\6.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\5.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\common\cards\uni-life.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\news.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\academic-classifications.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\about.svg
+
+This is a file of the type: SVG Image
 
 # src\app\[locale]\news\page.tsx
 
@@ -5874,540 +5965,6 @@ const Pagination: React.FC<PaginationProps> = ({
 };
 
 ```
-
-# src\app\[locale]\join-us\page.tsx
-
-```tsx
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import FAQ from "@/app/_components/FAQ";
-import OurApp from "@/app/_components/OurApp";
-import { useTranslations } from "next-intl";
-
-export default function JoinUs() {
-  const t = useTranslations("JoinUs");
-
-  return (
-    <main className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto">
-      <h1 className="title sm:mb-[16px] mb-[8px] text-secondary">
-        {t("title")}
-      </h1>
-      <Section className="max-w-[351px] sm:max-w-[536px] mt-[30px] sm:mt-[77px] flex-col gap-[18px] sm:gap-[32px] items-center">
-        <form className="grid grid-cols-1 sm:grid-cols-2  w-full gap-[18px] sm:gap-[32px]">
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="merchantName" className="text-base">
-              {t("merchantName")}
-            </Label>
-            <Input
-              id="merchantName"
-              name="merchantName"
-              placeholder={t("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="businessName" className="text-base">
-              {t("businessName")}
-            </Label>
-            <Input
-              id="businessName"
-              name="businessName"
-              placeholder={t("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="city" className="text-base">
-              {t("city")}
-            </Label>
-            <Input id="city" name="city" placeholder={t("writeHere")} />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="area" className="text-base">
-              {t("area")}
-            </Label>
-            <Input id="area" name="area" placeholder={t("writeHere")} />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="productsType" className="text-base">
-              {t("productsType")}
-            </Label>
-            <Input
-              id="productsType"
-              name="productsType"
-              placeholder={t("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="expectedOrders" className="text-base">
-              {t("expectedOrders")}
-            </Label>
-            <div className="flex w-full gap-4">
-              <Input
-                id="expectedOrdersFrom"
-                name="expectedOrdersFrom"
-                placeholder={t("from")}
-                className="flex-1"
-              />
-              <span className="flex items-center justify-center text-black/30">
-                -
-              </span>
-              <Input
-                id="expectedOrdersTo"
-                name="expectedOrdersTo"
-                placeholder={t("to")}
-                className="flex-1"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="phoneNumber" className="text-base">
-              {t("phoneNumber")}
-            </Label>
-            <Input
-              id="phoneNumber"
-              name="phoneNumber"
-              type="tel"
-              placeholder={t("writeHere")}
-            />
-          </div>
-        </form>
-        <Button
-          variant="secondary"
-          className="py-3 w-full sm:px-[52px] sm:w-auto"
-        >
-          {t("send")}
-        </Button>
-      </Section>
-      <FAQ />
-      <OurApp />
-    </main>
-  );
-}
-
-```
-
-# src\app\[locale]\jobs\page.tsx
-
-```tsx
-// jobs/page.tsx
-import OurApp from "@/app/_components/OurApp";
-import Section from "@/components/Section";
-import { twMerge } from "tailwind-merge";
-import JobsSection from "./_components/JobsSection";
-import { useTranslations } from "next-intl";
-
-export default function Jobs() {
-  const t = useTranslations("Jobs");
-
-  return (
-    <main className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto ">
-      <OurJobs />
-      <JobsSection />
-      <OurApp />
-    </main>
-  );
-}
-
-const OurJobs: React.FC<{ className?: string }> = ({ className }) => {
-  const t = useTranslations("Jobs");
-
-  return (
-    <Section
-      id="our-jobs"
-      className={twMerge(
-        "!px-0 relative z-10 flex flex-col items-center",
-        className ?? ""
-      )}
-    >
-      <h1 className="title sm:mb-[16px] mb-[8px]">{t("title")}</h1>
-      <h3 className="text-lg leading-[-0.064px] max-w-[351px] sm:max-w-[696px] text-background-300 sm:!text-center text-muted ">
-        {t("description")}
-      </h3>
-    </Section>
-  );
-};
-
-```
-
-# src\app\[locale]\branches\page.tsx
-
-```tsx
-import FAQ from "@/app/_components/FAQ";
-import OurApp from "@/app/_components/OurApp";
-import MapSection from "@/components/MapSection";
-import React from "react";
-import LocationsSection from "./_components/LocationsSection";
-
-export default function Branches() {
-  return (
-    <main className="flex items-center flex-col mx-auto">
-      <MapSection />
-      <LocationsSection />
-      <FAQ />
-      <OurApp />
-    </main>
-  );
-}
-
-```
-
-# src\app\[locale]\contact\page.tsx
-
-```tsx
-import FAQ from "@/app/_components/FAQ";
-import OurApp from "@/app/_components/OurApp";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { twMerge } from "tailwind-merge";
-import { useTranslations } from "next-intl";
-
-export default function Contact() {
-  const t = useTranslations("Contact");
-  const tf = useTranslations("Contact.form");
-
-  return (
-    <main className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto ">
-      <OurContacts />
-      <Section className="max-w-[351px] sm:max-w-[786px] mt-[30px] sm:mt-[77px] flex-col gap-[18px] sm:gap-[32px] items-center">
-        <form className="grid grid-cols-1 sm:grid-cols-2  w-full gap-[18px] sm:gap-[32px]">
-          <div className="flex flex-col gap-3 items-start w-full">
-            <Label htmlFor="name" className="text-base">
-              {tf("name")}
-            </Label>
-            <Input
-              className="rounded-[8px]"
-              id="name"
-              name="name"
-              placeholder={tf("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full">
-            <Label htmlFor="email" className="text-base">
-              {tf("email")}
-            </Label>
-            <Input
-              className="rounded-[8px]"
-              id="email"
-              name="email"
-              type="email"
-              placeholder={tf("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full">
-            <Label htmlFor="phone" className="text-base">
-              {tf("phoneNumber")}
-            </Label>
-            <Input
-              className="rounded-[8px]"
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder={tf("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full">
-            <Label htmlFor="city" className="text-base">
-              {tf("city")}
-            </Label>
-            <Input
-              className="rounded-[8px]"
-              id="city"
-              name="city"
-              placeholder={tf("writeHere")}
-            />
-          </div>
-          <div className="flex flex-col gap-3 items-start w-full sm:col-span-2">
-            <Label htmlFor="message" className="text-base">
-              {tf("message")}
-            </Label>
-            <Textarea
-              id="message"
-              name="message"
-              placeholder={tf("writeYourMessage")}
-              className="w-full resize-none"
-            />
-          </div>
-        </form>
-        <Button
-          variant="secondary"
-          className="py-3 w-full sm:px-[52px] sm:w-auto"
-        >
-          {tf("send")}
-        </Button>
-      </Section>
-      <FAQ />
-      <OurApp />
-    </main>
-  );
-}
-
-const OurContacts: React.FC<{ className?: string }> = ({ className }) => {
-  const t = useTranslations("Contact");
-
-  return (
-    <Section
-      id="our-services"
-      className={twMerge(
-        "!px-0 relative z-10 flex flex-col items-center",
-        className ?? ""
-      )}
-    >
-      <h1 className="title sm:mb-[16px] mb-[8px]">{t("title")}</h1>
-      <h3 className="text-lg leading-[-0.064px] max-w-[351px] sm:max-w-[696px] text-background-300  pb-[41px] sm:pb-[110px] sm:!text-center text-muted ">
-        {t("description")}
-      </h3>
-      <div className="flex flex-wrap items-start justify-center gap-[13px]  sm:gap-8 max-w-[348px] sm:max-w-[1216px] text-center">
-        {t.raw("contactInfo").map((service: ContactData, index: number) => (
-          <div
-            key={index}
-            className="flex sm:flex-col items-center gap-[17px] sm:gap-8 w-full sm:w-[384px] relative"
-          >
-            <div className="relative h-[68px] w-[68px]  sm:h-[152px] sm:w-[152px] rounded-xl sm:bg-[#F1F1F1] overflow-clip sm:p-1">
-              <div className="flex justify-center items-center rounded-full bg-primary-300 h-full">
-                <i
-                  className={`${service.icon} text-[28px] sm:text-[54px] leading-none text-white`}
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-            <div className="text-wrapper  sm:w-full flex flex-col gap-[10px] sm:gap-4 sm:max-w-[320px]">
-              <div className=" text-base sm:text-[21px]  tracking-[-0.01em] line-clamp-2 font-medium">
-                {service.title}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-};
-
-interface ContactData {
-  title: string;
-  icon: string;
-}
-
-```
-
-# src\app\[locale]\about\page.tsx
-
-```tsx
-"use client";
-
-import FAQ from "@/app/_components/FAQ";
-import News from "@/app/_components/News/News";
-import OurGoals from "@/app/_components/OurGoals/OurGoals";
-import RatingsCarousel from "@/app/_components/Ratings";
-import Section from "@/components/Section";
-import { ReactNode } from "react";
-import { useTranslations } from "next-intl";
-
-export default function About() {
-  const t = useTranslations("About");
-
-  const aboutUsSectionData = [
-    {
-      img: (
-        <img
-          src="/images/about/1.png"
-          alt="about us image"
-          className="w-full h-[291px] sm:w-auto sm:h-[460px] rounded-[10px] object-cover"
-        />
-      ),
-      title: t("beginningAndChallenges"),
-      description: t("beginningText"),
-    },
-    {
-      img: (
-        <img
-          src="/images/about/2.png"
-          alt="about us image"
-          className="w-full h-[283px] sm:w-auto sm:h-[410px] rounded-[16px] object-cover"
-        />
-      ),
-      description: t("expansionText"),
-    },
-  ];
-
-  const companyValues = [
-    { icon: "/images/about/4.svg", label: t("socialResponsibility") },
-    { icon: "/images/about/3.svg", label: t("trust") },
-    { icon: "/images/about/2.svg", label: t("excellence") },
-    { icon: "/images/about/1.svg", label: t("innovation") },
-  ];
-
-  return (
-    <main className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto ">
-      <div className="flex flex-col gap-[20px] sm:gap-[185px] sm:max-w-[1292px] sm:px-[40px] w-full max-w-[351px]">
-        {aboutUsSectionData.map((section, index) => (
-          <AboutUsSection
-            key={index}
-            img={section.img}
-            title={section.title}
-            description={section.description}
-            className={index % 2 !== 0 ? "sm:flex-row-reverse" : ""}
-          />
-        ))}
-      </div>
-
-      <VisionSection />
-
-      <CompanyValuesSection companyValues={companyValues} />
-
-      <OurGoals />
-      <FAQ />
-      <RatingsCarousel />
-    </main>
-  );
-}
-
-function CompanyValuesSection({
-  className,
-  companyValues,
-}: {
-  className?: string;
-  companyValues: Array<{ icon: string; label: string }>;
-}) {
-  const t = useTranslations("About");
-
-  return (
-    <Section className="mt-[56px] sm:mt-[120px] max-w-[351px] mb-[78px]">
-      <div className={`flex flex-col sm:justify-between ${className || ""}`}>
-        <div className="max-w-[361px] sm:max-w-[696px]">
-          <h2 className="title mb-[10px] sm:mb-[16px] !font-normal !text-center">
-            {t("companyValues")}
-          </h2>
-          <p className="text-[16px] sm:text-[18px] leading-[26px] text-center whitespace-pre-wrap text-muted ">
-            {t("valuesDescription")}
-          </p>
-        </div>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(155px,155px))] gap-x-[10px] gap-y-[26px] sm:gap-x-[25px] sm:gap-y-[32px] mt-[41px] sm:mt-[116px] w-full justify-center">
-          {companyValues.map((value, index) => (
-            <div key={index} className="flex flex-col items-center gap-[18px]">
-              <div className="w-[74px] aspect-square bg-secondary rounded-[12px] flex items-center justify-center">
-                <img
-                  src={value.icon}
-                  alt={value.label}
-                  className="aspect-square w-[36px]"
-                />
-              </div>
-              <span className="sm:text-[20px] text-[14px] leading-[24px] font-medium text-center">
-                {value.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-function VisionSection() {
-  const t = useTranslations("About");
-
-  return (
-    <Section className="flex flex-col gap-[20px] sm:gap-[56px] max-w-[351px] sm:max-w-[1390px] sm:w-full px-[20px] sm:px-[96px] pt-[33px] bg-secondary-100 rounded-[20px] sm:rounded-[25px] mx-[12px] sm:mx-[16px] pb-[30px] sm:pb-[104px] sm:pt-[64px] sm:mt-[116px] mt-[12px]">
-      <div className="flex items-center w-full gap-[8px] pb-[6px] sm:pb-[10px] border-b border-[#d9dddc] justify-center ">
-        <div className="w-[8px] h-[8px] bg-secondary rounded-full" />
-        <div className="text-black text-sm font-normal tracking-[-0.4%] whitespace-nowrap ">
-          {t("companyVision")}
-        </div>
-      </div>
-      <h1 className="text-[24px] sm:text-[62px] font-medium leading-[42px] sm:leading-[75px] tracking-[-3%] text-secondary text-center max-w-[686px] ltr:max-w-[920px] mx-auto  ltr:tracking-[-0.02em]">
-        {t("visionStatement")}
-      </h1>
-    </Section>
-  );
-}
-
-function AboutUsSection({
-  img,
-  title,
-  description,
-  className,
-}: {
-  img: ReactNode;
-  title?: string;
-  description: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`flex flex-col sm:flex-row gap-[4px] sm:gap-[40px] sm:justify-between ${
-        className || ""
-      }`}
-    >
-      <div className="max-w-[592px]">
-        {title && (
-          <h2 className="title mb-[10px] sm:mb-[32px] !font-normal">{title}</h2>
-        )}
-        <p className="text-[16px] sm:text-[20px] leading-[36px] ltr:leading-[26px] text-center whitespace-pre-wrap sm:text-justify ltr:sm:leading-[36px]">
-          {description}
-        </p>
-      </div>
-
-      {img}
-    </div>
-  );
-}
-
-```
-
-# public\images\home\Goals\6.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\5.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\1.jpg
-
-This is a binary file of the type: Image
-
-# public\images\common\cards\uni-life.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\news.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\academic-classifications.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\about.svg
-
-This is a file of the type: SVG Image
 
 # src\app\[locale]\news\_components\MainSubjects.tsx
 
@@ -6854,688 +6411,6 @@ function Card({ newsItem }: { newsItem: NewsItem }) {
         </div>
       </div>
     </Link>
-  );
-}
-
-```
-
-# src\app\[locale]\branches\_components\LocationsSection.tsx
-
-```tsx
-"use client";
-
-import Section from "@/components/Section";
-import React, { useEffect, useState } from "react";
-import SearchSection from "../../../../components/SearchSection";
-import { useTranslations } from "next-intl";
-import LocationCard from "./LocationCard";
-import { Location } from "@/lib/types";
-
-export default function LocationsSection() {
-  const t = useTranslations("Branches");
-  const locations = t.raw("locations") as Location[];
-
-  const [filteredLocations, setFilteredLocations] = useState(locations);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    const filtered = locations.filter((location) =>
-      location.province.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredLocations(filtered);
-  }, [searchTerm]);
-
-  return (
-    <Section className="flex flex-col items-center">
-      <SearchSection
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        placeholder={t("searchPlaceholder")}
-      />
-      <div className="sm:max-w-[1216px] max-w-[351px] flex flex-wrap gap-[13px] sm:gap-[32px] justify-center text-start mt-[48px] sm:mt-[90px]">
-        {filteredLocations.map((location, index) => (
-          <LocationCard key={index} location={location} />
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-// const locations: Location[] = [
-//   {
-//     province: "محافظة ديالى",
-//     address: "العراق - ديالى - بعقوبة قرب جسر بهرز",
-//     phoneNumbers: ["07748098522"],
-//     googleMapsLink: "https://www.google.com/maps?q=33.7408,44.6375",
-//   },
-//   {
-//     province: "محافظة البصره",
-//     address: "العراق - البصره - حي الزهور مقابل الطب العدلي",
-//     phoneNumbers: ["07723909093", "07734641436"],
-//     googleMapsLink: "https://www.google.com/maps?q=30.5082,47.7829",
-//   },
-//   {
-//     province: "محافظة كربلاء",
-//     address: "العراق - كركوك - حي النقيب قرب جسر الضريبه",
-//     phoneNumbers: ["07813335548", "07713335548"],
-//     googleMapsLink: "https://www.google.com/maps?q=32.6160,44.0249",
-//   },
-//   {
-//     province: "محافظة الديوانية",
-//     address: "العراق - الديوانية - حي العصري خلف رئاسة الصحة",
-//     phoneNumbers: ["07821594705"],
-//     googleMapsLink: "https://www.google.com/maps?q=31.9877,44.9230",
-//   },
-//   {
-//     province: "محافظة كركوك",
-//     address:
-//       "العراق - كركوك - ساحة احتفالات مقابل صيدلية مينا مجاور كوفي ورق النعناع",
-//     phoneNumbers: ["07723506070", "07729317262"],
-//     googleMapsLink: "https://www.google.com/maps?q=35.4666,44.3950",
-//   },
-//   {
-//     province: "محافظة بابل",
-//     address: "العراق - بابل شارع 60 عمود 300 مجمع العين الطبي",
-//     phoneNumbers: ["07819004425", "07723953516"],
-//     googleMapsLink: "https://www.google.com/maps?q=32.5372,44.2181",
-//   },
-//   {
-//     province: "محافظة الأنبار",
-//     address:
-//       "العراق - الانبار - الفلوجة الشارع العام القديم قرب مطعم العباسي - عمارة السوق العربي",
-//     phoneNumbers: ["07816828801"],
-//     googleMapsLink: "https://www.google.com/maps?q=33.3555,43.7867",
-//   },
-//   {
-//     province: "محافظة الموصل",
-//     address: "العراق - الموصل - حي التأميم مقابل جامع الغفار",
-//     phoneNumbers: ["07736947557"],
-//     googleMapsLink: "https://www.google.com/maps?q=36.3325,43.1189",
-//   },
-//   {
-//     province: "محافظة أربيل",
-//     address: "العراق - أربيل باداوه-فرع جامع احمد درماناوي",
-//     phoneNumbers: ["07501142332", "07504430707"],
-//     googleMapsLink: "https://www.google.com/maps?q=36.1902,44.0099",
-//   },
-//   {
-//     province: "محافة ذي قار",
-//     address:
-//       "العراق - الناصرية - فلكة السماوه -شارع الازدهار- خلف الحاج مرتضى للسيراميك",
-//     phoneNumbers: ["07827507500", "07810797976"],
-//     googleMapsLink: "https://www.google.com/maps?q=31.0409,46.2636",
-//   },
-//   {
-//     province: "محافظة دهوك",
-//     address: "العراق - دهوك - ماسيكي صف جامع حجي طاهر",
-//     phoneNumbers: ["07505055665", "07505555440"],
-//     googleMapsLink: "https://www.google.com/maps?q=36.8665,43.0122",
-//   },
-//   {
-//     province: "محافظة دهوك",
-//     address: "العراق - دهوك  - سيمالكا ترفك بشار اغا",
-//     phoneNumbers: ["07505055665", "07505555440"],
-//     googleMapsLink: "https://www.google.com/maps?q=36.8665,43.0122",
-//   },
-//   {
-//     province: "محافظة بغداد",
-//     address: "العراق - بغداد - الكاظمية شارع المشاط",
-//     phoneNumbers: ["07505555540", "07505055665"],
-//     googleMapsLink: "https://www.google.com/maps?q=33.3406,44.3622",
-//   },
-//   {
-//     province: "محافظة السليمانية",
-//     address: "العراق - السليمانية - جوار باخ ملعب جوار باخ",
-//     phoneNumbers: ["07828401781"],
-//     googleMapsLink: "https://www.google.com/maps?q=35.5613,45.4379",
-//   },
-//   {
-//     province: "محافظة ميسان",
-//     address: "العراق - ميسان- العمارة الصحفين قرب فلكة الصحفين",
-//     phoneNumbers: ["07808186186", "07708186186"],
-//     googleMapsLink: "https://www.google.com/maps?q=31.8390,47.1414",
-//   },
-//   {
-//     province: "محافظة بغداد",
-//     address: "العراق -بغداد -البنوك  شارع المشاتل  مقابل كوفي بابا اوغلو ",
-//     phoneNumbers: ["07808186186", "07708186186"],
-//     googleMapsLink: "https://www.google.com/maps?q=33.3406,44.3622",
-//   },
-// ];
-
-```
-
-# src\app\[locale]\branches\_components\LocationCard.tsx
-
-```tsx
-import React from "react";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import { useTranslations } from "next-intl";
-import { Location } from "@/lib/types";
-
-type LocationCardProps = {
-  location: Location;
-};
-
-export default function LocationCard({ location }: LocationCardProps) {
-  const t = useTranslations("Branches");
-  const dir = useTextDirection();
-
-  return (
-    <div className="flex flex-col py-[24px] px-[32px] sm:py-[48px] rounded-[16px] border sm:w-[592px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.03),0_4px_6px_-4px_rgba(0,0,0,0.1)] w-full">
-      <h3 className="text-[18px] sm:text-[22px] leading-[32px] font-medium mb-[10px] sm:mb-[20px]">
-        {location.province}
-      </h3>
-      <div className="flex mb-[10px] gap-1 mx-w-[241px]">
-        <i className="ri-map-pin-2-line text-secondary text-[22px] flex h-fit items-start justify-start"></i>
-        <p className="text-base sm:text-[18px]">{location.address}</p>
-      </div>
-      <div className="flex mb-[20px] gap-1">
-        <i className="ri-smartphone-line text-secondary text-[22px] flex h-fit items-start justify-start"></i>
-        <p className="text-base sm:text-[18px]">
-          {location.phoneNumbers.map((phoneNumber, index) => (
-            <React.Fragment key={phoneNumber}>
-              {index > 0 && " - "}
-              <a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
-            </React.Fragment>
-          ))}
-        </p>
-      </div>
-
-      <a
-        target="_blank"
-        href={location.googleMapsLink}
-        className="text-secondary flex gap-[5px] items-center"
-      >
-        <span className="text-[18px] leading-[24px]">{t("goToLocation")}</span>
-        <div className="flex items-start justify-start">
-          <i className="ri-arrow-left-line flippable"></i>
-        </div>
-      </a>
-    </div>
-  );
-}
-
-```
-
-# src\app\[locale]\jobs\_components\JobsSection.tsx
-
-```tsx
-// _components/JobsSection.tsx
-"use client";
-
-import Section from "@/components/Section";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import SearchSection from "@/components/SearchSection";
-import { Link } from "@/i18n.config";
-import { JOBS_ROUTE } from "@/lib/paths";
-import React, { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
-
-export default function JobsSection() {
-  const t = useTranslations("Jobs");
-  const jobListings = t.raw("jobListings") as JobListing[];
-
-  const [filteredData, setFilteredData] = useState(jobListings);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const dir = useTextDirection();
-
-  useEffect(() => {
-    const filtered = jobListings.filter((job) =>
-      job.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filtered);
-  }, [searchTerm, jobListings]);
-
-  return (
-    <Section className="flex flex-col items-center">
-      <SearchSection
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        placeholder={t("searchPlaceholder")}
-      />
-      <div className="sm:max-w-[1216px] max-w-[351px] flex flex-wrap gap-[13px] sm:gap-[32px] justify-center text-start mt-[48px] sm:mt-[90px]">
-        {filteredData.map((job, index) => (
-          <div
-            className="flex flex-col py-[24px] px-[32px] sm:py-[48px] rounded-[16px] border  sm:w-[592px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.03),0_4px_6px_-4px_rgba(0,0,0,0.1)] w-full"
-            key={index}
-          >
-            <h3 className="text-[18px] sm:text-[22px] leading-[32px] font-medium mb-[10px] sm:mb-[20px]">
-              {job.title}
-            </h3>
-            <div className="flex mb-[10px] gap-1 mx-w-[241px]">
-              <i className="ri-map-pin-2-line text-secondary text-[22px] flex h-fit items-start justify-start "></i>
-              <p className="text-base sm:text-[18px]">{job.location}</p>
-            </div>
-            <div className="flex mb-[20px] gap-1">
-              <i className="ri-user-3-line text-secondary text-[22px] flex h-fit items-start justify-start"></i>
-              <p className="text-base sm:text-[18px]">{job.jobType}</p>
-            </div>
-
-            <Link
-              href={`${JOBS_ROUTE}/${index + 1}/details`}
-              className="text-secondary flex gap-[5px] items-center"
-            >
-              <span className="text-[18px] leading-[24px] ">
-                {t("applyNow")}
-              </span>
-              <div className="flex items-start justify-start">
-                <i className="ri-arrow-left-line flippable"></i>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-interface JobListing {
-  title: string;
-  location: string;
-  jobType: string;
-}
-
-```
-
-# src\app\[locale]\jobs\[job_id]\details\page.tsx
-
-```tsx
-// [job_id]/details/page.tsx
-"use client";
-
-import FirstTitle from "@/app/_components/FirstTitle";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { useParams } from "next/navigation";
-import { Link } from "@/i18n.config";
-import { JOBS_ROUTE } from "@/lib/paths";
-import { useTranslations } from "next-intl";
-
-export default function JobTitle() {
-  const { job_id } = useParams();
-  const t = useTranslations("Jobs");
-  const jobListings = t.raw("jobListings") as any[];
-  const job = jobListings[parseInt(job_id as string) - 1];
-
-  const td = useTranslations("Jobs.jobDetails");
-
-  return job ? (
-    <main>
-      <div className="min-h-[231px] sm:min-h-[302px] bg-primary flex flex-col sm:block items-start px-[31px] py-[22px] relative overflow-x-clip">
-        <div className="flex-1 sm:hidden"></div>
-        <div className="relative z-30 max-w-[1220px] w-full sm:mx-auto sm:px-[30px]">
-          <FirstTitle />
-          <h1 className="title-lg text-white !font-normal w-fit">
-            {job.title}
-          </h1>
-          <div className="sm:mt-[48px] mt-[28px] flex flex-col sm:gap-[24px] sm:flex-row gap-[10px]">
-            <div className="flex mb-[10px] gap-1 mx-w-[241px]">
-              <i className="ri-map-pin-2-line text-secondary text-[22px] flex h-fit items-start justify-start "></i>
-              <p className="text-sm sm:text-[18px] text-[#F1F1F1]/80 text-start">
-                {job.location}
-              </p>
-            </div>
-            <div className="flex mb-[20px] gap-1">
-              <i className="ri-user-3-line text-secondary text-[22px] flex h-fit items-start justify-start"></i>
-              <p className="text-sm sm:text-[18px] text-[#F1F1F1]/80 text-start">
-                {job.jobType}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <img
-          src="/images/first-section-bg-mobile.jpg"
-          alt="hero bg"
-          className="w-full object-cover h-[calc(100%+68px)] sm:hidden absolute start-0 top-[-68px]"
-        />
-
-        <img
-          src="/images/first-section-bg.jpg"
-          alt="hero bg"
-          className="w-full object-cover h-[calc(100%+174px)] absolute start-0 top-[-174px] hidden sm:block"
-        />
-      </div>
-      <div className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto ">
-        <Section className="flex flex-col items-center sm:!mx-[20px] !mx-[12px] ">
-          <h1 className="title sm:mb-[16px] mb-[8px] !text-start">
-            {td("overview")}
-          </h1>
-          <div className="mt-[10px] sm:mt-[92px] flex flex-col gap-[25px] sm:gap-[42px] sm:max-w-[800px]">
-            <JobTitleSection
-              title={td("jobTitle")}
-              description={td("description")}
-            />
-            <JobTitleSection
-              title={td("jobDescription")}
-              description={
-                <>
-                  {td
-                    .raw("qualifications")
-                    .map((item: string, index: number) => (
-                      <p key={`qual-${index}`}>{item}</p>
-                    ))}
-                  <br />
-                  {td.raw("experience").map((item: string, index: number) => (
-                    <p key={`exp-${index}`}>{item}</p>
-                  ))}
-                  <br />
-                  {td.raw("skills").map((item: string, index: number) => (
-                    <p key={`skill-${index}`}>{item}</p>
-                  ))}
-                </>
-              }
-            />
-          </div>
-          <div className="flex justify-start w-full mt-[10px] sm:mt-[58px] sm:max-w-[800px]">
-            <Link
-              href={`${JOBS_ROUTE}/${job_id}/application`}
-              className="text-secondary flex gap-[5px] items-center w-full sm:w-auto"
-            >
-              <Button
-                variant={"secondary"}
-                className=" py-3 gap-2 w-full sm:w-auto"
-              >
-                <span>{td("applyNow")}</span>
-                <i className="ri-arrow-left-line text-[20px] flippable "></i>
-              </Button>
-            </Link>
-          </div>
-        </Section>
-      </div>
-    </main>
-  ) : (
-    <div>Job not found</div>
-  );
-}
-
-function JobTitleSection({
-  title,
-  description,
-}: {
-  title: string;
-  description: string | React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col ">
-      <h3 className="text-[18px] sm:text-[24px] leading-[26px] font-medium mb-[18px] text-secondary !text-start">
-        {title}
-      </h3>
-      <div className="text-[16px] sm:text-[18px] leading-[26px] max-w-[351px] sm:max-w-[800px] text-background-300 text-muted whitespace-pre-line !text-start">
-        {description}
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\app\[locale]\jobs\[job_id]\application\page.tsx
-
-```tsx
-// [job_id]/application/page.tsx
-"use client";
-
-import FirstTitle from "@/app/_components/FirstTitle";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { useParams } from "next/navigation";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useTranslations } from "next-intl";
-
-export default function JobApplication() {
-  const { job_id } = useParams();
-  const t = useTranslations("Jobs");
-  const jobListings = t.raw("jobListings") as any[];
-  const job = jobListings[parseInt(job_id as string) - 1];
-
-  const ta = useTranslations("Jobs.application");
-
-  const [educationLevel, setEducationLevel] = useState("");
-  const [otherEducation, setOtherEducation] = useState("");
-
-  return job ? (
-    <main>
-      <div className="min-h-[231px] sm:min-h-[302px]  bg-primary flex flex-col sm:block items-start px-[31px] py-[22px] relative overflow-x-clip">
-        <div className="flex-1 sm:hidden"></div>
-        <div className="relative z-30 max-w-[1220px] w-full sm:mx-auto sm:px-[30px]">
-          <FirstTitle></FirstTitle>
-          <h1 className="title-lg text-white !font-normal w-fit">
-            {job.title}
-          </h1>
-          <div className="sm:mt-[48px] mt-[28px] flex flex-col sm:gap-[24px] sm:flex-row gap-[10px]">
-            <div className="flex mb-[10px] gap-1 mx-w-[241px]">
-              <i className="ri-map-pin-2-line text-secondary text-[22px] flex h-fit items-start justify-start "></i>
-              <p className="text-sm sm:text-[18px] text-[#F1F1F1]/80 text-start">
-                {job.location}
-              </p>
-            </div>
-            <div className="flex mb-[20px] gap-1">
-              <i className="ri-user-3-line text-secondary text-[22px] flex h-fit items-start justify-start"></i>
-              <p className="text-sm sm:text-[18px] text-[#F1F1F1]/80 text-start">
-                {job.jobType}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <img
-          src="/images/first-section-bg-mobile.jpg"
-          alt="hero bg"
-          className="w-full object-cover  h-[calc(100%+68px)] sm:hidden  absolute start-0 top-[-68px]"
-        />
-
-        <img
-          src="/images/first-section-bg.jpg"
-          alt="hero bg"
-          className="w-full object-cover h-[calc(100%+174px)] absolute start-0 top-[-174px] hidden sm:block"
-        />
-      </div>
-
-      <div className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto ">
-        <h1 className="title sm:mb-[16px] mb-[8px] text-secondary">
-          {ta("title")}
-        </h1>
-        <Section className="max-w-[351px] sm:max-w-[536px] mt-[30px] sm:mt-[77px] flex-col gap-[32px] sm:gap-[70px] items-center">
-          <form className="grid grid-cols-1 sm:grid-cols-2  w-full gap-[18px] sm:gap-[32px]">
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="firstName" className="text-base">
-                {ta("firstName")}
-              </Label>
-              <Input
-                className="rounded-full"
-                id="firstName"
-                name="firstName"
-                placeholder={ta("writeHere")}
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="lastName" className="text-base">
-                {ta("lastName")}
-              </Label>
-              <Input
-                className="rounded-full"
-                id="lastName"
-                name="lastName"
-                placeholder={ta("writeHere")}
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="thirdName" className="text-base">
-                {ta("thirdName")}
-              </Label>
-              <Input
-                className="rounded-full"
-                id="thirdName"
-                name="thirdName"
-                placeholder={ta("writeHere")}
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="email" className="text-base">
-                {ta("email")}
-              </Label>
-              <Input
-                className="rounded-full"
-                id="email"
-                name="email"
-                type="email"
-                placeholder={ta("writeHere")}
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="address" className="text-base">
-                {ta("address")}
-              </Label>
-              <Input
-                id="address"
-                name="address"
-                placeholder={ta("writeHere")}
-                className="rounded-full"
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="phone" className="text-base">
-                {ta("phoneNumber")}
-              </Label>
-              <Input
-                className="rounded-full"
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder={ta("writeHere")}
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-3 items-start col-span-2">
-              <Label
-                htmlFor="photo"
-                className="w-full flex flex-col items-start"
-              >
-                <span className="text-base">{ta("personalPhoto")}</span>
-                <div className="h-[52px] flex gap-4 items-center text-muted rounded-full    w-full justify-center mt-[12px] relative cursor-pointer hover:opacity-70">
-                  <img
-                    src="/images/dashed-border.svg"
-                    alt="border"
-                    className="absolute top-0 left-0 w-full h-full object-cover hidden sm:block"
-                  />
-                  <img
-                    src="/images/dashed-border-mobile.svg"
-                    alt="border"
-                    className="absolute top-0 left-0 w-full h-full object-cover  sm:hidden"
-                  />
-                  <span>{ta("uploadPhoto")}</span>
-                  <i className="ri-upload-cloud-2-line text-[22px]"></i>
-                </div>
-              </Label>
-              <Input
-                id="photo"
-                name="photo"
-                type="file"
-                accept="image/*"
-                className="sr-only"
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-[18px] items-start w-full sm:col-span-2">
-              <Label className="text-base">{ta("educationalAttainment")}</Label>
-              <RadioGroup
-                onValueChange={(value) => setEducationLevel(value)}
-                className="flex flex-col gap-[14px] w-full"
-              >
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="highSchool" id="highSchool" />
-                  <Label htmlFor="highSchool">{ta("highSchool")}</Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="diploma" id="diploma" />
-                  <Label htmlFor="diploma">{ta("diploma")}</Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="bachelors" id="bachelors" />
-                  <Label htmlFor="bachelors">{ta("bachelors")}</Label>
-                </div>
-                <div className="flex items-center gap-5 w-full">
-                  <div className="flex items-center gap-2">
-                    <RadioGroupItem value="others" id="others" />
-                    <Label htmlFor="others">{ta("others")}</Label>
-                  </div>
-                  <Input
-                    className="border-t-0 border-l-0 border-r-0 !border-b rounded-none !ring-0 !border-black/50  h-[30px] flex-1"
-                    placeholder={ta("specifyEducation")}
-                    disabled={educationLevel !== "others"}
-                    value={otherEducation}
-                    onChange={(e) => setOtherEducation(e.target.value)}
-                  />
-                </div>
-              </RadioGroup>
-            </div>
-            <div className="flex flex-col gap-3 items-start w-full col-span-2">
-              <Label htmlFor="prevExp" className="text-base">
-                {ta("previousExperiences")}
-              </Label>
-              <Input
-                className="rounded-full"
-                id="prevExp"
-                name="prevExp"
-                type="tel"
-                placeholder={ta("writeHere")}
-              ></Input>
-            </div>
-            <div className="flex flex-col gap-[18px] items-start w-full sm:col-span-2">
-              <Label className="text-base">{ta("workInDelivery")}</Label>
-              <RadioGroup className="flex gap-[14px] flex-col">
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="yes" id="yes" />
-                  <Label htmlFor="yes">{ta("yes")}</Label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="no" id="no" />
-                  <Label htmlFor="no">{ta("no")}</Label>
-                </div>
-              </RadioGroup>
-            </div>
-            <div className="flex flex-col gap-3 items-start col-span-2">
-              <Label htmlFor="cv" className="w-full flex flex-col items-start">
-                <span className="text-base">{ta("resume")}</span>
-                <div className="h-[52px] flex gap-4 items-center text-muted rounded-full    w-full justify-center mt-[12px] relative cursor-pointer hover:opacity-70">
-                  <img
-                    src="/images/dashed-border.svg"
-                    alt="border"
-                    className="absolute top-0 left-0 w-full h-full hidden sm:block"
-                  />
-                  <img
-                    src="/images/dashed-border-mobile.svg"
-                    alt="border"
-                    className="absolute top-0 left-0 w-full h-full sm:hidden"
-                  />
-                  <span>{ta("uploadResume")}</span>
-                  <i className="ri-upload-cloud-2-line text-[22px]"></i>
-                </div>
-              </Label>
-              <Input
-                id="cv"
-                name="cv"
-                type="file"
-                accept=".pdf,.doc,.docx"
-                className="sr-only"
-              ></Input>
-            </div>
-          </form>
-          <Button
-            variant="secondary"
-            className="py-3 w-full sm:px-[52px] sm:w-auto"
-          >
-            {ta("send")}
-          </Button>
-        </Section>
-      </div>
-    </main>
-  ) : (
-    <div>Job not found</div>
   );
 }
 

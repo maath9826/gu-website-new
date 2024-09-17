@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 export default function ImageBg() {
   return (
-    <div className="min-h-[297px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
       <TextSection />
       <ImageSection />
     </div>
@@ -12,7 +12,7 @@ export default function ImageBg() {
 
 function TextSection() {
   return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
       <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
         <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
           الرئيسية

@@ -232,13 +232,13 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
 }
 
 .title {
-  @apply text-[22px] leading-[1.25em] font-bold;
+  @apply text-[22px] leading-[1.25em] font-bold sm:text-[48px];
 }
 
 .title-sm {
-  @apply mb-[11px] text-[16px] leading-[1.25em] font-bold text-secondary;
+  @apply mb-[11px] text-[16px] leading-[1.25em] font-bold text-secondary sm:text-[26px];
 }
 
 .navbar-inclusive-background {
-  @apply absolute sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
+  @apply absolute h-full sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
 }
