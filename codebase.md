@@ -397,7 +397,7 @@ export const { Link, usePathname, useRouter } =
       "select a language": "select a language"
     },
     "navLinks": {
-      "home": "الرئيسية",
+      "home": "Home",
       "aboutUniversity": {
         "aboutUniversity": "About University",
         "aboutUs": "About Us",
@@ -419,11 +419,74 @@ export const { Link, usePathname, useRouter } =
         "transparencyPrinciple": "Transparency Principle",
         "universityStrategy": "Gilgamesh University Strategy"
       },
-      "colleges": "الكليات",
-      "academicAffairs": "الشؤون العلمية",
-      "studentAffairs": "الشؤون الطلابية",
-      "serviceCenters": "المراكز الخدمية",
-      "eServices": "الخدمات الالكترونية"
+      "colleges": "Colleges",
+      "academicAffairs": {
+        "academicAffairs": "Academic Affairs",
+        "scientificPromotions": "Scientific Promotions",
+        "guidelines": "Guidelines",
+        "forms": "Forms",
+        "instructions": "Instructions",
+        "scientificConferences": "Scientific Conferences",
+        "scientificJournals": "Scientific Journals",
+        "electronicScientificProduction": "Electronic Scientific Production",
+        "facultyResearch": "Faculty Research",
+        "approvedBooks": "Approved Books",
+        "scientificMissions": "Scientific Missions",
+        "inventionPatents": "Invention Patents",
+        "qualityAssurance": "Quality Assurance",
+        "universityRankings": "University Rankings",
+        "scopus": "Scopus",
+        "googleScholar": "Google Scholar",
+        "researchGate": "Research Gate",
+        "scientificActivities": "Scientific Activities",
+        "seminars": "Seminars",
+        "workshops": "Workshops",
+        "courses": "Courses",
+        "forums": "Forums"
+      },
+      "studentAffairs": {
+        "studentAffairs": "Student Affairs",
+        "admissionRegistration": "Admission and Registration",
+        "admissionConditions": "Admission Conditions",
+        "registrationMechanism": "Registration Mechanism",
+        "studyFees": "Study Fees",
+        "scholarshipsGrants": "Scholarships and Grants",
+        "academicCalendar": "Academic Calendar",
+        "universityInstructions": "University Instructions",
+        "studentGuide": "Student Guide",
+        "outstandingStudents": "Outstanding Students",
+        "studentActivities": "Student Activities",
+        "studentClubs": "Student Clubs"
+      },
+      "serviceCenters": {
+        "serviceCenters": "Service Centers",
+        "digitalLibrary": "Digital Library",
+        "continuingEducationCenter": "Continuing Education Center",
+        "careerGuidanceCenter": "Career Guidance Center",
+        "physicalFitnessCenter": "Physical Fitness Center",
+        "gilgameshTheater": "Gilgamesh Theater",
+        "audiovisualHalls": "Audiovisual Halls",
+        "sportsStadium": "Sports Stadium",
+        "fiveSidePlaygrounds": "Five-side Playgrounds",
+        "trainingHalls": "Training Halls",
+        "dentalClinics": "Dental Clinics",
+        "centralLibrary": "Central Library",
+        "cafeteria": "Cafeteria"
+      },
+      "eServices": {
+        "eServices": "E-Services",
+        "studentPortal": "Student Portal",
+        "facultyPortal": "Faculty Portal",
+        "massarPlatform": "Massar Platform",
+        "universityDigitalRepository": "University Digital Repository",
+        "electronicPayment": "Electronic Payment",
+        "graduatesPortal": "Graduates Portal",
+        "graduationConfirmationRequest": "Graduation Confirmation Request",
+        "graduationDocumentRequest": "Graduation Document Request",
+        "transcriptRequest": "Transcript Request",
+        "universityIdIssuance": "University ID Issuance",
+        "electronicParticipationCertificates": "Electronic Participation Certificates"
+      }
     },
     "pageTitles": {
       "home": "Home",
@@ -945,12 +1008,12 @@ export const { Link, usePathname, useRouter } =
       "openInGoogleMaps": "فتح في خرائط جوجل"
     }
   },
+
   "Header": {
     "appTitle": "تعليم",
     "localSwitcher": {
       "select a language": "اختر اللغة"
     },
-
     "navLinks": {
       "home": "الرئيسية",
       "aboutUniversity": {
@@ -975,21 +1038,84 @@ export const { Link, usePathname, useRouter } =
         "universityStrategy": "استراتيجية جامعة كلكامش"
       },
       "colleges": "الكليات",
-      "academicAffairs": "الشؤون العلمية",
-      "studentAffairs": "الشؤون الطلابية",
-      "serviceCenters": "المراكز الخدمية",
-      "eServices": "الخدمات الالكترونية"
+      "academicAffairs": {
+        "academicAffairs": "الشؤون العلمية",
+        "scientificPromotions": "الترقيات العلمية",
+        "guidelines": "الإرشادات",
+        "forms": "النماذج",
+        "instructions": "التعليمات",
+        "scientificConferences": "المؤتمرات العلمية",
+        "scientificJournals": "المجلات العلمية",
+        "electronicScientificProduction": "الإنتاج العلمي الإلكتروني",
+        "facultyResearch": "بحوث التدريسيين",
+        "approvedBooks": "الكتب المؤلفة",
+        "scientificMissions": "البعثات العلمية",
+        "inventionPatents": "براءات الاختراع",
+        "qualityAssurance": "الجودة والأداء الجامعي",
+        "universityRankings": "التصنيفات الجامعية",
+        "scopus": "سكوبس",
+        "googleScholar": "الباحث العلمي",
+        "researchGate": "بوابة البحث العلمي",
+        "scientificActivities": "الأنشطة العلمية",
+        "seminars": "الندوات",
+        "workshops": "ورش العمل",
+        "courses": "الدورات",
+        "forums": "الملتقيات"
+      },
+      "studentAffairs": {
+        "studentAffairs": "شؤون الطلبة",
+        "admissionRegistration": "القبول والتسجيل",
+        "admissionConditions": "شروط القبول",
+        "registrationMechanism": "آلية التسجيل",
+        "studyFees": "الأجور الدراسية",
+        "scholarshipsGrants": "المنح والبعثات الدراسية",
+        "academicCalendar": "التقويم الجامعي",
+        "universityInstructions": "التعليمات الجامعية",
+        "studentGuide": "دليل الطالب",
+        "outstandingStudents": "الطلبة المتميزون",
+        "studentActivities": "الأنشطة الطلابية",
+        "studentClubs": "النوادي الطلابية"
+      },
+      "serviceCenters": {
+        "serviceCenters": "المراكز الخدمية",
+        "digitalLibrary": "المكتبة الرقمية",
+        "continuingEducationCenter": "مركز التعليم المستمر",
+        "careerGuidanceCenter": "مركز الإرشاد الوظيفي",
+        "physicalFitnessCenter": "مركز اللياقة البدنية",
+        "gilgameshTheater": "مسرح كلكامش",
+        "audiovisualHalls": "قاعات الوسائط المتعددة",
+        "sportsStadium": "الملعب الرياضي",
+        "fiveSidePlaygrounds": "الملاعب الخماسية",
+        "trainingHalls": "قاعات التدريب",
+        "dentalClinics": "عيادات طب الأسنان",
+        "centralLibrary": "المكتبة المركزية",
+        "cafeteria": "الكافتيريا"
+      },
+      "eServices": {
+        "eServices": "الخدمات الإلكترونية",
+        "studentPortal": "البوابة الإلكترونية للطلبة",
+        "facultyPortal": "البوابة الإلكترونية للتدريسيين",
+        "massarPlatform": "منصة مسار",
+        "universityDigitalRepository": "المستودع الرقمي للجامعة",
+        "electronicPayment": "الدفع الإلكتروني",
+        "graduatesPortal": "بوابة الخريجين",
+        "graduationConfirmationRequest": "طلب الحصول على تأييد تخرج",
+        "graduationDocumentRequest": "طلب الحصول على وثيقة تخرج",
+        "transcriptRequest": "طلب الحصول على الشهادة الجدارية",
+        "universityIdIssuance": "إصدار الهوية الجامعية",
+        "electronicParticipationCertificates": "شهادات المشاركة الإلكترونية"
+      }
     },
     "pageTitles": {
-      "home": "الرئيسيــة",
+      "home": "الرئيسية",
       "about": "من نحن؟",
       "services": "خدمات الشركة",
-      "branches": "فـروع الشركة",
+      "branches": "فروع الشركة",
       "contact": "تواصل معنا",
       "jobs": "الوظائف الشاغرة",
-      "joinUs": "انضم الينا كتاجر",
+      "joinUs": "انضم إلينا كتاجر",
       "salesEmployee": "موظف مبيعات",
-      "news": "الاخبار"
+      "news": "الأخبار"
     },
     "cta": {
       "joinUs": "انضم إلينا",
@@ -1476,79 +1602,6 @@ export const { Link, usePathname, useRouter } =
 }
 ```
 
-# public\js\scrollbarWidth.js
-
-```js
-(function () {
-  function updateScrollbarWidth() {
-    requestAnimationFrame(function () {
-      document.documentElement.style.setProperty(
-        "--screen-width",
-        window.document.documentElement.clientWidth + "px"
-      );
-    });
-  }
-
-  if (typeof window !== "undefined") {
-    updateScrollbarWidth();
-    window.addEventListener("resize", updateScrollbarWidth);
-  }
-})();
-
-```
-
-# public\images\map-marker.svg
-
-This is a file of the type: SVG Image
-
-# public\images\logo.png
-
-This is a binary file of the type: Image
-
-# public\images\hero-bg.jpg
-
-This is a binary file of the type: Image
-
-# public\images\college-logo.png
-
-This is a binary file of the type: Image
-
-# public\fonts\NeurialGrotesk-Regular.otf
-
-This is a binary file of the type: Binary
-
-# public\fonts\NeurialGrotesk-Medium.otf
-
-This is a binary file of the type: Binary
-
-# public\fonts\NeurialGrotesk-Light.otf
-
-This is a binary file of the type: Binary
-
-# public\fonts\NeurialGrotesk-Extrabold.otf
-
-This is a binary file of the type: Binary
-
-# public\fonts\NeurialGrotesk-Bold.otf
-
-This is a binary file of the type: Binary
-
-# public\fonts\EXPOSANSARABIC-MEDIUM.TTF
-
-This is a binary file of the type: Binary
-
-# public\fonts\EXPOSANSARABIC-LIGHT.TTF
-
-This is a binary file of the type: Binary
-
-# public\fonts\EXPOSANSARABIC-BOOK.TTF
-
-This is a binary file of the type: Binary
-
-# public\fonts\EXPOSANSARABIC-BOLD.TTF
-
-This is a binary file of the type: Binary
-
 # src\lib\utils.ts
 
 ```ts
@@ -1768,55 +1821,66 @@ export const UNIVERSITY_STRATEGY_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-s
 
 // Academic Affairs
 export const SCIENTIFIC_PROMOTIONS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-promotions`;
-export const RESEARCH_PLANS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/research-plans`;
-export const EDUCATIONAL_SCHOLARSHIPS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/educational-scholarships`;
-export const ACADEMIC_CALENDAR_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/academic-calendar`;
+export const SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE = `${SCIENTIFIC_PROMOTIONS_ROUTE}/guidelines`;
+export const PROMOTION_FORMS_ROUTE = `${SCIENTIFIC_PROMOTIONS_ROUTE}/forms`;
+export const PROMOTION_INSTRUCTIONS_ROUTE = `${SCIENTIFIC_PROMOTIONS_ROUTE}/instructions`;
 export const SCIENTIFIC_CONFERENCES_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-conferences`;
-export const SCIENTIFIC_PRODUCTION_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-production`;
-export const TEACHING_METHODS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/teaching-methods`;
-export const CENTRAL_LIBRARY_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/central-library`;
-export const QUALITY_ASSURANCE_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/quality-assurance`;
+export const SCIENTIFIC_JOURNALS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-journals`;
+export const ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/electronic-scientific-production`;
+export const FACULTY_RESEARCH_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/faculty-research`;
+export const APPROVED_BOOKS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/approved-books`;
+export const SCIENTIFIC_MISSIONS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-missions`;
 export const INVENTION_PATENTS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/invention-patents`;
-export const SCHOLARSHIPS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scholarships`;
-export const GOOGLE_SCHOLAR_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/google-scholar`;
-export const RESEARCH_GATE_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/research-gate`;
+export const QUALITY_ASSURANCE_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/quality-assurance`;
+export const UNIVERSITY_RANKINGS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/university-rankings`;
+export const SCOPUS_ROUTE = `${UNIVERSITY_RANKINGS_ROUTE}/scopus`;
+export const GOOGLE_SCHOLAR_ROUTE = `${UNIVERSITY_RANKINGS_ROUTE}/google-scholar`;
+export const RESEARCH_GATE_ROUTE = `${UNIVERSITY_RANKINGS_ROUTE}/research-gate`;
 export const SCIENTIFIC_ACTIVITIES_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-activities`;
+export const SEMINARS_ROUTE = `${SCIENTIFIC_ACTIVITIES_ROUTE}/seminars`;
+export const WORKSHOPS_ROUTE = `${SCIENTIFIC_ACTIVITIES_ROUTE}/workshops`;
+export const COURSES_ROUTE = `${SCIENTIFIC_ACTIVITIES_ROUTE}/courses`;
+export const FORUMS_ROUTE = `${SCIENTIFIC_ACTIVITIES_ROUTE}/forums`;
 
 // Student Affairs
 export const ADMISSION_REGISTRATION_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/admission-registration`;
-export const ADMISSION_CONDITIONS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/admission-conditions`;
-export const REGISTRATION_MECHANISM_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/registration-mechanism`;
-export const ACADEMIC_PROGRAMS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/academic-programs`;
-export const UNIVERSITY_EXAMS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/university-exams`;
-export const STUDENT_HOUSING_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-housing`;
+export const ADMISSION_CONDITIONS_ROUTE = `${ADMISSION_REGISTRATION_ROUTE}/admission-conditions`;
+export const REGISTRATION_MECHANISM_ROUTE = `${ADMISSION_REGISTRATION_ROUTE}/registration-mechanism`;
+export const STUDY_FEES_ROUTE = `${ADMISSION_REGISTRATION_ROUTE}/study-fees`;
+export const SCHOLARSHIPS_GRANTS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/scholarships-grants`;
+export const ACADEMIC_CALENDAR_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/academic-calendar`;
+export const UNIVERSITY_INSTRUCTIONS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/university-instructions`;
+export const STUDENT_GUIDE_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-guide`;
+export const OUTSTANDING_STUDENTS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/outstanding-students`;
 export const STUDENT_ACTIVITIES_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-activities`;
-export const STUDENT_INSTRUCTIONS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-instructions`;
-export const HONOR_STUDENTS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/honor-students`;
-export const STUDENT_GUIDANCE_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-guidance`;
 export const STUDENT_CLUBS_ROUTE = `${STUDENT_AFFAIRS_ROUTE}/student-clubs`;
 
 // Service Centers
-export const CONTINUING_EDUCATION_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/continuing-education`;
-export const CONSULTING_OFFICE_ROUTE = `${SERVICE_CENTERS_ROUTE}/consulting-office`;
-export const CULTURAL_RELATIONS_ROUTE = `${SERVICE_CENTERS_ROUTE}/cultural-relations`;
-export const MEDIA_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/media-center`;
-export const PSYCHOLOGICAL_COUNSELING_ROUTE = `${SERVICE_CENTERS_ROUTE}/psychological-counseling`;
-export const SPORTS_FACILITIES_ROUTE = `${SERVICE_CENTERS_ROUTE}/sports-facilities`;
+export const DIGITAL_LIBRARY_ROUTE = `${SERVICE_CENTERS_ROUTE}/digital-library`;
+export const CONTINUING_EDUCATION_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/continuing-education-center`;
+export const CAREER_GUIDANCE_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/career-guidance-center`;
+export const PHYSICAL_FITNESS_CENTER_ROUTE = `${SERVICE_CENTERS_ROUTE}/physical-fitness-center`;
+export const GILGAMESH_THEATER_ROUTE = `${SERVICE_CENTERS_ROUTE}/gilgamesh-theater`;
+export const AUDIOVISUAL_HALLS_ROUTE = `${SERVICE_CENTERS_ROUTE}/audiovisual-halls`;
+export const SPORTS_STADIUM_ROUTE = `${SERVICE_CENTERS_ROUTE}/sports-stadium`;
+export const FIVE_SIDE_PLAYGROUNDS_ROUTE = `${SERVICE_CENTERS_ROUTE}/five-side-playgrounds`;
 export const TRAINING_HALLS_ROUTE = `${SERVICE_CENTERS_ROUTE}/training-halls`;
 export const DENTAL_CLINICS_ROUTE = `${SERVICE_CENTERS_ROUTE}/dental-clinics`;
-export const PHARMACY_ROUTE = `${SERVICE_CENTERS_ROUTE}/pharmacy`;
+export const CENTRAL_LIBRARY_ROUTE = `${SERVICE_CENTERS_ROUTE}/central-library`;
+export const CAFETERIA_ROUTE = `${SERVICE_CENTERS_ROUTE}/cafeteria`;
 
 // E-Services
 export const STUDENT_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/student-portal`;
 export const FACULTY_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/faculty-portal`;
-export const ALUMNI_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/alumni-portal`;
-export const UNIVERSITY_EMAIL_ROUTE = `${E_SERVICES_ROUTE}/university-email`;
-export const DIGITAL_LIBRARY_ROUTE = `${E_SERVICES_ROUTE}/digital-library`;
-export const GRADUATES_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/graduates-portal`;
-export const TRANSCRIPT_REQUEST_ROUTE = `${E_SERVICES_ROUTE}/transcript-request`;
-export const GRADUATION_DOCUMENT_REQUEST_ROUTE = `${E_SERVICES_ROUTE}/graduation-document-request`;
-export const ACADEMIC_PERFORMANCE_REPORT_ROUTE = `${E_SERVICES_ROUTE}/academic-performance-report`;
+export const MASSAR_PLATFORM_ROUTE = `${E_SERVICES_ROUTE}/massar-platform`;
+export const UNIVERSITY_DIGITAL_REPOSITORY_ROUTE = `${E_SERVICES_ROUTE}/university-digital-repository`;
 export const ELECTRONIC_PAYMENT_ROUTE = `${E_SERVICES_ROUTE}/electronic-payment`;
+export const GRADUATES_PORTAL_ROUTE = `${E_SERVICES_ROUTE}/graduates-portal`;
+export const GRADUATION_CONFIRMATION_REQUEST_ROUTE = `${GRADUATES_PORTAL_ROUTE}/graduation-confirmation-request`;
+export const GRADUATION_DOCUMENT_REQUEST_ROUTE = `${GRADUATES_PORTAL_ROUTE}/graduation-document-request`;
+export const TRANSCRIPT_REQUEST_ROUTE = `${GRADUATES_PORTAL_ROUTE}/transcript-request`;
+export const UNIVERSITY_ID_ISSUANCE_ROUTE = `${E_SERVICES_ROUTE}/university-id-issuance`;
+export const ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE = `${E_SERVICES_ROUTE}/electronic-participation-certificates`;
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
@@ -1835,8 +1899,10 @@ export const TITLE_WITH_ACTIONS_ROUTES: string[] = [];
 ```ts
 import { NewsItem, TransNewsItem, Rating, TransRating } from "./types";
 
+import * as paths from "./paths";
+
 export const newsItems: (transNews: TransNewsItem[]) => NewsItem[] = (
-  transNews: TransNewsItem[]
+  transNews: TransNewsItem[],
 ) => [
   {
     id: 1,
@@ -1881,12 +1947,347 @@ const newImages = [
 ];
 
 export const ratingsItems: (transRatings: TransRating[]) => Rating[] = (
-  transRatings: TransRating[]
+  transRatings: TransRating[],
 ) =>
   transRatings.map((el, index) => ({
     ...el,
     id: index + 1,
   }));
+
+export const navItems = (t: (key: string) => string) => [
+  { title: t("home"), path: paths.HOME_ROUTE },
+  {
+    title: t("aboutUniversity.aboutUniversity"),
+    path: paths.ABOUT_UNIVERSITY_ROUTE,
+    items: [
+      {
+        title: t("aboutUniversity.aboutUs"),
+        path: paths.ABOUT_UNIVERSITY_ROUTE,
+      },
+      {
+        title: t("aboutUniversity.universityCouncil"),
+        path: paths.UNIVERSITY_COUNCIL_ROUTE,
+        items: [
+          {
+            title: t("aboutUniversity.universityPresident"),
+            path: paths.UNIVERSITY_PRESIDENT_ROUTE,
+          },
+          {
+            title: t("aboutUniversity.assistantPresidentScientific"),
+            path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
+          },
+          {
+            title: t("aboutUniversity.assistantPresidentAdministrative"),
+            path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
+          },
+          {
+            title: t("aboutUniversity.collegeDeans"),
+            path: paths.COLLEGE_DEANS_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("aboutUniversity.presidentSpeech"),
+        path: paths.PRESIDENT_SPEECH_ROUTE,
+      },
+      {
+        title: t("aboutUniversity.organizationalStructure"),
+        path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
+      },
+      {
+        title: t("aboutUniversity.infrastructure"),
+        path: paths.INFRASTRUCTURE_ROUTE,
+        items: [
+          { title: t("aboutUniversity.halls"), path: paths.HALLS_ROUTE },
+          {
+            title: t("aboutUniversity.laboratories"),
+            path: paths.LABORATORIES_ROUTE,
+          },
+          {
+            title: t("aboutUniversity.greenAreas"),
+            path: paths.GREEN_AREAS_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("aboutUniversity.universityLife"),
+        path: paths.UNIVERSITY_LIFE_ROUTE,
+        items: [
+          {
+            title: t("aboutUniversity.photoLibrary"),
+            path: paths.PHOTO_LIBRARY_ROUTE,
+          },
+          {
+            title: t("aboutUniversity.videoLibrary"),
+            path: paths.VIDEO_LIBRARY_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("aboutUniversity.agreementsPartnerships"),
+        path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
+      },
+      {
+        title: t("aboutUniversity.transparencyPrinciple"),
+        path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
+      },
+      {
+        title: t("aboutUniversity.universityStrategy"),
+        path: paths.UNIVERSITY_STRATEGY_ROUTE,
+      },
+    ],
+  },
+  {
+    title: t("colleges"),
+    path: paths.COLLEGES_ROUTE,
+    items: [
+      { title: "College 1", path: paths.COLLEGE_ROUTE("1") },
+      { title: "College 2", path: paths.COLLEGE_ROUTE("2") },
+    ],
+  },
+  {
+    title: t("academicAffairs.academicAffairs"),
+    path: paths.ACADEMIC_AFFAIRS_ROUTE,
+    items: [
+      {
+        title: t("academicAffairs.scientificPromotions"),
+        path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
+        items: [
+          {
+            title: t("academicAffairs.guidelines"),
+            path: paths.SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE,
+          },
+          {
+            title: t("academicAffairs.forms"),
+            path: paths.PROMOTION_FORMS_ROUTE,
+          },
+          {
+            title: t("academicAffairs.instructions"),
+            path: paths.PROMOTION_INSTRUCTIONS_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("academicAffairs.scientificConferences"),
+        path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
+      },
+      {
+        title: t("academicAffairs.scientificJournals"),
+        path: paths.SCIENTIFIC_JOURNALS_ROUTE,
+      },
+      {
+        title: t("academicAffairs.electronicScientificProduction"),
+        path: paths.ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE,
+      },
+      {
+        title: t("academicAffairs.facultyResearch"),
+        path: paths.FACULTY_RESEARCH_ROUTE,
+      },
+      {
+        title: t("academicAffairs.approvedBooks"),
+        path: paths.APPROVED_BOOKS_ROUTE,
+      },
+      {
+        title: t("academicAffairs.scientificMissions"),
+        path: paths.SCIENTIFIC_MISSIONS_ROUTE,
+      },
+      {
+        title: t("academicAffairs.inventionPatents"),
+        path: paths.INVENTION_PATENTS_ROUTE,
+      },
+      {
+        title: t("academicAffairs.qualityAssurance"),
+        path: paths.QUALITY_ASSURANCE_ROUTE,
+      },
+      {
+        title: t("academicAffairs.universityRankings"),
+        path: paths.UNIVERSITY_RANKINGS_ROUTE,
+        items: [
+          { title: t("academicAffairs.scopus"), path: paths.SCOPUS_ROUTE },
+          {
+            title: t("academicAffairs.googleScholar"),
+            path: paths.GOOGLE_SCHOLAR_ROUTE,
+          },
+          {
+            title: t("academicAffairs.researchGate"),
+            path: paths.RESEARCH_GATE_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("academicAffairs.scientificActivities"),
+        path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
+        items: [
+          {
+            title: t("academicAffairs.seminars"),
+            path: paths.SEMINARS_ROUTE,
+          },
+          {
+            title: t("academicAffairs.workshops"),
+            path: paths.WORKSHOPS_ROUTE,
+          },
+          { title: t("academicAffairs.courses"), path: paths.COURSES_ROUTE },
+          { title: t("academicAffairs.forums"), path: paths.FORUMS_ROUTE },
+        ],
+      },
+    ],
+  },
+  {
+    title: t("studentAffairs.studentAffairs"),
+    path: paths.STUDENT_AFFAIRS_ROUTE,
+    items: [
+      {
+        title: t("studentAffairs.admissionRegistration"),
+        path: paths.ADMISSION_REGISTRATION_ROUTE,
+        items: [
+          {
+            title: t("studentAffairs.admissionConditions"),
+            path: paths.ADMISSION_CONDITIONS_ROUTE,
+          },
+          {
+            title: t("studentAffairs.registrationMechanism"),
+            path: paths.REGISTRATION_MECHANISM_ROUTE,
+          },
+          {
+            title: t("studentAffairs.studyFees"),
+            path: paths.STUDY_FEES_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("studentAffairs.scholarshipsGrants"),
+        path: paths.SCHOLARSHIPS_GRANTS_ROUTE,
+      },
+      {
+        title: t("studentAffairs.academicCalendar"),
+        path: paths.ACADEMIC_CALENDAR_ROUTE,
+      },
+      {
+        title: t("studentAffairs.universityInstructions"),
+        path: paths.UNIVERSITY_INSTRUCTIONS_ROUTE,
+      },
+      {
+        title: t("studentAffairs.studentGuide"),
+        path: paths.STUDENT_GUIDE_ROUTE,
+      },
+      {
+        title: t("studentAffairs.outstandingStudents"),
+        path: paths.OUTSTANDING_STUDENTS_ROUTE,
+      },
+      {
+        title: t("studentAffairs.studentActivities"),
+        path: paths.STUDENT_ACTIVITIES_ROUTE,
+      },
+      {
+        title: t("studentAffairs.studentClubs"),
+        path: paths.STUDENT_CLUBS_ROUTE,
+      },
+    ],
+  },
+  {
+    title: t("serviceCenters.serviceCenters"),
+    path: paths.SERVICE_CENTERS_ROUTE,
+    items: [
+      {
+        title: t("serviceCenters.digitalLibrary"),
+        path: paths.DIGITAL_LIBRARY_ROUTE,
+      },
+      {
+        title: t("serviceCenters.continuingEducationCenter"),
+        path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
+      },
+      {
+        title: t("serviceCenters.careerGuidanceCenter"),
+        path: paths.CAREER_GUIDANCE_CENTER_ROUTE,
+      },
+      {
+        title: t("serviceCenters.physicalFitnessCenter"),
+        path: paths.PHYSICAL_FITNESS_CENTER_ROUTE,
+      },
+      {
+        title: t("serviceCenters.gilgameshTheater"),
+        path: paths.GILGAMESH_THEATER_ROUTE,
+      },
+      {
+        title: t("serviceCenters.audiovisualHalls"),
+        path: paths.AUDIOVISUAL_HALLS_ROUTE,
+      },
+      {
+        title: t("serviceCenters.sportsStadium"),
+        path: paths.SPORTS_STADIUM_ROUTE,
+      },
+      {
+        title: t("serviceCenters.fiveSidePlaygrounds"),
+        path: paths.FIVE_SIDE_PLAYGROUNDS_ROUTE,
+      },
+      {
+        title: t("serviceCenters.trainingHalls"),
+        path: paths.TRAINING_HALLS_ROUTE,
+      },
+      {
+        title: t("serviceCenters.dentalClinics"),
+        path: paths.DENTAL_CLINICS_ROUTE,
+      },
+      {
+        title: t("serviceCenters.centralLibrary"),
+        path: paths.CENTRAL_LIBRARY_ROUTE,
+      },
+      { title: t("serviceCenters.cafeteria"), path: paths.CAFETERIA_ROUTE },
+    ],
+  },
+  {
+    title: t("eServices.eServices"),
+    path: paths.E_SERVICES_ROUTE,
+    items: [
+      {
+        title: t("eServices.studentPortal"),
+        path: paths.STUDENT_PORTAL_ROUTE,
+      },
+      {
+        title: t("eServices.facultyPortal"),
+        path: paths.FACULTY_PORTAL_ROUTE,
+      },
+      {
+        title: t("eServices.massarPlatform"),
+        path: paths.MASSAR_PLATFORM_ROUTE,
+      },
+      {
+        title: t("eServices.universityDigitalRepository"),
+        path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
+      },
+      {
+        title: t("eServices.electronicPayment"),
+        path: paths.ELECTRONIC_PAYMENT_ROUTE,
+      },
+      {
+        title: t("eServices.graduatesPortal"),
+        path: paths.GRADUATES_PORTAL_ROUTE,
+        items: [
+          {
+            title: t("eServices.graduationConfirmationRequest"),
+            path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
+          },
+          {
+            title: t("eServices.graduationDocumentRequest"),
+            path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
+          },
+          {
+            title: t("eServices.transcriptRequest"),
+            path: paths.TRANSCRIPT_REQUEST_ROUTE,
+          },
+        ],
+      },
+      {
+        title: t("eServices.universityIdIssuance"),
+        path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
+      },
+      {
+        title: t("eServices.electronicParticipationCertificates"),
+        path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
+      },
+    ],
+  },
+];
 
 ```
 
@@ -2303,6 +2704,73 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
 
 ```
 
+# src\components\HoverMenu.tsx
+
+```tsx
+import React from "react";
+import { Link } from "@/i18n.config";
+import { twMerge } from "tailwind-merge";
+
+interface MenuItem {
+  title: string;
+  path: string;
+  items?: MenuItem[];
+}
+
+interface HoverMenuProps {
+  items: MenuItem[];
+  className?: string;
+  isSubmenu?: boolean;
+}
+
+const HoverMenu: React.FC<HoverMenuProps> = ({
+  items,
+  className,
+  isSubmenu = false,
+}) => {
+  return (
+    <div
+      className={twMerge(
+        "absolute hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg",
+        isSubmenu
+          ? "start-full top-0 group-hover/sub:block group-hover/sub:animate-appear"
+          : "top-full group-hover:block group-hover:animate-appear",
+        className,
+      )}
+    >
+      <div
+        className="py-2"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="options-menu"
+      >
+        {items.map((item, index) => (
+          <HoverMenuItem key={index} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const HoverMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => {
+  return (
+    <div className="group/sub relative">
+      <Link
+        href={item.path}
+        className="block px-6 py-3 text-sm text-white hover:bg-black/30"
+        role="menuitem"
+      >
+        {item.title}
+      </Link>
+      {item.items && <HoverMenu items={item.items} isSubmenu={true} />}
+    </div>
+  );
+};
+
+export default HoverMenu;
+
+```
+
 # src\app\globals.css
 
 ```css
@@ -2577,81 +3045,78 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
 
 This is a binary file of the type: Binary
 
-# public\images\partners\4.png
+# public\js\scrollbarWidth.js
 
-This is a binary file of the type: Image
+```js
+(function () {
+  function updateScrollbarWidth() {
+    requestAnimationFrame(function () {
+      document.documentElement.style.setProperty(
+        "--screen-width",
+        window.document.documentElement.clientWidth + "px"
+      );
+    });
+  }
 
-# public\images\partners\3.png
+  if (typeof window !== "undefined") {
+    updateScrollbarWidth();
+    window.addEventListener("resize", updateScrollbarWidth);
+  }
+})();
 
-This is a binary file of the type: Image
+```
 
-# public\images\partners\2.png
-
-This is a binary file of the type: Image
-
-# public\images\partners\1.png
-
-This is a binary file of the type: Image
-
-# public\images\home\statistics.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\faq-icon.svg
-
-This is a file of the type: SVG Image
-
-# public\images\home\apps.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\4.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\3.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\2.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\1.png
-
-This is a binary file of the type: Image
-
-# public\images\common\google-play.png
-
-This is a binary file of the type: Image
-
-# public\images\common\app-store.png
-
-This is a binary file of the type: Image
-
-# public\images\about\4.svg
+# public\images\map-marker.svg
 
 This is a file of the type: SVG Image
 
-# public\images\about\3.svg
-
-This is a file of the type: SVG Image
-
-# public\images\about\2.svg
-
-This is a file of the type: SVG Image
-
-# public\images\about\2.png
+# public\images\logo.png
 
 This is a binary file of the type: Image
 
-# public\images\about\1.svg
-
-This is a file of the type: SVG Image
-
-# public\images\about\1.png
+# public\images\hero-bg.jpg
 
 This is a binary file of the type: Image
+
+# public\images\college-logo.png
+
+This is a binary file of the type: Image
+
+# public\fonts\NeurialGrotesk-Regular.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Medium.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Light.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Extrabold.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Bold.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-MEDIUM.TTF
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-LIGHT.TTF
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-BOOK.TTF
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-BOLD.TTF
+
+This is a binary file of the type: Binary
 
 # src\lib\zustand\common.ts
 
@@ -3873,262 +4338,6 @@ export { ScrollableCardsContainer };
 
 ```
 
-# src\components\FirstSection\TitleBg.tsx
-
-```tsx
-export default function TitleBg() {
-  return <div>SliderBg</div>;
-}
-
-```
-
-# src\components\FirstSection\SliderBg.tsx
-
-```tsx
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import ScrollArrows from "@/components/ScrollArrows";
-import { SliderElement } from "@/lib/types";
-import useScrollControl from "@/app/_hooks/useScrollControl";
-import useTextDirection from "../../app/_hooks/useTextDirection";
-
-export default function SliderBg() {
-  return (
-    <ScrollableCardsContainer
-      translatedNewsItems={[
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Innovative Solutions",
-          subTitle:
-            "Transforming ideas into reality with cutting-edge technology",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Expert Team",
-          subTitle: "Dedicated professionals committed to excellence",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Global Reach",
-          subTitle: "Connecting businesses across borders",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Sustainable Future",
-          subTitle: "Driving growth with eco-friendly practices",
-        },
-      ]}
-    />
-  );
-}
-
-const ImageSection = () => {
-  return (
-    <div className="relative w-screen">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="w-full h-full absolute top-0 bg-black/70"></div>
-    </div>
-  );
-};
-
-function ScrollableCardsContainer({
-  translatedNewsItems,
-}: {
-  translatedNewsItems: SliderElement[];
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dir = useTextDirection();
-  const [scrollAmount, setScrollAmount] = useState<number>();
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
-    containerRef,
-    useMultiples: true,
-    baseScrollAmount: scrollAmount,
-  });
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  const autoSlide = () => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
-
-      if (isAtEnd) resetScrollPosition();
-      else
-        scroll({
-          direction: dir == "ltr" ? "right" : "left",
-          isLTR: dir == "ltr",
-        });
-    }
-  };
-
-  const resetInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(autoSlide, 5000);
-  };
-
-  useEffect(() => {
-    resetInterval();
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [scrollAmount]);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [handleScroll]);
-
-  return (
-    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
-      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
-      <div
-        ref={containerRef}
-        className={twMerge(
-          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
-          "hide-scrollbar"
-        )}
-      >
-        <div className="flex w-fit h-full">
-          {translatedNewsItems.map((newsItem, index) => (
-            <ImageSection key={index} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TextSection({
-  containerRef,
-  resetTimer,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  resetTimer: () => void;
-}) {
-  const [scrollAmount, setScrollAmount] = useState<number>();
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
-      <ScrollArrows
-        containerRef={containerRef}
-        scrollAmount={scrollAmount}
-        useMultiples={true}
-        resetTimer={resetTimer}
-        className="slider-bg-arrows"
-      />
-
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
-          التجربة العلمية
-        </h3>
-
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
-          واعد
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\ImageBg.tsx
-
-```tsx
-import React from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function ImageBg() {
-  return (
-    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
-      <TextSection />
-      <ImageSection />
-    </div>
-  );
-}
-
-function TextSection() {
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
-          الرئيسية
-        </h3>
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          مواقع ذات صلة
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-function ImageSection() {
-  return (
-    <div className="navbar-inclusive-background w-full">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/70"></div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\FirstSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-import { getBgComponent } from "@/lib/utils";
-
-export default function FirstSection() {
-  const pathname = usePathname();
-
-  const BgComponent = getBgComponent(pathname);
-
-  return BgComponent ? <BgComponent /> : <></>;
-}
-
-```
-
-# src\components\FirstSection\CenterizedTitle.tsx
-
-```tsx
-export default function CenterizedTitle() {
-  return <div>SliderBg</div>;
-}
-
-```
-
 # src\components\LastSections\MapSection.tsx
 
 ```tsx
@@ -4413,6 +4622,262 @@ function ContactInfo({ title, value }: { title: string; value: string }) {
       </p>
     </div>
   );
+}
+
+```
+
+# src\components\FirstSection\TitleBg.tsx
+
+```tsx
+export default function TitleBg() {
+  return <div>SliderBg</div>;
+}
+
+```
+
+# src\components\FirstSection\SliderBg.tsx
+
+```tsx
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import ScrollArrows from "@/components/ScrollArrows";
+import { SliderElement } from "@/lib/types";
+import useScrollControl from "@/app/_hooks/useScrollControl";
+import useTextDirection from "../../app/_hooks/useTextDirection";
+
+export default function SliderBg() {
+  return (
+    <ScrollableCardsContainer
+      translatedNewsItems={[
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Innovative Solutions",
+          subTitle:
+            "Transforming ideas into reality with cutting-edge technology",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Expert Team",
+          subTitle: "Dedicated professionals committed to excellence",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Global Reach",
+          subTitle: "Connecting businesses across borders",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Sustainable Future",
+          subTitle: "Driving growth with eco-friendly practices",
+        },
+      ]}
+    />
+  );
+}
+
+const ImageSection = () => {
+  return (
+    <div className="relative w-screen">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="w-full h-full absolute top-0 bg-black/70"></div>
+    </div>
+  );
+};
+
+function ScrollableCardsContainer({
+  translatedNewsItems,
+}: {
+  translatedNewsItems: SliderElement[];
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dir = useTextDirection();
+  const [scrollAmount, setScrollAmount] = useState<number>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
+    containerRef,
+    useMultiples: true,
+    baseScrollAmount: scrollAmount,
+  });
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  const autoSlide = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
+
+      if (isAtEnd) resetScrollPosition();
+      else
+        scroll({
+          direction: dir == "ltr" ? "right" : "left",
+          isLTR: dir == "ltr",
+        });
+    }
+  };
+
+  const resetInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(autoSlide, 5000);
+  };
+
+  useEffect(() => {
+    resetInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [scrollAmount]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
+  return (
+    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
+      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
+      <div
+        ref={containerRef}
+        className={twMerge(
+          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
+          "hide-scrollbar"
+        )}
+      >
+        <div className="flex w-fit h-full">
+          {translatedNewsItems.map((newsItem, index) => (
+            <ImageSection key={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TextSection({
+  containerRef,
+  resetTimer,
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  resetTimer: () => void;
+}) {
+  const [scrollAmount, setScrollAmount] = useState<number>();
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
+      <ScrollArrows
+        containerRef={containerRef}
+        scrollAmount={scrollAmount}
+        useMultiples={true}
+        resetTimer={resetTimer}
+        className="slider-bg-arrows"
+      />
+
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
+          التجربة العلمية
+        </h3>
+
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
+          واعد
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\ImageBg.tsx
+
+```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function ImageBg() {
+  return (
+    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+      <TextSection />
+      <ImageSection />
+    </div>
+  );
+}
+
+function TextSection() {
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
+          الرئيسية
+        </h3>
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          مواقع ذات صلة
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+function ImageSection() {
+  return (
+    <div className="navbar-inclusive-background w-full">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\FirstSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+import { getBgComponent } from "@/lib/utils";
+
+export default function FirstSection() {
+  const pathname = usePathname();
+
+  const BgComponent = getBgComponent(pathname);
+
+  return BgComponent ? <BgComponent /> : <></>;
+}
+
+```
+
+# src\components\FirstSection\CenterizedTitle.tsx
+
+```tsx
+export default function CenterizedTitle() {
+  return <div>SliderBg</div>;
 }
 
 ```
@@ -5040,57 +5505,81 @@ export default function RootLayout({
 
 ```
 
-# public\images\home\News\4.jpg
+# public\images\partners\4.png
 
 This is a binary file of the type: Image
 
-# public\images\home\News\3.jpg
+# public\images\partners\3.png
 
 This is a binary file of the type: Image
 
-# public\images\home\News\2.jpg
+# public\images\partners\2.png
 
 This is a binary file of the type: Image
 
-# public\images\home\News\1.jpg
+# public\images\partners\1.png
 
 This is a binary file of the type: Image
 
-# public\images\home\Goals\6.jpg
+# public\images\home\statistics.jpg
 
 This is a binary file of the type: Image
 
-# public\images\home\Goals\5.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\common\cards\uni-life.svg
+# public\images\home\faq-icon.svg
 
 This is a file of the type: SVG Image
 
-# public\images\common\cards\news.svg
+# public\images\home\apps.png
+
+This is a binary file of the type: Image
+
+# public\images\common\google-play.png
+
+This is a binary file of the type: Image
+
+# public\images\common\app-store.png
+
+This is a binary file of the type: Image
+
+# public\images\hero\4.png
+
+This is a binary file of the type: Image
+
+# public\images\hero\3.png
+
+This is a binary file of the type: Image
+
+# public\images\hero\2.png
+
+This is a binary file of the type: Image
+
+# public\images\hero\1.png
+
+This is a binary file of the type: Image
+
+# public\images\about\4.svg
 
 This is a file of the type: SVG Image
 
-# public\images\common\cards\academic-classifications.svg
+# public\images\about\3.svg
 
 This is a file of the type: SVG Image
 
-# public\images\common\cards\about.svg
+# public\images\about\2.svg
 
 This is a file of the type: SVG Image
+
+# public\images\about\2.png
+
+This is a binary file of the type: Image
+
+# public\images\about\1.svg
+
+This is a file of the type: SVG Image
+
+# public\images\about\1.png
+
+This is a binary file of the type: Image
 
 # src\app\_components\OurGoals\OurGoalsMobile.tsx
 
@@ -5577,200 +6066,19 @@ import React from "react";
 import { Link, usePathname } from "@/i18n.config";
 import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
-import * as paths from "@/lib/paths";
+import { navItems } from "@/lib/data";
+import HoverMenu from "@/components/HoverMenu";
 
 const NavElements: React.FC = () => {
   const t = useTranslations("Header.navLinks");
-  const aboutT = useTranslations("Header.navLinks.aboutUniversity");
-
-  const navItems = [
-    { title: t("home"), path: paths.HOME_ROUTE },
-    {
-      title: aboutT("aboutUniversity"),
-      path: paths.ABOUT_UNIVERSITY_ROUTE,
-      items: [
-        { title: aboutT("aboutUs"), path: paths.ABOUT_UNIVERSITY_ROUTE },
-        {
-          title: aboutT("universityCouncil"),
-          path: paths.UNIVERSITY_COUNCIL_ROUTE,
-          items: [
-            {
-              title: aboutT("universityPresident"),
-              path: paths.UNIVERSITY_PRESIDENT_ROUTE,
-            },
-            {
-              title: aboutT("assistantPresidentScientific"),
-              path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
-            },
-            {
-              title: aboutT("assistantPresidentAdministrative"),
-              path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
-            },
-            { title: aboutT("collegeDeans"), path: paths.COLLEGE_DEANS_ROUTE },
-          ],
-        },
-        {
-          title: aboutT("presidentSpeech"),
-          path: paths.PRESIDENT_SPEECH_ROUTE,
-        },
-        {
-          title: aboutT("organizationalStructure"),
-          path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
-        },
-        {
-          title: aboutT("infrastructure"),
-          path: paths.INFRASTRUCTURE_ROUTE,
-          items: [
-            { title: aboutT("halls"), path: paths.HALLS_ROUTE },
-            { title: aboutT("laboratories"), path: paths.LABORATORIES_ROUTE },
-            { title: aboutT("greenAreas"), path: paths.GREEN_AREAS_ROUTE },
-          ],
-        },
-        {
-          title: aboutT("universityLife"),
-          path: paths.UNIVERSITY_LIFE_ROUTE,
-          items: [
-            { title: aboutT("photoLibrary"), path: paths.PHOTO_LIBRARY_ROUTE },
-            { title: aboutT("videoLibrary"), path: paths.VIDEO_LIBRARY_ROUTE },
-          ],
-        },
-        {
-          title: aboutT("agreementsPartnerships"),
-          path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
-        },
-        {
-          title: aboutT("transparencyPrinciple"),
-          path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
-        },
-        {
-          title: aboutT("universityStrategy"),
-          path: paths.UNIVERSITY_STRATEGY_ROUTE,
-        },
-      ],
-    },
-    {
-      title: t("colleges"),
-      path: paths.COLLEGES_ROUTE,
-      items: [
-        { title: "College 1", path: paths.COLLEGE_ROUTE("1") },
-        { title: "College 2", path: paths.COLLEGE_ROUTE("2") },
-      ],
-    },
-    {
-      title: t("academicAffairs"),
-      path: paths.ACADEMIC_AFFAIRS_ROUTE,
-      items: [
-        {
-          title: "Scientific Promotions",
-          path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
-        },
-        { title: "Research Plans", path: paths.RESEARCH_PLANS_ROUTE },
-        {
-          title: "Educational Scholarships",
-          path: paths.EDUCATIONAL_SCHOLARSHIPS_ROUTE,
-        },
-        { title: "Academic Calendar", path: paths.ACADEMIC_CALENDAR_ROUTE },
-        {
-          title: "Scientific Conferences",
-          path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
-        },
-        {
-          title: "Scientific Production",
-          path: paths.SCIENTIFIC_PRODUCTION_ROUTE,
-        },
-        { title: "Teaching Methods", path: paths.TEACHING_METHODS_ROUTE },
-        { title: "Central Library", path: paths.CENTRAL_LIBRARY_ROUTE },
-        { title: "Quality Assurance", path: paths.QUALITY_ASSURANCE_ROUTE },
-        { title: "Invention Patents", path: paths.INVENTION_PATENTS_ROUTE },
-        { title: "Scholarships", path: paths.SCHOLARSHIPS_ROUTE },
-        { title: "Google Scholar", path: paths.GOOGLE_SCHOLAR_ROUTE },
-        { title: "Research Gate", path: paths.RESEARCH_GATE_ROUTE },
-        {
-          title: "Scientific Activities",
-          path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
-        },
-      ],
-    },
-    {
-      title: t("studentAffairs"),
-      path: paths.STUDENT_AFFAIRS_ROUTE,
-      items: [
-        {
-          title: "Admission & Registration",
-          path: paths.ADMISSION_REGISTRATION_ROUTE,
-        },
-        {
-          title: "Admission Conditions",
-          path: paths.ADMISSION_CONDITIONS_ROUTE,
-        },
-        {
-          title: "Registration Mechanism",
-          path: paths.REGISTRATION_MECHANISM_ROUTE,
-        },
-        { title: "Academic Programs", path: paths.ACADEMIC_PROGRAMS_ROUTE },
-        { title: "University Exams", path: paths.UNIVERSITY_EXAMS_ROUTE },
-        { title: "Student Housing", path: paths.STUDENT_HOUSING_ROUTE },
-        { title: "Student Activities", path: paths.STUDENT_ACTIVITIES_ROUTE },
-        {
-          title: "Student Instructions",
-          path: paths.STUDENT_INSTRUCTIONS_ROUTE,
-        },
-        { title: "Honor Students", path: paths.HONOR_STUDENTS_ROUTE },
-        { title: "Student Guidance", path: paths.STUDENT_GUIDANCE_ROUTE },
-        { title: "Student Clubs", path: paths.STUDENT_CLUBS_ROUTE },
-      ],
-    },
-    {
-      title: t("serviceCenters"),
-      path: paths.SERVICE_CENTERS_ROUTE,
-      items: [
-        {
-          title: "Continuing Education Center",
-          path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
-        },
-        { title: "Consulting Office", path: paths.CONSULTING_OFFICE_ROUTE },
-        { title: "Cultural Relations", path: paths.CULTURAL_RELATIONS_ROUTE },
-        { title: "Media Center", path: paths.MEDIA_CENTER_ROUTE },
-        {
-          title: "Psychological Counseling",
-          path: paths.PSYCHOLOGICAL_COUNSELING_ROUTE,
-        },
-        { title: "Sports Facilities", path: paths.SPORTS_FACILITIES_ROUTE },
-        { title: "Training Halls", path: paths.TRAINING_HALLS_ROUTE },
-        { title: "Dental Clinics", path: paths.DENTAL_CLINICS_ROUTE },
-        { title: "Pharmacy", path: paths.PHARMACY_ROUTE },
-      ],
-    },
-    {
-      title: t("eServices"),
-      path: paths.E_SERVICES_ROUTE,
-      items: [
-        { title: "Student Portal", path: paths.STUDENT_PORTAL_ROUTE },
-        { title: "Faculty Portal", path: paths.FACULTY_PORTAL_ROUTE },
-        { title: "Alumni Portal", path: paths.ALUMNI_PORTAL_ROUTE },
-        { title: "University Email", path: paths.UNIVERSITY_EMAIL_ROUTE },
-        { title: "Digital Library", path: paths.DIGITAL_LIBRARY_ROUTE },
-        { title: "Graduates Portal", path: paths.GRADUATES_PORTAL_ROUTE },
-        { title: "Transcript Request", path: paths.TRANSCRIPT_REQUEST_ROUTE },
-        {
-          title: "Graduation Document Request",
-          path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
-        },
-        {
-          title: "Academic Performance Report",
-          path: paths.ACADEMIC_PERFORMANCE_REPORT_ROUTE,
-        },
-        { title: "Electronic Payment", path: paths.ELECTRONIC_PAYMENT_ROUTE },
-      ],
-    },
-  ];
+  const items = navItems(t);
 
   return (
     <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
-      {navItems.map((item, index) => (
+      {items.map((item, index) => (
         <React.Fragment key={item.path}>
           <NavItem title={item.title} path={item.path} items={item.items} />
-          {index !== navItems.length - 1 && (
+          {index !== items.length - 1 && (
             <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
           )}
         </React.Fragment>
@@ -5779,19 +6087,11 @@ const NavElements: React.FC = () => {
   );
 };
 
-const NavItem = ({
-  title,
-  path,
-  items,
-}: {
+const NavItem: React.FC<{
   title: string;
   path: string;
-  items?: {
-    title: string;
-    path: string;
-    items?: { title: string; path: string }[];
-  }[];
-}) => {
+  items?: { title: string; path: string; items?: any[] }[];
+}> = ({ title, path, items }) => {
   const pathname = usePathname();
 
   return (
@@ -5806,58 +6106,7 @@ const NavItem = ({
       >
         {title}
       </Link>
-      {items && (
-        <div className="absolute hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg group-hover:block group-hover:animate-appear">
-          <div
-            className="py-2"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="options-menu"
-          >
-            {items.map((item, index) => (
-              <NavSubItem key={index} item={item} />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const NavSubItem = ({
-  item,
-}: {
-  item: {
-    title: string;
-    path: string;
-    items?: { title: string; path: string }[];
-  };
-}) => {
-  return (
-    <div className="group/sub relative">
-      <Link
-        href={item.path}
-        className="block px-6 py-3 text-sm text-white hover:bg-black/30"
-        role="menuitem"
-      >
-        {item.title}
-      </Link>
-      {item.items && (
-        <div className="absolute start-full top-0 hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg group-hover/sub:block group-hover/sub:animate-appear">
-          <div className="py-2" role="menu" aria-orientation="vertical">
-            {item.items.map((subItem, subIndex) => (
-              <Link
-                key={subIndex}
-                href={subItem.path}
-                className="block px-6 py-3 text-sm text-white hover:bg-black/30"
-                role="menuitem"
-              >
-                {subItem.title}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
+      {items && <HoverMenu items={items} />}
     </div>
   );
 };
@@ -6700,6 +6949,58 @@ const Pagination: React.FC<PaginationProps> = ({
 };
 
 ```
+
+# public\images\home\News\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\1.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\6.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\5.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\common\cards\uni-life.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\news.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\academic-classifications.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\about.svg
+
+This is a file of the type: SVG Image
 
 # src\app\[locale]\news\_components\MainSubjects.tsx
 
