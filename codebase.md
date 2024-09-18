@@ -398,7 +398,27 @@ export const { Link, usePathname, useRouter } =
     },
     "navLinks": {
       "home": "الرئيسية",
-      "aboutUniversity": "حول الجامعة",
+      "aboutUniversity": {
+        "aboutUniversity": "About University",
+        "aboutUs": "About Us",
+        "universityCouncil": "University Council",
+        "universityPresident": "University President",
+        "assistantPresidentScientific": "Assistant President for Scientific Affairs",
+        "assistantPresidentAdministrative": "Assistant President for Administrative Affairs",
+        "collegeDeans": "College Deans",
+        "presidentSpeech": "President's Speech",
+        "organizationalStructure": "Organizational Structure",
+        "infrastructure": "Infrastructure",
+        "halls": "Halls",
+        "laboratories": "Laboratories",
+        "greenAreas": "Green Areas",
+        "universityLife": "University Life",
+        "photoLibrary": "Photo Library",
+        "videoLibrary": "Video Library",
+        "agreementsPartnerships": "Agreements and Partnerships",
+        "transparencyPrinciple": "Transparency Principle",
+        "universityStrategy": "Gilgamesh University Strategy"
+      },
       "colleges": "الكليات",
       "academicAffairs": "الشؤون العلمية",
       "studentAffairs": "الشؤون الطلابية",
@@ -933,7 +953,27 @@ export const { Link, usePathname, useRouter } =
 
     "navLinks": {
       "home": "الرئيسية",
-      "aboutUniversity": "حول الجامعة",
+      "aboutUniversity": {
+        "aboutUniversity": "حول الجامعة",
+        "aboutUs": "عن الجامعة",
+        "universityCouncil": "مجلس الجامعة",
+        "universityPresident": "رئيس الجامعة",
+        "assistantPresidentScientific": "مساعد رئيس الجامعة للشؤون العلمية",
+        "assistantPresidentAdministrative": "مساعد رئيس الجامعة للشؤون الإدارية",
+        "collegeDeans": "عمداء الكليات",
+        "presidentSpeech": "كلمة رئيس الجامعة",
+        "organizationalStructure": "الهيكل التنظيمي",
+        "infrastructure": "البنى التحتية",
+        "halls": "القاعات",
+        "laboratories": "المختبرات",
+        "greenAreas": "المساحات الخضراء",
+        "universityLife": "الحياة الجامعية",
+        "photoLibrary": "المكتبة الصورية",
+        "videoLibrary": "المكتبة الفيديوية",
+        "agreementsPartnerships": "الاتفاقيات والشراكات",
+        "transparencyPrinciple": "مبدأ الشفافية",
+        "universityStrategy": "استراتيجية جامعة كلكامش"
+      },
       "colleges": "الكليات",
       "academicAffairs": "الشؤون العلمية",
       "studentAffairs": "الشؤون الطلابية",
@@ -1436,6 +1476,79 @@ export const { Link, usePathname, useRouter } =
 }
 ```
 
+# public\js\scrollbarWidth.js
+
+```js
+(function () {
+  function updateScrollbarWidth() {
+    requestAnimationFrame(function () {
+      document.documentElement.style.setProperty(
+        "--screen-width",
+        window.document.documentElement.clientWidth + "px"
+      );
+    });
+  }
+
+  if (typeof window !== "undefined") {
+    updateScrollbarWidth();
+    window.addEventListener("resize", updateScrollbarWidth);
+  }
+})();
+
+```
+
+# public\images\map-marker.svg
+
+This is a file of the type: SVG Image
+
+# public\images\logo.png
+
+This is a binary file of the type: Image
+
+# public\images\hero-bg.jpg
+
+This is a binary file of the type: Image
+
+# public\images\college-logo.png
+
+This is a binary file of the type: Image
+
+# public\fonts\NeurialGrotesk-Regular.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Medium.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Light.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Extrabold.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\NeurialGrotesk-Bold.otf
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-MEDIUM.TTF
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-LIGHT.TTF
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-BOOK.TTF
+
+This is a binary file of the type: Binary
+
+# public\fonts\EXPOSANSARABIC-BOLD.TTF
+
+This is a binary file of the type: Binary
+
 # src\lib\utils.ts
 
 ```ts
@@ -1633,6 +1746,25 @@ export const RELATED_LOCATIONS_ROUTE = "/related-locations";
 export const COLLEGE_ROUTE = (id: string) => `${COLLEGES_ROUTE}/${id}`;
 export const DEPARTMENT_ROUTE = (collegeId: string, departmentId: string) =>
   `${COLLEGES_ROUTE}/${collegeId}/departments/${departmentId}`;
+
+// About University routes
+export const UNIVERSITY_COUNCIL_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-council`;
+export const UNIVERSITY_PRESIDENT_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/university-president`;
+export const ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/assistant-president-scientific-affairs`;
+export const ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/assistant-president-administrative-affairs`;
+export const COLLEGE_DEANS_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/college-deans`;
+export const PRESIDENT_SPEECH_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/president-speech`;
+export const ORGANIZATIONAL_STRUCTURE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/organizational-structure`;
+export const INFRASTRUCTURE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/infrastructure`;
+export const HALLS_ROUTE = `${INFRASTRUCTURE_ROUTE}/halls`;
+export const LABORATORIES_ROUTE = `${INFRASTRUCTURE_ROUTE}/laboratories`;
+export const GREEN_AREAS_ROUTE = `${INFRASTRUCTURE_ROUTE}/green-areas`;
+export const UNIVERSITY_LIFE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-life`;
+export const PHOTO_LIBRARY_ROUTE = `${UNIVERSITY_LIFE_ROUTE}/photo-library`;
+export const VIDEO_LIBRARY_ROUTE = `${UNIVERSITY_LIFE_ROUTE}/video-library`;
+export const AGREEMENTS_PARTNERSHIPS_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/agreements-partnerships`;
+export const TRANSPARENCY_PRINCIPLE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/transparency-principle`;
+export const UNIVERSITY_STRATEGY_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-strategy`;
 
 // Academic Affairs
 export const SCIENTIFIC_PROMOTIONS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-promotions`;
@@ -2445,78 +2577,81 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
 
 This is a binary file of the type: Binary
 
-# public\js\scrollbarWidth.js
+# public\images\partners\4.png
 
-```js
-(function () {
-  function updateScrollbarWidth() {
-    requestAnimationFrame(function () {
-      document.documentElement.style.setProperty(
-        "--screen-width",
-        window.document.documentElement.clientWidth + "px"
-      );
-    });
-  }
+This is a binary file of the type: Image
 
-  if (typeof window !== "undefined") {
-    updateScrollbarWidth();
-    window.addEventListener("resize", updateScrollbarWidth);
-  }
-})();
+# public\images\partners\3.png
 
-```
+This is a binary file of the type: Image
 
-# public\images\map-marker.svg
+# public\images\partners\2.png
+
+This is a binary file of the type: Image
+
+# public\images\partners\1.png
+
+This is a binary file of the type: Image
+
+# public\images\home\statistics.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\faq-icon.svg
 
 This is a file of the type: SVG Image
 
-# public\images\logo.png
+# public\images\home\apps.png
 
 This is a binary file of the type: Image
 
-# public\images\hero-bg.jpg
+# public\images\hero\4.png
 
 This is a binary file of the type: Image
 
-# public\images\college-logo.png
+# public\images\hero\3.png
 
 This is a binary file of the type: Image
 
-# public\fonts\NeurialGrotesk-Regular.otf
+# public\images\hero\2.png
 
-This is a binary file of the type: Binary
+This is a binary file of the type: Image
 
-# public\fonts\NeurialGrotesk-Medium.otf
+# public\images\hero\1.png
 
-This is a binary file of the type: Binary
+This is a binary file of the type: Image
 
-# public\fonts\NeurialGrotesk-Light.otf
+# public\images\common\google-play.png
 
-This is a binary file of the type: Binary
+This is a binary file of the type: Image
 
-# public\fonts\NeurialGrotesk-Extrabold.otf
+# public\images\common\app-store.png
 
-This is a binary file of the type: Binary
+This is a binary file of the type: Image
 
-# public\fonts\NeurialGrotesk-Bold.otf
+# public\images\about\4.svg
 
-This is a binary file of the type: Binary
+This is a file of the type: SVG Image
 
-# public\fonts\EXPOSANSARABIC-MEDIUM.TTF
+# public\images\about\3.svg
 
-This is a binary file of the type: Binary
+This is a file of the type: SVG Image
 
-# public\fonts\EXPOSANSARABIC-LIGHT.TTF
+# public\images\about\2.svg
 
-This is a binary file of the type: Binary
+This is a file of the type: SVG Image
 
-# public\fonts\EXPOSANSARABIC-BOOK.TTF
+# public\images\about\2.png
 
-This is a binary file of the type: Binary
+This is a binary file of the type: Image
 
-# public\fonts\EXPOSANSARABIC-BOLD.TTF
+# public\images\about\1.svg
 
-This is a binary file of the type: Binary
+This is a file of the type: SVG Image
+
+# public\images\about\1.png
+
+This is a binary file of the type: Image
 
 # src\lib\zustand\common.ts
 
@@ -3653,294 +3788,6 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
 
 ```
 
-# src\components\LastSections\MapSection.tsx
-
-```tsx
-"use client";
-
-import MapLinkButton from "@/components/MapLinkButton";
-import dynamic from "next/dynamic";
-
-const LocationMap = dynamic(() => import("@/components/LocationMap"), {
-  loading: () => <p>Loading...</p>,
-  ssr: false,
-});
-
-export default function MapSection() {
-  return (
-    <div className="relative h-[330px] sm:h-[653px] w-full overflow-hidden mt-[82px] sm:mt-0">
-      {/* <LocationMap latitude={33.222307} longitude={44.3888341}></LocationMap> */}
-      <iframe
-        className="gmapelement w-full h-full"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.686773749098!2d44.39140365950111!3d33.222306973591124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1559d51e5f965023%3A0x269c2efce4992572!2z2KzYp9mF2LnYqSDZg9mE2YPYp9mF2LQg2KfZhNin2YfZhNmK2Kk!5e0!3m2!1sar!2siq!4v1717235472677!5m2!1sar!2siq"
-        allowFullScreen={true}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-      {/* <div className="absolute start-[16px] top-[16px] z-[10000]">
-        <MapLinkButton
-          latitude={33.222307}
-          longitude={44.3888341}
-        ></MapLinkButton>
-      </div> */}
-    </div>
-  );
-}
-
-```
-
-# src\components\LastSections\LastSections.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import EServicesSection from "./EServicesSection";
-import ContactSection from "./ContactSection";
-import MapSection from "./MapSection";
-
-export default function LastSections() {
-  return (
-    <>
-      <EServicesSection></EServicesSection>
-      <ContactSection></ContactSection>
-      <MapSection></MapSection>
-    </>
-  );
-}
-
-```
-
-# src\components\LastSections\EServicesSection.tsx
-
-```tsx
-"use client";
-
-import { useRef } from "react";
-import ScrollableContainerUpperSection from "../ScrollableContainer/UpperSection";
-import { ScrollableCardsContainer } from "../ScrollableContainer/ScrollableContainer";
-import ScrollElement from "../ScrollElement";
-import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import Wrapper from "../Wrapper";
-import Section from "../Section";
-
-export default function EServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const services = [
-    {
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-      title: "بوابة الطالب",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/news.svg",
-      title: "بوابة التدريسين",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/about.svg",
-      title: "بوابة الخريجين",
-      href: "/",
-    },
-  ];
-
-  return (
-    <div className="mt-[60px] sm:mt-[150px]">
-      <Section>
-        <Wrapper>
-          <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-            <ScrollableContainerUpperSection
-              arrowButtonsClass="sm:hidden"
-              containerRef={containerRef}
-              title2="جامعة كلكامش"
-              title="الخدمات الالكترونية"
-              className="sm:items-center sm:w-fit"
-            />
-          </div>
-        </Wrapper>
-      </Section>
-      <Section className="max-w-none">
-        <Wrapper className="max-w-none mx-0 sm:mx-[16px]">
-          <ScrollableCardsContainer
-            ref={containerRef}
-            className="grid grid-cols-[repeat(3,auto)] sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px] sm:w-full "
-          >
-            {services.map((service, index) => (
-              <ScrollElement
-                className="flex justify-center sm:w-auto"
-                key={index}
-              >
-                <CommonCard
-                  el={service}
-                  index={index}
-                  uniqueFirstCard={false}
-                />
-              </ScrollElement>
-            ))}
-          </ScrollableCardsContainer>
-        </Wrapper>
-      </Section>
-    </div>
-  );
-}
-
-```
-
-# src\components\LastSections\ContactSection.tsx
-
-```tsx
-import Image from "next/image";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
-
-export default function ContactSection() {
-  return (
-    <section className="flex flex-col sm:flex-row w-full mt-[100px] sm:mt-[150px] 1920:mt-[180px]">
-      <ContactInfoSection />
-      <ContactFormSection />
-    </section>
-  );
-}
-
-function ContactInfoSection() {
-  return (
-    <div className="w-full sm:w-1/2 bg-white py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[50px] 1920:text-[70px] font-medium text-primary mb-[30px] sm:mb-[122px] 1920:mb-[162px] text-right leading-[1.22em]">
-        نحب ان نسمع منك
-      </h2>
-      <div className="space-y-[40px] sm:space-y-[53px] 1920:space-y-[60px] mb-[40px] sm:mb-[53px] 1920:mb-[60px]">
-        <ContactInfo title="البريد الالكتروني" value="info@gau.edu.iq" />
-        <ContactInfo title="رقم الهاتف" value="07832000090 - 07732000090" />
-        <ContactInfo
-          title="عنوان الجامعة"
-          value="العراق / بغداد / الدورة / حي الصحة / قرب جامع ياسين"
-        />
-      </div>
-      <div>
-        <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 mb-[40px] sm:mb-[25px] 1920:mb-[38px] text-right leading-[1.33em]">
-          تحميل تطبيق الجامعة
-        </p>
-        <div className="flex justify-start gap-[14px]">
-          <Image
-            src="/images/common/app-store.png"
-            alt="Download on the App Store"
-            width={135}
-            height={40}
-          />
-          <Image
-            src="/images/common/google-play.png"
-            alt="Get it on Google Play"
-            width={135}
-            height={40}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ContactFormSection() {
-  const t = useTranslations("Common.Contact.form");
-
-  const inputFields = [
-    {
-      name: "fullName",
-      label: t("name"),
-      type: "text",
-      placeholder: t("writeHere"),
-      fullWidth: true,
-    },
-    {
-      name: "email",
-      label: t("email"),
-      type: "email",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "phone",
-      label: t("phoneNumber"),
-      type: "tel",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "institution",
-      label: t("institution"),
-      type: "text",
-      placeholder: t("writeHere"),
-      fullWidth: true,
-    },
-    {
-      name: "message",
-      label: t("message"),
-      type: "textarea",
-      placeholder: t("writeYourMessage"),
-      fullWidth: true,
-    },
-  ];
-
-  return (
-    <div className="w-full sm:w-1/2 bg-[#F0F1EC] py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[28px] 1920:text-[38px] font-medium text-primary leading-[1.35em] mb-[20px] sm:mb-[54px] 1920:mb-[71px] text-right">
-        {t("title")}
-      </h2>
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-y-[28px] sm:gap-y-[30px] sm:gap-x-[21px] 1920:gap-y-[39px] 1920:gap-x-[28px]">
-        {inputFields.map((field) => (
-          <div
-            key={field.name}
-            className={`flex flex-col gap-[18px] sm:gap-[10px] 1920:gap-[18px] ${
-              field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
-            }`}
-          >
-            <label
-              htmlFor={field.name}
-              className="text-[16px] sm:text-[18px] 1920:text-[21px] font-medium text-primary leading-[1.35em] text-right"
-            >
-              {field.label}
-            </label>
-            {field.type === "textarea" ? (
-              <Textarea
-                id={field.name}
-                name={field.name}
-                rows={4}
-                placeholder={field.placeholder}
-              />
-            ) : (
-              <Input
-                type={field.type}
-                id={field.name}
-                name={field.name}
-                placeholder={field.placeholder}
-              />
-            )}
-          </div>
-        ))}
-        <div className="sm:col-span-full flex justify-end">
-          <Button type="submit">{t("send")}</Button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function ContactInfo({ title, value }: { title: string; value: string }) {
-  return (
-    <div className="text-right ">
-      <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 leading-[1.33em]">
-        {title}
-      </p>
-      <p className="text-[18px] sm:text-[18px] 1920:text-[32px] text-primary leading-[1.33em]">
-        {value}
-      </p>
-    </div>
-  );
-}
-
-```
-
 # src\components\ScrollableContainer\UpperSection.tsx
 
 ```tsx
@@ -4278,6 +4125,294 @@ export default function FirstSection() {
 ```tsx
 export default function CenterizedTitle() {
   return <div>SliderBg</div>;
+}
+
+```
+
+# src\components\LastSections\MapSection.tsx
+
+```tsx
+"use client";
+
+import MapLinkButton from "@/components/MapLinkButton";
+import dynamic from "next/dynamic";
+
+const LocationMap = dynamic(() => import("@/components/LocationMap"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
+
+export default function MapSection() {
+  return (
+    <div className="relative h-[330px] sm:h-[653px] w-full overflow-hidden mt-[82px] sm:mt-0">
+      {/* <LocationMap latitude={33.222307} longitude={44.3888341}></LocationMap> */}
+      <iframe
+        className="gmapelement w-full h-full"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.686773749098!2d44.39140365950111!3d33.222306973591124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1559d51e5f965023%3A0x269c2efce4992572!2z2KzYp9mF2LnYqSDZg9mE2YPYp9mF2LQg2KfZhNin2YfZhNmK2Kk!5e0!3m2!1sar!2siq!4v1717235472677!5m2!1sar!2siq"
+        allowFullScreen={true}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+      {/* <div className="absolute start-[16px] top-[16px] z-[10000]">
+        <MapLinkButton
+          latitude={33.222307}
+          longitude={44.3888341}
+        ></MapLinkButton>
+      </div> */}
+    </div>
+  );
+}
+
+```
+
+# src\components\LastSections\LastSections.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import EServicesSection from "./EServicesSection";
+import ContactSection from "./ContactSection";
+import MapSection from "./MapSection";
+
+export default function LastSections() {
+  return (
+    <>
+      <EServicesSection></EServicesSection>
+      <ContactSection></ContactSection>
+      <MapSection></MapSection>
+    </>
+  );
+}
+
+```
+
+# src\components\LastSections\EServicesSection.tsx
+
+```tsx
+"use client";
+
+import { useRef } from "react";
+import ScrollableContainerUpperSection from "../ScrollableContainer/UpperSection";
+import { ScrollableCardsContainer } from "../ScrollableContainer/ScrollableContainer";
+import ScrollElement from "../ScrollElement";
+import CommonCard from "@/app/_components/CardsSection/CommonCard";
+import Wrapper from "../Wrapper";
+import Section from "../Section";
+
+export default function EServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const services = [
+    {
+      imgUrl: "/images/common/cards/academic-classifications.svg",
+      title: "بوابة الطالب",
+      href: "/",
+    },
+    {
+      imgUrl: "/images/common/cards/news.svg",
+      title: "بوابة التدريسين",
+      href: "/",
+    },
+    {
+      imgUrl: "/images/common/cards/about.svg",
+      title: "بوابة الخريجين",
+      href: "/",
+    },
+  ];
+
+  return (
+    <div className="mt-[60px] sm:mt-[150px]">
+      <Section>
+        <Wrapper>
+          <div className="flex flex-col sm:flex-row justify-between sm:items-center">
+            <ScrollableContainerUpperSection
+              arrowButtonsClass="sm:hidden"
+              containerRef={containerRef}
+              title2="جامعة كلكامش"
+              title="الخدمات الالكترونية"
+              className="sm:items-center sm:w-fit"
+            />
+          </div>
+        </Wrapper>
+      </Section>
+      <Section className="max-w-none">
+        <Wrapper className="max-w-none mx-0 sm:mx-[16px]">
+          <ScrollableCardsContainer
+            ref={containerRef}
+            className="grid grid-cols-[repeat(3,auto)] sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px] sm:w-full "
+          >
+            {services.map((service, index) => (
+              <ScrollElement
+                className="flex justify-center sm:w-auto"
+                key={index}
+              >
+                <CommonCard
+                  el={service}
+                  index={index}
+                  uniqueFirstCard={false}
+                />
+              </ScrollElement>
+            ))}
+          </ScrollableCardsContainer>
+        </Wrapper>
+      </Section>
+    </div>
+  );
+}
+
+```
+
+# src\components\LastSections\ContactSection.tsx
+
+```tsx
+import Image from "next/image";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { Button } from "../ui/button";
+import { useTranslations } from "next-intl";
+
+export default function ContactSection() {
+  return (
+    <section className="flex flex-col sm:flex-row w-full mt-[100px] sm:mt-[150px] 1920:mt-[180px]">
+      <ContactInfoSection />
+      <ContactFormSection />
+    </section>
+  );
+}
+
+function ContactInfoSection() {
+  return (
+    <div className="w-full sm:w-1/2 bg-white py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
+      <h2 className="text-[28px] sm:text-[50px] 1920:text-[70px] font-medium text-primary mb-[30px] sm:mb-[122px] 1920:mb-[162px] text-right leading-[1.22em]">
+        نحب ان نسمع منك
+      </h2>
+      <div className="space-y-[40px] sm:space-y-[53px] 1920:space-y-[60px] mb-[40px] sm:mb-[53px] 1920:mb-[60px]">
+        <ContactInfo title="البريد الالكتروني" value="info@gau.edu.iq" />
+        <ContactInfo title="رقم الهاتف" value="07832000090 - 07732000090" />
+        <ContactInfo
+          title="عنوان الجامعة"
+          value="العراق / بغداد / الدورة / حي الصحة / قرب جامع ياسين"
+        />
+      </div>
+      <div>
+        <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 mb-[40px] sm:mb-[25px] 1920:mb-[38px] text-right leading-[1.33em]">
+          تحميل تطبيق الجامعة
+        </p>
+        <div className="flex justify-start gap-[14px]">
+          <Image
+            src="/images/common/app-store.png"
+            alt="Download on the App Store"
+            width={135}
+            height={40}
+          />
+          <Image
+            src="/images/common/google-play.png"
+            alt="Get it on Google Play"
+            width={135}
+            height={40}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ContactFormSection() {
+  const t = useTranslations("Common.Contact.form");
+
+  const inputFields = [
+    {
+      name: "fullName",
+      label: t("name"),
+      type: "text",
+      placeholder: t("writeHere"),
+      fullWidth: true,
+    },
+    {
+      name: "email",
+      label: t("email"),
+      type: "email",
+      placeholder: t("writeHere"),
+      fullWidth: false,
+    },
+    {
+      name: "phone",
+      label: t("phoneNumber"),
+      type: "tel",
+      placeholder: t("writeHere"),
+      fullWidth: false,
+    },
+    {
+      name: "institution",
+      label: t("institution"),
+      type: "text",
+      placeholder: t("writeHere"),
+      fullWidth: true,
+    },
+    {
+      name: "message",
+      label: t("message"),
+      type: "textarea",
+      placeholder: t("writeYourMessage"),
+      fullWidth: true,
+    },
+  ];
+
+  return (
+    <div className="w-full sm:w-1/2 bg-[#F0F1EC] py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
+      <h2 className="text-[28px] sm:text-[28px] 1920:text-[38px] font-medium text-primary leading-[1.35em] mb-[20px] sm:mb-[54px] 1920:mb-[71px] text-right">
+        {t("title")}
+      </h2>
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-y-[28px] sm:gap-y-[30px] sm:gap-x-[21px] 1920:gap-y-[39px] 1920:gap-x-[28px]">
+        {inputFields.map((field) => (
+          <div
+            key={field.name}
+            className={`flex flex-col gap-[18px] sm:gap-[10px] 1920:gap-[18px] ${
+              field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
+            }`}
+          >
+            <label
+              htmlFor={field.name}
+              className="text-[16px] sm:text-[18px] 1920:text-[21px] font-medium text-primary leading-[1.35em] text-right"
+            >
+              {field.label}
+            </label>
+            {field.type === "textarea" ? (
+              <Textarea
+                id={field.name}
+                name={field.name}
+                rows={4}
+                placeholder={field.placeholder}
+              />
+            ) : (
+              <Input
+                type={field.type}
+                id={field.name}
+                name={field.name}
+                placeholder={field.placeholder}
+              />
+            )}
+          </div>
+        ))}
+        <div className="sm:col-span-full flex justify-end">
+          <Button type="submit">{t("send")}</Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function ContactInfo({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="text-right ">
+      <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 leading-[1.33em]">
+        {title}
+      </p>
+      <p className="text-[18px] sm:text-[18px] 1920:text-[32px] text-primary leading-[1.33em]">
+        {value}
+      </p>
+    </div>
+  );
 }
 
 ```
@@ -4905,81 +5040,57 @@ export default function RootLayout({
 
 ```
 
-# public\images\partners\4.png
+# public\images\home\News\4.jpg
 
 This is a binary file of the type: Image
 
-# public\images\partners\3.png
+# public\images\home\News\3.jpg
 
 This is a binary file of the type: Image
 
-# public\images\partners\2.png
+# public\images\home\News\2.jpg
 
 This is a binary file of the type: Image
 
-# public\images\partners\1.png
+# public\images\home\News\1.jpg
 
 This is a binary file of the type: Image
 
-# public\images\home\statistics.jpg
+# public\images\home\Goals\6.jpg
 
 This is a binary file of the type: Image
 
-# public\images\home\faq-icon.svg
+# public\images\home\Goals\5.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\common\cards\uni-life.svg
 
 This is a file of the type: SVG Image
 
-# public\images\home\apps.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\4.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\3.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\2.png
-
-This is a binary file of the type: Image
-
-# public\images\hero\1.png
-
-This is a binary file of the type: Image
-
-# public\images\common\google-play.png
-
-This is a binary file of the type: Image
-
-# public\images\common\app-store.png
-
-This is a binary file of the type: Image
-
-# public\images\about\4.svg
+# public\images\common\cards\news.svg
 
 This is a file of the type: SVG Image
 
-# public\images\about\3.svg
+# public\images\common\cards\academic-classifications.svg
 
 This is a file of the type: SVG Image
 
-# public\images\about\2.svg
+# public\images\common\cards\about.svg
 
 This is a file of the type: SVG Image
-
-# public\images\about\2.png
-
-This is a binary file of the type: Image
-
-# public\images\about\1.svg
-
-This is a file of the type: SVG Image
-
-# public\images\about\1.png
-
-This is a binary file of the type: Image
 
 # src\app\_components\OurGoals\OurGoalsMobile.tsx
 
@@ -5462,9 +5573,7 @@ export default NewsSection;
 # src\app\_components\News\NavElements.tsx
 
 ```tsx
-"use client";
-
-import React, { CSSProperties, useState } from "react";
+import React from "react";
 import { Link, usePathname } from "@/i18n.config";
 import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
@@ -5472,10 +5581,73 @@ import * as paths from "@/lib/paths";
 
 const NavElements: React.FC = () => {
   const t = useTranslations("Header.navLinks");
+  const aboutT = useTranslations("Header.navLinks.aboutUniversity");
 
   const navItems = [
     { title: t("home"), path: paths.HOME_ROUTE },
-    { title: t("aboutUniversity"), path: paths.ABOUT_UNIVERSITY_ROUTE },
+    {
+      title: aboutT("aboutUniversity"),
+      path: paths.ABOUT_UNIVERSITY_ROUTE,
+      items: [
+        { title: aboutT("aboutUs"), path: paths.ABOUT_UNIVERSITY_ROUTE },
+        {
+          title: aboutT("universityCouncil"),
+          path: paths.UNIVERSITY_COUNCIL_ROUTE,
+          items: [
+            {
+              title: aboutT("universityPresident"),
+              path: paths.UNIVERSITY_PRESIDENT_ROUTE,
+            },
+            {
+              title: aboutT("assistantPresidentScientific"),
+              path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
+            },
+            {
+              title: aboutT("assistantPresidentAdministrative"),
+              path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
+            },
+            { title: aboutT("collegeDeans"), path: paths.COLLEGE_DEANS_ROUTE },
+          ],
+        },
+        {
+          title: aboutT("presidentSpeech"),
+          path: paths.PRESIDENT_SPEECH_ROUTE,
+        },
+        {
+          title: aboutT("organizationalStructure"),
+          path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
+        },
+        {
+          title: aboutT("infrastructure"),
+          path: paths.INFRASTRUCTURE_ROUTE,
+          items: [
+            { title: aboutT("halls"), path: paths.HALLS_ROUTE },
+            { title: aboutT("laboratories"), path: paths.LABORATORIES_ROUTE },
+            { title: aboutT("greenAreas"), path: paths.GREEN_AREAS_ROUTE },
+          ],
+        },
+        {
+          title: aboutT("universityLife"),
+          path: paths.UNIVERSITY_LIFE_ROUTE,
+          items: [
+            { title: aboutT("photoLibrary"), path: paths.PHOTO_LIBRARY_ROUTE },
+            { title: aboutT("videoLibrary"), path: paths.VIDEO_LIBRARY_ROUTE },
+          ],
+        },
+        {
+          title: aboutT("agreementsPartnerships"),
+          path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
+        },
+        {
+          title: aboutT("transparencyPrinciple"),
+          path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
+        },
+        {
+          title: aboutT("universityStrategy"),
+          path: paths.UNIVERSITY_STRATEGY_ROUTE,
+        },
+      ],
+    },
     {
       title: t("colleges"),
       path: paths.COLLEGES_ROUTE,
@@ -5493,6 +5665,30 @@ const NavElements: React.FC = () => {
           path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
         },
         { title: "Research Plans", path: paths.RESEARCH_PLANS_ROUTE },
+        {
+          title: "Educational Scholarships",
+          path: paths.EDUCATIONAL_SCHOLARSHIPS_ROUTE,
+        },
+        { title: "Academic Calendar", path: paths.ACADEMIC_CALENDAR_ROUTE },
+        {
+          title: "Scientific Conferences",
+          path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
+        },
+        {
+          title: "Scientific Production",
+          path: paths.SCIENTIFIC_PRODUCTION_ROUTE,
+        },
+        { title: "Teaching Methods", path: paths.TEACHING_METHODS_ROUTE },
+        { title: "Central Library", path: paths.CENTRAL_LIBRARY_ROUTE },
+        { title: "Quality Assurance", path: paths.QUALITY_ASSURANCE_ROUTE },
+        { title: "Invention Patents", path: paths.INVENTION_PATENTS_ROUTE },
+        { title: "Scholarships", path: paths.SCHOLARSHIPS_ROUTE },
+        { title: "Google Scholar", path: paths.GOOGLE_SCHOLAR_ROUTE },
+        { title: "Research Gate", path: paths.RESEARCH_GATE_ROUTE },
+        {
+          title: "Scientific Activities",
+          path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
+        },
       ],
     },
     {
@@ -5503,7 +5699,25 @@ const NavElements: React.FC = () => {
           title: "Admission & Registration",
           path: paths.ADMISSION_REGISTRATION_ROUTE,
         },
+        {
+          title: "Admission Conditions",
+          path: paths.ADMISSION_CONDITIONS_ROUTE,
+        },
+        {
+          title: "Registration Mechanism",
+          path: paths.REGISTRATION_MECHANISM_ROUTE,
+        },
         { title: "Academic Programs", path: paths.ACADEMIC_PROGRAMS_ROUTE },
+        { title: "University Exams", path: paths.UNIVERSITY_EXAMS_ROUTE },
+        { title: "Student Housing", path: paths.STUDENT_HOUSING_ROUTE },
+        { title: "Student Activities", path: paths.STUDENT_ACTIVITIES_ROUTE },
+        {
+          title: "Student Instructions",
+          path: paths.STUDENT_INSTRUCTIONS_ROUTE,
+        },
+        { title: "Honor Students", path: paths.HONOR_STUDENTS_ROUTE },
+        { title: "Student Guidance", path: paths.STUDENT_GUIDANCE_ROUTE },
+        { title: "Student Clubs", path: paths.STUDENT_CLUBS_ROUTE },
       ],
     },
     {
@@ -5511,10 +5725,20 @@ const NavElements: React.FC = () => {
       path: paths.SERVICE_CENTERS_ROUTE,
       items: [
         {
-          title: "Continuing Education",
+          title: "Continuing Education Center",
           path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
         },
         { title: "Consulting Office", path: paths.CONSULTING_OFFICE_ROUTE },
+        { title: "Cultural Relations", path: paths.CULTURAL_RELATIONS_ROUTE },
+        { title: "Media Center", path: paths.MEDIA_CENTER_ROUTE },
+        {
+          title: "Psychological Counseling",
+          path: paths.PSYCHOLOGICAL_COUNSELING_ROUTE,
+        },
+        { title: "Sports Facilities", path: paths.SPORTS_FACILITIES_ROUTE },
+        { title: "Training Halls", path: paths.TRAINING_HALLS_ROUTE },
+        { title: "Dental Clinics", path: paths.DENTAL_CLINICS_ROUTE },
+        { title: "Pharmacy", path: paths.PHARMACY_ROUTE },
       ],
     },
     {
@@ -5523,6 +5747,20 @@ const NavElements: React.FC = () => {
       items: [
         { title: "Student Portal", path: paths.STUDENT_PORTAL_ROUTE },
         { title: "Faculty Portal", path: paths.FACULTY_PORTAL_ROUTE },
+        { title: "Alumni Portal", path: paths.ALUMNI_PORTAL_ROUTE },
+        { title: "University Email", path: paths.UNIVERSITY_EMAIL_ROUTE },
+        { title: "Digital Library", path: paths.DIGITAL_LIBRARY_ROUTE },
+        { title: "Graduates Portal", path: paths.GRADUATES_PORTAL_ROUTE },
+        { title: "Transcript Request", path: paths.TRANSCRIPT_REQUEST_ROUTE },
+        {
+          title: "Graduation Document Request",
+          path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
+        },
+        {
+          title: "Academic Performance Report",
+          path: paths.ACADEMIC_PERFORMANCE_REPORT_ROUTE,
+        },
+        { title: "Electronic Payment", path: paths.ELECTRONIC_PAYMENT_ROUTE },
       ],
     },
   ];
@@ -5548,26 +5786,22 @@ const NavItem = ({
 }: {
   title: string;
   path: string;
-  items?: { title: string; path: string }[];
+  items?: {
+    title: string;
+    path: string;
+    items?: { title: string; path: string }[];
+  }[];
 }) => {
   const pathname = usePathname();
 
   return (
-    <div
-      className="group relative sm:h-full"
-      style={
-        {
-          "--1920-p": "30px",
-          "--sm-p": "20px",
-        } as CSSProperties
-      }
-    >
+    <div className="group relative sm:h-full">
       <Link
         href={path}
         className={twMerge(
-          "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[var(--sm-p)] sm:text-sm 1920:px-[var(--1920-p)] 1920:text-base",
+          "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
           pathname === path &&
-            "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[var(--sm-p)] sm:after:w-[calc((100%-(var(--sm-p)*2))*0.8)] 1920:after:ms-[var(--1920-p)] 1920:after:w-[calc((100%-(var(--1920-p)*2))*0.8)]",
+            "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
         )}
       >
         {title}
@@ -5581,13 +5815,44 @@ const NavItem = ({
             aria-labelledby="options-menu"
           >
             {items.map((item, index) => (
+              <NavSubItem key={index} item={item} />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const NavSubItem = ({
+  item,
+}: {
+  item: {
+    title: string;
+    path: string;
+    items?: { title: string; path: string }[];
+  };
+}) => {
+  return (
+    <div className="group/sub relative">
+      <Link
+        href={item.path}
+        className="block px-6 py-3 text-sm text-white hover:bg-black/30"
+        role="menuitem"
+      >
+        {item.title}
+      </Link>
+      {item.items && (
+        <div className="absolute start-full top-0 hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg group-hover/sub:block group-hover/sub:animate-appear">
+          <div className="py-2" role="menu" aria-orientation="vertical">
+            {item.items.map((subItem, subIndex) => (
               <Link
-                key={index}
-                href={item.path}
-                className="block px-6 py-3 text-sm text-white"
+                key={subIndex}
+                href={subItem.path}
+                className="block px-6 py-3 text-sm text-white hover:bg-black/30"
                 role="menuitem"
               >
-                {item.title}
+                {subItem.title}
               </Link>
             ))}
           </div>
@@ -6435,58 +6700,6 @@ const Pagination: React.FC<PaginationProps> = ({
 };
 
 ```
-
-# public\images\home\News\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\1.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\6.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\5.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\common\cards\uni-life.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\news.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\academic-classifications.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\about.svg
-
-This is a file of the type: SVG Image
 
 # src\app\[locale]\news\_components\MainSubjects.tsx
 

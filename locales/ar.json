@@ -30,12 +30,12 @@
       "openInGoogleMaps": "فتح في خرائط جوجل"
     }
   },
+
   "Header": {
     "appTitle": "تعليم",
     "localSwitcher": {
       "select a language": "اختر اللغة"
     },
-
     "navLinks": {
       "home": "الرئيسية",
       "aboutUniversity": {
@@ -60,21 +60,84 @@
         "universityStrategy": "استراتيجية جامعة كلكامش"
       },
       "colleges": "الكليات",
-      "academicAffairs": "الشؤون العلمية",
-      "studentAffairs": "الشؤون الطلابية",
-      "serviceCenters": "المراكز الخدمية",
-      "eServices": "الخدمات الالكترونية"
+      "academicAffairs": {
+        "academicAffairs": "الشؤون العلمية",
+        "scientificPromotions": "الترقيات العلمية",
+        "guidelines": "الإرشادات",
+        "forms": "النماذج",
+        "instructions": "التعليمات",
+        "scientificConferences": "المؤتمرات العلمية",
+        "scientificJournals": "المجلات العلمية",
+        "electronicScientificProduction": "الإنتاج العلمي الإلكتروني",
+        "facultyResearch": "بحوث التدريسيين",
+        "approvedBooks": "الكتب المؤلفة",
+        "scientificMissions": "البعثات العلمية",
+        "inventionPatents": "براءات الاختراع",
+        "qualityAssurance": "الجودة والأداء الجامعي",
+        "universityRankings": "التصنيفات الجامعية",
+        "scopus": "سكوبس",
+        "googleScholar": "الباحث العلمي",
+        "researchGate": "بوابة البحث العلمي",
+        "scientificActivities": "الأنشطة العلمية",
+        "seminars": "الندوات",
+        "workshops": "ورش العمل",
+        "courses": "الدورات",
+        "forums": "الملتقيات"
+      },
+      "studentAffairs": {
+        "studentAffairs": "شؤون الطلبة",
+        "admissionRegistration": "القبول والتسجيل",
+        "admissionConditions": "شروط القبول",
+        "registrationMechanism": "آلية التسجيل",
+        "studyFees": "الأجور الدراسية",
+        "scholarshipsGrants": "المنح والبعثات الدراسية",
+        "academicCalendar": "التقويم الجامعي",
+        "universityInstructions": "التعليمات الجامعية",
+        "studentGuide": "دليل الطالب",
+        "outstandingStudents": "الطلبة المتميزون",
+        "studentActivities": "الأنشطة الطلابية",
+        "studentClubs": "النوادي الطلابية"
+      },
+      "serviceCenters": {
+        "serviceCenters": "المراكز الخدمية",
+        "digitalLibrary": "المكتبة الرقمية",
+        "continuingEducationCenter": "مركز التعليم المستمر",
+        "careerGuidanceCenter": "مركز الإرشاد الوظيفي",
+        "physicalFitnessCenter": "مركز اللياقة البدنية",
+        "gilgameshTheater": "مسرح كلكامش",
+        "audiovisualHalls": "قاعات الوسائط المتعددة",
+        "sportsStadium": "الملعب الرياضي",
+        "fiveSidePlaygrounds": "الملاعب الخماسية",
+        "trainingHalls": "قاعات التدريب",
+        "dentalClinics": "عيادات طب الأسنان",
+        "centralLibrary": "المكتبة المركزية",
+        "cafeteria": "الكافتيريا"
+      },
+      "eServices": {
+        "eServices": "الخدمات الإلكترونية",
+        "studentPortal": "البوابة الإلكترونية للطلبة",
+        "facultyPortal": "البوابة الإلكترونية للتدريسيين",
+        "massarPlatform": "منصة مسار",
+        "universityDigitalRepository": "المستودع الرقمي للجامعة",
+        "electronicPayment": "الدفع الإلكتروني",
+        "graduatesPortal": "بوابة الخريجين",
+        "graduationConfirmationRequest": "طلب الحصول على تأييد تخرج",
+        "graduationDocumentRequest": "طلب الحصول على وثيقة تخرج",
+        "transcriptRequest": "طلب الحصول على الشهادة الجدارية",
+        "universityIdIssuance": "إصدار الهوية الجامعية",
+        "electronicParticipationCertificates": "شهادات المشاركة الإلكترونية"
+      }
     },
     "pageTitles": {
-      "home": "الرئيسيــة",
+      "home": "الرئيسية",
       "about": "من نحن؟",
       "services": "خدمات الشركة",
-      "branches": "فـروع الشركة",
+      "branches": "فروع الشركة",
       "contact": "تواصل معنا",
       "jobs": "الوظائف الشاغرة",
-      "joinUs": "انضم الينا كتاجر",
+      "joinUs": "انضم إلينا كتاجر",
       "salesEmployee": "موظف مبيعات",
-      "news": "الاخبار"
+      "news": "الأخبار"
     },
     "cta": {
       "joinUs": "انضم إلينا",

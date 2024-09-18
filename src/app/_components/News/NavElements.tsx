@@ -1,3 +1,5 @@
+// src/app/_components/News/NavElements.tsx
+
 import React from "react";
 import { Link, usePathname } from "@/i18n.config";
 import { useTranslations } from "next-intl";
@@ -6,69 +8,86 @@ import * as paths from "@/lib/paths";
 
 const NavElements: React.FC = () => {
   const t = useTranslations("Header.navLinks");
-  const aboutT = useTranslations("Header.navLinks.aboutUniversity");
 
   const navItems = [
     { title: t("home"), path: paths.HOME_ROUTE },
     {
-      title: aboutT("aboutUniversity"),
+      title: t("aboutUniversity.aboutUniversity"),
       path: paths.ABOUT_UNIVERSITY_ROUTE,
       items: [
-        { title: aboutT("aboutUs"), path: paths.ABOUT_UNIVERSITY_ROUTE },
         {
-          title: aboutT("universityCouncil"),
+          title: t("aboutUniversity.aboutUs"),
+          path: paths.ABOUT_UNIVERSITY_ROUTE,
+        },
+        {
+          title: t("aboutUniversity.universityCouncil"),
           path: paths.UNIVERSITY_COUNCIL_ROUTE,
           items: [
             {
-              title: aboutT("universityPresident"),
+              title: t("aboutUniversity.universityPresident"),
               path: paths.UNIVERSITY_PRESIDENT_ROUTE,
             },
             {
-              title: aboutT("assistantPresidentScientific"),
+              title: t("aboutUniversity.assistantPresidentScientific"),
               path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
             },
             {
-              title: aboutT("assistantPresidentAdministrative"),
+              title: t("aboutUniversity.assistantPresidentAdministrative"),
               path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
             },
-            { title: aboutT("collegeDeans"), path: paths.COLLEGE_DEANS_ROUTE },
+            {
+              title: t("aboutUniversity.collegeDeans"),
+              path: paths.COLLEGE_DEANS_ROUTE,
+            },
           ],
         },
         {
-          title: aboutT("presidentSpeech"),
+          title: t("aboutUniversity.presidentSpeech"),
           path: paths.PRESIDENT_SPEECH_ROUTE,
         },
         {
-          title: aboutT("organizationalStructure"),
+          title: t("aboutUniversity.organizationalStructure"),
           path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
         },
         {
-          title: aboutT("infrastructure"),
+          title: t("aboutUniversity.infrastructure"),
           path: paths.INFRASTRUCTURE_ROUTE,
           items: [
-            { title: aboutT("halls"), path: paths.HALLS_ROUTE },
-            { title: aboutT("laboratories"), path: paths.LABORATORIES_ROUTE },
-            { title: aboutT("greenAreas"), path: paths.GREEN_AREAS_ROUTE },
+            { title: t("aboutUniversity.halls"), path: paths.HALLS_ROUTE },
+            {
+              title: t("aboutUniversity.laboratories"),
+              path: paths.LABORATORIES_ROUTE,
+            },
+            {
+              title: t("aboutUniversity.greenAreas"),
+              path: paths.GREEN_AREAS_ROUTE,
+            },
           ],
         },
         {
-          title: aboutT("universityLife"),
+          title: t("aboutUniversity.universityLife"),
           path: paths.UNIVERSITY_LIFE_ROUTE,
           items: [
-            { title: aboutT("photoLibrary"), path: paths.PHOTO_LIBRARY_ROUTE },
-            { title: aboutT("videoLibrary"), path: paths.VIDEO_LIBRARY_ROUTE },
+            {
+              title: t("aboutUniversity.photoLibrary"),
+              path: paths.PHOTO_LIBRARY_ROUTE,
+            },
+            {
+              title: t("aboutUniversity.videoLibrary"),
+              path: paths.VIDEO_LIBRARY_ROUTE,
+            },
           ],
         },
         {
-          title: aboutT("agreementsPartnerships"),
+          title: t("aboutUniversity.agreementsPartnerships"),
           path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
         },
         {
-          title: aboutT("transparencyPrinciple"),
+          title: t("aboutUniversity.transparencyPrinciple"),
           path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
         },
         {
-          title: aboutT("universityStrategy"),
+          title: t("aboutUniversity.universityStrategy"),
           path: paths.UNIVERSITY_STRATEGY_ROUTE,
         },
       ],
@@ -82,110 +101,245 @@ const NavElements: React.FC = () => {
       ],
     },
     {
-      title: t("academicAffairs"),
+      title: t("academicAffairs.academicAffairs"),
       path: paths.ACADEMIC_AFFAIRS_ROUTE,
       items: [
         {
-          title: "Scientific Promotions",
+          title: t("academicAffairs.scientificPromotions"),
           path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
+          items: [
+            {
+              title: t("academicAffairs.guidelines"),
+              path: paths.SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE,
+            },
+            {
+              title: t("academicAffairs.forms"),
+              path: paths.PROMOTION_FORMS_ROUTE,
+            },
+            {
+              title: t("academicAffairs.instructions"),
+              path: paths.PROMOTION_INSTRUCTIONS_ROUTE,
+            },
+          ],
         },
-        { title: "Research Plans", path: paths.RESEARCH_PLANS_ROUTE },
         {
-          title: "Educational Scholarships",
-          path: paths.EDUCATIONAL_SCHOLARSHIPS_ROUTE,
-        },
-        { title: "Academic Calendar", path: paths.ACADEMIC_CALENDAR_ROUTE },
-        {
-          title: "Scientific Conferences",
+          title: t("academicAffairs.scientificConferences"),
           path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
         },
         {
-          title: "Scientific Production",
-          path: paths.SCIENTIFIC_PRODUCTION_ROUTE,
+          title: t("academicAffairs.scientificJournals"),
+          path: paths.SCIENTIFIC_JOURNALS_ROUTE,
         },
-        { title: "Teaching Methods", path: paths.TEACHING_METHODS_ROUTE },
-        { title: "Central Library", path: paths.CENTRAL_LIBRARY_ROUTE },
-        { title: "Quality Assurance", path: paths.QUALITY_ASSURANCE_ROUTE },
-        { title: "Invention Patents", path: paths.INVENTION_PATENTS_ROUTE },
-        { title: "Scholarships", path: paths.SCHOLARSHIPS_ROUTE },
-        { title: "Google Scholar", path: paths.GOOGLE_SCHOLAR_ROUTE },
-        { title: "Research Gate", path: paths.RESEARCH_GATE_ROUTE },
         {
-          title: "Scientific Activities",
+          title: t("academicAffairs.electronicScientificProduction"),
+          path: paths.ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE,
+        },
+        {
+          title: t("academicAffairs.facultyResearch"),
+          path: paths.FACULTY_RESEARCH_ROUTE,
+        },
+        {
+          title: t("academicAffairs.approvedBooks"),
+          path: paths.APPROVED_BOOKS_ROUTE,
+        },
+        {
+          title: t("academicAffairs.scientificMissions"),
+          path: paths.SCIENTIFIC_MISSIONS_ROUTE,
+        },
+        {
+          title: t("academicAffairs.inventionPatents"),
+          path: paths.INVENTION_PATENTS_ROUTE,
+        },
+        {
+          title: t("academicAffairs.qualityAssurance"),
+          path: paths.QUALITY_ASSURANCE_ROUTE,
+        },
+        {
+          title: t("academicAffairs.universityRankings"),
+          path: paths.UNIVERSITY_RANKINGS_ROUTE,
+          items: [
+            { title: t("academicAffairs.scopus"), path: paths.SCOPUS_ROUTE },
+            {
+              title: t("academicAffairs.googleScholar"),
+              path: paths.GOOGLE_SCHOLAR_ROUTE,
+            },
+            {
+              title: t("academicAffairs.researchGate"),
+              path: paths.RESEARCH_GATE_ROUTE,
+            },
+          ],
+        },
+        {
+          title: t("academicAffairs.scientificActivities"),
           path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
+          items: [
+            {
+              title: t("academicAffairs.seminars"),
+              path: paths.SEMINARS_ROUTE,
+            },
+            {
+              title: t("academicAffairs.workshops"),
+              path: paths.WORKSHOPS_ROUTE,
+            },
+            { title: t("academicAffairs.courses"), path: paths.COURSES_ROUTE },
+            { title: t("academicAffairs.forums"), path: paths.FORUMS_ROUTE },
+          ],
         },
       ],
     },
     {
-      title: t("studentAffairs"),
+      title: t("studentAffairs.studentAffairs"),
       path: paths.STUDENT_AFFAIRS_ROUTE,
       items: [
         {
-          title: "Admission & Registration",
+          title: t("studentAffairs.admissionRegistration"),
           path: paths.ADMISSION_REGISTRATION_ROUTE,
+          items: [
+            {
+              title: t("studentAffairs.admissionConditions"),
+              path: paths.ADMISSION_CONDITIONS_ROUTE,
+            },
+            {
+              title: t("studentAffairs.registrationMechanism"),
+              path: paths.REGISTRATION_MECHANISM_ROUTE,
+            },
+            {
+              title: t("studentAffairs.studyFees"),
+              path: paths.STUDY_FEES_ROUTE,
+            },
+          ],
         },
         {
-          title: "Admission Conditions",
-          path: paths.ADMISSION_CONDITIONS_ROUTE,
+          title: t("studentAffairs.scholarshipsGrants"),
+          path: paths.SCHOLARSHIPS_GRANTS_ROUTE,
         },
         {
-          title: "Registration Mechanism",
-          path: paths.REGISTRATION_MECHANISM_ROUTE,
+          title: t("studentAffairs.academicCalendar"),
+          path: paths.ACADEMIC_CALENDAR_ROUTE,
         },
-        { title: "Academic Programs", path: paths.ACADEMIC_PROGRAMS_ROUTE },
-        { title: "University Exams", path: paths.UNIVERSITY_EXAMS_ROUTE },
-        { title: "Student Housing", path: paths.STUDENT_HOUSING_ROUTE },
-        { title: "Student Activities", path: paths.STUDENT_ACTIVITIES_ROUTE },
         {
-          title: "Student Instructions",
-          path: paths.STUDENT_INSTRUCTIONS_ROUTE,
+          title: t("studentAffairs.universityInstructions"),
+          path: paths.UNIVERSITY_INSTRUCTIONS_ROUTE,
         },
-        { title: "Honor Students", path: paths.HONOR_STUDENTS_ROUTE },
-        { title: "Student Guidance", path: paths.STUDENT_GUIDANCE_ROUTE },
-        { title: "Student Clubs", path: paths.STUDENT_CLUBS_ROUTE },
+        {
+          title: t("studentAffairs.studentGuide"),
+          path: paths.STUDENT_GUIDE_ROUTE,
+        },
+        {
+          title: t("studentAffairs.outstandingStudents"),
+          path: paths.OUTSTANDING_STUDENTS_ROUTE,
+        },
+        {
+          title: t("studentAffairs.studentActivities"),
+          path: paths.STUDENT_ACTIVITIES_ROUTE,
+        },
+        {
+          title: t("studentAffairs.studentClubs"),
+          path: paths.STUDENT_CLUBS_ROUTE,
+        },
       ],
     },
     {
-      title: t("serviceCenters"),
+      title: t("serviceCenters.serviceCenters"),
       path: paths.SERVICE_CENTERS_ROUTE,
       items: [
         {
-          title: "Continuing Education Center",
+          title: t("serviceCenters.digitalLibrary"),
+          path: paths.DIGITAL_LIBRARY_ROUTE,
+        },
+        {
+          title: t("serviceCenters.continuingEducationCenter"),
           path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
         },
-        { title: "Consulting Office", path: paths.CONSULTING_OFFICE_ROUTE },
-        { title: "Cultural Relations", path: paths.CULTURAL_RELATIONS_ROUTE },
-        { title: "Media Center", path: paths.MEDIA_CENTER_ROUTE },
         {
-          title: "Psychological Counseling",
-          path: paths.PSYCHOLOGICAL_COUNSELING_ROUTE,
+          title: t("serviceCenters.careerGuidanceCenter"),
+          path: paths.CAREER_GUIDANCE_CENTER_ROUTE,
         },
-        { title: "Sports Facilities", path: paths.SPORTS_FACILITIES_ROUTE },
-        { title: "Training Halls", path: paths.TRAINING_HALLS_ROUTE },
-        { title: "Dental Clinics", path: paths.DENTAL_CLINICS_ROUTE },
-        { title: "Pharmacy", path: paths.PHARMACY_ROUTE },
+        {
+          title: t("serviceCenters.physicalFitnessCenter"),
+          path: paths.PHYSICAL_FITNESS_CENTER_ROUTE,
+        },
+        {
+          title: t("serviceCenters.gilgameshTheater"),
+          path: paths.GILGAMESH_THEATER_ROUTE,
+        },
+        {
+          title: t("serviceCenters.audiovisualHalls"),
+          path: paths.AUDIOVISUAL_HALLS_ROUTE,
+        },
+        {
+          title: t("serviceCenters.sportsStadium"),
+          path: paths.SPORTS_STADIUM_ROUTE,
+        },
+        {
+          title: t("serviceCenters.fiveSidePlaygrounds"),
+          path: paths.FIVE_SIDE_PLAYGROUNDS_ROUTE,
+        },
+        {
+          title: t("serviceCenters.trainingHalls"),
+          path: paths.TRAINING_HALLS_ROUTE,
+        },
+        {
+          title: t("serviceCenters.dentalClinics"),
+          path: paths.DENTAL_CLINICS_ROUTE,
+        },
+        {
+          title: t("serviceCenters.centralLibrary"),
+          path: paths.CENTRAL_LIBRARY_ROUTE,
+        },
+        { title: t("serviceCenters.cafeteria"), path: paths.CAFETERIA_ROUTE },
       ],
     },
     {
-      title: t("eServices"),
+      title: t("eServices.eServices"),
       path: paths.E_SERVICES_ROUTE,
       items: [
-        { title: "Student Portal", path: paths.STUDENT_PORTAL_ROUTE },
-        { title: "Faculty Portal", path: paths.FACULTY_PORTAL_ROUTE },
-        { title: "Alumni Portal", path: paths.ALUMNI_PORTAL_ROUTE },
-        { title: "University Email", path: paths.UNIVERSITY_EMAIL_ROUTE },
-        { title: "Digital Library", path: paths.DIGITAL_LIBRARY_ROUTE },
-        { title: "Graduates Portal", path: paths.GRADUATES_PORTAL_ROUTE },
-        { title: "Transcript Request", path: paths.TRANSCRIPT_REQUEST_ROUTE },
         {
-          title: "Graduation Document Request",
-          path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
+          title: t("eServices.studentPortal"),
+          path: paths.STUDENT_PORTAL_ROUTE,
         },
         {
-          title: "Academic Performance Report",
-          path: paths.ACADEMIC_PERFORMANCE_REPORT_ROUTE,
+          title: t("eServices.facultyPortal"),
+          path: paths.FACULTY_PORTAL_ROUTE,
         },
-        { title: "Electronic Payment", path: paths.ELECTRONIC_PAYMENT_ROUTE },
+        {
+          title: t("eServices.massarPlatform"),
+          path: paths.MASSAR_PLATFORM_ROUTE,
+        },
+        {
+          title: t("eServices.universityDigitalRepository"),
+          path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
+        },
+        {
+          title: t("eServices.electronicPayment"),
+          path: paths.ELECTRONIC_PAYMENT_ROUTE,
+        },
+        {
+          title: t("eServices.graduatesPortal"),
+          path: paths.GRADUATES_PORTAL_ROUTE,
+          items: [
+            {
+              title: t("eServices.graduationConfirmationRequest"),
+              path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
+            },
+            {
+              title: t("eServices.graduationDocumentRequest"),
+              path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
+            },
+            {
+              title: t("eServices.transcriptRequest"),
+              path: paths.TRANSCRIPT_REQUEST_ROUTE,
+            },
+          ],
+        },
+        {
+          title: t("eServices.universityIdIssuance"),
+          path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
+        },
+        {
+          title: t("eServices.electronicParticipationCertificates"),
+          path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
+        },
       ],
     },
   ];

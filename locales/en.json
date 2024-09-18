@@ -33,7 +33,7 @@
       "select a language": "select a language"
     },
     "navLinks": {
-      "home": "الرئيسية",
+      "home": "Home",
       "aboutUniversity": {
         "aboutUniversity": "About University",
         "aboutUs": "About Us",
@@ -55,11 +55,74 @@
         "transparencyPrinciple": "Transparency Principle",
         "universityStrategy": "Gilgamesh University Strategy"
       },
-      "colleges": "الكليات",
-      "academicAffairs": "الشؤون العلمية",
-      "studentAffairs": "الشؤون الطلابية",
-      "serviceCenters": "المراكز الخدمية",
-      "eServices": "الخدمات الالكترونية"
+      "colleges": "Colleges",
+      "academicAffairs": {
+        "academicAffairs": "Academic Affairs",
+        "scientificPromotions": "Scientific Promotions",
+        "guidelines": "Guidelines",
+        "forms": "Forms",
+        "instructions": "Instructions",
+        "scientificConferences": "Scientific Conferences",
+        "scientificJournals": "Scientific Journals",
+        "electronicScientificProduction": "Electronic Scientific Production",
+        "facultyResearch": "Faculty Research",
+        "approvedBooks": "Approved Books",
+        "scientificMissions": "Scientific Missions",
+        "inventionPatents": "Invention Patents",
+        "qualityAssurance": "Quality Assurance",
+        "universityRankings": "University Rankings",
+        "scopus": "Scopus",
+        "googleScholar": "Google Scholar",
+        "researchGate": "Research Gate",
+        "scientificActivities": "Scientific Activities",
+        "seminars": "Seminars",
+        "workshops": "Workshops",
+        "courses": "Courses",
+        "forums": "Forums"
+      },
+      "studentAffairs": {
+        "studentAffairs": "Student Affairs",
+        "admissionRegistration": "Admission and Registration",
+        "admissionConditions": "Admission Conditions",
+        "registrationMechanism": "Registration Mechanism",
+        "studyFees": "Study Fees",
+        "scholarshipsGrants": "Scholarships and Grants",
+        "academicCalendar": "Academic Calendar",
+        "universityInstructions": "University Instructions",
+        "studentGuide": "Student Guide",
+        "outstandingStudents": "Outstanding Students",
+        "studentActivities": "Student Activities",
+        "studentClubs": "Student Clubs"
+      },
+      "serviceCenters": {
+        "serviceCenters": "Service Centers",
+        "digitalLibrary": "Digital Library",
+        "continuingEducationCenter": "Continuing Education Center",
+        "careerGuidanceCenter": "Career Guidance Center",
+        "physicalFitnessCenter": "Physical Fitness Center",
+        "gilgameshTheater": "Gilgamesh Theater",
+        "audiovisualHalls": "Audiovisual Halls",
+        "sportsStadium": "Sports Stadium",
+        "fiveSidePlaygrounds": "Five-side Playgrounds",
+        "trainingHalls": "Training Halls",
+        "dentalClinics": "Dental Clinics",
+        "centralLibrary": "Central Library",
+        "cafeteria": "Cafeteria"
+      },
+      "eServices": {
+        "eServices": "E-Services",
+        "studentPortal": "Student Portal",
+        "facultyPortal": "Faculty Portal",
+        "massarPlatform": "Massar Platform",
+        "universityDigitalRepository": "University Digital Repository",
+        "electronicPayment": "Electronic Payment",
+        "graduatesPortal": "Graduates Portal",
+        "graduationConfirmationRequest": "Graduation Confirmation Request",
+        "graduationDocumentRequest": "Graduation Document Request",
+        "transcriptRequest": "Transcript Request",
+        "universityIdIssuance": "University ID Issuance",
+        "electronicParticipationCertificates": "Electronic Participation Certificates"
+      }
     },
     "pageTitles": {
       "home": "Home",
