@@ -12,6 +12,25 @@ export const COLLEGE_ROUTE = (id: string) => `${COLLEGES_ROUTE}/${id}`;
 export const DEPARTMENT_ROUTE = (collegeId: string, departmentId: string) =>
   `${COLLEGES_ROUTE}/${collegeId}/departments/${departmentId}`;
 
+// About University routes
+export const UNIVERSITY_COUNCIL_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-council`;
+export const UNIVERSITY_PRESIDENT_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/university-president`;
+export const ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/assistant-president-scientific-affairs`;
+export const ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/assistant-president-administrative-affairs`;
+export const COLLEGE_DEANS_ROUTE = `${UNIVERSITY_COUNCIL_ROUTE}/college-deans`;
+export const PRESIDENT_SPEECH_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/president-speech`;
+export const ORGANIZATIONAL_STRUCTURE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/organizational-structure`;
+export const INFRASTRUCTURE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/infrastructure`;
+export const HALLS_ROUTE = `${INFRASTRUCTURE_ROUTE}/halls`;
+export const LABORATORIES_ROUTE = `${INFRASTRUCTURE_ROUTE}/laboratories`;
+export const GREEN_AREAS_ROUTE = `${INFRASTRUCTURE_ROUTE}/green-areas`;
+export const UNIVERSITY_LIFE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-life`;
+export const PHOTO_LIBRARY_ROUTE = `${UNIVERSITY_LIFE_ROUTE}/photo-library`;
+export const VIDEO_LIBRARY_ROUTE = `${UNIVERSITY_LIFE_ROUTE}/video-library`;
+export const AGREEMENTS_PARTNERSHIPS_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/agreements-partnerships`;
+export const TRANSPARENCY_PRINCIPLE_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/transparency-principle`;
+export const UNIVERSITY_STRATEGY_ROUTE = `${ABOUT_UNIVERSITY_ROUTE}/university-strategy`;
+
 // Academic Affairs
 export const SCIENTIFIC_PROMOTIONS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/scientific-promotions`;
 export const RESEARCH_PLANS_ROUTE = `${ACADEMIC_AFFAIRS_ROUTE}/research-plans`;

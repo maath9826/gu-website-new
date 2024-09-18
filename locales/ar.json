@@ -38,7 +38,27 @@
 
     "navLinks": {
       "home": "الرئيسية",
-      "aboutUniversity": "حول الجامعة",
+      "aboutUniversity": {
+        "aboutUniversity": "حول الجامعة",
+        "aboutUs": "عن الجامعة",
+        "universityCouncil": "مجلس الجامعة",
+        "universityPresident": "رئيس الجامعة",
+        "assistantPresidentScientific": "مساعد رئيس الجامعة للشؤون العلمية",
+        "assistantPresidentAdministrative": "مساعد رئيس الجامعة للشؤون الإدارية",
+        "collegeDeans": "عمداء الكليات",
+        "presidentSpeech": "كلمة رئيس الجامعة",
+        "organizationalStructure": "الهيكل التنظيمي",
+        "infrastructure": "البنى التحتية",
+        "halls": "القاعات",
+        "laboratories": "المختبرات",
+        "greenAreas": "المساحات الخضراء",
+        "universityLife": "الحياة الجامعية",
+        "photoLibrary": "المكتبة الصورية",
+        "videoLibrary": "المكتبة الفيديوية",
+        "agreementsPartnerships": "الاتفاقيات والشراكات",
+        "transparencyPrinciple": "مبدأ الشفافية",
+        "universityStrategy": "استراتيجية جامعة كلكامش"
+      },
       "colleges": "الكليات",
       "academicAffairs": "الشؤون العلمية",
       "studentAffairs": "الشؤون الطلابية",

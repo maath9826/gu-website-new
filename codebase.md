@@ -115,6 +115,8 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        appear: "appear 0.2s ease-out",
+        vanish: "vanish 0.2s ease-in",
       },
       width: {
         mobile: "343px",
@@ -221,6 +223,8 @@ export default config;
     "eslint": "^8",
     "eslint-config-next": "14.2.6",
     "postcss": "^8",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
@@ -271,6 +275,15 @@ export default withNextIntl(nextConfig);
     "utils": "@/lib/utils"
   }
 }
+```
+
+# .prettierrc
+
+```
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+
 ```
 
 # .eslintrc.json
@@ -2406,6 +2419,26 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
   @apply absolute h-full sm:h-[calc(100%+var(--navbar-height))] sm:-top-[var(--navbar-height)] top-0;
 }
 
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vanish {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
 ```
 
 # src\app\favicon.ico
@@ -2520,91 +2553,6 @@ const useCommonStore = create<CommonState>((set) => ({
 }));
 
 export default useCommonStore;
-
-```
-
-# src\components\ScrollableContainer\UpperSection.tsx
-
-```tsx
-"use client";
-
-import { useEffect, useState } from "react";
-import Section from "../Section";
-import ScrollArrows from "../ScrollArrows";
-import { twMerge } from "tailwind-merge";
-import TitlesWrapper from "../TitlesWrapper";
-
-export default function ScrollableContainerUpperSection({
-  containerRef,
-  hideArrows = false,
-  title,
-  title2,
-  titleClass,
-  className,
-  arrowButtonsClass,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  hideArrows?: boolean;
-  title: string;
-  title2?: string;
-  titleClass?: string;
-  className?: string;
-  arrowButtonsClass?: string;
-}) {
-  const [scrollAmount, setScrollAmount] = useState<number>();
-
-  useEffect(() => {
-    if (containerRef.current) setScrollAmount(containerRef.current.clientWidth);
-  }, [containerRef]);
-
-  return (
-    <TitlesWrapper className={twMerge("items-start", className)}>
-      {title2 && <h3 className="title-sm">{title2}</h3>}
-
-      <div className="flex items-center justify-between w-full">
-        <h5 className={twMerge("title", titleClass)}>{title}</h5>
-        {!hideArrows && (
-          <ScrollArrows
-            containerRef={containerRef}
-            useMultiples={true}
-            scrollAmount={scrollAmount}
-            wrapperClassName="gap-[8px]"
-            className={arrowButtonsClass}
-          />
-        )}
-      </div>
-    </TitlesWrapper>
-  );
-}
-
-```
-
-# src\components\ScrollableContainer\ScrollableContainer.tsx
-
-```tsx
-import React from "react";
-import { twMerge } from "tailwind-merge";
-
-const ScrollableCardsContainer = React.forwardRef<
-  HTMLDivElement,
-  { className?: string; children: React.ReactNode; wrapperClass?: string }
->(({ className, children, wrapperClass }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={twMerge(
-        "hide-scrollbar mx-auto max-w-screen-pure overflow-x-auto w-full",
-        wrapperClass
-      )}
-    >
-      <div className={twMerge("flex w-fit", className)}>{children}</div>
-    </div>
-  );
-});
-
-ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
-
-export { ScrollableCardsContainer };
 
 ```
 
@@ -3705,262 +3653,6 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
 
 ```
 
-# src\components\FirstSection\TitleBg.tsx
-
-```tsx
-export default function TitleBg() {
-  return <div>SliderBg</div>;
-}
-
-```
-
-# src\components\FirstSection\SliderBg.tsx
-
-```tsx
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import ScrollArrows from "@/components/ScrollArrows";
-import { SliderElement } from "@/lib/types";
-import useScrollControl from "@/app/_hooks/useScrollControl";
-import useTextDirection from "../../app/_hooks/useTextDirection";
-
-export default function SliderBg() {
-  return (
-    <ScrollableCardsContainer
-      translatedNewsItems={[
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Innovative Solutions",
-          subTitle:
-            "Transforming ideas into reality with cutting-edge technology",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Expert Team",
-          subTitle: "Dedicated professionals committed to excellence",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Global Reach",
-          subTitle: "Connecting businesses across borders",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Sustainable Future",
-          subTitle: "Driving growth with eco-friendly practices",
-        },
-      ]}
-    />
-  );
-}
-
-const ImageSection = () => {
-  return (
-    <div className="relative w-screen">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="w-full h-full absolute top-0 bg-black/70"></div>
-    </div>
-  );
-};
-
-function ScrollableCardsContainer({
-  translatedNewsItems,
-}: {
-  translatedNewsItems: SliderElement[];
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dir = useTextDirection();
-  const [scrollAmount, setScrollAmount] = useState<number>();
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
-    containerRef,
-    useMultiples: true,
-    baseScrollAmount: scrollAmount,
-  });
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  const autoSlide = () => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
-
-      if (isAtEnd) resetScrollPosition();
-      else
-        scroll({
-          direction: dir == "ltr" ? "right" : "left",
-          isLTR: dir == "ltr",
-        });
-    }
-  };
-
-  const resetInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(autoSlide, 5000);
-  };
-
-  useEffect(() => {
-    resetInterval();
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [scrollAmount]);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [handleScroll]);
-
-  return (
-    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
-      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
-      <div
-        ref={containerRef}
-        className={twMerge(
-          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
-          "hide-scrollbar"
-        )}
-      >
-        <div className="flex w-fit h-full">
-          {translatedNewsItems.map((newsItem, index) => (
-            <ImageSection key={index} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TextSection({
-  containerRef,
-  resetTimer,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  resetTimer: () => void;
-}) {
-  const [scrollAmount, setScrollAmount] = useState<number>();
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
-      <ScrollArrows
-        containerRef={containerRef}
-        scrollAmount={scrollAmount}
-        useMultiples={true}
-        resetTimer={resetTimer}
-        className="slider-bg-arrows"
-      />
-
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
-          التجربة العلمية
-        </h3>
-
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
-          واعد
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\ImageBg.tsx
-
-```tsx
-import React from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function ImageBg() {
-  return (
-    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
-      <TextSection />
-      <ImageSection />
-    </div>
-  );
-}
-
-function TextSection() {
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
-          الرئيسية
-        </h3>
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          مواقع ذات صلة
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-function ImageSection() {
-  return (
-    <div className="navbar-inclusive-background w-full">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/70"></div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\FirstSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-import { getBgComponent } from "@/lib/utils";
-
-export default function FirstSection() {
-  const pathname = usePathname();
-
-  const BgComponent = getBgComponent(pathname);
-
-  return BgComponent ? <BgComponent /> : <></>;
-}
-
-```
-
-# src\components\FirstSection\CenterizedTitle.tsx
-
-```tsx
-export default function CenterizedTitle() {
-  return <div>SliderBg</div>;
-}
-
-```
-
 # src\components\LastSections\MapSection.tsx
 
 ```tsx
@@ -4245,6 +3937,347 @@ function ContactInfo({ title, value }: { title: string; value: string }) {
       </p>
     </div>
   );
+}
+
+```
+
+# src\components\ScrollableContainer\UpperSection.tsx
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import Section from "../Section";
+import ScrollArrows from "../ScrollArrows";
+import { twMerge } from "tailwind-merge";
+import TitlesWrapper from "../TitlesWrapper";
+
+export default function ScrollableContainerUpperSection({
+  containerRef,
+  hideArrows = false,
+  title,
+  title2,
+  titleClass,
+  className,
+  arrowButtonsClass,
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  hideArrows?: boolean;
+  title: string;
+  title2?: string;
+  titleClass?: string;
+  className?: string;
+  arrowButtonsClass?: string;
+}) {
+  const [scrollAmount, setScrollAmount] = useState<number>();
+
+  useEffect(() => {
+    if (containerRef.current) setScrollAmount(containerRef.current.clientWidth);
+  }, [containerRef]);
+
+  return (
+    <TitlesWrapper className={twMerge("items-start", className)}>
+      {title2 && <h3 className="title-sm">{title2}</h3>}
+
+      <div className="flex items-center justify-between w-full">
+        <h5 className={twMerge("title", titleClass)}>{title}</h5>
+        {!hideArrows && (
+          <ScrollArrows
+            containerRef={containerRef}
+            useMultiples={true}
+            scrollAmount={scrollAmount}
+            wrapperClassName="gap-[8px]"
+            className={arrowButtonsClass}
+          />
+        )}
+      </div>
+    </TitlesWrapper>
+  );
+}
+
+```
+
+# src\components\ScrollableContainer\ScrollableContainer.tsx
+
+```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
+const ScrollableCardsContainer = React.forwardRef<
+  HTMLDivElement,
+  { className?: string; children: React.ReactNode; wrapperClass?: string }
+>(({ className, children, wrapperClass }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={twMerge(
+        "hide-scrollbar mx-auto max-w-screen-pure overflow-x-auto w-full",
+        wrapperClass
+      )}
+    >
+      <div className={twMerge("flex w-fit", className)}>{children}</div>
+    </div>
+  );
+});
+
+ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
+
+export { ScrollableCardsContainer };
+
+```
+
+# src\components\FirstSection\TitleBg.tsx
+
+```tsx
+export default function TitleBg() {
+  return <div>SliderBg</div>;
+}
+
+```
+
+# src\components\FirstSection\SliderBg.tsx
+
+```tsx
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import ScrollArrows from "@/components/ScrollArrows";
+import { SliderElement } from "@/lib/types";
+import useScrollControl from "@/app/_hooks/useScrollControl";
+import useTextDirection from "../../app/_hooks/useTextDirection";
+
+export default function SliderBg() {
+  return (
+    <ScrollableCardsContainer
+      translatedNewsItems={[
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Innovative Solutions",
+          subTitle:
+            "Transforming ideas into reality with cutting-edge technology",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Expert Team",
+          subTitle: "Dedicated professionals committed to excellence",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Global Reach",
+          subTitle: "Connecting businesses across borders",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Sustainable Future",
+          subTitle: "Driving growth with eco-friendly practices",
+        },
+      ]}
+    />
+  );
+}
+
+const ImageSection = () => {
+  return (
+    <div className="relative w-screen">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="w-full h-full absolute top-0 bg-black/70"></div>
+    </div>
+  );
+};
+
+function ScrollableCardsContainer({
+  translatedNewsItems,
+}: {
+  translatedNewsItems: SliderElement[];
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dir = useTextDirection();
+  const [scrollAmount, setScrollAmount] = useState<number>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
+    containerRef,
+    useMultiples: true,
+    baseScrollAmount: scrollAmount,
+  });
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  const autoSlide = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
+
+      if (isAtEnd) resetScrollPosition();
+      else
+        scroll({
+          direction: dir == "ltr" ? "right" : "left",
+          isLTR: dir == "ltr",
+        });
+    }
+  };
+
+  const resetInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(autoSlide, 5000);
+  };
+
+  useEffect(() => {
+    resetInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [scrollAmount]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
+  return (
+    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
+      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
+      <div
+        ref={containerRef}
+        className={twMerge(
+          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
+          "hide-scrollbar"
+        )}
+      >
+        <div className="flex w-fit h-full">
+          {translatedNewsItems.map((newsItem, index) => (
+            <ImageSection key={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TextSection({
+  containerRef,
+  resetTimer,
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  resetTimer: () => void;
+}) {
+  const [scrollAmount, setScrollAmount] = useState<number>();
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
+      <ScrollArrows
+        containerRef={containerRef}
+        scrollAmount={scrollAmount}
+        useMultiples={true}
+        resetTimer={resetTimer}
+        className="slider-bg-arrows"
+      />
+
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
+          التجربة العلمية
+        </h3>
+
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
+          واعد
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\ImageBg.tsx
+
+```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function ImageBg() {
+  return (
+    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+      <TextSection />
+      <ImageSection />
+    </div>
+  );
+}
+
+function TextSection() {
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
+          الرئيسية
+        </h3>
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          مواقع ذات صلة
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+function ImageSection() {
+  return (
+    <div className="navbar-inclusive-background w-full">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\FirstSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+import { getBgComponent } from "@/lib/utils";
+
+export default function FirstSection() {
+  const pathname = usePathname();
+
+  const BgComponent = getBgComponent(pathname);
+
+  return BgComponent ? <BgComponent /> : <></>;
+}
+
+```
+
+# src\components\FirstSection\CenterizedTitle.tsx
+
+```tsx
+export default function CenterizedTitle() {
+  return <div>SliderBg</div>;
 }
 
 ```
@@ -4916,6 +4949,14 @@ This is a binary file of the type: Image
 
 This is a binary file of the type: Image
 
+# public\images\common\google-play.png
+
+This is a binary file of the type: Image
+
+# public\images\common\app-store.png
+
+This is a binary file of the type: Image
+
 # public\images\about\4.svg
 
 This is a file of the type: SVG Image
@@ -4937,14 +4978,6 @@ This is a binary file of the type: Image
 This is a file of the type: SVG Image
 
 # public\images\about\1.png
-
-This is a binary file of the type: Image
-
-# public\images\common\google-play.png
-
-This is a binary file of the type: Image
-
-# public\images\common\app-store.png
 
 This is a binary file of the type: Image
 
@@ -5431,241 +5464,138 @@ export default NewsSection;
 ```tsx
 "use client";
 
-import {
-  HOME_ROUTE,
-  ABOUT_UNIVERSITY_ROUTE,
-  COLLEGES_ROUTE,
-  ACADEMIC_AFFAIRS_ROUTE,
-  STUDENT_AFFAIRS_ROUTE,
-  SERVICE_CENTERS_ROUTE,
-  E_SERVICES_ROUTE,
-} from "@/lib/paths";
+import React, { CSSProperties, useState } from "react";
 import { Link, usePathname } from "@/i18n.config";
-import useCommonStore from "@/lib/zustand/common";
 import { useTranslations } from "next-intl";
-import React, { useRef } from "react";
 import { twMerge } from "tailwind-merge";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
 import * as paths from "@/lib/paths";
 
-const NavElements = () => {
-  const pathname = usePathname();
+const NavElements: React.FC = () => {
   const t = useTranslations("Header.navLinks");
 
-  const [openedMenu, setOpenedMenu] = React.useState<number | null>();
-  const triggerRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
-  const navElements = [
-    { label: t("home"), path: paths.HOME_ROUTE },
-    { label: t("aboutUniversity"), path: paths.ABOUT_UNIVERSITY_ROUTE },
+  const navItems = [
+    { title: t("home"), path: paths.HOME_ROUTE },
+    { title: t("aboutUniversity"), path: paths.ABOUT_UNIVERSITY_ROUTE },
     {
-      label: t("colleges"),
+      title: t("colleges"),
       path: paths.COLLEGES_ROUTE,
-      subItems: [
-        {
-          label: "College 1",
-          path: paths.COLLEGE_ROUTE("1"),
-          subItems: [
-            { label: "D 1", path: paths.DEPARTMENT_ROUTE("1", "1") },
-            { label: "D 2", path: paths.DEPARTMENT_ROUTE("1", "2") },
-          ],
-        },
-        { label: "College 2", path: paths.COLLEGE_ROUTE("2") },
+      items: [
+        { title: "College 1", path: paths.COLLEGE_ROUTE("1") },
+        { title: "College 2", path: paths.COLLEGE_ROUTE("2") },
       ],
     },
     {
-      label: t("academicAffairs"),
+      title: t("academicAffairs"),
       path: paths.ACADEMIC_AFFAIRS_ROUTE,
-      subItems: [
+      items: [
         {
-          label: "Scientific Promotions",
+          title: "Scientific Promotions",
           path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
         },
-        { label: "Research Plans", path: paths.RESEARCH_PLANS_ROUTE },
-        {
-          label: "Educational Scholarships",
-          path: paths.EDUCATIONAL_SCHOLARSHIPS_ROUTE,
-        },
+        { title: "Research Plans", path: paths.RESEARCH_PLANS_ROUTE },
       ],
     },
     {
-      label: t("studentAffairs"),
+      title: t("studentAffairs"),
       path: paths.STUDENT_AFFAIRS_ROUTE,
-      subItems: [
+      items: [
         {
-          label: "Admission & Registration",
+          title: "Admission & Registration",
           path: paths.ADMISSION_REGISTRATION_ROUTE,
         },
-        { label: "Academic Programs", path: paths.ACADEMIC_PROGRAMS_ROUTE },
-        { label: "Student Housing", path: paths.STUDENT_HOUSING_ROUTE },
+        { title: "Academic Programs", path: paths.ACADEMIC_PROGRAMS_ROUTE },
       ],
     },
     {
-      label: t("serviceCenters"),
+      title: t("serviceCenters"),
       path: paths.SERVICE_CENTERS_ROUTE,
-      subItems: [
+      items: [
         {
-          label: "Continuing Education",
+          title: "Continuing Education",
           path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
         },
-        { label: "Consulting Office", path: paths.CONSULTING_OFFICE_ROUTE },
-        { label: "Media Center", path: paths.MEDIA_CENTER_ROUTE },
+        { title: "Consulting Office", path: paths.CONSULTING_OFFICE_ROUTE },
       ],
     },
     {
-      label: t("eServices"),
+      title: t("eServices"),
       path: paths.E_SERVICES_ROUTE,
-      subItems: [
-        { label: "Student Portal", path: paths.STUDENT_PORTAL_ROUTE },
-        { label: "Faculty Portal", path: paths.FACULTY_PORTAL_ROUTE },
-        { label: "Alumni Portal", path: paths.ALUMNI_PORTAL_ROUTE },
+      items: [
+        { title: "Student Portal", path: paths.STUDENT_PORTAL_ROUTE },
+        { title: "Faculty Portal", path: paths.FACULTY_PORTAL_ROUTE },
       ],
     },
   ];
 
-  const { toggleDrawer } = useCommonStore();
-
-  const handleMouseEnter = (index: number) => {
-    setOpenedMenu(index);
-    triggerRefs.current[index]?.focus();
-  };
-
-  const handleMouseLeave = () => {
-    setOpenedMenu(null);
-  };
-
   return (
-    <Menubar
-      onMouseLeave={handleMouseLeave}
-      className="mt-[61px] flex flex-col items-center  text-center text-base sm:text-sm 1920:text-base gap-[30px]  sm:mt-0 sm:flex-row sm:items-stretch sm:gap-[20px] font-light h-fit bg-transparent border-0"
-    >
-      {navElements.map((element, index) => (
-        <React.Fragment key={element.path}>
-          <MenubarMenu
-            /* @ts-ignore */
-            open={openedMenu == index}
-          >
-            <MenubarTrigger
-              ref={(el) => (triggerRefs.current[index] = el)}
-              onMouseEnter={() => handleMouseEnter(index)}
-              className={twMerge(
-                "focus:bg-transparent data-[state=open]:bg-transparent p-0 h-auto focus:text-white",
-                "text-base sm:text-sm 1920:text-base font-light tracking-[-0.004em]",
-                pathname === element.path &&
-                  "relative after:absolute after:bottom-[-28px] after:start-0 after:h-0.5 after:w-[80%] after:bg-secondary after:content-['']"
-              )}
-            >
-              <Link
-                onClick={() => toggleDrawer(false)}
-                href={element.path}
-                className={twMerge(
-                  "transition-all duration-300 hover:opacity-60 "
-                )}
-              >
-                {element.label}
-              </Link>
-            </MenubarTrigger>
-            {element.subItems && (
-              <MenubarContent onMouseEnter={() => handleMouseEnter(index)}>
-                {element.subItems.map((subItem: any, subIndex) =>
-                  subItem.subItems ? (
-                    <MenubarSub key={subItem.path}>
-                      <MenubarSubTrigger>{subItem.label}</MenubarSubTrigger>
-                      <MenubarSubContent>
-                        <MenubarItem>Search the web</MenubarItem>
-                        <MenubarSeparator />
-                        <MenubarItem>Find...</MenubarItem>
-                        <MenubarItem>Find Next</MenubarItem>
-                        <MenubarItem>Find Previous</MenubarItem>
-                      </MenubarSubContent>
-                    </MenubarSub>
-                  ) : (
-                    <MenubarItem key={subItem.path}>
-                      <Link href={subItem.path} className="w-full block">
-                        {subItem.label}
-                      </Link>
-                    </MenubarItem>
-                  )
-                )}
-              </MenubarContent>
-            )}
-          </MenubarMenu>
-          {index !== navElements.length - 1 && (
-            <div className="hidden sm:block border-e border-white/10 h-4 mx-0"></div>
+    <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
+      {navItems.map((item, index) => (
+        <React.Fragment key={item.path}>
+          <NavItem title={item.title} path={item.path} items={item.items} />
+          {index !== navItems.length - 1 && (
+            <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
           )}
         </React.Fragment>
       ))}
-    </Menubar>
+    </nav>
   );
 };
 
-const NavElement: React.FC<NavElementProps> = ({
-  label,
+const NavItem = ({
+  title,
   path,
-  tag,
-  // onClick,
-  isActive,
-  className,
+  items,
+}: {
+  title: string;
+  path: string;
+  items?: { title: string; path: string }[];
 }) => {
-  const { toggleDrawer } = useCommonStore();
+  const pathname = usePathname();
+
   return (
-    <li
-      className={twMerge(
-        `tracking-[-0.004em] ${
-          isActive
-            ? "relative  after:absolute after:bottom-[-28px]  after:start-0 after:h-0.5  after:w-[80%] after:bg-secondary after:content-['']"
-            : ""
-        } sm:text-inherit`,
-        className
-      )}
-      aria-current={isActive ? "page" : undefined}
+    <div
+      className="group relative sm:h-full"
+      style={
+        {
+          "--1920-p": "30px",
+          "--sm-p": "20px",
+        } as CSSProperties
+      }
     >
-      <div className="flex gap-1.5 items-center">
-        <Link
-          onClick={() => toggleDrawer(false)}
-          className="transition-all duration-300 hover:opacity-60 sm:hidden"
-          href={path}
-        >
-          {label}
-        </Link>
-        <Link
-          className="hidden transition-all duration-300 hover:opacity-60 sm:block"
-          href={path}
-        >
-          {label}
-        </Link>
-        {tag && (
-          <div className="bg-secondary  py-[3px] px-1.5 h-fit  flex items-center rounded-full">
-            <span className="text-xs leading-none font-medium h-[10px] ltr:mb-[2px]">
-              {tag}
-            </span>
-          </div>
+      <Link
+        href={path}
+        className={twMerge(
+          "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[var(--sm-p)] sm:text-sm 1920:px-[var(--1920-p)] 1920:text-base",
+          pathname === path &&
+            "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[var(--sm-p)] sm:after:w-[calc((100%-(var(--sm-p)*2))*0.8)] 1920:after:ms-[var(--1920-p)] 1920:after:w-[calc((100%-(var(--1920-p)*2))*0.8)]",
         )}
-      </div>
-    </li>
+      >
+        {title}
+      </Link>
+      {items && (
+        <div className="absolute hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg group-hover:block group-hover:animate-appear">
+          <div
+            className="py-2"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="options-menu"
+          >
+            {items.map((item, index) => (
+              <Link
+                key={index}
+                href={item.path}
+                className="block px-6 py-3 text-sm text-white"
+                role="menuitem"
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
-
-interface NavElement {
-  label: string;
-  path: string;
-  tag?: string;
-}
-
-interface NavElementProps extends NavElement {
-  className?: string;
-  isActive: boolean;
-}
 
 export default NavElements;
 
@@ -5833,7 +5763,7 @@ export default function Navbar() {
   return (
     <Section className="sm:max-w-[1440px] 1920:max-w-[1920px]  max-w-none">
       <nav className="flex w-full items-center justify-between bg-transparent  flex-row-reverse sm:flex-row text-white  h-[77px]  sm:px-[60px] 1920:px-[136px]">
-        <div className="flex gap-[40px] items-center sm:flex sm:justify-between sm:w-full">
+        <div className="flex gap-[40px] items-center sm:flex sm:justify-between sm:w-full h-full">
           <Link
             href="/"
             className="hover:opacity-70 sm:static absolute left-1/2 -translate-x-1/2 sm:translate-x-0"
@@ -5845,7 +5775,7 @@ export default function Navbar() {
             />
           </Link>
           {/* desktop only  */}
-          <div className="hidden sm:block">
+          <div className="hidden sm:block h-full">
             <NavElements />
           </div>
 
@@ -5949,6 +5879,7 @@ import { usePathname } from "@/i18n.config";
 import { IMAGE_BG_ROUTES, SLIDER_BG_ROUTES } from "@/lib/paths";
 import { twMerge } from "tailwind-merge";
 import Topbar from "./Topbar";
+import CustomHoverNavbar from "../News/NavElements";
 
 export default function Header() {
   const pathname = usePathname();
@@ -5956,7 +5887,7 @@ export default function Header() {
   return (
     <header
       className={twMerge(
-        "relative flex flex-col overflow-clip sm:items-center z-10 bg-primary sm:border-b sm:border-[#D9D9D9]/10",
+        "relative z-40 flex flex-col sm:items-center bg-primary sm:border-b sm:border-[#D9D9D9]/10",
         [...IMAGE_BG_ROUTES, ...SLIDER_BG_ROUTES].includes(pathname) &&
           "sm:bg-transparent"
       )}
