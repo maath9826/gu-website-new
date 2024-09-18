@@ -488,6 +488,20 @@ export const { Link, usePathname, useRouter } =
         "electronicParticipationCertificates": "Electronic Participation Certificates"
       }
     },
+    "topbarNavLinks": {
+      "contact": "Contact Us",
+      "news": "News",
+      "sustainability": "Sustainability",
+      "universityAndCommunity": "University and Community",
+      "graduates": "Our Graduates",
+      "qualificationEmployment": "Qualification and Employment",
+      "consultingClinic": "Consulting Clinic",
+      "ministryInquiries": "Ministry of Higher Education E-Inquiries",
+      "surveys": "Surveys",
+      "graduateSurvey": "Graduate Survey",
+      "employerSurvey": "Employer Survey"
+    },
+
     "pageTitles": {
       "home": "Home",
       "about": "Who are we?",
@@ -1106,6 +1120,19 @@ export const { Link, usePathname, useRouter } =
         "electronicParticipationCertificates": "شهادات المشاركة الإلكترونية"
       }
     },
+    "topbarNavLinks": {
+      "contact": "اتصل بنا",
+      "news": "الأخبار",
+      "sustainability": "الاستدامة",
+      "universityAndCommunity": "الجامعة والمجتمع",
+      "graduates": "خريجونا",
+      "qualificationEmployment": "التأهيل والتوظيف",
+      "consultingClinic": "العيادة الاستشارية",
+      "ministryInquiries": "الاستعلامات الالكترونية لوزارة التعليم العالي",
+      "surveys": "استطلاعات الرأي",
+      "graduateSurvey": "رأي الخريجين",
+      "employerSurvey": "رأي أرباب العمل"
+    },
     "pageTitles": {
       "home": "الرئيسية",
       "about": "من نحن؟",
@@ -1596,10 +1623,10 @@ export const { Link, usePathname, useRouter } =
 
 ```json
 {
-    "i18n-ally.localesPaths": [
-        "locales"
-    ]
+  "i18n-ally.localesPaths": ["locales"],
+  "i18n-ally.keystyle": "nested"
 }
+
 ```
 
 # src\lib\utils.ts
@@ -1608,14 +1635,9 @@ export const { Link, usePathname, useRouter } =
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import {
-  ABOUT_ROUTE,
-  BRANCHES_ROUTE,
   CONTACT_ROUTE,
   HOME_ROUTE,
-  JOBS_ROUTE,
-  JOIN_US_ROUTE,
   NEWS_ROUTE,
-  SERVICES_ROUTE,
   SLIDER_BG_ROUTES,
   IMAGE_BG_ROUTES,
   CENTERIZED_TITLE_ROUTES,
@@ -1647,12 +1669,12 @@ export function shareCurrentURL() {
 
 export const routes = [
   { key: "home", path: HOME_ROUTE },
-  { key: "about", path: ABOUT_ROUTE },
-  { key: "services", path: SERVICES_ROUTE },
-  { key: "branches", path: BRANCHES_ROUTE },
-  { key: "jobs", path: JOBS_ROUTE },
+  // { key: "about", path: ABOUT_ROUTE },
+  // { key: "services", path: SERVICES_ROUTE },
+  // { key: "branches", path: BRANCHES_ROUTE },
+  // { key: "jobs", path: JOBS_ROUTE },
   { key: "contact", path: CONTACT_ROUTE },
-  { key: "joinUs", path: JOIN_US_ROUTE },
+  // { key: "joinUs", path: JOIN_US_ROUTE },
   { key: "news", path: NEWS_ROUTE, includeSubPaths: true },
 ];
 
@@ -1686,7 +1708,7 @@ export function getBgComponent(pathname: string): React.ComponentType | null {
 export const scrollToElement = (
   container: RefObject<HTMLDivElement>,
   elementId: string,
-  duration: number
+  duration: number,
 ) => {
   const targetElement = document.getElementById(elementId);
   if (!targetElement) return;
@@ -1734,6 +1756,12 @@ export type NewsItem = {
   content: string;
   image: string;
 };
+
+export interface MenuItem {
+  path: string;
+  label: string;
+  items?: MenuItem[];
+}
 
 export type Statistic = {
   value: number;
@@ -1882,6 +1910,19 @@ export const TRANSCRIPT_REQUEST_ROUTE = `${GRADUATES_PORTAL_ROUTE}/transcript-re
 export const UNIVERSITY_ID_ISSUANCE_ROUTE = `${E_SERVICES_ROUTE}/university-id-issuance`;
 export const ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE = `${E_SERVICES_ROUTE}/electronic-participation-certificates`;
 
+// Topbar navigation
+export const CONTACT_ROUTE = "/contact";
+export const NEWS_ROUTE = "/news";
+export const SUSTAINABILITY_ROUTE = "/sustainability";
+export const UNIVERSITY_AND_COMMUNITY_ROUTE = "/university-and-community";
+export const GRADUATES_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/graduates`;
+export const QUALIFICATION_EMPLOYMENT_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/qualification-employment`;
+export const CONSULTING_CLINIC_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/consulting-clinic`;
+export const MINISTRY_INQUIRIES_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/ministry-inquiries`;
+export const SURVEYS_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/surveys`;
+export const GRADUATE_SURVEY_ROUTE = `${SURVEYS_ROUTE}/graduate-survey`;
+export const EMPLOYER_SURVEY_ROUTE = `${SURVEYS_ROUTE}/employer-survey`;
+
 export const NOT_FOUND_ROUTE = "/not_found";
 
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
@@ -1897,9 +1938,16 @@ export const TITLE_WITH_ACTIONS_ROUTES: string[] = [];
 # src\lib\data.ts
 
 ```ts
-import { NewsItem, TransNewsItem, Rating, TransRating } from "./types";
+import {
+  NewsItem,
+  TransNewsItem,
+  Rating,
+  TransRating,
+  MenuItem,
+} from "./types";
 
 import * as paths from "./paths";
+import { TranslationFunction } from "./utils";
 
 export const newsItems: (transNews: TransNewsItem[]) => NewsItem[] = (
   transNews: TransNewsItem[],
@@ -1954,339 +2002,384 @@ export const ratingsItems: (transRatings: TransRating[]) => Rating[] = (
     id: index + 1,
   }));
 
-export const navItems = (t: (key: string) => string) => [
-  { title: t("home"), path: paths.HOME_ROUTE },
+export const navItems = (t: TranslationFunction): MenuItem[] => [
+  { label: t("home"), path: paths.HOME_ROUTE },
   {
-    title: t("aboutUniversity.aboutUniversity"),
+    label: t("aboutUniversity.aboutUniversity"),
     path: paths.ABOUT_UNIVERSITY_ROUTE,
     items: [
       {
-        title: t("aboutUniversity.aboutUs"),
+        label: t("aboutUniversity.aboutUs"),
         path: paths.ABOUT_UNIVERSITY_ROUTE,
       },
       {
-        title: t("aboutUniversity.universityCouncil"),
+        label: t("aboutUniversity.universityCouncil"),
         path: paths.UNIVERSITY_COUNCIL_ROUTE,
         items: [
           {
-            title: t("aboutUniversity.universityPresident"),
+            label: t("aboutUniversity.universityPresident"),
             path: paths.UNIVERSITY_PRESIDENT_ROUTE,
           },
           {
-            title: t("aboutUniversity.assistantPresidentScientific"),
+            label: t("aboutUniversity.assistantPresidentScientific"),
             path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
           },
           {
-            title: t("aboutUniversity.assistantPresidentAdministrative"),
+            label: t("aboutUniversity.assistantPresidentAdministrative"),
             path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
           },
           {
-            title: t("aboutUniversity.collegeDeans"),
+            label: t("aboutUniversity.collegeDeans"),
             path: paths.COLLEGE_DEANS_ROUTE,
           },
         ],
       },
       {
-        title: t("aboutUniversity.presidentSpeech"),
+        label: t("aboutUniversity.presidentSpeech"),
         path: paths.PRESIDENT_SPEECH_ROUTE,
       },
       {
-        title: t("aboutUniversity.organizationalStructure"),
+        label: t("aboutUniversity.organizationalStructure"),
         path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
       },
       {
-        title: t("aboutUniversity.infrastructure"),
+        label: t("aboutUniversity.infrastructure"),
         path: paths.INFRASTRUCTURE_ROUTE,
         items: [
-          { title: t("aboutUniversity.halls"), path: paths.HALLS_ROUTE },
+          { label: t("aboutUniversity.halls"), path: paths.HALLS_ROUTE },
           {
-            title: t("aboutUniversity.laboratories"),
+            label: t("aboutUniversity.laboratories"),
             path: paths.LABORATORIES_ROUTE,
           },
           {
-            title: t("aboutUniversity.greenAreas"),
+            label: t("aboutUniversity.greenAreas"),
             path: paths.GREEN_AREAS_ROUTE,
           },
         ],
       },
       {
-        title: t("aboutUniversity.universityLife"),
+        label: t("aboutUniversity.universityLife"),
         path: paths.UNIVERSITY_LIFE_ROUTE,
         items: [
           {
-            title: t("aboutUniversity.photoLibrary"),
+            label: t("aboutUniversity.photoLibrary"),
             path: paths.PHOTO_LIBRARY_ROUTE,
           },
           {
-            title: t("aboutUniversity.videoLibrary"),
+            label: t("aboutUniversity.videoLibrary"),
             path: paths.VIDEO_LIBRARY_ROUTE,
           },
         ],
       },
       {
-        title: t("aboutUniversity.agreementsPartnerships"),
+        label: t("aboutUniversity.agreementsPartnerships"),
         path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
       },
       {
-        title: t("aboutUniversity.transparencyPrinciple"),
+        label: t("aboutUniversity.transparencyPrinciple"),
         path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
       },
       {
-        title: t("aboutUniversity.universityStrategy"),
+        label: t("aboutUniversity.universityStrategy"),
         path: paths.UNIVERSITY_STRATEGY_ROUTE,
       },
     ],
   },
   {
-    title: t("colleges"),
+    label: t("colleges"),
     path: paths.COLLEGES_ROUTE,
     items: [
-      { title: "College 1", path: paths.COLLEGE_ROUTE("1") },
-      { title: "College 2", path: paths.COLLEGE_ROUTE("2") },
+      { label: "College 1", path: paths.COLLEGE_ROUTE("1") },
+      { label: "College 2", path: paths.COLLEGE_ROUTE("2") },
     ],
   },
   {
-    title: t("academicAffairs.academicAffairs"),
+    label: t("academicAffairs.academicAffairs"),
     path: paths.ACADEMIC_AFFAIRS_ROUTE,
     items: [
       {
-        title: t("academicAffairs.scientificPromotions"),
+        label: t("academicAffairs.scientificPromotions"),
         path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
         items: [
           {
-            title: t("academicAffairs.guidelines"),
+            label: t("academicAffairs.guidelines"),
             path: paths.SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE,
           },
           {
-            title: t("academicAffairs.forms"),
+            label: t("academicAffairs.forms"),
             path: paths.PROMOTION_FORMS_ROUTE,
           },
           {
-            title: t("academicAffairs.instructions"),
+            label: t("academicAffairs.instructions"),
             path: paths.PROMOTION_INSTRUCTIONS_ROUTE,
           },
         ],
       },
       {
-        title: t("academicAffairs.scientificConferences"),
+        label: t("academicAffairs.scientificConferences"),
         path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
       },
       {
-        title: t("academicAffairs.scientificJournals"),
+        label: t("academicAffairs.scientificJournals"),
         path: paths.SCIENTIFIC_JOURNALS_ROUTE,
       },
       {
-        title: t("academicAffairs.electronicScientificProduction"),
+        label: t("academicAffairs.electronicScientificProduction"),
         path: paths.ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE,
       },
       {
-        title: t("academicAffairs.facultyResearch"),
+        label: t("academicAffairs.facultyResearch"),
         path: paths.FACULTY_RESEARCH_ROUTE,
       },
       {
-        title: t("academicAffairs.approvedBooks"),
+        label: t("academicAffairs.approvedBooks"),
         path: paths.APPROVED_BOOKS_ROUTE,
       },
       {
-        title: t("academicAffairs.scientificMissions"),
+        label: t("academicAffairs.scientificMissions"),
         path: paths.SCIENTIFIC_MISSIONS_ROUTE,
       },
       {
-        title: t("academicAffairs.inventionPatents"),
+        label: t("academicAffairs.inventionPatents"),
         path: paths.INVENTION_PATENTS_ROUTE,
       },
       {
-        title: t("academicAffairs.qualityAssurance"),
+        label: t("academicAffairs.qualityAssurance"),
         path: paths.QUALITY_ASSURANCE_ROUTE,
       },
       {
-        title: t("academicAffairs.universityRankings"),
+        label: t("academicAffairs.universityRankings"),
         path: paths.UNIVERSITY_RANKINGS_ROUTE,
         items: [
-          { title: t("academicAffairs.scopus"), path: paths.SCOPUS_ROUTE },
+          { label: t("academicAffairs.scopus"), path: paths.SCOPUS_ROUTE },
           {
-            title: t("academicAffairs.googleScholar"),
+            label: t("academicAffairs.googleScholar"),
             path: paths.GOOGLE_SCHOLAR_ROUTE,
           },
           {
-            title: t("academicAffairs.researchGate"),
+            label: t("academicAffairs.researchGate"),
             path: paths.RESEARCH_GATE_ROUTE,
           },
         ],
       },
       {
-        title: t("academicAffairs.scientificActivities"),
+        label: t("academicAffairs.scientificActivities"),
         path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
         items: [
           {
-            title: t("academicAffairs.seminars"),
+            label: t("academicAffairs.seminars"),
             path: paths.SEMINARS_ROUTE,
           },
           {
-            title: t("academicAffairs.workshops"),
+            label: t("academicAffairs.workshops"),
             path: paths.WORKSHOPS_ROUTE,
           },
-          { title: t("academicAffairs.courses"), path: paths.COURSES_ROUTE },
-          { title: t("academicAffairs.forums"), path: paths.FORUMS_ROUTE },
+          { label: t("academicAffairs.courses"), path: paths.COURSES_ROUTE },
+          { label: t("academicAffairs.forums"), path: paths.FORUMS_ROUTE },
         ],
       },
     ],
   },
   {
-    title: t("studentAffairs.studentAffairs"),
+    label: t("studentAffairs.studentAffairs"),
     path: paths.STUDENT_AFFAIRS_ROUTE,
     items: [
       {
-        title: t("studentAffairs.admissionRegistration"),
+        label: t("studentAffairs.admissionRegistration"),
         path: paths.ADMISSION_REGISTRATION_ROUTE,
         items: [
           {
-            title: t("studentAffairs.admissionConditions"),
+            label: t("studentAffairs.admissionConditions"),
             path: paths.ADMISSION_CONDITIONS_ROUTE,
           },
           {
-            title: t("studentAffairs.registrationMechanism"),
+            label: t("studentAffairs.registrationMechanism"),
             path: paths.REGISTRATION_MECHANISM_ROUTE,
           },
           {
-            title: t("studentAffairs.studyFees"),
+            label: t("studentAffairs.studyFees"),
             path: paths.STUDY_FEES_ROUTE,
           },
         ],
       },
       {
-        title: t("studentAffairs.scholarshipsGrants"),
+        label: t("studentAffairs.scholarshipsGrants"),
         path: paths.SCHOLARSHIPS_GRANTS_ROUTE,
       },
       {
-        title: t("studentAffairs.academicCalendar"),
+        label: t("studentAffairs.academicCalendar"),
         path: paths.ACADEMIC_CALENDAR_ROUTE,
       },
       {
-        title: t("studentAffairs.universityInstructions"),
+        label: t("studentAffairs.universityInstructions"),
         path: paths.UNIVERSITY_INSTRUCTIONS_ROUTE,
       },
       {
-        title: t("studentAffairs.studentGuide"),
+        label: t("studentAffairs.studentGuide"),
         path: paths.STUDENT_GUIDE_ROUTE,
       },
       {
-        title: t("studentAffairs.outstandingStudents"),
+        label: t("studentAffairs.outstandingStudents"),
         path: paths.OUTSTANDING_STUDENTS_ROUTE,
       },
       {
-        title: t("studentAffairs.studentActivities"),
+        label: t("studentAffairs.studentActivities"),
         path: paths.STUDENT_ACTIVITIES_ROUTE,
       },
       {
-        title: t("studentAffairs.studentClubs"),
+        label: t("studentAffairs.studentClubs"),
         path: paths.STUDENT_CLUBS_ROUTE,
       },
     ],
   },
   {
-    title: t("serviceCenters.serviceCenters"),
+    label: t("serviceCenters.serviceCenters"),
     path: paths.SERVICE_CENTERS_ROUTE,
     items: [
       {
-        title: t("serviceCenters.digitalLibrary"),
+        label: t("serviceCenters.digitalLibrary"),
         path: paths.DIGITAL_LIBRARY_ROUTE,
       },
       {
-        title: t("serviceCenters.continuingEducationCenter"),
+        label: t("serviceCenters.continuingEducationCenter"),
         path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
       },
       {
-        title: t("serviceCenters.careerGuidanceCenter"),
+        label: t("serviceCenters.careerGuidanceCenter"),
         path: paths.CAREER_GUIDANCE_CENTER_ROUTE,
       },
       {
-        title: t("serviceCenters.physicalFitnessCenter"),
+        label: t("serviceCenters.physicalFitnessCenter"),
         path: paths.PHYSICAL_FITNESS_CENTER_ROUTE,
       },
       {
-        title: t("serviceCenters.gilgameshTheater"),
+        label: t("serviceCenters.gilgameshTheater"),
         path: paths.GILGAMESH_THEATER_ROUTE,
       },
       {
-        title: t("serviceCenters.audiovisualHalls"),
+        label: t("serviceCenters.audiovisualHalls"),
         path: paths.AUDIOVISUAL_HALLS_ROUTE,
       },
       {
-        title: t("serviceCenters.sportsStadium"),
+        label: t("serviceCenters.sportsStadium"),
         path: paths.SPORTS_STADIUM_ROUTE,
       },
       {
-        title: t("serviceCenters.fiveSidePlaygrounds"),
+        label: t("serviceCenters.fiveSidePlaygrounds"),
         path: paths.FIVE_SIDE_PLAYGROUNDS_ROUTE,
       },
       {
-        title: t("serviceCenters.trainingHalls"),
+        label: t("serviceCenters.trainingHalls"),
         path: paths.TRAINING_HALLS_ROUTE,
       },
       {
-        title: t("serviceCenters.dentalClinics"),
+        label: t("serviceCenters.dentalClinics"),
         path: paths.DENTAL_CLINICS_ROUTE,
       },
       {
-        title: t("serviceCenters.centralLibrary"),
+        label: t("serviceCenters.centralLibrary"),
         path: paths.CENTRAL_LIBRARY_ROUTE,
       },
-      { title: t("serviceCenters.cafeteria"), path: paths.CAFETERIA_ROUTE },
+      { label: t("serviceCenters.cafeteria"), path: paths.CAFETERIA_ROUTE },
     ],
   },
   {
-    title: t("eServices.eServices"),
+    label: t("eServices.eServices"),
     path: paths.E_SERVICES_ROUTE,
     items: [
       {
-        title: t("eServices.studentPortal"),
+        label: t("eServices.studentPortal"),
         path: paths.STUDENT_PORTAL_ROUTE,
       },
       {
-        title: t("eServices.facultyPortal"),
+        label: t("eServices.facultyPortal"),
         path: paths.FACULTY_PORTAL_ROUTE,
       },
       {
-        title: t("eServices.massarPlatform"),
+        label: t("eServices.massarPlatform"),
         path: paths.MASSAR_PLATFORM_ROUTE,
       },
       {
-        title: t("eServices.universityDigitalRepository"),
+        label: t("eServices.universityDigitalRepository"),
         path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
       },
       {
-        title: t("eServices.electronicPayment"),
+        label: t("eServices.electronicPayment"),
         path: paths.ELECTRONIC_PAYMENT_ROUTE,
       },
       {
-        title: t("eServices.graduatesPortal"),
+        label: t("eServices.graduatesPortal"),
         path: paths.GRADUATES_PORTAL_ROUTE,
         items: [
           {
-            title: t("eServices.graduationConfirmationRequest"),
+            label: t("eServices.graduationConfirmationRequest"),
             path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
           },
           {
-            title: t("eServices.graduationDocumentRequest"),
+            label: t("eServices.graduationDocumentRequest"),
             path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
           },
           {
-            title: t("eServices.transcriptRequest"),
+            label: t("eServices.transcriptRequest"),
             path: paths.TRANSCRIPT_REQUEST_ROUTE,
           },
         ],
       },
       {
-        title: t("eServices.universityIdIssuance"),
+        label: t("eServices.universityIdIssuance"),
         path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
       },
       {
-        title: t("eServices.electronicParticipationCertificates"),
+        label: t("eServices.electronicParticipationCertificates"),
         path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
       },
     ],
   },
+];
+
+export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
+  {
+    path: paths.UNIVERSITY_AND_COMMUNITY_ROUTE,
+    label: t("Header.topbarNavLinks.universityAndCommunity"),
+    items: [
+      {
+        path: paths.GRADUATES_ROUTE,
+        label: t("Header.topbarNavLinks.graduates"),
+      },
+      {
+        path: paths.QUALIFICATION_EMPLOYMENT_ROUTE,
+        label: t("Header.topbarNavLinks.qualificationEmployment"),
+      },
+      {
+        path: paths.CONSULTING_CLINIC_ROUTE,
+        label: t("Header.topbarNavLinks.consultingClinic"),
+      },
+      {
+        path: paths.MINISTRY_INQUIRIES_ROUTE,
+        label: t("Header.topbarNavLinks.ministryInquiries"),
+      },
+      {
+        path: paths.SURVEYS_ROUTE,
+        label: t("Header.topbarNavLinks.surveys"),
+        items: [
+          {
+            path: paths.GRADUATE_SURVEY_ROUTE,
+            label: t("Header.topbarNavLinks.graduateSurvey"),
+          },
+          {
+            path: paths.EMPLOYER_SURVEY_ROUTE,
+            label: t("Header.topbarNavLinks.employerSurvey"),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: paths.SUSTAINABILITY_ROUTE,
+    label: t("Header.topbarNavLinks.sustainability"),
+  },
+  { path: paths.NEWS_ROUTE, label: t("Header.topbarNavLinks.news") },
+  { path: paths.CONTACT_ROUTE, label: t("Header.topbarNavLinks.contact") },
 ];
 
 ```
@@ -2707,15 +2800,12 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
 # src\components\HoverMenu.tsx
 
 ```tsx
+"use client";
+
 import React from "react";
 import { Link } from "@/i18n.config";
 import { twMerge } from "tailwind-merge";
-
-interface MenuItem {
-  title: string;
-  path: string;
-  items?: MenuItem[];
-}
+import { MenuItem } from "@/lib/types";
 
 interface HoverMenuProps {
   items: MenuItem[];
@@ -2760,7 +2850,7 @@ const HoverMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => {
         className="block px-6 py-3 text-sm text-white hover:bg-black/30"
         role="menuitem"
       >
-        {item.title}
+        {item.label}
       </Link>
       {item.items && <HoverMenu items={item.items} isSubmenu={true} />}
     </div>
@@ -5533,14 +5623,6 @@ This is a file of the type: SVG Image
 
 This is a binary file of the type: Image
 
-# public\images\common\google-play.png
-
-This is a binary file of the type: Image
-
-# public\images\common\app-store.png
-
-This is a binary file of the type: Image
-
 # public\images\hero\4.png
 
 This is a binary file of the type: Image
@@ -5554,6 +5636,14 @@ This is a binary file of the type: Image
 This is a binary file of the type: Image
 
 # public\images\hero\1.png
+
+This is a binary file of the type: Image
+
+# public\images\common\google-play.png
+
+This is a binary file of the type: Image
+
+# public\images\common\app-store.png
 
 This is a binary file of the type: Image
 
@@ -6068,6 +6158,7 @@ import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 import { navItems } from "@/lib/data";
 import HoverMenu from "@/components/HoverMenu";
+import { MenuItem } from "@/lib/types";
 
 const NavElements: React.FC = () => {
   const t = useTranslations("Header.navLinks");
@@ -6077,7 +6168,7 @@ const NavElements: React.FC = () => {
     <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
       {items.map((item, index) => (
         <React.Fragment key={item.path}>
-          <NavItem title={item.title} path={item.path} items={item.items} />
+          <NavItem title={item.label} path={item.path} items={item.items} />
           {index !== items.length - 1 && (
             <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
           )}
@@ -6090,7 +6181,7 @@ const NavElements: React.FC = () => {
 const NavItem: React.FC<{
   title: string;
   path: string;
-  items?: { title: string; path: string; items?: any[] }[];
+  items?: MenuItem[];
 }> = ({ title, path, items }) => {
   const pathname = usePathname();
 
@@ -6154,21 +6245,25 @@ export default MainNewsCard;
 # src\app\_components\Header\Topbar.tsx
 
 ```tsx
-// src/app/_components/Topbar.tsx
+"use client";
 
 import React from "react";
 import LocaleSwitcher from "../../../components/LocaleSwitcher";
 import { Link, Locale } from "@/i18n.config";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Section from "../../../components/Section";
+
+import HoverMenu from "@/components/HoverMenu";
+import { topbarNavItems } from "@/lib/data";
+import { MenuItem } from "@/lib/types";
 
 const Topbar: React.FC = () => {
   return (
     <Section
-      className="h-[50px] flex justify-center"
-      wrapperClass="bg-[rgba(217,217,217,0.10)] backdrop-blur-[20px] hidden sm:flex"
+      className="relative flex h-[50px] justify-center"
+      wrapperClass="bg-[rgba(217,217,217,0.10)] backdrop-blur-[20px] hidden sm:flex relative z-10"
     >
-      <div className="h-full flex justify-between items-center sm:px-[60px] 1920:px-[136px] w-full">
+      <div className="flex h-full w-full items-center justify-between sm:px-[60px] 1920:px-[136px]">
         <TopbarContact />
         <TopbarNavigation />
       </div>
@@ -6177,39 +6272,33 @@ const Topbar: React.FC = () => {
 };
 
 const TopbarNavigation: React.FC = () => {
-  const navItems = [
-    { href: "/contact", label: "اتصل بنا" },
-    { href: "/news", label: "الاخبار" },
-    { href: "/sustainability", label: "الاستدامة" },
-    { href: "/university-and-community", label: "الجامعة والمجتمع" },
-  ];
+  const t = useTranslations();
+  const navItems = topbarNavItems(t);
 
   return (
     <ul className="flex items-center">
       {navItems.map((item, index) => (
-        <React.Fragment key={item.href}>
+        <React.Fragment key={item.path}>
           {index !== 0 && (
-            <div className="border-e border-white/10 sm:block hidden h-4 mx-2.5"></div>
+            <div className="mx-2.5 hidden h-4 border-e border-white/10 sm:block"></div>
           )}
-          <NavElement href={item.href} label={item.label} />
+          <NavItem item={item} />
         </React.Fragment>
       ))}
     </ul>
   );
 };
 
-const NavElement: React.FC<{ href: string; label: string }> = ({
-  href,
-  label,
-}) => {
+const NavItem: React.FC<{ item: MenuItem }> = ({ item }) => {
   return (
-    <li>
+    <li className="group relative">
       <Link
-        href={href}
-        className="text-sm 1920:text-base text-white hover:opacity-60 transition-opacity duration-300 font-light"
+        href={item.path}
+        className="text-sm font-light text-white transition-opacity duration-300 hover:opacity-60 1920:text-base"
       >
-        {label}
+        {item.label}
       </Link>
+      {item.items && <HoverMenu items={item.items} />}
     </li>
   );
 };
@@ -6218,9 +6307,9 @@ const TopbarContact: React.FC = () => {
   const locale = useLocale() as Locale;
 
   return (
-    <div className="flex items-center gap-[30px]  text-xs font-light">
+    <div className="flex items-center gap-[30px] text-xs font-light">
       <ContactElement href="mailto:info@gau.edu.iq" label="info@gau.edu.iq" />
-      <div className=" text-white flex gap-1">
+      <div className="flex gap-1 text-white">
         <ContactElement href="tel:07832000090" label="07832000090" />
         -
         <ContactElement href="tel:07732000090" label="07732000090" />
@@ -6237,7 +6326,7 @@ const ContactElement: React.FC<{ href: string; label: string }> = ({
   label,
 }) => {
   return (
-    <a href={href} className=" text-white hover:text-secondary">
+    <a href={href} className="text-white hover:text-secondary">
       {label}
     </a>
   );
@@ -6950,22 +7039,6 @@ const Pagination: React.FC<PaginationProps> = ({
 
 ```
 
-# public\images\home\News\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\1.jpg
-
-This is a binary file of the type: Image
-
 # public\images\home\Goals\6.jpg
 
 This is a binary file of the type: Image
@@ -6983,6 +7056,22 @@ This is a binary file of the type: Image
 This is a binary file of the type: Image
 
 # public\images\home\Goals\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\1.jpg
 
 This is a binary file of the type: Image
 

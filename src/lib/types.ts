@@ -12,6 +12,12 @@ export type NewsItem = {
   image: string;
 };
 
+export interface MenuItem {
+  path: string;
+  label: string;
+  items?: MenuItem[];
+}
+
 export type Statistic = {
   value: number;
   description: string;

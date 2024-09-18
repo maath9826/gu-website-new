@@ -124,6 +124,20 @@
         "electronicParticipationCertificates": "Electronic Participation Certificates"
       }
     },
+    "topbarNavLinks": {
+      "contact": "Contact Us",
+      "news": "News",
+      "sustainability": "Sustainability",
+      "universityAndCommunity": "University and Community",
+      "graduates": "Our Graduates",
+      "qualificationEmployment": "Qualification and Employment",
+      "consultingClinic": "Consulting Clinic",
+      "ministryInquiries": "Ministry of Higher Education E-Inquiries",
+      "surveys": "Surveys",
+      "graduateSurvey": "Graduate Survey",
+      "employerSurvey": "Employer Survey"
+    },
+
     "pageTitles": {
       "home": "Home",
       "about": "Who are we?",

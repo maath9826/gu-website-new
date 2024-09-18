@@ -1,30 +1,33 @@
+"use client";
+
 import React from "react";
 import { Link } from "@/i18n.config";
 import { twMerge } from "tailwind-merge";
-
-interface MenuItem {
-  title: string;
-  path: string;
-  items?: MenuItem[];
-}
+import { MenuItem } from "@/lib/types";
 
 interface HoverMenuProps {
   items: MenuItem[];
   className?: string;
+  submenuClassName?: string;
   isSubmenu?: boolean;
 }
 
 const HoverMenu: React.FC<HoverMenuProps> = ({
   items,
   className,
+  submenuClassName = "",
   isSubmenu = false,
 }) => {
+  if (isSubmenu) console.log(submenuClassName);
   return (
     <div
       className={twMerge(
-        "absolute hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg",
+        "absolute hidden animate-vanish whitespace-nowrap bg-black/90 shadow-lg",
         isSubmenu
-          ? "start-full top-0 group-hover/sub:block group-hover/sub:animate-appear"
+          ? twMerge(
+              "start-full top-0 group-hover/sub:block group-hover/sub:animate-appear",
+              submenuClassName,
+            )
           : "top-full group-hover:block group-hover:animate-appear",
         className,
       )}
@@ -36,24 +39,37 @@ const HoverMenu: React.FC<HoverMenuProps> = ({
         aria-labelledby="options-menu"
       >
         {items.map((item, index) => (
-          <HoverMenuItem key={index} item={item} />
+          <HoverMenuItem
+            key={index}
+            item={item}
+            submenuClassName={submenuClassName}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-const HoverMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => {
+const HoverMenuItem: React.FC<{
+  item: MenuItem;
+  submenuClassName?: string;
+}> = ({ item, submenuClassName }) => {
   return (
-    <div className="group/sub relative">
+    <div className="group/sub relative border-b border-transparent text-start hover:border-secondary">
       <Link
         href={item.path}
-        className="block px-6 py-3 text-sm text-white hover:bg-black/30"
+        className="block px-6 py-3 text-sm text-white hover:bg-white/10"
         role="menuitem"
       >
-        {item.title}
+        {item.label}
       </Link>
-      {item.items && <HoverMenu items={item.items} isSubmenu={true} />}
+      {item.items && (
+        <HoverMenu
+          items={item.items}
+          isSubmenu={true}
+          submenuClassName={submenuClassName}
+        />
+      )}
     </div>
   );
 };

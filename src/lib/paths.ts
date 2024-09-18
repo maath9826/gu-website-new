@@ -94,6 +94,19 @@ export const TRANSCRIPT_REQUEST_ROUTE = `${GRADUATES_PORTAL_ROUTE}/transcript-re
 export const UNIVERSITY_ID_ISSUANCE_ROUTE = `${E_SERVICES_ROUTE}/university-id-issuance`;
 export const ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE = `${E_SERVICES_ROUTE}/electronic-participation-certificates`;
 
+// Topbar navigation
+export const CONTACT_ROUTE = "/contact";
+export const NEWS_ROUTE = "/news";
+export const SUSTAINABILITY_ROUTE = "/sustainability";
+export const UNIVERSITY_AND_COMMUNITY_ROUTE = "/university-and-community";
+export const GRADUATES_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/graduates`;
+export const QUALIFICATION_EMPLOYMENT_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/qualification-employment`;
+export const CONSULTING_CLINIC_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/consulting-clinic`;
+export const MINISTRY_INQUIRIES_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/ministry-inquiries`;
+export const SURVEYS_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/surveys`;
+export const GRADUATE_SURVEY_ROUTE = `${SURVEYS_ROUTE}/graduate-survey`;
+export const EMPLOYER_SURVEY_ROUTE = `${SURVEYS_ROUTE}/employer-survey`;
+
 export const NOT_FOUND_ROUTE = "/not_found";
 
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];

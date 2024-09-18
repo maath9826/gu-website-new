@@ -1,18 +1,22 @@
-// src/app/_components/Topbar.tsx
+"use client";
 
 import React from "react";
 import LocaleSwitcher from "../../../components/LocaleSwitcher";
 import { Link, Locale } from "@/i18n.config";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Section from "../../../components/Section";
+
+import HoverMenu from "@/components/HoverMenu";
+import { topbarNavItems } from "@/lib/data";
+import { MenuItem } from "@/lib/types";
 
 const Topbar: React.FC = () => {
   return (
     <Section
-      className="h-[50px] flex justify-center"
-      wrapperClass="bg-[rgba(217,217,217,0.10)] backdrop-blur-[20px] hidden sm:flex"
+      className="relative flex h-[50px] justify-center"
+      wrapperClass="bg-[rgba(217,217,217,0.10)] backdrop-blur-[20px] hidden sm:flex relative z-10"
     >
-      <div className="h-full flex justify-between items-center sm:px-[60px] 1920:px-[136px] w-full">
+      <div className="flex h-full w-full items-center justify-between sm:px-[60px] 1920:px-[136px]">
         <TopbarContact />
         <TopbarNavigation />
       </div>
@@ -21,39 +25,35 @@ const Topbar: React.FC = () => {
 };
 
 const TopbarNavigation: React.FC = () => {
-  const navItems = [
-    { href: "/contact", label: "اتصل بنا" },
-    { href: "/news", label: "الاخبار" },
-    { href: "/sustainability", label: "الاستدامة" },
-    { href: "/university-and-community", label: "الجامعة والمجتمع" },
-  ];
+  const t = useTranslations();
+  const navItems = topbarNavItems(t);
 
   return (
     <ul className="flex items-center">
       {navItems.map((item, index) => (
-        <React.Fragment key={item.href}>
+        <React.Fragment key={item.path}>
           {index !== 0 && (
-            <div className="border-e border-white/10 sm:block hidden h-4 mx-2.5"></div>
+            <div className="mx-2.5 hidden h-4 border-e border-white/10 sm:block"></div>
           )}
-          <NavElement href={item.href} label={item.label} />
+          <NavItem item={item} />
         </React.Fragment>
       ))}
     </ul>
   );
 };
 
-const NavElement: React.FC<{ href: string; label: string }> = ({
-  href,
-  label,
-}) => {
+const NavItem: React.FC<{ item: MenuItem }> = ({ item }) => {
   return (
-    <li>
+    <li className="group relative">
       <Link
-        href={href}
-        className="text-sm 1920:text-base text-white hover:opacity-60 transition-opacity duration-300 font-light"
+        href={item.path}
+        className="text-sm font-light text-white transition-opacity duration-300 hover:opacity-60 1920:text-base"
       >
-        {label}
+        {item.label}
       </Link>
+      {item.items && (
+        <HoverMenu items={item.items} submenuClassName="end-full start-auto" />
+      )}
     </li>
   );
 };
@@ -62,9 +62,9 @@ const TopbarContact: React.FC = () => {
   const locale = useLocale() as Locale;
 
   return (
-    <div className="flex items-center gap-[30px]  text-xs font-light">
+    <div className="flex items-center gap-[30px] text-xs font-light">
       <ContactElement href="mailto:info@gau.edu.iq" label="info@gau.edu.iq" />
-      <div className=" text-white flex gap-1">
+      <div className="flex gap-1 text-white">
         <ContactElement href="tel:07832000090" label="07832000090" />
         -
         <ContactElement href="tel:07732000090" label="07732000090" />
@@ -81,7 +81,7 @@ const ContactElement: React.FC<{ href: string; label: string }> = ({
   label,
 }) => {
   return (
-    <a href={href} className=" text-white hover:text-secondary">
+    <a href={href} className="text-white hover:text-secondary">
       {label}
     </a>
   );

@@ -80,8 +80,8 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        appear: "appear 0.2s ease-out",
-        vanish: "vanish 0.2s ease-in",
+        appear: "appear 0.1s ease-out",
+        vanish: "vanish 0.1s ease-in",
       },
       width: {
         mobile: "343px",

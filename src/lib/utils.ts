@@ -1,14 +1,9 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import {
-  ABOUT_ROUTE,
-  BRANCHES_ROUTE,
   CONTACT_ROUTE,
   HOME_ROUTE,
-  JOBS_ROUTE,
-  JOIN_US_ROUTE,
   NEWS_ROUTE,
-  SERVICES_ROUTE,
   SLIDER_BG_ROUTES,
   IMAGE_BG_ROUTES,
   CENTERIZED_TITLE_ROUTES,
@@ -40,12 +35,12 @@ export function shareCurrentURL() {
 
 export const routes = [
   { key: "home", path: HOME_ROUTE },
-  { key: "about", path: ABOUT_ROUTE },
-  { key: "services", path: SERVICES_ROUTE },
-  { key: "branches", path: BRANCHES_ROUTE },
-  { key: "jobs", path: JOBS_ROUTE },
+  // { key: "about", path: ABOUT_ROUTE },
+  // { key: "services", path: SERVICES_ROUTE },
+  // { key: "branches", path: BRANCHES_ROUTE },
+  // { key: "jobs", path: JOBS_ROUTE },
   { key: "contact", path: CONTACT_ROUTE },
-  { key: "joinUs", path: JOIN_US_ROUTE },
+  // { key: "joinUs", path: JOIN_US_ROUTE },
   { key: "news", path: NEWS_ROUTE, includeSubPaths: true },
 ];
 
@@ -79,7 +74,7 @@ export function getBgComponent(pathname: string): React.ComponentType | null {
 export const scrollToElement = (
   container: RefObject<HTMLDivElement>,
   elementId: string,
-  duration: number
+  duration: number,
 ) => {
   const targetElement = document.getElementById(elementId);
   if (!targetElement) return;
