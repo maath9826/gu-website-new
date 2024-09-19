@@ -13,11 +13,7 @@ const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item
-    ref={ref}
-    className={cn("border-b", className)}
-    {...props}
-  />
+  <AccordionPrimitive.Item ref={ref} className={cn(className)} {...props} />
 ));
 AccordionItem.displayName = "AccordionItem";
 
@@ -40,14 +36,14 @@ const AccordionTrigger = React.forwardRef<
       rotationAmount = 180,
       ...props
     },
-    ref
+    ref,
   ) => (
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
           "group flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline",
-          className
+          className,
         )}
         {...props}
       >
@@ -55,8 +51,8 @@ const AccordionTrigger = React.forwardRef<
         {openIcon && closeIcon ? (
           <div
             className={twMerge(
-              "relative transition-transform duration-300 ease-in-out origin-center",
-              "group-data-[state=open]:rotate-custom"
+              "relative origin-center transition-transform duration-300 ease-in-out",
+              "group-data-[state=open]:rotate-custom",
             )}
             style={
               {
@@ -66,10 +62,10 @@ const AccordionTrigger = React.forwardRef<
               } as React.CSSProperties
             }
           >
-            <div className="absolute inset-0 transition-opacity duration-150 delay-[0.25s] group-data-[state=open]:opacity-0 flex justify-center items-center">
+            <div className="delay-[0.25s] absolute inset-0 flex items-center justify-center transition-opacity duration-150 group-data-[state=open]:opacity-0">
               {closeIcon}
             </div>
-            <div className="absolute inset-0 opacity-0 transition-opacity duration-150 delay-[0.25s] group-data-[state=open]:opacity-100 flex justify-center items-center">
+            <div className="delay-[0.25s] absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-150 group-data-[state=open]:opacity-100">
               {openIcon}
             </div>
           </div>
@@ -78,7 +74,7 @@ const AccordionTrigger = React.forwardRef<
         )}
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
-  )
+  ),
 );
 
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;

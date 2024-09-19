@@ -115,8 +115,8 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        appear: "appear 0.2s ease-out",
-        vanish: "vanish 0.2s ease-in",
+        appear: "appear 0.1s ease-out",
+        vanish: "vanish 0.1s ease-in",
       },
       width: {
         mobile: "343px",
@@ -2810,20 +2810,26 @@ import { MenuItem } from "@/lib/types";
 interface HoverMenuProps {
   items: MenuItem[];
   className?: string;
+  submenuClassName?: string;
   isSubmenu?: boolean;
 }
 
 const HoverMenu: React.FC<HoverMenuProps> = ({
   items,
   className,
+  submenuClassName = "",
   isSubmenu = false,
 }) => {
+  if (isSubmenu) console.log(submenuClassName);
   return (
     <div
       className={twMerge(
-        "absolute hidden animate-vanish whitespace-nowrap bg-black/50 shadow-lg",
+        "absolute hidden animate-vanish whitespace-nowrap bg-black/90 shadow-lg",
         isSubmenu
-          ? "start-full top-0 group-hover/sub:block group-hover/sub:animate-appear"
+          ? twMerge(
+              "start-full top-0 group-hover/sub:block group-hover/sub:animate-appear",
+              submenuClassName,
+            )
           : "top-full group-hover:block group-hover:animate-appear",
         className,
       )}
@@ -2835,24 +2841,37 @@ const HoverMenu: React.FC<HoverMenuProps> = ({
         aria-labelledby="options-menu"
       >
         {items.map((item, index) => (
-          <HoverMenuItem key={index} item={item} />
+          <HoverMenuItem
+            key={index}
+            item={item}
+            submenuClassName={submenuClassName}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-const HoverMenuItem: React.FC<{ item: MenuItem }> = ({ item }) => {
+const HoverMenuItem: React.FC<{
+  item: MenuItem;
+  submenuClassName?: string;
+}> = ({ item, submenuClassName }) => {
   return (
-    <div className="group/sub relative">
+    <div className="group/sub relative border-b border-transparent text-start hover:border-secondary">
       <Link
         href={item.path}
-        className="block px-6 py-3 text-sm text-white hover:bg-black/30"
+        className="block px-6 py-3 text-sm text-white hover:bg-white/10"
         role="menuitem"
       >
         {item.label}
       </Link>
-      {item.items && <HoverMenu items={item.items} isSubmenu={true} />}
+      {item.items && (
+        <HoverMenu
+          items={item.items}
+          isSubmenu={true}
+          submenuClassName={submenuClassName}
+        />
+      )}
     </div>
   );
 };
@@ -6185,16 +6204,15 @@ const NavItem: React.FC<{
 }> = ({ title, path, items }) => {
   const pathname = usePathname();
 
+  let classes = twMerge(
+    "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
+    pathname === path &&
+      "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
+  );
+
   return (
     <div className="group relative sm:h-full">
-      <Link
-        href={path}
-        className={twMerge(
-          "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
-          pathname === path &&
-            "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
-        )}
-      >
+      <Link href={path} className={classes}>
         {title}
       </Link>
       {items && <HoverMenu items={items} />}
@@ -6298,7 +6316,9 @@ const NavItem: React.FC<{ item: MenuItem }> = ({ item }) => {
       >
         {item.label}
       </Link>
-      {item.items && <HoverMenu items={item.items} />}
+      {item.items && (
+        <HoverMenu items={item.items} submenuClassName="end-full start-auto" />
+      )}
     </li>
   );
 };
@@ -7039,6 +7059,22 @@ const Pagination: React.FC<PaginationProps> = ({
 
 ```
 
+# public\images\home\News\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\1.jpg
+
+This is a binary file of the type: Image
+
 # public\images\home\Goals\6.jpg
 
 This is a binary file of the type: Image
@@ -7056,22 +7092,6 @@ This is a binary file of the type: Image
 This is a binary file of the type: Image
 
 # public\images\home\Goals\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\1.jpg
 
 This is a binary file of the type: Image
 
