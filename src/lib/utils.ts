@@ -113,7 +113,11 @@ export function getPageTitle({
   pathname: string;
 }): string {
   const key = pathname.split("/").pop() || "home";
-  return t(`Header.navLinks.${key}`);
+  const keyCamelCase = key
+    .split("-")
+    .map((word, index) => (index === 0 ? word : capitalize(word)))
+    .join("");
+  return t(`Header.navLinks.${keyCamelCase}`);
 }
 
 const getPrintProps = ({
@@ -132,5 +136,9 @@ const getPrintProps = ({
   bodyClass: "print-body",
   documentTitle: ".",
 });
+
+export function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 export { getPrintProps };

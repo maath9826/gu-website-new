@@ -13,7 +13,7 @@ export type NewsItem = {
 };
 
 export interface MenuItem {
-  path: string;
+  path?: string;
   label: string;
   items?: MenuItem[];
 }

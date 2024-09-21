@@ -55,13 +55,17 @@ const HoverMenuItem: React.FC<{
 }> = ({ item, submenuClassName }) => {
   return (
     <div className="group/sub relative border-b border-transparent text-start hover:border-secondary">
-      <Link
-        href={item.path}
-        className="block px-6 py-3 text-sm text-white hover:bg-white/10"
-        role="menuitem"
-      >
-        {item.label}
-      </Link>
+      {item.path ? (
+        <Link
+          href={item.path}
+          className="block px-6 py-3 text-sm text-white hover:bg-white/10"
+          role="menuitem"
+        >
+          {item.label}
+        </Link>
+      ) : (
+        <span className="block px-6 py-3 text-sm text-white">{item.label}</span>
+      )}
       {item.items && (
         <HoverMenu
           items={item.items}

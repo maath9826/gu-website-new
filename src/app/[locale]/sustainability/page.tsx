@@ -1,10 +1,5 @@
-import React, { useRef } from "react";
-import { useTranslations } from "next-intl";
-import Section from "@/components/Section";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import { useReactToPrint } from "react-to-print";
-import { Button } from "@/components/ui/button";
-import { shareCurrentURL } from "@/lib/utils";
+import React from "react";
+
 import FormattedTextViewer from "@/components/FormattedTextViewer";
 
 export default function SustainabilityPage() {

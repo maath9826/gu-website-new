@@ -399,7 +399,6 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
 
 export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
   {
-    path: paths.UNIVERSITY_AND_COMMUNITY_ROUTE,
     label: t("Header.navLinks.universityAndCommunity"),
     items: [
       {
@@ -419,7 +418,6 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
         label: t("Header.navLinks.ministryInquiries"),
       },
       {
-        path: paths.SURVEYS_ROUTE,
         label: t("Header.navLinks.surveys"),
         items: [
           {

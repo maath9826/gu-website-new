@@ -609,5 +609,16 @@
         "icon": "ri-map-pin-line"
       }
     ]
+  },
+  "Survey": {
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "college": "College",
+    "department": "Department",
+    "message": "Message",
+    "writeHere": "Write here",
+    "writeYourMessage": "Write your message here",
+    "send": "Send"
   }
 }

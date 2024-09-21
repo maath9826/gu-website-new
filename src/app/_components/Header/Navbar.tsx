@@ -65,7 +65,7 @@ function NavDrawer() {
     const paddingStart = 16 * depth + "px";
 
     if (!item.items || item.items.length === 0) {
-      return (
+      return item.path ? (
         <Link
           key={index}
           href={item.path}
@@ -75,6 +75,14 @@ function NavDrawer() {
         >
           {item.label}
         </Link>
+      ) : (
+        <p
+          key={index}
+          className="block py-4 text-start text-base font-medium"
+          style={{ paddingInlineStart: depth > 0 ? paddingStart : "" }}
+        >
+          {item.label}
+        </p>
       );
     }
 

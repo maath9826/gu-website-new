@@ -26,7 +26,7 @@ const NavElements: React.FC = () => {
 
 const NavItem: React.FC<{
   title: string;
-  path: string;
+  path?: string;
   items?: MenuItem[];
 }> = ({ title, path, items }) => {
   const pathname = usePathname();
@@ -39,9 +39,13 @@ const NavItem: React.FC<{
 
   return (
     <div className="group relative sm:h-full">
-      <Link href={path} className={classes}>
-        {title}
-      </Link>
+      {path ? (
+        <Link href={path} className={classes}>
+          {title}
+        </Link>
+      ) : (
+        <span className={classes}>{title}</span>
+      )}
       {items && <HoverMenu items={items} />}
     </div>
   );

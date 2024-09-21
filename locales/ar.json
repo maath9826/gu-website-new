@@ -614,5 +614,17 @@
         "icon": "ri-map-pin-line"
       }
     ]
+  },
+
+  "Survey": {
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "college": "الكلية",
+    "department": "القسم",
+    "message": "الرسالة",
+    "writeHere": "اكتب هنا",
+    "writeYourMessage": "اكتب رسالتك هنا",
+    "send": "إرسال"
   }
 }

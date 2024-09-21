@@ -45,12 +45,16 @@ const TopbarNavigation: React.FC = () => {
 const NavItem: React.FC<{ item: MenuItem }> = ({ item }) => {
   return (
     <li className="group relative">
-      <Link
-        href={item.path}
-        className="text-sm font-light text-white transition-opacity duration-300 hover:opacity-60 1920:text-base"
-      >
-        {item.label}
-      </Link>
+      {item.path ? (
+        <Link
+          href={item.path}
+          className="text-sm font-light text-white transition-opacity duration-300 hover:opacity-60 1920:text-base"
+        >
+          {item.label}
+        </Link>
+      ) : (
+        <span className="text-sm font-light text-white">{item.label}</span>
+      )}
       {item.items && (
         <HoverMenu items={item.items} submenuClassName="end-full start-auto" />
       )}
