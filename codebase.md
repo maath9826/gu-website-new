@@ -359,6 +359,16 @@ export const { Link, usePathname, useRouter } =
 
 ```
 
+# .vscode\settings.json
+
+```json
+{
+  "i18n-ally.localesPaths": ["locales"],
+  "i18n-ally.keystyle": "nested"
+}
+
+```
+
 # locales\en.json
 
 ```json
@@ -371,6 +381,7 @@ export const { Link, usePathname, useRouter } =
     "firstTitle": "AlZAEEM Express Delivery"
   },
   "Common": {
+    "centerizedTitle": "Your Centered Title Here",
     "cards": {
       "uniLife": "University Life",
       "about": "About the University",
@@ -398,97 +409,85 @@ export const { Link, usePathname, useRouter } =
     },
     "navLinks": {
       "home": "Home",
-      "aboutUniversity": {
-        "aboutUniversity": "About University",
-        "aboutUs": "About Us",
-        "universityCouncil": "University Council",
-        "universityPresident": "University President",
-        "assistantPresidentScientific": "Assistant President for Scientific Affairs",
-        "assistantPresidentAdministrative": "Assistant President for Administrative Affairs",
-        "collegeDeans": "College Deans",
-        "presidentSpeech": "President's Speech",
-        "organizationalStructure": "Organizational Structure",
-        "infrastructure": "Infrastructure",
-        "halls": "Halls",
-        "laboratories": "Laboratories",
-        "greenAreas": "Green Areas",
-        "universityLife": "University Life",
-        "photoLibrary": "Photo Library",
-        "videoLibrary": "Video Library",
-        "agreementsPartnerships": "Agreements and Partnerships",
-        "transparencyPrinciple": "Transparency Principle",
-        "universityStrategy": "Gilgamesh University Strategy"
-      },
+      "aboutUniversity": "About University",
+      "aboutUs": "About Us",
+      "universityCouncil": "University Council",
+      "universityPresident": "University President",
+      "assistantPresidentScientific": "Assistant President for Scientific Affairs",
+      "assistantPresidentAdministrative": "Assistant President for Administrative Affairs",
+      "collegeDeans": "College Deans",
+      "presidentSpeech": "President's Speech",
+      "organizationalStructure": "Organizational Structure",
+      "infrastructure": "Infrastructure",
+      "halls": "Halls",
+      "laboratories": "Laboratories",
+      "greenAreas": "Green Areas",
+      "universityLife": "University Life",
+      "photoLibrary": "Photo Library",
+      "videoLibrary": "Video Library",
+      "agreementsPartnerships": "Agreements and Partnerships",
+      "transparencyPrinciple": "Transparency Principle",
+      "universityStrategy": "Gilgamesh University Strategy",
       "colleges": "Colleges",
-      "academicAffairs": {
-        "academicAffairs": "Academic Affairs",
-        "scientificPromotions": "Scientific Promotions",
-        "guidelines": "Guidelines",
-        "forms": "Forms",
-        "instructions": "Instructions",
-        "scientificConferences": "Scientific Conferences",
-        "scientificJournals": "Scientific Journals",
-        "electronicScientificProduction": "Electronic Scientific Production",
-        "facultyResearch": "Faculty Research",
-        "approvedBooks": "Approved Books",
-        "scientificMissions": "Scientific Missions",
-        "inventionPatents": "Invention Patents",
-        "qualityAssurance": "Quality Assurance",
-        "universityRankings": "University Rankings",
-        "scopus": "Scopus",
-        "googleScholar": "Google Scholar",
-        "researchGate": "Research Gate",
-        "scientificActivities": "Scientific Activities",
-        "seminars": "Seminars",
-        "workshops": "Workshops",
-        "courses": "Courses",
-        "forums": "Forums"
-      },
-      "studentAffairs": {
-        "studentAffairs": "Student Affairs",
-        "admissionRegistration": "Admission and Registration",
-        "admissionConditions": "Admission Conditions",
-        "registrationMechanism": "Registration Mechanism",
-        "studyFees": "Study Fees",
-        "scholarshipsGrants": "Scholarships and Grants",
-        "academicCalendar": "Academic Calendar",
-        "universityInstructions": "University Instructions",
-        "studentGuide": "Student Guide",
-        "outstandingStudents": "Outstanding Students",
-        "studentActivities": "Student Activities",
-        "studentClubs": "Student Clubs"
-      },
-      "serviceCenters": {
-        "serviceCenters": "Service Centers",
-        "digitalLibrary": "Digital Library",
-        "continuingEducationCenter": "Continuing Education Center",
-        "careerGuidanceCenter": "Career Guidance Center",
-        "physicalFitnessCenter": "Physical Fitness Center",
-        "gilgameshTheater": "Gilgamesh Theater",
-        "audiovisualHalls": "Audiovisual Halls",
-        "sportsStadium": "Sports Stadium",
-        "fiveSidePlaygrounds": "Five-side Playgrounds",
-        "trainingHalls": "Training Halls",
-        "dentalClinics": "Dental Clinics",
-        "centralLibrary": "Central Library",
-        "cafeteria": "Cafeteria"
-      },
-      "eServices": {
-        "eServices": "E-Services",
-        "studentPortal": "Student Portal",
-        "facultyPortal": "Faculty Portal",
-        "massarPlatform": "Massar Platform",
-        "universityDigitalRepository": "University Digital Repository",
-        "electronicPayment": "Electronic Payment",
-        "graduatesPortal": "Graduates Portal",
-        "graduationConfirmationRequest": "Graduation Confirmation Request",
-        "graduationDocumentRequest": "Graduation Document Request",
-        "transcriptRequest": "Transcript Request",
-        "universityIdIssuance": "University ID Issuance",
-        "electronicParticipationCertificates": "Electronic Participation Certificates"
-      }
-    },
-    "topbarNavLinks": {
+      "academicAffairs": "Academic Affairs",
+      "scientificPromotions": "Scientific Promotions",
+      "guidelines": "Guidelines",
+      "forms": "Forms",
+      "instructions": "Instructions",
+      "scientificConferences": "Scientific Conferences",
+      "scientificJournals": "Scientific Journals",
+      "electronicScientificProduction": "Electronic Scientific Production",
+      "facultyResearch": "Faculty Research",
+      "approvedBooks": "Approved Books",
+      "scientificMissions": "Scientific Missions",
+      "inventionPatents": "Invention Patents",
+      "qualityAssurance": "Quality Assurance",
+      "universityRankings": "University Rankings",
+      "scopus": "Scopus",
+      "googleScholar": "Google Scholar",
+      "researchGate": "Research Gate",
+      "scientificActivities": "Scientific Activities",
+      "seminars": "Seminars",
+      "workshops": "Workshops",
+      "courses": "Courses",
+      "forums": "Forums",
+      "studentAffairs": "Student Affairs",
+      "admissionRegistration": "Admission and Registration",
+      "admissionConditions": "Admission Conditions",
+      "registrationMechanism": "Registration Mechanism",
+      "studyFees": "Study Fees",
+      "scholarshipsGrants": "Scholarships and Grants",
+      "academicCalendar": "Academic Calendar",
+      "universityInstructions": "University Instructions",
+      "studentGuide": "Student Guide",
+      "outstandingStudents": "Outstanding Students",
+      "studentActivities": "Student Activities",
+      "studentClubs": "Student Clubs",
+      "serviceCenters": "Service Centers",
+      "digitalLibrary": "Digital Library",
+      "continuingEducationCenter": "Continuing Education Center",
+      "careerGuidanceCenter": "Career Guidance Center",
+      "physicalFitnessCenter": "Physical Fitness Center",
+      "gilgameshTheater": "Gilgamesh Theater",
+      "audiovisualHalls": "Audiovisual Halls",
+      "sportsStadium": "Sports Stadium",
+      "fiveSidePlaygrounds": "Five-side Playgrounds",
+      "trainingHalls": "Training Halls",
+      "dentalClinics": "Dental Clinics",
+      "centralLibrary": "Central Library",
+      "cafeteria": "Cafeteria",
+      "eServices": "E-Services",
+      "studentPortal": "Student Portal",
+      "facultyPortal": "Faculty Portal",
+      "massarPlatform": "Massar Platform",
+      "universityDigitalRepository": "University Digital Repository",
+      "electronicPayment": "Electronic Payment",
+      "graduatesPortal": "Graduates Portal",
+      "graduationConfirmationRequest": "Graduation Confirmation Request",
+      "graduationDocumentRequest": "Graduation Document Request",
+      "transcriptRequest": "Transcript Request",
+      "universityIdIssuance": "University ID Issuance",
+      "electronicParticipationCertificates": "Electronic Participation Certificates",
       "contact": "Contact Us",
       "news": "News",
       "sustainability": "Sustainability",
@@ -999,6 +998,7 @@ export const { Link, usePathname, useRouter } =
     "firstTitle": "الزعيم للتـوصيـل السـريـع"
   },
   "Common": {
+    "centerizedTitle": "عنوانك المركزي هنا",
     "cards": {
       "uniLife": "الحياة الجامعية",
       "about": "حول الجامعة",
@@ -1030,97 +1030,85 @@ export const { Link, usePathname, useRouter } =
     },
     "navLinks": {
       "home": "الرئيسية",
-      "aboutUniversity": {
-        "aboutUniversity": "حول الجامعة",
-        "aboutUs": "عن الجامعة",
-        "universityCouncil": "مجلس الجامعة",
-        "universityPresident": "رئيس الجامعة",
-        "assistantPresidentScientific": "مساعد رئيس الجامعة للشؤون العلمية",
-        "assistantPresidentAdministrative": "مساعد رئيس الجامعة للشؤون الإدارية",
-        "collegeDeans": "عمداء الكليات",
-        "presidentSpeech": "كلمة رئيس الجامعة",
-        "organizationalStructure": "الهيكل التنظيمي",
-        "infrastructure": "البنى التحتية",
-        "halls": "القاعات",
-        "laboratories": "المختبرات",
-        "greenAreas": "المساحات الخضراء",
-        "universityLife": "الحياة الجامعية",
-        "photoLibrary": "المكتبة الصورية",
-        "videoLibrary": "المكتبة الفيديوية",
-        "agreementsPartnerships": "الاتفاقيات والشراكات",
-        "transparencyPrinciple": "مبدأ الشفافية",
-        "universityStrategy": "استراتيجية جامعة كلكامش"
-      },
+      "aboutUniversity": "حول الجامعة",
+      "aboutUs": "عن الجامعة",
+      "universityCouncil": "مجلس الجامعة",
+      "universityPresident": "رئيس الجامعة",
+      "assistantPresidentScientific": "مساعد رئيس الجامعة للشؤون العلمية",
+      "assistantPresidentAdministrative": "مساعد رئيس الجامعة للشؤون الإدارية",
+      "collegeDeans": "عمداء الكليات",
+      "presidentSpeech": "كلمة رئيس الجامعة",
+      "organizationalStructure": "الهيكل التنظيمي",
+      "infrastructure": "البنى التحتية",
+      "halls": "القاعات",
+      "laboratories": "المختبرات",
+      "greenAreas": "المساحات الخضراء",
+      "universityLife": "الحياة الجامعية",
+      "photoLibrary": "المكتبة الصورية",
+      "videoLibrary": "المكتبة الفيديوية",
+      "agreementsPartnerships": "الاتفاقيات والشراكات",
+      "transparencyPrinciple": "مبدأ الشفافية",
+      "universityStrategy": "استراتيجية جامعة كلكامش",
       "colleges": "الكليات",
-      "academicAffairs": {
-        "academicAffairs": "الشؤون العلمية",
-        "scientificPromotions": "الترقيات العلمية",
-        "guidelines": "الإرشادات",
-        "forms": "النماذج",
-        "instructions": "التعليمات",
-        "scientificConferences": "المؤتمرات العلمية",
-        "scientificJournals": "المجلات العلمية",
-        "electronicScientificProduction": "الإنتاج العلمي الإلكتروني",
-        "facultyResearch": "بحوث التدريسيين",
-        "approvedBooks": "الكتب المؤلفة",
-        "scientificMissions": "البعثات العلمية",
-        "inventionPatents": "براءات الاختراع",
-        "qualityAssurance": "الجودة والأداء الجامعي",
-        "universityRankings": "التصنيفات الجامعية",
-        "scopus": "سكوبس",
-        "googleScholar": "الباحث العلمي",
-        "researchGate": "بوابة البحث العلمي",
-        "scientificActivities": "الأنشطة العلمية",
-        "seminars": "الندوات",
-        "workshops": "ورش العمل",
-        "courses": "الدورات",
-        "forums": "الملتقيات"
-      },
-      "studentAffairs": {
-        "studentAffairs": "شؤون الطلبة",
-        "admissionRegistration": "القبول والتسجيل",
-        "admissionConditions": "شروط القبول",
-        "registrationMechanism": "آلية التسجيل",
-        "studyFees": "الأجور الدراسية",
-        "scholarshipsGrants": "المنح والبعثات الدراسية",
-        "academicCalendar": "التقويم الجامعي",
-        "universityInstructions": "التعليمات الجامعية",
-        "studentGuide": "دليل الطالب",
-        "outstandingStudents": "الطلبة المتميزون",
-        "studentActivities": "الأنشطة الطلابية",
-        "studentClubs": "النوادي الطلابية"
-      },
-      "serviceCenters": {
-        "serviceCenters": "المراكز الخدمية",
-        "digitalLibrary": "المكتبة الرقمية",
-        "continuingEducationCenter": "مركز التعليم المستمر",
-        "careerGuidanceCenter": "مركز الإرشاد الوظيفي",
-        "physicalFitnessCenter": "مركز اللياقة البدنية",
-        "gilgameshTheater": "مسرح كلكامش",
-        "audiovisualHalls": "قاعات الوسائط المتعددة",
-        "sportsStadium": "الملعب الرياضي",
-        "fiveSidePlaygrounds": "الملاعب الخماسية",
-        "trainingHalls": "قاعات التدريب",
-        "dentalClinics": "عيادات طب الأسنان",
-        "centralLibrary": "المكتبة المركزية",
-        "cafeteria": "الكافتيريا"
-      },
-      "eServices": {
-        "eServices": "الخدمات الإلكترونية",
-        "studentPortal": "البوابة الإلكترونية للطلبة",
-        "facultyPortal": "البوابة الإلكترونية للتدريسيين",
-        "massarPlatform": "منصة مسار",
-        "universityDigitalRepository": "المستودع الرقمي للجامعة",
-        "electronicPayment": "الدفع الإلكتروني",
-        "graduatesPortal": "بوابة الخريجين",
-        "graduationConfirmationRequest": "طلب الحصول على تأييد تخرج",
-        "graduationDocumentRequest": "طلب الحصول على وثيقة تخرج",
-        "transcriptRequest": "طلب الحصول على الشهادة الجدارية",
-        "universityIdIssuance": "إصدار الهوية الجامعية",
-        "electronicParticipationCertificates": "شهادات المشاركة الإلكترونية"
-      }
-    },
-    "topbarNavLinks": {
+      "academicAffairs": "الشؤون العلمية",
+      "scientificPromotions": "الترقيات العلمية",
+      "guidelines": "الإرشادات",
+      "forms": "النماذج",
+      "instructions": "التعليمات",
+      "scientificConferences": "المؤتمرات العلمية",
+      "scientificJournals": "المجلات العلمية",
+      "electronicScientificProduction": "الإنتاج العلمي الإلكتروني",
+      "facultyResearch": "بحوث التدريسيين",
+      "approvedBooks": "الكتب المؤلفة",
+      "scientificMissions": "البعثات العلمية",
+      "inventionPatents": "براءات الاختراع",
+      "qualityAssurance": "الجودة والأداء الجامعي",
+      "universityRankings": "التصنيفات الجامعية",
+      "scopus": "سكوبس",
+      "googleScholar": "الباحث العلمي",
+      "researchGate": "بوابة البحث العلمي",
+      "scientificActivities": "الأنشطة العلمية",
+      "seminars": "الندوات",
+      "workshops": "ورش العمل",
+      "courses": "الدورات",
+      "forums": "الملتقيات",
+      "studentAffairs": "شؤون الطلبة",
+      "admissionRegistration": "القبول والتسجيل",
+      "admissionConditions": "شروط القبول",
+      "registrationMechanism": "آلية التسجيل",
+      "studyFees": "الأجور الدراسية",
+      "scholarshipsGrants": "المنح والبعثات الدراسية",
+      "academicCalendar": "التقويم الجامعي",
+      "universityInstructions": "التعليمات الجامعية",
+      "studentGuide": "دليل الطالب",
+      "outstandingStudents": "الطلبة المتميزون",
+      "studentActivities": "الأنشطة الطلابية",
+      "studentClubs": "النوادي الطلابية",
+      "serviceCenters": "المراكز الخدمية",
+      "digitalLibrary": "المكتبة الرقمية",
+      "continuingEducationCenter": "مركز التعليم المستمر",
+      "careerGuidanceCenter": "مركز الإرشاد الوظيفي",
+      "physicalFitnessCenter": "مركز اللياقة البدنية",
+      "gilgameshTheater": "مسرح كلكامش",
+      "audiovisualHalls": "قاعات الوسائط المتعددة",
+      "sportsStadium": "الملعب الرياضي",
+      "fiveSidePlaygrounds": "الملاعب الخماسية",
+      "trainingHalls": "قاعات التدريب",
+      "dentalClinics": "عيادات طب الأسنان",
+      "centralLibrary": "المكتبة المركزية",
+      "cafeteria": "الكافتيريا",
+      "eServices": "الخدمات الإلكترونية",
+      "studentPortal": "البوابة الإلكترونية للطلبة",
+      "facultyPortal": "البوابة الإلكترونية للتدريسيين",
+      "massarPlatform": "منصة مسار",
+      "universityDigitalRepository": "المستودع الرقمي للجامعة",
+      "electronicPayment": "الدفع الإلكتروني",
+      "graduatesPortal": "بوابة الخريجين",
+      "graduationConfirmationRequest": "طلب الحصول على تأييد تخرج",
+      "graduationDocumentRequest": "طلب الحصول على وثيقة تخرج",
+      "transcriptRequest": "طلب الحصول على الشهادة الجدارية",
+      "universityIdIssuance": "إصدار الهوية الجامعية",
+      "electronicParticipationCertificates": "شهادات المشاركة الإلكترونية",
       "contact": "اتصل بنا",
       "news": "الأخبار",
       "sustainability": "الاستدامة",
@@ -1133,6 +1121,7 @@ export const { Link, usePathname, useRouter } =
       "graduateSurvey": "رأي الخريجين",
       "employerSurvey": "رأي أرباب العمل"
     },
+
     "pageTitles": {
       "home": "الرئيسية",
       "about": "من نحن؟",
@@ -1619,16 +1608,6 @@ export const { Link, usePathname, useRouter } =
 
 ```
 
-# .vscode\settings.json
-
-```json
-{
-  "i18n-ally.localesPaths": ["locales"],
-  "i18n-ally.keystyle": "nested"
-}
-
-```
-
 # src\lib\utils.ts
 
 ```ts
@@ -1642,12 +1621,14 @@ import {
   IMAGE_BG_ROUTES,
   CENTERIZED_TITLE_ROUTES,
   TITLE_WITH_ACTIONS_ROUTES,
+  TITLE_AND_IMAGE_ROUTES,
 } from "./paths";
 import SliderBg from "@/components/FirstSection/SliderBg";
 import ImageBg from "@/components/FirstSection/ImageBg";
-import CenterizedTitle from "@/components/FirstSection/CenterizedTitle";
-import TitleBg from "@/components/FirstSection/TitleBg";
+import CenterizedTitle from "@/components/FirstSection/FirstTitleSection/CenterizedTitle";
+import TitleBg from "@/components/FirstSection/FirstTitleSection/TitleBg";
 import React, { RefObject } from "react";
+import TitleAndImage from "@/components/FirstSection/TitleAndImage";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -1680,24 +1661,21 @@ export const routes = [
 
 export type TranslationFunction = (key: string) => string;
 
-export function getPageTitle(route: string, t: TranslationFunction): string {
-  const element = routes.find((el) => {
-    return el.includeSubPaths ? route.includes(el.path) : el.path === route;
-  });
-
-  if (!element) {
-    return "Page Not Found";
-  }
-
-  return t(element.key);
-}
-
 export function getBgComponent(pathname: string): React.ComponentType | null {
   if (SLIDER_BG_ROUTES.includes(pathname)) {
     return SliderBg;
   } else if (IMAGE_BG_ROUTES.includes(pathname)) {
     return ImageBg;
-  } else if (CENTERIZED_TITLE_ROUTES.includes(pathname)) {
+  } else if (TITLE_AND_IMAGE_ROUTES.includes(pathname)) {
+    return TitleAndImage;
+  }
+  return null;
+}
+
+export function getTitleComponent(
+  pathname: string,
+): React.ComponentType | null {
+  if (CENTERIZED_TITLE_ROUTES.includes(pathname)) {
     return CenterizedTitle;
   } else if (TITLE_WITH_ACTIONS_ROUTES.includes(pathname)) {
     return TitleBg;
@@ -1737,6 +1715,37 @@ export const scrollToElement = (
 
   requestAnimationFrame(animation);
 };
+
+export function getPageTitle({
+  t,
+  pathname,
+}: {
+  t: TranslationFunction;
+  pathname: string;
+}): string {
+  switch (pathname) {
+    case "/sustainability":
+      return "sustainability";
+    case "/university-and-community":
+      return "universityAndCommunity";
+    case "/university-and-community/graduates":
+      return "graduates";
+    case "/university-and-community/qualification-employment":
+      return "qualificationEmployment";
+    case "/university-and-community/consulting-clinic":
+      return "consultingClinic";
+    case "/university-and-community/ministry-inquiries":
+      return "ministryInquiries";
+    case "/university-and-community/surveys":
+      return "surveys";
+    case "/university-and-community/surveys/graduate-survey":
+      return "graduateSurvey";
+    case "/university-and-community/surveys/employer-survey":
+      return "employerSurvey";
+    default:
+      return "pageNotFound";
+  }
+}
 
 ```
 
@@ -1925,11 +1934,15 @@ export const EMPLOYER_SURVEY_ROUTE = `${SURVEYS_ROUTE}/employer-survey`;
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
+// FirstSection path arrays
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
 export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 
-export const CENTERIZED_TITLE_ROUTES: string[] = [];
+export const TITLE_AND_IMAGE_ROUTES: string[] = [SUSTAINABILITY_ROUTE];
+
+// Titles path arrays
+export const CENTERIZED_TITLE_ROUTES: string[] = [SUSTAINABILITY_ROUTE];
 
 export const TITLE_WITH_ACTIONS_ROUTES: string[] = [];
 
@@ -2005,82 +2018,82 @@ export const ratingsItems: (transRatings: TransRating[]) => Rating[] = (
 export const navItems = (t: TranslationFunction): MenuItem[] => [
   { label: t("home"), path: paths.HOME_ROUTE },
   {
-    label: t("aboutUniversity.aboutUniversity"),
+    label: t("aboutUniversity"),
     path: paths.ABOUT_UNIVERSITY_ROUTE,
     items: [
       {
-        label: t("aboutUniversity.aboutUs"),
+        label: t("aboutUs"),
         path: paths.ABOUT_UNIVERSITY_ROUTE,
       },
       {
-        label: t("aboutUniversity.universityCouncil"),
+        label: t("universityCouncil"),
         path: paths.UNIVERSITY_COUNCIL_ROUTE,
         items: [
           {
-            label: t("aboutUniversity.universityPresident"),
+            label: t("universityPresident"),
             path: paths.UNIVERSITY_PRESIDENT_ROUTE,
           },
           {
-            label: t("aboutUniversity.assistantPresidentScientific"),
+            label: t("assistantPresidentScientific"),
             path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
           },
           {
-            label: t("aboutUniversity.assistantPresidentAdministrative"),
+            label: t("assistantPresidentAdministrative"),
             path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
           },
           {
-            label: t("aboutUniversity.collegeDeans"),
+            label: t("collegeDeans"),
             path: paths.COLLEGE_DEANS_ROUTE,
           },
         ],
       },
       {
-        label: t("aboutUniversity.presidentSpeech"),
+        label: t("presidentSpeech"),
         path: paths.PRESIDENT_SPEECH_ROUTE,
       },
       {
-        label: t("aboutUniversity.organizationalStructure"),
+        label: t("organizationalStructure"),
         path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
       },
       {
-        label: t("aboutUniversity.infrastructure"),
+        label: t("infrastructure"),
         path: paths.INFRASTRUCTURE_ROUTE,
         items: [
-          { label: t("aboutUniversity.halls"), path: paths.HALLS_ROUTE },
+          { label: t("halls"), path: paths.HALLS_ROUTE },
           {
-            label: t("aboutUniversity.laboratories"),
+            label: t("laboratories"),
             path: paths.LABORATORIES_ROUTE,
           },
           {
-            label: t("aboutUniversity.greenAreas"),
+            label: t("greenAreas"),
             path: paths.GREEN_AREAS_ROUTE,
           },
         ],
       },
       {
-        label: t("aboutUniversity.universityLife"),
+        label: t("universityLife"),
         path: paths.UNIVERSITY_LIFE_ROUTE,
         items: [
           {
-            label: t("aboutUniversity.photoLibrary"),
+            label: t("photoLibrary"),
             path: paths.PHOTO_LIBRARY_ROUTE,
           },
           {
-            label: t("aboutUniversity.videoLibrary"),
+            label: t("videoLibrary"),
             path: paths.VIDEO_LIBRARY_ROUTE,
           },
         ],
       },
       {
-        label: t("aboutUniversity.agreementsPartnerships"),
+        label: t("agreementsPartnerships"),
         path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
       },
       {
-        label: t("aboutUniversity.transparencyPrinciple"),
+        label: t("transparencyPrinciple"),
         path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
       },
       {
-        label: t("aboutUniversity.universityStrategy"),
+        label: t("universityStrategy"),
         path: paths.UNIVERSITY_STRATEGY_ROUTE,
       },
     ],
@@ -2094,243 +2107,243 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
     ],
   },
   {
-    label: t("academicAffairs.academicAffairs"),
+    label: t("academicAffairs"),
     path: paths.ACADEMIC_AFFAIRS_ROUTE,
     items: [
       {
-        label: t("academicAffairs.scientificPromotions"),
+        label: t("scientificPromotions"),
         path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
         items: [
           {
-            label: t("academicAffairs.guidelines"),
+            label: t("guidelines"),
             path: paths.SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE,
           },
           {
-            label: t("academicAffairs.forms"),
+            label: t("forms"),
             path: paths.PROMOTION_FORMS_ROUTE,
           },
           {
-            label: t("academicAffairs.instructions"),
+            label: t("instructions"),
             path: paths.PROMOTION_INSTRUCTIONS_ROUTE,
           },
         ],
       },
       {
-        label: t("academicAffairs.scientificConferences"),
+        label: t("scientificConferences"),
         path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
       },
       {
-        label: t("academicAffairs.scientificJournals"),
+        label: t("scientificJournals"),
         path: paths.SCIENTIFIC_JOURNALS_ROUTE,
       },
       {
-        label: t("academicAffairs.electronicScientificProduction"),
+        label: t("electronicScientificProduction"),
         path: paths.ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE,
       },
       {
-        label: t("academicAffairs.facultyResearch"),
+        label: t("facultyResearch"),
         path: paths.FACULTY_RESEARCH_ROUTE,
       },
       {
-        label: t("academicAffairs.approvedBooks"),
+        label: t("approvedBooks"),
         path: paths.APPROVED_BOOKS_ROUTE,
       },
       {
-        label: t("academicAffairs.scientificMissions"),
+        label: t("scientificMissions"),
         path: paths.SCIENTIFIC_MISSIONS_ROUTE,
       },
       {
-        label: t("academicAffairs.inventionPatents"),
+        label: t("inventionPatents"),
         path: paths.INVENTION_PATENTS_ROUTE,
       },
       {
-        label: t("academicAffairs.qualityAssurance"),
+        label: t("qualityAssurance"),
         path: paths.QUALITY_ASSURANCE_ROUTE,
       },
       {
-        label: t("academicAffairs.universityRankings"),
+        label: t("universityRankings"),
         path: paths.UNIVERSITY_RANKINGS_ROUTE,
         items: [
-          { label: t("academicAffairs.scopus"), path: paths.SCOPUS_ROUTE },
+          { label: t("scopus"), path: paths.SCOPUS_ROUTE },
           {
-            label: t("academicAffairs.googleScholar"),
+            label: t("googleScholar"),
             path: paths.GOOGLE_SCHOLAR_ROUTE,
           },
           {
-            label: t("academicAffairs.researchGate"),
+            label: t("researchGate"),
             path: paths.RESEARCH_GATE_ROUTE,
           },
         ],
       },
       {
-        label: t("academicAffairs.scientificActivities"),
+        label: t("scientificActivities"),
         path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
         items: [
           {
-            label: t("academicAffairs.seminars"),
+            label: t("seminars"),
             path: paths.SEMINARS_ROUTE,
           },
           {
-            label: t("academicAffairs.workshops"),
+            label: t("workshops"),
             path: paths.WORKSHOPS_ROUTE,
           },
-          { label: t("academicAffairs.courses"), path: paths.COURSES_ROUTE },
-          { label: t("academicAffairs.forums"), path: paths.FORUMS_ROUTE },
+          { label: t("courses"), path: paths.COURSES_ROUTE },
+          { label: t("forums"), path: paths.FORUMS_ROUTE },
         ],
       },
     ],
   },
   {
-    label: t("studentAffairs.studentAffairs"),
+    label: t("studentAffairs"),
     path: paths.STUDENT_AFFAIRS_ROUTE,
     items: [
       {
-        label: t("studentAffairs.admissionRegistration"),
+        label: t("admissionRegistration"),
         path: paths.ADMISSION_REGISTRATION_ROUTE,
         items: [
           {
-            label: t("studentAffairs.admissionConditions"),
+            label: t("admissionConditions"),
             path: paths.ADMISSION_CONDITIONS_ROUTE,
           },
           {
-            label: t("studentAffairs.registrationMechanism"),
+            label: t("registrationMechanism"),
             path: paths.REGISTRATION_MECHANISM_ROUTE,
           },
           {
-            label: t("studentAffairs.studyFees"),
+            label: t("studyFees"),
             path: paths.STUDY_FEES_ROUTE,
           },
         ],
       },
       {
-        label: t("studentAffairs.scholarshipsGrants"),
+        label: t("scholarshipsGrants"),
         path: paths.SCHOLARSHIPS_GRANTS_ROUTE,
       },
       {
-        label: t("studentAffairs.academicCalendar"),
+        label: t("academicCalendar"),
         path: paths.ACADEMIC_CALENDAR_ROUTE,
       },
       {
-        label: t("studentAffairs.universityInstructions"),
+        label: t("universityInstructions"),
         path: paths.UNIVERSITY_INSTRUCTIONS_ROUTE,
       },
       {
-        label: t("studentAffairs.studentGuide"),
+        label: t("studentGuide"),
         path: paths.STUDENT_GUIDE_ROUTE,
       },
       {
-        label: t("studentAffairs.outstandingStudents"),
+        label: t("outstandingStudents"),
         path: paths.OUTSTANDING_STUDENTS_ROUTE,
       },
       {
-        label: t("studentAffairs.studentActivities"),
+        label: t("studentActivities"),
         path: paths.STUDENT_ACTIVITIES_ROUTE,
       },
       {
-        label: t("studentAffairs.studentClubs"),
+        label: t("studentClubs"),
         path: paths.STUDENT_CLUBS_ROUTE,
       },
     ],
   },
   {
-    label: t("serviceCenters.serviceCenters"),
+    label: t("serviceCenters"),
     path: paths.SERVICE_CENTERS_ROUTE,
     items: [
       {
-        label: t("serviceCenters.digitalLibrary"),
+        label: t("digitalLibrary"),
         path: paths.DIGITAL_LIBRARY_ROUTE,
       },
       {
-        label: t("serviceCenters.continuingEducationCenter"),
+        label: t("continuingEducationCenter"),
         path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
       },
       {
-        label: t("serviceCenters.careerGuidanceCenter"),
+        label: t("careerGuidanceCenter"),
         path: paths.CAREER_GUIDANCE_CENTER_ROUTE,
       },
       {
-        label: t("serviceCenters.physicalFitnessCenter"),
+        label: t("physicalFitnessCenter"),
         path: paths.PHYSICAL_FITNESS_CENTER_ROUTE,
       },
       {
-        label: t("serviceCenters.gilgameshTheater"),
+        label: t("gilgameshTheater"),
         path: paths.GILGAMESH_THEATER_ROUTE,
       },
       {
-        label: t("serviceCenters.audiovisualHalls"),
+        label: t("audiovisualHalls"),
         path: paths.AUDIOVISUAL_HALLS_ROUTE,
       },
       {
-        label: t("serviceCenters.sportsStadium"),
+        label: t("sportsStadium"),
         path: paths.SPORTS_STADIUM_ROUTE,
       },
       {
-        label: t("serviceCenters.fiveSidePlaygrounds"),
+        label: t("fiveSidePlaygrounds"),
         path: paths.FIVE_SIDE_PLAYGROUNDS_ROUTE,
       },
       {
-        label: t("serviceCenters.trainingHalls"),
+        label: t("trainingHalls"),
         path: paths.TRAINING_HALLS_ROUTE,
       },
       {
-        label: t("serviceCenters.dentalClinics"),
+        label: t("dentalClinics"),
         path: paths.DENTAL_CLINICS_ROUTE,
       },
       {
-        label: t("serviceCenters.centralLibrary"),
+        label: t("centralLibrary"),
         path: paths.CENTRAL_LIBRARY_ROUTE,
       },
-      { label: t("serviceCenters.cafeteria"), path: paths.CAFETERIA_ROUTE },
+      { label: t("cafeteria"), path: paths.CAFETERIA_ROUTE },
     ],
   },
   {
-    label: t("eServices.eServices"),
+    label: t("eServices"),
     path: paths.E_SERVICES_ROUTE,
     items: [
       {
-        label: t("eServices.studentPortal"),
+        label: t("studentPortal"),
         path: paths.STUDENT_PORTAL_ROUTE,
       },
       {
-        label: t("eServices.facultyPortal"),
+        label: t("facultyPortal"),
         path: paths.FACULTY_PORTAL_ROUTE,
       },
       {
-        label: t("eServices.massarPlatform"),
+        label: t("massarPlatform"),
         path: paths.MASSAR_PLATFORM_ROUTE,
       },
       {
-        label: t("eServices.universityDigitalRepository"),
+        label: t("universityDigitalRepository"),
         path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
       },
       {
-        label: t("eServices.electronicPayment"),
+        label: t("electronicPayment"),
         path: paths.ELECTRONIC_PAYMENT_ROUTE,
       },
       {
-        label: t("eServices.graduatesPortal"),
+        label: t("graduatesPortal"),
         path: paths.GRADUATES_PORTAL_ROUTE,
         items: [
           {
-            label: t("eServices.graduationConfirmationRequest"),
+            label: t("graduationConfirmationRequest"),
             path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
           },
           {
-            label: t("eServices.graduationDocumentRequest"),
+            label: t("graduationDocumentRequest"),
             path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
           },
           {
-            label: t("eServices.transcriptRequest"),
+            label: t("transcriptRequest"),
             path: paths.TRANSCRIPT_REQUEST_ROUTE,
           },
         ],
       },
       {
-        label: t("eServices.universityIdIssuance"),
+        label: t("universityIdIssuance"),
         path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
       },
       {
-        label: t("eServices.electronicParticipationCertificates"),
+        label: t("electronicParticipationCertificates"),
         path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
       },
     ],
@@ -2340,35 +2353,35 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
 export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
   {
     path: paths.UNIVERSITY_AND_COMMUNITY_ROUTE,
-    label: t("Header.topbarNavLinks.universityAndCommunity"),
+    label: t("Header.navLinks.universityAndCommunity"),
     items: [
       {
         path: paths.GRADUATES_ROUTE,
-        label: t("Header.topbarNavLinks.graduates"),
+        label: t("Header.navLinks.graduates"),
       },
       {
         path: paths.QUALIFICATION_EMPLOYMENT_ROUTE,
-        label: t("Header.topbarNavLinks.qualificationEmployment"),
+        label: t("Header.navLinks.qualificationEmployment"),
       },
       {
         path: paths.CONSULTING_CLINIC_ROUTE,
-        label: t("Header.topbarNavLinks.consultingClinic"),
+        label: t("Header.navLinks.consultingClinic"),
       },
       {
         path: paths.MINISTRY_INQUIRIES_ROUTE,
-        label: t("Header.topbarNavLinks.ministryInquiries"),
+        label: t("Header.navLinks.ministryInquiries"),
       },
       {
         path: paths.SURVEYS_ROUTE,
-        label: t("Header.topbarNavLinks.surveys"),
+        label: t("Header.navLinks.surveys"),
         items: [
           {
             path: paths.GRADUATE_SURVEY_ROUTE,
-            label: t("Header.topbarNavLinks.graduateSurvey"),
+            label: t("Header.navLinks.graduateSurvey"),
           },
           {
             path: paths.EMPLOYER_SURVEY_ROUTE,
-            label: t("Header.topbarNavLinks.employerSurvey"),
+            label: t("Header.navLinks.employerSurvey"),
           },
         ],
       },
@@ -2376,10 +2389,10 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
   },
   {
     path: paths.SUSTAINABILITY_ROUTE,
-    label: t("Header.topbarNavLinks.sustainability"),
+    label: t("Header.navLinks.sustainability"),
   },
-  { path: paths.NEWS_ROUTE, label: t("Header.topbarNavLinks.news") },
-  { path: paths.CONTACT_ROUTE, label: t("Header.topbarNavLinks.contact") },
+  { path: paths.NEWS_ROUTE, label: t("Header.navLinks.news") },
+  { path: paths.CONTACT_ROUTE, label: t("Header.navLinks.contact") },
 ];
 
 ```
@@ -4273,11 +4286,7 @@ const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item
-    ref={ref}
-    className={cn("border-b", className)}
-    {...props}
-  />
+  <AccordionPrimitive.Item ref={ref} className={cn(className)} {...props} />
 ));
 AccordionItem.displayName = "AccordionItem";
 
@@ -4300,14 +4309,14 @@ const AccordionTrigger = React.forwardRef<
       rotationAmount = 180,
       ...props
     },
-    ref
+    ref,
   ) => (
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
           "group flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline",
-          className
+          className,
         )}
         {...props}
       >
@@ -4315,8 +4324,8 @@ const AccordionTrigger = React.forwardRef<
         {openIcon && closeIcon ? (
           <div
             className={twMerge(
-              "relative transition-transform duration-300 ease-in-out origin-center",
-              "group-data-[state=open]:rotate-custom"
+              "relative origin-center transition-transform duration-300 ease-in-out",
+              "group-data-[state=open]:rotate-custom",
             )}
             style={
               {
@@ -4326,10 +4335,10 @@ const AccordionTrigger = React.forwardRef<
               } as React.CSSProperties
             }
           >
-            <div className="absolute inset-0 transition-opacity duration-150 delay-[0.25s] group-data-[state=open]:opacity-0 flex justify-center items-center">
+            <div className="delay-[0.25s] absolute inset-0 flex items-center justify-center transition-opacity duration-150 group-data-[state=open]:opacity-0">
               {closeIcon}
             </div>
-            <div className="absolute inset-0 opacity-0 transition-opacity duration-150 delay-[0.25s] group-data-[state=open]:opacity-100 flex justify-center items-center">
+            <div className="delay-[0.25s] absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-150 group-data-[state=open]:opacity-100">
               {openIcon}
             </div>
           </div>
@@ -4338,7 +4347,7 @@ const AccordionTrigger = React.forwardRef<
         )}
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
-  )
+  ),
 );
 
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
@@ -4444,6 +4453,261 @@ const ScrollableCardsContainer = React.forwardRef<
 ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
 
 export { ScrollableCardsContainer };
+
+```
+
+# src\components\FirstSection\TitleAndImage.tsx
+
+```tsx
+import React from "react";
+import Section from "../Section";
+import FirstTitleSection from "./FirstTitleSection/FirstTitleSection";
+
+export default function TitleAndImage() {
+  return (
+    <Section className="mt-[61px] sm:mt-[160px]">
+      <FirstTitleSection></FirstTitleSection>
+    </Section>
+  );
+}
+
+```
+
+# src\components\FirstSection\SliderBg.tsx
+
+```tsx
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import ScrollArrows from "@/components/ScrollArrows";
+import { SliderElement } from "@/lib/types";
+import useScrollControl from "@/app/_hooks/useScrollControl";
+import useTextDirection from "../../app/_hooks/useTextDirection";
+
+export default function SliderBg() {
+  return (
+    <ScrollableCardsContainer
+      translatedNewsItems={[
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Innovative Solutions",
+          subTitle:
+            "Transforming ideas into reality with cutting-edge technology",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Expert Team",
+          subTitle: "Dedicated professionals committed to excellence",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Global Reach",
+          subTitle: "Connecting businesses across borders",
+        },
+        {
+          image: "/images/hero-bg.jpg",
+          title: "Sustainable Future",
+          subTitle: "Driving growth with eco-friendly practices",
+        },
+      ]}
+    />
+  );
+}
+
+const ImageSection = () => {
+  return (
+    <div className="relative w-screen">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="w-full h-full absolute top-0 bg-black/70"></div>
+    </div>
+  );
+};
+
+function ScrollableCardsContainer({
+  translatedNewsItems,
+}: {
+  translatedNewsItems: SliderElement[];
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const dir = useTextDirection();
+  const [scrollAmount, setScrollAmount] = useState<number>();
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
+    containerRef,
+    useMultiples: true,
+    baseScrollAmount: scrollAmount,
+  });
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  const autoSlide = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
+
+      if (isAtEnd) resetScrollPosition();
+      else
+        scroll({
+          direction: dir == "ltr" ? "right" : "left",
+          isLTR: dir == "ltr",
+        });
+    }
+  };
+
+  const resetInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(autoSlide, 5000);
+  };
+
+  useEffect(() => {
+    resetInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [scrollAmount]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      if (containerRef.current) {
+        containerRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
+  return (
+    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
+      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
+      <div
+        ref={containerRef}
+        className={twMerge(
+          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
+          "hide-scrollbar"
+        )}
+      >
+        <div className="flex w-fit h-full">
+          {translatedNewsItems.map((newsItem, index) => (
+            <ImageSection key={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TextSection({
+  containerRef,
+  resetTimer,
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  resetTimer: () => void;
+}) {
+  const [scrollAmount, setScrollAmount] = useState<number>();
+
+  useEffect(() => {
+    setScrollAmount(containerRef.current?.clientWidth);
+  }, [containerRef.current]);
+
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
+      <ScrollArrows
+        containerRef={containerRef}
+        scrollAmount={scrollAmount}
+        useMultiples={true}
+        resetTimer={resetTimer}
+        className="slider-bg-arrows"
+      />
+
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
+          التجربة العلمية
+        </h3>
+
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
+          واعد
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\ImageBg.tsx
+
+```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function ImageBg() {
+  return (
+    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+      <TextSection />
+      <ImageSection />
+    </div>
+  );
+}
+
+function TextSection() {
+  return (
+    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
+      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
+        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
+          الرئيسية
+        </h3>
+        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+          مواقع ذات صلة
+        </h1>
+      </div>
+    </div>
+  );
+}
+
+function ImageSection() {
+  return (
+    <div className="navbar-inclusive-background w-full">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="hero bg"
+        className="w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/70"></div>
+    </div>
+  );
+}
+
+```
+
+# src\components\FirstSection\FirstSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+import { getBgComponent } from "@/lib/utils";
+
+export default function FirstSection() {
+  const pathname = usePathname();
+
+  const BgComponent = getBgComponent(pathname);
+
+  return BgComponent ? <BgComponent /> : <></>;
+}
 
 ```
 
@@ -4731,262 +4995,6 @@ function ContactInfo({ title, value }: { title: string; value: string }) {
       </p>
     </div>
   );
-}
-
-```
-
-# src\components\FirstSection\TitleBg.tsx
-
-```tsx
-export default function TitleBg() {
-  return <div>SliderBg</div>;
-}
-
-```
-
-# src\components\FirstSection\SliderBg.tsx
-
-```tsx
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import ScrollArrows from "@/components/ScrollArrows";
-import { SliderElement } from "@/lib/types";
-import useScrollControl from "@/app/_hooks/useScrollControl";
-import useTextDirection from "../../app/_hooks/useTextDirection";
-
-export default function SliderBg() {
-  return (
-    <ScrollableCardsContainer
-      translatedNewsItems={[
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Innovative Solutions",
-          subTitle:
-            "Transforming ideas into reality with cutting-edge technology",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Expert Team",
-          subTitle: "Dedicated professionals committed to excellence",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Global Reach",
-          subTitle: "Connecting businesses across borders",
-        },
-        {
-          image: "/images/hero-bg.jpg",
-          title: "Sustainable Future",
-          subTitle: "Driving growth with eco-friendly practices",
-        },
-      ]}
-    />
-  );
-}
-
-const ImageSection = () => {
-  return (
-    <div className="relative w-screen">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="w-full h-full absolute top-0 bg-black/70"></div>
-    </div>
-  );
-};
-
-function ScrollableCardsContainer({
-  translatedNewsItems,
-}: {
-  translatedNewsItems: SliderElement[];
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dir = useTextDirection();
-  const [scrollAmount, setScrollAmount] = useState<number>();
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const { scroll, handleScroll, resetScrollPosition } = useScrollControl({
-    containerRef,
-    useMultiples: true,
-    baseScrollAmount: scrollAmount,
-  });
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  const autoSlide = () => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isAtEnd = Math.abs(scrollLeft) >= scrollWidth - clientWidth;
-
-      if (isAtEnd) resetScrollPosition();
-      else
-        scroll({
-          direction: dir == "ltr" ? "right" : "left",
-          isLTR: dir == "ltr",
-        });
-    }
-  };
-
-  const resetInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(autoSlide, 5000);
-  };
-
-  useEffect(() => {
-    resetInterval();
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [scrollAmount]);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll);
-    }
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [handleScroll]);
-
-  return (
-    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
-      <TextSection containerRef={containerRef} resetTimer={resetInterval} />
-      <div
-        ref={containerRef}
-        className={twMerge(
-          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
-          "hide-scrollbar"
-        )}
-      >
-        <div className="flex w-fit h-full">
-          {translatedNewsItems.map((newsItem, index) => (
-            <ImageSection key={index} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function TextSection({
-  containerRef,
-  resetTimer,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  resetTimer: () => void;
-}) {
-  const [scrollAmount, setScrollAmount] = useState<number>();
-
-  useEffect(() => {
-    setScrollAmount(containerRef.current?.clientWidth);
-  }, [containerRef.current]);
-
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
-      <ScrollArrows
-        containerRef={containerRef}
-        scrollAmount={scrollAmount}
-        useMultiples={true}
-        resetTimer={resetTimer}
-        className="slider-bg-arrows"
-      />
-
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
-          التجربة العلمية
-        </h3>
-
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
-          واعد
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\ImageBg.tsx
-
-```tsx
-import React from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function ImageBg() {
-  return (
-    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
-      <TextSection />
-      <ImageSection />
-    </div>
-  );
-}
-
-function TextSection() {
-  return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
-          الرئيسية
-        </h3>
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          مواقع ذات صلة
-        </h1>
-      </div>
-    </div>
-  );
-}
-
-function ImageSection() {
-  return (
-    <div className="navbar-inclusive-background w-full">
-      <img
-        src="/images/hero-bg.jpg"
-        alt="hero bg"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/70"></div>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\FirstSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-import { getBgComponent } from "@/lib/utils";
-
-export default function FirstSection() {
-  const pathname = usePathname();
-
-  const BgComponent = getBgComponent(pathname);
-
-  return BgComponent ? <BgComponent /> : <></>;
-}
-
-```
-
-# src\components\FirstSection\CenterizedTitle.tsx
-
-```tsx
-export default function CenterizedTitle() {
-  return <div>SliderBg</div>;
 }
 
 ```
@@ -5690,6 +5698,57 @@ This is a file of the type: SVG Image
 
 This is a binary file of the type: Image
 
+# src\components\FirstSection\FirstTitleSection\TitleBg.tsx
+
+```tsx
+export default function TitleBg() {
+  return <div>SliderBg</div>;
+}
+
+```
+
+# src\components\FirstSection\FirstTitleSection\FirstTitleSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+import { getTitleComponent } from "@/lib/utils";
+
+export default function FirstTitleSection() {
+  const pathname = usePathname();
+
+  const TitleComponent = getTitleComponent(pathname);
+
+  return TitleComponent ? <TitleComponent /> : <></>;
+}
+
+```
+
+# src\components\FirstSection\FirstTitleSection\CenterizedTitle.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n.config";
+import { getPageTitle } from "@/lib/utils";
+
+export default function CenterizedTitle() {
+  const t = useTranslations();
+  const pathname = usePathname();
+  const pageTitle = getPageTitle({ t, pathname });
+
+  return (
+    <h1 className="title-lg mb-[23px] text-center font-bold leading-[1.25] sm:mb-[96px]">
+      {pageTitle}
+      {t(pageTitle)}
+    </h1>
+  );
+}
+
+```
+
 # src\app\_components\OurGoals\OurGoalsMobile.tsx
 
 ```tsx
@@ -6356,40 +6415,95 @@ export default Topbar;
 
 ```
 
-# src\app\_components\Header\Navbar.tsx
+# src\app\_components\Header\SocialMediaLinks.tsx
 
 ```tsx
 "use client";
 
+import React from "react";
+import { Link } from "@/i18n.config";
+import { twMerge } from "tailwind-merge";
+
+const socialMedia = [
+  {
+    url: "https://www.instagram.com",
+    icon: "ri-instagram-line",
+  },
+  {
+    url: "https://www.facebook.com",
+    icon: "ri-facebook-circle-fill",
+  },
+  {
+    url: "https://www.linkedin.com",
+    icon: "ri-linkedin-box-fill",
+  },
+  {
+    url: "https://www.youtube.com",
+    icon: "ri-youtube-fill",
+  },
+];
+
+export default function SocialMediaLinks({ ...props }) {
+  return (
+    <div className={twMerge("hidden gap-[24px] sm:flex", props.className)}>
+      {socialMedia.map((social, index) => (
+        <Link
+          key={index}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative leading-none transition clickable-area hover:text-secondary hover:opacity-70"
+        >
+          <i className={`${social.icon} text-[20px]`}></i>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
+```
+
+# src\app\_components\Header\Navbar.tsx
+
+```tsx
+import React from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link, Locale } from "@/i18n.config";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import useTextDirection from "@/app/_hooks/useTextDirection";
-import { Link, Locale } from "@/i18n.config";
-import { useLocale, useTranslations } from "next-intl";
-
-import NavElements from "../News/NavElements";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import useCommonStore from "@/lib/zustand/common";
 import Section from "../../../components/Section";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { navItems, topbarNavItems } from "@/lib/data";
+import NavElements from "../News/NavElements";
+import { MenuItem } from "@/lib/types";
+import { twMerge } from "tailwind-merge";
+import SocialMediaLinks from "./SocialMediaLinks";
 
 export default function Navbar() {
   const t = useTranslations("Header");
   const locale = useLocale() as Locale;
 
   return (
-    <Section className="sm:max-w-[1440px] 1920:max-w-[1920px]  max-w-none">
-      <nav className="flex w-full items-center justify-between bg-transparent  flex-row-reverse sm:flex-row text-white  h-[77px]  sm:px-[60px] 1920:px-[136px]">
-        <div className="flex gap-[40px] items-center sm:flex sm:justify-between sm:w-full h-full">
+    <Section className="max-w-none sm:max-w-[1440px] 1920:max-w-[1920px]">
+      <nav className="flex h-[77px] w-full flex-row-reverse items-center justify-between bg-transparent text-white sm:flex-row sm:px-[60px] 1920:px-[136px]">
+        <div className="flex h-full items-center gap-[40px] sm:flex sm:w-full sm:justify-between">
           <Link
             href="/"
-            className="hover:opacity-70 sm:static absolute left-1/2 -translate-x-1/2 sm:translate-x-0"
+            className="absolute left-1/2 -translate-x-1/2 hover:opacity-70 sm:static sm:translate-x-0"
           >
             <img
               src={`/images/logo.png`}
@@ -6397,43 +6511,64 @@ export default function Navbar() {
               alt={t("appTitle")}
             />
           </Link>
-          {/* desktop only  */}
-          <div className="hidden sm:block h-full">
+          <div className="hidden h-full sm:block">
             <NavElements />
           </div>
-
-          <div className="hidden sm:flex gap-[24px]">
-            {socialMedia.map((social, index) => (
-              <Link
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative hover:opacity-70 hover:text-secondary transition clickable-area leading-none"
-              >
-                <i className={`${social.icon} text-[20px]`}></i>
-              </Link>
-            ))}
-          </div>
-          {/* /desktop only  */}
+          <SocialMediaLinks />
         </div>
-
-        {/*  mobile only  */}
-        <NavDrawer></NavDrawer>
-        {/*  /mobile only  */}
+        <NavDrawer />
       </nav>
     </Section>
   );
 }
 
 function NavDrawer() {
-  const { isDrawerVisible: isDrawerVisible, toggleDrawer } = useCommonStore();
+  const { isDrawerVisible, toggleDrawer } = useCommonStore();
   const locale = useLocale() as Locale;
-
   const dir = useTextDirection();
+  const tNavLinks = useTranslations("Header.navLinks");
+  const t = useTranslations();
+
+  const renderMenuItem = (item: MenuItem, index: number, depth: number = 0) => {
+    const paddingStart = 16 * depth + "px";
+
+    if (!item.items || item.items.length === 0) {
+      return (
+        <Link
+          key={index}
+          href={item.path}
+          className="block py-4 text-start text-base font-medium"
+          style={{ paddingInlineStart: depth > 0 ? paddingStart : "" }}
+          onClick={() => toggleDrawer(false)}
+        >
+          {item.label}
+        </Link>
+      );
+    }
+
+    return (
+      <AccordionItem
+        value={`item-${depth}-${index}`}
+        key={index}
+        className="w-full"
+      >
+        <AccordionTrigger
+          className={twMerge("text-base font-medium")}
+          style={{ paddingInlineStart: depth > 0 ? paddingStart : "" }}
+        >
+          {item.label}
+        </AccordionTrigger>
+        <AccordionContent className="flex flex-col items-start">
+          {item.items.map((subItem, subIndex) =>
+            renderMenuItem(subItem, subIndex, depth + 1),
+          )}
+        </AccordionContent>
+      </AccordionItem>
+    );
+  };
 
   return (
-    <div className="sm:hidden flex">
+    <div className="flex sm:hidden">
       <Drawer
         direction="right"
         open={isDrawerVisible}
@@ -6449,20 +6584,33 @@ function NavDrawer() {
             <i className="ri-menu-line text-[28px] !font-normal"></i>
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="right-0 start-auto top-0 mt-0 h-screen  min-w-full rounded-none bg-primary border-0 text-white">
-          <DrawerClose
-            onClick={() => toggleDrawer(false)}
-            className="absolute top-[25px] right-[25px] z-10"
-          >
-            <i className="ri-close-large-line"></i>
-          </DrawerClose>
-          <DrawerTitle></DrawerTitle>
+        <DrawerContent className="right-0 start-auto top-0 mt-0 h-screen min-w-full rounded-none border-0 bg-primary px-[25px] text-white">
+          <div className="flex justify-between border-b border-white/30 py-6">
+            <DrawerClose onClick={() => toggleDrawer(false)} className="">
+              <i className="ri-close-large-line"></i>
+            </DrawerClose>
+            <SocialMediaLinks className="flex"></SocialMediaLinks>
+            <LocaleSwitcher locale={locale} />
+          </div>
           <ScrollArea className="h-screen" dir={dir}>
-            <div className="mx-auto w-full p-5">
-              <NavElements />
-              <div className="mt-[35px] flex justify-center">
-                <LocaleSwitcher locale={locale} />
-              </div>
+            <div className="mx-auto flex w-full flex-col gap-6 p-5">
+              <Accordion
+                type="multiple"
+                className="flex w-full flex-col items-start"
+              >
+                {navItems(tNavLinks).map((item, index) =>
+                  renderMenuItem(item, index),
+                )}
+              </Accordion>
+              <div className="h-[1px] w-full bg-white/30"></div>
+              <Accordion
+                type="multiple"
+                className="flex w-full flex-col items-start"
+              >
+                {topbarNavItems(t).map((item, index) =>
+                  renderMenuItem(item, index),
+                )}
+              </Accordion>
             </div>
           </ScrollArea>
         </DrawerContent>
@@ -6769,6 +6917,21 @@ export default function AcademicRankings() {
       </div>
     </div>
   );
+}
+
+```
+
+# src\app\[locale]\sustainability\page.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import Section from "@/components/Section";
+
+export default function SustainabilityPage() {
+  const t = useTranslations("Sustainability");
+
+  return <Section></Section>;
 }
 
 ```

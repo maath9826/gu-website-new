@@ -18,7 +18,6 @@ const HoverMenu: React.FC<HoverMenuProps> = ({
   submenuClassName = "",
   isSubmenu = false,
 }) => {
-  if (isSubmenu) console.log(submenuClassName);
   return (
     <div
       className={twMerge(

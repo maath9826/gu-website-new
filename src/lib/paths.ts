@@ -109,10 +109,14 @@ export const EMPLOYER_SURVEY_ROUTE = `${SURVEYS_ROUTE}/employer-survey`;
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
+// FirstSection path arrays
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
 export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 
-export const CENTERIZED_TITLE_ROUTES: string[] = [];
+export const TITLE_AND_IMAGE_ROUTES: string[] = [SUSTAINABILITY_ROUTE];
+
+// Titles path arrays
+export const CENTERIZED_TITLE_ROUTES: string[] = [SUSTAINABILITY_ROUTE];
 
 export const TITLE_WITH_ACTIONS_ROUTES: string[] = [];

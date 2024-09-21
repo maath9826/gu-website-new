@@ -65,82 +65,82 @@ export const ratingsItems: (transRatings: TransRating[]) => Rating[] = (
 export const navItems = (t: TranslationFunction): MenuItem[] => [
   { label: t("home"), path: paths.HOME_ROUTE },
   {
-    label: t("aboutUniversity.aboutUniversity"),
+    label: t("aboutUniversity"),
     path: paths.ABOUT_UNIVERSITY_ROUTE,
     items: [
       {
-        label: t("aboutUniversity.aboutUs"),
+        label: t("aboutUs"),
         path: paths.ABOUT_UNIVERSITY_ROUTE,
       },
       {
-        label: t("aboutUniversity.universityCouncil"),
+        label: t("universityCouncil"),
         path: paths.UNIVERSITY_COUNCIL_ROUTE,
         items: [
           {
-            label: t("aboutUniversity.universityPresident"),
+            label: t("universityPresident"),
             path: paths.UNIVERSITY_PRESIDENT_ROUTE,
           },
           {
-            label: t("aboutUniversity.assistantPresidentScientific"),
+            label: t("assistantPresidentScientific"),
             path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
           },
           {
-            label: t("aboutUniversity.assistantPresidentAdministrative"),
+            label: t("assistantPresidentAdministrative"),
             path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
           },
           {
-            label: t("aboutUniversity.collegeDeans"),
+            label: t("collegeDeans"),
             path: paths.COLLEGE_DEANS_ROUTE,
           },
         ],
       },
       {
-        label: t("aboutUniversity.presidentSpeech"),
+        label: t("presidentSpeech"),
         path: paths.PRESIDENT_SPEECH_ROUTE,
       },
       {
-        label: t("aboutUniversity.organizationalStructure"),
+        label: t("organizationalStructure"),
         path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
       },
       {
-        label: t("aboutUniversity.infrastructure"),
+        label: t("infrastructure"),
         path: paths.INFRASTRUCTURE_ROUTE,
         items: [
-          { label: t("aboutUniversity.halls"), path: paths.HALLS_ROUTE },
+          { label: t("halls"), path: paths.HALLS_ROUTE },
           {
-            label: t("aboutUniversity.laboratories"),
+            label: t("laboratories"),
             path: paths.LABORATORIES_ROUTE,
           },
           {
-            label: t("aboutUniversity.greenAreas"),
+            label: t("greenAreas"),
             path: paths.GREEN_AREAS_ROUTE,
           },
         ],
       },
       {
-        label: t("aboutUniversity.universityLife"),
+        label: t("universityLife"),
         path: paths.UNIVERSITY_LIFE_ROUTE,
         items: [
           {
-            label: t("aboutUniversity.photoLibrary"),
+            label: t("photoLibrary"),
             path: paths.PHOTO_LIBRARY_ROUTE,
           },
           {
-            label: t("aboutUniversity.videoLibrary"),
+            label: t("videoLibrary"),
             path: paths.VIDEO_LIBRARY_ROUTE,
           },
         ],
       },
       {
-        label: t("aboutUniversity.agreementsPartnerships"),
+        label: t("agreementsPartnerships"),
         path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
       },
       {
-        label: t("aboutUniversity.transparencyPrinciple"),
+        label: t("transparencyPrinciple"),
         path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
       },
       {
-        label: t("aboutUniversity.universityStrategy"),
+        label: t("universityStrategy"),
         path: paths.UNIVERSITY_STRATEGY_ROUTE,
       },
     ],
@@ -154,243 +154,243 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
     ],
   },
   {
-    label: t("academicAffairs.academicAffairs"),
+    label: t("academicAffairs"),
     path: paths.ACADEMIC_AFFAIRS_ROUTE,
     items: [
       {
-        label: t("academicAffairs.scientificPromotions"),
+        label: t("scientificPromotions"),
         path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
         items: [
           {
-            label: t("academicAffairs.guidelines"),
+            label: t("guidelines"),
             path: paths.SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE,
           },
           {
-            label: t("academicAffairs.forms"),
+            label: t("forms"),
             path: paths.PROMOTION_FORMS_ROUTE,
           },
           {
-            label: t("academicAffairs.instructions"),
+            label: t("instructions"),
             path: paths.PROMOTION_INSTRUCTIONS_ROUTE,
           },
         ],
       },
       {
-        label: t("academicAffairs.scientificConferences"),
+        label: t("scientificConferences"),
         path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
       },
       {
-        label: t("academicAffairs.scientificJournals"),
+        label: t("scientificJournals"),
         path: paths.SCIENTIFIC_JOURNALS_ROUTE,
       },
       {
-        label: t("academicAffairs.electronicScientificProduction"),
+        label: t("electronicScientificProduction"),
         path: paths.ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE,
       },
       {
-        label: t("academicAffairs.facultyResearch"),
+        label: t("facultyResearch"),
         path: paths.FACULTY_RESEARCH_ROUTE,
       },
       {
-        label: t("academicAffairs.approvedBooks"),
+        label: t("approvedBooks"),
         path: paths.APPROVED_BOOKS_ROUTE,
       },
       {
-        label: t("academicAffairs.scientificMissions"),
+        label: t("scientificMissions"),
         path: paths.SCIENTIFIC_MISSIONS_ROUTE,
       },
       {
-        label: t("academicAffairs.inventionPatents"),
+        label: t("inventionPatents"),
         path: paths.INVENTION_PATENTS_ROUTE,
       },
       {
-        label: t("academicAffairs.qualityAssurance"),
+        label: t("qualityAssurance"),
         path: paths.QUALITY_ASSURANCE_ROUTE,
       },
       {
-        label: t("academicAffairs.universityRankings"),
+        label: t("universityRankings"),
         path: paths.UNIVERSITY_RANKINGS_ROUTE,
         items: [
-          { label: t("academicAffairs.scopus"), path: paths.SCOPUS_ROUTE },
+          { label: t("scopus"), path: paths.SCOPUS_ROUTE },
           {
-            label: t("academicAffairs.googleScholar"),
+            label: t("googleScholar"),
             path: paths.GOOGLE_SCHOLAR_ROUTE,
           },
           {
-            label: t("academicAffairs.researchGate"),
+            label: t("researchGate"),
             path: paths.RESEARCH_GATE_ROUTE,
           },
         ],
       },
       {
-        label: t("academicAffairs.scientificActivities"),
+        label: t("scientificActivities"),
         path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
         items: [
           {
-            label: t("academicAffairs.seminars"),
+            label: t("seminars"),
             path: paths.SEMINARS_ROUTE,
           },
           {
-            label: t("academicAffairs.workshops"),
+            label: t("workshops"),
             path: paths.WORKSHOPS_ROUTE,
           },
-          { label: t("academicAffairs.courses"), path: paths.COURSES_ROUTE },
-          { label: t("academicAffairs.forums"), path: paths.FORUMS_ROUTE },
+          { label: t("courses"), path: paths.COURSES_ROUTE },
+          { label: t("forums"), path: paths.FORUMS_ROUTE },
         ],
       },
     ],
   },
   {
-    label: t("studentAffairs.studentAffairs"),
+    label: t("studentAffairs"),
     path: paths.STUDENT_AFFAIRS_ROUTE,
     items: [
       {
-        label: t("studentAffairs.admissionRegistration"),
+        label: t("admissionRegistration"),
         path: paths.ADMISSION_REGISTRATION_ROUTE,
         items: [
           {
-            label: t("studentAffairs.admissionConditions"),
+            label: t("admissionConditions"),
             path: paths.ADMISSION_CONDITIONS_ROUTE,
           },
           {
-            label: t("studentAffairs.registrationMechanism"),
+            label: t("registrationMechanism"),
             path: paths.REGISTRATION_MECHANISM_ROUTE,
           },
           {
-            label: t("studentAffairs.studyFees"),
+            label: t("studyFees"),
             path: paths.STUDY_FEES_ROUTE,
           },
         ],
       },
       {
-        label: t("studentAffairs.scholarshipsGrants"),
+        label: t("scholarshipsGrants"),
         path: paths.SCHOLARSHIPS_GRANTS_ROUTE,
       },
       {
-        label: t("studentAffairs.academicCalendar"),
+        label: t("academicCalendar"),
         path: paths.ACADEMIC_CALENDAR_ROUTE,
       },
       {
-        label: t("studentAffairs.universityInstructions"),
+        label: t("universityInstructions"),
         path: paths.UNIVERSITY_INSTRUCTIONS_ROUTE,
       },
       {
-        label: t("studentAffairs.studentGuide"),
+        label: t("studentGuide"),
         path: paths.STUDENT_GUIDE_ROUTE,
       },
       {
-        label: t("studentAffairs.outstandingStudents"),
+        label: t("outstandingStudents"),
         path: paths.OUTSTANDING_STUDENTS_ROUTE,
       },
       {
-        label: t("studentAffairs.studentActivities"),
+        label: t("studentActivities"),
         path: paths.STUDENT_ACTIVITIES_ROUTE,
       },
       {
-        label: t("studentAffairs.studentClubs"),
+        label: t("studentClubs"),
         path: paths.STUDENT_CLUBS_ROUTE,
       },
     ],
   },
   {
-    label: t("serviceCenters.serviceCenters"),
+    label: t("serviceCenters"),
     path: paths.SERVICE_CENTERS_ROUTE,
     items: [
       {
-        label: t("serviceCenters.digitalLibrary"),
+        label: t("digitalLibrary"),
         path: paths.DIGITAL_LIBRARY_ROUTE,
       },
       {
-        label: t("serviceCenters.continuingEducationCenter"),
+        label: t("continuingEducationCenter"),
         path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
       },
       {
-        label: t("serviceCenters.careerGuidanceCenter"),
+        label: t("careerGuidanceCenter"),
         path: paths.CAREER_GUIDANCE_CENTER_ROUTE,
       },
       {
-        label: t("serviceCenters.physicalFitnessCenter"),
+        label: t("physicalFitnessCenter"),
         path: paths.PHYSICAL_FITNESS_CENTER_ROUTE,
       },
       {
-        label: t("serviceCenters.gilgameshTheater"),
+        label: t("gilgameshTheater"),
         path: paths.GILGAMESH_THEATER_ROUTE,
       },
       {
-        label: t("serviceCenters.audiovisualHalls"),
+        label: t("audiovisualHalls"),
         path: paths.AUDIOVISUAL_HALLS_ROUTE,
       },
       {
-        label: t("serviceCenters.sportsStadium"),
+        label: t("sportsStadium"),
         path: paths.SPORTS_STADIUM_ROUTE,
       },
       {
-        label: t("serviceCenters.fiveSidePlaygrounds"),
+        label: t("fiveSidePlaygrounds"),
         path: paths.FIVE_SIDE_PLAYGROUNDS_ROUTE,
       },
       {
-        label: t("serviceCenters.trainingHalls"),
+        label: t("trainingHalls"),
         path: paths.TRAINING_HALLS_ROUTE,
       },
       {
-        label: t("serviceCenters.dentalClinics"),
+        label: t("dentalClinics"),
         path: paths.DENTAL_CLINICS_ROUTE,
       },
       {
-        label: t("serviceCenters.centralLibrary"),
+        label: t("centralLibrary"),
         path: paths.CENTRAL_LIBRARY_ROUTE,
       },
-      { label: t("serviceCenters.cafeteria"), path: paths.CAFETERIA_ROUTE },
+      { label: t("cafeteria"), path: paths.CAFETERIA_ROUTE },
     ],
   },
   {
-    label: t("eServices.eServices"),
+    label: t("eServices"),
     path: paths.E_SERVICES_ROUTE,
     items: [
       {
-        label: t("eServices.studentPortal"),
+        label: t("studentPortal"),
         path: paths.STUDENT_PORTAL_ROUTE,
       },
       {
-        label: t("eServices.facultyPortal"),
+        label: t("facultyPortal"),
         path: paths.FACULTY_PORTAL_ROUTE,
       },
       {
-        label: t("eServices.massarPlatform"),
+        label: t("massarPlatform"),
         path: paths.MASSAR_PLATFORM_ROUTE,
       },
       {
-        label: t("eServices.universityDigitalRepository"),
+        label: t("universityDigitalRepository"),
         path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
       },
       {
-        label: t("eServices.electronicPayment"),
+        label: t("electronicPayment"),
         path: paths.ELECTRONIC_PAYMENT_ROUTE,
       },
       {
-        label: t("eServices.graduatesPortal"),
+        label: t("graduatesPortal"),
         path: paths.GRADUATES_PORTAL_ROUTE,
         items: [
           {
-            label: t("eServices.graduationConfirmationRequest"),
+            label: t("graduationConfirmationRequest"),
             path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
           },
           {
-            label: t("eServices.graduationDocumentRequest"),
+            label: t("graduationDocumentRequest"),
             path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
           },
           {
-            label: t("eServices.transcriptRequest"),
+            label: t("transcriptRequest"),
             path: paths.TRANSCRIPT_REQUEST_ROUTE,
           },
         ],
       },
       {
-        label: t("eServices.universityIdIssuance"),
+        label: t("universityIdIssuance"),
         path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
       },
       {
-        label: t("eServices.electronicParticipationCertificates"),
+        label: t("electronicParticipationCertificates"),
         path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
       },
     ],
@@ -400,35 +400,35 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
 export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
   {
     path: paths.UNIVERSITY_AND_COMMUNITY_ROUTE,
-    label: t("Header.topbarNavLinks.universityAndCommunity"),
+    label: t("Header.navLinks.universityAndCommunity"),
     items: [
       {
         path: paths.GRADUATES_ROUTE,
-        label: t("Header.topbarNavLinks.graduates"),
+        label: t("Header.navLinks.graduates"),
       },
       {
         path: paths.QUALIFICATION_EMPLOYMENT_ROUTE,
-        label: t("Header.topbarNavLinks.qualificationEmployment"),
+        label: t("Header.navLinks.qualificationEmployment"),
       },
       {
         path: paths.CONSULTING_CLINIC_ROUTE,
-        label: t("Header.topbarNavLinks.consultingClinic"),
+        label: t("Header.navLinks.consultingClinic"),
       },
       {
         path: paths.MINISTRY_INQUIRIES_ROUTE,
-        label: t("Header.topbarNavLinks.ministryInquiries"),
+        label: t("Header.navLinks.ministryInquiries"),
       },
       {
         path: paths.SURVEYS_ROUTE,
-        label: t("Header.topbarNavLinks.surveys"),
+        label: t("Header.navLinks.surveys"),
         items: [
           {
             path: paths.GRADUATE_SURVEY_ROUTE,
-            label: t("Header.topbarNavLinks.graduateSurvey"),
+            label: t("Header.navLinks.graduateSurvey"),
           },
           {
             path: paths.EMPLOYER_SURVEY_ROUTE,
-            label: t("Header.topbarNavLinks.employerSurvey"),
+            label: t("Header.navLinks.employerSurvey"),
           },
         ],
       },
@@ -436,8 +436,8 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
   },
   {
     path: paths.SUSTAINABILITY_ROUTE,
-    label: t("Header.topbarNavLinks.sustainability"),
+    label: t("Header.navLinks.sustainability"),
   },
-  { path: paths.NEWS_ROUTE, label: t("Header.topbarNavLinks.news") },
-  { path: paths.CONTACT_ROUTE, label: t("Header.topbarNavLinks.contact") },
+  { path: paths.NEWS_ROUTE, label: t("Header.navLinks.news") },
+  { path: paths.CONTACT_ROUTE, label: t("Header.navLinks.contact") },
 ];

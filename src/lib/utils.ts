@@ -8,12 +8,16 @@ import {
   IMAGE_BG_ROUTES,
   CENTERIZED_TITLE_ROUTES,
   TITLE_WITH_ACTIONS_ROUTES,
+  TITLE_AND_IMAGE_ROUTES,
 } from "./paths";
 import SliderBg from "@/components/FirstSection/SliderBg";
 import ImageBg from "@/components/FirstSection/ImageBg";
-import CenterizedTitle from "@/components/FirstSection/CenterizedTitle";
-import TitleBg from "@/components/FirstSection/TitleBg";
+import CenterizedTitle from "@/components/FirstSection/FirstTitleSection/CenterizedTitle";
+import TitleBg from "@/components/FirstSection/FirstTitleSection/TitleBg";
 import React, { RefObject } from "react";
+import TitleAndImage from "@/components/FirstSection/TitleAndImage";
+import { TextDirection } from "@/app/_hooks/useTextDirection";
+import { IReactToPrintProps } from "react-to-print";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -46,24 +50,21 @@ export const routes = [
 
 export type TranslationFunction = (key: string) => string;
 
-export function getPageTitle(route: string, t: TranslationFunction): string {
-  const element = routes.find((el) => {
-    return el.includeSubPaths ? route.includes(el.path) : el.path === route;
-  });
-
-  if (!element) {
-    return "Page Not Found";
-  }
-
-  return t(element.key);
-}
-
 export function getBgComponent(pathname: string): React.ComponentType | null {
   if (SLIDER_BG_ROUTES.includes(pathname)) {
     return SliderBg;
   } else if (IMAGE_BG_ROUTES.includes(pathname)) {
     return ImageBg;
-  } else if (CENTERIZED_TITLE_ROUTES.includes(pathname)) {
+  } else if (TITLE_AND_IMAGE_ROUTES.includes(pathname)) {
+    return TitleAndImage;
+  }
+  return null;
+}
+
+export function getTitleComponent(
+  pathname: string,
+): React.ComponentType | null {
+  if (CENTERIZED_TITLE_ROUTES.includes(pathname)) {
     return CenterizedTitle;
   } else if (TITLE_WITH_ACTIONS_ROUTES.includes(pathname)) {
     return TitleBg;
@@ -103,3 +104,33 @@ export const scrollToElement = (
 
   requestAnimationFrame(animation);
 };
+
+export function getPageTitle({
+  t,
+  pathname,
+}: {
+  t: TranslationFunction;
+  pathname: string;
+}): string {
+  const key = pathname.split("/").pop() || "home";
+  return t(`Header.navLinks.${key}`);
+}
+
+const getPrintProps = ({
+  dir,
+  content,
+}: {
+  dir: TextDirection;
+  content: IReactToPrintProps["content"];
+}): IReactToPrintProps => ({
+  content,
+  pageStyle: `
+    body {
+      direction: ${dir};
+    }
+  `,
+  bodyClass: "print-body",
+  documentTitle: ".",
+});
+
+export { getPrintProps };
