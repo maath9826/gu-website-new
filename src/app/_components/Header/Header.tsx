@@ -13,9 +13,9 @@ export default function Header() {
   return (
     <header
       className={twMerge(
-        "relative z-40 flex flex-col sm:items-center bg-primary sm:border-b sm:border-[#D9D9D9]/10",
+        "relative z-40 flex flex-col bg-primary sm:items-center sm:border-b sm:border-[#D9D9D9]/10",
         [...IMAGE_BG_ROUTES, ...SLIDER_BG_ROUTES].includes(pathname) &&
-          "sm:bg-transparent"
+          "sm:bg-transparent",
       )}
     >
       <Topbar></Topbar>

@@ -10,8 +10,8 @@ export default function PageWithFirstSection({
 }) {
   return (
     <main className={className}>
-      <FirstSection />
-      {children}
+      {/* <FirstSection />
+      {children} */}
     </main>
   );
 }

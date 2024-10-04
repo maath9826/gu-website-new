@@ -5,7 +5,7 @@ import PageWithFirstSection from "@/components/page/Page";
 
 export default function SustainabilityPage() {
   return (
-    <PageWithFirstSection>
+    <main>
       <FormattedTextViewer>
         نص تجريبي يوضع للعناوين الرئيسية في بعض الصفحات ويتم استبداله لاحقا حسب
         المحتوى المتوفر هذا النص هو نص تجريبي يبدأ بعد النقطة وقد تم وضعه كمحتوى
@@ -17,6 +17,6 @@ export default function SustainabilityPage() {
         وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
         المستدامة في خدمة المجتمع.
       </FormattedTextViewer>
-    </PageWithFirstSection>
+    </main>
   );
 }

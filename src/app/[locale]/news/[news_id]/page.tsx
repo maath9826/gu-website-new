@@ -18,7 +18,7 @@ export default function SingleNewsPage() {
   }, [locale]);
 
   return (
-    <PageWithFirstSection>
+    <main>
       <FormattedTextViewer>
         هذا النص هو نص تجريبي يبدأ بعد النقطة وقد تم وضعه كمحتوى تجريبي. شهدت
         الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة والإعدادية
@@ -85,6 +85,6 @@ export default function SingleNewsPage() {
         بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات
         وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع.
       </FormattedTextViewer>
-    </PageWithFirstSection>
+    </main>
   );
 }

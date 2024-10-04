@@ -23,7 +23,7 @@ export default function NewsClientPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <PageWithFirstSection className="mt-[36px] sm:mt-[180px]">
+    <main className="mt-[36px] sm:mt-[180px]">
       <Section>
         <div className="flex-col">
           <ScrollableContainerUpperSection
@@ -54,6 +54,6 @@ export default function NewsClientPage() {
           </div>
         </div>
       </Section>
-    </PageWithFirstSection>
+    </main>
   );
 }

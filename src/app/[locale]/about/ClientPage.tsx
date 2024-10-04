@@ -24,7 +24,7 @@ const list = [
 
 export default function AboutClientPage() {
   return (
-    <PageWithFirstSection>
+    <main>
       <Section className="mt-[10px] text-start sm:mt-[146px]">
         <Wrapper>
           <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px] 1920:gap-[52px]">
@@ -37,7 +37,7 @@ export default function AboutClientPage() {
       </Section>
       <CardsSection></CardsSection>
       <OurGoals></OurGoals>
-    </PageWithFirstSection>
+    </main>
   );
 }
 

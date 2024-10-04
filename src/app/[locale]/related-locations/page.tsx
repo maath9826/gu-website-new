@@ -6,7 +6,7 @@ import PageWithFirstSection from "@/components/page/Page";
 
 export default function page() {
   return (
-    <PageWithFirstSection>
+    <main>
       <Section>
         <TitlesWrapper>
           <h3 className="title-sm mt-[62px] !text-primary sm:mt-[151px]">
@@ -16,7 +16,7 @@ export default function page() {
           <RelatedLocationsGrid></RelatedLocationsGrid>
         </TitlesWrapper>
       </Section>
-    </PageWithFirstSection>
+    </main>
   );
 }
 

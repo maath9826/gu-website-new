@@ -109,29 +109,32 @@ export const EMPLOYER_SURVEY_ROUTE = `${SURVEYS_ROUTE}/employer-survey`;
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
-// FirstSection path arrays
+// // FirstSection path arrays
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
 export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 
-export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [
-  SUSTAINABILITY_ROUTE,
-  GRADUATES_ROUTE,
-  QUALIFICATION_EMPLOYMENT_ROUTE,
-  CONSULTING_CLINIC_ROUTE,
-  MINISTRY_INQUIRIES_ROUTE,
-  "/news/\\d+", // This will match /news/ followed by one or more digits
-];
+// export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [
+//   SUSTAINABILITY_ROUTE,
+//   GRADUATES_ROUTE,
+//   QUALIFICATION_EMPLOYMENT_ROUTE,
+//   CONSULTING_CLINIC_ROUTE,
+//   MINISTRY_INQUIRIES_ROUTE,
+//   "/news/\\d+", // This will match /news/ followed by one or more digits
+// ];
 
-// Titles path arrays
-export const CENTERIZED_TITLE_ROUTES: string[] = [
-  SUSTAINABILITY_ROUTE,
-  GRADUATES_ROUTE,
-  QUALIFICATION_EMPLOYMENT_ROUTE,
-  CONSULTING_CLINIC_ROUTE,
-  MINISTRY_INQUIRIES_ROUTE,
-];
+// export const ONLY_TITLE_ROUTE_PATTERNS: string[] = [UNIVERSITY_COUNCIL_ROUTE];
 
-export const TITLE_WITH_ACTIONS_ROUTES: string[] = [
-  "/news/\\d+", // This will match /news/ followed by one or more digits
-];
+// // Titles path arrays
+// export const CENTERIZED_TITLE_ROUTES: string[] = [
+//   SUSTAINABILITY_ROUTE,
+//   GRADUATES_ROUTE,
+//   QUALIFICATION_EMPLOYMENT_ROUTE,
+//   CONSULTING_CLINIC_ROUTE,
+//   MINISTRY_INQUIRIES_ROUTE,
+// ];
+
+// export const TITLE_WITH_ACTIONS_ROUTES: string[] = [
+//   "/news/\\d+", // This will match /news/ followed by one or more digits
+//   UNIVERSITY_COUNCIL_ROUTE,
+// ];

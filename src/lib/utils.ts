@@ -4,20 +4,22 @@ import {
   CONTACT_ROUTE,
   HOME_ROUTE,
   NEWS_ROUTE,
-  SLIDER_BG_ROUTES,
-  IMAGE_BG_ROUTES,
-  CENTERIZED_TITLE_ROUTES,
-  TITLE_WITH_ACTIONS_ROUTES,
-  TITLE_AND_IMAGE_ROUTE_PATTERNS,
+  // SLIDER_BG_ROUTES,
+  // IMAGE_BG_ROUTES,
+  // CENTERIZED_TITLE_ROUTES,
+  // TITLE_WITH_ACTIONS_ROUTES,
+  // TITLE_AND_IMAGE_ROUTE_PATTERNS,
+  // ONLY_TITLE_ROUTE_PATTERNS,
 } from "./paths";
 import SliderBg from "@/components/page/SliderBg";
 import ImageBg from "@/components/page/ImageBg";
 import CenterizedTitle from "@/components/page/FirstTitleSection/CenterizedTitle";
-import ActionsTitle from "@/components/page/FirstTitleSection/TitleBg";
 import React, { RefObject } from "react";
 import TitleAndImage from "@/components/page/TitleAndImage";
 import { TextDirection } from "@/app/_hooks/useTextDirection";
 import { IReactToPrintProps } from "react-to-print";
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+import OnlyTitle from "@/components/page/OnlyTitle";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -50,36 +52,39 @@ export const routes = [
 
 export type TranslationFunction = (key: string) => string;
 
-export function getBgComponent(pathname: string): React.ComponentType | null {
-  console.log(pathname);
-  console.log(matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS));
-  if (matchesPattern(pathname, SLIDER_BG_ROUTES)) {
-    return SliderBg;
-  } else if (matchesPattern(pathname, IMAGE_BG_ROUTES)) {
-    return ImageBg;
-  } else if (matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS)) {
-    return TitleAndImage;
-  }
-  return null;
-}
+// export function getBgComponent(pathname: string): React.ComponentType | null {
+//   console.log(pathname);
+//   console.log(matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS));
+//   if (matchesPattern(pathname, SLIDER_BG_ROUTES)) {
+//     return SliderBg;
+//   } else if (matchesPattern(pathname, IMAGE_BG_ROUTES)) {
+//     return ImageBg;
+//   } else if (matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS)) {
+//     return TitleAndImage;
+//   } else if (matchesPattern(pathname, ONLY_TITLE_ROUTE_PATTERNS)) {
+//     return OnlyTitle;
+//   }
+//   return null;
+// }
 
-export function getTitleComponent(
-  pathname: string,
-): React.ComponentType | null {
-  if (matchesPattern(pathname, CENTERIZED_TITLE_ROUTES)) {
-    return CenterizedTitle;
-  } else if (matchesPattern(pathname, TITLE_WITH_ACTIONS_ROUTES)) {
-    return ActionsTitle;
-  }
-  return null;
-}
+// export function getTitleComponent(
+//   pathname: string,
+// ): React.ComponentType | null {
+//   console.log(matchesPattern(pathname, TITLE_WITH_ACTIONS_ROUTES));
+//   if (matchesPattern(pathname, CENTERIZED_TITLE_ROUTES)) {
+//     return CenterizedTitle;
+//   } else if (matchesPattern(pathname, TITLE_WITH_ACTIONS_ROUTES)) {
+//     return ActionsTitle;
+//   }
+//   return null;
+// }
 
-function matchesPattern(pathname: string, patterns: string[]): boolean {
-  return patterns.some((pattern) => {
-    const regex = new RegExp(`^${pattern}$`);
-    return regex.test(pathname);
-  });
-}
+// function matchesPattern(pathname: string, patterns: string[]): boolean {
+//   return patterns.some((pattern) => {
+//     const regex = new RegExp(`^${pattern}$`);
+//     return regex.test(pathname);
+//   });
+// }
 
 export const scrollToElement = (
   container: RefObject<HTMLDivElement>,
