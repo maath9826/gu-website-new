@@ -17,21 +17,21 @@ export default function CommonCard({
     <Link
       href={el.href}
       className={twMerge(
-        "flex flex-col justify-between hover:opacity-90 max-w-[343px] sm:max-w-none w-full p-[35px] h-[243px] sm:h-[265px] 1920:h-[349px]   items-start text-center transition-all duration-300 hover:shadow-lg",
+        "flex h-[243px] w-full max-w-[343px] flex-col items-start justify-between p-[35px] text-center transition-all duration-300 hover:opacity-90 hover:shadow-lg sm:h-[265px] sm:max-w-none 1920:h-[349px]",
         index == 0 && uniqueFirstCard ? "bg-secondary" : "bg-white",
-        className
+        className,
       )}
     >
       <img
         src={el.imgUrl}
         alt={el.title}
-        className="w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] 1920:w-[80px] 1920:h-[80px] object-contain"
+        className="h-[48px] w-[48px] object-contain sm:h-[60px] sm:w-[60px] 1920:h-[80px] 1920:w-[80px]"
       />
-      <div className="flex justify-between items-center w-full">
-        <h4 className="text-[24px] sm:text-[27px] 1920:text-[36px] leading-[1.2em] font-medium">
+      <div className="flex w-full items-center justify-between gap-[20px]">
+        <h4 className="text-start text-[24px] font-medium leading-[1.3em] sm:text-[27px] 1920:text-[36px]">
           {el.title}
         </h4>
-        <i className="ri-arrow-left-line flippable text-[32px] 1920:text-[45px]"></i>
+        <i className="ri-arrow-left-line text-[32px] flippable 1920:text-[45px]"></i>
       </div>
     </Link>
   );

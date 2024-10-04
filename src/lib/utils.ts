@@ -8,14 +8,14 @@ import {
   IMAGE_BG_ROUTES,
   CENTERIZED_TITLE_ROUTES,
   TITLE_WITH_ACTIONS_ROUTES,
-  TITLE_AND_IMAGE_ROUTES,
+  TITLE_AND_IMAGE_ROUTE_PATTERNS,
 } from "./paths";
-import SliderBg from "@/components/FirstSection/SliderBg";
-import ImageBg from "@/components/FirstSection/ImageBg";
-import CenterizedTitle from "@/components/FirstSection/FirstTitleSection/CenterizedTitle";
-import TitleBg from "@/components/FirstSection/FirstTitleSection/TitleBg";
+import SliderBg from "@/components/page/SliderBg";
+import ImageBg from "@/components/page/ImageBg";
+import CenterizedTitle from "@/components/page/FirstTitleSection/CenterizedTitle";
+import ActionsTitle from "@/components/page/FirstTitleSection/TitleBg";
 import React, { RefObject } from "react";
-import TitleAndImage from "@/components/FirstSection/TitleAndImage";
+import TitleAndImage from "@/components/page/TitleAndImage";
 import { TextDirection } from "@/app/_hooks/useTextDirection";
 import { IReactToPrintProps } from "react-to-print";
 export function cn(...inputs: ClassValue[]) {
@@ -51,11 +51,13 @@ export const routes = [
 export type TranslationFunction = (key: string) => string;
 
 export function getBgComponent(pathname: string): React.ComponentType | null {
-  if (SLIDER_BG_ROUTES.includes(pathname)) {
+  console.log(pathname);
+  console.log(matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS));
+  if (matchesPattern(pathname, SLIDER_BG_ROUTES)) {
     return SliderBg;
-  } else if (IMAGE_BG_ROUTES.includes(pathname)) {
+  } else if (matchesPattern(pathname, IMAGE_BG_ROUTES)) {
     return ImageBg;
-  } else if (TITLE_AND_IMAGE_ROUTES.includes(pathname)) {
+  } else if (matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS)) {
     return TitleAndImage;
   }
   return null;
@@ -64,12 +66,19 @@ export function getBgComponent(pathname: string): React.ComponentType | null {
 export function getTitleComponent(
   pathname: string,
 ): React.ComponentType | null {
-  if (CENTERIZED_TITLE_ROUTES.includes(pathname)) {
+  if (matchesPattern(pathname, CENTERIZED_TITLE_ROUTES)) {
     return CenterizedTitle;
-  } else if (TITLE_WITH_ACTIONS_ROUTES.includes(pathname)) {
-    return TitleBg;
+  } else if (matchesPattern(pathname, TITLE_WITH_ACTIONS_ROUTES)) {
+    return ActionsTitle;
   }
   return null;
+}
+
+function matchesPattern(pathname: string, patterns: string[]): boolean {
+  return patterns.some((pattern) => {
+    const regex = new RegExp(`^${pattern}$`);
+    return regex.test(pathname);
+  });
 }
 
 export const scrollToElement = (

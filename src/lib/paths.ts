@@ -1,5 +1,5 @@
 export const HOME_ROUTE = "/";
-export const ABOUT_UNIVERSITY_ROUTE = "/about-university";
+export const ABOUT_UNIVERSITY_ROUTE = "/about";
 export const COLLEGES_ROUTE = "/colleges";
 export const ACADEMIC_AFFAIRS_ROUTE = "/academic-affairs";
 export const STUDENT_AFFAIRS_ROUTE = "/student-affairs";
@@ -114,12 +114,13 @@ export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
 export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 
-export const TITLE_AND_IMAGE_ROUTES: string[] = [
+export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [
   SUSTAINABILITY_ROUTE,
   GRADUATES_ROUTE,
   QUALIFICATION_EMPLOYMENT_ROUTE,
   CONSULTING_CLINIC_ROUTE,
   MINISTRY_INQUIRIES_ROUTE,
+  "/news/\\d+", // This will match /news/ followed by one or more digits
 ];
 
 // Titles path arrays
@@ -131,4 +132,6 @@ export const CENTERIZED_TITLE_ROUTES: string[] = [
   MINISTRY_INQUIRIES_ROUTE,
 ];
 
-export const TITLE_WITH_ACTIONS_ROUTES: string[] = [];
+export const TITLE_WITH_ACTIONS_ROUTES: string[] = [
+  "/news/\\d+", // This will match /news/ followed by one or more digits
+];

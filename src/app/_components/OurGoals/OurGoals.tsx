@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useTranslations } from "next-intl";
 import { Goal } from "@/lib/types";
-import { ScrollableCardsContainer } from "@/components/ScrollableContainer/ScrollableContainer";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollArrows from "@/components/ScrollArrows";
 
 export default function OurGoals() {
@@ -12,7 +12,7 @@ export default function OurGoals() {
   let containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={twMerge("mt-[114px] sm:mt-[198px] 1920:mt-[280px] w-full")}>
+    <div className={twMerge("mt-[114px] w-full sm:mt-[198px] 1920:mt-[280px]")}>
       <ScrollableCardsContainer
         ref={containerRef}
         className="flex sm:grid sm:w-full sm:grid-cols-3"
@@ -40,7 +40,7 @@ function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
       ? "bg-[#0F4023]"
       : `bg-white bg-no-repeat bg-cover bg-[url('/images/home/goals/${
           index + 1
-        }.jpg')]`
+        }.jpg')]`,
   );
 
   const backgroundImg = isFirst
@@ -50,7 +50,7 @@ function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
   return (
     <div className={styles} style={backgroundImg}>
       {isFirst && (
-        <h1 className="flex-1 border-b border-white text-[44px] sm:text-[51px] 1920:text-[68px] leading-[1.22em] text-white mx-4 sm:mx-[58px] 1920:mx-[78px] pt-[67px] sm:pt-[96px] 1920:pt-[129px] font-medium">
+        <h1 className="mx-4 flex-1 border-b border-white pt-[67px] text-[44px] font-medium leading-[1.22em] text-white sm:mx-[58px] sm:pt-[96px] sm:text-[51px] 1920:mx-[78px] 1920:pt-[129px] 1920:text-[68px]">
           اهداف جامعة كلكامش
         </h1>
       )}
@@ -60,14 +60,14 @@ function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
           "text-white",
           !isFirst && "bg-black/30 backdrop-blur-md",
           isFirst
-            ? "px-4 pb-[67px] pt-[29px] sm:pt-[34px] 1920:pt-[46px] sm:px-[58px] sm:pb-[50px] 1920:px-[78px] 1920:pb-[67px]"
-            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]"
+            ? "px-4 pb-[67px] pt-[29px] sm:px-[58px] sm:pb-[50px] sm:pt-[34px] 1920:px-[78px] 1920:pb-[67px] 1920:pt-[46px]"
+            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]",
         )}
       >
-        <h3 className="text-[28px] sm:text-[21px] 1920:text-[28px] leading-[1.22em] font-bold mb-2">
+        <h3 className="mb-2 text-[28px] font-bold leading-[1.22em] sm:text-[21px] 1920:text-[28px]">
           {el.title}
         </h3>
-        <p className="text-[16px] sm:text-[14px] 1920:text-[18px] leading-[1.75em] font-light text-white/70">
+        <p className="text-[16px] font-light leading-[1.75em] text-white/70 sm:text-[14px] 1920:text-[18px]">
           {el.description}
         </p>
       </div>

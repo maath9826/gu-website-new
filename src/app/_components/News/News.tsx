@@ -8,8 +8,8 @@ import MainNewsCard from "./MainNewsCard";
 import NewsCard from "./NewsCard";
 import { NewsItem } from "@/lib/types";
 import { newsItems } from "@/lib/data";
-import ScrollableContainerUpperSection from "@/components/ScrollableContainer/UpperSection";
-import { ScrollableCardsContainer } from "@/components/ScrollableContainer/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
 
 const NewsSection: React.FC = () => {
@@ -23,10 +23,10 @@ const NewsSection: React.FC = () => {
           title={t("title")}
           containerRef={containerRef}
           titleClass="text-[28px] sm:text-[47px] font-normal 1920:text-[62px] "
-          className="sm:mb-[50px] 1920:mb-[66px] "
+          className="sm:mb-[50px] 1920:mb-[66px]"
         ></ScrollableContainerUpperSection>
 
-        <div className="flex flex-col sm:gap-[38px] 1920:gap-[50px] w-fit">
+        <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
           <ScrollableCardsContainer ref={containerRef}>
             {newsItems([]).map((item, index) => (
               <ScrollElement className="flex justify-center" key={index}>
@@ -35,7 +35,7 @@ const NewsSection: React.FC = () => {
             ))}
           </ScrollableCardsContainer>
           <Section
-            className="sm:max-w-desktop 1920:max-w-desktop-lg max-w-mobile grid gird-cols-1 sm:grid-cols-3 sm:gap-[38px] 1920:gap-[50px] w-full"
+            className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
             wrapperClass="sm:flex hidden"
           >
             {newsItems([])

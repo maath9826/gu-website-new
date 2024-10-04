@@ -6,9 +6,9 @@ import { getMessages } from "next-intl/server";
 import useTextDirection from "@/app/_hooks/useTextDirection";
 import Header from "../_components/Header/Header";
 import Footer from "../_components/Footer";
-import FirstSection from "../../components/FirstSection/FirstSection";
+
 import Script from "next/script";
-import LastSections from "@/components/LastSections/LastSections";
+import CommonSections from "@/components/common-sections/CommonSections";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -42,9 +42,8 @@ export default function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <FirstSection />
           {children}
-          <LastSections></LastSections>
+          <CommonSections></CommonSections>
           <Footer></Footer>
         </NextIntlClientProvider>
       </body>

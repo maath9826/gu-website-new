@@ -4,7 +4,7 @@ import FormattedTextViewer from "@/components/FormattedTextViewer";
 export default function QualificationEmploymentPage() {
   return (
     <FormattedTextViewer
-      content={`محتوى صفحة التأهيل والتوظيف يأتي هنا.`}
+      children={`محتوى صفحة التأهيل والتوظيف يأتي هنا.`}
     ></FormattedTextViewer>
   );
 }

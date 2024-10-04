@@ -1,29 +1,32 @@
 import Section from "@/components/Section";
-import ScrollableContainerUpperSection from "../../../components/ScrollableContainer/UpperSection";
+import ScrollableContainerUpperSection from "../../../components/scrollable-container/UpperSection";
 import TitlesWrapper from "@/components/TitlesWrapper";
 import { Link } from "@/i18n.config";
+import PageWithFirstSection from "@/components/page/Page";
 
 export default function page() {
   return (
-    <Section>
-      <TitlesWrapper>
-        <h3 className="title-sm !text-primary mt-[62px] sm:mt-[151px]">
-          مواقع ذات صلة
-        </h3>
-        <h2 className="title">جامعة كلكامش</h2>
-        <RelatedLocationsGrid></RelatedLocationsGrid>
-      </TitlesWrapper>
-    </Section>
+    <PageWithFirstSection>
+      <Section>
+        <TitlesWrapper>
+          <h3 className="title-sm mt-[62px] !text-primary sm:mt-[151px]">
+            مواقع ذات صلة
+          </h3>
+          <h2 className="title">جامعة كلكامش</h2>
+          <RelatedLocationsGrid></RelatedLocationsGrid>
+        </TitlesWrapper>
+      </Section>
+    </PageWithFirstSection>
   );
 }
 
 const RelatedLocationsGrid = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 1920:grid-cols-5 gap-[22px] mt-[45px] sm:mt-[80px]">
+    <div className="mt-[45px] grid grid-cols-1 gap-[22px] sm:mt-[80px] sm:grid-cols-4 1920:grid-cols-5">
       {relatedLocations.map((location, index) => (
         <div
           key={index}
-          className="bg-white py-[40px] px-[30px] flex flex-col gap-[12px] items-center text-center justify-between"
+          className="flex flex-col items-center justify-between gap-[12px] bg-white px-[30px] py-[40px] text-center"
         >
           <h3 className="text-[24px] font-medium leading-[1.3em]">
             {location.title}
@@ -31,7 +34,7 @@ const RelatedLocationsGrid = () => {
           <Link
             target="_blank"
             href={location.url}
-            className="text-[14px] text-primary font-medium leading-[1.25em]"
+            className="text-[14px] font-medium leading-[1.25em] text-primary"
           >
             زيارة الموقع
           </Link>

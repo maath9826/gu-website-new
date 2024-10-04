@@ -5,7 +5,7 @@ import EServicesSection from "./EServicesSection";
 import ContactSection from "./ContactSection";
 import MapSection from "./MapSection";
 
-export default function LastSections() {
+export default function CommonSections() {
   return (
     <>
       <EServicesSection></EServicesSection>

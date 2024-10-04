@@ -3,8 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import CommonCard from "./CommonCard";
-import { ScrollableCardsContainer } from "../../../components/ScrollableContainer/ScrollableContainer";
-import ScrollableContainerUpperSection from "@/components/ScrollableContainer/UpperSection";
+import { ScrollableCardsContainer } from "../../../components/scrollable-container/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import ScrollElement from "@/components/ScrollElement";
 
 export default function CardsMobile() {
@@ -36,7 +36,7 @@ export default function CardsMobile() {
   }));
 
   return (
-    <div className="mt-[30px] mb-[54px] flex-col overflow-hidden w-full sm:hidden">
+    <div className="mb-[54px] mt-[30px] w-full flex-col overflow-hidden sm:hidden">
       <ScrollableContainerUpperSection
         containerRef={containerRef}
         title2="جامعة كلكامش"
