@@ -6,8 +6,18 @@ import { getPrintProps, shareCurrentURL } from "@/lib/utils";
 import { useReactToPrint } from "react-to-print";
 import { useTranslations } from "next-intl";
 import useTextDirection from "@/app/_hooks/useTextDirection";
+import { twMerge } from "tailwind-merge";
+import PDFDownloadButton, { PDFStyles } from "./PDFDownloadButton";
 
-export default function FormattedTextViewerActionsSection() {
+export default function FileOperations({
+  className,
+  showDownloadButton = false,
+  pdfStyles,
+}: {
+  className?: string;
+  showDownloadButton?: boolean;
+  pdfStyles?: PDFStyles;
+}) {
   const t = useTranslations("Common");
   const dir = useTextDirection();
 
@@ -19,7 +29,16 @@ export default function FormattedTextViewerActionsSection() {
   );
 
   return (
-    <div className="no-print hidden gap-[35px] self-end text-primary sm:flex sm:items-center">
+    <div
+      className={twMerge(
+        "no-print hidden gap-[35px] text-primary sm:flex sm:items-center",
+        className,
+      )}
+    >
+      {showDownloadButton && (
+        <PDFDownloadButton pdfStyles={pdfStyles}></PDFDownloadButton>
+      )}
+      <div className="h-[24px] border-r border-[#D8D8D8]"></div>
       <Button
         onClick={shareCurrentURL}
         variant="ghost"

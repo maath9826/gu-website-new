@@ -1,7 +1,7 @@
 import React from "react";
 
 import Wrapper from "./Wrapper";
-import FormattedTextViewerActionsSection from "./FormattedTextViewerActionsSection";
+import FileOperations from "./FileOperations";
 import { Button } from "./ui/button";
 
 export default function FormattedTextViewer({
@@ -14,7 +14,7 @@ export default function FormattedTextViewer({
       <div className="tiptap" id="print-section">
         {children}
       </div>
-      <FormattedTextViewerActionsSection></FormattedTextViewerActionsSection>
+      <FileOperations className="self-end"></FileOperations>
     </Wrapper>
   );
 }
