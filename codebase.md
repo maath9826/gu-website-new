@@ -161,6 +161,48 @@ export default config;
 
 ```
 
+# README.md
+
+```md
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+\`\`\`bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+\`\`\`
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+```
+
 # postcss.config.mjs
 
 ```mjs
@@ -198,9 +240,11 @@ export default config;
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-pdf/renderer": "^4.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.31",
+    "html2pdf.js": "^0.10.2",
     "lucide-react": "^0.436.0",
     "next": "14.2.5",
     "next-intl": "^3.17.6",
@@ -255,6 +299,17 @@ export default withNextIntl(nextConfig);
 
 ```
 
+# next-env.d.ts
+
+```ts
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+
+```
+
 # components.json
 
 ```json
@@ -283,6 +338,52 @@ export default withNextIntl(nextConfig);
 {
   "plugins": ["prettier-plugin-tailwindcss"]
 }
+
+```
+
+# .gitignore
+
+```
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+.vscode/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+.aidigestignore
 
 ```
 
@@ -374,6 +475,8 @@ export const { Link, usePathname, useRouter } =
     "share": "Share",
     "print": "Print",
     "centerizedTitle": "Your Centered Title Here",
+    "download": "Download",
+    "loading": "Downloading",
     "cards": {
       "uniLife": "University Life",
       "about": "About the University",
@@ -594,10 +697,7 @@ export const { Link, usePathname, useRouter } =
         }
       ]
     },
-    "ourApp": {
-      "title": "Download the AlZaeem app now from our stores.",
-      "description": "AlZaeem Company actively forges effective partnerships with supporting companies to propel the sector forward, enhancing it with diverse capabilities, expertise, and technological capacities."
-    },
+
     "news": {
       "title": "News",
       "viewAll": "View all news",
@@ -1004,6 +1104,8 @@ export const { Link, usePathname, useRouter } =
     "centerizedTitle": "عنوانك المركزي هنا",
     "print": "طباعة",
     "share": "مشاركة",
+    "download": "تحميل",
+    "loading": "جار التحميل",
     "cards": {
       "uniLife": "الحياة الجامعية",
       "about": "حول الجامعة",
@@ -1228,10 +1330,7 @@ export const { Link, usePathname, useRouter } =
         }
       ]
     },
-    "ourApp": {
-      "title": "حمل تطبيق الزعيم الآن على متاجرنا",
-      "description": "تنتهج شركة الزعيم في عملها تأسيس شراكات فعالة مع شركات ساندة، تسهم معها في نقل القطاع إلى الإمام، وتطويره ومدّه بالإمكانيات والخبرات والقدرات التقنية المختلفة."
-    },
+
     "news": {
       "title": "آخر الأخبار",
       "viewAll": "عرض جميع الاخبار",
@@ -1629,8 +1728,7 @@ export const { Link, usePathname, useRouter } =
 
 ```json
 {
-  "i18n-ally.localesPaths": ["locales"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.localesPaths": ["locales"]
 }
 
 ```
@@ -1644,20 +1742,22 @@ import {
   CONTACT_ROUTE,
   HOME_ROUTE,
   NEWS_ROUTE,
-  SLIDER_BG_ROUTES,
-  IMAGE_BG_ROUTES,
-  CENTERIZED_TITLE_ROUTES,
-  TITLE_WITH_ACTIONS_ROUTES,
-  TITLE_AND_IMAGE_ROUTES,
+  // SLIDER_BG_ROUTES,
+  // IMAGE_BG_ROUTES,
+  // CENTERIZED_TITLE_ROUTES,
+  // TITLE_WITH_ACTIONS_ROUTES,
+  // TITLE_AND_IMAGE_ROUTE_PATTERNS,
+  // ONLY_TITLE_ROUTE_PATTERNS,
 } from "./paths";
-import SliderBg from "@/components/FirstSection/SliderBg";
-import ImageBg from "@/components/FirstSection/ImageBg";
-import CenterizedTitle from "@/components/FirstSection/FirstTitleSection/CenterizedTitle";
-import TitleBg from "@/components/FirstSection/FirstTitleSection/TitleBg";
+import SliderBg from "@/components/page/SliderBg";
+import ImageBg from "@/components/page/ImageBg";
+import CenterizedTitle from "@/components/page/FirstTitleSection/CenterizedTitle";
 import React, { RefObject } from "react";
-import TitleAndImage from "@/components/FirstSection/TitleAndImage";
+import TitleAndImage from "@/components/page/TitleAndImage";
 import { TextDirection } from "@/app/_hooks/useTextDirection";
 import { IReactToPrintProps } from "react-to-print";
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+import OnlyTitle from "@/components/page/OnlyTitle";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -1690,27 +1790,39 @@ export const routes = [
 
 export type TranslationFunction = (key: string) => string;
 
-export function getBgComponent(pathname: string): React.ComponentType | null {
-  if (SLIDER_BG_ROUTES.includes(pathname)) {
-    return SliderBg;
-  } else if (IMAGE_BG_ROUTES.includes(pathname)) {
-    return ImageBg;
-  } else if (TITLE_AND_IMAGE_ROUTES.includes(pathname)) {
-    return TitleAndImage;
-  }
-  return null;
-}
+// export function getBgComponent(pathname: string): React.ComponentType | null {
+//   console.log(pathname);
+//   console.log(matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS));
+//   if (matchesPattern(pathname, SLIDER_BG_ROUTES)) {
+//     return SliderBg;
+//   } else if (matchesPattern(pathname, IMAGE_BG_ROUTES)) {
+//     return ImageBg;
+//   } else if (matchesPattern(pathname, TITLE_AND_IMAGE_ROUTE_PATTERNS)) {
+//     return TitleAndImage;
+//   } else if (matchesPattern(pathname, ONLY_TITLE_ROUTE_PATTERNS)) {
+//     return OnlyTitle;
+//   }
+//   return null;
+// }
 
-export function getTitleComponent(
-  pathname: string,
-): React.ComponentType | null {
-  if (CENTERIZED_TITLE_ROUTES.includes(pathname)) {
-    return CenterizedTitle;
-  } else if (TITLE_WITH_ACTIONS_ROUTES.includes(pathname)) {
-    return TitleBg;
-  }
-  return null;
-}
+// export function getTitleComponent(
+//   pathname: string,
+// ): React.ComponentType | null {
+//   console.log(matchesPattern(pathname, TITLE_WITH_ACTIONS_ROUTES));
+//   if (matchesPattern(pathname, CENTERIZED_TITLE_ROUTES)) {
+//     return CenterizedTitle;
+//   } else if (matchesPattern(pathname, TITLE_WITH_ACTIONS_ROUTES)) {
+//     return ActionsTitle;
+//   }
+//   return null;
+// }
+
+// function matchesPattern(pathname: string, patterns: string[]): boolean {
+//   return patterns.some((pattern) => {
+//     const regex = new RegExp(`^${pattern}$`);
+//     return regex.test(pathname);
+//   });
+// }
 
 export const scrollToElement = (
   container: RefObject<HTMLDivElement>,
@@ -1860,7 +1972,7 @@ export type Location = {
 
 ```ts
 export const HOME_ROUTE = "/";
-export const ABOUT_UNIVERSITY_ROUTE = "/about-university";
+export const ABOUT_UNIVERSITY_ROUTE = "/about";
 export const COLLEGES_ROUTE = "/colleges";
 export const ACADEMIC_AFFAIRS_ROUTE = "/academic-affairs";
 export const STUDENT_AFFAIRS_ROUTE = "/student-affairs";
@@ -1970,29 +2082,35 @@ export const EMPLOYER_SURVEY_ROUTE = `${SURVEYS_ROUTE}/employer-survey`;
 
 export const NOT_FOUND_ROUTE = "/not_found";
 
-// FirstSection path arrays
+// // FirstSection path arrays
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
 export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 
-export const TITLE_AND_IMAGE_ROUTES: string[] = [
-  SUSTAINABILITY_ROUTE,
-  GRADUATES_ROUTE,
-  QUALIFICATION_EMPLOYMENT_ROUTE,
-  CONSULTING_CLINIC_ROUTE,
-  MINISTRY_INQUIRIES_ROUTE,
-];
+// export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [
+//   SUSTAINABILITY_ROUTE,
+//   GRADUATES_ROUTE,
+//   QUALIFICATION_EMPLOYMENT_ROUTE,
+//   CONSULTING_CLINIC_ROUTE,
+//   MINISTRY_INQUIRIES_ROUTE,
+//   "/news/\\d+", // This will match /news/ followed by one or more digits
+// ];
 
-// Titles path arrays
-export const CENTERIZED_TITLE_ROUTES: string[] = [
-  SUSTAINABILITY_ROUTE,
-  GRADUATES_ROUTE,
-  QUALIFICATION_EMPLOYMENT_ROUTE,
-  CONSULTING_CLINIC_ROUTE,
-  MINISTRY_INQUIRIES_ROUTE,
-];
+// export const ONLY_TITLE_ROUTE_PATTERNS: string[] = [UNIVERSITY_COUNCIL_ROUTE];
 
-export const TITLE_WITH_ACTIONS_ROUTES: string[] = [];
+// // Titles path arrays
+// export const CENTERIZED_TITLE_ROUTES: string[] = [
+//   SUSTAINABILITY_ROUTE,
+//   GRADUATES_ROUTE,
+//   QUALIFICATION_EMPLOYMENT_ROUTE,
+//   CONSULTING_CLINIC_ROUTE,
+//   MINISTRY_INQUIRIES_ROUTE,
+// ];
+
+// export const TITLE_WITH_ACTIONS_ROUTES: string[] = [
+//   "/news/\\d+", // This will match /news/ followed by one or more digits
+//   UNIVERSITY_COUNCIL_ROUTE,
+// ];
 
 ```
 
@@ -2590,6 +2708,43 @@ const InputWithBg = React.forwardRef<HTMLInputElement, InputProps>(
 
 ```
 
+# src\components\SharedPage.tsx
+
+```tsx
+import React from "react";
+import ActionsTitle from "./page/FirstTitleSection/ActionsTitle";
+import FileOperations from "./FileOperations";
+import Section from "./Section";
+import Wrapper from "./Wrapper";
+import FormattedTextViewer from "./FormattedTextViewer";
+
+export default function SharedPage() {
+  return (
+    <main>
+      <ActionsTitle title="الهيكل التنظيمي"></ActionsTitle>
+      <img
+        id="print-section"
+        src="/images/hero-bg.jpg"
+        alt="hero-bg"
+        className="w-full"
+      />
+      <FormattedTextViewer>
+        نص تجريبي يوضع للعناوين الرئيسية في بعض الصفحات ويتم استبداله لاحقا حسب
+        المحتوى المتوفر هذا النص هو نص تجريبي يبدأ بعد النقطة وقد تم وضعه كمحتوى
+        تجريبي. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة
+        والإعدادية بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل
+        تربية بهدف الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا
+        الوطنية بالدماء الشابة التي تساهم في حصد الإنجازات والبطولات خلال
+        المشاركات الدولية. الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة
+        وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
+        المستدامة في خدمة المجتمع.
+      </FormattedTextViewer>
+    </main>
+  );
+}
+
+```
+
 # src\components\Section.tsx
 
 ```tsx
@@ -2748,6 +2903,91 @@ export default function ScrollArrows({
     </div>
   );
 }
+
+```
+
+# src\components\PDFDownloadButton.tsx
+
+```tsx
+import React from "react";
+import { Button } from "@/components/ui/button";
+import html2pdf from "html2pdf.js";
+import { useTranslations } from "next-intl";
+
+export interface PDFStyles {
+  [key: string]: React.CSSProperties;
+}
+
+interface PDFDownloadButtonProps {
+  pdfStyles?: PDFStyles;
+}
+
+const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({
+  pdfStyles = {},
+}) => {
+  const t = useTranslations("Common");
+
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleDownload = () => {
+    setIsLoading(true);
+    const element = document.getElementById("print-section");
+    if (!element) {
+      console.error("Print section not found");
+      setIsLoading(false);
+      return;
+    }
+
+    // Clone the element
+    const clonedElement = element.cloneNode(true) as HTMLElement;
+
+    // Apply custom styles to the cloned element
+    applyPDFStyles(clonedElement, pdfStyles);
+
+    const opt = {
+      margin: 10,
+      filename: "organizational_structure.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf()
+      .from(clonedElement)
+      .set(opt)
+      .save()
+      .then(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const applyPDFStyles = (element: HTMLElement, customStyles: PDFStyles) => {
+    // Apply styles
+    Object.entries(customStyles).forEach(([selector, styles]) => {
+      const elements =
+        selector === "body" ? [element] : element.querySelectorAll(selector);
+      elements.forEach((el) => {
+        Object.assign((el as HTMLElement).style, styles);
+      });
+    });
+  };
+
+  return (
+    <Button
+      onClick={handleDownload}
+      disabled={isLoading}
+      variant="ghost"
+      size="icon"
+      className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
+    >
+      <span>{isLoading ? t("loading") + "..." : t("download")}</span>
+
+      <i className="ri-file-pdf-2-fill text-[20px]"></i>
+    </Button>
+  );
+};
+
+export default PDFDownloadButton;
 
 ```
 
@@ -3047,7 +3287,33 @@ export default HoverMenu;
 
 ```
 
-# src\components\FormattedTextViewerActionsSection.tsx
+# src\components\FormattedTextViewer.tsx
+
+```tsx
+import React from "react";
+
+import Wrapper from "./Wrapper";
+import FileOperations from "./FileOperations";
+import { Button } from "./ui/button";
+
+export default function FormattedTextViewer({
+  children,
+}: {
+  children: string;
+}) {
+  return (
+    <Wrapper className="mx-auto mt-[36px] flex max-w-none flex-col gap-[35px] bg-white px-[24px] py-[40px] text-justify sm:px-[40px]">
+      <div className="tiptap" id="print-section">
+        {children}
+      </div>
+      <FileOperations className="self-end"></FileOperations>
+    </Wrapper>
+  );
+}
+
+```
+
+# src\components\FileOperations.tsx
 
 ```tsx
 "use client";
@@ -3058,8 +3324,18 @@ import { getPrintProps, shareCurrentURL } from "@/lib/utils";
 import { useReactToPrint } from "react-to-print";
 import { useTranslations } from "next-intl";
 import useTextDirection from "@/app/_hooks/useTextDirection";
+import { twMerge } from "tailwind-merge";
+import PDFDownloadButton, { PDFStyles } from "./PDFDownloadButton";
 
-export default function FormattedTextViewerActionsSection() {
+export default function FileOperations({
+  className,
+  showDownloadButton = false,
+  pdfStyles,
+}: {
+  className?: string;
+  showDownloadButton?: boolean;
+  pdfStyles?: PDFStyles;
+}) {
   const t = useTranslations("Common");
   const dir = useTextDirection();
 
@@ -3071,7 +3347,16 @@ export default function FormattedTextViewerActionsSection() {
   );
 
   return (
-    <div className="no-print hidden gap-[35px] self-end text-primary sm:flex sm:items-center">
+    <div
+      className={twMerge(
+        "no-print hidden gap-[35px] text-primary sm:flex sm:items-center",
+        className,
+      )}
+    >
+      {showDownloadButton && (
+        <PDFDownloadButton pdfStyles={pdfStyles}></PDFDownloadButton>
+      )}
+      <div className="h-[24px] border-r border-[#D8D8D8]"></div>
       <Button
         onClick={shareCurrentURL}
         variant="ghost"
@@ -3092,28 +3377,6 @@ export default function FormattedTextViewerActionsSection() {
         <i className="ri-printer-fill text-[20px]"></i>
       </Button>
     </div>
-  );
-}
-
-```
-
-# src\components\FormattedTextViewer.tsx
-
-```tsx
-import React from "react";
-
-import Wrapper from "./Wrapper";
-import FormattedTextViewerActionsSection from "./FormattedTextViewerActionsSection";
-import { Button } from "./ui/button";
-
-export default function FormattedTextViewer({ content }: { content: string }) {
-  return (
-    <Wrapper className="mx-auto mt-[36px] flex max-w-none flex-col gap-[35px] bg-white px-[24px] py-[40px] text-justify sm:px-[40px]">
-      <div className="tiptap" id="print-section">
-        {content}
-      </div>
-      <FormattedTextViewerActionsSection></FormattedTextViewerActionsSection>
-    </Wrapper>
   );
 }
 
@@ -3601,6 +3864,10 @@ This is a binary file of the type: Binary
 })();
 
 ```
+
+# public\images\person-placeholder.svg
+
+This is a file of the type: SVG Image
 
 # public\images\map-marker.svg
 
@@ -4785,7 +5052,7 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
 
 ```
 
-# src\components\ScrollableContainer\UpperSection.tsx
+# src\components\scrollable-container\UpperSection.tsx
 
 ```tsx
 "use client";
@@ -4841,7 +5108,7 @@ export default function ScrollableContainerUpperSection({
 
 ```
 
-# src\components\ScrollableContainer\ScrollableContainer.tsx
+# src\components\scrollable-container\ScrollableContainer.tsx
 
 ```tsx
 import React from "react";
@@ -4870,295 +5137,7 @@ export { ScrollableCardsContainer };
 
 ```
 
-# src\components\LastSections\MapSection.tsx
-
-```tsx
-"use client";
-
-import MapLinkButton from "@/components/MapLinkButton";
-import dynamic from "next/dynamic";
-
-const LocationMap = dynamic(() => import("@/components/LocationMap"), {
-  loading: () => <p>Loading...</p>,
-  ssr: false,
-});
-
-export default function MapSection() {
-  return (
-    <div className="relative h-[330px] sm:h-[653px] w-full overflow-hidden mt-[82px] sm:mt-0">
-      {/* <LocationMap latitude={33.222307} longitude={44.3888341}></LocationMap> */}
-      <iframe
-        className="gmapelement w-full h-full"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.686773749098!2d44.39140365950111!3d33.222306973591124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1559d51e5f965023%3A0x269c2efce4992572!2z2KzYp9mF2LnYqSDZg9mE2YPYp9mF2LQg2KfZhNin2YfZhNmK2Kk!5e0!3m2!1sar!2siq!4v1717235472677!5m2!1sar!2siq"
-        allowFullScreen={true}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-      {/* <div className="absolute start-[16px] top-[16px] z-[10000]">
-        <MapLinkButton
-          latitude={33.222307}
-          longitude={44.3888341}
-        ></MapLinkButton>
-      </div> */}
-    </div>
-  );
-}
-
-```
-
-# src\components\LastSections\LastSections.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import EServicesSection from "./EServicesSection";
-import ContactSection from "./ContactSection";
-import MapSection from "./MapSection";
-
-export default function LastSections() {
-  return (
-    <>
-      <EServicesSection></EServicesSection>
-      <ContactSection></ContactSection>
-      <MapSection></MapSection>
-    </>
-  );
-}
-
-```
-
-# src\components\LastSections\EServicesSection.tsx
-
-```tsx
-"use client";
-
-import { useRef } from "react";
-import ScrollableContainerUpperSection from "../ScrollableContainer/UpperSection";
-import { ScrollableCardsContainer } from "../ScrollableContainer/ScrollableContainer";
-import ScrollElement from "../ScrollElement";
-import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import Wrapper from "../Wrapper";
-import Section from "../Section";
-
-export default function EServicesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const services = [
-    {
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-      title: "بوابة الطالب",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/news.svg",
-      title: "بوابة التدريسين",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/about.svg",
-      title: "بوابة الخريجين",
-      href: "/",
-    },
-  ];
-
-  return (
-    <div className="mt-[60px] sm:mt-[150px]">
-      <Section>
-        <Wrapper>
-          <div className="flex flex-col sm:flex-row justify-between sm:items-center">
-            <ScrollableContainerUpperSection
-              arrowButtonsClass="sm:hidden"
-              containerRef={containerRef}
-              title2="جامعة كلكامش"
-              title="الخدمات الالكترونية"
-              className="sm:items-center sm:w-fit"
-            />
-          </div>
-        </Wrapper>
-      </Section>
-      <Section className="max-w-none">
-        <Wrapper className="max-w-none mx-0 sm:mx-[16px]">
-          <ScrollableCardsContainer
-            ref={containerRef}
-            className="grid grid-cols-[repeat(3,auto)] sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px] sm:w-full "
-          >
-            {services.map((service, index) => (
-              <ScrollElement
-                className="flex justify-center sm:w-auto"
-                key={index}
-              >
-                <CommonCard
-                  el={service}
-                  index={index}
-                  uniqueFirstCard={false}
-                />
-              </ScrollElement>
-            ))}
-          </ScrollableCardsContainer>
-        </Wrapper>
-      </Section>
-    </div>
-  );
-}
-
-```
-
-# src\components\LastSections\ContactSection.tsx
-
-```tsx
-import Image from "next/image";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
-
-export default function ContactSection() {
-  return (
-    <section className="flex flex-col sm:flex-row w-full mt-[100px] sm:mt-[150px] 1920:mt-[180px]">
-      <ContactInfoSection />
-      <ContactFormSection />
-    </section>
-  );
-}
-
-function ContactInfoSection() {
-  return (
-    <div className="w-full sm:w-1/2 bg-white py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[50px] 1920:text-[70px] font-medium text-primary mb-[30px] sm:mb-[122px] 1920:mb-[162px] text-right leading-[1.22em]">
-        نحب ان نسمع منك
-      </h2>
-      <div className="space-y-[40px] sm:space-y-[53px] 1920:space-y-[60px] mb-[40px] sm:mb-[53px] 1920:mb-[60px]">
-        <ContactInfo title="البريد الالكتروني" value="info@gau.edu.iq" />
-        <ContactInfo title="رقم الهاتف" value="07832000090 - 07732000090" />
-        <ContactInfo
-          title="عنوان الجامعة"
-          value="العراق / بغداد / الدورة / حي الصحة / قرب جامع ياسين"
-        />
-      </div>
-      <div>
-        <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 mb-[40px] sm:mb-[25px] 1920:mb-[38px] text-right leading-[1.33em]">
-          تحميل تطبيق الجامعة
-        </p>
-        <div className="flex justify-start gap-[14px]">
-          <Image
-            src="/images/common/app-store.png"
-            alt="Download on the App Store"
-            width={135}
-            height={40}
-          />
-          <Image
-            src="/images/common/google-play.png"
-            alt="Get it on Google Play"
-            width={135}
-            height={40}
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ContactFormSection() {
-  const t = useTranslations("Common.Contact.form");
-
-  const inputFields = [
-    {
-      name: "fullName",
-      label: t("name"),
-      type: "text",
-      placeholder: t("writeHere"),
-      fullWidth: true,
-    },
-    {
-      name: "email",
-      label: t("email"),
-      type: "email",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "phone",
-      label: t("phoneNumber"),
-      type: "tel",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "institution",
-      label: t("institution"),
-      type: "text",
-      placeholder: t("writeHere"),
-      fullWidth: true,
-    },
-    {
-      name: "message",
-      label: t("message"),
-      type: "textarea",
-      placeholder: t("writeYourMessage"),
-      fullWidth: true,
-    },
-  ];
-
-  return (
-    <div className="w-full sm:w-1/2 bg-[#F0F1EC] py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[28px] 1920:text-[38px] font-medium text-primary leading-[1.35em] mb-[20px] sm:mb-[54px] 1920:mb-[71px] text-right">
-        {t("title")}
-      </h2>
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-y-[28px] sm:gap-y-[30px] sm:gap-x-[21px] 1920:gap-y-[39px] 1920:gap-x-[28px]">
-        {inputFields.map((field) => (
-          <div
-            key={field.name}
-            className={`flex flex-col gap-[18px] sm:gap-[10px] 1920:gap-[18px] ${
-              field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
-            }`}
-          >
-            <label
-              htmlFor={field.name}
-              className="text-[16px] sm:text-[18px] 1920:text-[21px] font-medium text-primary leading-[1.35em] text-right"
-            >
-              {field.label}
-            </label>
-            {field.type === "textarea" ? (
-              <Textarea
-                id={field.name}
-                name={field.name}
-                rows={4}
-                placeholder={field.placeholder}
-              />
-            ) : (
-              <Input
-                type={field.type}
-                id={field.name}
-                name={field.name}
-                placeholder={field.placeholder}
-              />
-            )}
-          </div>
-        ))}
-        <div className="sm:col-span-full flex justify-end">
-          <Button type="submit">{t("send")}</Button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function ContactInfo({ title, value }: { title: string; value: string }) {
-  return (
-    <div className="text-right ">
-      <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 leading-[1.33em]">
-        {title}
-      </p>
-      <p className="text-[18px] sm:text-[18px] 1920:text-[32px] text-primary leading-[1.33em]">
-        {value}
-      </p>
-    </div>
-  );
-}
-
-```
-
-# src\components\FirstSection\TitleAndImage.tsx
+# src\components\page\TitleAndImage.tsx
 
 ```tsx
 "use client";
@@ -5177,7 +5156,7 @@ export default function TitleAndImage() {
       id="page-print"
       className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]"
     >
-      <FirstTitleSection></FirstTitleSection>
+      {/* <FirstTitleSection></FirstTitleSection> */}
       <img
         src="/images/hero-bg.jpg"
         alt=""
@@ -5189,7 +5168,7 @@ export default function TitleAndImage() {
 
 ```
 
-# src\components\FirstSection\SliderBg.tsx
+# src\components\page\SliderBg.tsx
 
 ```tsx
 "use client";
@@ -5363,7 +5342,56 @@ function TextSection({
 
 ```
 
-# src\components\FirstSection\ImageBg.tsx
+# src\components\page\Page.tsx
+
+```tsx
+import React, { Fragment } from "react";
+import FirstSection from "./FirstSection";
+
+export default function PageWithFirstSection({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <main className={className}>
+      {/* <FirstSection />
+      {children} */}
+    </main>
+  );
+}
+
+```
+
+# src\components\page\OnlyTitle.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import Section from "../Section";
+import FirstTitleSection from "./FirstTitleSection/FirstTitleSection";
+import Wrapper from "../Wrapper";
+import { useTranslations } from "next-intl";
+
+export default function OnlyTitle() {
+  const t = useTranslations("Common");
+
+  return (
+    <Section
+      id="page-print"
+      className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]"
+    >
+      {/* <FirstTitleSection></FirstTitleSection> */}
+    </Section>
+  );
+}
+
+```
+
+# src\components\page\ImageBg.tsx
 
 ```tsx
 import React from "react";
@@ -5408,21 +5436,21 @@ function ImageSection() {
 
 ```
 
-# src\components\FirstSection\FirstSection.tsx
+# src\components\page\FirstSection.tsx
 
 ```tsx
 "use client";
 
 import React from "react";
 import { usePathname } from "@/i18n.config";
-import { getBgComponent } from "@/lib/utils";
+// import { getBgComponent } from "@/lib/utils";
 
 export default function FirstSection() {
   const pathname = usePathname();
 
-  const BgComponent = getBgComponent(pathname);
+  // const BgComponent = getBgComponent(pathname);
 
-  return BgComponent ? <BgComponent /> : <></>;
+  // return BgComponent ? <BgComponent /> : <></>;
 }
 
 ```
@@ -5619,104 +5647,6 @@ export default function Statistics() {
       />
     </div>
   );
-}
-
-```
-
-# src\app\_components\OurApp.tsx
-
-```tsx
-"use client";
-
-import React, { useState } from "react";
-import Section from "../../components/Section";
-import { twMerge } from "tailwind-merge";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-
-export default function OurApp() {
-  const t = useTranslations("Home.ourApp");
-
-  return (
-    <Section
-      className={twMerge(
-        "mt-[32px] sm:mt-[234px] flex-col sm:flex-row-reverse sm:items-center max-w-[341px] mx-[16px] gap-[33px] sm:justify-between",
-        "sm:!max-w-[1189px]"
-      )}
-    >
-      <div className="flex flex-col sm:items-start sm:max-w-[473px] sm:w-full items-center sm:mt-[30px]">
-        <h2 className="title-lg max-w-[250px] ltr:max-w-[280px] sm:max-w-none ltr:sm:max-w-none mb-[12px] sm:mb-[24px]">
-          {t("title")}
-        </h2>
-        <p className="text-[16px] leading-[30px] sm:text-[18px] text-muted mb-[12px] sm:mb-[24px]">
-          {t("description")}
-        </p>
-        <Apps></Apps>
-      </div>
-      <img
-        src="/images/home/apps.png"
-        alt="apps image"
-        className="sm:w-[591px]"
-      />
-    </Section>
-  );
-}
-
-const Apps = () => {
-  return (
-    <div className="flex flex-col sm:flex-row gap-[12px] sm:gap-[14px]">
-      <Link href="">
-        <img
-          src="/images/app-store.png"
-          alt="app store"
-          className="h-[57px] sm:h-[65px]"
-        />
-      </Link>
-      <Link href="">
-        <img
-          src="/images/google-play.png"
-          alt="google play"
-          className="h-[57px] sm:h-[65px]"
-        />
-      </Link>
-    </div>
-  );
-};
-
-const goals: Goal[] = [
-  {
-    title: "إرضاء العملاء",
-    description:
-      "تحقيـــق أعلى جـــودة في قطاع النقـــل وتوصيل البريد وإرضاء العملاء",
-  },
-  {
-    title: "النمو",
-    description: "التوسع إقليميا وعالميا",
-  },
-  {
-    title: "التطور المستمر",
-    description:
-      "المبادرة المستمرة في تطوير قطاع النقل وتوصيل البريد والمبيعات",
-  },
-  {
-    title: "التحول الرقمي",
-    description: "ترسيخ التحول الرقمي في الشركة والقطاع",
-  },
-  {
-    title: "بيئة العمل",
-    description: "توفير أفضل بيئة عمل",
-  },
-];
-
-interface Goal {
-  title: string;
-  description: string;
 }
 
 ```
@@ -5964,6 +5894,294 @@ export default AboutUs;
 
 ```
 
+# src\components\common-sections\MapSection.tsx
+
+```tsx
+"use client";
+
+import MapLinkButton from "@/components/MapLinkButton";
+import dynamic from "next/dynamic";
+
+const LocationMap = dynamic(() => import("@/components/LocationMap"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
+
+export default function MapSection() {
+  return (
+    <div className="relative h-[330px] sm:h-[653px] w-full overflow-hidden mt-[82px] sm:mt-0">
+      {/* <LocationMap latitude={33.222307} longitude={44.3888341}></LocationMap> */}
+      <iframe
+        className="gmapelement w-full h-full"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.686773749098!2d44.39140365950111!3d33.222306973591124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1559d51e5f965023%3A0x269c2efce4992572!2z2KzYp9mF2LnYqSDZg9mE2YPYp9mF2LQg2KfZhNin2YfZhNmK2Kk!5e0!3m2!1sar!2siq!4v1717235472677!5m2!1sar!2siq"
+        allowFullScreen={true}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+      {/* <div className="absolute start-[16px] top-[16px] z-[10000]">
+        <MapLinkButton
+          latitude={33.222307}
+          longitude={44.3888341}
+        ></MapLinkButton>
+      </div> */}
+    </div>
+  );
+}
+
+```
+
+# src\components\common-sections\EServicesSection.tsx
+
+```tsx
+"use client";
+
+import { useRef } from "react";
+import ScrollableContainerUpperSection from "../scrollable-container/UpperSection";
+import { ScrollableCardsContainer } from "../scrollable-container/ScrollableContainer";
+import ScrollElement from "../ScrollElement";
+import CommonCard from "@/app/_components/CardsSection/CommonCard";
+import Wrapper from "../Wrapper";
+import Section from "../Section";
+
+export default function EServicesSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const services = [
+    {
+      imgUrl: "/images/common/cards/academic-classifications.svg",
+      title: "بوابة الطالب",
+      href: "/",
+    },
+    {
+      imgUrl: "/images/common/cards/news.svg",
+      title: "بوابة التدريسين",
+      href: "/",
+    },
+    {
+      imgUrl: "/images/common/cards/about.svg",
+      title: "بوابة الخريجين",
+      href: "/",
+    },
+  ];
+
+  return (
+    <div className="mt-[60px] sm:mt-[150px]">
+      <Section>
+        <Wrapper>
+          <div className="flex flex-col justify-between sm:flex-row sm:items-center">
+            <ScrollableContainerUpperSection
+              arrowButtonsClass="sm:hidden"
+              containerRef={containerRef}
+              title2="جامعة كلكامش"
+              title="الخدمات الالكترونية"
+              className="sm:w-fit sm:items-center"
+            />
+          </div>
+        </Wrapper>
+      </Section>
+      <Section className="max-w-none">
+        <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
+          <ScrollableCardsContainer
+            ref={containerRef}
+            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
+          >
+            {services.map((service, index) => (
+              <ScrollElement
+                className="flex justify-center sm:w-auto"
+                key={index}
+              >
+                <CommonCard
+                  el={service}
+                  index={index}
+                  uniqueFirstCard={false}
+                />
+              </ScrollElement>
+            ))}
+          </ScrollableCardsContainer>
+        </Wrapper>
+      </Section>
+    </div>
+  );
+}
+
+```
+
+# src\components\common-sections\ContactSection.tsx
+
+```tsx
+import Image from "next/image";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { Button } from "../ui/button";
+import { useTranslations } from "next-intl";
+
+export default function ContactSection() {
+  return (
+    <section className="flex flex-col sm:flex-row w-full mt-[100px] sm:mt-[150px] 1920:mt-[180px]">
+      <ContactInfoSection />
+      <ContactFormSection />
+    </section>
+  );
+}
+
+function ContactInfoSection() {
+  return (
+    <div className="w-full sm:w-1/2 bg-white py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
+      <h2 className="text-[28px] sm:text-[50px] 1920:text-[70px] font-medium text-primary mb-[30px] sm:mb-[122px] 1920:mb-[162px] text-right leading-[1.22em]">
+        نحب ان نسمع منك
+      </h2>
+      <div className="space-y-[40px] sm:space-y-[53px] 1920:space-y-[60px] mb-[40px] sm:mb-[53px] 1920:mb-[60px]">
+        <ContactInfo title="البريد الالكتروني" value="info@gau.edu.iq" />
+        <ContactInfo title="رقم الهاتف" value="07832000090 - 07732000090" />
+        <ContactInfo
+          title="عنوان الجامعة"
+          value="العراق / بغداد / الدورة / حي الصحة / قرب جامع ياسين"
+        />
+      </div>
+      <div>
+        <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 mb-[40px] sm:mb-[25px] 1920:mb-[38px] text-right leading-[1.33em]">
+          تحميل تطبيق الجامعة
+        </p>
+        <div className="flex justify-start gap-[14px]">
+          <Image
+            src="/images/common/app-store.png"
+            alt="Download on the App Store"
+            width={135}
+            height={40}
+          />
+          <Image
+            src="/images/common/google-play.png"
+            alt="Get it on Google Play"
+            width={135}
+            height={40}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ContactFormSection() {
+  const t = useTranslations("Common.Contact.form");
+
+  const inputFields = [
+    {
+      name: "fullName",
+      label: t("name"),
+      type: "text",
+      placeholder: t("writeHere"),
+      fullWidth: true,
+    },
+    {
+      name: "email",
+      label: t("email"),
+      type: "email",
+      placeholder: t("writeHere"),
+      fullWidth: false,
+    },
+    {
+      name: "phone",
+      label: t("phoneNumber"),
+      type: "tel",
+      placeholder: t("writeHere"),
+      fullWidth: false,
+    },
+    {
+      name: "institution",
+      label: t("institution"),
+      type: "text",
+      placeholder: t("writeHere"),
+      fullWidth: true,
+    },
+    {
+      name: "message",
+      label: t("message"),
+      type: "textarea",
+      placeholder: t("writeYourMessage"),
+      fullWidth: true,
+    },
+  ];
+
+  return (
+    <div className="w-full sm:w-1/2 bg-[#F0F1EC] py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
+      <h2 className="text-[28px] sm:text-[28px] 1920:text-[38px] font-medium text-primary leading-[1.35em] mb-[20px] sm:mb-[54px] 1920:mb-[71px] text-right">
+        {t("title")}
+      </h2>
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-y-[28px] sm:gap-y-[30px] sm:gap-x-[21px] 1920:gap-y-[39px] 1920:gap-x-[28px]">
+        {inputFields.map((field) => (
+          <div
+            key={field.name}
+            className={`flex flex-col gap-[18px] sm:gap-[10px] 1920:gap-[18px] ${
+              field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
+            }`}
+          >
+            <label
+              htmlFor={field.name}
+              className="text-[16px] sm:text-[18px] 1920:text-[21px] font-medium text-primary leading-[1.35em] text-right"
+            >
+              {field.label}
+            </label>
+            {field.type === "textarea" ? (
+              <Textarea
+                id={field.name}
+                name={field.name}
+                rows={4}
+                placeholder={field.placeholder}
+              />
+            ) : (
+              <Input
+                type={field.type}
+                id={field.name}
+                name={field.name}
+                placeholder={field.placeholder}
+              />
+            )}
+          </div>
+        ))}
+        <div className="sm:col-span-full flex justify-end">
+          <Button type="submit">{t("send")}</Button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function ContactInfo({ title, value }: { title: string; value: string }) {
+  return (
+    <div className="text-right ">
+      <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 leading-[1.33em]">
+        {title}
+      </p>
+      <p className="text-[18px] sm:text-[18px] 1920:text-[32px] text-primary leading-[1.33em]">
+        {value}
+      </p>
+    </div>
+  );
+}
+
+```
+
+# src\components\common-sections\CommonSections.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import EServicesSection from "./EServicesSection";
+import ContactSection from "./ContactSection";
+import MapSection from "./MapSection";
+
+export default function CommonSections() {
+  return (
+    <>
+      <EServicesSection></EServicesSection>
+      <ContactSection></ContactSection>
+      <MapSection></MapSection>
+    </>
+  );
+}
+
+```
+
 # src\app\[locale]\page.tsx
 
 ```tsx
@@ -5975,17 +6193,21 @@ import Statistics from "../_components/Statistics";
 import HomepageCards from "../_components/CardsSection/HomepageCards";
 import OurColleges from "../_components/OurColleges/OurColleges";
 import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
+import SliderBg from "@/components/page/SliderBg";
 
 export default function Home() {
   return (
-    <main className="flex items-center flex-col relative z-30">
-      <HomepageCards></HomepageCards>
-      <News></News>
-      <Statistics></Statistics>
-      <OurGoals></OurGoals>
-      <OurColleges></OurColleges>
-      <AcademicRankings></AcademicRankings>
-    </main>
+    <>
+      <SliderBg></SliderBg>
+      <main className="relative z-30 flex flex-col items-center">
+        <HomepageCards></HomepageCards>
+        <News></News>
+        <Statistics></Statistics>
+        <OurGoals></OurGoals>
+        <OurColleges></OurColleges>
+        <AcademicRankings></AcademicRankings>
+      </main>
+    </>
   );
 }
 
@@ -6002,9 +6224,9 @@ import { getMessages } from "next-intl/server";
 import useTextDirection from "@/app/_hooks/useTextDirection";
 import Header from "../_components/Header/Header";
 import Footer from "../_components/Footer";
-import FirstSection from "../../components/FirstSection/FirstSection";
+
 import Script from "next/script";
-import LastSections from "@/components/LastSections/LastSections";
+import CommonSections from "@/components/common-sections/CommonSections";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -6038,9 +6260,8 @@ export default function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <FirstSection />
           {children}
-          <LastSections></LastSections>
+          <CommonSections></CommonSections>
           <Footer></Footer>
         </NextIntlClientProvider>
       </body>
@@ -6066,15 +6287,11 @@ This is a binary file of the type: Image
 
 This is a binary file of the type: Image
 
-# public\images\home\statistics.jpg
+# public\images\common\google-play.png
 
 This is a binary file of the type: Image
 
-# public\images\home\faq-icon.svg
-
-This is a file of the type: SVG Image
-
-# public\images\home\apps.png
+# public\images\common\app-store.png
 
 This is a binary file of the type: Image
 
@@ -6094,18 +6311,6 @@ This is a binary file of the type: Image
 
 This is a binary file of the type: Image
 
-# public\images\common\google-play.png
-
-This is a binary file of the type: Image
-
-# public\images\common\app-store.png
-
-This is a binary file of the type: Image
-
-# public\images\about\4.svg
-
-This is a file of the type: SVG Image
-
 # public\images\about\3.svg
 
 This is a file of the type: SVG Image
@@ -6114,74 +6319,21 @@ This is a file of the type: SVG Image
 
 This is a file of the type: SVG Image
 
-# public\images\about\2.png
-
-This is a binary file of the type: Image
-
 # public\images\about\1.svg
 
 This is a file of the type: SVG Image
 
-# public\images\about\1.png
+# public\images\home\statistics.jpg
 
 This is a binary file of the type: Image
 
-# src\components\FirstSection\FirstTitleSection\TitleBg.tsx
+# public\images\home\faq-icon.svg
 
-```tsx
-export default function TitleBg() {
-  return <div>SliderBg</div>;
-}
+This is a file of the type: SVG Image
 
-```
+# public\images\home\apps.png
 
-# src\components\FirstSection\FirstTitleSection\FirstTitleSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-import { getTitleComponent } from "@/lib/utils";
-import Wrapper from "@/components/Wrapper";
-
-export default function FirstTitleSection() {
-  const pathname = usePathname();
-
-  const TitleComponent = getTitleComponent(pathname);
-
-  return TitleComponent ? (
-    <Wrapper>
-      <TitleComponent />
-    </Wrapper>
-  ) : (
-    <></>
-  );
-}
-
-```
-
-# src\components\FirstSection\FirstTitleSection\CenterizedTitle.tsx
-
-```tsx
-import React from "react";
-import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n.config";
-import { getPageTitle } from "@/lib/utils";
-
-export default function CenterizedTitle() {
-  const t = useTranslations();
-  const pathname = usePathname();
-  const pageTitle = getPageTitle({ t, pathname });
-
-  return (
-    <h1 className="title-lg mb-[23px] !text-center leading-[1.25] sm:mb-[96px]">
-      {pageTitle}
-    </h1>
-  );
-}
-
-```
+This is a binary file of the type: Image
 
 # src\app\_components\OurGoals\OurGoalsMobile.tsx
 
@@ -6294,7 +6446,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useTranslations } from "next-intl";
 import { Goal } from "@/lib/types";
-import { ScrollableCardsContainer } from "@/components/ScrollableContainer/ScrollableContainer";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollArrows from "@/components/ScrollArrows";
 
 export default function OurGoals() {
@@ -6302,7 +6454,7 @@ export default function OurGoals() {
   let containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={twMerge("mt-[114px] sm:mt-[198px] 1920:mt-[280px] w-full")}>
+    <div className={twMerge("mt-[114px] w-full sm:mt-[198px] 1920:mt-[280px]")}>
       <ScrollableCardsContainer
         ref={containerRef}
         className="flex sm:grid sm:w-full sm:grid-cols-3"
@@ -6330,7 +6482,7 @@ function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
       ? "bg-[#0F4023]"
       : `bg-white bg-no-repeat bg-cover bg-[url('/images/home/goals/${
           index + 1
-        }.jpg')]`
+        }.jpg')]`,
   );
 
   const backgroundImg = isFirst
@@ -6340,7 +6492,7 @@ function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
   return (
     <div className={styles} style={backgroundImg}>
       {isFirst && (
-        <h1 className="flex-1 border-b border-white text-[44px] sm:text-[51px] 1920:text-[68px] leading-[1.22em] text-white mx-4 sm:mx-[58px] 1920:mx-[78px] pt-[67px] sm:pt-[96px] 1920:pt-[129px] font-medium">
+        <h1 className="mx-4 flex-1 border-b border-white pt-[67px] text-[44px] font-medium leading-[1.22em] text-white sm:mx-[58px] sm:pt-[96px] sm:text-[51px] 1920:mx-[78px] 1920:pt-[129px] 1920:text-[68px]">
           اهداف جامعة كلكامش
         </h1>
       )}
@@ -6350,14 +6502,14 @@ function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
           "text-white",
           !isFirst && "bg-black/30 backdrop-blur-md",
           isFirst
-            ? "px-4 pb-[67px] pt-[29px] sm:pt-[34px] 1920:pt-[46px] sm:px-[58px] sm:pb-[50px] 1920:px-[78px] 1920:pb-[67px]"
-            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]"
+            ? "px-4 pb-[67px] pt-[29px] sm:px-[58px] sm:pb-[50px] sm:pt-[34px] 1920:px-[78px] 1920:pb-[67px] 1920:pt-[46px]"
+            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]",
         )}
       >
-        <h3 className="text-[28px] sm:text-[21px] 1920:text-[28px] leading-[1.22em] font-bold mb-2">
+        <h3 className="mb-2 text-[28px] font-bold leading-[1.22em] sm:text-[21px] 1920:text-[28px]">
           {el.title}
         </h3>
-        <p className="text-[16px] sm:text-[14px] 1920:text-[18px] leading-[1.75em] font-light text-white/70">
+        <p className="text-[16px] font-light leading-[1.75em] text-white/70 sm:text-[14px] 1920:text-[18px]">
           {el.description}
         </p>
       </div>
@@ -6397,6 +6549,139 @@ const universityGoals: Goal[] = [
       "المساهمة في تربية جيل يؤمن بالمواطنة واحترام القانون من خلال مناهج علمية وتعليمية وثقافية ورياضية واجتماعية هادفة.",
   },
 ];
+
+```
+
+# src\components\page\FirstTitleSection\FirstTitleSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+// import { getTitleComponent } from "@/lib/utils";
+import Wrapper from "@/components/Wrapper";
+
+export default function FirstTitleSection() {
+  const pathname = usePathname();
+
+  // const TitleComponent = getTitleComponent(pathname);
+
+  // return TitleComponent ? (
+  //   <Wrapper>
+  //     <TitleComponent />
+  //   </Wrapper>
+  // ) : (
+  //   <></>
+  // );
+}
+
+```
+
+# src\components\page\FirstTitleSection\CenterizedTitle.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n.config";
+import { getPageTitle } from "@/lib/utils";
+
+export default function CenterizedTitle() {
+  const t = useTranslations();
+  const pathname = usePathname();
+  const pageTitle = getPageTitle({ t, pathname });
+
+  return (
+    <h1 className="title-lg mb-[23px] !text-center leading-[1.25] sm:mb-[96px]">
+      {pageTitle}
+    </h1>
+  );
+}
+
+```
+
+# src\components\page\FirstTitleSection\ActionsTitle.tsx
+
+```tsx
+import FileOperations from "@/components/FileOperations";
+import Section from "@/components/Section";
+import { Button } from "@/components/ui/button";
+import Wrapper from "@/components/Wrapper";
+import { Link } from "@/i18n.config";
+import { NEWS_ROUTE } from "@/lib/paths";
+import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function ActionsTitle({
+  showBackButton = false,
+  backHref = "",
+  title,
+  description,
+  className,
+  fileOperations,
+}: {
+  showBackButton?: boolean;
+  title?: string;
+  description?: string;
+  backHref?: string;
+  className?: string;
+  fileOperations?: ReactNode;
+}) {
+  return (
+    <Section className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]">
+      <Wrapper>
+        <div
+          className={twMerge(
+            "flex justify-between",
+            !description &&
+              !showBackButton &&
+              !fileOperations &&
+              "sm:justify-center",
+          )}
+        >
+          <div
+            className={twMerge("mb-[12px] text-start sm:mb-[53px]", className)}
+          >
+            {showBackButton && (
+              <Link href={backHref}>
+                <Button className="w-fit gap-1">
+                  <i className="ri-arrow-right-s-line text-[22px] text-[#99AFC9]"></i>
+                  <span>الرجــوع</span>
+                </Button>
+              </Link>
+            )}
+
+            {title && (
+              <h1
+                className={twMerge(
+                  "mt-[35px] text-[24px] font-bold leading-[1.22em] sm:mt-[43px] sm:text-[40px] 1920:text-[48px]",
+                  !description &&
+                    !showBackButton &&
+                    "text-center sm:text-start",
+
+                  !description &&
+                    !showBackButton &&
+                    !fileOperations &&
+                    "sm:text-center",
+                )}
+              >
+                {title}
+              </h1>
+            )}
+            {description && <p>{description}</p>}
+
+            {/* <div className="mt-[48px] flex items-center gap-[16px] font-bold text-primary sm:mt-[33px]">
+            <span>اكاديمية الماجستير</span>
+            <span>—</span>
+            <span>قبل 6 ساعات</span>
+          </div> */}
+          </div>
+          {fileOperations}
+        </div>
+      </Wrapper>
+    </Section>
+  );
+}
 
 ```
 
@@ -6522,238 +6807,6 @@ export default function OurColleges() {
     </Section>
   );
 }
-
-```
-
-# src\app\_components\News\NewsTags.tsx
-
-```tsx
-import React from 'react'
-import NewsCardButton from './NewsCardButton'
-import { useTranslations } from 'next-intl';
-
-export default function NewsTags() {
-    const t = useTranslations("Home.news");
-
-  return (
-    <div className="flex gap-[6px]">
-    <NewsCardButton>{t("tags.contracts")}</NewsCardButton>
-    <NewsCardButton>{t("tags.alzaeem")}</NewsCardButton>
-  </div>
-  )
-}
-
-```
-
-# src\app\_components\News\NewsCardButton.tsx
-
-```tsx
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n.config";
-import { NEWS_ROUTE } from "@/lib/paths";
-import React from "react";
-
-interface NewsCardButtonProps {
-  children: React.ReactNode;
-}
-
-const NewsCardButton: React.FC<NewsCardButtonProps> = ({ children }) => {
-  return (
-    <Button
-      variant={"outline"}
-      className="!px-[12px] !py-[5px] !text-[14px] !font-normal leading-[20px] pointer-events-none ltr:sm:!text-[14px] ltr:!text-[11px]"
-    >
-      {children}
-    </Button>
-  );
-};
-
-export default NewsCardButton;
-
-```
-
-# src\app\_components\News\NewsCard.tsx
-
-```tsx
-import React from "react";
-import { NewsItem } from "@/lib/types";
-
-const NewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
-  return (
-    <div className="flex flex-col  bg-white ">
-      <img
-        src={item.image}
-        alt={item.title}
-        className="w-full sm:h-[238px] 1920:h-[314px]  object-cover  "
-      />
-      <div className="sm:p-[22px] 1920:p-[30px]">
-        <h4 className="text-base sm:text-xs 1920:text-base  text-primary  font-medium mb-[24px] sm:mb-[18px] 1920:mb-[24px]">
-          {item.subtitle}
-        </h4>
-        <h3 className="text-[18px] 1920:text-[24px] font-medium">
-          {item.title}
-        </h3>
-      </div>
-    </div>
-  );
-};
-
-export default NewsCard;
-
-```
-
-# src\app\_components\News\News.tsx
-
-```tsx
-import React, { useRef } from "react";
-import { useTranslations } from "next-intl";
-import Section from "../../../components/Section";
-import ScrollArrows from "@/components/ScrollArrows";
-import { Button } from "@/components/ui/button";
-import { twMerge } from "tailwind-merge";
-import MainNewsCard from "./MainNewsCard";
-import NewsCard from "./NewsCard";
-import { NewsItem } from "@/lib/types";
-import { newsItems } from "@/lib/data";
-import ScrollableContainerUpperSection from "@/components/ScrollableContainer/UpperSection";
-import { ScrollableCardsContainer } from "@/components/ScrollableContainer/ScrollableContainer";
-import ScrollElement from "@/components/ScrollElement";
-
-const NewsSection: React.FC = () => {
-  const t = useTranslations("Home.news");
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <Section>
-      <div className="flex-col">
-        <ScrollableContainerUpperSection
-          title={t("title")}
-          containerRef={containerRef}
-          titleClass="text-[28px] sm:text-[47px] font-normal 1920:text-[62px] "
-          className="sm:mb-[50px] 1920:mb-[66px] "
-        ></ScrollableContainerUpperSection>
-
-        <div className="flex flex-col sm:gap-[38px] 1920:gap-[50px] w-fit">
-          <ScrollableCardsContainer ref={containerRef}>
-            {newsItems([]).map((item, index) => (
-              <ScrollElement className="flex justify-center" key={index}>
-                <MainNewsCard item={item} />
-              </ScrollElement>
-            ))}
-          </ScrollableCardsContainer>
-          <Section
-            className="sm:max-w-desktop 1920:max-w-desktop-lg max-w-mobile grid gird-cols-1 sm:grid-cols-3 sm:gap-[38px] 1920:gap-[50px] w-full"
-            wrapperClass="sm:flex hidden"
-          >
-            {newsItems([])
-              .slice(1, 4)
-              .map((item) => (
-                <NewsCard key={item.id} item={item} />
-              ))}
-          </Section>
-        </div>
-      </div>
-    </Section>
-  );
-};
-
-export default NewsSection;
-
-```
-
-# src\app\_components\News\NavElements.tsx
-
-```tsx
-import React from "react";
-import { Link, usePathname } from "@/i18n.config";
-import { useTranslations } from "next-intl";
-import { twMerge } from "tailwind-merge";
-import { navItems } from "@/lib/data";
-import HoverMenu from "@/components/HoverMenu";
-import { MenuItem } from "@/lib/types";
-
-const NavElements: React.FC = () => {
-  const t = useTranslations("Header.navLinks");
-  const items = navItems(t);
-
-  return (
-    <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
-      {items.map((item, index) => (
-        <React.Fragment key={item.path}>
-          <NavItem title={item.label} path={item.path} items={item.items} />
-          {index !== items.length - 1 && (
-            <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
-          )}
-        </React.Fragment>
-      ))}
-    </nav>
-  );
-};
-
-const NavItem: React.FC<{
-  title: string;
-  path?: string;
-  items?: MenuItem[];
-}> = ({ title, path, items }) => {
-  const pathname = usePathname();
-
-  let classes = twMerge(
-    "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
-    pathname === path &&
-      "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
-  );
-
-  return (
-    <div className="group relative sm:h-full">
-      {path ? (
-        <Link href={path} className={classes}>
-          {title}
-        </Link>
-      ) : (
-        <span className={classes}>{title}</span>
-      )}
-      {items && <HoverMenu items={items} />}
-    </div>
-  );
-};
-
-export default NavElements;
-
-```
-
-# src\app\_components\News\MainNewsCard.tsx
-
-```tsx
-import { Button } from "@/components/ui/button";
-import { NewsItem } from "@/lib/types";
-
-const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
-  return (
-    <div className="flex flex-col sm:flex-row gap-[20px] sm:gap-[38px] w-full max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg bg-white sm:h-[451px] 1920:h-[596px] text-start">
-      <div className="flex-1 p-[19px] sm:p-[33px] 1920:p-[44px]">
-        <div className="max-w-[240px] sm:max-w-[413px] 1920:max-w-[545px]">
-          <h4 className="text-[14px] sm:text-[16px] mb-[10px]  sm:mb-[18px] 1920:mb-[24px] font-bold text-primary">
-            {item.subtitle}
-          </h4>
-          <h3 className="text-[21px] sm:text-[36px] 1920:text-[48px]  leading-[1.4em]    font-bold mb-[35px] sm:mb-[56px] 1920:mb-[74px]">
-            {item.title}
-          </h3>
-          <Button className="text-xs 1920:text-base w-fit px-[14px] py-[7px] sm:px-[24px] sm:py-[12px] 1920:px-[32px] 1920:py-[16px]">
-            اقرأ المزيد
-          </Button>
-        </div>
-      </div>
-
-      <img
-        src={item.image}
-        alt={item.title}
-        className="w-full flex-1 h-full sm:h-full object-cover "
-      />
-    </div>
-  );
-};
-
-export default MainNewsCard;
 
 ```
 
@@ -7108,9 +7161,9 @@ export default function Header() {
   return (
     <header
       className={twMerge(
-        "relative z-40 flex flex-col sm:items-center bg-primary sm:border-b sm:border-[#D9D9D9]/10",
+        "relative z-40 flex flex-col bg-primary sm:items-center sm:border-b sm:border-[#D9D9D9]/10",
         [...IMAGE_BG_ROUTES, ...SLIDER_BG_ROUTES].includes(pathname) &&
-          "sm:bg-transparent"
+          "sm:bg-transparent",
       )}
     >
       <Topbar></Topbar>
@@ -7121,60 +7174,235 @@ export default function Header() {
 
 ```
 
-# src\app\_components\AcademicRankings\AcademicRankings.tsx
+# src\app\_components\News\NewsTags.tsx
 
 ```tsx
-import Section from "@/components/Section";
-import Image from "next/image";
+import React from 'react'
+import NewsCardButton from './NewsCardButton'
+import { useTranslations } from 'next-intl';
 
-export default function AcademicRankings() {
+export default function NewsTags() {
+    const t = useTranslations("Home.news");
+
   return (
-    <div className="flex flex-col sm:flex-row text-start  w-full mt-[57px] sm:mt-[200px]">
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 bg-primary py-[44px] 1920:py-[106px] sm:py-[80px]">
-        <div className="max-w-[348px] 1920:max-w-[460px]">
-          <h3 className="text-[20px] sm:text-[15px] 1920:text-[20px] font-bold leading-[1.25em] mb-6 sm:mb-10 1920:mb-[40px] text-secondary">
-            التصنيفات الأكاديمية
-          </h3>
-          <h2 className="text-[44px] sm:text-[36px] 1920:text-[48px] font-medium  leading-[72px] sm:leading-[54px] 1920:leading-[72px] mb-11 sm:mb-[69px] 1920:mb-[80px] text-white">
-            جامعة كلكامش ضمن التصنيفــات الاكاديميــة
-          </h2>
-          <div className="flex  sm:flex-row gap-6 sm:gap-7 1920:gap-[37px] mb-[34px] sm:mb-10 1920:mb-[53px]">
-            {["984", "29031"].map((num) => (
-              <a
-                key={num}
-                href={`https://www.timeshighereducation.com/world-university-rankings/university-of-kufa/`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative  max-w-[158px] 1920:max-w-[211px] w-full h-[110px] sm:h-[115px] 1920:h-[153px] flex items-center justify-center bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:opacity-70"
-              >
-                <span className="absolute top-0 end-0 bg-[#252525] text-white text-[14px] leading-[1.22em] px-[6px] py-1 font-medium">
-                  #{num}
-                </span>
-                <Image
-                  fill
-                  src={`/images/college-logo.png`}
-                  alt={`Ranking ${num}`}
-                  className="w-full h-full object-contain px-3 py-6 sm:px-[12px] sm:py-[24px]"
-                />
-              </a>
-            ))}
-          </div>
-          <p className="text-[#F2F2F2]/70 leading-[1.75em] font-normal text-[16px] sm:text-[14px] 1920:text-[18px] max-w-[242px] sm:max-w-[276px]">
-            للاطلاع على مرتبة الجامعة اضغط على شعار التصنيف
-          </p>
-        </div>
-      </div>
-      <div className="relative h-[275px] sm:h-auto sm:w-[calc(50%+63px)] 1920:w-[calc(50%+85px)]">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="University Building"
-          fill
-          className="object-cover h-full w-full"
-        />
+    <div className="flex gap-[6px]">
+    <NewsCardButton>{t("tags.contracts")}</NewsCardButton>
+    <NewsCardButton>{t("tags.alzaeem")}</NewsCardButton>
+  </div>
+  )
+}
+
+```
+
+# src\app\_components\News\NewsCardButton.tsx
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n.config";
+import { NEWS_ROUTE } from "@/lib/paths";
+import React from "react";
+
+interface NewsCardButtonProps {
+  children: React.ReactNode;
+}
+
+const NewsCardButton: React.FC<NewsCardButtonProps> = ({ children }) => {
+  return (
+    <Button
+      variant={"outline"}
+      className="!px-[12px] !py-[5px] !text-[14px] !font-normal leading-[20px] pointer-events-none ltr:sm:!text-[14px] ltr:!text-[11px]"
+    >
+      {children}
+    </Button>
+  );
+};
+
+export default NewsCardButton;
+
+```
+
+# src\app\_components\News\NewsCard.tsx
+
+```tsx
+import React from "react";
+import { NewsItem } from "@/lib/types";
+
+const NewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
+  return (
+    <div className="flex flex-col  bg-white ">
+      <img
+        src={item.image}
+        alt={item.title}
+        className="w-full sm:h-[238px] 1920:h-[314px]  object-cover  "
+      />
+      <div className="sm:p-[22px] 1920:p-[30px]">
+        <h4 className="text-base sm:text-xs 1920:text-base  text-primary  font-medium mb-[24px] sm:mb-[18px] 1920:mb-[24px]">
+          {item.subtitle}
+        </h4>
+        <h3 className="text-[18px] 1920:text-[24px] font-medium">
+          {item.title}
+        </h3>
       </div>
     </div>
   );
-}
+};
+
+export default NewsCard;
+
+```
+
+# src\app\_components\News\News.tsx
+
+```tsx
+import React, { useRef } from "react";
+import { useTranslations } from "next-intl";
+import Section from "../../../components/Section";
+import ScrollArrows from "@/components/ScrollArrows";
+import { Button } from "@/components/ui/button";
+import { twMerge } from "tailwind-merge";
+import MainNewsCard from "./MainNewsCard";
+import NewsCard from "./NewsCard";
+import { NewsItem } from "@/lib/types";
+import { newsItems } from "@/lib/data";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollElement from "@/components/ScrollElement";
+
+const NewsSection: React.FC = () => {
+  const t = useTranslations("Home.news");
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <Section>
+      <div className="flex-col">
+        <ScrollableContainerUpperSection
+          title={t("title")}
+          containerRef={containerRef}
+          titleClass="text-[28px] sm:text-[47px] font-normal 1920:text-[62px] "
+          className="sm:mb-[50px] 1920:mb-[66px]"
+        ></ScrollableContainerUpperSection>
+
+        <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
+          <ScrollableCardsContainer ref={containerRef}>
+            {newsItems([]).map((item, index) => (
+              <ScrollElement className="flex justify-center" key={index}>
+                <MainNewsCard item={item} />
+              </ScrollElement>
+            ))}
+          </ScrollableCardsContainer>
+          <Section
+            className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
+            wrapperClass="sm:flex hidden"
+          >
+            {newsItems([])
+              .slice(1, 4)
+              .map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
+          </Section>
+        </div>
+      </div>
+    </Section>
+  );
+};
+
+export default NewsSection;
+
+```
+
+# src\app\_components\News\NavElements.tsx
+
+```tsx
+import React from "react";
+import { Link, usePathname } from "@/i18n.config";
+import { useTranslations } from "next-intl";
+import { twMerge } from "tailwind-merge";
+import { navItems } from "@/lib/data";
+import HoverMenu from "@/components/HoverMenu";
+import { MenuItem } from "@/lib/types";
+
+const NavElements: React.FC = () => {
+  const t = useTranslations("Header.navLinks");
+  const items = navItems(t);
+
+  return (
+    <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
+      {items.map((item, index) => (
+        <React.Fragment key={item.path}>
+          <NavItem title={item.label} path={item.path} items={item.items} />
+          {index !== items.length - 1 && (
+            <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
+          )}
+        </React.Fragment>
+      ))}
+    </nav>
+  );
+};
+
+const NavItem: React.FC<{
+  title: string;
+  path?: string;
+  items?: MenuItem[];
+}> = ({ title, path, items }) => {
+  const pathname = usePathname();
+
+  let classes = twMerge(
+    "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
+    pathname === path &&
+      "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
+  );
+
+  return (
+    <div className="group relative sm:h-full">
+      {path ? (
+        <Link href={path} className={classes}>
+          {title}
+        </Link>
+      ) : (
+        <span className={classes}>{title}</span>
+      )}
+      {items && <HoverMenu items={items} />}
+    </div>
+  );
+};
+
+export default NavElements;
+
+```
+
+# src\app\_components\News\MainNewsCard.tsx
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { NewsItem } from "@/lib/types";
+
+const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
+  return (
+    <div className="flex flex-col sm:flex-row gap-[20px] sm:gap-[38px] w-full max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg bg-white sm:h-[451px] 1920:h-[596px] text-start">
+      <div className="flex-1 p-[19px] sm:p-[33px] 1920:p-[44px]">
+        <div className="max-w-[240px] sm:max-w-[413px] 1920:max-w-[545px]">
+          <h4 className="text-[14px] sm:text-[16px] mb-[10px]  sm:mb-[18px] 1920:mb-[24px] font-bold text-primary">
+            {item.subtitle}
+          </h4>
+          <h3 className="text-[21px] sm:text-[36px] 1920:text-[48px]  leading-[1.4em]    font-bold mb-[35px] sm:mb-[56px] 1920:mb-[74px]">
+            {item.title}
+          </h3>
+          <Button className="text-xs 1920:text-base w-fit px-[14px] py-[7px] sm:px-[24px] sm:py-[12px] 1920:px-[32px] 1920:py-[16px]">
+            اقرأ المزيد
+          </Button>
+        </div>
+      </div>
+
+      <img
+        src={item.image}
+        alt={item.title}
+        className="w-full flex-1 h-full sm:h-full object-cover "
+      />
+    </div>
+  );
+};
+
+export default MainNewsCard;
 
 ```
 
@@ -7218,21 +7446,21 @@ export default function CommonCard({
     <Link
       href={el.href}
       className={twMerge(
-        "flex flex-col justify-between hover:opacity-90 max-w-[343px] sm:max-w-none w-full p-[35px] h-[243px] sm:h-[265px] 1920:h-[349px]   items-start text-center transition-all duration-300 hover:shadow-lg",
+        "flex h-[243px] w-full max-w-[343px] flex-col items-start justify-between p-[35px] text-center transition-all duration-300 hover:opacity-90 hover:shadow-lg sm:h-[265px] sm:max-w-none 1920:h-[349px]",
         index == 0 && uniqueFirstCard ? "bg-secondary" : "bg-white",
-        className
+        className,
       )}
     >
       <img
         src={el.imgUrl}
         alt={el.title}
-        className="w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] 1920:w-[80px] 1920:h-[80px] object-contain"
+        className="h-[48px] w-[48px] object-contain sm:h-[60px] sm:w-[60px] 1920:h-[80px] 1920:w-[80px]"
       />
-      <div className="flex justify-between items-center w-full">
-        <h4 className="text-[24px] sm:text-[27px] 1920:text-[36px] leading-[1.2em] font-medium">
+      <div className="flex w-full items-center justify-between gap-[20px]">
+        <h4 className="text-start text-[24px] font-medium leading-[1.3em] sm:text-[27px] 1920:text-[36px]">
           {el.title}
         </h4>
-        <i className="ri-arrow-left-line flippable text-[32px] 1920:text-[45px]"></i>
+        <i className="ri-arrow-left-line text-[32px] flippable 1920:text-[45px]"></i>
       </div>
     </Link>
   );
@@ -7248,8 +7476,8 @@ export default function CommonCard({
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import CommonCard from "./CommonCard";
-import { ScrollableCardsContainer } from "../../../components/ScrollableContainer/ScrollableContainer";
-import ScrollableContainerUpperSection from "@/components/ScrollableContainer/UpperSection";
+import { ScrollableCardsContainer } from "../../../components/scrollable-container/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import ScrollElement from "@/components/ScrollElement";
 
 export default function CardsMobile() {
@@ -7281,7 +7509,7 @@ export default function CardsMobile() {
   }));
 
   return (
-    <div className="mt-[30px] mb-[54px] flex-col overflow-hidden w-full sm:hidden">
+    <div className="mb-[54px] mt-[30px] w-full flex-col overflow-hidden sm:hidden">
       <ScrollableContainerUpperSection
         containerRef={containerRef}
         title2="جامعة كلكامش"
@@ -7377,22 +7605,11 @@ function CardsGrid({ translatedElements }: { translatedElements: CardData[] }) {
 import React from "react";
 
 import FormattedTextViewer from "@/components/FormattedTextViewer";
+import PageWithFirstSection from "@/components/page/Page";
+import SharedPage from "@/components/SharedPage";
 
 export default function SustainabilityPage() {
-  return (
-    <FormattedTextViewer
-      content={` نص تجريبي يوضع للعناوين الرئيسية في بعض الصفحات ويتم استبداله
-      لاحقا حسب المحتوى المتوفر هذا النص هو نص تجريبي يبدأ بعد النقطة
-      وقد تم وضعه كمحتوى تجريبي. شهدت الملاعب المغلقة لجامعة كلكامش
-      لقاءات نسوية لمراحل المتوسطة والإعدادية بين تربيات الكرخ الثانية
-      والرصافة الثانية بمعدل فريقين لكل تربية بهدف الكشف عن الخبرات
-      والإمكانيات الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة
-      التي تساهم في حصد الإنجازات والبطولات خلال المشاركات الدولية.
-      الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة وعلى كافة
-      الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
-      المستدامة في خدمة المجتمع.`}
-    ></FormattedTextViewer>
-  );
+  return <SharedPage></SharedPage>;
 }
 
 ```
@@ -7401,31 +7618,34 @@ export default function SustainabilityPage() {
 
 ```tsx
 import Section from "@/components/Section";
-import ScrollableContainerUpperSection from "../../../components/ScrollableContainer/UpperSection";
+import ScrollableContainerUpperSection from "../../../components/scrollable-container/UpperSection";
 import TitlesWrapper from "@/components/TitlesWrapper";
 import { Link } from "@/i18n.config";
+import PageWithFirstSection from "@/components/page/Page";
 
 export default function page() {
   return (
-    <Section>
-      <TitlesWrapper>
-        <h3 className="title-sm !text-primary mt-[62px] sm:mt-[151px]">
-          مواقع ذات صلة
-        </h3>
-        <h2 className="title">جامعة كلكامش</h2>
-        <RelatedLocationsGrid></RelatedLocationsGrid>
-      </TitlesWrapper>
-    </Section>
+    <main>
+      <Section>
+        <TitlesWrapper>
+          <h3 className="title-sm mt-[62px] !text-primary sm:mt-[151px]">
+            مواقع ذات صلة
+          </h3>
+          <h2 className="title">جامعة كلكامش</h2>
+          <RelatedLocationsGrid></RelatedLocationsGrid>
+        </TitlesWrapper>
+      </Section>
+    </main>
   );
 }
 
 const RelatedLocationsGrid = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-4 1920:grid-cols-5 gap-[22px] mt-[45px] sm:mt-[80px]">
+    <div className="mt-[45px] grid grid-cols-1 gap-[22px] sm:mt-[80px] sm:grid-cols-4 1920:grid-cols-5">
       {relatedLocations.map((location, index) => (
         <div
           key={index}
-          className="bg-white py-[40px] px-[30px] flex flex-col gap-[12px] items-center text-center justify-between"
+          className="flex flex-col items-center justify-between gap-[12px] bg-white px-[30px] py-[40px] text-center"
         >
           <h3 className="text-[24px] font-medium leading-[1.3em]">
             {location.title}
@@ -7433,7 +7653,7 @@ const RelatedLocationsGrid = () => {
           <Link
             target="_blank"
             href={location.url}
-            className="text-[14px] text-primary font-medium leading-[1.25em]"
+            className="text-[14px] font-medium leading-[1.25em] text-primary"
           >
             زيارة الموقع
           </Link>
@@ -7456,6 +7676,63 @@ const relatedLocations = [
   { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
   { title: "مركز البحوث والدراسات العراقي", url: "#" },
 ];
+
+```
+
+# src\app\_components\AcademicRankings\AcademicRankings.tsx
+
+```tsx
+import Section from "@/components/Section";
+import Image from "next/image";
+
+export default function AcademicRankings() {
+  return (
+    <div className="flex flex-col sm:flex-row text-start  w-full mt-[57px] sm:mt-[200px]">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 bg-primary py-[44px] 1920:py-[106px] sm:py-[80px]">
+        <div className="max-w-[348px] 1920:max-w-[460px]">
+          <h3 className="text-[20px] sm:text-[15px] 1920:text-[20px] font-bold leading-[1.25em] mb-6 sm:mb-10 1920:mb-[40px] text-secondary">
+            التصنيفات الأكاديمية
+          </h3>
+          <h2 className="text-[44px] sm:text-[36px] 1920:text-[48px] font-medium  leading-[72px] sm:leading-[54px] 1920:leading-[72px] mb-11 sm:mb-[69px] 1920:mb-[80px] text-white">
+            جامعة كلكامش ضمن التصنيفــات الاكاديميــة
+          </h2>
+          <div className="flex  sm:flex-row gap-6 sm:gap-7 1920:gap-[37px] mb-[34px] sm:mb-10 1920:mb-[53px]">
+            {["984", "29031"].map((num) => (
+              <a
+                key={num}
+                href={`https://www.timeshighereducation.com/world-university-rankings/university-of-kufa/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative  max-w-[158px] 1920:max-w-[211px] w-full h-[110px] sm:h-[115px] 1920:h-[153px] flex items-center justify-center bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:opacity-70"
+              >
+                <span className="absolute top-0 end-0 bg-[#252525] text-white text-[14px] leading-[1.22em] px-[6px] py-1 font-medium">
+                  #{num}
+                </span>
+                <Image
+                  fill
+                  src={`/images/college-logo.png`}
+                  alt={`Ranking ${num}`}
+                  className="w-full h-full object-contain px-3 py-6 sm:px-[12px] sm:py-[24px]"
+                />
+              </a>
+            ))}
+          </div>
+          <p className="text-[#F2F2F2]/70 leading-[1.75em] font-normal text-[16px] sm:text-[14px] 1920:text-[18px] max-w-[242px] sm:max-w-[276px]">
+            للاطلاع على مرتبة الجامعة اضغط على شعار التصنيف
+          </p>
+        </div>
+      </div>
+      <div className="relative h-[275px] sm:h-auto sm:w-[calc(50%+63px)] 1920:w-[calc(50%+85px)]">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="University Building"
+          fill
+          className="object-cover h-full w-full"
+        />
+      </div>
+    </div>
+  );
+}
 
 ```
 
@@ -7491,8 +7768,14 @@ export default function NewsPage() {
 ```tsx
 "use client";
 
+import MainNewsCard from "@/app/_components/News/MainNewsCard";
+import NewsSection from "@/app/_components/News/News";
+import NewsCard from "@/app/_components/News/NewsCard";
 import NewsTags from "@/app/_components/News/NewsTags";
-import OurApp from "@/app/_components/OurApp";
+import PageWithFirstSection from "@/components/page/Page";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import ScrollElement from "@/components/ScrollElement";
 import Section from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n.config";
@@ -7501,187 +7784,65 @@ import { NEWS_ROUTE } from "@/lib/paths";
 import { NewsItem } from "@/lib/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 export default function NewsClientPage() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(9);
-  //@ts-ignore
-  const locale = useLocale();
-
   const t = useTranslations("Home.news");
-
-  const translatedNewsItems = useMemo(() => {
-    return newsItems(t.raw("news"));
-  }, [locale]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setItemsPerPage(window.innerWidth < 620 ? 3 : 9);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  const currentItems = translatedNewsItems.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
-
-  const totalPages = Math.ceil(translatedNewsItems.length / itemsPerPage);
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <main className="flex items-center flex-col mt-[45px] sm:mt-[104px] mx-auto">
-      <Section className="flex flex-col justify-center sm:max-w-[1240px] max-w-[375px] px-[12px]">
-        <div className="mb-[40px] grid w-full grid-cols-[repeat(auto-fill,1fr)] justify-center gap-[10px] sm:mb-[100px] sm:grid-cols-[repeat(auto-fill,384px)] sm:gap-y-[67px] sm:gap-x-[32px]">
-          {currentItems.map((newsItem, index) => (
-            <Card key={index} newsItem={newsItem} />
-          ))}
-        </div>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      </Section>
+    <main className="mt-[36px] sm:mt-[180px]">
+      <Section>
+        <div className="flex-col">
+          <ScrollableContainerUpperSection
+            title={t("title")}
+            containerRef={containerRef}
+            titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
+            className="sm:mb-[50px] 1920:mb-[66px]"
+          ></ScrollableContainerUpperSection>
 
-      <OurApp></OurApp>
+          <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
+            <ScrollableCardsContainer ref={containerRef}>
+              {newsItems([]).map((item, index) => (
+                <ScrollElement className="flex justify-center" key={index}>
+                  <MainNewsCard item={item} />
+                </ScrollElement>
+              ))}
+            </ScrollableCardsContainer>
+            <Section
+              className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
+              wrapperClass="sm:flex hidden"
+            >
+              {newsItems([])
+                .slice(1, 4)
+                .map((item) => (
+                  <NewsCard key={item.id} item={item} />
+                ))}
+            </Section>
+          </div>
+        </div>
+      </Section>
     </main>
   );
 }
 
-function Card({ newsItem }: { newsItem: NewsItem }) {
-  return (
-    <Link
-      href={`${NEWS_ROUTE}/${newsItem.id}`}
-      className="flex w-full justify-center  hover:opacity-90 sm:w-fit"
-    >
-      <div className="flex flex-col text-start">
-        <img
-          src={newsItem.image}
-          alt={newsItem.title}
-          className="sm:h-[241px] w-full h-[187px] rounded-[16px] object-cover mb-[22px] sm:mb-[32px]"
-        />
-        <NewsTags></NewsTags>
-        <div className="sm:mt-[24px] mt-[9px] mb-[10px] flex flex-col sm:mb-[24px]">
-          <h4 className="line-clamp-3 text-[18px] font-medium leading-[36px] text-foreground sm:text-[32px] sm:leading-[40px] mb-[16px] tracking-[-0.01em]">
-            {newsItem.title}
-          </h4>
-          <p className="line-clamp-2 text-[16px] leading-[26px]  sm:text-[18px] sm:leading-[26px] text-muted">
-            {newsItem.description}
-          </p>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (pageNumber: number) => void;
-}
-
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}) => {
-  const getPageNumbers = () => {
-    const pageNumbers = [];
-    const maxVisiblePages = 5;
-
-    if (totalPages <= maxVisiblePages) {
-      for (let i = 1; i <= totalPages; i++) {
-        pageNumbers.push(i);
-      }
-    } else {
-      if (currentPage <= 3) {
-        for (let i = 1; i <= 4; i++) {
-          pageNumbers.push(i);
-        }
-        pageNumbers.push("...");
-        pageNumbers.push(totalPages);
-      } else if (currentPage >= totalPages - 2) {
-        pageNumbers.push(1);
-        pageNumbers.push("...");
-        for (let i = totalPages - 3; i <= totalPages; i++) {
-          pageNumbers.push(i);
-        }
-      } else {
-        pageNumbers.push(1);
-        pageNumbers.push("...");
-        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-          pageNumbers.push(i);
-        }
-        pageNumbers.push("...");
-        pageNumbers.push(totalPages);
-      }
-    }
-
-    return pageNumbers;
-  };
-
-  return (
-    <div className="flex items-center justify-center gap-2 sm:gap-4 rtl:space-x-reverse">
-      <Button
-        className="pagination-button"
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        <div className="rtl:hidden">
-          <ChevronLeft className="h-5 w-5 sm:h-7 sm:w-7" />
-        </div>
-        <div className="ltr:hidden">
-          <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7" />
-        </div>
-      </Button>
-      {getPageNumbers().map((pageNumber, index) => (
-        <React.Fragment key={index}>
-          {pageNumber === "..." ? (
-            <span className="px-2">...</span>
-          ) : (
-            <Button
-              variant={currentPage === pageNumber ? "default" : "ghost"}
-              onClick={() => onPageChange(pageNumber as number)}
-              className={`pagination-button ${
-                currentPage === pageNumber ? "!bg-secondary !text-white" : ""
-              }`}
-            >
-              {pageNumber}
-            </Button>
-          )}
-        </React.Fragment>
-      ))}
-      <Button
-        className="pagination-button"
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
-        <div className="ltr:hidden">
-          <ChevronLeft className="h-5 w-5 sm:h-7 sm:w-7" />
-        </div>
-        <div className="rtl:hidden">
-          <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7" />
-        </div>
-      </Button>
-    </div>
-  );
-};
-
 ```
+
+# public\images\common\cards\uni-life.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\news.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\academic-classifications.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\about.svg
+
+This is a file of the type: SVG Image
 
 # public\images\home\News\4.jpg
 
@@ -7719,21 +7880,237 @@ This is a binary file of the type: Image
 
 This is a binary file of the type: Image
 
-# public\images\common\cards\uni-life.svg
+# src\app\[locale]\about\page.tsx
 
-This is a file of the type: SVG Image
+```tsx
+import { getTranslations } from "next-intl/server";
+import AboutClientPage from "./ClientPage";
 
-# public\images\common\cards\news.svg
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
 
-This is a file of the type: SVG Image
+  return {
+    title: t("newsTitle"),
+  };
+}
 
-# public\images\common\cards\academic-classifications.svg
+export default function Page() {
+  return <AboutClientPage></AboutClientPage>;
+}
 
-This is a file of the type: SVG Image
+```
 
-# public\images\common\cards\about.svg
+# src\app\[locale]\about\ClientPage.tsx
 
-This is a file of the type: SVG Image
+```tsx
+"use client";
+
+import CommonCard from "@/app/_components/CardsSection/CommonCard";
+import OurGoals from "@/app/_components/OurGoals/OurGoals";
+import PageWithFirstSection from "@/components/page/Page";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollElement from "@/components/ScrollElement";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import {
+  AGREEMENTS_PARTNERSHIPS_ROUTE,
+  ORGANIZATIONAL_STRUCTURE_ROUTE,
+  UNIVERSITY_STRATEGY_ROUTE,
+} from "@/lib/paths";
+import React, { useRef } from "react";
+
+const list = [
+  "تسعى جامعة كاكامش إلى إعداد خريجين تتناسب مؤهلاتهم وخبراتهم مع متطلبات سوق العمل (القطاع الحكومي، القطاع الخاص).",
+  "تؤكد الجامعة التزامها التام بتطبيق نظام إدارة الجودة وفق متطلبات المواصفة ISO9001:2015 من أجل تحقيق مستويات عالية بالأداء ورفع كفاء العاملين والجامعة ككل.",
+  "توفر الجامعة الدعم الكامل لجميع الإجراءات التي تهدف إلى التحسين والتطوير المستمر.",
+  "تسعى الجامعة إلى تحقيق رضا المستفيدين وأصحاب المصلحة وضمان زيادتهم بشكل مستمر.",
+  "تلتزم الجامعة بأن تكون سياسة الجودة مفهومة من قبل جميع العاملين في الجامعة وأن يتم مراجعتها دوريا لتتأكد من ملاءمتها ومتطلباتها للعمل.",
+];
+
+export default function AboutClientPage() {
+  return (
+    <main>
+      <Section className="mt-[10px] text-start sm:mt-[146px]">
+        <Wrapper>
+          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px] 1920:gap-[52px]">
+            <MainSection></MainSection>
+            <VisionSection></VisionSection>
+            <MessageSection></MessageSection>
+          </div>
+          <QualitySection></QualitySection>
+        </Wrapper>
+      </Section>
+      <CardsSection></CardsSection>
+      <OurGoals></OurGoals>
+    </main>
+  );
+}
+
+function MainSection() {
+  return (
+    <div className="col-span-full flex flex-col text-primary sm:flex-row">
+      <div className="flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[65%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
+        <h2 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
+          عن جامعة كلكامش
+        </h2>
+        <p className="text-[16px] leading-[1.8em] sm:text-[20px] 1920:text-[24px]">
+          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
+          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
+          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
+          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
+          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
+          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
+          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
+          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. وباحتوائها على نخبة
+          متميزة من أعضاء هيئة التدريس تسهم من خلال بحوثهم في تعزيز المعرفة
+          لإيجاد حلول كفيلة بمعالجة المشكلات المعقدة وخلْق أفكار جديدة، وتطوير
+          طرق التعليم وأساليبه ووجود حرم جامعي جديد ومتطور، ومجموعة كاملة من
+          الخدمات التي توفر الدعم للطلبة، فإن الجامعة توفر بيئة تعليمية مثالية
+          لطلبتها تطبق معايير الجودة المؤسساتية والتعليمية.
+        </p>
+      </div>
+      <img
+        src="/images/hero-bg.jpg"
+        className="w-full object-cover sm:w-[35%]"
+      ></img>
+    </div>
+  );
+}
+
+function VisionSection() {
+  return (
+    <div className="flex flex-col justify-center gap-[14px] bg-[#0F4023] px-[16px] py-[32px] text-white sm:col-span-3 sm:items-start sm:gap-[28px] sm:px-[44px] sm:py-[54px] 1920:gap-[44px] 1920:px-[64px]">
+      <h3 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
+        الرؤيــة
+      </h3>
+      <h2 className="text-[32px] sm:text-[40px] 1920:text-[68px]">
+        رؤية الجامعة
+      </h2>
+      <p className="mt-[20px] text-justify text-[16px] leading-[1.8em] text-[#F2F2F2]/70 sm:mt-auto sm:text-[18px]">
+        تنطلق جامعة كلكامش من رؤية شاملة تلتزم بالتميز في نشر المعرفة وإنتاجها
+        وخدمة المجتمع العراقي للارتقاء الى مصاف الجامعات المتقدمة محليا وإقليميا
+        وعالميا.
+      </p>
+    </div>
+  );
+}
+
+function MessageSection() {
+  return (
+    <div className="flex flex-col justify-center gap-[14px] bg-primary px-[16px] py-[32px] text-white sm:col-span-4 sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
+      <h3 className="text-[18px] font-bold text-secondary sm:text-[22px] 1920:text-[28px]">
+        الرسالــة
+      </h3>
+
+      <p className="text-[16px] leading-[1.8em] sm:text-[26px] 1920:text-[35px]">
+        لجامعة كلكامش رسالة تعمد عن طريقها الى: تقديم برامج أكاديمية عالية
+        الجودة في مختلف فروع المعرفة ودعم البحوث وتطويرها بما يسهم في تحقيق
+        أهداف التنمية وتعزيز دور الجامعة في خدمة المجتمع العراقي وتهيأة بيئة
+        جامعية داعمة للإنتاج والتميز.
+      </p>
+    </div>
+  );
+}
+
+function QualitySection() {
+  return (
+    <div className="col-span-full mt-[64px] flex flex-col sm:mt-[180px] sm:flex-row">
+      <div className="flex flex-col justify-center gap-[24px] py-[32px] pe-[16px] sm:w-1/2 sm:items-start sm:gap-[28px] sm:py-[64px] sm:pe-[64px] 1920:gap-[58px] 1920:pe-[108px]">
+        <h2 className="text-[18px] font-bold sm:text-[32px] 1920:text-[48px]">
+          سياسة الجودة
+        </h2>
+        <div className="flex flex-col gap-[14px] sm:gap-[24px]">
+          {list.map((item, index) => (
+            <div
+              className="flex items-start gap-[12px] sm:gap-[24px]"
+              key={index}
+            >
+              <div className="flex h-[31px] min-h-[31px] w-[31px] min-w-[31px] items-center justify-center rounded-full bg-secondary text-[16px] leading-none">
+                {index + 1}
+              </div>
+              <span className="text-justify text-[16px] sm:text-[18px]">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <img
+        src="/images/hero-bg.jpg"
+        className="w-full object-cover sm:w-1/2"
+      ></img>
+    </div>
+  );
+}
+
+function CardsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const services = [
+    {
+      imgUrl: "/images/about/3.svg",
+      title: "الهيكل التنظيمي",
+      href: ORGANIZATIONAL_STRUCTURE_ROUTE,
+    },
+    {
+      imgUrl: "/images/about/2.svg",
+      title: "استراتيجية الجامعة",
+      href: UNIVERSITY_STRATEGY_ROUTE,
+    },
+    {
+      imgUrl: "/images/about/1.svg",
+      title: "الاتفاقيات والشراكــــــات",
+      href: AGREEMENTS_PARTNERSHIPS_ROUTE,
+    },
+  ];
+
+  return (
+    <div className="mt-[60px] sm:mt-[150px]">
+      {/* <Section>
+          <Wrapper>
+            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
+              <ScrollableContainerUpperSection
+                arrowButtonsClass="sm:hidden"
+                containerRef={containerRef}
+                title2="جامعة كلكامش"
+                title="الخدمات الالكترونية"
+                className="sm:w-fit sm:items-center"
+              />
+            </div>
+          </Wrapper>
+        </Section> */}
+      <Section className="max-w-none">
+        <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
+          <ScrollableCardsContainer
+            ref={containerRef}
+            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
+          >
+            {services.map((service, index) => (
+              <ScrollElement
+                className="flex justify-center sm:w-auto"
+                key={index}
+              >
+                <CommonCard
+                  el={service}
+                  index={index}
+                  uniqueFirstCard={false}
+                />
+              </ScrollElement>
+            ))}
+          </ScrollableCardsContainer>
+        </Wrapper>
+      </Section>
+    </div>
+  );
+}
+
+```
 
 # src\app\[locale]\university-and-community\qualification-employment\page.tsx
 
@@ -7744,7 +8121,7 @@ import FormattedTextViewer from "@/components/FormattedTextViewer";
 export default function QualificationEmploymentPage() {
   return (
     <FormattedTextViewer
-      content={`محتوى صفحة التأهيل والتوظيف يأتي هنا.`}
+      children={`محتوى صفحة التأهيل والتوظيف يأتي هنا.`}
     ></FormattedTextViewer>
   );
 }
@@ -7760,7 +8137,7 @@ import FormattedTextViewer from "@/components/FormattedTextViewer";
 export default function MinistryInquiriesPage() {
   return (
     <FormattedTextViewer
-      content={`محتوى صفحة الاستعلامات الالكترونية لوزارة التعليم العالي يأتي هنا.`}
+      children={`محتوى صفحة الاستعلامات الالكترونية لوزارة التعليم العالي يأتي هنا.`}
     ></FormattedTextViewer>
   );
 }
@@ -7776,7 +8153,7 @@ import FormattedTextViewer from "@/components/FormattedTextViewer";
 export default function GraduatesPage() {
   return (
     <FormattedTextViewer
-      content={`محتوى صفحة خريجــونــا يأتي هنا.`}
+      children={`محتوى صفحة خريجــونــا يأتي هنا.`}
     ></FormattedTextViewer>
   );
 }
@@ -7792,7 +8169,7 @@ import FormattedTextViewer from "@/components/FormattedTextViewer";
 export default function ConsultingClinicPage() {
   return (
     <FormattedTextViewer
-      content={`محتوى صفحة العيادة الاستشارية يأتي هنا.`}
+      children={`محتوى صفحة العيادة الاستشارية يأتي هنا.`}
     ></FormattedTextViewer>
   );
 }
@@ -8023,20 +8400,11 @@ export default ConferenceImportance;
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
-import { useParams } from "next/navigation";
 import React, { useMemo, useRef } from "react";
-import { useReactToPrint } from "react-to-print";
-import { twMerge } from "tailwind-merge";
 
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import { Button } from "@/components/ui/button";
-import { shareCurrentURL } from "@/lib/utils";
-import ScrollArrows from "@/components/ScrollArrows";
-import { NewsItem } from "@/lib/types";
 import { newsItems } from "@/lib/data";
-import { NEWS_ROUTE } from "@/lib/paths";
-import NewsTags from "@/app/_components/News/NewsTags";
+import FormattedTextViewer from "@/components/FormattedTextViewer";
+import PageWithFirstSection from "@/components/page/Page";
 
 export default function SingleNewsPage() {
   const locale = useLocale();
@@ -8048,218 +8416,375 @@ export default function SingleNewsPage() {
   }, [locale]);
 
   return (
-    <main className="w-full">
-      <MainSection translatedNewsItems={translatedNewsItems} />
-      <RelatedNews translatedNewsItems={translatedNewsItems} />
+    <main>
+      <FormattedTextViewer>
+        هذا النص هو نص تجريبي يبدأ بعد النقطة وقد تم وضعه كمحتوى تجريبي. شهدت
+        الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة والإعدادية
+        بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل تربية بهدف
+        الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا الوطنية بالدماء
+        الشابة التي تساهم في حصد الإنجازات والبطولات خلال المشاركات الدولية.
+        الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة
+        والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية المستدامة في خدمة
+        المجتمع. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة
+        والإعدادية بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل
+        تربية بهدف الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا
+        الوطنية بالدماء الشابة التي تساهم في حصد الإنجازات والبطولات خلال
+        المشاركات الدولية. الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة
+        وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
+        المستدامة في خدمة المجتمع. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات
+        نسوية لمراحل المتوسطة والإعدادية بين تربيات الكرخ الثانية والرصافة
+        الثانية بمعدل فريقين لكل تربية بهدف الكشف عن الخبرات والإمكانيات
+        الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة التي تساهم في حصد
+        الإنجازات والبطولات خلال المشاركات الدولية. الجدير بالذكر أن جامعة
+        كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن
+        سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع. شهدت الملاعب
+        المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة والإعدادية بين تربيات
+        الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل تربية بهدف الكشف عن
+        الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة
+        التي تساهم في حصد الإنجازات والبطولات خلال المشاركات الدولية. الجدير
+        بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات
+        وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع.
+        شهدت الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة
+        والإعدادية بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل
+        تربية بهدف الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا
+        الوطنية بالدماء الشابة التي تساهم في حصد الإنجازات والبطولات خلال
+        المشاركات الدولية. الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة
+        وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
+        المستدامة في خدمة المجتمع. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات
+        نسوية لمراحل المتوسطة والإعدادية بين تربيات الكرخ الثانية والرصافة
+        الثانية بمعدل فريقين لكل تربية بهدف الكشف عن الخبرات والإمكانيات
+        الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة التي تساهم في حصد
+        الإنجازات والبطولات خلال المشاركات الدولية. الجدير بالذكر أن جامعة
+        كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن
+        سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع. شهدت الملاعب
+        المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة والإعدادية بين تربيات
+        الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل تربية بهدف الكشف عن
+        الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة
+        التي تساهم في حصد الإنجازات والبطولات خلال المشاركات الدولية. الجدير
+        بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات
+        وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع.
+        شهدت الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة
+        والإعدادية بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل
+        تربية بهدف الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا
+        الوطنية بالدماء الشابة التي تساهم في حصد الإنجازات والبطولات خلال
+        المشاركات الدولية. الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة
+        وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
+        المستدامة في خدمة المجتمع. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات
+        نسوية لمراحل المتوسطة والإعدادية بين تربيات الكرخ الثانية والرصافة
+        الثانية بمعدل فريقين لكل تربية بهدف الكشف عن الخبرات والإمكانيات
+        الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة التي تساهم في حصد
+        الإنجازات والبطولات خلال المشاركات الدولية. الجدير بالذكر أن جامعة
+        كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن
+        سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع. شهدت الملاعب
+        المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة والإعدادية بين تربيات
+        الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل تربية بهدف الكشف عن
+        الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا الوطنية بالدماء الشابة
+        التي تساهم في حصد الإنجازات والبطولات خلال المشاركات الدولية. الجدير
+        بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة وعلى كافة الأصعدة والمجالات
+        وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية المستدامة في خدمة المجتمع.
+      </FormattedTextViewer>
     </main>
-  );
-}
-
-function MainSection({
-  translatedNewsItems,
-}: {
-  translatedNewsItems: NewsItem[];
-}) {
-  const param = useParams();
-  const ts = useTranslations("singleNews");
-
-  const currentItem = translatedNewsItems.find(
-    (el) => el.id === parseInt(param.news_id as string)
-  );
-
-  return currentItem ? (
-    <section className="w-full justify-center text-start sm:px-[30px]">
-      <div className="mx-auto  flex max-w-[1216px] flex-col items-start justify-center gap-[53px] rounded-[20px] px-[16px] sm:flex-row-reverse sm:gap-[80px] sm:rounded-[30px] sm:px-[0px] mt-[28px] sm:mt-[110px] 1920:gap-[127px]">
-        <NewsSection newsItem={currentItem} />
-      </div>
-    </section>
-  ) : (
-    <div>no data</div>
-  );
-}
-
-function NewsSection({ newsItem }: { newsItem: NewsItem }) {
-  const direction = useTextDirection();
-  const ts = useTranslations("singleNews");
-
-  const pageStyle = `
-    @page {
-      size: auto;
-      margin: 80px;
-    }
-    .no-print {
-      display: none !important;
-    }
-    body {
-      direction: ${direction};
-    }
-  `;
-
-  const componentRef = useRef(null);
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-    pageStyle: pageStyle,
-    bodyClass: "print-body",
-    documentTitle: newsItem.title,
-  });
-
-  return (
-    <div
-      ref={componentRef}
-      className="printable-content w-full"
-      id="print-section"
-    >
-      <div className=" sm:max-w-[701px] ltr:sm:max-w-[951px] mx-auto  items-center flex flex-col">
-        <NewsTags></NewsTags>
-        <h1
-          className={twMerge(
-            "title mb-[20px] sm:mb-[60px] !text-center sm:mt-[24px] mt-[19px] ",
-            "!text-[22px] sm:!text-[42px] !font-medium ltr:sm:!font-bold"
-          )}
-        >
-          {newsItem.title}
-        </h1>
-      </div>
-
-      <img
-        src={newsItem.image}
-        alt="news image"
-        className="mb-[30px] h-[222px] w-full rounded-[12px] object-cover sm:mb-[50px] sm:h-[683px] print:h-[300px]"
-      />
-      <div className="sm:max-w-[900px] sm:mx-auto">
-        <p className="lg-subtitle mb-[31px] whitespace-pre-line text-center sm:text-justify text-[18px] leading-[36px] ltr:sm:leading-[36px] ltr:leading-[30px] sm:mb-[91px] ">
-          {newsItem.description}
-        </p>
-
-        <div className="flex w-full   justify-end">
-          <div className="no-print hidden gap-[35px] sm:flex">
-            <Button
-              onClick={shareCurrentURL}
-              variant="ghost"
-              size="icon"
-              className="w-fit gap-[10px] text-[16px] font-bold text-[#3C286A]"
-            >
-              <span>{ts("share")}</span>
-              <i className="ri-share-forward-fill"></i>
-            </Button>
-            <div className="h-full border-r border-[#D8D8D8]"></div>
-            <Button
-              onClick={handlePrint}
-              variant="ghost"
-              size="icon"
-              className="w-fit gap-[10px] text-[16px] font-bold text-[#3C286A]"
-            >
-              <span>{ts("print")}</span>
-              <i className="ri-printer-fill"></i>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function RelatedNews({
-  translatedNewsItems,
-}: {
-  translatedNewsItems: NewsItem[];
-}) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const ts = useTranslations("singleNews");
-
-  return (
-    <section className="mt-[50px] sm:mt-[150px]">
-      <div className="mx-auto max-w-[1440px]">
-        <UpperSection containerRef={containerRef} />
-      </div>
-      <ScrollableCardsContainer
-        ref={containerRef}
-        className="mb-[75px] sm:mb-[112px]"
-        translatedNewsItems={translatedNewsItems}
-      />
-    </section>
-  );
-}
-
-function UpperSection({
-  containerRef,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-}) {
-  const ts = useTranslations("singleNews");
-
-  return (
-    <div className="default-padding mb-[26px] flex items-center justify-between !px-[13px] sm:mb-[61px] sm:justify-between sm:!px-[110px]">
-      <div className="flex items-center gap-[22px]">
-        <h2 className="title !font-medium">{ts("relatedNews")}</h2>
-      </div>
-      <ScrollArrows containerRef={containerRef} />
-    </div>
-  );
-}
-
-const ScrollableCardsContainer = React.forwardRef<
-  HTMLDivElement,
-  { className: string; translatedNewsItems: NewsItem[] }
->(({ className, translatedNewsItems }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={twMerge(
-        "hide-scrollbar mx-auto max-w-fit overflow-x-auto",
-        className
-      )}
-    >
-      <div className="flex w-fit gap-[12px] sm:gap-[51px] sm:px-[110px] px-[12px]">
-        {translatedNewsItems.map((newsItem, index) => (
-          <Card key={index} newsItem={newsItem} />
-        ))}
-      </div>
-    </div>
-  );
-});
-
-ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
-
-function Card({ newsItem }: { newsItem: NewsItem }) {
-  return (
-    <Link
-      href={`${NEWS_ROUTE}/${newsItem.id}`}
-      className="flex  justify-center  hover:opacity-90  sm:w-[381px] w-[350px]"
-    >
-      <div className="flex flex-col text-start">
-        <img
-          src={newsItem.image}
-          alt={newsItem.title}
-          className="sm:h-[241px] w-full h-[187px] rounded-[16px] object-cover mb-[22px] sm:mb-[32px] "
-        />
-        <NewsTags></NewsTags>
-        <div className="mb-[10px] flex flex-col sm:mb-[24px] gap-[16px] sm:mt-[24px] mt-[9px]">
-          <h4 className="line-clamp-3 text-[18px] font-medium leading-[36px] text-foreground sm:text-[32px] sm:leading-[40px] mb-[16px] tracking-[-0.01em]">
-            {newsItem.title}
-          </h4>
-          <p className="line-clamp-2 text-[16px] leading-[26px]  sm:text-[18px] sm:leading-[26px] text-muted">
-            {newsItem.description}
-          </p>
-        </div>
-      </div>
-    </Link>
   );
 }
 
 ```
 
-# src\app\[locale]\university-and-community\surveys\graduate-survey\page.tsx
+# src\app\[locale]\about\university-council\page.tsx
 
 ```tsx
+import { getTranslations } from "next-intl/server";
+import UniversityCouncilClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+}
+
+```
+
+# src\app\[locale]\about\university-council\ClientPage.tsx
+
+```tsx
+"use client";
+
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
 import React from "react";
-import { useTranslations } from "next-intl";
-import SurveyForm from "@/components/SurveyForm";
 
-export default function GraduatesSurveyPage() {
-  const tNavLinks = useTranslations("Header.navLinks");
+export default function UniversityCouncilClientPage() {
+  return (
+    <main>
+      <ActionsTitle title="مجلس الجامعة"></ActionsTitle>
+      <Section className="text-start">
+        <Wrapper>
+          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-4 sm:gap-[22px] 1920:grid-cols-5">
+            <PresidentCard></PresidentCard>
+            {[...Array(12)].map((_, index) => (
+              <MemberCard key={index} />
+            ))}
+          </div>
+        </Wrapper>
+      </Section>
+    </main>
+  );
+}
 
-  return <SurveyForm title={tNavLinks("graduateSurvey")} />;
+function PresidentCard() {
+  return (
+    <div className="flex flex-col justify-between bg-white sm:col-span-3 sm:px-[20px]">
+      <div className="flex h-full items-center">
+        <div className="flex flex-col gap-[25px] text-primary sm:flex-row sm:py-[20px]">
+          <img
+            src="/images/hero-bg.jpg"
+            className="w-full object-cover sm:w-[35%]"
+          ></img>
+          <div className="flex flex-col justify-center px-[8px] py-[20px] sm:w-[65%] sm:items-start sm:px-[12px] sm:py-[40px] 1920:px-[20px]">
+            <h2 className="text-[18px] font-bold text-foreground sm:text-[22px] 1920:text-[34px]">
+              أ.د.انور صبحي عبد الحسين
+            </h2>
+            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
+            <p className="mt-[16px] text-[16px] leading-[24px] sm:mt-[28px] 1920:mt-[58px]">
+              تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم
+              عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح
+              للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث
+              والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد المشكلات،
+              والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل كلية،
+              وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
+              التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح
+              لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-[5px] w-full bg-secondary"></div>
+    </div>
+  );
+}
+
+function MemberCard() {
+  return (
+    <div className="flex flex-col justify-between bg-white sm:px-[18px]">
+      <div className="flex flex-col gap-[35px] pb-[57px] pt-[18px]">
+        <img
+          src="/images/person-placeholder.svg"
+          className="w-full object-cover"
+        ></img>
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-[21px] font-medium text-foreground">
+            الاسم الكامل
+          </h2>
+          <h3 className="mt-[12px] max-w-[200px] text-[16px] font-medium leading-[24px] text-primary">
+            وصف المنصب الاداري ضمن الجامعة
+          </h3>
+        </div>
+      </div>
+
+      <div className="h-[5px] w-full bg-secondary"></div>
+    </div>
+  );
+}
+
+```
+
+# src\app\[locale]\about\president-speech\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import UniversityCouncilClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+}
+
+```
+
+# src\app\[locale]\about\president-speech\ClientPage.tsx
+
+```tsx
+"use client";
+
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
+import React from "react";
+
+export default function UniversityCouncilClientPage() {
+  return (
+    <main>
+      <ActionsTitle title="كلمة رئيس الجامعة"></ActionsTitle>
+      <Section className="text-start">
+        <Wrapper>
+          <PresidentCard></PresidentCard>
+        </Wrapper>
+      </Section>
+    </main>
+  );
+}
+
+function PresidentCard() {
+  return (
+    <div className="flex flex-col justify-between bg-white">
+      <div className="flex flex-col gap-[31px] text-primary sm:flex-row-reverse sm:gap-[70px] sm:p-[50px] 1920:gap-[140px]">
+        <div className="flex flex-col gap-[50px] sm:w-[378px] sm:min-w-[378px]">
+          <img src="/images/hero-bg.jpg" className="w-full object-cover"></img>
+          <div className="flex flex-col px-[20px] sm:px-0">
+            <h2 className="text-[18px] font-bold text-foreground sm:text-[22px] 1920:text-[34px]">
+              أ.د.انور صبحي عبد الحسين
+            </h2>
+            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
+          </div>
+        </div>
+        <p className="px-[20px] text-justify text-[16px] leading-[1.75em] sm:px-0 sm:text-[20px]">
+          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
+          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
+          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
+          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
+          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
+          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
+          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
+          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
+          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
+          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
+          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
+          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
+          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
+          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
+          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
+          العمل المختلفة. تأسست جامعة كلكامش بموجب الأمر الوزاري (1443)
+          27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم
+          والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في
+          أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد
+          المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل
+          كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
+          التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم
+          ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست
+          جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
+          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
+          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
+          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
+          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
+          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
+          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
+          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
+          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
+          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
+          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
+          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
+          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
+          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
+          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
+          العمل المختلفة.
+        </p>
+      </div>
+
+      <div className="mx-auto mt-[20px] h-[5px] w-[calc(100%-40px)] bg-secondary sm:mt-0 sm:w-[calc(100%-100px)]"></div>
+    </div>
+  );
+}
+
+```
+
+# src\app\[locale]\about\organizational-structure\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import OrganizationalStructureClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return (
+    <OrganizationalStructureClientPage></OrganizationalStructureClientPage>
+  );
+}
+
+```
+
+# src\app\[locale]\about\organizational-structure\ClientPage.tsx
+
+```tsx
+"use client";
+
+import FileOperations from "@/components/FileOperations";
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
+import React from "react";
+
+export default function OrganizationalStructureClientPage() {
+  return (
+    <main>
+      <ActionsTitle
+        title="الهيكل التنظيمي"
+        fileOperations={
+          <FileOperations
+            showDownloadButton={true}
+            pdfStyles={{ body: { flexDirection: "column" } }}
+          ></FileOperations>
+        }
+      ></ActionsTitle>
+      <Section className="text-start">
+        <Wrapper>
+          <img
+            id="print-section"
+            src="/images/hero-bg.jpg"
+            alt="hero-bg"
+            className="w-full"
+          />
+        </Wrapper>
+      </Section>
+    </main>
+  );
 }
 
 ```
@@ -8275,6 +8800,21 @@ export default function EmployerSurveyPage() {
   const tNavLinks = useTranslations("Header.navLinks");
 
   return <SurveyForm title={tNavLinks("employerSurvey")} />;
+}
+
+```
+
+# src\app\[locale]\university-and-community\surveys\graduate-survey\page.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import SurveyForm from "@/components/SurveyForm";
+
+export default function GraduatesSurveyPage() {
+  const tNavLinks = useTranslations("Header.navLinks");
+
+  return <SurveyForm title={tNavLinks("graduateSurvey")} />;
 }
 
 ```

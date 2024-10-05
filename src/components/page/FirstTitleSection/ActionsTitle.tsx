@@ -25,7 +25,15 @@ export default function ActionsTitle({
   return (
     <Section className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]">
       <Wrapper>
-        <div className="flex justify-between">
+        <div
+          className={twMerge(
+            "flex justify-between",
+            !description &&
+              !showBackButton &&
+              !fileOperations &&
+              "sm:justify-center",
+          )}
+        >
           <div
             className={twMerge("mb-[12px] text-start sm:mb-[53px]", className)}
           >
@@ -45,6 +53,11 @@ export default function ActionsTitle({
                   !description &&
                     !showBackButton &&
                     "text-center sm:text-start",
+
+                  !description &&
+                    !showBackButton &&
+                    !fileOperations &&
+                    "sm:text-center",
                 )}
               >
                 {title}
