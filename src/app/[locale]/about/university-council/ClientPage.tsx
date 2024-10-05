@@ -1,27 +1,11 @@
 "use client";
 
-import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import OurGoals from "@/app/_components/OurGoals/OurGoals";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-import PageWithFirstSection from "@/components/page/Page";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollElement from "@/components/ScrollElement";
+
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
-import {
-  AGREEMENTS_PARTNERSHIPS_ROUTE,
-  ORGANIZATIONAL_STRUCTURE_ROUTE,
-  UNIVERSITY_STRATEGY_ROUTE,
-} from "@/lib/paths";
-import React, { useRef } from "react";
 
-const list = [
-  "تسعى جامعة كاكامش إلى إعداد خريجين تتناسب مؤهلاتهم وخبراتهم مع متطلبات سوق العمل (القطاع الحكومي، القطاع الخاص).",
-  "تؤكد الجامعة التزامها التام بتطبيق نظام إدارة الجودة وفق متطلبات المواصفة ISO9001:2015 من أجل تحقيق مستويات عالية بالأداء ورفع كفاء العاملين والجامعة ككل.",
-  "توفر الجامعة الدعم الكامل لجميع الإجراءات التي تهدف إلى التحسين والتطوير المستمر.",
-  "تسعى الجامعة إلى تحقيق رضا المستفيدين وأصحاب المصلحة وضمان زيادتهم بشكل مستمر.",
-  "تلتزم الجامعة بأن تكون سياسة الجودة مفهومة من قبل جميع العاملين في الجامعة وأن يتم مراجعتها دوريا لتتأكد من ملاءمتها ومتطلباتها للعمل.",
-];
+import React from "react";
 
 export default function UniversityCouncilClientPage() {
   return (
