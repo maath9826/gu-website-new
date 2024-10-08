@@ -7,12 +7,19 @@
     "firstTitle": "AlZAEEM Express Delivery"
   },
   "Common": {
+    "generalSuccessMessage": "Sent Successfully!",
     "share": "Share",
     "print": "Print",
     "centerizedTitle": "Your Centered Title Here",
     "download": "Download",
-    "loading": "Downloading",
+    "loading": "Loading",
     "readMore": "Read More",
+    "gilgameshUniversity": "Gilgamesh University",
+    "ourColleges": "Our Colleges",
+    "email": "email",
+    "phoneNumber": "Phone Number",
+    "address": "Address",
+    "downloadApp": "Download App",
     "cards": {
       "uniLife": "University Life",
       "about": "About the University",
@@ -187,77 +194,14 @@
         }
       ]
     },
-    "faq": {
-      "title": "Frequently Asked Questions (FAQs)",
-      "description": "Here are some frequently asked questions about AlZaeem Express Delivery and how it operates:",
-      "questions": [
-        {
-          "question": "What are the types of services provided by the company?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "The delivery rates?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "What is the process for tracking and processing orders?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "What are the methods of account withdrawal from the company?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "Is the return policy free of charge?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "What is the nearest branch of AlZaeem Company for me?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "Does the company provide a pickup service for receiving orders?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "How can I contact all departments of the company?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        }
-      ],
-      "stillHaveQuestions": {
-        "title": "Still have some questions?",
-        "description": "To get assistance, please visit our   <a href=\"/contact\" target=\"_blank\" class=\"text-foreground font-medium\">Contact Us</a> page or call our customer support hotline at <a href=\"tel:077122233828\" class=\"text-foreground font-medium\">077122233828</a>. Our dedicated team is ready to help you achieve the fastest delivery process possible."
-      }
+    "academicRankings": {
+      "subtitle": "Academic Rankings",
+      "title": "University of Gilgamesh in Academic Rankings",
+      "note": "To view the university's ranking, click on the ranking logo."
     },
-    "ratings": {
-      "title": "We are delighted with the feedback from our valued customers.",
-      "description": "Many diverse customer opinions about our services.",
-      "cards": [
-        {
-          "comment": "Alzaeem Express Delivery has always been one of our key partners in success, providing us with the best delivery service in terms of speed and maintaining the confidentiality of the data sent to them.",
-          "job": "Rafidain Bank",
-          "name": "Marketing Center for Q Card",
-          "stars": 5
-        },
-        {
-          "comment": "Because our goods at the Design Office for Mobile Phones include sensitive and expensive electronic devices, Alzaeem Express Delivery was our first choice due to the great care the company takes to preserve the orders. Over three years, we have not encountered any case of damage or breakage of goods, reflecting the quality and reliability of their services.",
-          "job": "",
-          "name": "AL-Tasmem Office for Mobile Phones",
-          "stars": 5
-        },
-        {
-          "comment": "You deserve all the praise for the hard and dedicated work you do day after day. At Karam Company, we highly appreciate your efforts in providing world-class service. I wish you more progress and prosperity in the future, and I look forward to continuing successful cooperation with you. Thank you from the heart for your tremendous and continuous efforts.",
-          "job": "",
-          "name": "Masnaa Al-Asaaer for Plastic Cans",
-          "stars": 5
-        },
-        {
-          "comment": "I would like to express my thanks and gratitude for the long-term cooperation and hard work that Alzaeem Company has provided over the past year. Through your commitment to providing exceptional customer service and on-time delivery, I found your staff to be dedicated and of high quality in performing their tasks, which greatly contributed to achieving successes and developing our business.",
-          "job": "",
-          "name": "Global Marketing Representative",
-          "stars": 5
-        }
-      ]
+    "eServices": "Electronic Services",
+    "contact": {
+      "title": "We would love to hear from you."
     }
   },
   "Footer": {

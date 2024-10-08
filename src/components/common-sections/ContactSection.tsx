@@ -1,102 +1,130 @@
-import Image from "next/image";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
+"use client";
 
-export default function ContactSection() {
+import React, { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Contact } from "@/lib/types";
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import axiosInstance from "@/lib/axios";
+import useCommonStore from "@/lib/zustand/common";
+
+interface ContactSectionProps {
+  contact: Contact | undefined;
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({ contact }) => {
+  const t = useTranslations("Common.Contact");
+
+  if (!contact) {
+    return null;
+  }
+
   return (
-    <section className="flex flex-col sm:flex-row w-full mt-[100px] sm:mt-[150px] 1920:mt-[180px]">
-      <ContactInfoSection />
+    <section className="mt-[100px] flex w-full flex-col sm:mt-[150px] sm:flex-row 1920:mt-[180px]">
+      <ContactInfoSection contact={contact} />
       <ContactFormSection />
     </section>
   );
-}
+};
 
-function ContactInfoSection() {
+const ContactInfoSection: React.FC<{ contact: Contact }> = ({ contact }) => {
+  const t = useTranslations("Common");
+  const tContact = useTranslations("Home.contact");
+
   return (
-    <div className="w-full sm:w-1/2 bg-white py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[50px] 1920:text-[70px] font-medium text-primary mb-[30px] sm:mb-[122px] 1920:mb-[162px] text-right leading-[1.22em]">
-        نحب ان نسمع منك
+    <div className="w-full bg-white px-4 py-[49px] sm:w-1/2 sm:px-[83px] sm:py-[109px] 1920:px-[110px] 1920:py-[145px]">
+      <h2 className="mb-[30px] text-right text-[28px] font-medium leading-[1.22em] text-primary sm:mb-[122px] sm:text-[50px] 1920:mb-[162px] 1920:text-[70px]">
+        {tContact("title")}
       </h2>
-      <div className="space-y-[40px] sm:space-y-[53px] 1920:space-y-[60px] mb-[40px] sm:mb-[53px] 1920:mb-[60px]">
-        <ContactInfo title="البريد الالكتروني" value="info@gau.edu.iq" />
-        <ContactInfo title="رقم الهاتف" value="07832000090 - 07732000090" />
-        <ContactInfo
-          title="عنوان الجامعة"
-          value="العراق / بغداد / الدورة / حي الصحة / قرب جامع ياسين"
-        />
+      <div className="mb-[40px] space-y-[40px] sm:mb-[53px] sm:space-y-[53px] 1920:mb-[60px] 1920:space-y-[60px]">
+        <ContactInfo title={t("email")} value={contact.email} />
+        <ContactInfo title={t("phoneNumber")} value={contact.phone} />
+        <ContactInfo title={t("address")} value={contact.address} />
       </div>
-      <div>
-        <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 mb-[40px] sm:mb-[25px] 1920:mb-[38px] text-right leading-[1.33em]">
-          تحميل تطبيق الجامعة
+      {/* <div>
+        <p className="mb-[40px] text-right text-[24px] leading-[1.33em] text-primary/60 sm:mb-[25px] sm:text-[22px] 1920:mb-[38px] 1920:text-[26px]">
+          {t("downloadApp")}
         </p>
         <div className="flex justify-start gap-[14px]">
+          <Link href="">
+          
           <Image
             src="/images/common/app-store.png"
             alt="Download on the App Store"
             width={135}
             height={40}
+
           />
+          </Link>
+
+          <Link href="">
           <Image
             src="/images/common/google-play.png"
             alt="Get it on Google Play"
             width={135}
             height={40}
+
           />
+          </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
-}
+};
 
-function ContactFormSection() {
+const ContactFormSection: React.FC = () => {
   const t = useTranslations("Common.Contact.form");
+  const tCommon = useTranslations("Common");
+  const openSuccessModal = useCommonStore((state) => state.openSuccessModal);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const inputFields = [
+    { name: "name", label: t("name"), type: "text", fullWidth: true },
+    { name: "email", label: t("email"), type: "email", fullWidth: false },
+    { name: "phone", label: t("phoneNumber"), type: "tel", fullWidth: false },
     {
-      name: "fullName",
-      label: t("name"),
-      type: "text",
-      placeholder: t("writeHere"),
-      fullWidth: true,
-    },
-    {
-      name: "email",
-      label: t("email"),
-      type: "email",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "phone",
-      label: t("phoneNumber"),
-      type: "tel",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "institution",
+      name: "c_name",
       label: t("institution"),
       type: "text",
-      placeholder: t("writeHere"),
       fullWidth: true,
     },
-    {
-      name: "message",
-      label: t("message"),
-      type: "textarea",
-      placeholder: t("writeYourMessage"),
-      fullWidth: true,
-    },
+    { name: "message", label: t("message"), type: "textarea", fullWidth: true },
   ];
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const formValues = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await axiosInstance.post("/contactus", formValues);
+      if (response.status === 200) {
+        openSuccessModal(tCommon("generalSuccessMessage"));
+        // Reset form
+        event.currentTarget.reset();
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error (e.g., show error message)
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="w-full sm:w-1/2 bg-[#F0F1EC] py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[28px] 1920:text-[38px] font-medium text-primary leading-[1.35em] mb-[20px] sm:mb-[54px] 1920:mb-[71px] text-right">
+    <div className="w-full bg-[#F0F1EC] px-4 py-[49px] sm:w-1/2 sm:px-[83px] sm:py-[109px] 1920:px-[110px] 1920:py-[145px]">
+      <h2 className="mb-[20px] text-right text-[28px] font-medium leading-[1.35em] text-primary sm:mb-[54px] sm:text-[28px] 1920:mb-[71px] 1920:text-[38px]">
         {t("title")}
       </h2>
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-y-[28px] sm:gap-y-[30px] sm:gap-x-[21px] 1920:gap-y-[39px] 1920:gap-x-[28px]">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 gap-y-[28px] sm:grid-cols-2 sm:gap-x-[21px] sm:gap-y-[30px] 1920:gap-x-[28px] 1920:gap-y-[39px]"
+      >
         {inputFields.map((field) => (
           <div
             key={field.name}
@@ -106,7 +134,7 @@ function ContactFormSection() {
           >
             <label
               htmlFor={field.name}
-              className="text-[16px] sm:text-[18px] 1920:text-[21px] font-medium text-primary leading-[1.35em] text-right"
+              className="text-right text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
             >
               {field.label}
             </label>
@@ -115,35 +143,44 @@ function ContactFormSection() {
                 id={field.name}
                 name={field.name}
                 rows={4}
-                placeholder={field.placeholder}
+                placeholder={t("writeYourMessage")}
+                required
               />
             ) : (
               <Input
                 type={field.type}
                 id={field.name}
                 name={field.name}
-                placeholder={field.placeholder}
+                placeholder={t("writeHere")}
+                required
               />
             )}
           </div>
         ))}
-        <div className="sm:col-span-full flex justify-end">
-          <Button type="submit">{t("send")}</Button>
+        <div className="flex justify-end sm:col-span-full">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? tCommon("loading") + "..." : t("send")}
+          </Button>
         </div>
       </form>
     </div>
   );
-}
+};
 
-function ContactInfo({ title, value }: { title: string; value: string }) {
+const ContactInfo: React.FC<{ title: string; value: string }> = ({
+  title,
+  value,
+}) => {
   return (
-    <div className="text-right ">
-      <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 leading-[1.33em]">
+    <div className="text-right">
+      <p className="text-[24px] leading-[1.33em] text-primary/60 sm:text-[22px] 1920:text-[26px]">
         {title}
       </p>
-      <p className="text-[18px] sm:text-[18px] 1920:text-[32px] text-primary leading-[1.33em]">
+      <p className="text-[18px] leading-[1.33em] text-primary sm:text-[18px] 1920:text-[32px]">
         {value}
       </p>
     </div>
   );
-}
+};
+
+export default ContactSection;

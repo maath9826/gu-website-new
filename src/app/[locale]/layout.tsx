@@ -9,6 +9,7 @@ import Footer from "../_components/Footer";
 
 import Script from "next/script";
 import CommonSections from "@/components/common-sections/CommonSections";
+import SuccessModal from "@/components/modals/SuccessModal";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -45,6 +46,7 @@ export default function RootLayout({
           {children}
           <CommonSections></CommonSections>
           <Footer></Footer>
+          <SuccessModal />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,32 +1,27 @@
 "use client";
 
-import { useRef } from "react";
-import ScrollableContainerUpperSection from "../scrollable-container/UpperSection";
-import { ScrollableCardsContainer } from "../scrollable-container/ScrollableContainer";
-import ScrollElement from "../ScrollElement";
+import React, { useRef } from "react";
+import { useTranslations } from "next-intl";
+import { EService } from "@/lib/types";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollElement from "@/components/ScrollElement";
 import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import Wrapper from "../Wrapper";
-import Section from "../Section";
 
-export default function EServicesSection() {
+interface EServicesSectionProps {
+  eServices: EService[] | undefined;
+}
+
+const EServicesSection: React.FC<EServicesSectionProps> = ({ eServices }) => {
+  const t = useTranslations("Common");
+  const tHome = useTranslations("Home");
   const containerRef = useRef<HTMLDivElement>(null);
-  const services = [
-    {
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-      title: "بوابة الطالب",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/news.svg",
-      title: "بوابة التدريسين",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/about.svg",
-      title: "بوابة الخريجين",
-      href: "/",
-    },
-  ];
+
+  if (!eServices || eServices.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mt-[60px] sm:mt-[150px]">
@@ -36,8 +31,8 @@ export default function EServicesSection() {
             <ScrollableContainerUpperSection
               arrowButtonsClass="sm:hidden"
               containerRef={containerRef}
-              title2="جامعة كلكامش"
-              title="الخدمات الالكترونية"
+              title2={t("gilgameshUniversity")}
+              title={tHome("eServices")}
               className="sm:w-fit sm:items-center"
             />
           </div>
@@ -49,13 +44,17 @@ export default function EServicesSection() {
             ref={containerRef}
             className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
           >
-            {services.map((service, index) => (
+            {eServices.map((service, index) => (
               <ScrollElement
                 className="flex justify-center sm:w-auto"
                 key={index}
               >
                 <CommonCard
-                  el={service}
+                  el={{
+                    href: service.link,
+                    imgUrl: service.icon,
+                    title: service.title,
+                  }}
                   index={index}
                   uniqueFirstCard={false}
                 />
@@ -66,4 +65,6 @@ export default function EServicesSection() {
       </Section>
     </div>
   );
-}
+};
+
+export default EServicesSection;

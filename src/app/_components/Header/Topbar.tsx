@@ -31,7 +31,7 @@ const TopbarNavigation: React.FC = () => {
   return (
     <ul className="flex items-center">
       {navItems.map((item, index) => (
-        <React.Fragment key={item.path}>
+        <React.Fragment key={index}>
           {index !== 0 && (
             <div className="mx-2.5 hidden h-4 border-e border-white/10 sm:block"></div>
           )}

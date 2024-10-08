@@ -26,7 +26,11 @@ export type ComponentProps = React.PropsWithChildren<
 // React.forwardRef<HTMLButtonElement, ButtonProps>(
 //   ({ className, variant, size, asChild = false, ...props }, ref) =
 
-export type CardData = { href: string; imgUrl: string; title: string };
+export type CardData = {
+  href: string;
+  imgUrl: string;
+  title: string;
+};
 
 export type TransNewsItem = {
   id: number;
@@ -99,4 +103,158 @@ export interface GoalItem {
 
 export interface GoalsResponse {
   goals: RawGoalItem[];
+}
+
+export interface RawCollegeCard {
+  id: number;
+  ar_title: string;
+  en_title?: string;
+  ar_name: string | null;
+  en_name?: string | null;
+  image: string | null;
+  ar_description: string;
+  en_description?: string;
+  visible: number;
+}
+
+export interface CollegeCard {
+  id: number;
+  title: string;
+  name: string | null;
+  image: string | null;
+  description: string;
+  visible: number;
+}
+
+export interface RawDepartment {
+  id: number;
+  colleges_id: number;
+  ar_name: string;
+  en_name?: string;
+  ar_description: string;
+  en_description?: string;
+  image: string;
+  ar_m_name: string;
+  en_m_name?: string;
+  ar_m_description: string;
+  en_m_description?: string;
+  college_ar_name: string;
+  college_en_name?: string;
+  m_image: string;
+  depcol: string;
+}
+
+export interface Department {
+  id: number;
+  colleges_id: number;
+  name: string;
+  description: string;
+  image: string;
+  m_name: string;
+  m_description: string;
+  college_name: string;
+  m_image: string;
+  depcol: string;
+}
+
+export interface RawCollege {
+  id: number;
+  ar_name: string;
+  en_name?: string;
+  ar_description: string;
+  en_description?: string;
+  image: string;
+  icon: string;
+  depcol: string;
+  cards: RawCollegeCard[];
+  departments: RawDepartment[];
+  staff: any[];
+  news: any[];
+  goals: any[];
+  graduation_projects: any[];
+}
+
+export interface College {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  icon: string;
+  depcol: string;
+  cards: CollegeCard[];
+  departments: Department[];
+  staff: any[];
+  news: any[];
+  goals: any[];
+  graduation_projects: any[];
+}
+
+export interface CollegesResponse {
+  colleges: RawCollege[];
+}
+
+export interface RawRanking {
+  id: number;
+  en_name: string;
+  ar_name: string;
+  link: string;
+  image: string;
+  num: string;
+}
+
+export interface Ranking {
+  id: number;
+  name: string;
+  link: string;
+  image: string;
+  num: string;
+}
+
+export type RankingsResponse = RawRanking[];
+
+export interface RawEService {
+  id: number;
+  en_title: string;
+  ar_title: string;
+  icon: string;
+  link: string;
+}
+
+export interface EService {
+  id: number;
+  title: string;
+  icon: string;
+  link: string;
+}
+
+export type EServicesResponse = RawEService[];
+
+export interface RawContact {
+  id: number;
+  email: string;
+  phone: string;
+  en_address: string;
+  ar_address: string;
+  en_working_hours: string;
+  ar_working_hours: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
+}
+
+export interface Contact {
+  id: number;
+  email: string;
+  phone: string;
+  address: string;
+  working_hours: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
+}
+
+export interface ContactsResponse {
+  contacts: RawContact[];
 }
