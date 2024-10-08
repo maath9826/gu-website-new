@@ -1,12 +1,12 @@
-"use client";
-
 import OurGoals from "../_components/OurGoals/OurGoals";
-import News from "../_components/News/News";
-import Statistics from "../_components/Statistics";
+import News from "../_components/News/News/News";
+import Statistics from "../_components/Statistics/Statistics";
 import HomepageCards from "../_components/CardsSection/HomepageCards";
 import OurColleges from "../_components/OurColleges/OurColleges";
 import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
 import SliderBg from "@/components/page/SliderBg";
+import dynamic from "next/dynamic";
+import { cookies } from "next/headers";
 
 export default function Home() {
   return (

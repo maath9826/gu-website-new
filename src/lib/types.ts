@@ -4,14 +4,6 @@ export type SliderElement = {
   subTitle: string;
 };
 
-export type NewsItem = {
-  id: number;
-  title: string;
-  subtitle: string;
-  content: string;
-  image: string;
-};
-
 export interface MenuItem {
   path?: string;
   label: string;
@@ -63,3 +55,48 @@ export type Location = {
   phoneNumbers: string[];
   googleMapsLink: string;
 };
+
+// types.ts
+
+export interface NewsItem {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}
+
+export interface NewsResponse {
+  landingpage: NewsItem[];
+}
+
+export interface StatisticsItem {
+  id: number;
+  students: number;
+  administrative_staff: number;
+  technical_and_professional_staff: number;
+  faculty_members: number;
+}
+
+export interface StatisticsResponse {
+  statistics: StatisticsItem[];
+}
+
+export interface RawGoalItem {
+  id: number;
+  ar_text: string;
+  en_text: string;
+  ar_description: string;
+  en_description: string;
+  image: string;
+}
+
+export interface GoalItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+export interface GoalsResponse {
+  goals: RawGoalItem[];
+}

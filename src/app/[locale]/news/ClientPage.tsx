@@ -1,7 +1,7 @@
 "use client";
 
 import MainNewsCard from "@/app/_components/News/MainNewsCard";
-import NewsSection from "@/app/_components/News/News";
+import NewsSection from "@/app/_components/News/News/News";
 import NewsCard from "@/app/_components/News/NewsCard";
 import NewsTags from "@/app/_components/News/NewsTags";
 import PageWithFirstSection from "@/components/page/Page";

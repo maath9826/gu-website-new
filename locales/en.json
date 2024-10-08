@@ -12,6 +12,7 @@
     "centerizedTitle": "Your Centered Title Here",
     "download": "Download",
     "loading": "Downloading",
+    "readMore": "Read More",
     "cards": {
       "uniLife": "University Life",
       "about": "About the University",
@@ -148,89 +149,16 @@
     }
   },
   "Home": {
-    "hero": {
-      "forFastDelivery": "For fast delivery",
-      "title": "Anytime anywhere!",
-      "subtitle": "At AlZaeem Company, we are committed to establishing effective partnerships with supporting companies, working together to advance the sector, develop it, and equip it with various capabilities and technical expertise. Our goal is to be the leading company in providing postal transport services regionally and globally.",
-      "cta": {
-        "bookSpace": "Book your space now",
-        "attendanceTickets": "Attendance Tickets"
-      }
+    "statistics": {
+      "title": "University of Gilgamesh Statistics",
+      "students": "Number of students",
+      "facultyMembers": "Number of faculty members",
+      "administrativeStaff": "Number of administrative staff",
+      "technicalStaff": "Number of technical and support staff"
     },
-    "aboutUs": {
-      "title": "About AlZaeem",
-      "description": "In 2020, AlZaeem marked its inaugural launch, emerging from the Iraqi market's need for public transport and express mail services. Founded by a youthful team aware of the challenges within the local market, especially in the postal transport sector, the company has diligently provided solutions, taking initiative and leadership. Since its inception, Al-Za'eem has navigated numerous trials and challenges, including the COVID-19 pandemic with its associated lockdowns, curfews, and transportation disruptions, alongside global trade challenges. These obstacles did not deter the company and its founders, who understood that perseverance would pave the way forward and completing the journey was essential to achieving their goals.",
-      "readMore": "Read More"
-    },
-    "ourPartners": {
-      "title": "Our Partners in Success"
-    },
-    "ourServices": {
-      "title": "Our services",
-      "description": "AlZaeem specializes in cargo transportation and express mail delivery, offering specialized services driven by market demands and customer needs to deliver exceptional service in this sector.",
-      "services": [
-        {
-          "title": "Express Mail Delivery",
-          "description": "Delivery within less than 24 hours!"
-        },
-        {
-          "title": "Instant Accountability Service",
-          "description": "Instant accountability wherever and whenever the client needs."
-        },
-        {
-          "title": "Mail receiving service",
-          "description": "Direct mail pickup from the client's location."
-        },
 
-        {
-          "title": "Storage and preparation service",
-          "description": "Providing storage service for customers, and preparing goods."
-        },
-        {
-          "title": "Your marketing consultant service",
-          "description": "For training and supporting young entrepreneurs."
-        },
-        {
-          "title": "Delivery of special orders",
-          "description": "Sample text, sample text, sample text, sample text."
-        }
-      ]
-    },
-    "ourPhilosophy": {
-      "title": "The company's philosophy",
-      "subtitle": "We bear the responsibility of developing the sector.",
-      "description": "AlZaeem Company pursues the establishment of effective partnerships with supporting companies, collaborating to propel the sector forward and enhance it with diverse capabilities, expertise, and technological capacities.",
-      "stats": [
-        { "number": "1,200+", "label": "Clients" },
-        { "number": "20+", "label": "Branches" },
-        { "number": "200+", "label": "Number of Employees" },
-        { "number": "315+", "label": "Sales Representative" }
-      ]
-    },
     "ourGoals": {
-      "title": "The company's objectives",
-      "goals": [
-        {
-          "title": "Customer satisfaction",
-          "description": "Achieving exceptional standards in transport and mail delivery, with a focus on maximizing customer satisfaction."
-        },
-        {
-          "title": "Growth",
-          "description": "Expanding regionally and globally."
-        },
-        {
-          "title": "Continuous evolution",
-          "description": "Ongoing initiative in the development of the transportation sector, postal delivery, and sales."
-        },
-        {
-          "title": "Digital transformation",
-          "description": "Solidifying digital transformation within the company and the sector."
-        },
-        {
-          "title": "Work environment",
-          "description": "Creating the optimal work environment."
-        }
-      ]
+      "title": "University of Gilgamesh Goals"
     },
 
     "news": {

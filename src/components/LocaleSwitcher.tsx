@@ -16,8 +16,8 @@ import {
   type Locale,
 } from "@/i18n.config";
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
 import useTextDirection from "../app/_hooks/useTextDirection";
+import Cookies from "js-cookie";
 
 export default function LocaleSwitcher({ locale }: { locale: Locale }) {
   const t = useTranslations("Header.localSwitcher");
@@ -27,8 +27,7 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
   const dir = useTextDirection();
 
   const changeLocale = (newLocale: Locale) => {
-    // console.log("changeLocale");
-
+    Cookies.set("language", newLocale, { expires: 365 });
     router.replace(pathname, { locale: newLocale });
   };
 
@@ -41,7 +40,7 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
           <></>
           // <i className="fa-solid fa-chevron-down text-[16px] text-black/20"></i>
         }
-        className="text-[12px] leading-none shadow-none outline-none ring-0  sm:p-0 sm:px-0 bg-transparent  p-0 font-light w-[34px] h-[22px] border rounded-[4px] items-center justify-center text-white "
+        className="h-[22px] w-[34px] items-center justify-center rounded-[4px] border bg-transparent p-0 text-[12px] font-light leading-none text-white shadow-none outline-none ring-0 sm:p-0 sm:px-0"
         style={{ boxShadow: "none" }}
       >
         <SelectValue placeholder={t("select a language")} />

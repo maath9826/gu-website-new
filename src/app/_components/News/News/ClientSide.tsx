@@ -1,23 +1,24 @@
-import React, { useRef } from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import Section from "../../../components/Section";
-import ScrollArrows from "@/components/ScrollArrows";
-import { Button } from "@/components/ui/button";
-import { twMerge } from "tailwind-merge";
-import MainNewsCard from "./MainNewsCard";
-import NewsCard from "./NewsCard";
+import Section from "../../../../components/Section";
+import MainNewsCard from "../MainNewsCard";
+import NewsCard from "../NewsCard";
 import { NewsItem } from "@/lib/types";
-import { newsItems } from "@/lib/data";
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
+import { fetchNews } from "@/lib/api_services/news-apis";
 
-const NewsSection: React.FC = () => {
+const NewsSectionClientSide: React.FC<{ newsItems: NewsItem[] }> = ({
+  newsItems,
+}) => {
   const t = useTranslations("Home.news");
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Section>
+    <Section className="mb-[60px] sm:mb-[200px] 1920:mb-[280px]">
       <div className="flex-col">
         <ScrollableContainerUpperSection
           title={t("title")}
@@ -28,7 +29,7 @@ const NewsSection: React.FC = () => {
 
         <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
           <ScrollableCardsContainer ref={containerRef}>
-            {newsItems([]).map((item, index) => (
+            {newsItems.map((item, index) => (
               <ScrollElement className="flex justify-center" key={index}>
                 <MainNewsCard item={item} />
               </ScrollElement>
@@ -38,11 +39,9 @@ const NewsSection: React.FC = () => {
             className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
             wrapperClass="sm:flex hidden"
           >
-            {newsItems([])
-              .slice(1, 4)
-              .map((item) => (
-                <NewsCard key={item.id} item={item} />
-              ))}
+            {newsItems.slice(1, 4).map((item) => (
+              <NewsCard key={item.id} item={item} />
+            ))}
           </Section>
         </div>
       </div>
@@ -50,4 +49,4 @@ const NewsSection: React.FC = () => {
   );
 };
 
-export default NewsSection;
+export default NewsSectionClientSide;

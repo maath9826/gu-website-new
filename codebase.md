@@ -161,48 +161,6 @@ export default config;
 
 ```
 
-# README.md
-
-```md
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-\`\`\`bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-\`\`\`
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-```
-
 # postcss.config.mjs
 
 ```mjs
@@ -299,17 +257,6 @@ export default withNextIntl(nextConfig);
 
 ```
 
-# next-env.d.ts
-
-```ts
-/// <reference types="next" />
-/// <reference types="next/image-types/global" />
-
-// NOTE: This file should not be edited
-// see https://nextjs.org/docs/basic-features/typescript for more information.
-
-```
-
 # components.json
 
 ```json
@@ -338,52 +285,6 @@ export default withNextIntl(nextConfig);
 {
   "plugins": ["prettier-plugin-tailwindcss"]
 }
-
-```
-
-# .gitignore
-
-```
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-.vscode/
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-.aidigestignore
 
 ```
 
@@ -1728,7 +1629,8 @@ export const { Link, usePathname, useRouter } =
 
 ```json
 {
-  "i18n-ally.localesPaths": ["locales"]
+  "i18n-ally.localesPaths": ["locales"],
+  "i18n-ally.keystyle": "nested"
 }
 
 ```
@@ -2569,6 +2471,468 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
 
 ```
 
+# src\app\globals.css
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Expo Sans Arabic";
+  src: url("/fonts/EXPOSANSARABIC-BOLD.TTF") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Expo Sans Arabic";
+  src: url("/fonts/EXPOSANSARABIC-BOOK.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Expo Sans Arabic";
+  src: url("/fonts/EXPOSANSARABIC-LIGHT.TTF") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Expo Sans Arabic";
+  src: url("/fonts/EXPOSANSARABIC-MEDIUM.TTF") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url("/fonts/NeurialGrotesk-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url("/fonts/NeurialGrotesk-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url("/fonts/NeurialGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url("/fonts/NeurialGrotesk-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Neurial Grotesk";
+  src: url("/fonts/NeurialGrotesk-Extrabold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    /* colors */
+    --background: 0 0% 96%;
+    --foreground: 0, 0%, 0%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 213 100% 24%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 39, 100%, 61%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 170, 3%, 40%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 85 6% 86%;
+    --input: 85 6% 86%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* init */
+    --screen-width: 100vw;
+
+    /* others */
+    --navbar-height: 174px;
+  }
+
+  :root[dir="ltr"] {
+    font-family: "Neurial Grotesk", sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply overflow-x-clip;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@page {
+  size: auto;
+  margin: 80px;
+}
+
+@print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+i {
+  @apply leading-none;
+}
+
+:root {
+  @apply text-center sm:text-start;
+  font-family: "Expo Sans Arabic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  --hero-bottom-image-height: 22.25rem;
+  --news-image-height: 7.1875rem;
+}
+
+input[type="tel" i] {
+  direction: inherit;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.title {
+  @apply box-border text-center text-[24px] font-normal leading-[32px] tracking-[-0.48px] sm:text-start sm:text-[42px] sm:font-medium sm:leading-[68px] sm:tracking-normal;
+}
+
+.title-lg {
+  @apply text-center text-[32px] font-medium leading-[55px] tracking-[-0.03em] sm:text-start sm:text-[62px] sm:leading-[75px] ltr:leading-[45px] ltr:sm:leading-[75px];
+}
+
+[role="radiogroup"] {
+  direction: inherit;
+}
+
+.pagination-button {
+  @apply h-[42px] max-h-none w-[42px] rounded-[10px] border bg-white p-0 text-[14px] font-normal text-black sm:h-[60px] sm:w-[60px] sm:rounded-[16px] sm:text-[22px];
+}
+
+.disabled-scroll-button {
+  @apply pointer-events-none bg-white;
+}
+.disabled-scroll-button.slider-bg-arrows {
+  @apply pointer-events-none bg-[#D9D9D9]/30;
+}
+
+.scroll-button {
+  @apply h-[31px] w-[31px] rounded-full text-[18px] text-foreground sm:h-[36px] sm:!w-[36px] sm:text-[18px] 1920:h-[48px] 1920:!w-[48px] 1920:text-[24px];
+}
+
+.scroller {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+:root[dir="ltr"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+:root[dir="rtl"] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scrollRTL var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller {
+  --_animation-duration: 30s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 4px));
+  }
+}
+@keyframes scrollRTL {
+  to {
+    transform: translate(calc(50% + 4px));
+  }
+}
+
+input[type="tel" i] {
+  direction: inherit;
+}
+
+input[type="email"]:not(:placeholder-shown),
+input[type="tel"]:not(:placeholder-shown),
+input[type="number"]:not(:placeholder-shown),
+input[type="text"][inputmode="email"]:not(:placeholder-shown),
+input[type="text"][inputmode="tel"]:not(:placeholder-shown),
+input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
+  direction: ltr;
+}
+
+.title {
+  @apply text-[22px] font-bold leading-[1.25em] sm:text-[48px];
+}
+
+.title-sm {
+  @apply mb-[11px] text-[16px] font-bold leading-[1.25em] text-secondary sm:text-[26px];
+}
+
+.navbar-inclusive-background {
+  @apply absolute top-0 h-full sm:-top-[var(--navbar-height)] sm:h-[calc(100%+var(--navbar-height))];
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes vanish {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+/*  editor styles */
+.tiptap {
+  outline: none;
+  overflow: auto;
+  color: hsl(var(--primary));
+}
+
+.tiptap :first-child {
+  margin-top: 0;
+}
+
+/* List styles */
+.tiptap ul,
+.tiptap ol {
+  padding: 0 1rem;
+  margin: 1.25rem 1rem 1.25rem 0.4rem;
+}
+
+.tiptap ul li p,
+.tiptap ol li p,
+.tiptap p {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+  min-height: 1rem;
+}
+
+.tiptap p {
+  margin: 0 !important;
+}
+
+/* Heading styles */
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  font-weight: 700;
+  line-height: 135%;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tiptap h1 {
+  font-size: 1.4rem;
+}
+
+.tiptap h2 {
+  font-size: 1.2rem;
+}
+
+.tiptap h3 {
+  font-size: 1.1rem;
+}
+
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  font-size: 1rem;
+}
+
+/* Code and preformatted text styles */
+.tiptap code {
+  background-color: ghostwhite;
+  border-radius: 0.4rem;
+  color: var(--black);
+  font-size: 0.85rem;
+  padding: 0.25em 0.3em;
+}
+
+.tiptap pre {
+  background: var(--black);
+  border-radius: 0.5rem;
+  color: var(--white);
+  font-family: "JetBrainsMono", monospace;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+}
+
+.tiptap pre code {
+  background: none;
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.tiptap blockquote {
+  border-left: 3px solid gray;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 1px solid gray;
+  margin: 2rem 0;
+}
+
+/* Table-specific styling */
+.tiptap table {
+  border-collapse: collapse;
+  margin: 0;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+  font-weight: 400 !important;
+}
+
+.tiptap table td,
+.tiptap table th {
+  box-sizing: border-box;
+  min-width: 1em;
+  padding: 6px 8px;
+  position: relative;
+  vertical-align: top;
+  text-align: start;
+  font-weight: 400 !important;
+}
+
+.tiptap table td > *,
+.tiptap table th > * {
+  margin-bottom: 0;
+}
+
+.tiptap table th {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 20px;
+}
+
+.tiptap table tbody tr:nth-child(2) td {
+  padding-top: 20px;
+}
+
+.tiptap table td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tiptap table .selectedCell:after {
+  background: lavender;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.tiptap table .column-resize-handle {
+  background-color: red;
+  bottom: -2px;
+  pointer-events: none;
+  position: absolute;
+  right: -2px;
+  top: 0;
+  width: 1px;
+}
+
+.tiptap .tableWrapper {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.tiptap.resize-cursor {
+  cursor: ew-resize;
+  cursor: col-resize;
+}
+
+```
+
+# src\app\favicon.ico
+
+This is a binary file of the type: Binary
+
 # src\components\Wrapper.tsx
 
 ```tsx
@@ -3382,468 +3746,6 @@ export default function FileOperations({
 
 ```
 
-# src\app\globals.css
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-  font-family: "Expo Sans Arabic";
-  src: url("/fonts/EXPOSANSARABIC-BOLD.TTF") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Expo Sans Arabic";
-  src: url("/fonts/EXPOSANSARABIC-BOOK.TTF") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Expo Sans Arabic";
-  src: url("/fonts/EXPOSANSARABIC-LIGHT.TTF") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Expo Sans Arabic";
-  src: url("/fonts/EXPOSANSARABIC-MEDIUM.TTF") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Neurial Grotesk";
-  src: url("/fonts/NeurialGrotesk-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Neurial Grotesk";
-  src: url("/fonts/NeurialGrotesk-Light.otf") format("opentype");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Neurial Grotesk";
-  src: url("/fonts/NeurialGrotesk-Medium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Neurial Grotesk";
-  src: url("/fonts/NeurialGrotesk-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Neurial Grotesk";
-  src: url("/fonts/NeurialGrotesk-Extrabold.otf") format("opentype");
-  font-weight: 800;
-  font-style: normal;
-}
-
-@layer base {
-  :root {
-    /* colors */
-    --background: 0 0% 96%;
-    --foreground: 0, 0%, 0%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 213 100% 24%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 39, 100%, 61%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 170, 3%, 40%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 85 6% 86%;
-    --input: 85 6% 86%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-
-    /* init */
-    --screen-width: 100vw;
-
-    /* others */
-    --navbar-height: 174px;
-  }
-
-  :root[dir="ltr"] {
-    font-family: "Neurial Grotesk", sans-serif;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  html {
-    @apply overflow-x-clip;
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@page {
-  size: auto;
-  margin: 80px;
-}
-
-@print {
-  .no-print {
-    display: none !important;
-  }
-}
-
-i {
-  @apply leading-none;
-}
-
-:root {
-  @apply text-center sm:text-start;
-  font-family: "Expo Sans Arabic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  --hero-bottom-image-height: 22.25rem;
-  --news-image-height: 7.1875rem;
-}
-
-input[type="tel" i] {
-  direction: inherit;
-}
-
-.hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
-
-.title {
-  @apply box-border text-center text-[24px] font-normal leading-[32px] tracking-[-0.48px] sm:text-start sm:text-[42px] sm:font-medium sm:leading-[68px] sm:tracking-normal;
-}
-
-.title-lg {
-  @apply text-center text-[32px] font-medium leading-[55px] tracking-[-0.03em] sm:text-start sm:text-[62px] sm:leading-[75px] ltr:leading-[45px] ltr:sm:leading-[75px];
-}
-
-[role="radiogroup"] {
-  direction: inherit;
-}
-
-.pagination-button {
-  @apply h-[42px] max-h-none w-[42px] rounded-[10px] border bg-white p-0 text-[14px] font-normal text-black sm:h-[60px] sm:w-[60px] sm:rounded-[16px] sm:text-[22px];
-}
-
-.disabled-scroll-button {
-  @apply pointer-events-none bg-white;
-}
-.disabled-scroll-button.slider-bg-arrows {
-  @apply pointer-events-none bg-[#D9D9D9]/30;
-}
-
-.scroll-button {
-  @apply h-[31px] w-[31px] rounded-full text-[18px] text-foreground sm:h-[36px] sm:!w-[36px] sm:text-[18px] 1920:h-[48px] 1920:!w-[48px] 1920:text-[24px];
-}
-
-.scroller {
-  overflow: hidden;
-  -webkit-mask: linear-gradient(
-    90deg,
-    transparent,
-    white 20%,
-    white 80%,
-    transparent
-  );
-  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-}
-
-:root[dir="ltr"] .scroller__inner {
-  width: max-content;
-  flex-wrap: nowrap;
-  animation: scroll var(--_animation-duration, 40s)
-    var(--_animation-direction, forwards) linear infinite;
-}
-
-:root[dir="rtl"] .scroller__inner {
-  width: max-content;
-  flex-wrap: nowrap;
-  animation: scrollRTL var(--_animation-duration, 40s)
-    var(--_animation-direction, forwards) linear infinite;
-}
-
-.scroller {
-  --_animation-duration: 30s;
-}
-
-@keyframes scroll {
-  to {
-    transform: translate(calc(-50% - 4px));
-  }
-}
-@keyframes scrollRTL {
-  to {
-    transform: translate(calc(50% + 4px));
-  }
-}
-
-input[type="tel" i] {
-  direction: inherit;
-}
-
-input[type="email"]:not(:placeholder-shown),
-input[type="tel"]:not(:placeholder-shown),
-input[type="number"]:not(:placeholder-shown),
-input[type="text"][inputmode="email"]:not(:placeholder-shown),
-input[type="text"][inputmode="tel"]:not(:placeholder-shown),
-input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
-  direction: ltr;
-}
-
-.title {
-  @apply text-[22px] font-bold leading-[1.25em] sm:text-[48px];
-}
-
-.title-sm {
-  @apply mb-[11px] text-[16px] font-bold leading-[1.25em] text-secondary sm:text-[26px];
-}
-
-.navbar-inclusive-background {
-  @apply absolute top-0 h-full sm:-top-[var(--navbar-height)] sm:h-[calc(100%+var(--navbar-height))];
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes vanish {
-  from {
-    opacity: 1;
-    display: block;
-  }
-  to {
-    opacity: 0;
-    display: none;
-  }
-}
-
-/*  editor styles */
-.tiptap {
-  outline: none;
-  overflow: auto;
-  color: hsl(var(--primary));
-}
-
-.tiptap :first-child {
-  margin-top: 0;
-}
-
-/* List styles */
-.tiptap ul,
-.tiptap ol {
-  padding: 0 1rem;
-  margin: 1.25rem 1rem 1.25rem 0.4rem;
-}
-
-.tiptap ul li p,
-.tiptap ol li p,
-.tiptap p {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 36px;
-  min-height: 1rem;
-}
-
-.tiptap p {
-  margin: 0 !important;
-}
-
-/* Heading styles */
-.tiptap h1,
-.tiptap h2,
-.tiptap h3,
-.tiptap h4,
-.tiptap h5,
-.tiptap h6 {
-  font-weight: 700;
-  line-height: 135%;
-}
-
-.tiptap h1,
-.tiptap h2,
-.tiptap h3 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.tiptap h1 {
-  font-size: 1.4rem;
-}
-
-.tiptap h2 {
-  font-size: 1.2rem;
-}
-
-.tiptap h3 {
-  font-size: 1.1rem;
-}
-
-.tiptap h4,
-.tiptap h5,
-.tiptap h6 {
-  font-size: 1rem;
-}
-
-/* Code and preformatted text styles */
-.tiptap code {
-  background-color: ghostwhite;
-  border-radius: 0.4rem;
-  color: var(--black);
-  font-size: 0.85rem;
-  padding: 0.25em 0.3em;
-}
-
-.tiptap pre {
-  background: var(--black);
-  border-radius: 0.5rem;
-  color: var(--white);
-  font-family: "JetBrainsMono", monospace;
-  margin: 1.5rem 0;
-  padding: 0.75rem 1rem;
-}
-
-.tiptap pre code {
-  background: none;
-  color: inherit;
-  font-size: 0.8rem;
-  padding: 0;
-}
-
-.tiptap blockquote {
-  border-left: 3px solid gray;
-  margin: 1.5rem 0;
-  padding-left: 1rem;
-}
-
-.tiptap hr {
-  border: none;
-  border-top: 1px solid gray;
-  margin: 2rem 0;
-}
-
-/* Table-specific styling */
-.tiptap table {
-  border-collapse: collapse;
-  margin: 0;
-  overflow: hidden;
-  table-layout: fixed;
-  width: 100%;
-  font-weight: 400 !important;
-}
-
-.tiptap table td,
-.tiptap table th {
-  box-sizing: border-box;
-  min-width: 1em;
-  padding: 6px 8px;
-  position: relative;
-  vertical-align: top;
-  text-align: start;
-  font-weight: 400 !important;
-}
-
-.tiptap table td > *,
-.tiptap table th > * {
-  margin-bottom: 0;
-}
-
-.tiptap table th {
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 20px;
-}
-
-.tiptap table tbody tr:nth-child(2) td {
-  padding-top: 20px;
-}
-
-.tiptap table td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.tiptap table .selectedCell:after {
-  background: lavender;
-  content: "";
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 2;
-}
-
-.tiptap table .column-resize-handle {
-  background-color: red;
-  bottom: -2px;
-  pointer-events: none;
-  position: absolute;
-  right: -2px;
-  top: 0;
-  width: 1px;
-}
-
-.tiptap .tableWrapper {
-  margin: 1.5rem 0;
-  overflow-x: auto;
-}
-
-.tiptap.resize-cursor {
-  cursor: ew-resize;
-  cursor: col-resize;
-}
-
-```
-
-# src\app\favicon.ico
-
-This is a binary file of the type: Binary
-
 # public\js\scrollbarWidth.js
 
 ```js
@@ -3956,6 +3858,534 @@ const useCommonStore = create<CommonState>((set) => ({
 }));
 
 export default useCommonStore;
+
+```
+
+# src\app\_hooks\useTextDirection.ts
+
+```ts
+import { useLocale } from "next-intl";
+import { isRtlLang } from "rtl-detect";
+
+export type TextDirection = "ltr" | "rtl";
+
+export default function useTextDirection(): TextDirection {
+  const locale = useLocale();
+  return isRtlLang(locale) ? "rtl" : "ltr";
+}
+
+```
+
+# src\app\_hooks\useScrollControl.ts
+
+```ts
+import { RefObject, useCallback, useState } from "react";
+
+function useScrollControl({
+  containerRef,
+  useMultiples = false,
+  baseScrollAmount,
+  resetTimer,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+  useMultiples?: boolean;
+  baseScrollAmount?: number;
+  resetTimer?: () => void;
+}) {
+  const [canScrollEnd, setCanScrollEnd] = useState(false);
+  const [canScrollStart, setCanScrollStart] = useState(true);
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+
+  const baseScrollAmountFallback = 150;
+
+  const handleScroll = useCallback(() => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
+
+      if (isRTL) {
+        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollStart(Math.abs(scrollLeft) > 0);
+      } else {
+        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollEnd(Math.abs(scrollLeft) > 0);
+      }
+      setLastScrollPosition(Math.abs(scrollLeft));
+    }
+  }, [containerRef]);
+
+  const scroll = useCallback(
+    ({ direction, isLTR }: ScrollParams) => {
+      if (containerRef.current) {
+        if (resetTimer) resetTimer();
+
+        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+
+        let targetScroll;
+
+        if (useMultiples) {
+          const currentMultiple = Math.round(
+            Math.abs(scrollLeft) /
+              (baseScrollAmount ?? containerRef.current.clientWidth)
+          );
+
+          targetScroll =
+            (currentMultiple +
+              (isLTR
+                ? direction === "right"
+                  ? 1
+                  : -1
+                : direction === "left"
+                ? 1
+                : -1)) *
+            (baseScrollAmount ?? containerRef.current.clientWidth);
+          // (baseScrollAmount * (isLTR ? -1 : 1));
+
+          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+          containerRef.current!.scrollTo({
+            left: targetScroll * (isLTR ? 1 : -1),
+            behavior: "smooth",
+          });
+        } else {
+          containerRef.current.scrollBy({
+            left:
+              direction === "left"
+                ? -(baseScrollAmount ?? baseScrollAmountFallback)
+                : baseScrollAmount ?? baseScrollAmountFallback,
+            behavior: "smooth",
+          });
+        }
+      }
+    },
+    [containerRef, useMultiples, baseScrollAmount]
+  );
+
+  const resetScrollPosition = useCallback(() => {
+    if (containerRef.current) {
+      containerRef.current!.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [containerRef, useMultiples, baseScrollAmount]);
+
+  return {
+    canScrollEnd,
+    canScrollStart,
+    containerRef,
+    handleScroll,
+    scroll,
+    resetScrollPosition,
+    lastScrollPosition,
+  };
+}
+
+type ScrollParams = {
+  direction: "right" | "left";
+  isLTR?: boolean;
+};
+
+export default useScrollControl;
+
+```
+
+# src\app\[locale]\page.tsx
+
+```tsx
+"use client";
+
+import OurGoals from "../_components/OurGoals/OurGoals";
+import News from "../_components/News/News";
+import Statistics from "../_components/Statistics";
+import HomepageCards from "../_components/CardsSection/HomepageCards";
+import OurColleges from "../_components/OurColleges/OurColleges";
+import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
+import SliderBg from "@/components/page/SliderBg";
+
+export default function Home() {
+  return (
+    <>
+      <SliderBg></SliderBg>
+      <main className="relative z-30 flex flex-col items-center">
+        <HomepageCards></HomepageCards>
+        <News></News>
+        <Statistics></Statistics>
+        <OurGoals></OurGoals>
+        <OurColleges></OurColleges>
+        <AcademicRankings></AcademicRankings>
+      </main>
+    </>
+  );
+}
+
+```
+
+# src\app\[locale]\layout.tsx
+
+```tsx
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../globals.css";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import { getMessages } from "next-intl/server";
+import useTextDirection from "@/app/_hooks/useTextDirection";
+import Header from "../_components/Header/Header";
+import Footer from "../_components/Footer";
+
+import Script from "next/script";
+import CommonSections from "@/components/common-sections/CommonSections";
+
+export const metadata: Metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+export default function RootLayout({
+  children,
+  params: { locale },
+}: Readonly<{
+  children: React.ReactNode;
+  params: { locale: string };
+}>) {
+  const messages = useMessages();
+  const dir = useTextDirection();
+
+  return (
+    <html lang={locale} dir={dir} suppressHydrationWarning>
+      <head>
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+          rel="stylesheet"
+        />
+
+        <script src="/js/scrollbarWidth.js" />
+      </head>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+          <CommonSections></CommonSections>
+          <Footer></Footer>
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
+
+```
+
+# src\app\_components\Statistics.tsx
+
+```tsx
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import { Statistic } from "@/lib/types";
+import React from "react";
+
+const universityStats: Statistic[] = [
+  {
+    value: 2000,
+    description: "عدد الطلبة",
+  },
+  {
+    value: 65,
+    description: "عدد الكادر التدريسي",
+  },
+  {
+    value: 20,
+    description: "عدد الكادر الإداري",
+  },
+  {
+    value: 20,
+    description: "عدد الكادر الفني والتقني",
+  },
+];
+
+export default function Statistics() {
+  return (
+    <div className="w-full flex flex-col items-end">
+      <Section
+        wrapperClass="bg-[#E6E6E6] py-[60px] sm:py-[94px] 1920:py-[125px] mt-[60px] sm:mt-[200px] 1920:mt-[280px] sm:min-h-[572px] 1920:min-h-[762px]"
+        className="max-w-[306px] "
+      >
+        <Wrapper className="flex flex-col sm:flex-row sm:justify-between">
+          <h2 className="text-[44px] leading-[66px]  sm:text-[64px] sm:leading-[80px] 1920:text-[86px] 1920:leading-[107px] text-primary font-medium text-start mb-[80px] sm:mb-0 sm:max-w-[600px]">
+            احصائيات جامعة كلكامش
+          </h2>
+          <div className="grid grid-cols-[repeat(2,minmax(0,135px))] w-full sm:max-w-[395px] 1920:max-w-[495px] justify-between gap-y-[32px] sm:gap-y-[65px] h-fit">
+            {universityStats.map((el, index) => (
+              <div
+                className="flex flex-col gap-[25px] sm:gap-[12px] 1920:gap-[16px]"
+                key={index}
+              >
+                <span className="text-[32px] sm:text-[30px] 1920:text-[40px] leading-[1.22em] text-primary font-medium font-sans">
+                  {el.value.toLocaleString()}+
+                </span>
+                <h3 className="text-[16px] sm:text-[15px] 1920:text-[20px] leading-[1.22em] text-[#828282]">
+                  {el.description}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </Wrapper>
+      </Section>
+      <img
+        src="/images/home/statistics.jpg"
+        alt="image"
+        className="w-full object-cover sm:max-w-[826px] 1920:max-w-[1102px] sm:-mt-[186px] 1920:-mt-[247px]"
+      />
+    </div>
+  );
+}
+
+```
+
+# src\app\_components\Footer.tsx
+
+```tsx
+"use client";
+
+import Link from "next/link";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import Section from "@/components/Section";
+import { Input } from "@/components/ui/input";
+import Wrapper from "@/components/Wrapper";
+import React from "react";
+import { RELATED_LOCATIONS_ROUTE } from "@/lib/paths";
+
+const Footer = () => {
+  return (
+    <Section
+      as="footer"
+      className="text-white text-start"
+      wrapperClass="bg-[#121315] py-[30px] sm:py-[50px] 1920:py-[50px]"
+    >
+      <Wrapper className="flex flex-col gap-[47px] sm:gap-[69px]">
+        <div className="flex flex-col sm:flex-row justify-between items-start ">
+          <FooterRight />
+          <FooterLeft />
+        </div>
+
+        <div className="w-full border-b border-white"></div>
+
+        <FooterBottom />
+      </Wrapper>
+    </Section>
+  );
+};
+
+const FooterRight = () => {
+  return (
+    <div className="w-full mb-8 sm:mb-0 sm:max-w-[500px] 1920:max-w-[846px]">
+      <img
+        src="/images/logo.png"
+        alt="logo"
+        className="hidden sm:block h-[78px] object-contain mb-[40px] 1920:mb-[69px]"
+      />
+      <h2 className="text-[32px] sm:text-[44px] 1920:text-[71px] font-bold leading-[1.54em]">
+        تحسين مستقبل الناس من خلال العلوم والتكنولوجيا
+      </h2>
+    </div>
+  );
+};
+
+const FooterLeft = () => {
+  const data = [
+    {
+      label: "وزارة التعليم العالي والبحث العلمي",
+      link: "#",
+    },
+    {
+      label: "دائرة التعليم الجامعي الأهلي",
+      link: "#",
+    },
+    {
+      label: "اتحاد الجامعات العربية",
+      link: "#",
+    },
+  ];
+
+  return (
+    <div className="w-full sm:max-w-[450px] 1920:max-w-[487px]">
+      <div className="flex flex-col sm:flex-row gap-[10px] sm:gap-[24px] mb-[58px] sm:mb-[89px]  sm:items-center">
+        <label className="text-[18px] leading-[1.22em]">
+          اشترك بالقائمة البريدية:
+        </label>
+        <Input
+          className="border-b border-white text-white bg-transparent sm:flex-1 max-w-[289px] !ring-0"
+          inputClass="placeholder-white/50 text-[16px] leading-[1.22em] ps-0"
+          placeholder="ادخل بريدك الإلكتروني"
+          suffixIcon={<i className="ri-arrow-left-line text-[22px]"></i>}
+        />
+      </div>
+      <div className="flex flex-col gap-[26px] sm:gap-[36px]">
+        <h3 className="text-[20px] leading-[1.22em] font-bold ">
+          مواقع ذات صلة
+        </h3>
+        <ul className=" flex flex-col gap-[8px] sm:gap-[16px]">
+          {data.map((item, index) => (
+            <li key={index}>
+              <Link
+                target="_blank"
+                href={item.link}
+                className="text-[16px] sm:text-[18px] leading-[1.22em] hover:text-secondary"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          target="_blank"
+          href={RELATED_LOCATIONS_ROUTE}
+          className="text-secondary text-[16px] sm:text-[18px] leading-[1.22em]"
+        >
+          عرض المزيد
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const FooterBottom = () => {
+  type Data = {
+    label: string;
+    link: string;
+  };
+  const data: Data[] = [
+    {
+      label: "الرئيسية",
+      link: "#",
+    },
+    {
+      label: "سياسة الخصوصية",
+      link: "#",
+    },
+    {
+      label: "ملفات تعريف الارتباط",
+      link: "#",
+    },
+    {
+      label: "مواقع ذات صلة",
+      link: "#",
+    },
+  ];
+  return (
+    <div className="flex flex-col items-center gap-[74px] sm:gap-[49px]">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center self-stretch gap-[20px]">
+        <div className="flex flex-col sm:flex-row gap-[20px] sm:gap-[30px] sm:items-center">
+          {data.map((item, index) => (
+            <React.Fragment key={index}>
+              {index != 0 && (
+                <div className="w-[1px] bg-white/20 hidden sm:block self-stretch"></div>
+              )}
+              <Link
+                target="_blank"
+                href={item.link}
+                className="hover:text-secondary text-[16px] leading-[1.35em]"
+              >
+                {item.label}
+              </Link>
+            </React.Fragment>
+          ))}
+        </div>
+        <FooterSocialMedia />
+      </div>
+      <p className="text-sm sm:text-lg">
+        جميع الحقوق محفوظة 2024 © جامعة كلكامش
+      </p>
+    </div>
+  );
+};
+
+const socialMediaLinks = [
+  { icon: "ri-instagram-line", url: "#" },
+  { icon: "ri-facebook-circle-fill", url: "#" },
+  { icon: "ri-linkedin-box-fill", url: "#" },
+  { icon: "ri-youtube-fill", url: "#" },
+];
+
+const FooterSocialMedia = () => {
+  return (
+    <div className="flex gap-[26px] items-center">
+      <span className="text-base sm:text-lg">تابعنا عبر</span>
+      <div className="flex gap-[20px] sm:gap-[24px]">
+        {socialMediaLinks.map((link, index) => (
+          <Link
+            key={index}
+            target="_blank"
+            href={link.url}
+            className="hover:text-secondary text-[24px]"
+          >
+            <i className={link.icon}></i>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+export default Footer;
+
+```
+
+# src\app\_components\AboutUs.tsx
+
+```tsx
+"use client";
+
+import { ABOUT_ROUTE } from "@/lib/paths";
+import React from "react";
+import Section from "../../components/Section";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+
+const AboutUs: React.FC = () => {
+  const t = useTranslations("Home.aboutUs");
+
+  return (
+    <Section
+      id="about-us"
+      className="sm:pt-[120px] sm:pb-[74px] pt-[36px]  px-[12px] relative sm:overflow-clip flex flex-col items-center   sm:px-5 xl:px-0"
+    >
+      <h1 className="title pb-[22px] sm:pb-[32px] relative z-10 ">
+        {t("title")}
+      </h1>
+      <div className="relative z-10">
+        <div className="flex flex-col gap-[40px] sm:gap-[40px] max-w-[351px] sm:max-w-[800px]  sm:px-0">
+          <p className="text-base ltr:leading-[26px] sm:text-justify sm:text-[20px] sm:leading-[36px]">
+            {t("description")}
+          </p>
+          <div className="sm:flex sm:justify-center">
+            <Link href={ABOUT_ROUTE}>
+              <Button
+                variant={"outline"}
+                className="text-primary-300  w-full  sm:w-fit hover:opacity-75 border-primary-300  text-lg py-3 tracking-[-0.004em] inline-flex items-center justify-center text-center border rounded-full transition-opacity duration-200 ease-in-out font-medium"
+              >
+                {t("readMore")}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* desktop */}
+      <img
+        src="https://i.imgur.com/wUfwWfR.png"
+        alt="about us background"
+        className="hidden sm:block absolute top-[-232px] right-[40%] translate-x-[calc(50%-512px)] w-[1878px] min-w-[1878px] h-[1264px] min-h-[1264px] transform rotate-[8.75deg] opacity-20"
+      />
+    </Section>
+  );
+};
+
+export default AboutUs;
 
 ```
 
@@ -5455,445 +5885,6 @@ export default function FirstSection() {
 
 ```
 
-# src\app\_hooks\useTextDirection.ts
-
-```ts
-import { useLocale } from "next-intl";
-import { isRtlLang } from "rtl-detect";
-
-export type TextDirection = "ltr" | "rtl";
-
-export default function useTextDirection(): TextDirection {
-  const locale = useLocale();
-  return isRtlLang(locale) ? "rtl" : "ltr";
-}
-
-```
-
-# src\app\_hooks\useScrollControl.ts
-
-```ts
-import { RefObject, useCallback, useState } from "react";
-
-function useScrollControl({
-  containerRef,
-  useMultiples = false,
-  baseScrollAmount,
-  resetTimer,
-}: {
-  containerRef: RefObject<HTMLDivElement>;
-  useMultiples?: boolean;
-  baseScrollAmount?: number;
-  resetTimer?: () => void;
-}) {
-  const [canScrollEnd, setCanScrollEnd] = useState(false);
-  const [canScrollStart, setCanScrollStart] = useState(true);
-  const [lastScrollPosition, setLastScrollPosition] = useState(0);
-
-  const baseScrollAmountFallback = 150;
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
-
-      if (isRTL) {
-        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollStart(Math.abs(scrollLeft) > 0);
-      } else {
-        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollEnd(Math.abs(scrollLeft) > 0);
-      }
-      setLastScrollPosition(Math.abs(scrollLeft));
-    }
-  }, [containerRef]);
-
-  const scroll = useCallback(
-    ({ direction, isLTR }: ScrollParams) => {
-      if (containerRef.current) {
-        if (resetTimer) resetTimer();
-
-        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-        const maxScroll = scrollWidth - clientWidth;
-
-        let targetScroll;
-
-        if (useMultiples) {
-          const currentMultiple = Math.round(
-            Math.abs(scrollLeft) /
-              (baseScrollAmount ?? containerRef.current.clientWidth)
-          );
-
-          targetScroll =
-            (currentMultiple +
-              (isLTR
-                ? direction === "right"
-                  ? 1
-                  : -1
-                : direction === "left"
-                ? 1
-                : -1)) *
-            (baseScrollAmount ?? containerRef.current.clientWidth);
-          // (baseScrollAmount * (isLTR ? -1 : 1));
-
-          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-          containerRef.current!.scrollTo({
-            left: targetScroll * (isLTR ? 1 : -1),
-            behavior: "smooth",
-          });
-        } else {
-          containerRef.current.scrollBy({
-            left:
-              direction === "left"
-                ? -(baseScrollAmount ?? baseScrollAmountFallback)
-                : baseScrollAmount ?? baseScrollAmountFallback,
-            behavior: "smooth",
-          });
-        }
-      }
-    },
-    [containerRef, useMultiples, baseScrollAmount]
-  );
-
-  const resetScrollPosition = useCallback(() => {
-    if (containerRef.current) {
-      containerRef.current!.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-    }
-  }, [containerRef, useMultiples, baseScrollAmount]);
-
-  return {
-    canScrollEnd,
-    canScrollStart,
-    containerRef,
-    handleScroll,
-    scroll,
-    resetScrollPosition,
-    lastScrollPosition,
-  };
-}
-
-type ScrollParams = {
-  direction: "right" | "left";
-  isLTR?: boolean;
-};
-
-export default useScrollControl;
-
-```
-
-# src\app\_components\Statistics.tsx
-
-```tsx
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-import { Statistic } from "@/lib/types";
-import React from "react";
-
-const universityStats: Statistic[] = [
-  {
-    value: 2000,
-    description: "عدد الطلبة",
-  },
-  {
-    value: 65,
-    description: "عدد الكادر التدريسي",
-  },
-  {
-    value: 20,
-    description: "عدد الكادر الإداري",
-  },
-  {
-    value: 20,
-    description: "عدد الكادر الفني والتقني",
-  },
-];
-
-export default function Statistics() {
-  return (
-    <div className="w-full flex flex-col items-end">
-      <Section
-        wrapperClass="bg-[#E6E6E6] py-[60px] sm:py-[94px] 1920:py-[125px] mt-[60px] sm:mt-[200px] 1920:mt-[280px] sm:min-h-[572px] 1920:min-h-[762px]"
-        className="max-w-[306px] "
-      >
-        <Wrapper className="flex flex-col sm:flex-row sm:justify-between">
-          <h2 className="text-[44px] leading-[66px]  sm:text-[64px] sm:leading-[80px] 1920:text-[86px] 1920:leading-[107px] text-primary font-medium text-start mb-[80px] sm:mb-0 sm:max-w-[600px]">
-            احصائيات جامعة كلكامش
-          </h2>
-          <div className="grid grid-cols-[repeat(2,minmax(0,135px))] w-full sm:max-w-[395px] 1920:max-w-[495px] justify-between gap-y-[32px] sm:gap-y-[65px] h-fit">
-            {universityStats.map((el, index) => (
-              <div
-                className="flex flex-col gap-[25px] sm:gap-[12px] 1920:gap-[16px]"
-                key={index}
-              >
-                <span className="text-[32px] sm:text-[30px] 1920:text-[40px] leading-[1.22em] text-primary font-medium font-sans">
-                  {el.value.toLocaleString()}+
-                </span>
-                <h3 className="text-[16px] sm:text-[15px] 1920:text-[20px] leading-[1.22em] text-[#828282]">
-                  {el.description}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </Wrapper>
-      </Section>
-      <img
-        src="/images/home/statistics.jpg"
-        alt="image"
-        className="w-full object-cover sm:max-w-[826px] 1920:max-w-[1102px] sm:-mt-[186px] 1920:-mt-[247px]"
-      />
-    </div>
-  );
-}
-
-```
-
-# src\app\_components\Footer.tsx
-
-```tsx
-"use client";
-
-import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import Section from "@/components/Section";
-import { Input } from "@/components/ui/input";
-import Wrapper from "@/components/Wrapper";
-import React from "react";
-import { RELATED_LOCATIONS_ROUTE } from "@/lib/paths";
-
-const Footer = () => {
-  return (
-    <Section
-      as="footer"
-      className="text-white text-start"
-      wrapperClass="bg-[#121315] py-[30px] sm:py-[50px] 1920:py-[50px]"
-    >
-      <Wrapper className="flex flex-col gap-[47px] sm:gap-[69px]">
-        <div className="flex flex-col sm:flex-row justify-between items-start ">
-          <FooterRight />
-          <FooterLeft />
-        </div>
-
-        <div className="w-full border-b border-white"></div>
-
-        <FooterBottom />
-      </Wrapper>
-    </Section>
-  );
-};
-
-const FooterRight = () => {
-  return (
-    <div className="w-full mb-8 sm:mb-0 sm:max-w-[500px] 1920:max-w-[846px]">
-      <img
-        src="/images/logo.png"
-        alt="logo"
-        className="hidden sm:block h-[78px] object-contain mb-[40px] 1920:mb-[69px]"
-      />
-      <h2 className="text-[32px] sm:text-[44px] 1920:text-[71px] font-bold leading-[1.54em]">
-        تحسين مستقبل الناس من خلال العلوم والتكنولوجيا
-      </h2>
-    </div>
-  );
-};
-
-const FooterLeft = () => {
-  const data = [
-    {
-      label: "وزارة التعليم العالي والبحث العلمي",
-      link: "#",
-    },
-    {
-      label: "دائرة التعليم الجامعي الأهلي",
-      link: "#",
-    },
-    {
-      label: "اتحاد الجامعات العربية",
-      link: "#",
-    },
-  ];
-
-  return (
-    <div className="w-full sm:max-w-[450px] 1920:max-w-[487px]">
-      <div className="flex flex-col sm:flex-row gap-[10px] sm:gap-[24px] mb-[58px] sm:mb-[89px]  sm:items-center">
-        <label className="text-[18px] leading-[1.22em]">
-          اشترك بالقائمة البريدية:
-        </label>
-        <Input
-          className="border-b border-white text-white bg-transparent sm:flex-1 max-w-[289px] !ring-0"
-          inputClass="placeholder-white/50 text-[16px] leading-[1.22em] ps-0"
-          placeholder="ادخل بريدك الإلكتروني"
-          suffixIcon={<i className="ri-arrow-left-line text-[22px]"></i>}
-        />
-      </div>
-      <div className="flex flex-col gap-[26px] sm:gap-[36px]">
-        <h3 className="text-[20px] leading-[1.22em] font-bold ">
-          مواقع ذات صلة
-        </h3>
-        <ul className=" flex flex-col gap-[8px] sm:gap-[16px]">
-          {data.map((item, index) => (
-            <li key={index}>
-              <Link
-                target="_blank"
-                href={item.link}
-                className="text-[16px] sm:text-[18px] leading-[1.22em] hover:text-secondary"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link
-          target="_blank"
-          href={RELATED_LOCATIONS_ROUTE}
-          className="text-secondary text-[16px] sm:text-[18px] leading-[1.22em]"
-        >
-          عرض المزيد
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-const FooterBottom = () => {
-  type Data = {
-    label: string;
-    link: string;
-  };
-  const data: Data[] = [
-    {
-      label: "الرئيسية",
-      link: "#",
-    },
-    {
-      label: "سياسة الخصوصية",
-      link: "#",
-    },
-    {
-      label: "ملفات تعريف الارتباط",
-      link: "#",
-    },
-    {
-      label: "مواقع ذات صلة",
-      link: "#",
-    },
-  ];
-  return (
-    <div className="flex flex-col items-center gap-[74px] sm:gap-[49px]">
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center self-stretch gap-[20px]">
-        <div className="flex flex-col sm:flex-row gap-[20px] sm:gap-[30px] sm:items-center">
-          {data.map((item, index) => (
-            <React.Fragment key={index}>
-              {index != 0 && (
-                <div className="w-[1px] bg-white/20 hidden sm:block self-stretch"></div>
-              )}
-              <Link
-                target="_blank"
-                href={item.link}
-                className="hover:text-secondary text-[16px] leading-[1.35em]"
-              >
-                {item.label}
-              </Link>
-            </React.Fragment>
-          ))}
-        </div>
-        <FooterSocialMedia />
-      </div>
-      <p className="text-sm sm:text-lg">
-        جميع الحقوق محفوظة 2024 © جامعة كلكامش
-      </p>
-    </div>
-  );
-};
-
-const socialMediaLinks = [
-  { icon: "ri-instagram-line", url: "#" },
-  { icon: "ri-facebook-circle-fill", url: "#" },
-  { icon: "ri-linkedin-box-fill", url: "#" },
-  { icon: "ri-youtube-fill", url: "#" },
-];
-
-const FooterSocialMedia = () => {
-  return (
-    <div className="flex gap-[26px] items-center">
-      <span className="text-base sm:text-lg">تابعنا عبر</span>
-      <div className="flex gap-[20px] sm:gap-[24px]">
-        {socialMediaLinks.map((link, index) => (
-          <Link
-            key={index}
-            target="_blank"
-            href={link.url}
-            className="hover:text-secondary text-[24px]"
-          >
-            <i className={link.icon}></i>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
-export default Footer;
-
-```
-
-# src\app\_components\AboutUs.tsx
-
-```tsx
-"use client";
-
-import { ABOUT_ROUTE } from "@/lib/paths";
-import React from "react";
-import Section from "../../components/Section";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-
-const AboutUs: React.FC = () => {
-  const t = useTranslations("Home.aboutUs");
-
-  return (
-    <Section
-      id="about-us"
-      className="sm:pt-[120px] sm:pb-[74px] pt-[36px]  px-[12px] relative sm:overflow-clip flex flex-col items-center   sm:px-5 xl:px-0"
-    >
-      <h1 className="title pb-[22px] sm:pb-[32px] relative z-10 ">
-        {t("title")}
-      </h1>
-      <div className="relative z-10">
-        <div className="flex flex-col gap-[40px] sm:gap-[40px] max-w-[351px] sm:max-w-[800px]  sm:px-0">
-          <p className="text-base ltr:leading-[26px] sm:text-justify sm:text-[20px] sm:leading-[36px]">
-            {t("description")}
-          </p>
-          <div className="sm:flex sm:justify-center">
-            <Link href={ABOUT_ROUTE}>
-              <Button
-                variant={"outline"}
-                className="text-primary-300  w-full  sm:w-fit hover:opacity-75 border-primary-300  text-lg py-3 tracking-[-0.004em] inline-flex items-center justify-center text-center border rounded-full transition-opacity duration-200 ease-in-out font-medium"
-              >
-                {t("readMore")}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* desktop */}
-      <img
-        src="https://i.imgur.com/wUfwWfR.png"
-        alt="about us background"
-        className="hidden sm:block absolute top-[-232px] right-[40%] translate-x-[calc(50%-512px)] w-[1878px] min-w-[1878px] h-[1264px] min-h-[1264px] transform rotate-[8.75deg] opacity-20"
-      />
-    </Section>
-  );
-};
-
-export default AboutUs;
-
-```
-
 # src\components\common-sections\MapSection.tsx
 
 ```tsx
@@ -6182,95 +6173,6 @@ export default function CommonSections() {
 
 ```
 
-# src\app\[locale]\page.tsx
-
-```tsx
-"use client";
-
-import OurGoals from "../_components/OurGoals/OurGoals";
-import News from "../_components/News/News";
-import Statistics from "../_components/Statistics";
-import HomepageCards from "../_components/CardsSection/HomepageCards";
-import OurColleges from "../_components/OurColleges/OurColleges";
-import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
-import SliderBg from "@/components/page/SliderBg";
-
-export default function Home() {
-  return (
-    <>
-      <SliderBg></SliderBg>
-      <main className="relative z-30 flex flex-col items-center">
-        <HomepageCards></HomepageCards>
-        <News></News>
-        <Statistics></Statistics>
-        <OurGoals></OurGoals>
-        <OurColleges></OurColleges>
-        <AcademicRankings></AcademicRankings>
-      </main>
-    </>
-  );
-}
-
-```
-
-# src\app\[locale]\layout.tsx
-
-```tsx
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../globals.css";
-import { NextIntlClientProvider, useMessages } from "next-intl";
-import { getMessages } from "next-intl/server";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import Header from "../_components/Header/Header";
-import Footer from "../_components/Footer";
-
-import Script from "next/script";
-import CommonSections from "@/components/common-sections/CommonSections";
-
-export const metadata: Metadata = {
-  title: "Create Next App",
-  description: "Generated by create next app",
-};
-
-export default function RootLayout({
-  children,
-  params: { locale },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
-}>) {
-  const messages = useMessages();
-  const dir = useTextDirection();
-
-  return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <head>
-        <link
-          href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
-          rel="stylesheet"
-        />
-
-        <script src="/js/scrollbarWidth.js" />
-      </head>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
-          <CommonSections></CommonSections>
-          <Footer></Footer>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
-}
-
-```
-
 # public\images\partners\4.png
 
 This is a binary file of the type: Image
@@ -6287,11 +6189,15 @@ This is a binary file of the type: Image
 
 This is a binary file of the type: Image
 
-# public\images\common\google-play.png
+# public\images\home\statistics.jpg
 
 This is a binary file of the type: Image
 
-# public\images\common\app-store.png
+# public\images\home\faq-icon.svg
+
+This is a file of the type: SVG Image
+
+# public\images\home\apps.png
 
 This is a binary file of the type: Image
 
@@ -6311,6 +6217,14 @@ This is a binary file of the type: Image
 
 This is a binary file of the type: Image
 
+# public\images\common\google-play.png
+
+This is a binary file of the type: Image
+
+# public\images\common\app-store.png
+
+This is a binary file of the type: Image
+
 # public\images\about\3.svg
 
 This is a file of the type: SVG Image
@@ -6323,17 +6237,534 @@ This is a file of the type: SVG Image
 
 This is a file of the type: SVG Image
 
-# public\images\home\statistics.jpg
+# src\app\[locale]\sustainability\page.tsx
 
-This is a binary file of the type: Image
+```tsx
+import React from "react";
 
-# public\images\home\faq-icon.svg
+import FormattedTextViewer from "@/components/FormattedTextViewer";
+import PageWithFirstSection from "@/components/page/Page";
+import SharedPage from "@/components/SharedPage";
 
-This is a file of the type: SVG Image
+export default function SustainabilityPage() {
+  return <SharedPage></SharedPage>;
+}
 
-# public\images\home\apps.png
+```
 
-This is a binary file of the type: Image
+# src\app\[locale]\related-locations\page.tsx
+
+```tsx
+import Section from "@/components/Section";
+import ScrollableContainerUpperSection from "../../../components/scrollable-container/UpperSection";
+import TitlesWrapper from "@/components/TitlesWrapper";
+import { Link } from "@/i18n.config";
+import PageWithFirstSection from "@/components/page/Page";
+
+export default function page() {
+  return (
+    <main>
+      <Section>
+        <TitlesWrapper>
+          <h3 className="title-sm mt-[62px] !text-primary sm:mt-[151px]">
+            مواقع ذات صلة
+          </h3>
+          <h2 className="title">جامعة كلكامش</h2>
+          <RelatedLocationsGrid></RelatedLocationsGrid>
+        </TitlesWrapper>
+      </Section>
+    </main>
+  );
+}
+
+const RelatedLocationsGrid = () => {
+  return (
+    <div className="mt-[45px] grid grid-cols-1 gap-[22px] sm:mt-[80px] sm:grid-cols-4 1920:grid-cols-5">
+      {relatedLocations.map((location, index) => (
+        <div
+          key={index}
+          className="flex flex-col items-center justify-between gap-[12px] bg-white px-[30px] py-[40px] text-center"
+        >
+          <h3 className="text-[24px] font-medium leading-[1.3em]">
+            {location.title}
+          </h3>
+          <Link
+            target="_blank"
+            href={location.url}
+            className="text-[14px] font-medium leading-[1.25em] text-primary"
+          >
+            زيارة الموقع
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const relatedLocations = [
+  { title: "وزارة التعليم العالي والبحث العلمي", url: "#" },
+  { title: "دائرة التعليم الجامعي الأهلي", url: "#" },
+  { title: "اتحاد الجامعات العربية", url: "#" },
+  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
+  { title: "مركز البحوث والدراسات العراقي", url: "#" },
+  { title: "وزارة التعليم العالي والبحث العلمي", url: "#" },
+  { title: "دائرة التعليم الجامعي الأهلي", url: "#" },
+  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
+  { title: "مركز البحوث والدراسات العراقي", url: "#" },
+  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
+  { title: "مركز البحوث والدراسات العراقي", url: "#" },
+];
+
+```
+
+# src\app\[locale]\news\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import NewsClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function NewsPage() {
+  return <NewsClientPage></NewsClientPage>;
+}
+
+```
+
+# src\app\[locale]\news\ClientPage.tsx
+
+```tsx
+"use client";
+
+import MainNewsCard from "@/app/_components/News/MainNewsCard";
+import NewsSection from "@/app/_components/News/News";
+import NewsCard from "@/app/_components/News/NewsCard";
+import NewsTags from "@/app/_components/News/NewsTags";
+import PageWithFirstSection from "@/components/page/Page";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import ScrollElement from "@/components/ScrollElement";
+import Section from "@/components/Section";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n.config";
+import { newsItems } from "@/lib/data";
+import { NEWS_ROUTE } from "@/lib/paths";
+import { NewsItem } from "@/lib/types";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+
+export default function NewsClientPage() {
+  const t = useTranslations("Home.news");
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <main className="mt-[36px] sm:mt-[180px]">
+      <Section>
+        <div className="flex-col">
+          <ScrollableContainerUpperSection
+            title={t("title")}
+            containerRef={containerRef}
+            titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
+            className="sm:mb-[50px] 1920:mb-[66px]"
+          ></ScrollableContainerUpperSection>
+
+          <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
+            <ScrollableCardsContainer ref={containerRef}>
+              {newsItems([]).map((item, index) => (
+                <ScrollElement className="flex justify-center" key={index}>
+                  <MainNewsCard item={item} />
+                </ScrollElement>
+              ))}
+            </ScrollableCardsContainer>
+            <Section
+              className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
+              wrapperClass="sm:flex hidden"
+            >
+              {newsItems([])
+                .slice(1, 4)
+                .map((item) => (
+                  <NewsCard key={item.id} item={item} />
+                ))}
+            </Section>
+          </div>
+        </div>
+      </Section>
+    </main>
+  );
+}
+
+```
+
+# src\app\[locale]\about\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import AboutClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return <AboutClientPage></AboutClientPage>;
+}
+
+```
+
+# src\app\[locale]\about\ClientPage.tsx
+
+```tsx
+"use client";
+
+import CommonCard from "@/app/_components/CardsSection/CommonCard";
+import OurGoals from "@/app/_components/OurGoals/OurGoals";
+import PageWithFirstSection from "@/components/page/Page";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollElement from "@/components/ScrollElement";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import {
+  AGREEMENTS_PARTNERSHIPS_ROUTE,
+  ORGANIZATIONAL_STRUCTURE_ROUTE,
+  UNIVERSITY_STRATEGY_ROUTE,
+} from "@/lib/paths";
+import React, { useRef } from "react";
+
+const list = [
+  "تسعى جامعة كاكامش إلى إعداد خريجين تتناسب مؤهلاتهم وخبراتهم مع متطلبات سوق العمل (القطاع الحكومي، القطاع الخاص).",
+  "تؤكد الجامعة التزامها التام بتطبيق نظام إدارة الجودة وفق متطلبات المواصفة ISO9001:2015 من أجل تحقيق مستويات عالية بالأداء ورفع كفاء العاملين والجامعة ككل.",
+  "توفر الجامعة الدعم الكامل لجميع الإجراءات التي تهدف إلى التحسين والتطوير المستمر.",
+  "تسعى الجامعة إلى تحقيق رضا المستفيدين وأصحاب المصلحة وضمان زيادتهم بشكل مستمر.",
+  "تلتزم الجامعة بأن تكون سياسة الجودة مفهومة من قبل جميع العاملين في الجامعة وأن يتم مراجعتها دوريا لتتأكد من ملاءمتها ومتطلباتها للعمل.",
+];
+
+export default function AboutClientPage() {
+  return (
+    <main>
+      <Section className="mt-[10px] text-start sm:mt-[146px]">
+        <Wrapper>
+          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px] 1920:gap-[52px]">
+            <MainSection></MainSection>
+            <VisionSection></VisionSection>
+            <MessageSection></MessageSection>
+          </div>
+          <QualitySection></QualitySection>
+        </Wrapper>
+      </Section>
+      <CardsSection></CardsSection>
+      <OurGoals></OurGoals>
+    </main>
+  );
+}
+
+function MainSection() {
+  return (
+    <div className="col-span-full flex flex-col text-primary sm:flex-row">
+      <div className="flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[65%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
+        <h2 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
+          عن جامعة كلكامش
+        </h2>
+        <p className="text-[16px] leading-[1.8em] sm:text-[20px] 1920:text-[24px]">
+          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
+          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
+          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
+          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
+          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
+          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
+          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
+          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. وباحتوائها على نخبة
+          متميزة من أعضاء هيئة التدريس تسهم من خلال بحوثهم في تعزيز المعرفة
+          لإيجاد حلول كفيلة بمعالجة المشكلات المعقدة وخلْق أفكار جديدة، وتطوير
+          طرق التعليم وأساليبه ووجود حرم جامعي جديد ومتطور، ومجموعة كاملة من
+          الخدمات التي توفر الدعم للطلبة، فإن الجامعة توفر بيئة تعليمية مثالية
+          لطلبتها تطبق معايير الجودة المؤسساتية والتعليمية.
+        </p>
+      </div>
+      <img
+        src="/images/hero-bg.jpg"
+        className="w-full object-cover sm:w-[35%]"
+      ></img>
+    </div>
+  );
+}
+
+function VisionSection() {
+  return (
+    <div className="flex flex-col justify-center gap-[14px] bg-[#0F4023] px-[16px] py-[32px] text-white sm:col-span-3 sm:items-start sm:gap-[28px] sm:px-[44px] sm:py-[54px] 1920:gap-[44px] 1920:px-[64px]">
+      <h3 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
+        الرؤيــة
+      </h3>
+      <h2 className="text-[32px] sm:text-[40px] 1920:text-[68px]">
+        رؤية الجامعة
+      </h2>
+      <p className="mt-[20px] text-justify text-[16px] leading-[1.8em] text-[#F2F2F2]/70 sm:mt-auto sm:text-[18px]">
+        تنطلق جامعة كلكامش من رؤية شاملة تلتزم بالتميز في نشر المعرفة وإنتاجها
+        وخدمة المجتمع العراقي للارتقاء الى مصاف الجامعات المتقدمة محليا وإقليميا
+        وعالميا.
+      </p>
+    </div>
+  );
+}
+
+function MessageSection() {
+  return (
+    <div className="flex flex-col justify-center gap-[14px] bg-primary px-[16px] py-[32px] text-white sm:col-span-4 sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
+      <h3 className="text-[18px] font-bold text-secondary sm:text-[22px] 1920:text-[28px]">
+        الرسالــة
+      </h3>
+
+      <p className="text-[16px] leading-[1.8em] sm:text-[26px] 1920:text-[35px]">
+        لجامعة كلكامش رسالة تعمد عن طريقها الى: تقديم برامج أكاديمية عالية
+        الجودة في مختلف فروع المعرفة ودعم البحوث وتطويرها بما يسهم في تحقيق
+        أهداف التنمية وتعزيز دور الجامعة في خدمة المجتمع العراقي وتهيأة بيئة
+        جامعية داعمة للإنتاج والتميز.
+      </p>
+    </div>
+  );
+}
+
+function QualitySection() {
+  return (
+    <div className="col-span-full mt-[64px] flex flex-col sm:mt-[180px] sm:flex-row">
+      <div className="flex flex-col justify-center gap-[24px] py-[32px] pe-[16px] sm:w-1/2 sm:items-start sm:gap-[28px] sm:py-[64px] sm:pe-[64px] 1920:gap-[58px] 1920:pe-[108px]">
+        <h2 className="text-[18px] font-bold sm:text-[32px] 1920:text-[48px]">
+          سياسة الجودة
+        </h2>
+        <div className="flex flex-col gap-[14px] sm:gap-[24px]">
+          {list.map((item, index) => (
+            <div
+              className="flex items-start gap-[12px] sm:gap-[24px]"
+              key={index}
+            >
+              <div className="flex h-[31px] min-h-[31px] w-[31px] min-w-[31px] items-center justify-center rounded-full bg-secondary text-[16px] leading-none">
+                {index + 1}
+              </div>
+              <span className="text-justify text-[16px] sm:text-[18px]">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <img
+        src="/images/hero-bg.jpg"
+        className="w-full object-cover sm:w-1/2"
+      ></img>
+    </div>
+  );
+}
+
+function CardsSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const services = [
+    {
+      imgUrl: "/images/about/3.svg",
+      title: "الهيكل التنظيمي",
+      href: ORGANIZATIONAL_STRUCTURE_ROUTE,
+    },
+    {
+      imgUrl: "/images/about/2.svg",
+      title: "استراتيجية الجامعة",
+      href: UNIVERSITY_STRATEGY_ROUTE,
+    },
+    {
+      imgUrl: "/images/about/1.svg",
+      title: "الاتفاقيات والشراكــــــات",
+      href: AGREEMENTS_PARTNERSHIPS_ROUTE,
+    },
+  ];
+
+  return (
+    <div className="mt-[60px] sm:mt-[150px]">
+      {/* <Section>
+          <Wrapper>
+            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
+              <ScrollableContainerUpperSection
+                arrowButtonsClass="sm:hidden"
+                containerRef={containerRef}
+                title2="جامعة كلكامش"
+                title="الخدمات الالكترونية"
+                className="sm:w-fit sm:items-center"
+              />
+            </div>
+          </Wrapper>
+        </Section> */}
+      <Section className="max-w-none">
+        <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
+          <ScrollableCardsContainer
+            ref={containerRef}
+            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
+          >
+            {services.map((service, index) => (
+              <ScrollElement
+                className="flex justify-center sm:w-auto"
+                key={index}
+              >
+                <CommonCard
+                  el={service}
+                  index={index}
+                  uniqueFirstCard={false}
+                />
+              </ScrollElement>
+            ))}
+          </ScrollableCardsContainer>
+        </Wrapper>
+      </Section>
+    </div>
+  );
+}
+
+```
+
+# src\app\_components\OurColleges\OurColleges.tsx
+
+```tsx
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Section from "@/components/Section";
+import Wrapper from "../../../components/Wrapper";
+
+interface College {
+  id: number;
+  name: string;
+  subtitle: string;
+  imageUrl: string;
+}
+
+const colleges: College[] = [
+  {
+    id: 1,
+    name: "كلية التقنيات الطبية والصحية",
+    subtitle:
+      "من خلال تطوير الجيل القادم من المهنيين والمتخصصين في مجال الرعاية الصحية، تمكّن ",
+    imageUrl: "/images/college-logo.png",
+  },
+  {
+    id: 2,
+    name: "كلية الهندسة",
+    subtitle:
+      "تتطلع كلية الهندسة إلى أن تصبح مؤسسة رائدة في مجال الهندسة في العراق، ",
+    imageUrl: "/images/college-logo.png",
+  },
+  {
+    id: 3,
+    name: "كلية العلوم",
+    subtitle:
+      "تتميّز كلية العلوم بكونها مؤسسة رائدة في مجال العلوم في العراق، وتسعى إلى ",
+    imageUrl: "/images/college-logo.png",
+  },
+  {
+    id: 4,
+    name: "كلية الاقتصاد والعلوم السياسية",
+    subtitle:
+      "تهدف كلية الاقتصاد والعلوم السياسية إلى إعداد جيل من الخبراء والمتخصصين في مجال الاقتصاد ",
+    imageUrl: "/images/college-logo.png",
+  },
+  {
+    id: 5,
+    name: "كلية القانون",
+    subtitle:
+      "تسعى كلية القانون إلى إعداد جيل من الفقهاء والقضاة الذين يملكون المعرفة والخبرة ",
+    imageUrl: "/images/college-logo.png",
+  },
+  {
+    id: 6,
+    name: "كلية الآداب",
+    subtitle:
+      "تهدف كلية الآداب إلى إعداد جيل من الخبراء والمتخصصين في مجال اللغة والآداب ",
+    imageUrl: "/images/college-logo.png",
+  },
+];
+
+export default function OurColleges() {
+  return (
+    <Section wrapperClass="mt-[110px] sm:mt-[157px]">
+      <Wrapper className="flex-col">
+        <div className="text-center flex flex-col items-center mb-[24px] sm:mb-[90px]">
+          <h4 className="font-bold text-secondary text-[16px] leading-[1.25em] px-2 py-1 mb-5">
+            جامعة كلكامش
+          </h4>
+          <h2 className="font-bold text-[48px] leading-[1.25em] px-4 py-2">
+            كلياتنا
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-4  gap-[15px] sm:gap-6 1920:gap-[34px] max-w-[375px] sm:max-w-[1280px] 1920:max-w-[1920px] mx-auto text-start">
+          {colleges.map((college) => (
+            <div
+              key={college.id}
+              className="flex flex-col h-[693px] sm:h-[500px] 1920:h-[693px] bg-white"
+            >
+              <div className="relative h-[368px] sm:h-[266px] 1920:h-[368px] border-b-[7px] border-secondary flex items-center justify-center bg-[#DBDBDB]">
+                <div className="relative aspect-square w-full max-w-[257px] sm:max-w-[183px] 1920:max-w-[257px]">
+                  <Image
+                    src={college.imageUrl}
+                    alt={college.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col justify-between flex-grow p-5">
+                <div>
+                  <h2
+                    className="font-bold mt-[24px] sm:mt-[17px] 1920:mt-[24px]
+                               text-[24px] sm:text-[17px] 1920:text-[24px]
+                               leading-[1.25em]"
+                  >
+                    {college.name}
+                  </h2>
+                  <p
+                    className=" mt-[24px] sm:mt-[17px] 1920:mt-[24px]
+                              text-[19px] sm:text-[14px] 1920:text-[19px]
+                              leading-[1.65em] line-clamp-3"
+                  >
+                    {college.subtitle}
+                  </p>
+                </div>
+                <Button
+                  variant={"secondary"}
+                  className="w-full mt-4
+                                 text-[16px] sm:text-[12px] 1920:text-[16px]
+                                 leading-[1.22em]
+                                 py-[16px] sm:py-[12px] 1920:py-[16px]"
+                >
+                  قراءة المزيد
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Wrapper>
+    </Section>
+  );
+}
+
+```
 
 # src\app\_components\OurGoals\OurGoalsMobile.tsx
 
@@ -6549,264 +6980,6 @@ const universityGoals: Goal[] = [
       "المساهمة في تربية جيل يؤمن بالمواطنة واحترام القانون من خلال مناهج علمية وتعليمية وثقافية ورياضية واجتماعية هادفة.",
   },
 ];
-
-```
-
-# src\components\page\FirstTitleSection\FirstTitleSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-// import { getTitleComponent } from "@/lib/utils";
-import Wrapper from "@/components/Wrapper";
-
-export default function FirstTitleSection() {
-  const pathname = usePathname();
-
-  // const TitleComponent = getTitleComponent(pathname);
-
-  // return TitleComponent ? (
-  //   <Wrapper>
-  //     <TitleComponent />
-  //   </Wrapper>
-  // ) : (
-  //   <></>
-  // );
-}
-
-```
-
-# src\components\page\FirstTitleSection\CenterizedTitle.tsx
-
-```tsx
-import React from "react";
-import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n.config";
-import { getPageTitle } from "@/lib/utils";
-
-export default function CenterizedTitle() {
-  const t = useTranslations();
-  const pathname = usePathname();
-  const pageTitle = getPageTitle({ t, pathname });
-
-  return (
-    <h1 className="title-lg mb-[23px] !text-center leading-[1.25] sm:mb-[96px]">
-      {pageTitle}
-    </h1>
-  );
-}
-
-```
-
-# src\components\page\FirstTitleSection\ActionsTitle.tsx
-
-```tsx
-import FileOperations from "@/components/FileOperations";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import Wrapper from "@/components/Wrapper";
-import { Link } from "@/i18n.config";
-import { NEWS_ROUTE } from "@/lib/paths";
-import { ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function ActionsTitle({
-  showBackButton = false,
-  backHref = "",
-  title,
-  description,
-  className,
-  fileOperations,
-}: {
-  showBackButton?: boolean;
-  title?: string;
-  description?: string;
-  backHref?: string;
-  className?: string;
-  fileOperations?: ReactNode;
-}) {
-  return (
-    <Section className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]">
-      <Wrapper>
-        <div
-          className={twMerge(
-            "flex justify-between",
-            !description &&
-              !showBackButton &&
-              !fileOperations &&
-              "sm:justify-center",
-          )}
-        >
-          <div
-            className={twMerge("mb-[12px] text-start sm:mb-[53px]", className)}
-          >
-            {showBackButton && (
-              <Link href={backHref}>
-                <Button className="w-fit gap-1">
-                  <i className="ri-arrow-right-s-line text-[22px] text-[#99AFC9]"></i>
-                  <span>الرجــوع</span>
-                </Button>
-              </Link>
-            )}
-
-            {title && (
-              <h1
-                className={twMerge(
-                  "mt-[35px] text-[24px] font-bold leading-[1.22em] sm:mt-[43px] sm:text-[40px] 1920:text-[48px]",
-                  !description &&
-                    !showBackButton &&
-                    "text-center sm:text-start",
-
-                  !description &&
-                    !showBackButton &&
-                    !fileOperations &&
-                    "sm:text-center",
-                )}
-              >
-                {title}
-              </h1>
-            )}
-            {description && <p>{description}</p>}
-
-            {/* <div className="mt-[48px] flex items-center gap-[16px] font-bold text-primary sm:mt-[33px]">
-            <span>اكاديمية الماجستير</span>
-            <span>—</span>
-            <span>قبل 6 ساعات</span>
-          </div> */}
-          </div>
-          {fileOperations}
-        </div>
-      </Wrapper>
-    </Section>
-  );
-}
-
-```
-
-# src\app\_components\OurColleges\OurColleges.tsx
-
-```tsx
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Section from "@/components/Section";
-import Wrapper from "../../../components/Wrapper";
-
-interface College {
-  id: number;
-  name: string;
-  subtitle: string;
-  imageUrl: string;
-}
-
-const colleges: College[] = [
-  {
-    id: 1,
-    name: "كلية التقنيات الطبية والصحية",
-    subtitle:
-      "من خلال تطوير الجيل القادم من المهنيين والمتخصصين في مجال الرعاية الصحية، تمكّن ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 2,
-    name: "كلية الهندسة",
-    subtitle:
-      "تتطلع كلية الهندسة إلى أن تصبح مؤسسة رائدة في مجال الهندسة في العراق، ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 3,
-    name: "كلية العلوم",
-    subtitle:
-      "تتميّز كلية العلوم بكونها مؤسسة رائدة في مجال العلوم في العراق، وتسعى إلى ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 4,
-    name: "كلية الاقتصاد والعلوم السياسية",
-    subtitle:
-      "تهدف كلية الاقتصاد والعلوم السياسية إلى إعداد جيل من الخبراء والمتخصصين في مجال الاقتصاد ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 5,
-    name: "كلية القانون",
-    subtitle:
-      "تسعى كلية القانون إلى إعداد جيل من الفقهاء والقضاة الذين يملكون المعرفة والخبرة ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 6,
-    name: "كلية الآداب",
-    subtitle:
-      "تهدف كلية الآداب إلى إعداد جيل من الخبراء والمتخصصين في مجال اللغة والآداب ",
-    imageUrl: "/images/college-logo.png",
-  },
-];
-
-export default function OurColleges() {
-  return (
-    <Section wrapperClass="mt-[110px] sm:mt-[157px]">
-      <Wrapper className="flex-col">
-        <div className="text-center flex flex-col items-center mb-[24px] sm:mb-[90px]">
-          <h4 className="font-bold text-secondary text-[16px] leading-[1.25em] px-2 py-1 mb-5">
-            جامعة كلكامش
-          </h4>
-          <h2 className="font-bold text-[48px] leading-[1.25em] px-4 py-2">
-            كلياتنا
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-4  gap-[15px] sm:gap-6 1920:gap-[34px] max-w-[375px] sm:max-w-[1280px] 1920:max-w-[1920px] mx-auto text-start">
-          {colleges.map((college) => (
-            <div
-              key={college.id}
-              className="flex flex-col h-[693px] sm:h-[500px] 1920:h-[693px] bg-white"
-            >
-              <div className="relative h-[368px] sm:h-[266px] 1920:h-[368px] border-b-[7px] border-secondary flex items-center justify-center bg-[#DBDBDB]">
-                <div className="relative aspect-square w-full max-w-[257px] sm:max-w-[183px] 1920:max-w-[257px]">
-                  <Image
-                    src={college.imageUrl}
-                    alt={college.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col justify-between flex-grow p-5">
-                <div>
-                  <h2
-                    className="font-bold mt-[24px] sm:mt-[17px] 1920:mt-[24px]
-                               text-[24px] sm:text-[17px] 1920:text-[24px]
-                               leading-[1.25em]"
-                  >
-                    {college.name}
-                  </h2>
-                  <p
-                    className=" mt-[24px] sm:mt-[17px] 1920:mt-[24px]
-                              text-[19px] sm:text-[14px] 1920:text-[19px]
-                              leading-[1.65em] line-clamp-3"
-                  >
-                    {college.subtitle}
-                  </p>
-                </div>
-                <Button
-                  variant={"secondary"}
-                  className="w-full mt-4
-                                 text-[16px] sm:text-[12px] 1920:text-[16px]
-                                 leading-[1.22em]
-                                 py-[16px] sm:py-[12px] 1920:py-[16px]"
-                >
-                  قراءة المزيد
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Wrapper>
-    </Section>
-  );
-}
 
 ```
 
@@ -7406,6 +7579,63 @@ export default MainNewsCard;
 
 ```
 
+# src\app\_components\AcademicRankings\AcademicRankings.tsx
+
+```tsx
+import Section from "@/components/Section";
+import Image from "next/image";
+
+export default function AcademicRankings() {
+  return (
+    <div className="flex flex-col sm:flex-row text-start  w-full mt-[57px] sm:mt-[200px]">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 bg-primary py-[44px] 1920:py-[106px] sm:py-[80px]">
+        <div className="max-w-[348px] 1920:max-w-[460px]">
+          <h3 className="text-[20px] sm:text-[15px] 1920:text-[20px] font-bold leading-[1.25em] mb-6 sm:mb-10 1920:mb-[40px] text-secondary">
+            التصنيفات الأكاديمية
+          </h3>
+          <h2 className="text-[44px] sm:text-[36px] 1920:text-[48px] font-medium  leading-[72px] sm:leading-[54px] 1920:leading-[72px] mb-11 sm:mb-[69px] 1920:mb-[80px] text-white">
+            جامعة كلكامش ضمن التصنيفــات الاكاديميــة
+          </h2>
+          <div className="flex  sm:flex-row gap-6 sm:gap-7 1920:gap-[37px] mb-[34px] sm:mb-10 1920:mb-[53px]">
+            {["984", "29031"].map((num) => (
+              <a
+                key={num}
+                href={`https://www.timeshighereducation.com/world-university-rankings/university-of-kufa/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative  max-w-[158px] 1920:max-w-[211px] w-full h-[110px] sm:h-[115px] 1920:h-[153px] flex items-center justify-center bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:opacity-70"
+              >
+                <span className="absolute top-0 end-0 bg-[#252525] text-white text-[14px] leading-[1.22em] px-[6px] py-1 font-medium">
+                  #{num}
+                </span>
+                <Image
+                  fill
+                  src={`/images/college-logo.png`}
+                  alt={`Ranking ${num}`}
+                  className="w-full h-full object-contain px-3 py-6 sm:px-[12px] sm:py-[24px]"
+                />
+              </a>
+            ))}
+          </div>
+          <p className="text-[#F2F2F2]/70 leading-[1.75em] font-normal text-[16px] sm:text-[14px] 1920:text-[18px] max-w-[242px] sm:max-w-[276px]">
+            للاطلاع على مرتبة الجامعة اضغط على شعار التصنيف
+          </p>
+        </div>
+      </div>
+      <div className="relative h-[275px] sm:h-auto sm:w-[calc(50%+63px)] 1920:w-[calc(50%+85px)]">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="University Building"
+          fill
+          className="object-cover h-full w-full"
+        />
+      </div>
+    </div>
+  );
+}
+
+```
+
 # src\app\_components\CardsSection\HomepageCards.tsx
 
 ```tsx
@@ -7599,250 +7829,138 @@ function CardsGrid({ translatedElements }: { translatedElements: CardData[] }) {
 
 ```
 
-# src\app\[locale]\sustainability\page.tsx
-
-```tsx
-import React from "react";
-
-import FormattedTextViewer from "@/components/FormattedTextViewer";
-import PageWithFirstSection from "@/components/page/Page";
-import SharedPage from "@/components/SharedPage";
-
-export default function SustainabilityPage() {
-  return <SharedPage></SharedPage>;
-}
-
-```
-
-# src\app\[locale]\related-locations\page.tsx
-
-```tsx
-import Section from "@/components/Section";
-import ScrollableContainerUpperSection from "../../../components/scrollable-container/UpperSection";
-import TitlesWrapper from "@/components/TitlesWrapper";
-import { Link } from "@/i18n.config";
-import PageWithFirstSection from "@/components/page/Page";
-
-export default function page() {
-  return (
-    <main>
-      <Section>
-        <TitlesWrapper>
-          <h3 className="title-sm mt-[62px] !text-primary sm:mt-[151px]">
-            مواقع ذات صلة
-          </h3>
-          <h2 className="title">جامعة كلكامش</h2>
-          <RelatedLocationsGrid></RelatedLocationsGrid>
-        </TitlesWrapper>
-      </Section>
-    </main>
-  );
-}
-
-const RelatedLocationsGrid = () => {
-  return (
-    <div className="mt-[45px] grid grid-cols-1 gap-[22px] sm:mt-[80px] sm:grid-cols-4 1920:grid-cols-5">
-      {relatedLocations.map((location, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center justify-between gap-[12px] bg-white px-[30px] py-[40px] text-center"
-        >
-          <h3 className="text-[24px] font-medium leading-[1.3em]">
-            {location.title}
-          </h3>
-          <Link
-            target="_blank"
-            href={location.url}
-            className="text-[14px] font-medium leading-[1.25em] text-primary"
-          >
-            زيارة الموقع
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const relatedLocations = [
-  { title: "وزارة التعليم العالي والبحث العلمي", url: "#" },
-  { title: "دائرة التعليم الجامعي الأهلي", url: "#" },
-  { title: "اتحاد الجامعات العربية", url: "#" },
-  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
-  { title: "مركز البحوث والدراسات العراقي", url: "#" },
-  { title: "وزارة التعليم العالي والبحث العلمي", url: "#" },
-  { title: "دائرة التعليم الجامعي الأهلي", url: "#" },
-  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
-  { title: "مركز البحوث والدراسات العراقي", url: "#" },
-  { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
-  { title: "مركز البحوث والدراسات العراقي", url: "#" },
-];
-
-```
-
-# src\app\_components\AcademicRankings\AcademicRankings.tsx
-
-```tsx
-import Section from "@/components/Section";
-import Image from "next/image";
-
-export default function AcademicRankings() {
-  return (
-    <div className="flex flex-col sm:flex-row text-start  w-full mt-[57px] sm:mt-[200px]">
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 bg-primary py-[44px] 1920:py-[106px] sm:py-[80px]">
-        <div className="max-w-[348px] 1920:max-w-[460px]">
-          <h3 className="text-[20px] sm:text-[15px] 1920:text-[20px] font-bold leading-[1.25em] mb-6 sm:mb-10 1920:mb-[40px] text-secondary">
-            التصنيفات الأكاديمية
-          </h3>
-          <h2 className="text-[44px] sm:text-[36px] 1920:text-[48px] font-medium  leading-[72px] sm:leading-[54px] 1920:leading-[72px] mb-11 sm:mb-[69px] 1920:mb-[80px] text-white">
-            جامعة كلكامش ضمن التصنيفــات الاكاديميــة
-          </h2>
-          <div className="flex  sm:flex-row gap-6 sm:gap-7 1920:gap-[37px] mb-[34px] sm:mb-10 1920:mb-[53px]">
-            {["984", "29031"].map((num) => (
-              <a
-                key={num}
-                href={`https://www.timeshighereducation.com/world-university-rankings/university-of-kufa/`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative  max-w-[158px] 1920:max-w-[211px] w-full h-[110px] sm:h-[115px] 1920:h-[153px] flex items-center justify-center bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:opacity-70"
-              >
-                <span className="absolute top-0 end-0 bg-[#252525] text-white text-[14px] leading-[1.22em] px-[6px] py-1 font-medium">
-                  #{num}
-                </span>
-                <Image
-                  fill
-                  src={`/images/college-logo.png`}
-                  alt={`Ranking ${num}`}
-                  className="w-full h-full object-contain px-3 py-6 sm:px-[12px] sm:py-[24px]"
-                />
-              </a>
-            ))}
-          </div>
-          <p className="text-[#F2F2F2]/70 leading-[1.75em] font-normal text-[16px] sm:text-[14px] 1920:text-[18px] max-w-[242px] sm:max-w-[276px]">
-            للاطلاع على مرتبة الجامعة اضغط على شعار التصنيف
-          </p>
-        </div>
-      </div>
-      <div className="relative h-[275px] sm:h-auto sm:w-[calc(50%+63px)] 1920:w-[calc(50%+85px)]">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="University Building"
-          fill
-          className="object-cover h-full w-full"
-        />
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\app\[locale]\news\page.tsx
-
-```tsx
-import { getTranslations } from "next-intl/server";
-import NewsClientPage from "./ClientPage";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({
-    locale,
-    namespace: "Layout.metaData",
-  });
-
-  return {
-    title: t("newsTitle"),
-  };
-}
-
-export default function NewsPage() {
-  return <NewsClientPage></NewsClientPage>;
-}
-
-```
-
-# src\app\[locale]\news\ClientPage.tsx
+# src\components\page\FirstTitleSection\FirstTitleSection.tsx
 
 ```tsx
 "use client";
 
-import MainNewsCard from "@/app/_components/News/MainNewsCard";
-import NewsSection from "@/app/_components/News/News";
-import NewsCard from "@/app/_components/News/NewsCard";
-import NewsTags from "@/app/_components/News/NewsTags";
-import PageWithFirstSection from "@/components/page/Page";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
-import ScrollElement from "@/components/ScrollElement";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n.config";
-import { newsItems } from "@/lib/data";
-import { NEWS_ROUTE } from "@/lib/paths";
-import { NewsItem } from "@/lib/types";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
+import { usePathname } from "@/i18n.config";
+// import { getTitleComponent } from "@/lib/utils";
+import Wrapper from "@/components/Wrapper";
 
-export default function NewsClientPage() {
-  const t = useTranslations("Home.news");
-  const containerRef = useRef<HTMLDivElement>(null);
+export default function FirstTitleSection() {
+  const pathname = usePathname();
+
+  // const TitleComponent = getTitleComponent(pathname);
+
+  // return TitleComponent ? (
+  //   <Wrapper>
+  //     <TitleComponent />
+  //   </Wrapper>
+  // ) : (
+  //   <></>
+  // );
+}
+
+```
+
+# src\components\page\FirstTitleSection\CenterizedTitle.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n.config";
+import { getPageTitle } from "@/lib/utils";
+
+export default function CenterizedTitle() {
+  const t = useTranslations();
+  const pathname = usePathname();
+  const pageTitle = getPageTitle({ t, pathname });
 
   return (
-    <main className="mt-[36px] sm:mt-[180px]">
-      <Section>
-        <div className="flex-col">
-          <ScrollableContainerUpperSection
-            title={t("title")}
-            containerRef={containerRef}
-            titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
-            className="sm:mb-[50px] 1920:mb-[66px]"
-          ></ScrollableContainerUpperSection>
-
-          <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
-            <ScrollableCardsContainer ref={containerRef}>
-              {newsItems([]).map((item, index) => (
-                <ScrollElement className="flex justify-center" key={index}>
-                  <MainNewsCard item={item} />
-                </ScrollElement>
-              ))}
-            </ScrollableCardsContainer>
-            <Section
-              className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
-              wrapperClass="sm:flex hidden"
-            >
-              {newsItems([])
-                .slice(1, 4)
-                .map((item) => (
-                  <NewsCard key={item.id} item={item} />
-                ))}
-            </Section>
-          </div>
-        </div>
-      </Section>
-    </main>
+    <h1 className="title-lg mb-[23px] !text-center leading-[1.25] sm:mb-[96px]">
+      {pageTitle}
+    </h1>
   );
 }
 
 ```
 
-# public\images\common\cards\uni-life.svg
+# src\components\page\FirstTitleSection\ActionsTitle.tsx
 
-This is a file of the type: SVG Image
+```tsx
+import FileOperations from "@/components/FileOperations";
+import Section from "@/components/Section";
+import { Button } from "@/components/ui/button";
+import Wrapper from "@/components/Wrapper";
+import { Link } from "@/i18n.config";
+import { NEWS_ROUTE } from "@/lib/paths";
+import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
-# public\images\common\cards\news.svg
+export default function ActionsTitle({
+  showBackButton = false,
+  backHref = "",
+  title,
+  description,
+  className,
+  fileOperations,
+}: {
+  showBackButton?: boolean;
+  title?: string;
+  description?: string;
+  backHref?: string;
+  className?: string;
+  fileOperations?: ReactNode;
+}) {
+  return (
+    <Section className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]">
+      <Wrapper>
+        <div
+          className={twMerge(
+            "flex justify-between",
+            !description &&
+              !showBackButton &&
+              !fileOperations &&
+              "sm:justify-center",
+          )}
+        >
+          <div
+            className={twMerge("mb-[12px] text-start sm:mb-[53px]", className)}
+          >
+            {showBackButton && (
+              <Link href={backHref}>
+                <Button className="w-fit gap-1">
+                  <i className="ri-arrow-right-s-line text-[22px] text-[#99AFC9]"></i>
+                  <span>الرجــوع</span>
+                </Button>
+              </Link>
+            )}
 
-This is a file of the type: SVG Image
+            {title && (
+              <h1
+                className={twMerge(
+                  "mt-[35px] text-[24px] font-bold leading-[1.22em] sm:mt-[43px] sm:text-[40px] 1920:text-[48px]",
+                  !description &&
+                    !showBackButton &&
+                    "text-center sm:text-start",
 
-# public\images\common\cards\academic-classifications.svg
+                  !description &&
+                    !showBackButton &&
+                    !fileOperations &&
+                    "sm:text-center",
+                )}
+              >
+                {title}
+              </h1>
+            )}
+            {description && <p>{description}</p>}
 
-This is a file of the type: SVG Image
+            {/* <div className="mt-[48px] flex items-center gap-[16px] font-bold text-primary sm:mt-[33px]">
+            <span>اكاديمية الماجستير</span>
+            <span>—</span>
+            <span>قبل 6 ساعات</span>
+          </div> */}
+          </div>
+          {fileOperations}
+        </div>
+      </Wrapper>
+    </Section>
+  );
+}
 
-# public\images\common\cards\about.svg
-
-This is a file of the type: SVG Image
+```
 
 # public\images\home\News\4.jpg
 
@@ -7859,6 +7977,22 @@ This is a binary file of the type: Image
 # public\images\home\News\1.jpg
 
 This is a binary file of the type: Image
+
+# public\images\common\cards\uni-life.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\news.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\academic-classifications.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\about.svg
+
+This is a file of the type: SVG Image
 
 # public\images\home\Goals\6.jpg
 
@@ -7879,238 +8013,6 @@ This is a binary file of the type: Image
 # public\images\home\Goals\2.jpg
 
 This is a binary file of the type: Image
-
-# src\app\[locale]\about\page.tsx
-
-```tsx
-import { getTranslations } from "next-intl/server";
-import AboutClientPage from "./ClientPage";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({
-    locale,
-    namespace: "Layout.metaData",
-  });
-
-  return {
-    title: t("newsTitle"),
-  };
-}
-
-export default function Page() {
-  return <AboutClientPage></AboutClientPage>;
-}
-
-```
-
-# src\app\[locale]\about\ClientPage.tsx
-
-```tsx
-"use client";
-
-import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import OurGoals from "@/app/_components/OurGoals/OurGoals";
-import PageWithFirstSection from "@/components/page/Page";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollElement from "@/components/ScrollElement";
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-import {
-  AGREEMENTS_PARTNERSHIPS_ROUTE,
-  ORGANIZATIONAL_STRUCTURE_ROUTE,
-  UNIVERSITY_STRATEGY_ROUTE,
-} from "@/lib/paths";
-import React, { useRef } from "react";
-
-const list = [
-  "تسعى جامعة كاكامش إلى إعداد خريجين تتناسب مؤهلاتهم وخبراتهم مع متطلبات سوق العمل (القطاع الحكومي، القطاع الخاص).",
-  "تؤكد الجامعة التزامها التام بتطبيق نظام إدارة الجودة وفق متطلبات المواصفة ISO9001:2015 من أجل تحقيق مستويات عالية بالأداء ورفع كفاء العاملين والجامعة ككل.",
-  "توفر الجامعة الدعم الكامل لجميع الإجراءات التي تهدف إلى التحسين والتطوير المستمر.",
-  "تسعى الجامعة إلى تحقيق رضا المستفيدين وأصحاب المصلحة وضمان زيادتهم بشكل مستمر.",
-  "تلتزم الجامعة بأن تكون سياسة الجودة مفهومة من قبل جميع العاملين في الجامعة وأن يتم مراجعتها دوريا لتتأكد من ملاءمتها ومتطلباتها للعمل.",
-];
-
-export default function AboutClientPage() {
-  return (
-    <main>
-      <Section className="mt-[10px] text-start sm:mt-[146px]">
-        <Wrapper>
-          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px] 1920:gap-[52px]">
-            <MainSection></MainSection>
-            <VisionSection></VisionSection>
-            <MessageSection></MessageSection>
-          </div>
-          <QualitySection></QualitySection>
-        </Wrapper>
-      </Section>
-      <CardsSection></CardsSection>
-      <OurGoals></OurGoals>
-    </main>
-  );
-}
-
-function MainSection() {
-  return (
-    <div className="col-span-full flex flex-col text-primary sm:flex-row">
-      <div className="flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[65%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
-        <h2 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
-          عن جامعة كلكامش
-        </h2>
-        <p className="text-[16px] leading-[1.8em] sm:text-[20px] 1920:text-[24px]">
-          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
-          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
-          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
-          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
-          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
-          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
-          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
-          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. وباحتوائها على نخبة
-          متميزة من أعضاء هيئة التدريس تسهم من خلال بحوثهم في تعزيز المعرفة
-          لإيجاد حلول كفيلة بمعالجة المشكلات المعقدة وخلْق أفكار جديدة، وتطوير
-          طرق التعليم وأساليبه ووجود حرم جامعي جديد ومتطور، ومجموعة كاملة من
-          الخدمات التي توفر الدعم للطلبة، فإن الجامعة توفر بيئة تعليمية مثالية
-          لطلبتها تطبق معايير الجودة المؤسساتية والتعليمية.
-        </p>
-      </div>
-      <img
-        src="/images/hero-bg.jpg"
-        className="w-full object-cover sm:w-[35%]"
-      ></img>
-    </div>
-  );
-}
-
-function VisionSection() {
-  return (
-    <div className="flex flex-col justify-center gap-[14px] bg-[#0F4023] px-[16px] py-[32px] text-white sm:col-span-3 sm:items-start sm:gap-[28px] sm:px-[44px] sm:py-[54px] 1920:gap-[44px] 1920:px-[64px]">
-      <h3 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
-        الرؤيــة
-      </h3>
-      <h2 className="text-[32px] sm:text-[40px] 1920:text-[68px]">
-        رؤية الجامعة
-      </h2>
-      <p className="mt-[20px] text-justify text-[16px] leading-[1.8em] text-[#F2F2F2]/70 sm:mt-auto sm:text-[18px]">
-        تنطلق جامعة كلكامش من رؤية شاملة تلتزم بالتميز في نشر المعرفة وإنتاجها
-        وخدمة المجتمع العراقي للارتقاء الى مصاف الجامعات المتقدمة محليا وإقليميا
-        وعالميا.
-      </p>
-    </div>
-  );
-}
-
-function MessageSection() {
-  return (
-    <div className="flex flex-col justify-center gap-[14px] bg-primary px-[16px] py-[32px] text-white sm:col-span-4 sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
-      <h3 className="text-[18px] font-bold text-secondary sm:text-[22px] 1920:text-[28px]">
-        الرسالــة
-      </h3>
-
-      <p className="text-[16px] leading-[1.8em] sm:text-[26px] 1920:text-[35px]">
-        لجامعة كلكامش رسالة تعمد عن طريقها الى: تقديم برامج أكاديمية عالية
-        الجودة في مختلف فروع المعرفة ودعم البحوث وتطويرها بما يسهم في تحقيق
-        أهداف التنمية وتعزيز دور الجامعة في خدمة المجتمع العراقي وتهيأة بيئة
-        جامعية داعمة للإنتاج والتميز.
-      </p>
-    </div>
-  );
-}
-
-function QualitySection() {
-  return (
-    <div className="col-span-full mt-[64px] flex flex-col sm:mt-[180px] sm:flex-row">
-      <div className="flex flex-col justify-center gap-[24px] py-[32px] pe-[16px] sm:w-1/2 sm:items-start sm:gap-[28px] sm:py-[64px] sm:pe-[64px] 1920:gap-[58px] 1920:pe-[108px]">
-        <h2 className="text-[18px] font-bold sm:text-[32px] 1920:text-[48px]">
-          سياسة الجودة
-        </h2>
-        <div className="flex flex-col gap-[14px] sm:gap-[24px]">
-          {list.map((item, index) => (
-            <div
-              className="flex items-start gap-[12px] sm:gap-[24px]"
-              key={index}
-            >
-              <div className="flex h-[31px] min-h-[31px] w-[31px] min-w-[31px] items-center justify-center rounded-full bg-secondary text-[16px] leading-none">
-                {index + 1}
-              </div>
-              <span className="text-justify text-[16px] sm:text-[18px]">
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <img
-        src="/images/hero-bg.jpg"
-        className="w-full object-cover sm:w-1/2"
-      ></img>
-    </div>
-  );
-}
-
-function CardsSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const services = [
-    {
-      imgUrl: "/images/about/3.svg",
-      title: "الهيكل التنظيمي",
-      href: ORGANIZATIONAL_STRUCTURE_ROUTE,
-    },
-    {
-      imgUrl: "/images/about/2.svg",
-      title: "استراتيجية الجامعة",
-      href: UNIVERSITY_STRATEGY_ROUTE,
-    },
-    {
-      imgUrl: "/images/about/1.svg",
-      title: "الاتفاقيات والشراكــــــات",
-      href: AGREEMENTS_PARTNERSHIPS_ROUTE,
-    },
-  ];
-
-  return (
-    <div className="mt-[60px] sm:mt-[150px]">
-      {/* <Section>
-          <Wrapper>
-            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
-              <ScrollableContainerUpperSection
-                arrowButtonsClass="sm:hidden"
-                containerRef={containerRef}
-                title2="جامعة كلكامش"
-                title="الخدمات الالكترونية"
-                className="sm:w-fit sm:items-center"
-              />
-            </div>
-          </Wrapper>
-        </Section> */}
-      <Section className="max-w-none">
-        <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
-          <ScrollableCardsContainer
-            ref={containerRef}
-            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
-          >
-            {services.map((service, index) => (
-              <ScrollElement
-                className="flex justify-center sm:w-auto"
-                key={index}
-              >
-                <CommonCard
-                  el={service}
-                  index={index}
-                  uniqueFirstCard={false}
-                />
-              </ScrollElement>
-            ))}
-          </ScrollableCardsContainer>
-        </Wrapper>
-      </Section>
-    </div>
-  );
-}
-
-```
 
 # src\app\[locale]\university-and-community\qualification-employment\page.tsx
 
@@ -8789,21 +8691,6 @@ export default function OrganizationalStructureClientPage() {
 
 ```
 
-# src\app\[locale]\university-and-community\surveys\employer-survey\page.tsx
-
-```tsx
-import React from "react";
-import { useTranslations } from "next-intl";
-import SurveyForm from "@/components/SurveyForm";
-
-export default function EmployerSurveyPage() {
-  const tNavLinks = useTranslations("Header.navLinks");
-
-  return <SurveyForm title={tNavLinks("employerSurvey")} />;
-}
-
-```
-
 # src\app\[locale]\university-and-community\surveys\graduate-survey\page.tsx
 
 ```tsx
@@ -8815,6 +8702,21 @@ export default function GraduatesSurveyPage() {
   const tNavLinks = useTranslations("Header.navLinks");
 
   return <SurveyForm title={tNavLinks("graduateSurvey")} />;
+}
+
+```
+
+# src\app\[locale]\university-and-community\surveys\employer-survey\page.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import SurveyForm from "@/components/SurveyForm";
+
+export default function EmployerSurveyPage() {
+  const tNavLinks = useTranslations("Header.navLinks");
+
+  return <SurveyForm title={tNavLinks("employerSurvey")} />;
 }
 
 ```

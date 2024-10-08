@@ -1,109 +1,23 @@
-"use client";
+import { fetchGoals } from "@/lib/api_services/goals-apis";
+import OurGoalsClientSide from "./OurGoalsClientSide";
+import { cookies } from "next/headers";
 
-import React, { useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import { useTranslations } from "next-intl";
-import { Goal } from "@/lib/types";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollArrows from "@/components/ScrollArrows";
+const OurGoals: React.FC = async () => {
+  const cookieStore = cookies();
+  const lang = cookieStore.get("language")?.value || "ar";
 
-export default function OurGoals() {
-  const t = useTranslations("Home.ourGoals");
-  let containerRef = useRef<HTMLDivElement>(null);
+  let goalsData;
 
-  return (
-    <div className={twMerge("mt-[114px] w-full sm:mt-[198px] 1920:mt-[280px]")}>
-      <ScrollableCardsContainer
-        ref={containerRef}
-        className="flex sm:grid sm:w-full sm:grid-cols-3"
-      >
-        {universityGoals.map((el, index) => (
-          <div key={index} className="w-screen-pure sm:w-auto">
-            <OurGoalsCard key={index} el={el} index={index}></OurGoalsCard>
-          </div>
-        ))}
-      </ScrollableCardsContainer>
-      <ScrollArrows
-        containerRef={containerRef}
-        useMultiples={true}
-        wrapperClassName="justify-end mt-[24px] mx-[16px] sm:hidden"
-      ></ScrollArrows>
-    </div>
-  );
-}
-
-function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
-  const isFirst = index === 0;
-  const styles = twMerge(
-    "min-h-[556px] sm:min-h-[571px] 1920:min-h-[762px] flex flex-col justify-end text-start",
-    isFirst
-      ? "bg-[#0F4023]"
-      : `bg-white bg-no-repeat bg-cover bg-[url('/images/home/goals/${
-          index + 1
-        }.jpg')]`,
-  );
-
-  const backgroundImg = isFirst
-    ? {}
-    : { backgroundImage: `url('/images/home/goals/${index + 1}.jpg')` };
+  try {
+    goalsData = await fetchGoals(lang);
+  } catch (error) {
+    console.error("Failed to fetch goals:", error);
+  }
 
   return (
-    <div className={styles} style={backgroundImg}>
-      {isFirst && (
-        <h1 className="mx-4 flex-1 border-b border-white pt-[67px] text-[44px] font-medium leading-[1.22em] text-white sm:mx-[58px] sm:pt-[96px] sm:text-[51px] 1920:mx-[78px] 1920:pt-[129px] 1920:text-[68px]">
-          اهداف جامعة كلكامش
-        </h1>
-      )}
-
-      <div
-        className={twMerge(
-          "text-white",
-          !isFirst && "bg-black/30 backdrop-blur-md",
-          isFirst
-            ? "px-4 pb-[67px] pt-[29px] sm:px-[58px] sm:pb-[50px] sm:pt-[34px] 1920:px-[78px] 1920:pb-[67px] 1920:pt-[46px]"
-            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]",
-        )}
-      >
-        <h3 className="mb-2 text-[28px] font-bold leading-[1.22em] sm:text-[21px] 1920:text-[28px]">
-          {el.title}
-        </h3>
-        <p className="text-[16px] font-light leading-[1.75em] text-white/70 sm:text-[14px] 1920:text-[18px]">
-          {el.description}
-        </p>
-      </div>
-    </div>
+    goalsData &&
+    goalsData.length > 0 && <OurGoalsClientSide goals={goalsData} />
   );
-}
+};
 
-const universityGoals: Goal[] = [
-  {
-    title: "تعزيز الحداثة والتراث",
-    description:
-      "المساهمة في تحقيق التطور الكمي والنوعي في الحركة العلمية والثقافية والتعليمية والبحثية العلمية في العراق الجديد من خلال تأهيل كوادر علمية مستنيرة تجمع بين عناصر الحداثة والتراث، وترسيخ المبادئ والأفكار والرؤى العلمية الحديثة.",
-  },
-  {
-    title: "تقديم فرص أكاديمية متقدمة",
-    description:
-      "توفير الفرص الأكاديمية الجامعية الأولية والعليا (النظرية والتطبيقية)، واعتماد مناهج متقدمة لتحقيق الأهداف العلمية والتعليمية والثقافية التي حددها وزارة التعليم العالي والبحث العلمي لتطوير المجتمع العراقي.",
-  },
-  {
-    title: "تعزيز التميز في البحث العلمي",
-    description:
-      "دعم الاستثمار في البحث العلمي وتنمية المبتكرين بطريقة تحقق التميز في إنتاج المعرفة لتقديم الخدمات على مستوى يتوافق مع معايير الجودة.",
-  },
-  {
-    title: "ضمان التنافسية في سوق العمل",
-    description:
-      "المساهمة في تطوير الجانب الأكاديمي وتوفير الكوادر التدريسية والفنية المتخصصة، مما يضمن تأهيل الخريجين قادرين على التنافس في سوق العمل.",
-  },
-  {
-    title: "تعزيز التعليم المستمر",
-    description:
-      "المساهمة في تطوير التعليم المستمر لتحسين أداء الكوادر البشرية العاملة والمتخصصة والعمل على رفع كفاءتهم وفقًا لمعايير الجودة العالمية.",
-  },
-  {
-    title: "بناء جيل يؤمن بالمواطنة واحترام القانون",
-    description:
-      "المساهمة في تربية جيل يؤمن بالمواطنة واحترام القانون من خلال مناهج علمية وتعليمية وثقافية ورياضية واجتماعية هادفة.",
-  },
-];
+export default OurGoals;
