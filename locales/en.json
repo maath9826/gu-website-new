@@ -14,6 +14,7 @@
     "download": "Download",
     "loading": "Loading",
     "readMore": "Read More",
+    "viewMore": "View More",
     "gilgameshUniversity": "Gilgamesh University",
     "ourColleges": "Our Colleges",
     "email": "email",
@@ -157,7 +158,7 @@
   },
   "Home": {
     "statistics": {
-      "title": "University of Gilgamesh Statistics",
+      "title": "Gilgamesh University  Statistics",
       "students": "Number of students",
       "facultyMembers": "Number of faculty members",
       "administrativeStaff": "Number of administrative staff",
@@ -165,7 +166,7 @@
     },
 
     "ourGoals": {
-      "title": "University of Gilgamesh Goals"
+      "title": "Gilgamesh University  Goals"
     },
 
     "news": {
@@ -196,7 +197,7 @@
     },
     "academicRankings": {
       "subtitle": "Academic Rankings",
-      "title": "University of Gilgamesh in Academic Rankings",
+      "title": "Gilgamesh University  in Academic Rankings",
       "note": "To view the university's ranking, click on the ranking logo."
     },
     "eServices": "Electronic Services",
@@ -205,26 +206,9 @@
     }
   },
   "Footer": {
-    "registerNow": "Register now! What are you waiting for?",
-    "bestExperience": "Get the best delivery experience for you and your customers in Iraq!",
-    "yourEmail": "Your Email",
-    "registerButton": "Register now",
-    "alzaeemApp": "ALZAEEM app",
-    "theCompany": "The company",
-    "helpCenter": "Help center",
-    "facebook": "Facebook",
-    "googlePlayDownload": "Google Play download",
-    "whoWeAre": "Who we are",
-    "commonQuestions": "Common questions",
-    "appStoreDownload": "App Store download",
-    "services": "Services",
-    "contactUs": "Contact us",
-    "instagram": "Instagram",
-    "jobs": "Jobs",
-    "registerAsMerchant": "Register as merchant",
-    "linkedin": "LinkedIn",
-    "branches": "Branches",
-    "copyright": "© 2024 ALZAEEM Express Delivery Company. All rights reserved"
+    "slogan": "Improving people's future through science and technology.",
+    "copyright": "All rights reserved 2024 © Gilgamesh University.",
+    "relatedSites": "Related Sites"
   },
   "About": {
     "title": "AlZAEEM Express Delivery",

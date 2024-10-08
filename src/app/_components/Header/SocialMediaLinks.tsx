@@ -1,42 +1,36 @@
-"use client";
-
 import React from "react";
-import { Link } from "@/i18n.config";
-import { twMerge } from "tailwind-merge";
+import Link from "next/link";
+import { RawContact } from "@/lib/types";
 
-const socialMedia = [
-  {
-    url: "https://www.instagram.com",
-    icon: "ri-instagram-line",
-  },
-  {
-    url: "https://www.facebook.com",
-    icon: "ri-facebook-circle-fill",
-  },
-  {
-    url: "https://www.linkedin.com",
-    icon: "ri-linkedin-box-fill",
-  },
-  {
-    url: "https://www.youtube.com",
-    icon: "ri-youtube-fill",
-  },
-];
+interface SocialMediaLinksProps {
+  contactInfo: RawContact | undefined;
+}
 
-export default function SocialMediaLinks({ ...props }) {
+const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({ contactInfo }) => {
+  if (!contactInfo) return <></>;
+
+  const socialLinks = [
+    { icon: "ri-instagram-line", url: contactInfo.instagram },
+    { icon: "ri-facebook-circle-fill", url: contactInfo.facebook },
+    { icon: "ri-linkedin-box-fill", url: contactInfo.linkedin },
+    { icon: "ri-youtube-fill", url: contactInfo.youtube },
+  ];
+
   return (
-    <div className={twMerge("hidden gap-[24px] sm:flex", props.className)}>
-      {socialMedia.map((social, index) => (
+    <div className="flex gap-[26px] sm:gap-[24px]">
+      {socialLinks.map((link, index) => (
         <Link
           key={index}
-          href={social.url}
+          href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="relative leading-none transition clickable-area hover:text-secondary hover:opacity-70"
+          className="text-[24px] hover:text-secondary"
         >
-          <i className={`${social.icon} text-[20px]`}></i>
+          <i className={link.icon}></i>
         </Link>
       ))}
     </div>
   );
-}
+};
+
+export default SocialMediaLinks;

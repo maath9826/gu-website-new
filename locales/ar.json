@@ -14,6 +14,7 @@
     "download": "جار التحميل",
     "loading": "جار الارسال",
     "readMore": "قراءة المزيد",
+    "viewMore": "عرض المزيد",
     "gilgameshUniversity": "جامعة كلكامش",
     "ourColleges": "كلياتنا",
     "email": "البريد الإلكتروني",
@@ -207,26 +208,9 @@
     }
   },
   "Footer": {
-    "registerNow": "ماذا تنتظر سجــل الآن",
-    "bestExperience": "احصل على أفضــل تجـــربـــة توصيــل لك ولعملائــك فــي العراق!",
-    "yourEmail": "بريدك الإلكتروني..",
-    "registerButton": "سجل الآن",
-    "alzaeemApp": "تطبيق الزعيم",
-    "theCompany": "الشركة",
-    "helpCenter": "مركز المساعدة",
-    "facebook": "منصة الفيسبوك",
-    "googlePlayDownload": "تحميل كوكل بلي",
-    "whoWeAre": "من نحن",
-    "commonQuestions": "الأسئلة الشائعة",
-    "appStoreDownload": "تحميل اب ستور",
-    "services": "الخــدمــات",
-    "contactUs": "تواصل معنا",
-    "instagram": "منصة الانستغرام",
-    "jobs": "الوظائف",
-    "registerAsMerchant": "التسجيل كتاجر",
-    "linkedin": "منصة اللنكدن",
-    "branches": "فروعــنــا",
-    "copyright": "© 2024 شركة الزعيم للتوصيل السريع. جميع الحقوق محفوظة"
+    "slogan": "تحسين مستقبل الناس من خلال العلوم والتكنولوجيا",
+    "copyright": "جميع الحقوق محفوظة 2024 © جامعة كلكامش",
+    "relatedSites": "مواقع ذات صلة"
   },
   "About": {
     "title": "الزعيم للتوصيل السريع",

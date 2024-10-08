@@ -5,7 +5,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { getMessages } from "next-intl/server";
 import useTextDirection from "@/app/_hooks/useTextDirection";
 import Header from "../_components/Header/Header";
-import Footer from "../_components/Footer";
+import Footer from "../_components/Footer/Footer";
 
 import Script from "next/script";
 import CommonSections from "@/components/common-sections/CommonSections";

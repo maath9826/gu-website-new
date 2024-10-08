@@ -1,11 +1,11 @@
 "use client";
 
-import Navbar from "./Navbar";
-import { usePathname } from "@/i18n.config";
+import Navbar from "./Navbar/Navbar";
 import { IMAGE_BG_ROUTES, SLIDER_BG_ROUTES } from "@/lib/paths";
 import { twMerge } from "tailwind-merge";
-import Topbar from "./Topbar";
+import Topbar from "./Topbar/Topbar";
 import CustomHoverNavbar from "../News/NavElements";
+import { usePathname } from "@/i18n.config";
 
 export default function Header() {
   const pathname = usePathname();

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, Locale } from "@/i18n.config";
@@ -12,7 +14,6 @@ import {
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import useCommonStore from "@/lib/zustand/common";
-import Section from "../../../components/Section";
 import {
   Accordion,
   AccordionContent,
@@ -20,12 +21,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems, topbarNavItems } from "@/lib/data";
-import NavElements from "../News/NavElements";
-import { MenuItem } from "@/lib/types";
+import { MenuItem, RawContact } from "@/lib/types";
 import { twMerge } from "tailwind-merge";
-import SocialMediaLinks from "./SocialMediaLinks";
+import Section from "@/components/Section";
+import NavElements from "../../News/NavElements";
 
-export default function Navbar() {
+interface NavbarClientProps {
+  contactInfo: RawContact | undefined;
+}
+
+const NavbarClient: React.FC<NavbarClientProps> = ({ contactInfo }) => {
   const t = useTranslations("Header");
   const locale = useLocale() as Locale;
 
@@ -46,15 +51,44 @@ export default function Navbar() {
           <div className="hidden h-full sm:block">
             <NavElements />
           </div>
-          <SocialMediaLinks />
+          <SocialMediaLinks contactInfo={contactInfo} />
         </div>
-        <NavDrawer />
+        <NavDrawer contactInfo={contactInfo} />
       </nav>
     </Section>
   );
-}
+};
 
-function NavDrawer() {
+const SocialMediaLinks: React.FC<{ contactInfo: RawContact | undefined }> = ({
+  contactInfo,
+}) => {
+  if (!contactInfo) return null;
+
+  const socialMedia = [
+    { icon: "ri-instagram-line", url: contactInfo.instagram },
+    { icon: "ri-facebook-circle-fill", url: contactInfo.facebook },
+    { icon: "ri-linkedin-box-fill", url: contactInfo.linkedin },
+    { icon: "ri-youtube-fill", url: contactInfo.youtube },
+  ];
+
+  return (
+    <div className="hidden gap-[24px] sm:flex">
+      {socialMedia.map((social, index) => (
+        <Link
+          key={index}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative leading-none transition clickable-area hover:text-secondary hover:opacity-70"
+        >
+          <i className={`${social.icon} text-[20px]`}></i>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+function NavDrawer({ contactInfo }: { contactInfo: RawContact | undefined }) {
   const { isDrawerVisible, toggleDrawer } = useCommonStore();
   const locale = useLocale() as Locale;
   const dir = useTextDirection();
@@ -129,7 +163,7 @@ function NavDrawer() {
             <DrawerClose onClick={() => toggleDrawer(false)} className="">
               <i className="ri-close-large-line"></i>
             </DrawerClose>
-            <SocialMediaLinks className="flex"></SocialMediaLinks>
+            <SocialMediaLinks contactInfo={contactInfo}></SocialMediaLinks>
             <LocaleSwitcher locale={locale} />
           </div>
           <ScrollArea className="h-screen" dir={dir}>
@@ -159,21 +193,4 @@ function NavDrawer() {
   );
 }
 
-const socialMedia = [
-  {
-    url: "https://www.instagram.com",
-    icon: "ri-instagram-line",
-  },
-  {
-    url: "https://www.facebook.com",
-    icon: "ri-facebook-circle-fill",
-  },
-  {
-    url: "https://www.linkedin.com",
-    icon: "ri-linkedin-box-fill",
-  },
-  {
-    url: "https://www.youtube.com",
-    icon: "ri-youtube-fill",
-  },
-];
+export default NavbarClient;

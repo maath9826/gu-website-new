@@ -57,3 +57,15 @@ export const fetchContact = async (lang: string): Promise<Contact> => {
     throw error;
   }
 };
+
+export const fetchLinks = async (): Promise<RawContact> => {
+  try {
+    const response = await axiosInstance.get<ContactsResponse>(
+      API_PATHS.CONTACT,
+    );
+    return response.data.contacts[0];
+  } catch (error) {
+    console.error("Error fetching contact information:", error);
+    throw error;
+  }
+};
