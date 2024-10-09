@@ -18,8 +18,6 @@ const CommonSections: React.FC = async () => {
     console.error("Failed to fetch common sections data:", error);
   }
 
-  console.log(contactData);
-
   return (
     <>
       <EServicesSection eServices={eServicesData} />

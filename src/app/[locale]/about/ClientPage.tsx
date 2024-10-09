@@ -36,7 +36,7 @@ export default function AboutClientPage() {
         </Wrapper>
       </Section>
       <CardsSection></CardsSection>
-      <OurGoals></OurGoals>
+      {/* <OurGoals></OurGoals> */}
     </main>
   );
 }

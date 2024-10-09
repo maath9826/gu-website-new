@@ -6,7 +6,6 @@ import OurColleges from "../_components/OurColleges/OurColleges";
 import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
 import SliderBg from "@/components/page/SliderBg";
 import dynamic from "next/dynamic";
-import { cookies } from "next/headers";
 
 export default function Home() {
   return (

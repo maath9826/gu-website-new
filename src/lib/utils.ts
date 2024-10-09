@@ -20,6 +20,7 @@ import { TextDirection } from "@/app/_hooks/useTextDirection";
 import { IReactToPrintProps } from "react-to-print";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
 import OnlyTitle from "@/components/page/OnlyTitle";
+import { locales } from "@/i18n.config";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -157,5 +158,14 @@ export function capitalize(str: string) {
 
 export const getImageUrl = (imagePath: string) =>
   process.env.NEXT_PUBLIC_ASSETS_URL + "/" + imagePath;
+
+export function removeLocaleFromPathname(pathname: string): string {
+  // Create a regex pattern that matches any of the locales at the start of the pathname
+  const localePattern = `^/(${locales.join("|")})`;
+  const regex = new RegExp(localePattern);
+
+  // Remove the locale from the pathname if it exists
+  return pathname.replace(regex, "");
+}
 
 export { getPrintProps };

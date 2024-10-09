@@ -1,13 +1,30 @@
 import createMiddleware from "next-intl/middleware";
 import { locales } from "./i18n.config";
+import { NextRequest } from "next/server";
 
-export default createMiddleware({
-  // A list of all locales that are supported
+// export default createMiddleware({
+//   // A list of all locales that are supported
+//   locales,
+
+//   // Used when no locale matches
+//   defaultLocale: "ar",
+
+// });
+
+const intlMiddleware = createMiddleware({
   locales,
-
-  // Used when no locale matches
   defaultLocale: "ar",
 });
+
+export default function middleware(request: NextRequest) {
+  // Call the intlMiddleware
+  const response = intlMiddleware(request);
+
+  // Add the custom header to the response
+  response.headers.set("x-pathname", request.nextUrl.pathname);
+
+  return response;
+}
 
 export const config = {
   matcher: [
