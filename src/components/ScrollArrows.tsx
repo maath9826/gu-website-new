@@ -41,16 +41,16 @@ export default function ScrollArrows({
   return (
     <div
       className={twMerge(
-        "flex gap-[12px] sm:gap-[9px] ltr:flex-row-reverse rtl:flex-row",
-        wrapperClassName
+        "flex flex-row justify-start gap-[12px] sm:gap-[9px]",
+        wrapperClassName,
       )}
     >
       <Button
         variant={"secondary"}
         className={twMerge(
-          "scroll-button",
+          "scroll-button flippable",
           !canScrollStart && "disabled-scroll-button",
-          className
+          className,
         )}
         size="icon"
         onClick={() => scroll({ direction: "right", isLTR: dir == "ltr" })}
@@ -60,9 +60,9 @@ export default function ScrollArrows({
       <Button
         variant={"secondary"}
         className={twMerge(
-          "scroll-button",
+          "scroll-button flippable",
           !canScrollEnd && "disabled-scroll-button",
-          className
+          className,
         )}
         size="icon"
         onClick={() => scroll({ direction: "left", isLTR: dir == "ltr" })}

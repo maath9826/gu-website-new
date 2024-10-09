@@ -1,26 +1,10 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import {
-  CONTACT_ROUTE,
-  HOME_ROUTE,
-  NEWS_ROUTE,
-  // SLIDER_BG_ROUTES,
-  // IMAGE_BG_ROUTES,
-  // CENTERIZED_TITLE_ROUTES,
-  // TITLE_WITH_ACTIONS_ROUTES,
-  // TITLE_AND_IMAGE_ROUTE_PATTERNS,
-  // ONLY_TITLE_ROUTE_PATTERNS,
-} from "./paths";
-import SliderBg from "@/components/page/SliderBg";
-import ImageBg from "@/components/page/ImageBg";
-import CenterizedTitle from "@/components/page/FirstTitleSection/CenterizedTitle";
-import React, { RefObject } from "react";
-import TitleAndImage from "@/components/page/TitleAndImage";
+import { CONTACT_ROUTE, HOME_ROUTE, NEWS_ROUTE } from "./paths";
 import { TextDirection } from "@/app/_hooks/useTextDirection";
 import { IReactToPrintProps } from "react-to-print";
-import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-import OnlyTitle from "@/components/page/OnlyTitle";
 import { locales } from "@/i18n.config";
+import { RefObject } from "react";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -166,6 +150,19 @@ export function removeLocaleFromPathname(pathname: string): string {
 
   // Remove the locale from the pathname if it exists
   return pathname.replace(regex, "");
+}
+
+export function getLocaleFromPathname(pathname: string): string | null {
+  // Create a regex pattern that matches any of the locales at the start of the pathname
+  const localePattern = `^/(${locales.join("|")})`;
+  const regex = new RegExp(localePattern);
+
+  // Extract the locale from the pathname if it exists
+  const match = pathname.match(regex);
+
+  // If a match is found, return the locale without the leading slash
+  // Otherwise, return null
+  return match ? match[1] : null;
 }
 
 export { getPrintProps };

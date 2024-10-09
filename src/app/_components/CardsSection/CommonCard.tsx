@@ -25,7 +25,7 @@ export default function CommonCard({
       )}
     >
       <img
-        src={getImageUrl(el.imgUrl)}
+        src={el.imgUrl}
         alt={el.title}
         className="h-[48px] w-[48px] object-contain sm:h-[60px] sm:w-[60px] 1920:h-[80px] 1920:w-[80px]"
       />

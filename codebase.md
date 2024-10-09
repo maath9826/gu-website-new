@@ -27,7 +27,6 @@
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
-
 ```
 
 # tailwind.config.ts
@@ -158,7 +157,53 @@ const config = {
 } satisfies Config;
 
 export default config;
+```
 
+# README.md
+
+```md
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Getting Started
+
+First, run the development server:
+
+\`\`\`bash
+npm run dev
+
+# or
+
+yarn dev
+
+# or
+
+pnpm dev
+
+# or
+
+bun dev
+\`\`\`
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 ```
 
 # postcss.config.mjs
@@ -172,7 +217,6 @@ const config = {
 };
 
 export default config;
-
 ```
 
 # package.json
@@ -190,6 +234,7 @@ export default config;
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-menubar": "^1.1.1",
@@ -199,10 +244,13 @@ export default config;
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@react-pdf/renderer": "^4.0.0",
+    "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.31",
     "html2pdf.js": "^0.10.2",
+    "js-cookie": "^3.0.5",
+    "lottie-react": "^2.4.0",
     "lucide-react": "^0.436.0",
     "next": "14.2.5",
     "next-intl": "^3.17.6",
@@ -217,6 +265,7 @@ export default config;
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/leaflet": "^1.9.12",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -231,7 +280,6 @@ export default config;
     "typescript": "^5"
   }
 }
-
 ```
 
 # next.config.mjs
@@ -254,7 +302,16 @@ const nextConfig = {
 };
 
 export default withNextIntl(nextConfig);
+```
 
+# next-env.d.ts
+
+```ts
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
 ```
 
 # components.json
@@ -288,13 +345,58 @@ export default withNextIntl(nextConfig);
 
 ```
 
+# .gitignore
+
+```
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+.vscode/
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+.aidigestignore
+
+```
+
 # .eslintrc.json
 
 ```json
 {
   "extends": "next/core-web-vitals"
 }
-
 ```
 
 # src\middleware.ts
@@ -322,7 +424,6 @@ export const config = {
     "/",
   ],
 };
-
 ```
 
 # src\i18n.ts
@@ -340,7 +441,6 @@ export default getRequestConfig(async ({ locale }) => {
     messages: (await import(`../locales/${locale}.json`)).default,
   };
 });
-
 ```
 
 # src\i18n.config.ts
@@ -356,9 +456,9 @@ export const localeNames: Record<Locale, string> = {
   ar: "العربية",
 };
 
-export const { Link, usePathname, useRouter } =
-  createSharedPathnamesNavigation({ locales });
-
+export const { Link, usePathname, useRouter } = createSharedPathnamesNavigation(
+  { locales },
+);
 ```
 
 # locales\en.json
@@ -373,11 +473,20 @@ export const { Link, usePathname, useRouter } =
     "firstTitle": "AlZAEEM Express Delivery"
   },
   "Common": {
+    "generalSuccessMessage": "Sent Successfully!",
     "share": "Share",
     "print": "Print",
     "centerizedTitle": "Your Centered Title Here",
     "download": "Download",
-    "loading": "Downloading",
+    "loading": "Loading",
+    "readMore": "Read More",
+    "viewMore": "View More",
+    "gilgameshUniversity": "Gilgamesh University",
+    "ourColleges": "Our Colleges",
+    "email": "email",
+    "phoneNumber": "Phone Number",
+    "address": "Address",
+    "downloadApp": "Download App",
     "cards": {
       "uniLife": "University Life",
       "about": "About the University",
@@ -514,89 +623,16 @@ export const { Link, usePathname, useRouter } =
     }
   },
   "Home": {
-    "hero": {
-      "forFastDelivery": "For fast delivery",
-      "title": "Anytime anywhere!",
-      "subtitle": "At AlZaeem Company, we are committed to establishing effective partnerships with supporting companies, working together to advance the sector, develop it, and equip it with various capabilities and technical expertise. Our goal is to be the leading company in providing postal transport services regionally and globally.",
-      "cta": {
-        "bookSpace": "Book your space now",
-        "attendanceTickets": "Attendance Tickets"
-      }
+    "statistics": {
+      "title": "Gilgamesh University  Statistics",
+      "students": "Number of students",
+      "facultyMembers": "Number of faculty members",
+      "administrativeStaff": "Number of administrative staff",
+      "technicalStaff": "Number of technical and support staff"
     },
-    "aboutUs": {
-      "title": "About AlZaeem",
-      "description": "In 2020, AlZaeem marked its inaugural launch, emerging from the Iraqi market's need for public transport and express mail services. Founded by a youthful team aware of the challenges within the local market, especially in the postal transport sector, the company has diligently provided solutions, taking initiative and leadership. Since its inception, Al-Za'eem has navigated numerous trials and challenges, including the COVID-19 pandemic with its associated lockdowns, curfews, and transportation disruptions, alongside global trade challenges. These obstacles did not deter the company and its founders, who understood that perseverance would pave the way forward and completing the journey was essential to achieving their goals.",
-      "readMore": "Read More"
-    },
-    "ourPartners": {
-      "title": "Our Partners in Success"
-    },
-    "ourServices": {
-      "title": "Our services",
-      "description": "AlZaeem specializes in cargo transportation and express mail delivery, offering specialized services driven by market demands and customer needs to deliver exceptional service in this sector.",
-      "services": [
-        {
-          "title": "Express Mail Delivery",
-          "description": "Delivery within less than 24 hours!"
-        },
-        {
-          "title": "Instant Accountability Service",
-          "description": "Instant accountability wherever and whenever the client needs."
-        },
-        {
-          "title": "Mail receiving service",
-          "description": "Direct mail pickup from the client's location."
-        },
 
-        {
-          "title": "Storage and preparation service",
-          "description": "Providing storage service for customers, and preparing goods."
-        },
-        {
-          "title": "Your marketing consultant service",
-          "description": "For training and supporting young entrepreneurs."
-        },
-        {
-          "title": "Delivery of special orders",
-          "description": "Sample text, sample text, sample text, sample text."
-        }
-      ]
-    },
-    "ourPhilosophy": {
-      "title": "The company's philosophy",
-      "subtitle": "We bear the responsibility of developing the sector.",
-      "description": "AlZaeem Company pursues the establishment of effective partnerships with supporting companies, collaborating to propel the sector forward and enhance it with diverse capabilities, expertise, and technological capacities.",
-      "stats": [
-        { "number": "1,200+", "label": "Clients" },
-        { "number": "20+", "label": "Branches" },
-        { "number": "200+", "label": "Number of Employees" },
-        { "number": "315+", "label": "Sales Representative" }
-      ]
-    },
     "ourGoals": {
-      "title": "The company's objectives",
-      "goals": [
-        {
-          "title": "Customer satisfaction",
-          "description": "Achieving exceptional standards in transport and mail delivery, with a focus on maximizing customer satisfaction."
-        },
-        {
-          "title": "Growth",
-          "description": "Expanding regionally and globally."
-        },
-        {
-          "title": "Continuous evolution",
-          "description": "Ongoing initiative in the development of the transportation sector, postal delivery, and sales."
-        },
-        {
-          "title": "Digital transformation",
-          "description": "Solidifying digital transformation within the company and the sector."
-        },
-        {
-          "title": "Work environment",
-          "description": "Creating the optimal work environment."
-        }
-      ]
+      "title": "Gilgamesh University  Goals"
     },
 
     "news": {
@@ -625,100 +661,20 @@ export const { Link, usePathname, useRouter } =
         }
       ]
     },
-    "faq": {
-      "title": "Frequently Asked Questions (FAQs)",
-      "description": "Here are some frequently asked questions about AlZaeem Express Delivery and how it operates:",
-      "questions": [
-        {
-          "question": "What are the types of services provided by the company?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "The delivery rates?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "What is the process for tracking and processing orders?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "What are the methods of account withdrawal from the company?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "Is the return policy free of charge?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "What is the nearest branch of AlZaeem Company for me?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "Does the company provide a pickup service for receiving orders?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        },
-        {
-          "question": "How can I contact all departments of the company?",
-          "answer": "This is a sample text to fill the space. It can be replaced with actual content later. Its purpose is to show the general layout of the page or element."
-        }
-      ],
-      "stillHaveQuestions": {
-        "title": "Still have some questions?",
-        "description": "To get assistance, please visit our   <a href=\"/contact\" target=\"_blank\" class=\"text-foreground font-medium\">Contact Us</a> page or call our customer support hotline at <a href=\"tel:077122233828\" class=\"text-foreground font-medium\">077122233828</a>. Our dedicated team is ready to help you achieve the fastest delivery process possible."
-      }
+    "academicRankings": {
+      "subtitle": "Academic Rankings",
+      "title": "Gilgamesh University  in Academic Rankings",
+      "note": "To view the university's ranking, click on the ranking logo."
     },
-    "ratings": {
-      "title": "We are delighted with the feedback from our valued customers.",
-      "description": "Many diverse customer opinions about our services.",
-      "cards": [
-        {
-          "comment": "Alzaeem Express Delivery has always been one of our key partners in success, providing us with the best delivery service in terms of speed and maintaining the confidentiality of the data sent to them.",
-          "job": "Rafidain Bank",
-          "name": "Marketing Center for Q Card",
-          "stars": 5
-        },
-        {
-          "comment": "Because our goods at the Design Office for Mobile Phones include sensitive and expensive electronic devices, Alzaeem Express Delivery was our first choice due to the great care the company takes to preserve the orders. Over three years, we have not encountered any case of damage or breakage of goods, reflecting the quality and reliability of their services.",
-          "job": "",
-          "name": "AL-Tasmem Office for Mobile Phones",
-          "stars": 5
-        },
-        {
-          "comment": "You deserve all the praise for the hard and dedicated work you do day after day. At Karam Company, we highly appreciate your efforts in providing world-class service. I wish you more progress and prosperity in the future, and I look forward to continuing successful cooperation with you. Thank you from the heart for your tremendous and continuous efforts.",
-          "job": "",
-          "name": "Masnaa Al-Asaaer for Plastic Cans",
-          "stars": 5
-        },
-        {
-          "comment": "I would like to express my thanks and gratitude for the long-term cooperation and hard work that Alzaeem Company has provided over the past year. Through your commitment to providing exceptional customer service and on-time delivery, I found your staff to be dedicated and of high quality in performing their tasks, which greatly contributed to achieving successes and developing our business.",
-          "job": "",
-          "name": "Global Marketing Representative",
-          "stars": 5
-        }
-      ]
+    "eServices": "Electronic Services",
+    "contact": {
+      "title": "We would love to hear from you."
     }
   },
   "Footer": {
-    "registerNow": "Register now! What are you waiting for?",
-    "bestExperience": "Get the best delivery experience for you and your customers in Iraq!",
-    "yourEmail": "Your Email",
-    "registerButton": "Register now",
-    "alzaeemApp": "ALZAEEM app",
-    "theCompany": "The company",
-    "helpCenter": "Help center",
-    "facebook": "Facebook",
-    "googlePlayDownload": "Google Play download",
-    "whoWeAre": "Who we are",
-    "commonQuestions": "Common questions",
-    "appStoreDownload": "App Store download",
-    "services": "Services",
-    "contactUs": "Contact us",
-    "instagram": "Instagram",
-    "jobs": "Jobs",
-    "registerAsMerchant": "Register as merchant",
-    "linkedin": "LinkedIn",
-    "branches": "Branches",
-    "copyright": "© 2024 ALZAEEM Express Delivery Company. All rights reserved"
+    "slogan": "Improving people's future through science and technology.",
+    "copyright": "All rights reserved 2024 © Gilgamesh University.",
+    "relatedSites": "Related Sites"
   },
   "About": {
     "title": "AlZAEEM Express Delivery",
@@ -987,7 +943,6 @@ export const { Link, usePathname, useRouter } =
     "send": "Send"
   }
 }
-
 ```
 
 # locales\ar.json
@@ -1002,11 +957,20 @@ export const { Link, usePathname, useRouter } =
     "firstTitle": "الزعيم للتـوصيـل السـريـع"
   },
   "Common": {
+    "generalSuccessMessage": "تم الارسال بنجاح! ",
     "centerizedTitle": "عنوانك المركزي هنا",
     "print": "طباعة",
     "share": "مشاركة",
-    "download": "تحميل",
-    "loading": "جار التحميل",
+    "download": "جار التحميل",
+    "loading": "جار الارسال",
+    "readMore": "قراءة المزيد",
+    "viewMore": "عرض المزيد",
+    "gilgameshUniversity": "جامعة كلكامش",
+    "ourColleges": "كلياتنا",
+    "email": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "address": "عنوان الجامعة",
+    "downloadApp": "تحميل تطبيق الجامعة",
     "cards": {
       "uniLife": "الحياة الجامعية",
       "about": "حول الجامعة",
@@ -1147,91 +1111,16 @@ export const { Link, usePathname, useRouter } =
     }
   },
   "Home": {
-    "hero": {
-      "forFastDelivery": "للتـوصيـل السـريـع",
-      "title": "بــــــأي وقــــــت وبكل مكــــــان!",
-      "subtitle": "تنتهج شركة الزعيم في عملها تأسيس شراكات فعالة مع شركات ساندة، تسهم معها في نقل القطاع إلى الإمام، وتطويره ومدّه بالإمكانيات والخبرات والقدرات التقنية المختلفة, هدفنا أن نكون الشركة الرائدة بتقديم خدمات نقل البريد إقليميا وعالمياً",
-      "cta": {
-        "bookSpace": "احجز مساحتك الآن",
-        "attendanceTickets": "تذاكر الحضور"
-      }
-    },
-    "aboutUs": {
-      "title": "عن الزعيم",
-      "description": "يمثل عام 2020 الانطلاقة الأولى لشركة الزعيم، حيث انبثقت من حاجة السوق العراقي لشركات النقل العام والبريد السريع، بأيد شبابية تعي المشكلات الموجودة في السوق المحلي، والخاصة بقطاع نقل البريد، عملت بإصرار لتقدم الحلول، وتأخذ زمام المبادرة والريادة. خاضت شركة الزعيم منذ تأسيسها تجارب وتحديات عدة؛ حيث كان العراق يعيش أزمة جائحة كورونا، وما رافقها من إغلاقات وحظر للتجول وتوقف لحركة المواصلات، فضلا عن تحديات التجارة العالمية، تحديات لم تﺜﻦ عزيمة الشركة ومؤسسيها الذين أيقنوا أن الاستمرار هو ما سيجلب الخطوة القادمة، وأن إكمال الطريق هو أساس الوصول.",
-      "readMore": "قراءة المزيد"
-    },
-    "ourPartners": {
-      "title": "مجموعة شركائنا في النجاح"
-    },
-    "ourServices": {
-      "title": "خــــدمــــاتنـــــا",
-      "description": "تتخصص شركة الزعيم بنقل البضائع وتوصيل البريد السريع، حيث تقدم خدماتها في هذا القطاع منطلقة من متطلبات السوق والعملاء؛ لتوفر خدماتها التخصصية المتميزة.",
-      "services": [
-        {
-          "title": "توصيل البريد السريع",
-          "description": "توصيل الطلبات خلال أقل من 24 ساعة!"
-        },
-        {
-          "title": "خدمة التحاسب الفوري",
-          "description": "التحاسب الفوري حينما يكون العميل، ومتى يشاء"
-        },
-        {
-          "title": "خدمة استلام البريد",
-          "description": "استلام البريد من موقع العميل مباشرة"
-        },
-        {
-          "title": "خدمة الخزن والتجهيز",
-          "description": "إتاحة خدمة الخزن للعملاء وتجهيز البضائع"
-        },
-
-        {
-          "title": "خدمة مستشارك التسويقي",
-          "description": "لتدريب ودعم الشباب من أصحاب المشاريع الناشئة"
-        },
-        {
-          "title": "توصيل الطلبات الخاصة",
-          "description": "نص تجريبي نص تجريبي نص تجريبي نص تجريبي"
-        }
-      ]
-    },
-    "ourPhilosophy": {
-      "title": "فلسفة الشركة",
-      "subtitle": "نحمل علـى عـاتقـنــا مهمـــة تطويــر القطــاع",
-      "description": "تنتهج شركة الزعيم في عملها تأسيس شراكات فعالة مع شركات ساندة، تسهم معها في نقل القطاع إلى الإمام، وتطويره ومدّه بالإمكانيات والخبرات والقدرات التقنية المختلفة.",
-      "stats": [
-        { "number": "1,200+", "label": "العملاء" },
-        { "number": "20+", "label": "الفروع" },
-        { "number": "200+", "label": "عدد الموظفين" },
-        { "number": "315+", "label": "المندوبين" }
-      ]
+    "statistics": {
+      "title": "احصائيات جامعة كلكامش",
+      "students": "عدد الطلبة",
+      "facultyMembers": "عدد الكادر التدريسي",
+      "administrativeStaff": "عدد الكادر الإداري",
+      "technicalStaff": "عدد الكادر الفني والتقني"
     },
     "ourGoals": {
-      "title": "أهداف الشركة",
-      "goals": [
-        {
-          "title": "إرضاء العملاء",
-          "description": "تحقيـــق أعلى جـــودة في قطاع النقـــل وتوصيل البريد وإرضاء العملاء"
-        },
-        {
-          "title": "النمو",
-          "description": "التوسع إقليميا وعالميا"
-        },
-        {
-          "title": "التطور المستمر",
-          "description": "المبادرة المستمرة في تطوير قطاع النقل وتوصيل البريد والمبيعات"
-        },
-        {
-          "title": "التحول الرقمي",
-          "description": "ترسيخ التحول الرقمي في الشركة والقطاع"
-        },
-        {
-          "title": "بيئة العمل",
-          "description": "توفير أفضل بيئة عمل"
-        }
-      ]
+      "title": "اهداف جامعة كلكامش"
     },
-
     "news": {
       "title": "آخر الأخبار",
       "viewAll": "عرض جميع الاخبار",
@@ -1258,100 +1147,20 @@ export const { Link, usePathname, useRouter } =
         }
       ]
     },
-    "faq": {
-      "title": "الأسئلة الشائعة",
-      "description": "بعض الأسئلة الشائعة عن شركة الزعيم للتوصيل السريع وطريقة عملها",
-      "questions": [
-        {
-          "question": "ماهي طبيعة الخدمات التي توفرها الشركة؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "اسعار التوصيل؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "ما هي الية متابعة و معالجة الطلبات؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "ما هي طرق سحب الحسابات من الشركة؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "هل الراجع مجاني؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "ما هو اقرب فرع لشركة الزعيم بالنسبة لي؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "هل توفر الشركة مندوب استلام للطلبات؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        },
-        {
-          "question": "كيف يمكن لي التواصل مع جميع اقسام الشركة؟",
-          "answer": "هذا النص تجريبي لملئ الفراغ. يمكن استبداله بالمحتوى الفعلي في وقت لاحق. الهدف منه هو إظهار الشكل العام للصفحة أو العنصر."
-        }
-      ],
-      "stillHaveQuestions": {
-        "title": "هل مازال لديك بعض التساؤلات؟",
-        "description": "للحصول على المساعدة، يرجى زيارة صفحة <a href=\"/contact\" target=\"_blank\" class=\"text-foreground font-medium\">اتصل بنا</a> أو الاتصال بالخط الساخن لدعم العملاء على الرقم <a href=\"tel:077122233828\" class=\"text-foreground font-medium\">077122233828</a> فريقنا المتفاني على استعداد لمساعدتك في الوصول إلى أسرع عملية تسليم."
-      }
+    "academicRankings": {
+      "subtitle": "التصنيفات الاكاديمية",
+      "title": "جامعة كلكامش ضمن التصنيفــات الاكاديميــة",
+      "note": "للاطلاع على مرتبة الجامعة اضغط على شعار التصنيف."
     },
-    "ratings": {
-      "title": "سعداء بآراء عملائنا المميزين",
-      "description": "الكثير من آراء العملاء المختلفة حول خدماتنا",
-      "cards": [
-        {
-          "comment": "لطالما كانت شركة الزعيم للتوصيل السريع أحد أهم شركائنا في مجال النجاح حيث قدمت لنا خدمة التوصيل الأفضل من حيث السرعة في إيصال الطلبات والحفاظ على سرية البيانات المرسلة لهم",
-          "job": "مصرف الرافدين",
-          "name": "المركز التسويقي لبطاقات كي كارد",
-          "stars": 5
-        },
-        {
-          "comment": "لأن بضاعتنا في مكتب التصميم للهواتف النقالة تشمل أجهزة إلكترونية حساسة وغالية الثمن، فإن شركة الزعيم للتوصيل كانت خيارنا الأول نظرا للعناية الفائقة التي توليها الشركة للحفاظ على الطلبات حيث على مدى ثلاث سنوات، لم نواجه أي حالة تلف أو كسر للبضائع مما يعكس مدى جودة وموثوقية خدماتها",
-          "job": "",
-          "name": "مكتب التصميم للهواتف النقالة",
-          "stars": 5
-        },
-        {
-          "comment": "تستحقون كل الإشادة على العمل الجاد والمتفاني الذي تقومون به يوما بعد يوم. نحن في شركة كرم نقدر عاليا جهودكم في تقديم خدمة على المستوى العالمي. أتمنى لكم مزيدا من التقدم والازدهار في المستقبل، وأتطلع إلى مواصلة التعاون الناجح معكم. شكرا لكم من القلب على الجهود الجبارة والمتواصلة",
-          "job": "",
-          "name": "مصنع العصائر لعلب البلاستك",
-          "stars": 5
-        },
-        {
-          "comment": "أود أن أعرب عن شكري وامتناني للتعاون الطويل الأمد، والعمل الجاد الذي قدمته شركة الزعيم خلال السنة الماضية. من خلال التزامكم بتقديم خدمة عملاء استثنائية والتسليم في الوقت المحدد، وجدت الكادر العامل لديكم يتمتع بالتفاني والجودة العالية في أداء مهامهم، مما أسهم بشكل كبير في تحقيق النجاحات وتطوير أعمالنا",
-          "job": "",
-          "name": "ممثل التسويق العالمي",
-          "stars": 5
-        }
-      ]
+    "eServices": "الخدمات الالكترونية",
+    "contact": {
+      "title": "نحب ان نسمع منك"
     }
   },
   "Footer": {
-    "registerNow": "ماذا تنتظر سجــل الآن",
-    "bestExperience": "احصل على أفضــل تجـــربـــة توصيــل لك ولعملائــك فــي العراق!",
-    "yourEmail": "بريدك الإلكتروني..",
-    "registerButton": "سجل الآن",
-    "alzaeemApp": "تطبيق الزعيم",
-    "theCompany": "الشركة",
-    "helpCenter": "مركز المساعدة",
-    "facebook": "منصة الفيسبوك",
-    "googlePlayDownload": "تحميل كوكل بلي",
-    "whoWeAre": "من نحن",
-    "commonQuestions": "الأسئلة الشائعة",
-    "appStoreDownload": "تحميل اب ستور",
-    "services": "الخــدمــات",
-    "contactUs": "تواصل معنا",
-    "instagram": "منصة الانستغرام",
-    "jobs": "الوظائف",
-    "registerAsMerchant": "التسجيل كتاجر",
-    "linkedin": "منصة اللنكدن",
-    "branches": "فروعــنــا",
-    "copyright": "© 2024 شركة الزعيم للتوصيل السريع. جميع الحقوق محفوظة"
+    "slogan": "تحسين مستقبل الناس من خلال العلوم والتكنولوجيا",
+    "copyright": "جميع الحقوق محفوظة 2024 © جامعة كلكامش",
+    "relatedSites": "مواقع ذات صلة"
   },
   "About": {
     "title": "الزعيم للتوصيل السريع",
@@ -1622,17 +1431,14 @@ export const { Link, usePathname, useRouter } =
     "send": "إرسال"
   }
 }
-
 ```
 
 # .vscode\settings.json
 
 ```json
 {
-  "i18n-ally.localesPaths": ["locales"],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.localesPaths": ["locales"]
 }
-
 ```
 
 # src\lib\utils.ts
@@ -1795,8 +1601,10 @@ export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export { getPrintProps };
+export const getImageUrl = (imagePath: string) =>
+  process.env.NEXT_PUBLIC_ASSETS_URL + "/" + imagePath;
 
+export { getPrintProps };
 ```
 
 # src\lib\types.ts
@@ -1806,14 +1614,6 @@ export type SliderElement = {
   image: string;
   title: string;
   subTitle: string;
-};
-
-export type NewsItem = {
-  id: number;
-  title: string;
-  subtitle: string;
-  content: string;
-  image: string;
 };
 
 export interface MenuItem {
@@ -1838,7 +1638,11 @@ export type ComponentProps = React.PropsWithChildren<
 // React.forwardRef<HTMLButtonElement, ButtonProps>(
 //   ({ className, variant, size, asChild = false, ...props }, ref) =
 
-export type CardData = { href: string; imgUrl: string; title: string };
+export type CardData = {
+  href: string;
+  imgUrl: string;
+  title: string;
+};
 
 export type TransNewsItem = {
   id: number;
@@ -1868,6 +1672,204 @@ export type Location = {
   googleMapsLink: string;
 };
 
+// types.ts
+
+export interface NewsItem {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}
+
+export interface NewsResponse {
+  landingpage: NewsItem[];
+}
+
+export interface StatisticsItem {
+  id: number;
+  students: number;
+  administrative_staff: number;
+  technical_and_professional_staff: number;
+  faculty_members: number;
+}
+
+export interface StatisticsResponse {
+  statistics: StatisticsItem[];
+}
+
+export interface RawGoalItem {
+  id: number;
+  ar_text: string;
+  en_text: string;
+  ar_description: string;
+  en_description: string;
+  image: string;
+}
+
+export interface GoalItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+export interface GoalsResponse {
+  goals: RawGoalItem[];
+}
+
+export interface RawCollegeCard {
+  id: number;
+  ar_title: string;
+  en_title?: string;
+  ar_name: string | null;
+  en_name?: string | null;
+  image: string | null;
+  ar_description: string;
+  en_description?: string;
+  visible: number;
+}
+
+export interface CollegeCard {
+  id: number;
+  title: string;
+  name: string | null;
+  image: string | null;
+  description: string;
+  visible: number;
+}
+
+export interface RawDepartment {
+  id: number;
+  colleges_id: number;
+  ar_name: string;
+  en_name?: string;
+  ar_description: string;
+  en_description?: string;
+  image: string;
+  ar_m_name: string;
+  en_m_name?: string;
+  ar_m_description: string;
+  en_m_description?: string;
+  college_ar_name: string;
+  college_en_name?: string;
+  m_image: string;
+  depcol: string;
+}
+
+export interface Department {
+  id: number;
+  colleges_id: number;
+  name: string;
+  description: string;
+  image: string;
+  m_name: string;
+  m_description: string;
+  college_name: string;
+  m_image: string;
+  depcol: string;
+}
+
+export interface RawCollege {
+  id: number;
+  ar_name: string;
+  en_name?: string;
+  ar_description: string;
+  en_description?: string;
+  image: string;
+  icon: string;
+  depcol: string;
+  cards: RawCollegeCard[];
+  departments: RawDepartment[];
+  staff: any[];
+  news: any[];
+  goals: any[];
+  graduation_projects: any[];
+}
+
+export interface College {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  icon: string;
+  depcol: string;
+  cards: CollegeCard[];
+  departments: Department[];
+  staff: any[];
+  news: any[];
+  goals: any[];
+  graduation_projects: any[];
+}
+
+export interface CollegesResponse {
+  colleges: RawCollege[];
+}
+
+export interface RawRanking {
+  id: number;
+  en_name: string;
+  ar_name: string;
+  link: string;
+  image: string;
+  num: string;
+}
+
+export interface Ranking {
+  id: number;
+  name: string;
+  link: string;
+  image: string;
+  num: string;
+}
+
+export type RankingsResponse = RawRanking[];
+
+export interface RawEService {
+  id: number;
+  en_title: string;
+  ar_title: string;
+  icon: string;
+  link: string;
+}
+
+export interface EService {
+  id: number;
+  title: string;
+  icon: string;
+  link: string;
+}
+
+export type EServicesResponse = RawEService[];
+
+export interface RawContact {
+  id: number;
+  email: string;
+  phone: string;
+  en_address: string;
+  ar_address: string;
+  en_working_hours: string;
+  ar_working_hours: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
+}
+
+export interface Contact {
+  id: number;
+  email: string;
+  phone: string;
+  address: string;
+  working_hours: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
+}
+
+export interface ContactsResponse {
+  contacts: RawContact[];
+}
 ```
 
 # src\lib\paths.ts
@@ -2013,7 +2015,6 @@ export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 //   "/news/\\d+", // This will match /news/ followed by one or more digits
 //   UNIVERSITY_COUNCIL_ROUTE,
 // ];
-
 ```
 
 # src\lib\data.ts
@@ -2460,15 +2461,837 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
   { path: paths.NEWS_ROUTE, label: t("Header.navLinks.news") },
   { path: paths.CONTACT_ROUTE, label: t("Header.navLinks.contact") },
 ];
-
 ```
 
 # src\lib\consts.ts
 
 ```ts
 
+```
 
+# src\lib\axios.ts
 
+```ts
+// src/lib/axios.ts
+import axios from "axios";
+import useCommonStore from "./zustand/common";
+
+const axiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  timeout: 100000000,
+  headers: {
+    "Content-Type": "application/json",
+    "User-Agent": "node-fetch",
+  },
+});
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.code === "ERR_NETWORK")
+      useCommonStore.getState().showErrorDialog("خطأ في الاتصال");
+    return Promise.reject(error);
+  },
+);
+
+export default axiosInstance;
+```
+
+# src\components\Wrapper.tsx
+
+```tsx
+import { ComponentProps } from "@/lib/types";
+import React from "react";
+import { twMerge } from "tailwind-merge";
+export default function Wrapper({ children, ...props }: ComponentProps) {
+  return (
+    <div
+      {...props}
+      className={twMerge(
+        `max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg mx-[16px] w-full`,
+        props.className,
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+```
+
+# src\components\TitlesWrapper.tsx
+
+```tsx
+import React from "react";
+import Section from "./Section";
+import { twMerge } from "tailwind-merge";
+import Wrapper from "./Wrapper";
+
+export default function TitlesWrapper({ ...props }) {
+  return (
+    <Section>
+      <Wrapper
+        className={twMerge(
+          "mb-[22px] flex flex-col items-center sm:mb-[61px]",
+          props.className,
+        )}
+      >
+        {props.children}
+      </Wrapper>
+    </Section>
+  );
+}
+```
+
+# src\components\SurveyForm.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import { Input, InputProps } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import { twMerge } from "tailwind-merge";
+
+interface SurveyFormProps {
+  title: string;
+}
+
+export default function SurveyForm({ title }: SurveyFormProps) {
+  const t = useTranslations("Survey");
+
+  const inputFields = [
+    { name: "fullName", label: t("fullName"), type: "text", fullWidth: true },
+    { name: "email", label: t("email"), type: "email" },
+    { name: "phone", label: t("phone"), type: "tel" },
+    { name: "college", label: t("college"), type: "text" },
+    { name: "department", label: t("department"), type: "text" },
+  ];
+
+  return (
+    <Section className="1920:mt-[180px] 1920:max-w-[1316px] mt-[60px] bg-white py-[40px] sm:mt-[150px] sm:max-w-[1225px] sm:py-[87px]">
+      <Wrapper className="1920:max-w-[740px] max-w-none sm:max-w-[740px]">
+        <h1 className="text-primary mb-[30px] text-center text-[28px] font-medium sm:mb-[60px] sm:text-[38px]">
+          {title}
+        </h1>
+        <form className="1920:gap-x-[28px] 1920:gap-y-[39px] grid grid-cols-1 gap-y-[28px] sm:grid-cols-2 sm:gap-x-[21px] sm:gap-y-[30px]">
+          {inputFields.map((field) => (
+            <div
+              key={field.name}
+              className={`1920:gap-[18px] flex flex-col gap-[18px] sm:gap-[10px] ${
+                field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
+              }`}
+            >
+              <label
+                htmlFor={field.name}
+                className="text-primary 1920:text-[21px] text-right text-[16px] font-medium leading-[1.35em] sm:text-[18px]"
+              >
+                {field.label}
+              </label>
+              <InputWithBg
+                type={field.type}
+                id={field.name}
+                name={field.name}
+                placeholder={t("writeHere")}
+              />
+            </div>
+          ))}
+          <div className="1920:gap-[18px] flex flex-col gap-[18px] sm:col-span-2 sm:gap-[10px]">
+            <label
+              htmlFor="message"
+              className="text-primary 1920:text-[21px] text-right text-[16px] font-medium leading-[1.35em] sm:text-[18px]"
+            >
+              {t("message")}
+            </label>
+            <Textarea
+              id="message"
+              name="message"
+              placeholder={t("writeYourMessage")}
+              className="min-h-[280px] bg-[#EFEFEF]"
+            />
+          </div>
+          <div className="flex justify-end sm:col-span-2">
+            <Button type="submit" className="!w-full">
+              {t("send")}
+            </Button>
+          </div>
+        </form>
+      </Wrapper>
+    </Section>
+  );
+}
+
+const InputWithBg = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...props }, ref) => (
+    <Input
+      ref={ref}
+      className={twMerge("bg-[#EFEFEF]", className)}
+      {...props}
+    />
+  ),
+);
+```
+
+# src\components\SharedPage.tsx
+
+```tsx
+import React from "react";
+import ActionsTitle from "./page/FirstTitleSection/ActionsTitle";
+import FileOperations from "./FileOperations";
+import Section from "./Section";
+import Wrapper from "./Wrapper";
+import FormattedTextViewer from "./FormattedTextViewer";
+
+export default function SharedPage() {
+  return (
+    <main>
+      <ActionsTitle title="الهيكل التنظيمي"></ActionsTitle>
+      <img
+        id="print-section"
+        src="/images/hero-bg.jpg"
+        alt="hero-bg"
+        className="w-full"
+      />
+      <FormattedTextViewer>
+        نص تجريبي يوضع للعناوين الرئيسية في بعض الصفحات ويتم استبداله لاحقا حسب
+        المحتوى المتوفر هذا النص هو نص تجريبي يبدأ بعد النقطة وقد تم وضعه كمحتوى
+        تجريبي. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة
+        والإعدادية بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل
+        تربية بهدف الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا
+        الوطنية بالدماء الشابة التي تساهم في حصد الإنجازات والبطولات خلال
+        المشاركات الدولية. الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة
+        وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
+        المستدامة في خدمة المجتمع.
+      </FormattedTextViewer>
+    </main>
+  );
+}
+```
+
+# src\components\Section.tsx
+
+```tsx
+import React from "react";
+import { twMerge } from "tailwind-merge";
+export default function Section({
+  children,
+  wrapperClass,
+  as: Component = "div",
+  ref,
+  ...props
+}: React.PropsWithChildren<React.HTMLAttributes<HTMLElement>> & {
+  wrapperClass?: string;
+  as?: React.ElementType;
+  ref?: React.RefObject<HTMLElement>;
+}) {
+  return (
+    <Component
+      ref={ref}
+      className={`flex w-full justify-center ${wrapperClass ?? ""}`}
+    >
+      <div
+        {...props}
+        className={twMerge(
+          "1920:max-w-[1920px] mx-auto flex w-full max-w-[375px] justify-center sm:max-w-[1440px]",
+          props.className,
+        )}
+      >
+        {children}
+      </div>
+    </Component>
+  );
+}
+```
+
+# src\components\SearchSection.tsx
+
+```tsx
+import { Input } from "@/components/ui/input";
+
+export default function SearchSection({
+  searchTerm,
+  setSearchTerm,
+  placeholder,
+}: {
+  searchTerm: string;
+  placeholder: string;
+  setSearchTerm: (value: string) => void;
+}) {
+  return (
+    <div className="mt-[36px] flex w-full max-w-[351px] flex-col gap-[14px] sm:mt-[68px] sm:w-auto sm:max-w-[1216px] sm:flex-row">
+      <div className="relative">
+        <Input
+          placeholder={placeholder}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border-primary-300 min-w-[280px] rounded-full !ring-0"
+        />
+        <i className="ri-search-line text-primary-300 absolute end-6 top-1/2 -translate-y-1/2 transform text-[20px]"></i>
+      </div>
+    </div>
+  );
+}
+```
+
+# src\components\ScrollElement.tsx
+
+```tsx
+import { ComponentProps } from "@/lib/types";
+import React from "react";
+import { twMerge } from "tailwind-merge";
+export default function ScrollElement({ children, ...props }: ComponentProps) {
+  return (
+    <div className={twMerge("w-screen-pure", props.className)}>{children}</div>
+  );
+}
+```
+
+# src\components\ScrollArrows.tsx
+
+```tsx
+import useScrollControl from "@/app/_hooks/useScrollControl";
+import { useEffect } from "react";
+import { twMerge } from "tailwind-merge";
+import { Button } from "./ui/button";
+import useTextDirection from "@/app/_hooks/useTextDirection";
+
+export default function ScrollArrows({
+  containerRef,
+  scrollAmount,
+  useMultiples = false,
+  resetTimer,
+  wrapperClassName,
+  className,
+}: {
+  containerRef: React.RefObject<HTMLDivElement>;
+  scrollAmount?: number;
+  useMultiples?: boolean;
+  resetTimer?: () => void;
+  className?: string;
+  wrapperClassName?: string;
+}) {
+  const dir = useTextDirection();
+
+  const { canScrollEnd, canScrollStart, handleScroll, scroll } =
+    useScrollControl({
+      containerRef,
+      useMultiples,
+      baseScrollAmount: scrollAmount,
+      resetTimer,
+    });
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.addEventListener("scroll", handleScroll);
+      handleScroll(); // Check initial scroll state
+    }
+    return () =>
+      containerRef.current?.removeEventListener("scroll", handleScroll);
+  }, [containerRef, handleScroll]);
+
+  return (
+    <div
+      className={twMerge(
+        "flex gap-[12px] sm:gap-[9px] ltr:flex-row-reverse rtl:flex-row",
+        wrapperClassName,
+      )}
+    >
+      <Button
+        variant={"secondary"}
+        className={twMerge(
+          "scroll-button",
+          !canScrollStart && "disabled-scroll-button",
+          className,
+        )}
+        size="icon"
+        onClick={() => scroll({ direction: "right", isLTR: dir == "ltr" })}
+      >
+        <i className="ri-arrow-right-line"></i>
+      </Button>
+      <Button
+        variant={"secondary"}
+        className={twMerge(
+          "scroll-button",
+          !canScrollEnd && "disabled-scroll-button",
+          className,
+        )}
+        size="icon"
+        onClick={() => scroll({ direction: "left", isLTR: dir == "ltr" })}
+      >
+        <i className="ri-arrow-left-line"></i>
+      </Button>
+    </div>
+  );
+}
+```
+
+# src\components\PDFDownloadButton.tsx
+
+```tsx
+import React from "react";
+import { Button } from "@/components/ui/button";
+import html2pdf from "html2pdf.js";
+import { useTranslations } from "next-intl";
+
+export interface PDFStyles {
+  [key: string]: React.CSSProperties;
+}
+
+interface PDFDownloadButtonProps {
+  pdfStyles?: PDFStyles;
+}
+
+const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({
+  pdfStyles = {},
+}) => {
+  const t = useTranslations("Common");
+
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleDownload = () => {
+    setIsLoading(true);
+    const element = document.getElementById("print-section");
+    if (!element) {
+      console.error("Print section not found");
+      setIsLoading(false);
+      return;
+    }
+
+    // Clone the element
+    const clonedElement = element.cloneNode(true) as HTMLElement;
+
+    // Apply custom styles to the cloned element
+    applyPDFStyles(clonedElement, pdfStyles);
+
+    const opt = {
+      margin: 10,
+      filename: "organizational_structure.pdf",
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf()
+      .from(clonedElement)
+      .set(opt)
+      .save()
+      .then(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const applyPDFStyles = (element: HTMLElement, customStyles: PDFStyles) => {
+    // Apply styles
+    Object.entries(customStyles).forEach(([selector, styles]) => {
+      const elements =
+        selector === "body" ? [element] : element.querySelectorAll(selector);
+      elements.forEach((el) => {
+        Object.assign((el as HTMLElement).style, styles);
+      });
+    });
+  };
+
+  return (
+    <Button
+      onClick={handleDownload}
+      disabled={isLoading}
+      variant="ghost"
+      size="icon"
+      className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
+    >
+      <span>{isLoading ? t("loading") + "..." : t("download")}</span>
+
+      <i className="ri-file-pdf-2-fill text-[20px]"></i>
+    </Button>
+  );
+};
+
+export default PDFDownloadButton;
+```
+
+# src\components\MapLinkButton.tsx
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+
+const MapLinkButton = ({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) => {
+  const t = useTranslations("Common.Map");
+
+  const openGoogleMaps = () => {
+    // Check if the device is running iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+    // Check if the device is running Android
+    const isAndroid = /Android/.test(navigator.userAgent);
+
+    let url;
+    if (isIOS) {
+      // Use the Apple Maps URL scheme
+      url = `maps://maps.apple.com/?q=${latitude},${longitude}`;
+    } else if (isAndroid) {
+      // Use the Google Maps Android app URL scheme
+      url = `geo:${latitude},${longitude}?q=${latitude},${longitude}`;
+    } else {
+      // Fallback to web URL for other devices
+      url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
+    }
+
+    // For non-mobile devices (like Windows laptops), always open in a new tab
+    if (!isIOS && !isAndroid) {
+      window.open(url, "_blank");
+    } else {
+      // Attempt to open the URL for mobile devices
+      window.location.href = url;
+
+      // Fallback to opening in a new tab if the app doesn't open
+      setTimeout(() => {
+        window.open(
+          `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
+          "_blank",
+        );
+      }, 500);
+    }
+  };
+
+  return (
+    <Button onClick={openGoogleMaps} className="items-center gap-1.5">
+      <i className="ri-map-pin-2-fill mb-1 text-[16px]"></i>
+      <span className="text-[12px]">{t("openInGoogleMaps")}</span>
+    </Button>
+  );
+};
+
+export default MapLinkButton;
+```
+
+# src\components\LocationMap.tsx
+
+```tsx
+"use client";
+
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { useEffect, useRef, useState } from "react";
+import { Root, createRoot } from "react-dom/client";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
+
+let DefaultIcon = L.icon({
+  iconUrl: "/images/map-marker.svg",
+  iconSize: [40, 48],
+  iconAnchor: [12, 41],
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
+const LocationMap = ({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) => {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<Root | null>(null);
+  const [map, setMap] = useState<L.Map | null>(null);
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    if (!rootRef.current) {
+      rootRef.current = createRoot(mapRef.current);
+    }
+
+    const position: L.LatLngExpression = [latitude, longitude];
+    const zoom = 16;
+
+    rootRef.current.render(
+      <MapContainer
+        center={position}
+        zoom={zoom}
+        style={{ height: "100%", width: "100%" }}
+        attributionControl={false}
+        scrollWheelZoom={false}
+        ref={setMap}
+      >
+        <TileLayer
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          maxZoom={19}
+        />
+        <Marker position={position} />
+      </MapContainer>,
+    );
+
+    return () => {
+      if (map) {
+        map.remove();
+      }
+    };
+  }, [latitude, longitude]);
+
+  useEffect(() => {
+    if (map) {
+      map.setView([latitude, longitude], 14);
+    }
+  }, [map, latitude, longitude]);
+
+  return <div ref={mapRef} style={{ height: "100%", width: "100%" }} />;
+};
+
+export default LocationMap;
+```
+
+# src\components\LocaleSwitcher.tsx
+
+```tsx
+"use client";
+
+import {
+  DelayedSelect,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  localeNames,
+  locales,
+  usePathname,
+  useRouter,
+  type Locale,
+} from "@/i18n.config";
+import { useTranslations } from "next-intl";
+import useTextDirection from "../app/_hooks/useTextDirection";
+import Cookies from "js-cookie";
+
+export default function LocaleSwitcher({ locale }: { locale: Locale }) {
+  const t = useTranslations("Header.localSwitcher");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const dir = useTextDirection();
+
+  const changeLocale = (newLocale: Locale) => {
+    Cookies.set("language", newLocale, { expires: 365 });
+    router.replace(pathname, { locale: newLocale });
+  };
+
+  // console.log(locale);
+
+  return (
+    <DelayedSelect dir={dir} onValueChange={changeLocale} defaultValue={locale}>
+      <SelectTrigger
+        icon={
+          <></>
+          // <i className="fa-solid fa-chevron-down text-[16px] text-black/20"></i>
+        }
+        className="h-[22px] w-[34px] items-center justify-center rounded-[4px] border bg-transparent p-0 text-[12px] font-light leading-none text-white shadow-none outline-none ring-0 sm:p-0 sm:px-0"
+        style={{ boxShadow: "none" }}
+      >
+        <SelectValue placeholder={t("select a language")} />
+      </SelectTrigger>
+      <SelectContent>
+        {locales.map((loc) => (
+          <SelectItem
+            key={loc}
+            value={loc}
+            onClick={(e) => {
+              console.log("sdasdsad");
+            }}
+          >
+            {loc.toUpperCase()}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </DelayedSelect>
+  );
+}
+```
+
+# src\components\HoverMenu.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { Link } from "@/i18n.config";
+import { twMerge } from "tailwind-merge";
+import { MenuItem } from "@/lib/types";
+
+interface HoverMenuProps {
+  items: MenuItem[];
+  className?: string;
+  submenuClassName?: string;
+  isSubmenu?: boolean;
+}
+
+const HoverMenu: React.FC<HoverMenuProps> = ({
+  items,
+  className,
+  submenuClassName = "",
+  isSubmenu = false,
+}) => {
+  return (
+    <div
+      className={twMerge(
+        "animate-vanish absolute hidden whitespace-nowrap bg-black/90 shadow-lg",
+        isSubmenu
+          ? twMerge(
+              "group-hover/sub:animate-appear start-full top-0 group-hover/sub:block",
+              submenuClassName,
+            )
+          : "group-hover:animate-appear top-full group-hover:block",
+        className,
+      )}
+    >
+      <div
+        className="py-2"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="options-menu"
+      >
+        {items.map((item, index) => (
+          <HoverMenuItem
+            key={index}
+            item={item}
+            submenuClassName={submenuClassName}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const HoverMenuItem: React.FC<{
+  item: MenuItem;
+  submenuClassName?: string;
+}> = ({ item, submenuClassName }) => {
+  return (
+    <div className="group/sub hover:border-secondary relative border-b border-transparent text-start">
+      {item.path ? (
+        <Link
+          href={item.path}
+          className="block px-6 py-3 text-sm text-white hover:bg-white/10"
+          role="menuitem"
+        >
+          {item.label}
+        </Link>
+      ) : (
+        <span className="block px-6 py-3 text-sm text-white">{item.label}</span>
+      )}
+      {item.items && (
+        <HoverMenu
+          items={item.items}
+          isSubmenu={true}
+          submenuClassName={submenuClassName}
+        />
+      )}
+    </div>
+  );
+};
+
+export default HoverMenu;
+```
+
+# src\components\FormattedTextViewer.tsx
+
+```tsx
+import React from "react";
+
+import Wrapper from "./Wrapper";
+import FileOperations from "./FileOperations";
+import { Button } from "./ui/button";
+
+export default function FormattedTextViewer({
+  children,
+}: {
+  children: string;
+}) {
+  return (
+    <Wrapper className="mx-auto mt-[36px] flex max-w-none flex-col gap-[35px] bg-white px-[24px] py-[40px] text-justify sm:px-[40px]">
+      <div className="tiptap" id="print-section">
+        {children}
+      </div>
+      <FileOperations className="self-end"></FileOperations>
+    </Wrapper>
+  );
+}
+```
+
+# src\components\FileOperations.tsx
+
+```tsx
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import { Button } from "./ui/button";
+import { getPrintProps, shareCurrentURL } from "@/lib/utils";
+import { useReactToPrint } from "react-to-print";
+import { useTranslations } from "next-intl";
+import useTextDirection from "@/app/_hooks/useTextDirection";
+import { twMerge } from "tailwind-merge";
+import PDFDownloadButton, { PDFStyles } from "./PDFDownloadButton";
+
+export default function FileOperations({
+  className,
+  showDownloadButton = false,
+  pdfStyles,
+}: {
+  className?: string;
+  showDownloadButton?: boolean;
+  pdfStyles?: PDFStyles;
+}) {
+  const t = useTranslations("Common");
+  const dir = useTextDirection();
+
+  const handlePrint = useReactToPrint(
+    getPrintProps({
+      content: () => document.getElementById("print-section"),
+      dir,
+    }),
+  );
+
+  return (
+    <div
+      className={twMerge(
+        "no-print text-primary hidden gap-[35px] sm:flex sm:items-center",
+        className,
+      )}
+    >
+      {showDownloadButton && (
+        <PDFDownloadButton pdfStyles={pdfStyles}></PDFDownloadButton>
+      )}
+      <div className="h-[24px] border-r border-[#D8D8D8]"></div>
+      <Button
+        onClick={shareCurrentURL}
+        variant="ghost"
+        size="icon"
+        className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
+      >
+        <span>{t("share")}</span>
+        <i className="ri-share-forward-fill text-[20px]"></i>
+      </Button>
+      <div className="h-[24px] border-r border-[#D8D8D8]"></div>
+      <Button
+        onClick={handlePrint}
+        variant="ghost"
+        size="icon"
+        className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
+      >
+        <span>{t("print")}</span>
+        <i className="ri-printer-fill text-[20px]"></i>
+      </Button>
+    </div>
+  );
+}
 ```
 
 # src\app\globals.css
@@ -2926,824 +3749,376 @@ input[type="text"][inputmode="numeric"]:not(:placeholder-shown) {
   cursor: ew-resize;
   cursor: col-resize;
 }
-
 ```
 
 # src\app\favicon.ico
 
 This is a binary file of the type: Binary
 
-# src\components\Wrapper.tsx
-
-```tsx
-import { ComponentProps } from "@/lib/types";
-import React from "react";
-import { twMerge } from "tailwind-merge";
-export default function Wrapper({ children, ...props }: ComponentProps) {
-  return (
-    <div
-      {...props}
-      className={twMerge(
-        `mx-[16px] w-full max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg`,
-        props.className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
-```
-
-# src\components\TitlesWrapper.tsx
-
-```tsx
-import React from "react";
-import Section from "./Section";
-import { twMerge } from "tailwind-merge";
-import Wrapper from "./Wrapper";
-
-export default function TitlesWrapper({ ...props }) {
-  return (
-    <Section>
-      <Wrapper
-        className={twMerge(
-          "mb-[22px] sm:mb-[61px] flex flex-col items-center",
-          props.className
-        )}
-      >
-        {props.children}
-      </Wrapper>
-    </Section>
-  );
-}
-
-```
-
-# src\components\SurveyForm.tsx
-
-```tsx
-import React from "react";
-import { useTranslations } from "next-intl";
-import { Input, InputProps } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-import { twMerge } from "tailwind-merge";
-
-interface SurveyFormProps {
-  title: string;
-}
-
-export default function SurveyForm({ title }: SurveyFormProps) {
-  const t = useTranslations("Survey");
-
-  const inputFields = [
-    { name: "fullName", label: t("fullName"), type: "text", fullWidth: true },
-    { name: "email", label: t("email"), type: "email" },
-    { name: "phone", label: t("phone"), type: "tel" },
-    { name: "college", label: t("college"), type: "text" },
-    { name: "department", label: t("department"), type: "text" },
-  ];
-
-  return (
-    <Section className="mt-[60px] bg-white py-[40px] sm:mt-[150px] sm:max-w-[1225px] sm:py-[87px] 1920:mt-[180px] 1920:max-w-[1316px]">
-      <Wrapper className="max-w-none sm:max-w-[740px] 1920:max-w-[740px]">
-        <h1 className="mb-[30px] text-center text-[28px] font-medium text-primary sm:mb-[60px] sm:text-[38px]">
-          {title}
-        </h1>
-        <form className="grid grid-cols-1 gap-y-[28px] sm:grid-cols-2 sm:gap-x-[21px] sm:gap-y-[30px] 1920:gap-x-[28px] 1920:gap-y-[39px]">
-          {inputFields.map((field) => (
-            <div
-              key={field.name}
-              className={`flex flex-col gap-[18px] sm:gap-[10px] 1920:gap-[18px] ${
-                field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
-              }`}
-            >
-              <label
-                htmlFor={field.name}
-                className="text-right text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
-              >
-                {field.label}
-              </label>
-              <InputWithBg
-                type={field.type}
-                id={field.name}
-                name={field.name}
-                placeholder={t("writeHere")}
-              />
-            </div>
-          ))}
-          <div className="flex flex-col gap-[18px] sm:col-span-2 sm:gap-[10px] 1920:gap-[18px]">
-            <label
-              htmlFor="message"
-              className="text-right text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
-            >
-              {t("message")}
-            </label>
-            <Textarea
-              id="message"
-              name="message"
-              placeholder={t("writeYourMessage")}
-              className="min-h-[280px] bg-[#EFEFEF]"
-            />
-          </div>
-          <div className="flex justify-end sm:col-span-2">
-            <Button type="submit" className="!w-full">
-              {t("send")}
-            </Button>
-          </div>
-        </form>
-      </Wrapper>
-    </Section>
-  );
-}
-
-const InputWithBg = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, ...props }, ref) => (
-    <Input
-      ref={ref}
-      className={twMerge("bg-[#EFEFEF]", className)}
-      {...props}
-    />
-  ),
-);
-
-```
-
-# src\components\SharedPage.tsx
-
-```tsx
-import React from "react";
-import ActionsTitle from "./page/FirstTitleSection/ActionsTitle";
-import FileOperations from "./FileOperations";
-import Section from "./Section";
-import Wrapper from "./Wrapper";
-import FormattedTextViewer from "./FormattedTextViewer";
-
-export default function SharedPage() {
-  return (
-    <main>
-      <ActionsTitle title="الهيكل التنظيمي"></ActionsTitle>
-      <img
-        id="print-section"
-        src="/images/hero-bg.jpg"
-        alt="hero-bg"
-        className="w-full"
-      />
-      <FormattedTextViewer>
-        نص تجريبي يوضع للعناوين الرئيسية في بعض الصفحات ويتم استبداله لاحقا حسب
-        المحتوى المتوفر هذا النص هو نص تجريبي يبدأ بعد النقطة وقد تم وضعه كمحتوى
-        تجريبي. شهدت الملاعب المغلقة لجامعة كلكامش لقاءات نسوية لمراحل المتوسطة
-        والإعدادية بين تربيات الكرخ الثانية والرصافة الثانية بمعدل فريقين لكل
-        تربية بهدف الكشف عن الخبرات والإمكانيات الرياضية بغية رفد منتخباتنا
-        الوطنية بالدماء الشابة التي تساهم في حصد الإنجازات والبطولات خلال
-        المشاركات الدولية. الجدير بالذكر أن جامعة كلكامش مستمرة بدعمها المرأة
-        وعلى كافة الأصعدة والمجالات وهذا يأتي ضمن سياستها بتحقيق أهداف التنمية
-        المستدامة في خدمة المجتمع.
-      </FormattedTextViewer>
-    </main>
-  );
-}
-
-```
-
-# src\components\Section.tsx
-
-```tsx
-import React from "react";
-import { twMerge } from "tailwind-merge";
-export default function Section({
-  children,
-  wrapperClass,
-  as: Component = "div",
-  ref,
-  ...props
-}: React.PropsWithChildren<React.HTMLAttributes<HTMLElement>> & {
-  wrapperClass?: string;
-  as?: React.ElementType;
-  ref?: React.RefObject<HTMLElement>;
-}) {
-  return (
-    <Component
-      ref={ref}
-      className={`flex w-full justify-center ${wrapperClass ?? ""}`}
-    >
-      <div
-        {...props}
-        className={twMerge(
-          "mx-auto flex w-full max-w-[375px] justify-center sm:max-w-[1440px] 1920:max-w-[1920px]",
-          props.className,
-        )}
-      >
-        {children}
-      </div>
-    </Component>
-  );
-}
-
-```
-
-# src\components\SearchSection.tsx
-
-```tsx
-import { Input } from "@/components/ui/input";
-
-export default function SearchSection({
-  searchTerm,
-  setSearchTerm,
-  placeholder,
-}: {
-  searchTerm: string;
-  placeholder: string;
-  setSearchTerm: (value: string) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-[14px] sm:flex-row mt-[36px] sm:mt-[68px] w-full sm:w-auto max-w-[351px] sm:max-w-[1216px]">
-      <div className="relative">
-        <Input
-          placeholder={placeholder}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="border-primary-300 !ring-0 min-w-[280px] rounded-full"
-        />
-        <i className="ri-search-line absolute end-6 top-1/2 transform -translate-y-1/2 text-primary-300 text-[20px]"></i>
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\components\ScrollElement.tsx
-
-```tsx
-import { ComponentProps } from "@/lib/types";
-import React from "react";
-import { twMerge } from "tailwind-merge";
-export default function ScrollElement({ children, ...props }: ComponentProps) {
-  return (
-    <div className={twMerge("w-screen-pure", props.className)}>{children}</div>
-  );
-}
-
-```
-
-# src\components\ScrollArrows.tsx
-
-```tsx
-import useScrollControl from "@/app/_hooks/useScrollControl";
-import { useEffect } from "react";
-import { twMerge } from "tailwind-merge";
-import { Button } from "./ui/button";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-
-export default function ScrollArrows({
-  containerRef,
-  scrollAmount,
-  useMultiples = false,
-  resetTimer,
-  wrapperClassName,
-  className,
-}: {
-  containerRef: React.RefObject<HTMLDivElement>;
-  scrollAmount?: number;
-  useMultiples?: boolean;
-  resetTimer?: () => void;
-  className?: string;
-  wrapperClassName?: string;
-}) {
-  const dir = useTextDirection();
-
-  const { canScrollEnd, canScrollStart, handleScroll, scroll } =
-    useScrollControl({
-      containerRef,
-      useMultiples,
-      baseScrollAmount: scrollAmount,
-      resetTimer,
-    });
-
-  useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.addEventListener("scroll", handleScroll);
-      handleScroll(); // Check initial scroll state
-    }
-    return () =>
-      containerRef.current?.removeEventListener("scroll", handleScroll);
-  }, [containerRef, handleScroll]);
-
-  return (
-    <div
-      className={twMerge(
-        "flex gap-[12px] sm:gap-[9px] ltr:flex-row-reverse rtl:flex-row",
-        wrapperClassName
-      )}
-    >
-      <Button
-        variant={"secondary"}
-        className={twMerge(
-          "scroll-button",
-          !canScrollStart && "disabled-scroll-button",
-          className
-        )}
-        size="icon"
-        onClick={() => scroll({ direction: "right", isLTR: dir == "ltr" })}
-      >
-        <i className="ri-arrow-right-line"></i>
-      </Button>
-      <Button
-        variant={"secondary"}
-        className={twMerge(
-          "scroll-button",
-          !canScrollEnd && "disabled-scroll-button",
-          className
-        )}
-        size="icon"
-        onClick={() => scroll({ direction: "left", isLTR: dir == "ltr" })}
-      >
-        <i className="ri-arrow-left-line"></i>
-      </Button>
-    </div>
-  );
-}
-
-```
-
-# src\components\PDFDownloadButton.tsx
-
-```tsx
-import React from "react";
-import { Button } from "@/components/ui/button";
-import html2pdf from "html2pdf.js";
-import { useTranslations } from "next-intl";
-
-export interface PDFStyles {
-  [key: string]: React.CSSProperties;
-}
-
-interface PDFDownloadButtonProps {
-  pdfStyles?: PDFStyles;
-}
-
-const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({
-  pdfStyles = {},
-}) => {
-  const t = useTranslations("Common");
-
-  const [isLoading, setIsLoading] = React.useState(false);
-
-  const handleDownload = () => {
-    setIsLoading(true);
-    const element = document.getElementById("print-section");
-    if (!element) {
-      console.error("Print section not found");
-      setIsLoading(false);
-      return;
-    }
-
-    // Clone the element
-    const clonedElement = element.cloneNode(true) as HTMLElement;
-
-    // Apply custom styles to the cloned element
-    applyPDFStyles(clonedElement, pdfStyles);
-
-    const opt = {
-      margin: 10,
-      filename: "organizational_structure.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
-
-    html2pdf()
-      .from(clonedElement)
-      .set(opt)
-      .save()
-      .then(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const applyPDFStyles = (element: HTMLElement, customStyles: PDFStyles) => {
-    // Apply styles
-    Object.entries(customStyles).forEach(([selector, styles]) => {
-      const elements =
-        selector === "body" ? [element] : element.querySelectorAll(selector);
-      elements.forEach((el) => {
-        Object.assign((el as HTMLElement).style, styles);
-      });
-    });
-  };
-
-  return (
-    <Button
-      onClick={handleDownload}
-      disabled={isLoading}
-      variant="ghost"
-      size="icon"
-      className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
-    >
-      <span>{isLoading ? t("loading") + "..." : t("download")}</span>
-
-      <i className="ri-file-pdf-2-fill text-[20px]"></i>
-    </Button>
-  );
-};
-
-export default PDFDownloadButton;
-
-```
-
-# src\components\MapLinkButton.tsx
-
-```tsx
-import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
-
-const MapLinkButton = ({
-  latitude,
-  longitude,
-}: {
-  latitude: number;
-  longitude: number;
-}) => {
-  const t = useTranslations("Common.Map");
-
-  const openGoogleMaps = () => {
-    // Check if the device is running iOS
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-    // Check if the device is running Android
-    const isAndroid = /Android/.test(navigator.userAgent);
-
-    let url;
-    if (isIOS) {
-      // Use the Apple Maps URL scheme
-      url = `maps://maps.apple.com/?q=${latitude},${longitude}`;
-    } else if (isAndroid) {
-      // Use the Google Maps Android app URL scheme
-      url = `geo:${latitude},${longitude}?q=${latitude},${longitude}`;
-    } else {
-      // Fallback to web URL for other devices
-      url = `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`;
-    }
-
-    // For non-mobile devices (like Windows laptops), always open in a new tab
-    if (!isIOS && !isAndroid) {
-      window.open(url, "_blank");
-    } else {
-      // Attempt to open the URL for mobile devices
-      window.location.href = url;
-
-      // Fallback to opening in a new tab if the app doesn't open
-      setTimeout(() => {
-        window.open(
-          `https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`,
-          "_blank"
-        );
-      }, 500);
-    }
-  };
-
-  return (
-    <Button onClick={openGoogleMaps} className="gap-1.5 items-center">
-      <i className="ri-map-pin-2-fill text-[16px] mb-1"></i>
-      <span className="text-[12px]">{t("openInGoogleMaps")}</span>
-    </Button>
-  );
-};
-
-export default MapLinkButton;
-
-```
-
-# src\components\LocationMap.tsx
-
-```tsx
-"use client";
-
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
-import { useEffect, useRef, useState } from "react";
-import { Root, createRoot } from "react-dom/client";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
-
-let DefaultIcon = L.icon({
-  iconUrl: "/images/map-marker.svg",
-  iconSize: [40, 48],
-  iconAnchor: [12, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
-
-const LocationMap = ({
-  latitude,
-  longitude,
-}: {
-  latitude: number;
-  longitude: number;
-}) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const rootRef = useRef<Root | null>(null);
-  const [map, setMap] = useState<L.Map | null>(null);
-
-  useEffect(() => {
-    if (!mapRef.current) return;
-
-    if (!rootRef.current) {
-      rootRef.current = createRoot(mapRef.current);
-    }
-
-    const position: L.LatLngExpression = [latitude, longitude];
-    const zoom = 16;
-
-    rootRef.current.render(
-      <MapContainer
-        center={position}
-        zoom={zoom}
-        style={{ height: "100%", width: "100%" }}
-        attributionControl={false}
-        scrollWheelZoom={false}
-        ref={setMap}
-      >
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-          maxZoom={19}
-        />
-        <Marker position={position} />
-      </MapContainer>
-    );
-
-    return () => {
-      if (map) {
-        map.remove();
-      }
-    };
-  }, [latitude, longitude]);
-
-  useEffect(() => {
-    if (map) {
-      map.setView([latitude, longitude], 14);
-    }
-  }, [map, latitude, longitude]);
-
-  return <div ref={mapRef} style={{ height: "100%", width: "100%" }} />;
-};
-
-export default LocationMap;
-
-```
-
-# src\components\LocaleSwitcher.tsx
-
-```tsx
-"use client";
-
-import {
-  DelayedSelect,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  localeNames,
-  locales,
-  usePathname,
-  useRouter,
-  type Locale,
-} from "@/i18n.config";
-import { useTranslations } from "next-intl";
-import { useEffect } from "react";
-import useTextDirection from "../app/_hooks/useTextDirection";
-
-export default function LocaleSwitcher({ locale }: { locale: Locale }) {
-  const t = useTranslations("Header.localSwitcher");
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const dir = useTextDirection();
-
-  const changeLocale = (newLocale: Locale) => {
-    // console.log("changeLocale");
-
-    router.replace(pathname, { locale: newLocale });
-  };
-
-  // console.log(locale);
-
-  return (
-    <DelayedSelect dir={dir} onValueChange={changeLocale} defaultValue={locale}>
-      <SelectTrigger
-        icon={
-          <></>
-          // <i className="fa-solid fa-chevron-down text-[16px] text-black/20"></i>
+# public\lottie\success.json
+
+```json
+{
+  "nm": "process completed",
+  "ddd": 0,
+  "h": 400,
+  "w": 400,
+  "meta": { "g": "@lottiefiles/toolkit-js 0.51.0-beta.1" },
+  "layers": [
+    {
+      "ty": 4,
+      "nm": "tick",
+      "sr": 1,
+      "st": 0,
+      "op": 80,
+      "ip": 0,
+      "hd": false,
+      "ddd": 0,
+      "bm": 0,
+      "hasMask": false,
+      "ao": 0,
+      "ks": {
+        "a": { "a": 0, "k": [0, 0.3480000000000132] },
+        "s": { "a": 0, "k": [152.051, 152.051] },
+        "sk": { "a": 0, "k": 0 },
+        "p": { "a": 0, "k": [200, 196] },
+        "r": { "a": 0, "k": 0 },
+        "sa": { "a": 0, "k": 0 },
+        "o": { "a": 0, "k": 100 }
+      },
+      "shapes": [
+        {
+          "ty": "gr",
+          "bm": 0,
+          "hd": false,
+          "mn": "ADBE Vector Group",
+          "nm": "tick",
+          "ix": 1,
+          "cix": 2,
+          "np": 2,
+          "it": [
+            {
+              "ty": "sh",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Shape - Group",
+              "nm": "Path 1",
+              "ix": 1,
+              "d": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "c": false,
+                  "i": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [-69.565, 4.348],
+                    [-26.087, 47.826],
+                    [69.565, -47.826]
+                  ]
+                }
+              }
+            },
+            {
+              "ty": "st",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Graphic - Stroke",
+              "nm": "Stroke 1",
+              "lc": 2,
+              "lj": 2,
+              "ml": 1,
+              "o": { "a": 0, "k": 100 },
+              "w": { "a": 0, "k": 26.087 },
+              "c": { "a": 0, "k": [1, 1, 1] }
+            },
+            {
+              "ty": "tr",
+              "a": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [100, 100] },
+              "sk": { "a": 0, "k": 0 },
+              "p": { "a": 0, "k": [0, 0] },
+              "r": { "a": 0, "k": 0 },
+              "sa": { "a": 0, "k": 0 },
+              "o": { "a": 0, "k": 100 }
+            }
+          ]
+        },
+        {
+          "ty": "tm",
+          "bm": 0,
+          "hd": false,
+          "mn": "ADBE Vector Filter - Trim",
+          "nm": "Trim Paths 1",
+          "ix": 2,
+          "e": {
+            "a": 1,
+            "k": [
+              {
+                "o": { "x": 0.75, "y": 0 },
+                "i": { "x": 0.67, "y": 1 },
+                "s": [0],
+                "t": 45
+              },
+              { "s": [100], "t": 65 }
+            ]
+          },
+          "o": { "a": 0, "k": 0 },
+          "s": { "a": 0, "k": 0 },
+          "m": 1
         }
-        className="text-[12px] leading-none shadow-none outline-none ring-0  sm:p-0 sm:px-0 bg-transparent  p-0 font-light w-[34px] h-[22px] border rounded-[4px] items-center justify-center text-white "
-        style={{ boxShadow: "none" }}
-      >
-        <SelectValue placeholder={t("select a language")} />
-      </SelectTrigger>
-      <SelectContent>
-        {locales.map((loc) => (
-          <SelectItem
-            key={loc}
-            value={loc}
-            onClick={(e) => {
-              console.log("sdasdsad");
-            }}
-          >
-            {loc.toUpperCase()}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </DelayedSelect>
-  );
+      ],
+      "ind": 1
+    },
+    {
+      "ty": 4,
+      "nm": "bg",
+      "sr": 1,
+      "st": 0,
+      "op": 80,
+      "ip": 0,
+      "hd": false,
+      "ddd": 0,
+      "bm": 0,
+      "hasMask": false,
+      "ao": 0,
+      "ks": {
+        "a": { "a": 0, "k": [0, 0, 0] },
+        "s": {
+          "a": 1,
+          "k": [
+            {
+              "o": { "x": 1, "y": 0 },
+              "i": { "x": 0.678, "y": 1 },
+              "s": [0, 0, 100],
+              "t": 32
+            },
+            { "s": [100, 100, 100], "t": 55 }
+          ]
+        },
+        "sk": { "a": 0, "k": 0 },
+        "p": { "a": 0, "k": [200, 200, 0] },
+        "r": { "a": 0, "k": 0 },
+        "sa": { "a": 0, "k": 0 },
+        "o": { "a": 0, "k": 100 }
+      },
+      "shapes": [
+        {
+          "ty": "gr",
+          "bm": 0,
+          "hd": false,
+          "mn": "ADBE Vector Group",
+          "nm": "bg",
+          "ix": 1,
+          "cix": 2,
+          "np": 2,
+          "it": [
+            {
+              "ty": "el",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Shape - Ellipse",
+              "nm": "Ellipse Path 1",
+              "d": 1,
+              "p": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [400, 400] }
+            },
+            {
+              "ty": "fl",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Graphic - Fill",
+              "nm": "Fill 1",
+              "c": { "a": 0, "k": [0.0784, 0.8039, 0.7804] },
+              "r": 1,
+              "o": { "a": 0, "k": 100 }
+            },
+            {
+              "ty": "tr",
+              "a": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [100, 100] },
+              "sk": { "a": 0, "k": 0 },
+              "p": { "a": 0, "k": [0, 0] },
+              "r": { "a": 0, "k": 0 },
+              "sa": { "a": 0, "k": 0 },
+              "o": { "a": 0, "k": 100 }
+            }
+          ]
+        }
+      ],
+      "ind": 2
+    },
+    {
+      "ty": 4,
+      "nm": "bg 2",
+      "sr": 1,
+      "st": 0,
+      "op": 80,
+      "ip": 0,
+      "hd": false,
+      "ddd": 0,
+      "bm": 0,
+      "hasMask": false,
+      "ao": 0,
+      "ks": {
+        "a": { "a": 0, "k": [0, 0, 0] },
+        "s": {
+          "a": 1,
+          "k": [
+            {
+              "o": { "x": 0.33, "y": 0 },
+              "i": { "x": 0.25, "y": 1 },
+              "s": [0, 0, 100],
+              "t": 27
+            },
+            { "s": [100, 100, 100], "t": 51 }
+          ]
+        },
+        "sk": { "a": 0, "k": 0 },
+        "p": { "a": 0, "k": [200, 200, 0] },
+        "r": { "a": 0, "k": 0 },
+        "sa": { "a": 0, "k": 0 },
+        "o": { "a": 0, "k": 100 }
+      },
+      "shapes": [
+        {
+          "ty": "gr",
+          "bm": 0,
+          "hd": false,
+          "mn": "ADBE Vector Group",
+          "nm": "bg",
+          "ix": 1,
+          "cix": 2,
+          "np": 2,
+          "it": [
+            {
+              "ty": "el",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Shape - Ellipse",
+              "nm": "Ellipse Path 1",
+              "d": 1,
+              "p": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [400, 400] }
+            },
+            {
+              "ty": "fl",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Graphic - Fill",
+              "nm": "Fill 1",
+              "c": { "a": 0, "k": [1, 1, 1] },
+              "r": 1,
+              "o": { "a": 0, "k": 100 }
+            },
+            {
+              "ty": "tr",
+              "a": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [100, 100] },
+              "sk": { "a": 0, "k": 0 },
+              "p": { "a": 0, "k": [0, 0] },
+              "r": { "a": 0, "k": 0 },
+              "sa": { "a": 0, "k": 0 },
+              "o": { "a": 0, "k": 100 }
+            }
+          ]
+        }
+      ],
+      "ind": 3
+    },
+    {
+      "ty": 4,
+      "nm": "bg 3",
+      "sr": 1,
+      "st": 0,
+      "op": 80,
+      "ip": 0,
+      "hd": false,
+      "ddd": 0,
+      "bm": 0,
+      "hasMask": false,
+      "ao": 0,
+      "ks": {
+        "a": { "a": 0, "k": [0, 0, 0] },
+        "s": {
+          "a": 1,
+          "k": [
+            {
+              "o": { "x": 1, "y": 0 },
+              "i": { "x": 0.67, "y": 1 },
+              "s": [0, 0, 100],
+              "t": 5
+            },
+            { "s": [100, 100, 100], "t": 30 }
+          ]
+        },
+        "sk": { "a": 0, "k": 0 },
+        "p": { "a": 0, "k": [200, 200, 0] },
+        "r": { "a": 0, "k": 0 },
+        "sa": { "a": 0, "k": 0 },
+        "o": { "a": 0, "k": 100 }
+      },
+      "shapes": [
+        {
+          "ty": "gr",
+          "bm": 0,
+          "hd": false,
+          "mn": "ADBE Vector Group",
+          "nm": "bg",
+          "ix": 1,
+          "cix": 2,
+          "np": 2,
+          "it": [
+            {
+              "ty": "el",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Shape - Ellipse",
+              "nm": "Ellipse Path 1",
+              "d": 1,
+              "p": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [400, 400] }
+            },
+            {
+              "ty": "fl",
+              "bm": 0,
+              "hd": false,
+              "mn": "ADBE Vector Graphic - Fill",
+              "nm": "Fill 1",
+              "c": { "a": 0, "k": [0.0784, 0.8039, 0.7804] },
+              "r": 1,
+              "o": { "a": 0, "k": 100 }
+            },
+            {
+              "ty": "tr",
+              "a": { "a": 0, "k": [0, 0] },
+              "s": { "a": 0, "k": [100, 100] },
+              "sk": { "a": 0, "k": 0 },
+              "p": { "a": 0, "k": [0, 0] },
+              "r": { "a": 0, "k": 0 },
+              "sa": { "a": 0, "k": 0 },
+              "o": { "a": 0, "k": 100 }
+            }
+          ]
+        }
+      ],
+      "ind": 4
+    }
+  ],
+  "v": "5.7.4",
+  "fr": 40,
+  "op": 80,
+  "ip": 0,
+  "assets": []
 }
-
-```
-
-# src\components\HoverMenu.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { Link } from "@/i18n.config";
-import { twMerge } from "tailwind-merge";
-import { MenuItem } from "@/lib/types";
-
-interface HoverMenuProps {
-  items: MenuItem[];
-  className?: string;
-  submenuClassName?: string;
-  isSubmenu?: boolean;
-}
-
-const HoverMenu: React.FC<HoverMenuProps> = ({
-  items,
-  className,
-  submenuClassName = "",
-  isSubmenu = false,
-}) => {
-  return (
-    <div
-      className={twMerge(
-        "absolute hidden animate-vanish whitespace-nowrap bg-black/90 shadow-lg",
-        isSubmenu
-          ? twMerge(
-              "start-full top-0 group-hover/sub:block group-hover/sub:animate-appear",
-              submenuClassName,
-            )
-          : "top-full group-hover:block group-hover:animate-appear",
-        className,
-      )}
-    >
-      <div
-        className="py-2"
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="options-menu"
-      >
-        {items.map((item, index) => (
-          <HoverMenuItem
-            key={index}
-            item={item}
-            submenuClassName={submenuClassName}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const HoverMenuItem: React.FC<{
-  item: MenuItem;
-  submenuClassName?: string;
-}> = ({ item, submenuClassName }) => {
-  return (
-    <div className="group/sub relative border-b border-transparent text-start hover:border-secondary">
-      {item.path ? (
-        <Link
-          href={item.path}
-          className="block px-6 py-3 text-sm text-white hover:bg-white/10"
-          role="menuitem"
-        >
-          {item.label}
-        </Link>
-      ) : (
-        <span className="block px-6 py-3 text-sm text-white">{item.label}</span>
-      )}
-      {item.items && (
-        <HoverMenu
-          items={item.items}
-          isSubmenu={true}
-          submenuClassName={submenuClassName}
-        />
-      )}
-    </div>
-  );
-};
-
-export default HoverMenu;
-
-```
-
-# src\components\FormattedTextViewer.tsx
-
-```tsx
-import React from "react";
-
-import Wrapper from "./Wrapper";
-import FileOperations from "./FileOperations";
-import { Button } from "./ui/button";
-
-export default function FormattedTextViewer({
-  children,
-}: {
-  children: string;
-}) {
-  return (
-    <Wrapper className="mx-auto mt-[36px] flex max-w-none flex-col gap-[35px] bg-white px-[24px] py-[40px] text-justify sm:px-[40px]">
-      <div className="tiptap" id="print-section">
-        {children}
-      </div>
-      <FileOperations className="self-end"></FileOperations>
-    </Wrapper>
-  );
-}
-
-```
-
-# src\components\FileOperations.tsx
-
-```tsx
-"use client";
-
-import React, { useEffect, useRef } from "react";
-import { Button } from "./ui/button";
-import { getPrintProps, shareCurrentURL } from "@/lib/utils";
-import { useReactToPrint } from "react-to-print";
-import { useTranslations } from "next-intl";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import { twMerge } from "tailwind-merge";
-import PDFDownloadButton, { PDFStyles } from "./PDFDownloadButton";
-
-export default function FileOperations({
-  className,
-  showDownloadButton = false,
-  pdfStyles,
-}: {
-  className?: string;
-  showDownloadButton?: boolean;
-  pdfStyles?: PDFStyles;
-}) {
-  const t = useTranslations("Common");
-  const dir = useTextDirection();
-
-  const handlePrint = useReactToPrint(
-    getPrintProps({
-      content: () => document.getElementById("print-section"),
-      dir,
-    }),
-  );
-
-  return (
-    <div
-      className={twMerge(
-        "no-print hidden gap-[35px] text-primary sm:flex sm:items-center",
-        className,
-      )}
-    >
-      {showDownloadButton && (
-        <PDFDownloadButton pdfStyles={pdfStyles}></PDFDownloadButton>
-      )}
-      <div className="h-[24px] border-r border-[#D8D8D8]"></div>
-      <Button
-        onClick={shareCurrentURL}
-        variant="ghost"
-        size="icon"
-        className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
-      >
-        <span>{t("share")}</span>
-        <i className="ri-share-forward-fill text-[20px]"></i>
-      </Button>
-      <div className="h-[24px] border-r border-[#D8D8D8]"></div>
-      <Button
-        onClick={handlePrint}
-        variant="ghost"
-        size="icon"
-        className="w-fit items-center gap-[10px] text-[16px] font-bold leading-none"
-      >
-        <span>{t("print")}</span>
-        <i className="ri-printer-fill text-[20px]"></i>
-      </Button>
-    </div>
-  );
-}
-
 ```
 
 # public\js\scrollbarWidth.js
@@ -3754,7 +4129,7 @@ export default function FileOperations({
     requestAnimationFrame(function () {
       document.documentElement.style.setProperty(
         "--screen-width",
-        window.document.documentElement.clientWidth + "px"
+        window.document.documentElement.clientWidth + "px",
       );
     });
   }
@@ -3764,7 +4139,6 @@ export default function FileOperations({
     window.addEventListener("resize", updateScrollbarWidth);
   }
 })();
-
 ```
 
 # public\images\person-placeholder.svg
@@ -3827,19 +4201,26 @@ This is a binary file of the type: Binary
 
 ```ts
 import { create } from "zustand";
+import { HOME_ROUTE } from "../paths";
 
 interface CommonState {
   hasError: boolean;
   isDrawerVisible: boolean;
+  isSuccessModalOpen: boolean;
+  successMessage: string;
   toggleDrawer: (show: boolean) => void;
   errorMessage: string;
   showErrorDialog: (message: string) => void;
   hideErrorDialog: () => void;
+  openSuccessModal: (message?: string) => void;
+  closeSuccessModal: () => void;
 }
 
 const useCommonStore = create<CommonState>((set) => ({
   hasError: false,
   isDrawerVisible: false,
+  isSuccessModalOpen: false,
+  successMessage: "",
   toggleDrawer: (show) => {
     set({
       isDrawerVisible: show,
@@ -3855,538 +4236,314 @@ const useCommonStore = create<CommonState>((set) => ({
     console.log("setting has error to false");
     set((state) => ({ hasError: false, errorMessage: "" }));
   },
+  openSuccessModal: (message = "") =>
+    set({
+      isSuccessModalOpen: true,
+      successMessage: message,
+    }),
+
+  closeSuccessModal: () => {
+    set({ isSuccessModalOpen: false, successMessage: "" });
+
+    window.location.href = HOME_ROUTE;
+  },
 }));
 
 export default useCommonStore;
-
 ```
 
-# src\app\_hooks\useTextDirection.ts
+# src\lib\api_services\statistics-apis.ts
 
 ```ts
-import { useLocale } from "next-intl";
-import { isRtlLang } from "rtl-detect";
+import { API_PATHS } from "./api-paths";
+import { StatisticsItem, StatisticsResponse } from "../types";
+import axiosInstance from "../axios";
 
-export type TextDirection = "ltr" | "rtl";
+export const fetchStatistics = async (): Promise<StatisticsItem> => {
+  try {
+    const response = await axiosInstance.get<StatisticsResponse>(
+      API_PATHS.STATISTICS,
+    );
+    return response.data.statistics[0];
+  } catch (error) {
+    console.error("Error fetching statistics:", error);
+    throw error;
+  }
+};
+```
 
-export default function useTextDirection(): TextDirection {
-  const locale = useLocale();
-  return isRtlLang(locale) ? "rtl" : "ltr";
+# src\lib\api_services\rankings-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import { Ranking, RawRanking, RankingsResponse } from "../types";
+import axiosInstance from "../axios";
+
+function fixFieldNames(item: RawRanking, lang: string): Ranking {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    name: isEnglish ? item.en_name || item.ar_name : item.ar_name,
+    link: item.link,
+    image: item.image,
+    num: item.num,
+  };
 }
 
+export const fetchRankings = async (lang: string): Promise<Ranking[]> => {
+  try {
+    const response = await axiosInstance.get<RankingsResponse>(
+      `${API_PATHS.RANKINGS}?lang=${lang}`,
+    );
+    return response.data.map((item) => fixFieldNames(item, lang));
+  } catch (error) {
+    console.error("Error fetching academic rankings:", error);
+    throw error;
+  }
+};
 ```
 
-# src\app\_hooks\useScrollControl.ts
+# src\lib\api_services\news-apis.ts
 
 ```ts
-import { RefObject, useCallback, useState } from "react";
+import { API_PATHS } from "./api-paths";
+import { NewsItem, NewsResponse } from "../types";
+import axiosInstance from "../axios";
 
-function useScrollControl({
-  containerRef,
-  useMultiples = false,
-  baseScrollAmount,
-  resetTimer,
-}: {
-  containerRef: RefObject<HTMLDivElement>;
-  useMultiples?: boolean;
-  baseScrollAmount?: number;
-  resetTimer?: () => void;
-}) {
-  const [canScrollEnd, setCanScrollEnd] = useState(false);
-  const [canScrollStart, setCanScrollStart] = useState(true);
-  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+interface RawNewsItem {
+  id: number;
+  l_artitle?: string;
+  l_entitle?: string;
+  image: string;
+  ar_description?: string;
+  en_description?: string;
+}
 
-  const baseScrollAmountFallback = 150;
+function fixFieldNames(item: RawNewsItem, lang: string): NewsItem {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    title: isEnglish ? item.l_entitle : item.l_artitle,
+    image: item.image,
+    description: isEnglish ? item.en_description : item.ar_description,
+  } as NewsItem;
+}
 
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
+export const fetchNews = async (lang: string): Promise<NewsItem[]> => {
+  try {
+    const response = await axiosInstance.get<NewsResponse>(
+      `${API_PATHS.NEWS}?lang=${lang}`,
+    );
 
-      if (isRTL) {
-        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollStart(Math.abs(scrollLeft) > 0);
-      } else {
-        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
-        setCanScrollEnd(Math.abs(scrollLeft) > 0);
-      }
-      setLastScrollPosition(Math.abs(scrollLeft));
-    }
-  }, [containerRef]);
+    const rawNewsItems: RawNewsItem[] = response.data.landingpage;
 
-  const scroll = useCallback(
-    ({ direction, isLTR }: ScrollParams) => {
-      if (containerRef.current) {
-        if (resetTimer) resetTimer();
+    return rawNewsItems.map((item) => fixFieldNames(item, lang));
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    throw error;
+  }
+};
+```
 
-        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
-        const maxScroll = scrollWidth - clientWidth;
+# src\lib\api_services\goals-apis.ts
 
-        let targetScroll;
+```ts
+import { API_PATHS } from "./api-paths";
+import { GoalItem, RawGoalItem, GoalsResponse } from "../types";
+import axiosInstance from "../axios";
 
-        if (useMultiples) {
-          const currentMultiple = Math.round(
-            Math.abs(scrollLeft) /
-              (baseScrollAmount ?? containerRef.current.clientWidth)
-          );
+function fixFieldNames(item: RawGoalItem, lang: string): GoalItem {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    title: isEnglish ? item.en_text : item.ar_text,
+    description: isEnglish ? item.en_description : item.ar_description,
+    image: item.image,
+  };
+}
 
-          targetScroll =
-            (currentMultiple +
-              (isLTR
-                ? direction === "right"
-                  ? 1
-                  : -1
-                : direction === "left"
-                ? 1
-                : -1)) *
-            (baseScrollAmount ?? containerRef.current.clientWidth);
-          // (baseScrollAmount * (isLTR ? -1 : 1));
+export const fetchGoals = async (lang: string): Promise<GoalItem[]> => {
+  try {
+    const response = await axiosInstance.get<GoalsResponse>(
+      `${API_PATHS.GOALS}?lang=${lang}`,
+    );
+    return response.data.goals.map((item) => fixFieldNames(item, lang));
+  } catch (error) {
+    console.error("Error fetching goals:", error);
+    throw error;
+  }
+};
+```
 
-          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+# src\lib\api_services\common-apis.ts
 
-          containerRef.current!.scrollTo({
-            left: targetScroll * (isLTR ? 1 : -1),
-            behavior: "smooth",
-          });
-        } else {
-          containerRef.current.scrollBy({
-            left:
-              direction === "left"
-                ? -(baseScrollAmount ?? baseScrollAmountFallback)
-                : baseScrollAmount ?? baseScrollAmountFallback,
-            behavior: "smooth",
-          });
-        }
-      }
-    },
-    [containerRef, useMultiples, baseScrollAmount]
+```ts
+import { API_PATHS } from "./api-paths";
+import {
+  EService,
+  RawEService,
+  EServicesResponse,
+  Contact,
+  RawContact,
+  ContactsResponse,
+} from "../types";
+import axiosInstance from "../axios";
+
+function fixEServiceFieldNames(item: RawEService, lang: string): EService {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    title: isEnglish ? item.en_title || item.ar_title : item.ar_title,
+    icon: item.icon,
+    link: item.link,
+  };
+}
+
+function fixContactFieldNames(item: RawContact, lang: string): Contact {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    email: item.email,
+    phone: item.phone,
+    address: isEnglish ? item.en_address : item.ar_address,
+    working_hours: isEnglish ? item.en_working_hours : item.ar_working_hours,
+    instagram: item.instagram,
+    facebook: item.facebook,
+    linkedin: item.linkedin,
+    youtube: item.youtube,
+  };
+}
+
+export const fetchEServices = async (lang: string): Promise<EService[]> => {
+  try {
+    const response = await axiosInstance.get<EServicesResponse>(
+      `${API_PATHS.E_SERVICES}?lang=${lang}`,
+    );
+    return response.data.map((item) => fixEServiceFieldNames(item, lang));
+  } catch (error) {
+    console.error("Error fetching e-services:", error);
+    throw error;
+  }
+};
+
+export const fetchContact = async (lang: string): Promise<Contact> => {
+  try {
+    const response = await axiosInstance.get<ContactsResponse>(
+      `${API_PATHS.CONTACT}?lang=${lang}`,
+    );
+    return fixContactFieldNames(response.data.contacts[0], lang);
+  } catch (error) {
+    console.error("Error fetching contact information:", error);
+    throw error;
+  }
+};
+
+export const fetchLinks = async (): Promise<RawContact> => {
+  try {
+    const response = await axiosInstance.get<ContactsResponse>(
+      API_PATHS.CONTACT,
+    );
+    return response.data.contacts[0];
+  } catch (error) {
+    console.error("Error fetching contact information:", error);
+    throw error;
+  }
+};
+```
+
+# src\lib\api_services\colleges-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import {
+  College,
+  RawCollege,
+  CollegesResponse,
+  CollegeCard,
+  RawCollegeCard,
+  Department,
+  RawDepartment,
+} from "../types";
+import axiosInstance from "../axios";
+
+function fixFieldNames(item: RawCollege, lang: string): College {
+  const isEnglish = lang === "en";
+
+  const fixedCards: CollegeCard[] = item.cards.map((card: RawCollegeCard) => ({
+    id: card.id,
+    title: isEnglish ? card.en_title || card.ar_title : card.ar_title,
+    name: isEnglish ? card.en_name || card.ar_name : card.ar_name,
+    image: card.image,
+    description: isEnglish
+      ? card.en_description || card.ar_description
+      : card.ar_description,
+    visible: card.visible,
+  }));
+
+  const fixedDepartments: Department[] = item.departments.map(
+    (dept: RawDepartment) => ({
+      id: dept.id,
+      colleges_id: dept.colleges_id,
+      name: isEnglish ? dept.en_name || dept.ar_name : dept.ar_name,
+      description: isEnglish
+        ? dept.en_description || dept.ar_description
+        : dept.ar_description,
+      image: dept.image,
+      m_name: isEnglish ? dept.en_m_name || dept.ar_m_name : dept.ar_m_name,
+      m_description: isEnglish
+        ? dept.en_m_description || dept.ar_m_description
+        : dept.ar_m_description,
+      college_name: isEnglish
+        ? dept.college_en_name || dept.college_ar_name
+        : dept.college_ar_name,
+      m_image: dept.m_image,
+      depcol: dept.depcol,
+    }),
   );
-
-  const resetScrollPosition = useCallback(() => {
-    if (containerRef.current) {
-      containerRef.current!.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-    }
-  }, [containerRef, useMultiples, baseScrollAmount]);
 
   return {
-    canScrollEnd,
-    canScrollStart,
-    containerRef,
-    handleScroll,
-    scroll,
-    resetScrollPosition,
-    lastScrollPosition,
+    id: item.id,
+    name: isEnglish ? item.en_name || item.ar_name : item.ar_name,
+    description: isEnglish
+      ? item.en_description || item.ar_description
+      : item.ar_description,
+    image: item.image,
+    icon: item.icon,
+    depcol: item.depcol,
+    cards: fixedCards,
+    departments: fixedDepartments,
+    staff: item.staff,
+    news: item.news,
+    goals: item.goals,
+    graduation_projects: item.graduation_projects,
   };
 }
 
-type ScrollParams = {
-  direction: "right" | "left";
-  isLTR?: boolean;
+export const fetchColleges = async (lang: string): Promise<College[]> => {
+  try {
+    const response = await axiosInstance.get<CollegesResponse>(
+      `${API_PATHS.COLLEGES}?lang=${lang}`,
+    );
+    return response.data.colleges.map((item) => fixFieldNames(item, lang));
+  } catch (error) {
+    console.error("Error fetching colleges:", error);
+    throw error;
+  }
 };
-
-export default useScrollControl;
-
 ```
 
-# src\app\[locale]\page.tsx
+# src\lib\api_services\api-paths.ts
 
-```tsx
-"use client";
-
-import OurGoals from "../_components/OurGoals/OurGoals";
-import News from "../_components/News/News";
-import Statistics from "../_components/Statistics";
-import HomepageCards from "../_components/CardsSection/HomepageCards";
-import OurColleges from "../_components/OurColleges/OurColleges";
-import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
-import SliderBg from "@/components/page/SliderBg";
-
-export default function Home() {
-  return (
-    <>
-      <SliderBg></SliderBg>
-      <main className="relative z-30 flex flex-col items-center">
-        <HomepageCards></HomepageCards>
-        <News></News>
-        <Statistics></Statistics>
-        <OurGoals></OurGoals>
-        <OurColleges></OurColleges>
-        <AcademicRankings></AcademicRankings>
-      </main>
-    </>
-  );
-}
-
-```
-
-# src\app\[locale]\layout.tsx
-
-```tsx
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "../globals.css";
-import { NextIntlClientProvider, useMessages } from "next-intl";
-import { getMessages } from "next-intl/server";
-import useTextDirection from "@/app/_hooks/useTextDirection";
-import Header from "../_components/Header/Header";
-import Footer from "../_components/Footer";
-
-import Script from "next/script";
-import CommonSections from "@/components/common-sections/CommonSections";
-
-export const metadata: Metadata = {
-  title: "Create Next App",
-  description: "Generated by create next app",
+```ts
+export const API_PATHS = {
+  NEWS: "/landingpage",
+  STATISTICS: "/statistics",
+  GOALS: "/goals",
+  COLLEGES: "/colleges",
+  RANKINGS: "/classification",
+  E_SERVICES: "/service",
+  CONTACT: "/contacts",
 };
-
-export default function RootLayout({
-  children,
-  params: { locale },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { locale: string };
-}>) {
-  const messages = useMessages();
-  const dir = useTextDirection();
-
-  return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
-      <head>
-        <link
-          href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
-          rel="stylesheet"
-        />
-
-        <script src="/js/scrollbarWidth.js" />
-      </head>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          {children}
-          <CommonSections></CommonSections>
-          <Footer></Footer>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
-}
-
-```
-
-# src\app\_components\Statistics.tsx
-
-```tsx
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-import { Statistic } from "@/lib/types";
-import React from "react";
-
-const universityStats: Statistic[] = [
-  {
-    value: 2000,
-    description: "عدد الطلبة",
-  },
-  {
-    value: 65,
-    description: "عدد الكادر التدريسي",
-  },
-  {
-    value: 20,
-    description: "عدد الكادر الإداري",
-  },
-  {
-    value: 20,
-    description: "عدد الكادر الفني والتقني",
-  },
-];
-
-export default function Statistics() {
-  return (
-    <div className="w-full flex flex-col items-end">
-      <Section
-        wrapperClass="bg-[#E6E6E6] py-[60px] sm:py-[94px] 1920:py-[125px] mt-[60px] sm:mt-[200px] 1920:mt-[280px] sm:min-h-[572px] 1920:min-h-[762px]"
-        className="max-w-[306px] "
-      >
-        <Wrapper className="flex flex-col sm:flex-row sm:justify-between">
-          <h2 className="text-[44px] leading-[66px]  sm:text-[64px] sm:leading-[80px] 1920:text-[86px] 1920:leading-[107px] text-primary font-medium text-start mb-[80px] sm:mb-0 sm:max-w-[600px]">
-            احصائيات جامعة كلكامش
-          </h2>
-          <div className="grid grid-cols-[repeat(2,minmax(0,135px))] w-full sm:max-w-[395px] 1920:max-w-[495px] justify-between gap-y-[32px] sm:gap-y-[65px] h-fit">
-            {universityStats.map((el, index) => (
-              <div
-                className="flex flex-col gap-[25px] sm:gap-[12px] 1920:gap-[16px]"
-                key={index}
-              >
-                <span className="text-[32px] sm:text-[30px] 1920:text-[40px] leading-[1.22em] text-primary font-medium font-sans">
-                  {el.value.toLocaleString()}+
-                </span>
-                <h3 className="text-[16px] sm:text-[15px] 1920:text-[20px] leading-[1.22em] text-[#828282]">
-                  {el.description}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </Wrapper>
-      </Section>
-      <img
-        src="/images/home/statistics.jpg"
-        alt="image"
-        className="w-full object-cover sm:max-w-[826px] 1920:max-w-[1102px] sm:-mt-[186px] 1920:-mt-[247px]"
-      />
-    </div>
-  );
-}
-
-```
-
-# src\app\_components\Footer.tsx
-
-```tsx
-"use client";
-
-import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import Section from "@/components/Section";
-import { Input } from "@/components/ui/input";
-import Wrapper from "@/components/Wrapper";
-import React from "react";
-import { RELATED_LOCATIONS_ROUTE } from "@/lib/paths";
-
-const Footer = () => {
-  return (
-    <Section
-      as="footer"
-      className="text-white text-start"
-      wrapperClass="bg-[#121315] py-[30px] sm:py-[50px] 1920:py-[50px]"
-    >
-      <Wrapper className="flex flex-col gap-[47px] sm:gap-[69px]">
-        <div className="flex flex-col sm:flex-row justify-between items-start ">
-          <FooterRight />
-          <FooterLeft />
-        </div>
-
-        <div className="w-full border-b border-white"></div>
-
-        <FooterBottom />
-      </Wrapper>
-    </Section>
-  );
-};
-
-const FooterRight = () => {
-  return (
-    <div className="w-full mb-8 sm:mb-0 sm:max-w-[500px] 1920:max-w-[846px]">
-      <img
-        src="/images/logo.png"
-        alt="logo"
-        className="hidden sm:block h-[78px] object-contain mb-[40px] 1920:mb-[69px]"
-      />
-      <h2 className="text-[32px] sm:text-[44px] 1920:text-[71px] font-bold leading-[1.54em]">
-        تحسين مستقبل الناس من خلال العلوم والتكنولوجيا
-      </h2>
-    </div>
-  );
-};
-
-const FooterLeft = () => {
-  const data = [
-    {
-      label: "وزارة التعليم العالي والبحث العلمي",
-      link: "#",
-    },
-    {
-      label: "دائرة التعليم الجامعي الأهلي",
-      link: "#",
-    },
-    {
-      label: "اتحاد الجامعات العربية",
-      link: "#",
-    },
-  ];
-
-  return (
-    <div className="w-full sm:max-w-[450px] 1920:max-w-[487px]">
-      <div className="flex flex-col sm:flex-row gap-[10px] sm:gap-[24px] mb-[58px] sm:mb-[89px]  sm:items-center">
-        <label className="text-[18px] leading-[1.22em]">
-          اشترك بالقائمة البريدية:
-        </label>
-        <Input
-          className="border-b border-white text-white bg-transparent sm:flex-1 max-w-[289px] !ring-0"
-          inputClass="placeholder-white/50 text-[16px] leading-[1.22em] ps-0"
-          placeholder="ادخل بريدك الإلكتروني"
-          suffixIcon={<i className="ri-arrow-left-line text-[22px]"></i>}
-        />
-      </div>
-      <div className="flex flex-col gap-[26px] sm:gap-[36px]">
-        <h3 className="text-[20px] leading-[1.22em] font-bold ">
-          مواقع ذات صلة
-        </h3>
-        <ul className=" flex flex-col gap-[8px] sm:gap-[16px]">
-          {data.map((item, index) => (
-            <li key={index}>
-              <Link
-                target="_blank"
-                href={item.link}
-                className="text-[16px] sm:text-[18px] leading-[1.22em] hover:text-secondary"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <Link
-          target="_blank"
-          href={RELATED_LOCATIONS_ROUTE}
-          className="text-secondary text-[16px] sm:text-[18px] leading-[1.22em]"
-        >
-          عرض المزيد
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-const FooterBottom = () => {
-  type Data = {
-    label: string;
-    link: string;
-  };
-  const data: Data[] = [
-    {
-      label: "الرئيسية",
-      link: "#",
-    },
-    {
-      label: "سياسة الخصوصية",
-      link: "#",
-    },
-    {
-      label: "ملفات تعريف الارتباط",
-      link: "#",
-    },
-    {
-      label: "مواقع ذات صلة",
-      link: "#",
-    },
-  ];
-  return (
-    <div className="flex flex-col items-center gap-[74px] sm:gap-[49px]">
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center self-stretch gap-[20px]">
-        <div className="flex flex-col sm:flex-row gap-[20px] sm:gap-[30px] sm:items-center">
-          {data.map((item, index) => (
-            <React.Fragment key={index}>
-              {index != 0 && (
-                <div className="w-[1px] bg-white/20 hidden sm:block self-stretch"></div>
-              )}
-              <Link
-                target="_blank"
-                href={item.link}
-                className="hover:text-secondary text-[16px] leading-[1.35em]"
-              >
-                {item.label}
-              </Link>
-            </React.Fragment>
-          ))}
-        </div>
-        <FooterSocialMedia />
-      </div>
-      <p className="text-sm sm:text-lg">
-        جميع الحقوق محفوظة 2024 © جامعة كلكامش
-      </p>
-    </div>
-  );
-};
-
-const socialMediaLinks = [
-  { icon: "ri-instagram-line", url: "#" },
-  { icon: "ri-facebook-circle-fill", url: "#" },
-  { icon: "ri-linkedin-box-fill", url: "#" },
-  { icon: "ri-youtube-fill", url: "#" },
-];
-
-const FooterSocialMedia = () => {
-  return (
-    <div className="flex gap-[26px] items-center">
-      <span className="text-base sm:text-lg">تابعنا عبر</span>
-      <div className="flex gap-[20px] sm:gap-[24px]">
-        {socialMediaLinks.map((link, index) => (
-          <Link
-            key={index}
-            target="_blank"
-            href={link.url}
-            className="hover:text-secondary text-[24px]"
-          >
-            <i className={link.icon}></i>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
-export default Footer;
-
-```
-
-# src\app\_components\AboutUs.tsx
-
-```tsx
-"use client";
-
-import { ABOUT_ROUTE } from "@/lib/paths";
-import React from "react";
-import Section from "../../components/Section";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useTranslations } from "next-intl";
-
-const AboutUs: React.FC = () => {
-  const t = useTranslations("Home.aboutUs");
-
-  return (
-    <Section
-      id="about-us"
-      className="sm:pt-[120px] sm:pb-[74px] pt-[36px]  px-[12px] relative sm:overflow-clip flex flex-col items-center   sm:px-5 xl:px-0"
-    >
-      <h1 className="title pb-[22px] sm:pb-[32px] relative z-10 ">
-        {t("title")}
-      </h1>
-      <div className="relative z-10">
-        <div className="flex flex-col gap-[40px] sm:gap-[40px] max-w-[351px] sm:max-w-[800px]  sm:px-0">
-          <p className="text-base ltr:leading-[26px] sm:text-justify sm:text-[20px] sm:leading-[36px]">
-            {t("description")}
-          </p>
-          <div className="sm:flex sm:justify-center">
-            <Link href={ABOUT_ROUTE}>
-              <Button
-                variant={"outline"}
-                className="text-primary-300  w-full  sm:w-fit hover:opacity-75 border-primary-300  text-lg py-3 tracking-[-0.004em] inline-flex items-center justify-center text-center border rounded-full transition-opacity duration-200 ease-in-out font-medium"
-              >
-                {t("readMore")}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* desktop */}
-      <img
-        src="https://i.imgur.com/wUfwWfR.png"
-        alt="about us background"
-        className="hidden sm:block absolute top-[-232px] right-[40%] translate-x-[calc(50%-512px)] w-[1878px] min-w-[1878px] h-[1264px] min-h-[1264px] transform rotate-[8.75deg] opacity-20"
-      />
-    </Section>
-  );
-};
-
-export default AboutUs;
-
 ```
 
 # src\components\ui\textarea.tsx
@@ -4405,23 +4562,22 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <textarea
         className={cn(
-          "flex min-h-[180px] w-full resize-none  bg-background px-[14px] py-[18px] text-sm focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50  ring-secondary ring-offset-secondary focus-visible:ring-secondary",
-          "bg-white rounded-none text-primary leading-[1.35em] placeholder-primary/40",
+          "bg-background ring-secondary ring-offset-secondary focus-visible:ring-secondary flex min-h-[180px] w-full resize-none px-[14px] py-[18px] text-sm focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "text-primary placeholder-primary/40 rounded-none bg-white leading-[1.35em]",
           "h-[60px] text-[14px]",
           "sm:h-[60px] sm:text-[14px]",
           "1920:h-[61px] 1920:text-[16px]",
-          className
+          className,
         )}
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 Textarea.displayName = "Textarea";
 
 export { Textarea };
-
 ```
 
 # src\components\ui\select.tsx
@@ -4450,8 +4606,8 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-[61px] w-full items-center justify-between rounded-[12px]  border border-input bg-background px-[28px] py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary  disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      className
+      "border-input bg-background ring-offset-background placeholder:text-muted-foreground focus:ring-primary flex h-[61px] w-full items-center justify-between rounded-[12px] border px-[28px] py-2 text-sm focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      className,
     )}
     {...props}
   >
@@ -4475,7 +4631,7 @@ const SelectScrollUpButton = React.forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default items-center justify-center py-1",
-      className
+      className,
     )}
     {...props}
   >
@@ -4494,7 +4650,7 @@ const DelayedSelect: React.FC<React.PropsWithChildren<any>> = ({
   const [delayedOpen, setDelayedOpen] = React.useState(false);
 
   const handleOpenChange = (
-    newOpenState: boolean | ((prevState: boolean) => boolean)
+    newOpenState: boolean | ((prevState: boolean) => boolean),
   ) => {
     if (newOpenState) {
       setOpen(newOpenState);
@@ -4526,7 +4682,7 @@ const SelectScrollDownButton = React.forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default items-center justify-center py-1",
-      className
+      className,
     )}
     {...props}
   >
@@ -4544,10 +4700,10 @@ const SelectContent = React.forwardRef<
     <SelectPrimitive.Content
       ref={ref}
       className={cn(
-        "relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border shadow-md",
         position === "popper" &&
           "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-        className
+        className,
       )}
       position={position}
       {...props}
@@ -4557,7 +4713,7 @@ const SelectContent = React.forwardRef<
         className={cn(
           "p-1",
           position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
         )}
       >
         {children}
@@ -4587,8 +4743,8 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      "focus:bg-accent focus:text-accent-foreground relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className,
     )}
     {...props}
   >
@@ -4609,7 +4765,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    className={cn("bg-muted -mx-1 my-1 h-px", className)}
     {...props}
   />
 ));
@@ -4628,7 +4784,6 @@ export {
   SelectTrigger,
   SelectValue,
 };
-
 ```
 
 # src\components\ui\scroll-area.tsx
@@ -4672,17 +4827,16 @@ const ScrollBar = React.forwardRef<
         "h-full w-2.5 border-l border-l-transparent p-[1px]",
       orientation === "horizontal" &&
         "h-2.5 flex-col border-t border-t-transparent p-[1px]",
-      className
+      className,
     )}
     {...props}
   >
-    <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-border" />
+    <ScrollAreaPrimitive.ScrollAreaThumb className="bg-border relative flex-1 rounded-full" />
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
 export { ScrollArea, ScrollBar };
-
 ```
 
 # src\components\ui\radio-group.tsx
@@ -4718,8 +4872,8 @@ const RadioGroupItem = React.forwardRef<
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "aspect-square h-6 w-6 rounded-full border border-primary text-primary-300 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ",
-        className
+        "border-primary text-primary-300 ring-offset-background focus-visible:ring-ring aspect-square h-6 w-6 rounded-full border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        className,
       )}
       {...props}
     >
@@ -4732,18 +4886,17 @@ const RadioGroupItem = React.forwardRef<
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
 
 export { RadioGroup, RadioGroupItem };
-
 ```
 
 # src\components\ui\navigation-menu.tsx
 
 ```tsx
-import * as React from "react"
-import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
-import { cva } from "class-variance-authority"
-import { ChevronDown } from "lucide-react"
+import * as React from "react";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { cva } from "class-variance-authority";
+import { ChevronDown } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
@@ -4753,15 +4906,15 @@ const NavigationMenu = React.forwardRef<
     ref={ref}
     className={cn(
       "relative z-10 flex max-w-max flex-1 items-center justify-center",
-      className
+      className,
     )}
     {...props}
   >
     {children}
     <NavigationMenuViewport />
   </NavigationMenuPrimitive.Root>
-))
-NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
+));
+NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 
 const NavigationMenuList = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
@@ -4771,18 +4924,18 @@ const NavigationMenuList = React.forwardRef<
     ref={ref}
     className={cn(
       "group flex flex-1 list-none items-center justify-center space-x-1",
-      className
+      className,
     )}
     {...props}
   />
-))
-NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
+));
+NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item
+const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-)
+  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
+);
 
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
@@ -4799,8 +4952,8 @@ const NavigationMenuTrigger = React.forwardRef<
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
-))
-NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
+));
+NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
 
 const NavigationMenuContent = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Content>,
@@ -4809,15 +4962,15 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ",
-      className
+      "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 left-0 top-0 w-full md:absolute md:w-auto",
+      className,
     )}
     {...props}
   />
-))
-NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
+));
+NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName;
 
-const NavigationMenuLink = NavigationMenuPrimitive.Link
+const NavigationMenuLink = NavigationMenuPrimitive.Link;
 
 const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
@@ -4826,16 +4979,16 @@ const NavigationMenuViewport = React.forwardRef<
   <div className={cn("absolute left-0 top-full flex justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
-        className
+        "origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow-lg md:w-[var(--radix-navigation-menu-viewport-width)]",
+        className,
       )}
       ref={ref}
       {...props}
     />
   </div>
-))
+));
 NavigationMenuViewport.displayName =
-  NavigationMenuPrimitive.Viewport.displayName
+  NavigationMenuPrimitive.Viewport.displayName;
 
 const NavigationMenuIndicator = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
@@ -4844,16 +4997,16 @@ const NavigationMenuIndicator = React.forwardRef<
   <NavigationMenuPrimitive.Indicator
     ref={ref}
     className={cn(
-      "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in",
-      className
+      "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+      className,
     )}
     {...props}
   >
-    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
+    <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
   </NavigationMenuPrimitive.Indicator>
-))
+));
 NavigationMenuIndicator.displayName =
-  NavigationMenuPrimitive.Indicator.displayName
+  NavigationMenuPrimitive.Indicator.displayName;
 
 export {
   navigationMenuTriggerStyle,
@@ -4865,8 +5018,7 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
-}
-
+};
 ```
 
 # src\components\ui\menubar.tsx
@@ -4897,8 +5049,8 @@ const Menubar = React.forwardRef<
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "flex h-10 items-center space-x-1 rounded-md border bg-background p-1",
-      className
+      "bg-background flex h-10 items-center space-x-1 rounded-md border p-1",
+      className,
     )}
     {...props}
   />
@@ -4912,8 +5064,8 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
-      className
+      "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none",
+      className,
     )}
     {...props}
   />
@@ -4929,9 +5081,9 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+      "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
       inset && "pl-8",
-      className
+      className,
     )}
     {...props}
   >
@@ -4948,8 +5100,8 @@ const MenubarSubContent = React.forwardRef<
   <MenubarPrimitive.SubContent
     ref={ref}
     className={cn(
-      "z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-      className
+      "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border p-1",
+      className,
     )}
     {...props}
   />
@@ -4962,7 +5114,7 @@ const MenubarContent = React.forwardRef<
 >(
   (
     { className, align = "start", alignOffset = -4, sideOffset = 8, ...props },
-    ref
+    ref,
   ) => (
     <MenubarPrimitive.Portal>
       <MenubarPrimitive.Content
@@ -4971,13 +5123,13 @@ const MenubarContent = React.forwardRef<
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-[12rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-          className
+          "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] overflow-hidden rounded-md border p-1 shadow-md",
+          className,
         )}
         {...props}
       />
     </MenubarPrimitive.Portal>
-  )
+  ),
 );
 MenubarContent.displayName = MenubarPrimitive.Content.displayName;
 
@@ -4990,9 +5142,9 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       inset && "pl-8",
-      className
+      className,
     )}
     {...props}
   />
@@ -5006,8 +5158,8 @@ const MenubarCheckboxItem = React.forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      "focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className,
     )}
     checked={checked}
     {...props}
@@ -5029,8 +5181,8 @@ const MenubarRadioItem = React.forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      className
+      "focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      className,
     )}
     {...props}
   >
@@ -5055,7 +5207,7 @@ const MenubarLabel = React.forwardRef<
     className={cn(
       "px-2 py-1.5 text-sm font-semibold",
       inset && "pl-8",
-      className
+      className,
     )}
     {...props}
   />
@@ -5068,7 +5220,7 @@ const MenubarSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <MenubarPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    className={cn("bg-muted -mx-1 my-1 h-px", className)}
     {...props}
   />
 ));
@@ -5081,8 +5233,8 @@ const MenubarShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground",
-        className
+        "text-muted-foreground ml-auto text-xs tracking-widest",
+        className,
       )}
       {...props}
     />
@@ -5108,23 +5260,22 @@ export {
   MenubarSub,
   MenubarShortcut,
 };
-
 ```
 
 # src\components\ui\label.tsx
 
 ```tsx
-"use client"
+"use client";
 
-import * as React from "react"
-import * as LabelPrimitive from "@radix-ui/react-label"
-import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react";
+import * as LabelPrimitive from "@radix-ui/react-label";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const labelVariants = cva(
-  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-)
+  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+);
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
@@ -5136,11 +5287,10 @@ const Label = React.forwardRef<
     className={cn(labelVariants(), className)}
     {...props}
   />
-))
-Label.displayName = LabelPrimitive.Root.displayName
+));
+Label.displayName = LabelPrimitive.Root.displayName;
 
-export { Label }
-
+export { Label };
 ```
 
 # src\components\ui\input.tsx
@@ -5162,36 +5312,35 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         className={cn(
-          "relative bg-white flex focus-within:ring-2 ring-offset-secondary focus-within:ring-secondary ",
-          className
+          "ring-offset-secondary focus-within:ring-secondary relative flex bg-white focus-within:ring-2",
+          className,
         )}
       >
         <input
           type={type}
           className={cn(
-            "flex h-[52px] w-full  py-2 bg-transparent file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none  disabled:cursor-not-allowed disabled:opacity-50 px-[16px] text-sm  rounded-full",
-            "rounded-none text-primary leading-[1.35em] placeholder-primary/40",
+            "flex h-[52px] w-full rounded-full bg-transparent px-[16px] py-2 text-sm file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+            "text-primary placeholder-primary/40 rounded-none leading-[1.35em]",
             "h-[60px] text-[14px]",
             "sm:h-[46px] sm:text-[14px]",
             "1920:h-[61px] 1920:text-[16px] border-0",
-            inputClass
+            inputClass,
           )}
           ref={ref}
           {...props}
         />
         {suffixIcon && (
-          <span className="flex items-center justify-center pointer-events-none">
+          <span className="pointer-events-none flex items-center justify-center">
             {suffixIcon}
           </span>
         )}
       </div>
     );
-  }
+  },
 );
 Input.displayName = "Input";
 
 export { Input };
-
 ```
 
 # src\components\ui\drawer.tsx
@@ -5242,8 +5391,8 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
-        className
+        "bg-background fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border",
+        className,
       )}
       {...props}
     >
@@ -5284,7 +5433,7 @@ const DrawerTitle = React.forwardRef<
     ref={ref}
     className={cn(
       "text-lg font-semibold leading-none tracking-tight",
-      className
+      className,
     )}
     {...props}
   />
@@ -5297,7 +5446,7 @@ const DrawerDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
 ));
@@ -5315,7 +5464,6 @@ export {
   DrawerTitle,
   DrawerDescription,
 };
-
 ```
 
 # src\components\ui\button.tsx
@@ -5352,7 +5500,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 export interface ButtonProps
@@ -5371,12 +5519,159 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  }
+  },
 );
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
+```
 
+# src\components\ui\alert-dialog.tsx
+
+```tsx
+"use client";
+
+import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
+import * as React from "react";
+
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const AlertDialog = AlertDialogPrimitive.Root;
+
+const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
+
+const AlertDialogPortal = AlertDialogPrimitive.Portal;
+
+const AlertDialogOverlay = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
+>(({ className, ...props }, ref) => (
+  <AlertDialogPrimitive.Overlay
+    className={cn(
+      "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[10000] bg-black/80",
+      className,
+    )}
+    {...props}
+    ref={ref}
+  />
+));
+AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName;
+
+const AlertDialogContent = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content> & {
+    onClickOutside?: () => void;
+  }
+>(({ className, onClickOutside, ...props }, ref) => (
+  <AlertDialogPortal>
+    <AlertDialogOverlay onClick={onClickOutside} />
+    <AlertDialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] fixed left-[50%] top-[50%] z-[10000] grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border p-6 shadow-lg duration-200 sm:rounded-lg",
+        className,
+      )}
+      {...props}
+    />
+  </AlertDialogPortal>
+));
+AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName;
+
+const AlertDialogHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col space-y-2 text-center sm:text-start",
+      className,
+    )}
+    {...props}
+  />
+);
+AlertDialogHeader.displayName = "AlertDialogHeader";
+
+const AlertDialogFooter = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div
+    className={cn(
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      className,
+    )}
+    {...props}
+  />
+);
+AlertDialogFooter.displayName = "AlertDialogFooter";
+
+const AlertDialogTitle = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Title>,
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
+>(({ className, ...props }, ref) => (
+  <AlertDialogPrimitive.Title
+    ref={ref}
+    className={cn("text-lg font-semibold", className)}
+    {...props}
+  />
+));
+AlertDialogTitle.displayName = AlertDialogPrimitive.Title.displayName;
+
+const AlertDialogDescription = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Description>,
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
+>(({ className, ...props }, ref) => (
+  <AlertDialogPrimitive.Description
+    ref={ref}
+    className={cn("text-muted-foreground text-sm", className)}
+    {...props}
+  />
+));
+AlertDialogDescription.displayName =
+  AlertDialogPrimitive.Description.displayName;
+
+const AlertDialogAction = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Action>,
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
+>(({ className, ...props }, ref) => (
+  <AlertDialogPrimitive.Action
+    ref={ref}
+    className={cn(buttonVariants(), className)}
+    {...props}
+  />
+));
+AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;
+
+const AlertDialogCancel = React.forwardRef<
+  React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
+>(({ className, ...props }, ref) => (
+  <AlertDialogPrimitive.Cancel
+    ref={ref}
+    className={cn(
+      buttonVariants({ variant: "outline" }),
+      "mt-2 sm:mt-0",
+      className,
+    )}
+    {...props}
+  />
+));
+AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;
+
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  AlertDialogPortal,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+};
 ```
 
 # src\components\ui\accordion.tsx
@@ -5446,10 +5741,10 @@ const AccordionTrigger = React.forwardRef<
               } as React.CSSProperties
             }
           >
-            <div className="delay-[0.25s] absolute inset-0 flex items-center justify-center transition-opacity duration-150 group-data-[state=open]:opacity-0">
+            <div className="absolute inset-0 flex items-center justify-center transition-opacity delay-[0.25s] duration-150 group-data-[state=open]:opacity-0">
               {closeIcon}
             </div>
-            <div className="delay-[0.25s] absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-150 group-data-[state=open]:opacity-100">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity delay-[0.25s] duration-150 group-data-[state=open]:opacity-100">
               {openIcon}
             </div>
           </div>
@@ -5469,7 +5764,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm transition-all"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>
@@ -5479,7 +5774,6 @@ const AccordionContent = React.forwardRef<
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
-
 ```
 
 # src\components\scrollable-container\UpperSection.tsx
@@ -5520,7 +5814,7 @@ export default function ScrollableContainerUpperSection({
     <TitlesWrapper className={twMerge("items-start", className)}>
       {title2 && <h3 className="title-sm">{title2}</h3>}
 
-      <div className="flex items-center justify-between w-full">
+      <div className="flex w-full items-center justify-between">
         <h5 className={twMerge("title", titleClass)}>{title}</h5>
         {!hideArrows && (
           <ScrollArrows
@@ -5535,7 +5829,6 @@ export default function ScrollableContainerUpperSection({
     </TitlesWrapper>
   );
 }
-
 ```
 
 # src\components\scrollable-container\ScrollableContainer.tsx
@@ -5552,8 +5845,8 @@ const ScrollableCardsContainer = React.forwardRef<
     <div
       ref={ref}
       className={twMerge(
-        "hide-scrollbar mx-auto max-w-screen-pure overflow-x-auto w-full",
-        wrapperClass
+        "hide-scrollbar max-w-screen-pure mx-auto w-full overflow-x-auto",
+        wrapperClass,
       )}
     >
       <div className={twMerge("flex w-fit", className)}>{children}</div>
@@ -5564,7 +5857,51 @@ const ScrollableCardsContainer = React.forwardRef<
 ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
 
 export { ScrollableCardsContainer };
+```
 
+# src\components\modals\SuccessModal.tsx
+
+```tsx
+"use client";
+import useCommonStore from "@/lib/zustand/common";
+import successAnimation from "@/../public/lottie/success.json";
+import Lottie from "lottie-react";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "../ui/alert-dialog";
+
+export default function SuccessModal() {
+  const { isSuccessModalOpen, successMessage, closeSuccessModal } =
+    useCommonStore();
+
+  return (
+    <AlertDialog
+      open={isSuccessModalOpen}
+      onOpenChange={() => {
+        closeSuccessModal();
+      }}
+    >
+      <AlertDialogContent onClickOutside={() => closeSuccessModal()}>
+        <AlertDialogHeader>
+          <AlertDialogTitle className="mb-3 flex flex-col items-center justify-center">
+            <Lottie
+              animationData={successAnimation}
+              loop={false}
+              className="aspect-square w-[100px]"
+            />
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-foreground text-center text-xl">
+            {successMessage}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
 ```
 
 # src\components\page\TitleAndImage.tsx
@@ -5595,7 +5932,6 @@ export default function TitleAndImage() {
     </Section>
   );
 }
-
 ```
 
 # src\components\page\SliderBg.tsx
@@ -5646,9 +5982,9 @@ const ImageSection = () => {
       <img
         src="/images/hero-bg.jpg"
         alt="hero bg"
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
       />
-      <div className="w-full h-full absolute top-0 bg-black/70"></div>
+      <div className="absolute top-0 h-full w-full bg-black/70"></div>
     </div>
   );
 };
@@ -5714,16 +6050,16 @@ function ScrollableCardsContainer({
   }, [handleScroll]);
 
   return (
-    <div className="min-h-[297px] sm:min-h-[560px] 1920:min-h-[952px] relative flex justify-center">
+    <div className="1920:min-h-[952px] relative flex min-h-[297px] justify-center sm:min-h-[560px]">
       <TextSection containerRef={containerRef} resetTimer={resetInterval} />
       <div
         ref={containerRef}
         className={twMerge(
-          "mx-auto overflow-x-auto  h-full  w-screen absolute navbar-inclusive-background",
-          "hide-scrollbar"
+          "navbar-inclusive-background absolute mx-auto h-full w-screen overflow-x-auto",
+          "hide-scrollbar",
         )}
       >
-        <div className="flex w-fit h-full">
+        <div className="flex h-full w-fit">
           {translatedNewsItems.map((newsItem, index) => (
             <ImageSection key={index} />
           ))}
@@ -5747,7 +6083,7 @@ function TextSection({
   }, [containerRef.current]);
 
   return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[51px] sm:pt-[116px] 1920:pt-[318px] text-start max-w-mobile">
+    <div className="sm:max-w-desktop 1920:max-w-desktop-lg 1920:pt-[318px] max-w-mobile relative z-30 w-full pt-[51px] text-start sm:mx-auto sm:px-[30px] sm:pt-[116px]">
       <ScrollArrows
         containerRef={containerRef}
         scrollAmount={scrollAmount}
@@ -5756,12 +6092,12 @@ function TextSection({
         className="slider-bg-arrows"
       />
 
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70  font-light">
+      <div className="1920:max-w-[789px] 1920:mt-[34px] mt-[30px] max-w-[654px] sm:mt-[24px]">
+        <h3 className="1920:text-[40px] 1920:leading-[48px] text-[16px] font-light leading-[22px] text-white/70 sm:text-[26px] sm:leading-[31px]">
           التجربة العلمية
         </h3>
 
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+        <h1 className="1920:text-[60px] 1920:leading-[72px] 1920:mt-[32px] mt-[9px] line-clamp-3 text-[25px] leading-[30px] text-white sm:mt-[22px] sm:text-[48px] sm:leading-[54px]">
           عراقنا.. تاريخ.. حضارات مستقبل واعد عراقنا.. تاريخ.. حضارات مستقبل
           واعد
         </h1>
@@ -5769,7 +6105,6 @@ function TextSection({
     </div>
   );
 }
-
 ```
 
 # src\components\page\Page.tsx
@@ -5792,7 +6127,6 @@ export default function PageWithFirstSection({
     </main>
   );
 }
-
 ```
 
 # src\components\page\OnlyTitle.tsx
@@ -5818,7 +6152,6 @@ export default function OnlyTitle() {
     </Section>
   );
 }
-
 ```
 
 # src\components\page\ImageBg.tsx
@@ -5829,7 +6162,7 @@ import { twMerge } from "tailwind-merge";
 
 export default function ImageBg() {
   return (
-    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
+    <div className="1920:min-h-[592px] relative flex min-h-[260px] justify-center sm:min-h-[420px]">
       <TextSection />
       <ImageSection />
     </div>
@@ -5838,12 +6171,12 @@ export default function ImageBg() {
 
 function TextSection() {
   return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
+    <div className="sm:max-w-desktop 1920:max-w-desktop-lg 1920:pt-[138px] max-w-mobile relative z-30 w-full pt-[71px] text-start sm:mx-auto sm:px-[30px] sm:pt-[96px]">
+      <div className="1920:max-w-[789px] 1920:mt-[34px] mt-[30px] max-w-[654px] sm:mt-[24px]">
+        <h3 className="1920:text-[40px] 1920:leading-[48px] text-[16px] font-light leading-[22px] text-white/70 sm:text-[26px] sm:leading-[31px]">
           الرئيسية
         </h3>
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
+        <h1 className="1920:text-[60px] 1920:leading-[72px] 1920:mt-[32px] mt-[9px] line-clamp-3 text-[25px] leading-[30px] text-white sm:mt-[22px] sm:text-[48px] sm:leading-[54px]">
           مواقع ذات صلة
         </h1>
       </div>
@@ -5857,13 +6190,12 @@ function ImageSection() {
       <img
         src="/images/hero-bg.jpg"
         alt="hero bg"
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-black/70"></div>
     </div>
   );
 }
-
 ```
 
 # src\components\page\FirstSection.tsx
@@ -5882,7 +6214,6 @@ export default function FirstSection() {
 
   // return BgComponent ? <BgComponent /> : <></>;
 }
-
 ```
 
 # src\components\common-sections\MapSection.tsx
@@ -5900,10 +6231,10 @@ const LocationMap = dynamic(() => import("@/components/LocationMap"), {
 
 export default function MapSection() {
   return (
-    <div className="relative h-[330px] sm:h-[653px] w-full overflow-hidden mt-[82px] sm:mt-0">
+    <div className="relative mt-[82px] h-[330px] w-full overflow-hidden sm:mt-0 sm:h-[653px]">
       {/* <LocationMap latitude={33.222307} longitude={44.3888341}></LocationMap> */}
       <iframe
-        className="gmapelement w-full h-full"
+        className="gmapelement h-full w-full"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.686773749098!2d44.39140365950111!3d33.222306973591124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1559d51e5f965023%3A0x269c2efce4992572!2z2KzYp9mF2LnYqSDZg9mE2YPYp9mF2LQg2KfZhNin2YfZhNmK2Kk!5e0!3m2!1sar!2siq!4v1717235472677!5m2!1sar!2siq"
         allowFullScreen={true}
         loading="lazy"
@@ -5918,7 +6249,6 @@ export default function MapSection() {
     </div>
   );
 }
-
 ```
 
 # src\components\common-sections\EServicesSection.tsx
@@ -5926,33 +6256,28 @@ export default function MapSection() {
 ```tsx
 "use client";
 
-import { useRef } from "react";
-import ScrollableContainerUpperSection from "../scrollable-container/UpperSection";
-import { ScrollableCardsContainer } from "../scrollable-container/ScrollableContainer";
-import ScrollElement from "../ScrollElement";
+import React, { useRef } from "react";
+import { useTranslations } from "next-intl";
+import { EService } from "@/lib/types";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollElement from "@/components/ScrollElement";
 import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import Wrapper from "../Wrapper";
-import Section from "../Section";
 
-export default function EServicesSection() {
+interface EServicesSectionProps {
+  eServices: EService[] | undefined;
+}
+
+const EServicesSection: React.FC<EServicesSectionProps> = ({ eServices }) => {
+  const t = useTranslations("Common");
+  const tHome = useTranslations("Home");
   const containerRef = useRef<HTMLDivElement>(null);
-  const services = [
-    {
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-      title: "بوابة الطالب",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/news.svg",
-      title: "بوابة التدريسين",
-      href: "/",
-    },
-    {
-      imgUrl: "/images/common/cards/about.svg",
-      title: "بوابة الخريجين",
-      href: "/",
-    },
-  ];
+
+  if (!eServices || eServices.length === 0) {
+    return null;
+  }
 
   return (
     <div className="mt-[60px] sm:mt-[150px]">
@@ -5962,8 +6287,8 @@ export default function EServicesSection() {
             <ScrollableContainerUpperSection
               arrowButtonsClass="sm:hidden"
               containerRef={containerRef}
-              title2="جامعة كلكامش"
-              title="الخدمات الالكترونية"
+              title2={t("gilgameshUniversity")}
+              title={tHome("eServices")}
               className="sm:w-fit sm:items-center"
             />
           </div>
@@ -5973,15 +6298,19 @@ export default function EServicesSection() {
         <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
           <ScrollableCardsContainer
             ref={containerRef}
-            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
+            className="1920:gap-[49px] grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px]"
           >
-            {services.map((service, index) => (
+            {eServices.map((service, index) => (
               <ScrollElement
                 className="flex justify-center sm:w-auto"
                 key={index}
               >
                 <CommonCard
-                  el={service}
+                  el={{
+                    href: service.link,
+                    imgUrl: service.icon,
+                    title: service.title,
+                  }}
                   index={index}
                   uniqueFirstCard={false}
                 />
@@ -5992,122 +6321,151 @@ export default function EServicesSection() {
       </Section>
     </div>
   );
-}
+};
 
+export default EServicesSection;
 ```
 
 # src\components\common-sections\ContactSection.tsx
 
 ```tsx
-import Image from "next/image";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { useTranslations } from "next-intl";
+"use client";
 
-export default function ContactSection() {
+import React, { useState } from "react";
+import { useTranslations } from "next-intl";
+import { Contact } from "@/lib/types";
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import axiosInstance from "@/lib/axios";
+import useCommonStore from "@/lib/zustand/common";
+
+interface ContactSectionProps {
+  contact: Contact | undefined;
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({ contact }) => {
+  const t = useTranslations("Common.Contact");
+
+  if (!contact) {
+    return null;
+  }
+
   return (
-    <section className="flex flex-col sm:flex-row w-full mt-[100px] sm:mt-[150px] 1920:mt-[180px]">
-      <ContactInfoSection />
+    <section className="1920:mt-[180px] mt-[100px] flex w-full flex-col sm:mt-[150px] sm:flex-row">
+      <ContactInfoSection contact={contact} />
       <ContactFormSection />
     </section>
   );
-}
+};
 
-function ContactInfoSection() {
+const ContactInfoSection: React.FC<{ contact: Contact }> = ({ contact }) => {
+  const t = useTranslations("Common");
+  const tContact = useTranslations("Home.contact");
+
   return (
-    <div className="w-full sm:w-1/2 bg-white py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[50px] 1920:text-[70px] font-medium text-primary mb-[30px] sm:mb-[122px] 1920:mb-[162px] text-right leading-[1.22em]">
-        نحب ان نسمع منك
+    <div className="1920:px-[110px] 1920:py-[145px] w-full bg-white px-4 py-[49px] sm:w-1/2 sm:px-[83px] sm:py-[109px]">
+      <h2 className="text-primary 1920:mb-[162px] 1920:text-[70px] mb-[30px] text-right text-[28px] font-medium leading-[1.22em] sm:mb-[122px] sm:text-[50px]">
+        {tContact("title")}
       </h2>
-      <div className="space-y-[40px] sm:space-y-[53px] 1920:space-y-[60px] mb-[40px] sm:mb-[53px] 1920:mb-[60px]">
-        <ContactInfo title="البريد الالكتروني" value="info@gau.edu.iq" />
-        <ContactInfo title="رقم الهاتف" value="07832000090 - 07732000090" />
-        <ContactInfo
-          title="عنوان الجامعة"
-          value="العراق / بغداد / الدورة / حي الصحة / قرب جامع ياسين"
-        />
+      <div className="1920:mb-[60px] 1920:space-y-[60px] mb-[40px] space-y-[40px] sm:mb-[53px] sm:space-y-[53px]">
+        <ContactInfo title={t("email")} value={contact.email} />
+        <ContactInfo title={t("phoneNumber")} value={contact.phone} />
+        <ContactInfo title={t("address")} value={contact.address} />
       </div>
-      <div>
-        <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 mb-[40px] sm:mb-[25px] 1920:mb-[38px] text-right leading-[1.33em]">
-          تحميل تطبيق الجامعة
+      {/* <div>
+        <p className="mb-[40px] text-right text-[24px] leading-[1.33em] text-primary/60 sm:mb-[25px] sm:text-[22px] 1920:mb-[38px] 1920:text-[26px]">
+          {t("downloadApp")}
         </p>
         <div className="flex justify-start gap-[14px]">
+          <Link href="">
+          
           <Image
             src="/images/common/app-store.png"
             alt="Download on the App Store"
             width={135}
             height={40}
+
           />
+          </Link>
+
+          <Link href="">
           <Image
             src="/images/common/google-play.png"
             alt="Get it on Google Play"
             width={135}
             height={40}
+
           />
+          </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
-}
+};
 
-function ContactFormSection() {
+const ContactFormSection: React.FC = () => {
   const t = useTranslations("Common.Contact.form");
+  const tCommon = useTranslations("Common");
+  const openSuccessModal = useCommonStore((state) => state.openSuccessModal);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const inputFields = [
+    { name: "name", label: t("name"), type: "text", fullWidth: true },
+    { name: "email", label: t("email"), type: "email", fullWidth: false },
+    { name: "phone", label: t("phoneNumber"), type: "tel", fullWidth: false },
     {
-      name: "fullName",
-      label: t("name"),
-      type: "text",
-      placeholder: t("writeHere"),
-      fullWidth: true,
-    },
-    {
-      name: "email",
-      label: t("email"),
-      type: "email",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "phone",
-      label: t("phoneNumber"),
-      type: "tel",
-      placeholder: t("writeHere"),
-      fullWidth: false,
-    },
-    {
-      name: "institution",
+      name: "c_name",
       label: t("institution"),
       type: "text",
-      placeholder: t("writeHere"),
       fullWidth: true,
     },
-    {
-      name: "message",
-      label: t("message"),
-      type: "textarea",
-      placeholder: t("writeYourMessage"),
-      fullWidth: true,
-    },
+    { name: "message", label: t("message"), type: "textarea", fullWidth: true },
   ];
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    const formValues = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await axiosInstance.post("/contactus", formValues);
+      if (response.status === 200) {
+        openSuccessModal(tCommon("generalSuccessMessage"));
+        // Reset form
+        event.currentTarget.reset();
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error (e.g., show error message)
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="w-full sm:w-1/2 bg-[#F0F1EC] py-[49px] px-4 sm:py-[109px] sm:px-[83px] 1920:py-[145px] 1920:px-[110px]">
-      <h2 className="text-[28px] sm:text-[28px] 1920:text-[38px] font-medium text-primary leading-[1.35em] mb-[20px] sm:mb-[54px] 1920:mb-[71px] text-right">
+    <div className="1920:px-[110px] 1920:py-[145px] w-full bg-[#F0F1EC] px-4 py-[49px] sm:w-1/2 sm:px-[83px] sm:py-[109px]">
+      <h2 className="text-primary 1920:mb-[71px] 1920:text-[38px] mb-[20px] text-right text-[28px] font-medium leading-[1.35em] sm:mb-[54px] sm:text-[28px]">
         {t("title")}
       </h2>
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-y-[28px] sm:gap-y-[30px] sm:gap-x-[21px] 1920:gap-y-[39px] 1920:gap-x-[28px]">
+      <form
+        onSubmit={handleSubmit}
+        className="1920:gap-x-[28px] 1920:gap-y-[39px] grid grid-cols-1 gap-y-[28px] sm:grid-cols-2 sm:gap-x-[21px] sm:gap-y-[30px]"
+      >
         {inputFields.map((field) => (
           <div
             key={field.name}
-            className={`flex flex-col gap-[18px] sm:gap-[10px] 1920:gap-[18px] ${
+            className={`1920:gap-[18px] flex flex-col gap-[18px] sm:gap-[10px] ${
               field.fullWidth ? "sm:col-span-2" : "sm:col-span-1"
             }`}
           >
             <label
               htmlFor={field.name}
-              className="text-[16px] sm:text-[18px] 1920:text-[21px] font-medium text-primary leading-[1.35em] text-right"
+              className="text-primary 1920:text-[21px] text-right text-[16px] font-medium leading-[1.35em] sm:text-[18px]"
             >
               {field.label}
             </label>
@@ -6116,62 +6474,368 @@ function ContactFormSection() {
                 id={field.name}
                 name={field.name}
                 rows={4}
-                placeholder={field.placeholder}
+                placeholder={t("writeYourMessage")}
+                required
               />
             ) : (
               <Input
                 type={field.type}
                 id={field.name}
                 name={field.name}
-                placeholder={field.placeholder}
+                placeholder={t("writeHere")}
+                required
               />
             )}
           </div>
         ))}
-        <div className="sm:col-span-full flex justify-end">
-          <Button type="submit">{t("send")}</Button>
+        <div className="flex justify-end sm:col-span-full">
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? tCommon("loading") + "..." : t("send")}
+          </Button>
         </div>
       </form>
     </div>
   );
-}
+};
 
-function ContactInfo({ title, value }: { title: string; value: string }) {
+const ContactInfo: React.FC<{ title: string; value: string }> = ({
+  title,
+  value,
+}) => {
   return (
-    <div className="text-right ">
-      <p className="text-[24px] sm:text-[22px] 1920:text-[26px] text-primary/60 leading-[1.33em]">
+    <div className="text-right">
+      <p className="text-primary/60 1920:text-[26px] text-[24px] leading-[1.33em] sm:text-[22px]">
         {title}
       </p>
-      <p className="text-[18px] sm:text-[18px] 1920:text-[32px] text-primary leading-[1.33em]">
+      <p className="text-primary 1920:text-[32px] text-[18px] leading-[1.33em] sm:text-[18px]">
         {value}
       </p>
     </div>
   );
-}
+};
 
+export default ContactSection;
 ```
 
 # src\components\common-sections\CommonSections.tsx
 
 ```tsx
-"use client";
-
-import React from "react";
+import { fetchEServices, fetchContact } from "@/lib/api_services/common-apis";
 import EServicesSection from "./EServicesSection";
 import ContactSection from "./ContactSection";
+import { cookies } from "next/headers";
 import MapSection from "./MapSection";
 
-export default function CommonSections() {
+const CommonSections: React.FC = async () => {
+  const cookieStore = cookies();
+  const lang = headers().get("x-locale") || "ar";
+
+  let eServicesData;
+  let contactData;
+
+  try {
+    eServicesData = await fetchEServices(lang);
+    contactData = await fetchContact(lang);
+  } catch (error) {
+    console.error("Failed to fetch common sections data:", error);
+  }
+
+  console.log(contactData);
+
   return (
     <>
-      <EServicesSection></EServicesSection>
-      <ContactSection></ContactSection>
+      <EServicesSection eServices={eServicesData} />
+      <ContactSection contact={contactData} />
       <MapSection></MapSection>
     </>
   );
+};
+
+export default CommonSections;
+```
+
+# src\app_hooks\useTextDirection.ts
+
+```ts
+import { useLocale } from "next-intl";
+import { isRtlLang } from "rtl-detect";
+
+export type TextDirection = "ltr" | "rtl";
+
+export default function useTextDirection(): TextDirection {
+  const locale = useLocale();
+  return isRtlLang(locale) ? "rtl" : "ltr";
+}
+```
+
+# src\app_hooks\useScrollControl.ts
+
+```ts
+import { RefObject, useCallback, useState } from "react";
+
+function useScrollControl({
+  containerRef,
+  useMultiples = false,
+  baseScrollAmount,
+  resetTimer,
+}: {
+  containerRef: RefObject<HTMLDivElement>;
+  useMultiples?: boolean;
+  baseScrollAmount?: number;
+  resetTimer?: () => void;
+}) {
+  const [canScrollEnd, setCanScrollEnd] = useState(false);
+  const [canScrollStart, setCanScrollStart] = useState(true);
+  const [lastScrollPosition, setLastScrollPosition] = useState(0);
+
+  const baseScrollAmountFallback = 150;
+
+  const handleScroll = useCallback(() => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      const isRTL = getComputedStyle(containerRef.current).direction === "rtl";
+
+      if (isRTL) {
+        setCanScrollEnd(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollStart(Math.abs(scrollLeft) > 0);
+      } else {
+        setCanScrollStart(Math.abs(scrollLeft) < scrollWidth - clientWidth);
+        setCanScrollEnd(Math.abs(scrollLeft) > 0);
+      }
+      setLastScrollPosition(Math.abs(scrollLeft));
+    }
+  }, [containerRef]);
+
+  const scroll = useCallback(
+    ({ direction, isLTR }: ScrollParams) => {
+      if (containerRef.current) {
+        if (resetTimer) resetTimer();
+
+        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+        const maxScroll = scrollWidth - clientWidth;
+
+        let targetScroll;
+
+        if (useMultiples) {
+          const currentMultiple = Math.round(
+            Math.abs(scrollLeft) /
+              (baseScrollAmount ?? containerRef.current.clientWidth),
+          );
+
+          targetScroll =
+            (currentMultiple +
+              (isLTR
+                ? direction === "right"
+                  ? 1
+                  : -1
+                : direction === "left"
+                  ? 1
+                  : -1)) *
+            (baseScrollAmount ?? containerRef.current.clientWidth);
+          // (baseScrollAmount * (isLTR ? -1 : 1));
+
+          targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+          containerRef.current!.scrollTo({
+            left: targetScroll * (isLTR ? 1 : -1),
+            behavior: "smooth",
+          });
+        } else {
+          containerRef.current.scrollBy({
+            left:
+              direction === "left"
+                ? -(baseScrollAmount ?? baseScrollAmountFallback)
+                : (baseScrollAmount ?? baseScrollAmountFallback),
+            behavior: "smooth",
+          });
+        }
+      }
+    },
+    [containerRef, useMultiples, baseScrollAmount],
+  );
+
+  const resetScrollPosition = useCallback(() => {
+    if (containerRef.current) {
+      containerRef.current!.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [containerRef, useMultiples, baseScrollAmount]);
+
+  return {
+    canScrollEnd,
+    canScrollStart,
+    containerRef,
+    handleScroll,
+    scroll,
+    resetScrollPosition,
+    lastScrollPosition,
+  };
 }
 
+type ScrollParams = {
+  direction: "right" | "left";
+  isLTR?: boolean;
+};
+
+export default useScrollControl;
 ```
+
+# src\app_components\AboutUs.tsx
+
+```tsx
+"use client";
+
+import { ABOUT_ROUTE } from "@/lib/paths";
+import React from "react";
+import Section from "../../components/Section";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+
+const AboutUs: React.FC = () => {
+  const t = useTranslations("Home.aboutUs");
+
+  return (
+    <Section
+      id="about-us"
+      className="relative flex flex-col items-center px-[12px] pt-[36px] sm:overflow-clip sm:px-5 sm:pb-[74px] sm:pt-[120px] xl:px-0"
+    >
+      <h1 className="title relative z-10 pb-[22px] sm:pb-[32px]">
+        {t("title")}
+      </h1>
+      <div className="relative z-10">
+        <div className="flex max-w-[351px] flex-col gap-[40px] sm:max-w-[800px] sm:gap-[40px] sm:px-0">
+          <p className="text-base sm:text-justify sm:text-[20px] sm:leading-[36px] ltr:leading-[26px]">
+            {t("description")}
+          </p>
+          <div className="sm:flex sm:justify-center">
+            <Link href={ABOUT_ROUTE}>
+              <Button
+                variant={"outline"}
+                className="text-primary-300 border-primary-300 inline-flex w-full items-center justify-center rounded-full border py-3 text-center text-lg font-medium tracking-[-0.004em] transition-opacity duration-200 ease-in-out hover:opacity-75 sm:w-fit"
+              >
+                {t("readMore")}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* desktop */}
+      <img
+        src="https://i.imgur.com/wUfwWfR.png"
+        alt="about us background"
+        className="absolute right-[40%] top-[-232px] hidden h-[1264px] min-h-[1264px] w-[1878px] min-w-[1878px] translate-x-[calc(50%-512px)] rotate-[8.75deg] transform opacity-20 sm:block"
+      />
+    </Section>
+  );
+};
+
+export default AboutUs;
+```
+
+# src\app\[locale]\page.tsx
+
+```tsx
+import OurGoals from "../_components/OurGoals/OurGoals";
+import News from "../_components/News/News/News";
+import Statistics from "../_components/Statistics/Statistics";
+import HomepageCards from "../_components/CardsSection/HomepageCards";
+import OurColleges from "../_components/OurColleges/OurColleges";
+import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
+import SliderBg from "@/components/page/SliderBg";
+import dynamic from "next/dynamic";
+import { cookies } from "next/headers";
+
+export default function Home() {
+  return (
+    <>
+      <SliderBg></SliderBg>
+      <main className="relative z-30 flex flex-col items-center">
+        <HomepageCards></HomepageCards>
+        <News></News>
+        <Statistics></Statistics>
+        <OurGoals></OurGoals>
+        <OurColleges></OurColleges>
+        <AcademicRankings></AcademicRankings>
+      </main>
+    </>
+  );
+}
+```
+
+# src\app\[locale]\layout.tsx
+
+```tsx
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../globals.css";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+import { getMessages } from "next-intl/server";
+import useTextDirection from "@/app/_hooks/useTextDirection";
+import Header from "../_components/Header/Header";
+import Footer from "../_components/Footer/Footer";
+
+import Script from "next/script";
+import CommonSections from "@/components/common-sections/CommonSections";
+import SuccessModal from "@/components/modals/SuccessModal";
+
+export const metadata: Metadata = {
+  title: "Create Next App",
+  description: "Generated by create next app",
+};
+
+export default function RootLayout({
+  children,
+  params: { locale },
+}: Readonly<{
+  children: React.ReactNode;
+  params: { locale: string };
+}>) {
+  const messages = useMessages();
+  const dir = useTextDirection();
+
+  return (
+    <html lang={locale} dir={dir} suppressHydrationWarning>
+      <head>
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+          rel="stylesheet"
+        />
+
+        <script src="/js/scrollbarWidth.js" />
+      </head>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+          <CommonSections></CommonSections>
+          <Footer></Footer>
+          <SuccessModal />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+# public\images\home\statistics.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\faq-icon.svg
+
+This is a file of the type: SVG Image
+
+# public\images\home\apps.png
+
+This is a binary file of the type: Image
 
 # public\images\partners\4.png
 
@@ -6186,18 +6850,6 @@ This is a binary file of the type: Image
 This is a binary file of the type: Image
 
 # public\images\partners\1.png
-
-This is a binary file of the type: Image
-
-# public\images\home\statistics.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\faq-icon.svg
-
-This is a file of the type: SVG Image
-
-# public\images\home\apps.png
 
 This is a binary file of the type: Image
 
@@ -6237,6 +6889,1103 @@ This is a file of the type: SVG Image
 
 This is a file of the type: SVG Image
 
+# src\components\page\FirstTitleSection\FirstTitleSection.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { usePathname } from "@/i18n.config";
+// import { getTitleComponent } from "@/lib/utils";
+import Wrapper from "@/components/Wrapper";
+
+export default function FirstTitleSection() {
+  const pathname = usePathname();
+
+  // const TitleComponent = getTitleComponent(pathname);
+
+  // return TitleComponent ? (
+  //   <Wrapper>
+  //     <TitleComponent />
+  //   </Wrapper>
+  // ) : (
+  //   <></>
+  // );
+}
+```
+
+# src\components\page\FirstTitleSection\CenterizedTitle.tsx
+
+```tsx
+import React from "react";
+import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n.config";
+import { getPageTitle } from "@/lib/utils";
+
+export default function CenterizedTitle() {
+  const t = useTranslations();
+  const pathname = usePathname();
+  const pageTitle = getPageTitle({ t, pathname });
+
+  return (
+    <h1 className="title-lg mb-[23px] !text-center leading-[1.25] sm:mb-[96px]">
+      {pageTitle}
+    </h1>
+  );
+}
+```
+
+# src\components\page\FirstTitleSection\ActionsTitle.tsx
+
+```tsx
+import FileOperations from "@/components/FileOperations";
+import Section from "@/components/Section";
+import { Button } from "@/components/ui/button";
+import Wrapper from "@/components/Wrapper";
+import { Link } from "@/i18n.config";
+import { NEWS_ROUTE } from "@/lib/paths";
+import { ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function ActionsTitle({
+  showBackButton = false,
+  backHref = "",
+  title,
+  description,
+  className,
+  fileOperations,
+}: {
+  showBackButton?: boolean;
+  title?: string;
+  description?: string;
+  backHref?: string;
+  className?: string;
+  fileOperations?: ReactNode;
+}) {
+  return (
+    <Section className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]">
+      <Wrapper>
+        <div
+          className={twMerge(
+            "flex justify-between",
+            !description &&
+              !showBackButton &&
+              !fileOperations &&
+              "sm:justify-center",
+          )}
+        >
+          <div
+            className={twMerge("mb-[12px] text-start sm:mb-[53px]", className)}
+          >
+            {showBackButton && (
+              <Link href={backHref}>
+                <Button className="w-fit gap-1">
+                  <i className="ri-arrow-right-s-line text-[22px] text-[#99AFC9]"></i>
+                  <span>الرجــوع</span>
+                </Button>
+              </Link>
+            )}
+
+            {title && (
+              <h1
+                className={twMerge(
+                  "1920:text-[48px] mt-[35px] text-[24px] font-bold leading-[1.22em] sm:mt-[43px] sm:text-[40px]",
+                  !description &&
+                    !showBackButton &&
+                    "text-center sm:text-start",
+
+                  !description &&
+                    !showBackButton &&
+                    !fileOperations &&
+                    "sm:text-center",
+                )}
+              >
+                {title}
+              </h1>
+            )}
+            {description && <p>{description}</p>}
+
+            {/* <div className="mt-[48px] flex items-center gap-[16px] font-bold text-primary sm:mt-[33px]">
+            <span>اكاديمية الماجستير</span>
+            <span>—</span>
+            <span>قبل 6 ساعات</span>
+          </div> */}
+          </div>
+          {fileOperations}
+        </div>
+      </Wrapper>
+    </Section>
+  );
+}
+```
+
+# src\app_components\Statistics\StatisticsClientSide.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { useTranslations } from "next-intl";
+import { StatisticsItem } from "@/lib/types";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
+interface StatisticsClientSideProps {
+  statistics: StatisticsItem | undefined;
+}
+
+const StatisticsClientSide: React.FC<StatisticsClientSideProps> = ({
+  statistics,
+}) => {
+  const t = useTranslations("Home.statistics");
+
+  if (!statistics) {
+    return null;
+  }
+
+  const stats = [
+    { value: statistics.students, label: t("students") },
+    { value: statistics.faculty_members, label: t("facultyMembers") },
+    { value: statistics.administrative_staff, label: t("administrativeStaff") },
+    {
+      value: statistics.technical_and_professional_staff,
+      label: t("technicalStaff"),
+    },
+  ];
+
+  return (
+    <div className="1920:mb-[280px] mb-[114px] w-full sm:mb-[198px]">
+      <div className="flex w-full flex-col items-end">
+        <Section
+          wrapperClass="bg-[#E6E6E6] py-[60px] sm:py-[94px] 1920:py-[125px]   sm:min-h-[572px] 1920:min-h-[762px] "
+          className="max-w-[306px]"
+        >
+          <Wrapper className="flex flex-col sm:flex-row sm:justify-between">
+            <h2 className="text-primary 1920:text-[86px] 1920:leading-[107px] mb-[80px] text-start text-[44px] font-medium leading-[66px] sm:mb-0 sm:max-w-[600px] sm:text-[64px] sm:leading-[80px]">
+              {t("title")}
+            </h2>
+            <div className="1920:max-w-[495px] grid h-fit w-full grid-cols-[repeat(2,minmax(0,135px))] justify-between gap-y-[32px] sm:max-w-[395px] sm:gap-y-[65px]">
+              {stats.map((stat, index) => (
+                <div
+                  className="1920:gap-[16px] flex flex-col gap-[25px] sm:gap-[12px]"
+                  key={index}
+                >
+                  <span className="text-primary 1920:text-[40px] font-sans text-[32px] font-medium leading-[1.22em] sm:text-[30px]">
+                    {stat.value.toLocaleString()}+
+                  </span>
+                  <h3 className="1920:text-[20px] text-[16px] leading-[1.22em] text-[#828282] sm:text-[15px]">
+                    {stat.label}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </Wrapper>
+        </Section>
+        <img
+          src="/images/home/statistics.jpg"
+          alt="image"
+          className="1920:-mt-[247px] 1920:max-w-[1102px] w-full object-cover sm:-mt-[186px] sm:max-w-[826px]"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default StatisticsClientSide;
+```
+
+# src\app_components\Statistics\Statistics.tsx
+
+```tsx
+import { fetchStatistics } from "@/lib/api_services/statistics-apis";
+import StatisticsClientSide from "./StatisticsClientSide";
+
+const Statistics: React.FC = async () => {
+  let statisticsData;
+
+  try {
+    statisticsData = await fetchStatistics();
+  } catch (error) {
+    console.error("Failed to fetch statistics:", error);
+  }
+
+  return statisticsData && <StatisticsClientSide statistics={statisticsData} />;
+};
+
+export default Statistics;
+```
+
+# src\app_components\OurColleges\OurCollegesClientSide.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { useTranslations } from "next-intl";
+import { College } from "@/lib/types";
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { getImageUrl } from "@/lib/utils";
+
+interface OurCollegesClientSideProps {
+  colleges: College[] | undefined;
+}
+
+const OurCollegesClientSide: React.FC<OurCollegesClientSideProps> = ({
+  colleges,
+}) => {
+  const t = useTranslations("Common");
+
+  if (!colleges || colleges.length === 0) {
+    return null;
+  }
+
+  return (
+    <Section wrapperClass="mb-[57px] sm:mb-[200px]">
+      <Wrapper className="flex-col">
+        <div className="mb-[24px] flex flex-col items-center text-center sm:mb-[90px]">
+          <h4 className="text-secondary mb-5 px-2 py-1 text-[16px] font-bold leading-[1.25em]">
+            {t("gilgameshUniversity")}
+          </h4>
+          <h2 className="px-4 py-2 text-[48px] font-bold leading-[1.25em]">
+            {t("ourColleges")}
+          </h2>
+        </div>
+        <div className="1920:max-w-[1920px] 1920:gap-[34px] mx-auto grid max-w-[375px] grid-cols-1 gap-[15px] text-start sm:max-w-[1280px] sm:grid-cols-4 sm:gap-6">
+          {colleges.map((college) => (
+            <CollegeCard key={college.id} college={college} />
+          ))}
+        </div>
+      </Wrapper>
+    </Section>
+  );
+};
+
+interface CollegeCardProps {
+  college: College;
+}
+
+const CollegeCard: React.FC<CollegeCardProps> = ({ college }) => {
+  const t = useTranslations("Common");
+
+  return (
+    <div className="1920:h-[693px] flex h-[693px] flex-col bg-white sm:h-[500px]">
+      <div className="border-secondary 1920:h-[368px] relative flex h-[368px] items-center justify-center border-b-[7px] bg-[#DBDBDB] sm:h-[266px]">
+        <div className="1920:max-w-[257px] relative aspect-square w-full max-w-[257px] sm:max-w-[183px]">
+          <Image
+            src={getImageUrl(college.icon)}
+            alt={college.name}
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
+      <div className="flex flex-grow flex-col justify-between p-5">
+        <div>
+          <h2 className="1920:mt-[24px] 1920:text-[24px] mt-[24px] text-[24px] font-bold leading-[1.25em] sm:mt-[17px] sm:text-[17px]">
+            {college.name}
+          </h2>
+          <p className="1920:mt-[24px] 1920:text-[19px] mt-[24px] line-clamp-3 text-[19px] leading-[1.65em] sm:mt-[17px] sm:text-[14px]">
+            {college.description}
+          </p>
+        </div>
+        <Button
+          variant={"secondary"}
+          className="1920:py-[16px] 1920:text-[16px] mt-4 w-full py-[16px] text-[16px] leading-[1.22em] sm:py-[12px] sm:text-[12px]"
+        >
+          {t("readMore")}
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default OurCollegesClientSide;
+```
+
+# src\app_components\OurColleges\OurColleges.tsx
+
+```tsx
+import { fetchColleges } from "@/lib/api_services/colleges-apis";
+import { cookies } from "next/headers";
+import OurCollegesClientSide from "./OurCollegesClientSide";
+
+const OurColleges: React.FC = async () => {
+  const cookieStore = cookies();
+  const lang = headers().get("x-locale") || "ar";
+
+  let collegesData;
+
+  try {
+    collegesData = await fetchColleges(lang);
+  } catch (error) {
+    console.error("Failed to fetch colleges:", error);
+  }
+
+  return (
+    collegesData &&
+    collegesData.length > 0 && <OurCollegesClientSide colleges={collegesData} />
+  );
+};
+
+export default OurColleges;
+```
+
+# src\app_components\OurGoals\OurGoalsMobile.tsx
+
+```tsx
+
+```
+
+# src\app_components\OurGoals\OurGoalsDesktop.tsx
+
+```tsx
+import { Goal } from "@/lib/types";
+import React from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function OurGoalsDesktop() {
+  return (
+    <div className="hidden w-full grid-cols-3 sm:grid">
+      {universityGoals.map((el, index) => (
+        <OurGoalsCard key={index} el={el} index={index}></OurGoalsCard>
+      ))}
+    </div>
+  );
+}
+
+function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
+  const isFirst = index == 0;
+  return (
+    <div
+      className={twMerge(
+        "1920:min-h-[762px] flex min-h-[556px] flex-col justify-end sm:min-h-[571px]",
+        isFirst
+          ? "bg-[#0F4023]"
+          : `bg-white bg-cover bg-no-repeat bg-[url('/images/home/goals/${
+              index + 1
+            }.jpg')]`,
+      )}
+    >
+      {isFirst && (
+        <h1 className="1920:text-[28px] 1920:px-[78px] 1920:pt-[129px] flex-1 border-b border-white px-4 pt-[67px] text-[28px] font-bold leading-[1.22em] text-white sm:px-[58px] sm:pt-[96px] sm:text-[21px]">
+          اهداف جامعة كلكامش
+        </h1>
+      )}
+
+      <div
+        className={twMerge(
+          "text-white",
+          isFirst && "bg-black/30 backdrop-blur-md",
+          isFirst
+            ? "1920:px-[78px] 1920:pb-[67px] px-4 pb-[67px] sm:px-[58px] sm:pb-[50px]"
+            : "1920:px-[78px] 1920:py-[63px] px-4 py-[29px] sm:px-[58px] sm:py-[47px]",
+        )}
+      >
+        <h3
+          className={twMerge(
+            "1920:text-[28px] mb-2 text-[28px] font-bold leading-[1.22em] sm:text-[21px]",
+            isFirst &&
+              "1920:text-[68px] text-[44px] font-medium sm:text-[51px]",
+          )}
+        >
+          {el.title}
+        </h3>
+        <p className="1920:text-[18px] text-[16px] leading-[1.75em] sm:text-[14px]">
+          {el.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+const universityGoals: Goal[] = [
+  {
+    title: "تعزيز الحداثة والتراث",
+    description:
+      "المساهمة في تحقيق التطور الكمي والنوعي في الحركة العلمية والثقافية والتعليمية والبحثية العلمية في العراق الجديد من خلال تأهيل كوادر علمية مستنيرة تجمع بين عناصر الحداثة والتراث، وترسيخ المبادئ والأفكار والرؤى العلمية الحديثة.",
+  },
+  {
+    title: "تقديم فرص أكاديمية متقدمة",
+    description:
+      "توفير الفرص الأكاديمية الجامعية الأولية والعليا (النظرية والتطبيقية)، واعتماد مناهج متقدمة لتحقيق الأهداف العلمية والتعليمية والثقافية التي حددها وزارة التعليم العالي والبحث العلمي لتطوير المجتمع العراقي.",
+  },
+  {
+    title: "تعزيز التميز في البحث العلمي",
+    description:
+      "دعم الاستثمار في البحث العلمي وتنمية المبتكرين بطريقة تحقق التميز في إنتاج المعرفة لتقديم الخدمات على مستوى يتوافق مع معايير الجودة.",
+  },
+  {
+    title: "ضمان التنافسية في سوق العمل",
+    description:
+      "المساهمة في تطوير الجانب الأكاديمي وتوفير الكوادر التدريسية والفنية المتخصصة، مما يضمن تأهيل الخريجين قادرين على التنافس في سوق العمل.",
+  },
+  {
+    title: "تعزيز التعليم المستمر",
+    description:
+      "المساهمة في تطوير التعليم المستمر لتحسين أداء الكوادر البشرية العاملة والمتخصصة والعمل على رفع كفاءتهم وفقًا لمعايير الجودة العالمية.",
+  },
+  {
+    title: "بناء جيل يؤمن بالمواطنة واحترام القانون",
+    description:
+      "المساهمة في تربية جيل يؤمن بالمواطنة واحترام القانون من خلال مناهج علمية وتعليمية وثقافية ورياضية واجتماعية هادفة.",
+  },
+];
+```
+
+# src\app_components\OurGoals\OurGoalsClientSide.tsx
+
+```tsx
+"use client";
+
+import React, { useRef } from "react";
+import { useTranslations } from "next-intl";
+import { GoalItem } from "@/lib/types";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollArrows from "@/components/ScrollArrows";
+import { twMerge } from "tailwind-merge";
+
+interface OurGoalsClientSideProps {
+  goals: GoalItem[];
+}
+
+const OurGoalsClientSide: React.FC<OurGoalsClientSideProps> = ({ goals }) => {
+  const t = useTranslations("Home.ourGoals");
+  let containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div className={twMerge("mb-[110px] w-full sm:mb-[157px]")}>
+      <ScrollableCardsContainer
+        ref={containerRef}
+        className={`flex sm:grid sm:w-full ${goals.length < 3 ? "grid-cols-[repeat(auto-fit,minmax(470px,1fr))] justify-center" : "sm:grid-cols-3"} `}
+      >
+        {goals.map((goal, index) => (
+          <div key={goal.id} className="w-screen-pure sm:w-auto">
+            <OurGoalsCard goal={goal} index={index} />
+          </div>
+        ))}
+      </ScrollableCardsContainer>
+      <ScrollArrows
+        containerRef={containerRef}
+        useMultiples={true}
+        wrapperClassName="justify-end mt-[24px] mx-[16px] sm:hidden"
+      />
+    </div>
+  );
+};
+
+interface OurGoalsCardProps {
+  goal: GoalItem;
+  index: number;
+}
+
+const OurGoalsCard: React.FC<OurGoalsCardProps> = ({ goal, index }) => {
+  const t = useTranslations("Home.ourGoals");
+
+  const isFirst = index === 0;
+  const styles = twMerge(
+    "min-h-[556px] sm:min-h-[571px] 1920:min-h-[762px] flex flex-col justify-end text-start",
+    isFirst ? "bg-[#0F4023]" : `bg-white bg-no-repeat bg-cover`,
+  );
+
+  return (
+    <div
+      className={styles}
+      style={!isFirst ? { backgroundImage: `url(${goal.image})` } : {}}
+    >
+      {isFirst && (
+        <h1 className="1920:mx-[78px] 1920:pt-[129px] 1920:text-[68px] mx-4 flex-1 border-b border-white pt-[67px] text-[44px] font-medium leading-[1.22em] text-white sm:mx-[58px] sm:pt-[96px] sm:text-[51px]">
+          {t("title")}
+        </h1>
+      )}
+
+      <div
+        className={twMerge(
+          "text-white",
+          !isFirst && "bg-black/30 backdrop-blur-md",
+          isFirst
+            ? "1920:px-[78px] 1920:pb-[67px] 1920:pt-[46px] px-4 pb-[67px] pt-[29px] sm:px-[58px] sm:pb-[50px] sm:pt-[34px]"
+            : "1920:px-[78px] 1920:py-[63px] px-4 py-[29px] sm:px-[58px] sm:py-[47px]",
+        )}
+      >
+        <h3 className="1920:text-[28px] mb-2 text-[28px] font-bold leading-[1.22em] sm:text-[21px]">
+          {goal.title}
+        </h3>
+        <p className="1920:text-[18px] text-[16px] font-light leading-[1.75em] text-white/70 sm:text-[14px]">
+          {goal.description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default OurGoalsClientSide;
+```
+
+# src\app_components\OurGoals\OurGoals.tsx
+
+```tsx
+import { fetchGoals } from "@/lib/api_services/goals-apis";
+import OurGoalsClientSide from "./OurGoalsClientSide";
+import { cookies } from "next/headers";
+
+const OurGoals: React.FC = async () => {
+  const cookieStore = cookies();
+  const lang = headers().get("x-locale") || "ar";
+
+  let goalsData;
+
+  try {
+    goalsData = await fetchGoals(lang);
+  } catch (error) {
+    console.error("Failed to fetch goals:", error);
+  }
+
+  return (
+    goalsData &&
+    goalsData.length > 0 && <OurGoalsClientSide goals={goalsData} />
+  );
+};
+
+export default OurGoals;
+```
+
+# src\app_components\Footer\FooterClient.tsx
+
+```tsx
+"use client";
+
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import Section from "@/components/Section";
+import { Input } from "@/components/ui/input";
+import Wrapper from "@/components/Wrapper";
+import React from "react";
+import { RELATED_LOCATIONS_ROUTE } from "@/lib/paths";
+import { RawContact } from "@/lib/types";
+import SocialMediaLinks from "../Header/SocialMediaLinks";
+
+interface FooterClientProps {
+  contactInfo: RawContact | undefined;
+}
+
+const FooterClient: React.FC<FooterClientProps> = ({ contactInfo }) => {
+  const t = useTranslations("Footer");
+
+  return (
+    <Section
+      as="footer"
+      className="text-start text-white"
+      wrapperClass="bg-[#121315] py-[30px] sm:py-[50px] 1920:py-[50px]"
+    >
+      <Wrapper className="flex flex-col gap-[47px] sm:gap-[69px]">
+        <div className="flex flex-col items-start justify-between sm:flex-row">
+          <FooterRight />
+          <FooterLeft />
+        </div>
+
+        <div className="w-full border-b border-white/20"></div>
+
+        <FooterBottom contactInfo={contactInfo} t={t} />
+      </Wrapper>
+    </Section>
+  );
+};
+
+const FooterRight = () => {
+  const t = useTranslations("Footer");
+
+  return (
+    <div className="1920:max-w-[846px] mb-8 w-full sm:mb-0 sm:max-w-[500px]">
+      <img
+        src="/images/logo.png"
+        alt="logo"
+        className="1920:mb-[69px] mb-[40px] hidden h-[78px] object-contain sm:block"
+      />
+      <h2 className="1920:text-[71px] text-[32px] font-bold leading-[1.54em] sm:text-[44px]">
+        {t("slogan")}
+      </h2>
+    </div>
+  );
+};
+
+const FooterLeft = () => {
+  const t = useTranslations("Footer");
+  const tCommon = useTranslations("Common");
+
+  const data = [
+    { label: "ministry", link: "#" },
+    { label: "privateDepartment", link: "#" },
+    { label: "arabUniversities", link: "#" },
+  ];
+
+  return (
+    <div className="1920:max-w-[487px] flex w-full sm:max-w-[450px]">
+      <Link
+        href={RELATED_LOCATIONS_ROUTE}
+        className="text-secondary text-[16px] leading-[1.22em] sm:text-[18px]"
+      >
+        {t("relatedSites")}
+      </Link>
+      {/* <div className="mb-[58px] flex flex-col gap-[10px] sm:mb-[89px] sm:flex-row sm:items-center sm:gap-[24px]">
+        <label className="text-[18px] leading-[1.22em]">
+          {t("subscribeNewsletter")}
+        </label>
+        <Input
+          className="max-w-[289px] border-b border-white bg-transparent text-white !ring-0 sm:flex-1"
+          inputClass="placeholder-white/50 text-[16px] leading-[1.22em] ps-0"
+          placeholder={t("enterEmail")}
+          suffixIcon={<i className="ri-arrow-left-line text-[22px]"></i>}
+        />
+      </div>
+      <div className="flex flex-col gap-[26px] sm:gap-[36px]">
+        <h3 className="text-[20px] font-bold leading-[1.22em]">
+          {t("relatedSites")}
+        </h3>
+        <ul className="flex flex-col gap-[8px] sm:gap-[16px]">
+          {data.map((item, index) => (
+            <li key={index}>
+              <Link
+                href={item.link}
+                className="text-[16px] leading-[1.22em] hover:text-secondary sm:text-[18px]"
+              >
+                {t(item.label)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          href={RELATED_LOCATIONS_ROUTE}
+          className="text-[16px] leading-[1.22em] text-secondary sm:text-[18px]"
+        >
+          {t("viewMore")}
+        </Link>
+      </div> */}
+    </div>
+  );
+};
+
+const FooterBottom = ({
+  contactInfo,
+  t,
+}: {
+  contactInfo: RawContact | undefined;
+  t: (key: string) => string;
+}) => {
+  return (
+    <div className="flex flex-col items-center gap-[74px] sm:gap-[49px]">
+      <div className="flex flex-col justify-end gap-[20px] self-stretch sm:flex-row sm:items-center">
+        {/* <FooterNavLinks t={t} /> */}
+        {contactInfo && <SocialMediaLinks contactInfo={contactInfo} />}
+      </div>
+      <p className="text-sm sm:text-lg">{t("copyright")}</p>
+    </div>
+  );
+};
+
+const FooterNavLinks = ({ t }: { t: (key: string) => string }) => {
+  const links = [
+    { label: "home", href: "/" },
+    { label: "privacyPolicy", href: "#" },
+    { label: "cookiePolicy", href: "#" },
+    { label: "relatedSites", href: RELATED_LOCATIONS_ROUTE },
+  ];
+
+  return (
+    <div className="flex flex-col gap-[20px] sm:flex-row sm:items-center sm:gap-[30px]">
+      {links.map((link, index) => (
+        <React.Fragment key={link.label}>
+          {index !== 0 && (
+            <div className="hidden w-[1px] self-stretch bg-white/20 sm:block"></div>
+          )}
+          <Link
+            href={link.href}
+            className="hover:text-secondary text-[16px] leading-[1.35em]"
+          >
+            {t(link.label)}
+          </Link>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
+export default FooterClient;
+```
+
+# src\app_components\Footer\Footer.tsx
+
+```tsx
+import { fetchLinks } from "@/lib/api_services/common-apis";
+import FooterClient from "./FooterClient";
+
+const Footer = async () => {
+  let contactInfo;
+
+  try {
+    contactInfo = await fetchLinks();
+  } catch (error) {
+    console.error("Failed to fetch contact information:", error);
+  }
+
+  return <FooterClient contactInfo={contactInfo} />;
+};
+
+export default Footer;
+```
+
+# src\app_components\News\NewsTags.tsx
+
+```tsx
+import React from "react";
+import NewsCardButton from "./NewsCardButton";
+import { useTranslations } from "next-intl";
+
+export default function NewsTags() {
+  const t = useTranslations("Home.news");
+
+  return (
+    <div className="flex gap-[6px]">
+      <NewsCardButton>{t("tags.contracts")}</NewsCardButton>
+      <NewsCardButton>{t("tags.alzaeem")}</NewsCardButton>
+    </div>
+  );
+}
+```
+
+# src\app_components\News\NewsCardButton.tsx
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n.config";
+import { NEWS_ROUTE } from "@/lib/paths";
+import React from "react";
+
+interface NewsCardButtonProps {
+  children: React.ReactNode;
+}
+
+const NewsCardButton: React.FC<NewsCardButtonProps> = ({ children }) => {
+  return (
+    <Button
+      variant={"outline"}
+      className="pointer-events-none !px-[12px] !py-[5px] !text-[14px] !font-normal leading-[20px] ltr:!text-[11px] ltr:sm:!text-[14px]"
+    >
+      {children}
+    </Button>
+  );
+};
+
+export default NewsCardButton;
+```
+
+# src\app_components\News\NewsCard.tsx
+
+```tsx
+import React from "react";
+import { NewsItem } from "@/lib/types";
+import { getImageUrl } from "@/lib/utils";
+
+const NewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
+  return (
+    <div className="flex flex-col bg-white">
+      <img
+        src={getImageUrl(item.image)}
+        alt={item.title}
+        className="1920:h-[314px] w-full object-cover sm:h-[238px]"
+      />
+      <div className="1920:p-[30px] sm:p-[22px]">
+        <h4 className="text-primary 1920:mb-[24px] 1920:text-base mb-[24px] text-base font-medium sm:mb-[18px] sm:text-xs">
+          {item.description}
+        </h4>
+        <h3 className="1920:text-[24px] text-[18px] font-medium">
+          {item.title}
+        </h3>
+      </div>
+    </div>
+  );
+};
+
+export default NewsCard;
+```
+
+# src\app_components\News\NavElements.tsx
+
+```tsx
+import React from "react";
+import { Link, usePathname } from "@/i18n.config";
+import { useTranslations } from "next-intl";
+import { twMerge } from "tailwind-merge";
+import { navItems } from "@/lib/data";
+import HoverMenu from "@/components/HoverMenu";
+import { MenuItem } from "@/lib/types";
+
+const NavElements: React.FC = () => {
+  const t = useTranslations("Header.navLinks");
+  const items = navItems(t);
+
+  return (
+    <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
+      {items.map((item, index) => (
+        <React.Fragment key={item.path}>
+          <NavItem title={item.label} path={item.path} items={item.items} />
+          {index !== items.length - 1 && (
+            <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
+          )}
+        </React.Fragment>
+      ))}
+    </nav>
+  );
+};
+
+const NavItem: React.FC<{
+  title: string;
+  path?: string;
+  items?: MenuItem[];
+}> = ({ title, path, items }) => {
+  const pathname = usePathname();
+
+  let classes = twMerge(
+    "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
+    pathname === path &&
+      "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
+  );
+
+  return (
+    <div className="group relative sm:h-full">
+      {path ? (
+        <Link href={path} className={classes}>
+          {title}
+        </Link>
+      ) : (
+        <span className={classes}>{title}</span>
+      )}
+      {items && <HoverMenu items={items} />}
+    </div>
+  );
+};
+
+export default NavElements;
+```
+
+# src\app_components\News\MainNewsCard.tsx
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { NewsItem } from "@/lib/types";
+import { getImageUrl } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+
+const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
+  const t = useTranslations("Common");
+
+  return (
+    <div className="max-w-mobile sm:max-w-desktop 1920:h-[596px] 1920:max-w-desktop-lg flex w-full flex-col gap-[20px] bg-white text-start sm:h-[451px] sm:flex-row sm:gap-[38px]">
+      <div className="1920:p-[44px] flex-1 p-[19px] sm:p-[33px]">
+        <div className="1920:max-w-[545px] max-w-[240px] sm:max-w-[413px]">
+          <h4 className="text-primary 1920:mb-[24px] mb-[10px] text-[14px] font-bold sm:mb-[18px] sm:text-[16px]">
+            {item.description}
+          </h4>
+          <h3 className="1920:mb-[74px] 1920:text-[48px] mb-[35px] text-[21px] font-bold leading-[1.4em] sm:mb-[56px] sm:text-[36px]">
+            {item.title}
+          </h3>
+          <Button className="1920:px-[32px] 1920:py-[16px] 1920:text-base w-fit px-[14px] py-[7px] text-xs sm:px-[24px] sm:py-[12px]">
+            {t("readMore")}
+          </Button>
+        </div>
+      </div>
+
+      <img
+        src={getImageUrl(item.image)}
+        alt={item.title}
+        className="h-full w-full flex-1 object-cover sm:h-full"
+      />
+    </div>
+  );
+};
+
+export default MainNewsCard;
+```
+
+# src\app_components\AcademicRankings\AcademicRankingsClientSide.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import { useTranslations } from "next-intl";
+import { Ranking } from "@/lib/types";
+import Image from "next/image";
+import { getImageUrl } from "@/lib/utils";
+
+interface AcademicRankingsClientSideProps {
+  rankings: Ranking[] | undefined;
+}
+
+const AcademicRankingsClientSide: React.FC<AcademicRankingsClientSideProps> = ({
+  rankings,
+}) => {
+  const t = useTranslations("Home.academicRankings");
+
+  if (!rankings || rankings.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="flex w-full flex-col text-start sm:flex-row">
+      <div className="bg-primary 1920:py-[106px] flex flex-1 items-center justify-center p-4 py-[44px] sm:p-8 sm:py-[80px]">
+        <div className="1920:max-w-[460px] max-w-[348px]">
+          <h3 className="text-secondary 1920:mb-[40px] 1920:text-[20px] mb-6 text-[20px] font-bold leading-[1.25em] sm:mb-10 sm:text-[15px]">
+            {t("subtitle")}
+          </h3>
+          <h2 className="1920:mb-[80px] 1920:text-[48px] 1920:leading-[72px] mb-11 text-[44px] font-medium leading-[72px] text-white sm:mb-[69px] sm:text-[36px] sm:leading-[54px]">
+            {t("title")}
+          </h2>
+          <div className="1920:mb-[53px] 1920:gap-[37px] mb-[34px] flex gap-6 sm:mb-10 sm:flex-row sm:gap-7">
+            {rankings.map((ranking) => (
+              <a
+                key={ranking.id}
+                href={ranking.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="1920:h-[153px] 1920:max-w-[211px] relative flex h-[110px] w-full max-w-[158px] items-center justify-center bg-white transition-all duration-300 hover:scale-105 hover:opacity-70 hover:shadow-lg sm:h-[115px]"
+              >
+                <span className="absolute end-0 top-0 bg-[#252525] px-[6px] py-1 text-[14px] font-medium leading-[1.22em] text-white">
+                  #{ranking.num}
+                </span>
+
+                <Image
+                  src={getImageUrl(ranking.image)}
+                  alt={ranking.name}
+                  fill
+                  className="object-contain px-3 py-6 sm:px-[12px] sm:py-[24px]"
+                />
+              </a>
+            ))}
+          </div>
+          <p className="1920:text-[18px] max-w-[242px] text-[16px] font-normal leading-[1.75em] text-[#F2F2F2]/70 sm:max-w-[276px] sm:text-[14px]">
+            {t("note")}
+          </p>
+        </div>
+      </div>
+      <div className="1920:w-[calc(50%+85px)] relative h-[275px] sm:h-auto sm:w-[calc(50%+63px)]">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="University Building"
+          fill
+          className="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default AcademicRankingsClientSide;
+```
+
+# src\app_components\AcademicRankings\AcademicRankings.tsx
+
+```tsx
+import { fetchRankings } from "@/lib/api_services/rankings-apis";
+import { cookies } from "next/headers";
+import AcademicRankingsClientSide from "./AcademicRankingsClientSide";
+
+const AcademicRankings: React.FC = async () => {
+  const cookieStore = cookies();
+  const lang = headers().get("x-locale") || "ar";
+
+  let rankingsData;
+
+  try {
+    rankingsData = await fetchRankings(lang);
+  } catch (error) {
+    console.error("Failed to fetch academic rankings:", error);
+  }
+
+  return (
+    rankingsData &&
+    rankingsData.length > 0 && (
+      <AcademicRankingsClientSide rankings={rankingsData} />
+    )
+  );
+};
+
+export default AcademicRankings;
+```
+
+# src\app_components\Header\SocialMediaLinks.tsx
+
+```tsx
+import React from "react";
+import Link from "next/link";
+import { RawContact } from "@/lib/types";
+
+interface SocialMediaLinksProps {
+  contactInfo: RawContact | undefined;
+}
+
+const SocialMediaLinks: React.FC<SocialMediaLinksProps> = ({ contactInfo }) => {
+  if (!contactInfo) return <></>;
+
+  const socialLinks = [
+    { icon: "ri-instagram-line", url: contactInfo.instagram },
+    { icon: "ri-facebook-circle-fill", url: contactInfo.facebook },
+    { icon: "ri-linkedin-box-fill", url: contactInfo.linkedin },
+    { icon: "ri-youtube-fill", url: contactInfo.youtube },
+  ];
+
+  return (
+    <div className="flex gap-[26px] sm:gap-[24px]">
+      {socialLinks.map((link, index) => (
+        <Link
+          key={index}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-secondary text-[24px]"
+        >
+          <i className={link.icon}></i>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default SocialMediaLinks;
+```
+
+# src\app_components\Header\Header.tsx
+
+```tsx
+"use client";
+
+import Navbar from "./Navbar/Navbar";
+import { IMAGE_BG_ROUTES, SLIDER_BG_ROUTES } from "@/lib/paths";
+import { twMerge } from "tailwind-merge";
+import Topbar from "./Topbar/Topbar";
+import CustomHoverNavbar from "../News/NavElements";
+import { usePathname } from "@/i18n.config";
+
+export default function Header() {
+  const pathname = usePathname();
+
+  return (
+    <header
+      className={twMerge(
+        "bg-primary relative z-40 flex flex-col sm:items-center sm:border-b sm:border-[#D9D9D9]/10",
+        [...IMAGE_BG_ROUTES, ...SLIDER_BG_ROUTES].includes(pathname) &&
+          "sm:bg-transparent",
+      )}
+    >
+      <Topbar></Topbar>
+      <Navbar />
+    </header>
+  );
+}
+```
+
 # src\app\[locale]\sustainability\page.tsx
 
 ```tsx
@@ -6249,7 +7998,197 @@ import SharedPage from "@/components/SharedPage";
 export default function SustainabilityPage() {
   return <SharedPage></SharedPage>;
 }
+```
 
+# src\app_components\CardsSection\HomepageCards.tsx
+
+```tsx
+import React from "react";
+import CardsMobile from "./CardsMobile";
+import CardsDesktop from "./CardsDesktop";
+
+export default function HomepageCards() {
+  return (
+    <>
+      <CardsMobile />
+      <CardsDesktop />
+    </>
+  );
+}
+```
+
+# src\app_components\CardsSection\CommonCard.tsx
+
+```tsx
+import { Link } from "@/i18n.config";
+import { CardData } from "@/lib/types";
+import { getImageUrl } from "@/lib/utils";
+import { twMerge } from "tailwind-merge";
+
+export default function CommonCard({
+  el,
+  index,
+  className,
+  uniqueFirstCard = true,
+}: {
+  el: CardData;
+  index: number;
+  className?: string;
+  uniqueFirstCard?: boolean;
+}) {
+  return (
+    <Link
+      target="_blank"
+      href={el.href}
+      className={twMerge(
+        "1920:h-[349px] flex h-[243px] w-full max-w-[343px] flex-col items-start justify-between p-[35px] text-center transition-all duration-300 hover:opacity-90 hover:shadow-lg sm:h-[265px] sm:max-w-none",
+        index == 0 && uniqueFirstCard ? "bg-secondary" : "bg-white",
+        className,
+      )}
+    >
+      <img
+        src={getImageUrl(el.imgUrl)}
+        alt={el.title}
+        className="1920:h-[80px] 1920:w-[80px] h-[48px] w-[48px] object-contain sm:h-[60px] sm:w-[60px]"
+      />
+      <div className="flex w-full items-center justify-between gap-[20px]">
+        <h4 className="1920:text-[36px] text-start text-[24px] font-medium leading-[1.3em] sm:text-[27px]">
+          {el.title}
+        </h4>
+        <i className="ri-arrow-left-line flippable 1920:text-[45px] text-[32px]"></i>
+      </div>
+    </Link>
+  );
+}
+```
+
+# src\app_components\CardsSection\CardsMobile.tsx
+
+```tsx
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
+import CommonCard from "./CommonCard";
+import { ScrollableCardsContainer } from "../../../components/scrollable-container/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import ScrollElement from "@/components/ScrollElement";
+
+export default function CardsMobile() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Common.cards");
+
+  const cardsData = [
+    {
+      title: "uniLife",
+      href: "#uniLife",
+      imgUrl: "/images/common/cards/uni-life.svg",
+    },
+    {
+      title: "about",
+      href: "#about",
+      imgUrl: "/images/common/cards/about.svg",
+    },
+    {
+      title: "academicClassifications",
+      href: "#academicClassifications",
+      imgUrl: "/images/common/cards/academic-classifications.svg",
+    },
+    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
+  ];
+
+  const translatedElements = cardsData.map((card) => ({
+    ...card,
+    title: t(card.title),
+  }));
+
+  return (
+    <div className="mb-[54px] mt-[30px] w-full flex-col overflow-hidden sm:hidden">
+      <ScrollableContainerUpperSection
+        containerRef={containerRef}
+        title2="جامعة كلكامش"
+        title="الخدمات الالكترونية"
+      />
+      <ScrollableCardsContainer ref={containerRef}>
+        {translatedElements.map((el, index) => (
+          <ScrollElement className="flex justify-center" key={index}>
+            <CommonCard el={el} index={index} />
+          </ScrollElement>
+        ))}
+      </ScrollableCardsContainer>
+    </div>
+  );
+}
+```
+
+# src\app_components\CardsSection\CardsDesktop.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import Section from "../../../components/Section";
+import { useTranslations } from "next-intl";
+import { twMerge } from "tailwind-merge";
+import { CardData } from "@/lib/types";
+import CommonCard from "./CommonCard";
+
+export default function CardsDesktop() {
+  const t = useTranslations("Common.cards");
+
+  const cardsData = [
+    {
+      title: "uniLife",
+      href: "#uniLife",
+      imgUrl: "/images/common/cards/uni-life.svg",
+    },
+    {
+      title: "about",
+      href: "#about",
+      imgUrl: "/images/common/cards/about.svg",
+    },
+    {
+      title: "academicClassifications",
+      href: "#academicClassifications",
+      imgUrl: "/images/common/cards/academic-classifications.svg",
+    },
+    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
+  ];
+
+  const translatedElements = cardsData.map((card) => ({
+    ...card,
+    title: t(card.title),
+  }));
+
+  return (
+    <Section className="1920:mt-[-580px] relative z-10 mt-[-405px] hidden sm:block">
+      <CardsGrid translatedElements={translatedElements} />
+    </Section>
+  );
+}
+
+function CardsGrid({ translatedElements }: { translatedElements: CardData[] }) {
+  return (
+    <div className="1920:gap-[50px] max-w-desktop 1920:max-w-desktop-lg mx-auto mb-[125px] grid grid-cols-3 gap-[38px]">
+      {translatedElements.map((el, index) => (
+        <div
+          key={index}
+          className={twMerge(
+            index == 0 &&
+              "1920:gap-[50px] col-span-full grid grid-cols-3 items-end justify-end gap-[38px]",
+          )}
+        >
+          <CommonCard
+            key={index}
+            el={el}
+            index={index}
+            className="col-start-3"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 ```
 
 # src\app\[locale]\related-locations\page.tsx
@@ -6266,7 +8205,7 @@ export default function page() {
     <main>
       <Section>
         <TitlesWrapper>
-          <h3 className="title-sm mt-[62px] !text-primary sm:mt-[151px]">
+          <h3 className="title-sm !text-primary mt-[62px] sm:mt-[151px]">
             مواقع ذات صلة
           </h3>
           <h2 className="title">جامعة كلكامش</h2>
@@ -6279,7 +8218,7 @@ export default function page() {
 
 const RelatedLocationsGrid = () => {
   return (
-    <div className="mt-[45px] grid grid-cols-1 gap-[22px] sm:mt-[80px] sm:grid-cols-4 1920:grid-cols-5">
+    <div className="1920:grid-cols-5 mt-[45px] grid grid-cols-1 gap-[22px] sm:mt-[80px] sm:grid-cols-4">
       {relatedLocations.map((location, index) => (
         <div
           key={index}
@@ -6291,7 +8230,7 @@ const RelatedLocationsGrid = () => {
           <Link
             target="_blank"
             href={location.url}
-            className="text-[14px] font-medium leading-[1.25em] text-primary"
+            className="text-primary text-[14px] font-medium leading-[1.25em]"
           >
             زيارة الموقع
           </Link>
@@ -6314,99 +8253,6 @@ const relatedLocations = [
   { title: "المؤسسة العراقية للتعليم العالي", url: "#" },
   { title: "مركز البحوث والدراسات العراقي", url: "#" },
 ];
-
-```
-
-# src\app\[locale]\news\page.tsx
-
-```tsx
-import { getTranslations } from "next-intl/server";
-import NewsClientPage from "./ClientPage";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({
-    locale,
-    namespace: "Layout.metaData",
-  });
-
-  return {
-    title: t("newsTitle"),
-  };
-}
-
-export default function NewsPage() {
-  return <NewsClientPage></NewsClientPage>;
-}
-
-```
-
-# src\app\[locale]\news\ClientPage.tsx
-
-```tsx
-"use client";
-
-import MainNewsCard from "@/app/_components/News/MainNewsCard";
-import NewsSection from "@/app/_components/News/News";
-import NewsCard from "@/app/_components/News/NewsCard";
-import NewsTags from "@/app/_components/News/NewsTags";
-import PageWithFirstSection from "@/components/page/Page";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
-import ScrollElement from "@/components/ScrollElement";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n.config";
-import { newsItems } from "@/lib/data";
-import { NEWS_ROUTE } from "@/lib/paths";
-import { NewsItem } from "@/lib/types";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
-export default function NewsClientPage() {
-  const t = useTranslations("Home.news");
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <main className="mt-[36px] sm:mt-[180px]">
-      <Section>
-        <div className="flex-col">
-          <ScrollableContainerUpperSection
-            title={t("title")}
-            containerRef={containerRef}
-            titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
-            className="sm:mb-[50px] 1920:mb-[66px]"
-          ></ScrollableContainerUpperSection>
-
-          <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
-            <ScrollableCardsContainer ref={containerRef}>
-              {newsItems([]).map((item, index) => (
-                <ScrollElement className="flex justify-center" key={index}>
-                  <MainNewsCard item={item} />
-                </ScrollElement>
-              ))}
-            </ScrollableCardsContainer>
-            <Section
-              className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
-              wrapperClass="sm:flex hidden"
-            >
-              {newsItems([])
-                .slice(1, 4)
-                .map((item) => (
-                  <NewsCard key={item.id} item={item} />
-                ))}
-            </Section>
-          </div>
-        </div>
-      </Section>
-    </main>
-  );
-}
-
 ```
 
 # src\app\[locale]\about\page.tsx
@@ -6433,7 +8279,6 @@ export async function generateMetadata({
 export default function Page() {
   return <AboutClientPage></AboutClientPage>;
 }
-
 ```
 
 # src\app\[locale]\about\ClientPage.tsx
@@ -6468,7 +8313,7 @@ export default function AboutClientPage() {
     <main>
       <Section className="mt-[10px] text-start sm:mt-[146px]">
         <Wrapper>
-          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px] 1920:gap-[52px]">
+          <div className="1920:gap-[52px] grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px]">
             <MainSection></MainSection>
             <VisionSection></VisionSection>
             <MessageSection></MessageSection>
@@ -6484,12 +8329,12 @@ export default function AboutClientPage() {
 
 function MainSection() {
   return (
-    <div className="col-span-full flex flex-col text-primary sm:flex-row">
-      <div className="flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[65%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
-        <h2 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
+    <div className="text-primary col-span-full flex flex-col sm:flex-row">
+      <div className="1920:gap-[58px] 1920:px-[108px] flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[65%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px]">
+        <h2 className="1920:text-[28px] text-[18px] font-bold sm:text-[22px]">
           عن جامعة كلكامش
         </h2>
-        <p className="text-[16px] leading-[1.8em] sm:text-[20px] 1920:text-[24px]">
+        <p className="1920:text-[24px] text-[16px] leading-[1.8em] sm:text-[20px]">
           تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
           الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
           من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
@@ -6515,11 +8360,11 @@ function MainSection() {
 
 function VisionSection() {
   return (
-    <div className="flex flex-col justify-center gap-[14px] bg-[#0F4023] px-[16px] py-[32px] text-white sm:col-span-3 sm:items-start sm:gap-[28px] sm:px-[44px] sm:py-[54px] 1920:gap-[44px] 1920:px-[64px]">
-      <h3 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
+    <div className="1920:gap-[44px] 1920:px-[64px] flex flex-col justify-center gap-[14px] bg-[#0F4023] px-[16px] py-[32px] text-white sm:col-span-3 sm:items-start sm:gap-[28px] sm:px-[44px] sm:py-[54px]">
+      <h3 className="1920:text-[28px] text-[18px] font-bold sm:text-[22px]">
         الرؤيــة
       </h3>
-      <h2 className="text-[32px] sm:text-[40px] 1920:text-[68px]">
+      <h2 className="1920:text-[68px] text-[32px] sm:text-[40px]">
         رؤية الجامعة
       </h2>
       <p className="mt-[20px] text-justify text-[16px] leading-[1.8em] text-[#F2F2F2]/70 sm:mt-auto sm:text-[18px]">
@@ -6533,12 +8378,12 @@ function VisionSection() {
 
 function MessageSection() {
   return (
-    <div className="flex flex-col justify-center gap-[14px] bg-primary px-[16px] py-[32px] text-white sm:col-span-4 sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
-      <h3 className="text-[18px] font-bold text-secondary sm:text-[22px] 1920:text-[28px]">
+    <div className="bg-primary 1920:gap-[58px] 1920:px-[108px] flex flex-col justify-center gap-[14px] px-[16px] py-[32px] text-white sm:col-span-4 sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px]">
+      <h3 className="text-secondary 1920:text-[28px] text-[18px] font-bold sm:text-[22px]">
         الرسالــة
       </h3>
 
-      <p className="text-[16px] leading-[1.8em] sm:text-[26px] 1920:text-[35px]">
+      <p className="1920:text-[35px] text-[16px] leading-[1.8em] sm:text-[26px]">
         لجامعة كلكامش رسالة تعمد عن طريقها الى: تقديم برامج أكاديمية عالية
         الجودة في مختلف فروع المعرفة ودعم البحوث وتطويرها بما يسهم في تحقيق
         أهداف التنمية وتعزيز دور الجامعة في خدمة المجتمع العراقي وتهيأة بيئة
@@ -6551,8 +8396,8 @@ function MessageSection() {
 function QualitySection() {
   return (
     <div className="col-span-full mt-[64px] flex flex-col sm:mt-[180px] sm:flex-row">
-      <div className="flex flex-col justify-center gap-[24px] py-[32px] pe-[16px] sm:w-1/2 sm:items-start sm:gap-[28px] sm:py-[64px] sm:pe-[64px] 1920:gap-[58px] 1920:pe-[108px]">
-        <h2 className="text-[18px] font-bold sm:text-[32px] 1920:text-[48px]">
+      <div className="1920:gap-[58px] 1920:pe-[108px] flex flex-col justify-center gap-[24px] py-[32px] pe-[16px] sm:w-1/2 sm:items-start sm:gap-[28px] sm:py-[64px] sm:pe-[64px]">
+        <h2 className="1920:text-[48px] text-[18px] font-bold sm:text-[32px]">
           سياسة الجودة
         </h2>
         <div className="flex flex-col gap-[14px] sm:gap-[24px]">
@@ -6561,7 +8406,7 @@ function QualitySection() {
               className="flex items-start gap-[12px] sm:gap-[24px]"
               key={index}
             >
-              <div className="flex h-[31px] min-h-[31px] w-[31px] min-w-[31px] items-center justify-center rounded-full bg-secondary text-[16px] leading-none">
+              <div className="bg-secondary flex h-[31px] min-h-[31px] w-[31px] min-w-[31px] items-center justify-center rounded-full text-[16px] leading-none">
                 {index + 1}
               </div>
               <span className="text-justify text-[16px] sm:text-[18px]">
@@ -6618,7 +8463,7 @@ function CardsSection() {
         <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
           <ScrollableCardsContainer
             ref={containerRef}
-            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
+            className="1920:gap-[49px] grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px]"
           >
             {services.map((service, index) => (
               <ScrollElement
@@ -6638,374 +8483,264 @@ function CardsSection() {
     </div>
   );
 }
-
 ```
 
-# src\app\_components\OurColleges\OurColleges.tsx
+# src\app\[locale]\news\page.tsx
 
 ```tsx
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { getTranslations } from "next-intl/server";
+import NewsClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function NewsPage() {
+  return <NewsClientPage></NewsClientPage>;
+}
+```
+
+# src\app\[locale]\news\ClientPage.tsx
+
+```tsx
+"use client";
+
+import MainNewsCard from "@/app/_components/News/MainNewsCard";
+import NewsSection from "@/app/_components/News/News/News";
+import NewsCard from "@/app/_components/News/NewsCard";
+import NewsTags from "@/app/_components/News/NewsTags";
+import PageWithFirstSection from "@/components/page/Page";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
+import ScrollElement from "@/components/ScrollElement";
 import Section from "@/components/Section";
-import Wrapper from "../../../components/Wrapper";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n.config";
+import { newsItems } from "@/lib/data";
+import { NEWS_ROUTE } from "@/lib/paths";
+import { NewsItem } from "@/lib/types";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
-interface College {
-  id: number;
-  name: string;
-  subtitle: string;
-  imageUrl: string;
-}
+export default function NewsClientPage() {
+  const t = useTranslations("Home.news");
+  const containerRef = useRef<HTMLDivElement>(null);
 
-const colleges: College[] = [
-  {
-    id: 1,
-    name: "كلية التقنيات الطبية والصحية",
-    subtitle:
-      "من خلال تطوير الجيل القادم من المهنيين والمتخصصين في مجال الرعاية الصحية، تمكّن ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 2,
-    name: "كلية الهندسة",
-    subtitle:
-      "تتطلع كلية الهندسة إلى أن تصبح مؤسسة رائدة في مجال الهندسة في العراق، ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 3,
-    name: "كلية العلوم",
-    subtitle:
-      "تتميّز كلية العلوم بكونها مؤسسة رائدة في مجال العلوم في العراق، وتسعى إلى ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 4,
-    name: "كلية الاقتصاد والعلوم السياسية",
-    subtitle:
-      "تهدف كلية الاقتصاد والعلوم السياسية إلى إعداد جيل من الخبراء والمتخصصين في مجال الاقتصاد ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 5,
-    name: "كلية القانون",
-    subtitle:
-      "تسعى كلية القانون إلى إعداد جيل من الفقهاء والقضاة الذين يملكون المعرفة والخبرة ",
-    imageUrl: "/images/college-logo.png",
-  },
-  {
-    id: 6,
-    name: "كلية الآداب",
-    subtitle:
-      "تهدف كلية الآداب إلى إعداد جيل من الخبراء والمتخصصين في مجال اللغة والآداب ",
-    imageUrl: "/images/college-logo.png",
-  },
-];
-
-export default function OurColleges() {
   return (
-    <Section wrapperClass="mt-[110px] sm:mt-[157px]">
-      <Wrapper className="flex-col">
-        <div className="text-center flex flex-col items-center mb-[24px] sm:mb-[90px]">
-          <h4 className="font-bold text-secondary text-[16px] leading-[1.25em] px-2 py-1 mb-5">
-            جامعة كلكامش
-          </h4>
-          <h2 className="font-bold text-[48px] leading-[1.25em] px-4 py-2">
-            كلياتنا
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-4  gap-[15px] sm:gap-6 1920:gap-[34px] max-w-[375px] sm:max-w-[1280px] 1920:max-w-[1920px] mx-auto text-start">
-          {colleges.map((college) => (
-            <div
-              key={college.id}
-              className="flex flex-col h-[693px] sm:h-[500px] 1920:h-[693px] bg-white"
+    <main className="mt-[36px] sm:mt-[180px]">
+      <Section>
+        <div className="flex-col">
+          <ScrollableContainerUpperSection
+            title={t("title")}
+            containerRef={containerRef}
+            titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
+            className="1920:mb-[66px] sm:mb-[50px]"
+          ></ScrollableContainerUpperSection>
+
+          <div className="1920:gap-[50px] flex w-fit flex-col sm:gap-[38px]">
+            <ScrollableCardsContainer ref={containerRef}>
+              {newsItems([]).map((item, index) => (
+                <ScrollElement className="flex justify-center" key={index}>
+                  <MainNewsCard item={item} />
+                </ScrollElement>
+              ))}
+            </ScrollableCardsContainer>
+            <Section
+              className="gird-cols-1 max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg 1920:gap-[50px] grid w-full sm:grid-cols-3 sm:gap-[38px]"
+              wrapperClass="sm:flex hidden"
             >
-              <div className="relative h-[368px] sm:h-[266px] 1920:h-[368px] border-b-[7px] border-secondary flex items-center justify-center bg-[#DBDBDB]">
-                <div className="relative aspect-square w-full max-w-[257px] sm:max-w-[183px] 1920:max-w-[257px]">
-                  <Image
-                    src={college.imageUrl}
-                    alt={college.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col justify-between flex-grow p-5">
-                <div>
-                  <h2
-                    className="font-bold mt-[24px] sm:mt-[17px] 1920:mt-[24px]
-                               text-[24px] sm:text-[17px] 1920:text-[24px]
-                               leading-[1.25em]"
-                  >
-                    {college.name}
-                  </h2>
-                  <p
-                    className=" mt-[24px] sm:mt-[17px] 1920:mt-[24px]
-                              text-[19px] sm:text-[14px] 1920:text-[19px]
-                              leading-[1.65em] line-clamp-3"
-                  >
-                    {college.subtitle}
-                  </p>
-                </div>
-                <Button
-                  variant={"secondary"}
-                  className="w-full mt-4
-                                 text-[16px] sm:text-[12px] 1920:text-[16px]
-                                 leading-[1.22em]
-                                 py-[16px] sm:py-[12px] 1920:py-[16px]"
-                >
-                  قراءة المزيد
-                </Button>
-              </div>
-            </div>
-          ))}
+              {newsItems([])
+                .slice(1, 4)
+                .map((item) => (
+                  <NewsCard key={item.id} item={item} />
+                ))}
+            </Section>
+          </div>
         </div>
-      </Wrapper>
-    </Section>
+      </Section>
+    </main>
   );
 }
-
 ```
 
-# src\app\_components\OurGoals\OurGoalsMobile.tsx
+# public\images\home\News\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\2.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\News\1.jpg
+
+This is a binary file of the type: Image
+
+# public\images\common\cards\uni-life.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\news.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\academic-classifications.svg
+
+This is a file of the type: SVG Image
+
+# public\images\common\cards\about.svg
+
+This is a file of the type: SVG Image
+
+# public\images\home\Goals\6.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\5.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\4.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\3.jpg
+
+This is a binary file of the type: Image
+
+# public\images\home\Goals\2.jpg
+
+This is a binary file of the type: Image
+
+# src\app_components\News\News\News.tsx
 
 ```tsx
+import { useLocale, useTranslations } from "next-intl";
+import { NewsItem } from "@/lib/types";
+import { fetchNews } from "@/lib/api_services/news-apis";
+import NewsSectionClientSide from "./ClientSide";
+import { cookies } from "next/headers";
 
+const NewsSection: React.FC = async () => {
+  const cookieStore = cookies();
+  const lang = headers().get("x-locale") || "ar";
+
+  let newsItems: NewsItem[] = [];
+
+  try {
+    newsItems = await fetchNews(lang);
+  } catch (error) {
+    console.error("Failed to fetch news:", error);
+  }
+  return (
+    newsItems &&
+    newsItems.length > 0 && (
+      <NewsSectionClientSide newsItems={newsItems}></NewsSectionClientSide>
+    )
+  );
+};
+
+export default NewsSection;
 ```
 
-# src\app\_components\OurGoals\OurGoalsDesktop.tsx
-
-```tsx
-import { Goal } from "@/lib/types";
-import React from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function OurGoalsDesktop() {
-  return (
-    <div className="hidden sm:grid w-full grid-cols-3">
-      {universityGoals.map((el, index) => (
-        <OurGoalsCard key={index} el={el} index={index}></OurGoalsCard>
-      ))}
-    </div>
-  );
-}
-
-function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
-  const isFirst = index == 0;
-  return (
-    <div
-      className={twMerge(
-        "min-h-[556px] sm:min-h-[571px] 1920:min-h-[762px] flex flex-col justify-end",
-        isFirst
-          ? "bg-[#0F4023]"
-          : `bg-white bg-no-repeat bg-cover bg-[url('/images/home/goals/${
-              index + 1
-            }.jpg')]`
-      )}
-    >
-      {isFirst && (
-        <h1 className="flex-1 border-b border-white text-[28px] sm:text-[21px] 1920:text-[28px] leading-[1.22em] font-bold text-white px-4 sm:px-[58px] 1920:px-[78px] pt-[67px] sm:pt-[96px] 1920:pt-[129px]">
-          اهداف جامعة كلكامش
-        </h1>
-      )}
-
-      <div
-        className={twMerge(
-          "text-white",
-          isFirst && "bg-black/30 backdrop-blur-md",
-          isFirst
-            ? "px-4 pb-[67px] sm:px-[58px] sm:pb-[50px] 1920:px-[78px] 1920:pb-[67px]"
-            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]"
-        )}
-      >
-        <h3
-          className={twMerge(
-            "text-[28px] sm:text-[21px] 1920:text-[28px] leading-[1.22em] font-bold mb-2",
-            isFirst && "text-[44px] sm:text-[51px] 1920:text-[68px] font-medium"
-          )}
-        >
-          {el.title}
-        </h3>
-        <p className="text-[16px] sm:text-[14px] 1920:text-[18px] leading-[1.75em]">
-          {el.description}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-const universityGoals: Goal[] = [
-  {
-    title: "تعزيز الحداثة والتراث",
-    description:
-      "المساهمة في تحقيق التطور الكمي والنوعي في الحركة العلمية والثقافية والتعليمية والبحثية العلمية في العراق الجديد من خلال تأهيل كوادر علمية مستنيرة تجمع بين عناصر الحداثة والتراث، وترسيخ المبادئ والأفكار والرؤى العلمية الحديثة.",
-  },
-  {
-    title: "تقديم فرص أكاديمية متقدمة",
-    description:
-      "توفير الفرص الأكاديمية الجامعية الأولية والعليا (النظرية والتطبيقية)، واعتماد مناهج متقدمة لتحقيق الأهداف العلمية والتعليمية والثقافية التي حددها وزارة التعليم العالي والبحث العلمي لتطوير المجتمع العراقي.",
-  },
-  {
-    title: "تعزيز التميز في البحث العلمي",
-    description:
-      "دعم الاستثمار في البحث العلمي وتنمية المبتكرين بطريقة تحقق التميز في إنتاج المعرفة لتقديم الخدمات على مستوى يتوافق مع معايير الجودة.",
-  },
-  {
-    title: "ضمان التنافسية في سوق العمل",
-    description:
-      "المساهمة في تطوير الجانب الأكاديمي وتوفير الكوادر التدريسية والفنية المتخصصة، مما يضمن تأهيل الخريجين قادرين على التنافس في سوق العمل.",
-  },
-  {
-    title: "تعزيز التعليم المستمر",
-    description:
-      "المساهمة في تطوير التعليم المستمر لتحسين أداء الكوادر البشرية العاملة والمتخصصة والعمل على رفع كفاءتهم وفقًا لمعايير الجودة العالمية.",
-  },
-  {
-    title: "بناء جيل يؤمن بالمواطنة واحترام القانون",
-    description:
-      "المساهمة في تربية جيل يؤمن بالمواطنة واحترام القانون من خلال مناهج علمية وتعليمية وثقافية ورياضية واجتماعية هادفة.",
-  },
-];
-
-```
-
-# src\app\_components\OurGoals\OurGoals.tsx
+# src\app_components\News\News\ClientSide.tsx
 
 ```tsx
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
 import { useTranslations } from "next-intl";
-import { Goal } from "@/lib/types";
+import Section from "../../../../components/Section";
+import MainNewsCard from "../MainNewsCard";
+import NewsCard from "../NewsCard";
+import { NewsItem } from "@/lib/types";
+import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollArrows from "@/components/ScrollArrows";
+import ScrollElement from "@/components/ScrollElement";
+import { fetchNews } from "@/lib/api_services/news-apis";
 
-export default function OurGoals() {
-  const t = useTranslations("Home.ourGoals");
-  let containerRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <div className={twMerge("mt-[114px] w-full sm:mt-[198px] 1920:mt-[280px]")}>
-      <ScrollableCardsContainer
-        ref={containerRef}
-        className="flex sm:grid sm:w-full sm:grid-cols-3"
-      >
-        {universityGoals.map((el, index) => (
-          <div key={index} className="w-screen-pure sm:w-auto">
-            <OurGoalsCard key={index} el={el} index={index}></OurGoalsCard>
-          </div>
-        ))}
-      </ScrollableCardsContainer>
-      <ScrollArrows
-        containerRef={containerRef}
-        useMultiples={true}
-        wrapperClassName="justify-end mt-[24px] mx-[16px] sm:hidden"
-      ></ScrollArrows>
-    </div>
-  );
-}
-
-function OurGoalsCard({ el, index }: { el: Goal; index: number }) {
-  const isFirst = index === 0;
-  const styles = twMerge(
-    "min-h-[556px] sm:min-h-[571px] 1920:min-h-[762px] flex flex-col justify-end text-start",
-    isFirst
-      ? "bg-[#0F4023]"
-      : `bg-white bg-no-repeat bg-cover bg-[url('/images/home/goals/${
-          index + 1
-        }.jpg')]`,
-  );
-
-  const backgroundImg = isFirst
-    ? {}
-    : { backgroundImage: `url('/images/home/goals/${index + 1}.jpg')` };
+const NewsSectionClientSide: React.FC<{ newsItems: NewsItem[] }> = ({
+  newsItems,
+}) => {
+  const t = useTranslations("Home.news");
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={styles} style={backgroundImg}>
-      {isFirst && (
-        <h1 className="mx-4 flex-1 border-b border-white pt-[67px] text-[44px] font-medium leading-[1.22em] text-white sm:mx-[58px] sm:pt-[96px] sm:text-[51px] 1920:mx-[78px] 1920:pt-[129px] 1920:text-[68px]">
-          اهداف جامعة كلكامش
-        </h1>
-      )}
+    <Section className="1920:mb-[280px] mb-[60px] sm:mb-[200px]">
+      <div className="flex-col">
+        <ScrollableContainerUpperSection
+          title={t("title")}
+          containerRef={containerRef}
+          titleClass="text-[28px] sm:text-[47px] font-normal 1920:text-[62px] "
+          className="1920:mb-[66px] sm:mb-[50px]"
+        ></ScrollableContainerUpperSection>
 
-      <div
-        className={twMerge(
-          "text-white",
-          !isFirst && "bg-black/30 backdrop-blur-md",
-          isFirst
-            ? "px-4 pb-[67px] pt-[29px] sm:px-[58px] sm:pb-[50px] sm:pt-[34px] 1920:px-[78px] 1920:pb-[67px] 1920:pt-[46px]"
-            : "px-4 py-[29px] sm:px-[58px] sm:py-[47px] 1920:px-[78px] 1920:py-[63px]",
-        )}
-      >
-        <h3 className="mb-2 text-[28px] font-bold leading-[1.22em] sm:text-[21px] 1920:text-[28px]">
-          {el.title}
-        </h3>
-        <p className="text-[16px] font-light leading-[1.75em] text-white/70 sm:text-[14px] 1920:text-[18px]">
-          {el.description}
-        </p>
+        <div className="1920:gap-[50px] flex w-fit flex-col sm:gap-[38px]">
+          <ScrollableCardsContainer ref={containerRef}>
+            {newsItems.map((item, index) => (
+              <ScrollElement className="flex justify-center" key={index}>
+                <MainNewsCard item={item} />
+              </ScrollElement>
+            ))}
+          </ScrollableCardsContainer>
+          <Section
+            className="gird-cols-1 max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg 1920:gap-[50px] grid w-full sm:grid-cols-3 sm:gap-[38px]"
+            wrapperClass="sm:flex hidden"
+          >
+            {newsItems.slice(1, 4).map((item) => (
+              <NewsCard key={item.id} item={item} />
+            ))}
+          </Section>
+        </div>
       </div>
-    </div>
+    </Section>
   );
-}
+};
 
-const universityGoals: Goal[] = [
-  {
-    title: "تعزيز الحداثة والتراث",
-    description:
-      "المساهمة في تحقيق التطور الكمي والنوعي في الحركة العلمية والثقافية والتعليمية والبحثية العلمية في العراق الجديد من خلال تأهيل كوادر علمية مستنيرة تجمع بين عناصر الحداثة والتراث، وترسيخ المبادئ والأفكار والرؤى العلمية الحديثة.",
-  },
-  {
-    title: "تقديم فرص أكاديمية متقدمة",
-    description:
-      "توفير الفرص الأكاديمية الجامعية الأولية والعليا (النظرية والتطبيقية)، واعتماد مناهج متقدمة لتحقيق الأهداف العلمية والتعليمية والثقافية التي حددها وزارة التعليم العالي والبحث العلمي لتطوير المجتمع العراقي.",
-  },
-  {
-    title: "تعزيز التميز في البحث العلمي",
-    description:
-      "دعم الاستثمار في البحث العلمي وتنمية المبتكرين بطريقة تحقق التميز في إنتاج المعرفة لتقديم الخدمات على مستوى يتوافق مع معايير الجودة.",
-  },
-  {
-    title: "ضمان التنافسية في سوق العمل",
-    description:
-      "المساهمة في تطوير الجانب الأكاديمي وتوفير الكوادر التدريسية والفنية المتخصصة، مما يضمن تأهيل الخريجين قادرين على التنافس في سوق العمل.",
-  },
-  {
-    title: "تعزيز التعليم المستمر",
-    description:
-      "المساهمة في تطوير التعليم المستمر لتحسين أداء الكوادر البشرية العاملة والمتخصصة والعمل على رفع كفاءتهم وفقًا لمعايير الجودة العالمية.",
-  },
-  {
-    title: "بناء جيل يؤمن بالمواطنة واحترام القانون",
-    description:
-      "المساهمة في تربية جيل يؤمن بالمواطنة واحترام القانون من خلال مناهج علمية وتعليمية وثقافية ورياضية واجتماعية هادفة.",
-  },
-];
-
+export default NewsSectionClientSide;
 ```
 
-# src\app\_components\Header\Topbar.tsx
+# src\app_components\Header\Topbar\TopbarClient.tsx
 
 ```tsx
 "use client";
 
 import React from "react";
-import LocaleSwitcher from "../../../components/LocaleSwitcher";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { Link, Locale } from "@/i18n.config";
 import { useLocale, useTranslations } from "next-intl";
-import Section from "../../../components/Section";
-
+import Section from "@/components/Section";
 import HoverMenu from "@/components/HoverMenu";
 import { topbarNavItems } from "@/lib/data";
-import { MenuItem } from "@/lib/types";
+import { MenuItem, RawContact } from "@/lib/types";
 
-const Topbar: React.FC = () => {
+interface TopbarClientProps {
+  contactInfo: RawContact | undefined;
+}
+
+const TopbarClient: React.FC<TopbarClientProps> = ({ contactInfo }) => {
   return (
     <Section
       className="relative flex h-[50px] justify-center"
       wrapperClass="bg-[rgba(217,217,217,0.10)] backdrop-blur-[20px] hidden sm:flex relative z-10"
     >
-      <div className="flex h-full w-full items-center justify-between sm:px-[60px] 1920:px-[136px]">
-        <TopbarContact />
+      <div className="1920:px-[136px] flex h-full w-full items-center justify-between sm:px-[60px]">
+        <TopbarContact contactInfo={contactInfo} />
         <TopbarNavigation />
       </div>
     </Section>
@@ -7036,7 +8771,7 @@ const NavItem: React.FC<{ item: MenuItem }> = ({ item }) => {
       {item.path ? (
         <Link
           href={item.path}
-          className="text-sm font-light text-white transition-opacity duration-300 hover:opacity-60 1920:text-base"
+          className="1920:text-base text-sm font-light text-white transition-opacity duration-300 hover:opacity-60"
         >
           {item.label}
         </Link>
@@ -7050,19 +8785,28 @@ const NavItem: React.FC<{ item: MenuItem }> = ({ item }) => {
   );
 };
 
-const TopbarContact: React.FC = () => {
+const TopbarContact: React.FC<{ contactInfo: RawContact | undefined }> = ({
+  contactInfo,
+}) => {
   const locale = useLocale() as Locale;
+  const t = useTranslations("Header.topbar");
+
+  if (!contactInfo) return null;
 
   return (
     <div className="flex items-center gap-[30px] text-xs font-light">
-      <ContactElement href="mailto:info@gau.edu.iq" label="info@gau.edu.iq" />
+      <ContactElement
+        href={`mailto:${contactInfo.email}`}
+        label={contactInfo.email}
+      />
       <div className="flex gap-1 text-white">
-        <ContactElement href="tel:07832000090" label="07832000090" />
-        -
-        <ContactElement href="tel:07732000090" label="07732000090" />
+        <ContactElement
+          href={`tel:${contactInfo.phone}`}
+          label={contactInfo.phone}
+        />
       </div>
 
-      <ContactElement href="#" label="موقعنا على خرائط كوكل" />
+      <ContactElement href="#" label={t("googleMapsLocation")} />
       <LocaleSwitcher locale={locale} />
     </div>
   );
@@ -7073,67 +8817,51 @@ const ContactElement: React.FC<{ href: string; label: string }> = ({
   label,
 }) => {
   return (
-    <a href={href} className="text-white hover:text-secondary">
+    <a href={href} className="hover:text-secondary text-white">
       {label}
     </a>
   );
 };
 
-export default Topbar;
-
+export default TopbarClient;
 ```
 
-# src\app\_components\Header\SocialMediaLinks.tsx
+# src\app_components\Header\Topbar\Topbar.tsx
 
 ```tsx
 "use client";
 
-import React from "react";
-import { Link } from "@/i18n.config";
-import { twMerge } from "tailwind-merge";
+import { fetchLinks } from "@/lib/api_services/common-apis";
+import TopbarClient from "./TopbarClient";
+import { useEffect, useState } from "react";
+import { RawContact } from "@/lib/types";
 
-const socialMedia = [
-  {
-    url: "https://www.instagram.com",
-    icon: "ri-instagram-line",
-  },
-  {
-    url: "https://www.facebook.com",
-    icon: "ri-facebook-circle-fill",
-  },
-  {
-    url: "https://www.linkedin.com",
-    icon: "ri-linkedin-box-fill",
-  },
-  {
-    url: "https://www.youtube.com",
-    icon: "ri-youtube-fill",
-  },
-];
+const TopbarServer = () => {
+  const [contactInfo, setContactInfo] = useState<RawContact | undefined>();
 
-export default function SocialMediaLinks({ ...props }) {
-  return (
-    <div className={twMerge("hidden gap-[24px] sm:flex", props.className)}>
-      {socialMedia.map((social, index) => (
-        <Link
-          key={index}
-          href={social.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative leading-none transition clickable-area hover:text-secondary hover:opacity-70"
-        >
-          <i className={`${social.icon} text-[20px]`}></i>
-        </Link>
-      ))}
-    </div>
-  );
-}
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setContactInfo(await fetchLinks());
+      } catch (error) {
+        console.error("Failed to fetch contact information:", error);
+      }
+    };
 
+    getData();
+  });
+
+  return <TopbarClient contactInfo={contactInfo} />;
+};
+
+export default TopbarServer;
 ```
 
-# src\app\_components\Header\Navbar.tsx
+# src\app_components\Header\Navbar\NavbarClient.tsx
 
 ```tsx
+"use client";
+
 import React from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, Locale } from "@/i18n.config";
@@ -7148,7 +8876,6 @@ import {
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import useCommonStore from "@/lib/zustand/common";
-import Section from "../../../components/Section";
 import {
   Accordion,
   AccordionContent,
@@ -7156,18 +8883,22 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { navItems, topbarNavItems } from "@/lib/data";
-import NavElements from "../News/NavElements";
-import { MenuItem } from "@/lib/types";
+import { MenuItem, RawContact } from "@/lib/types";
 import { twMerge } from "tailwind-merge";
-import SocialMediaLinks from "./SocialMediaLinks";
+import Section from "@/components/Section";
+import NavElements from "../../News/NavElements";
 
-export default function Navbar() {
+interface NavbarClientProps {
+  contactInfo: RawContact | undefined;
+}
+
+const NavbarClient: React.FC<NavbarClientProps> = ({ contactInfo }) => {
   const t = useTranslations("Header");
   const locale = useLocale() as Locale;
 
   return (
-    <Section className="max-w-none sm:max-w-[1440px] 1920:max-w-[1920px]">
-      <nav className="flex h-[77px] w-full flex-row-reverse items-center justify-between bg-transparent text-white sm:flex-row sm:px-[60px] 1920:px-[136px]">
+    <Section className="1920:max-w-[1920px] max-w-none sm:max-w-[1440px]">
+      <nav className="1920:px-[136px] flex h-[77px] w-full flex-row-reverse items-center justify-between bg-transparent text-white sm:flex-row sm:px-[60px]">
         <div className="flex h-full items-center gap-[40px] sm:flex sm:w-full sm:justify-between">
           <Link
             href="/"
@@ -7175,22 +8906,51 @@ export default function Navbar() {
           >
             <img
               src={`/images/logo.png`}
-              className="h-[47px] 1920:h-[55px]"
+              className="1920:h-[55px] h-[47px]"
               alt={t("appTitle")}
             />
           </Link>
           <div className="hidden h-full sm:block">
             <NavElements />
           </div>
-          <SocialMediaLinks />
+          <SocialMediaLinks contactInfo={contactInfo} />
         </div>
-        <NavDrawer />
+        <NavDrawer contactInfo={contactInfo} />
       </nav>
     </Section>
   );
-}
+};
 
-function NavDrawer() {
+const SocialMediaLinks: React.FC<{ contactInfo: RawContact | undefined }> = ({
+  contactInfo,
+}) => {
+  if (!contactInfo) return null;
+
+  const socialMedia = [
+    { icon: "ri-instagram-line", url: contactInfo.instagram },
+    { icon: "ri-facebook-circle-fill", url: contactInfo.facebook },
+    { icon: "ri-linkedin-box-fill", url: contactInfo.linkedin },
+    { icon: "ri-youtube-fill", url: contactInfo.youtube },
+  ];
+
+  return (
+    <div className="hidden gap-[24px] sm:flex">
+      {socialMedia.map((social, index) => (
+        <Link
+          key={index}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="clickable-area hover:text-secondary relative leading-none transition hover:opacity-70"
+        >
+          <i className={`${social.icon} text-[20px]`}></i>
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+function NavDrawer({ contactInfo }: { contactInfo: RawContact | undefined }) {
   const { isDrawerVisible, toggleDrawer } = useCommonStore();
   const locale = useLocale() as Locale;
   const dir = useTextDirection();
@@ -7260,12 +9020,12 @@ function NavDrawer() {
             <i className="ri-menu-line text-[28px] !font-normal"></i>
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="right-0 start-auto top-0 mt-0 h-screen min-w-full rounded-none border-0 bg-primary px-[25px] text-white">
+        <DrawerContent className="bg-primary right-0 start-auto top-0 mt-0 h-screen min-w-full rounded-none border-0 px-[25px] text-white">
           <div className="flex justify-between border-b border-white/30 py-6">
             <DrawerClose onClick={() => toggleDrawer(false)} className="">
               <i className="ri-close-large-line"></i>
             </DrawerClose>
-            <SocialMediaLinks className="flex"></SocialMediaLinks>
+            <SocialMediaLinks contactInfo={contactInfo}></SocialMediaLinks>
             <LocaleSwitcher locale={locale} />
           </div>
           <ScrollArea className="h-screen" dir={dir}>
@@ -7295,724 +9055,37 @@ function NavDrawer() {
   );
 }
 
-const socialMedia = [
-  {
-    url: "https://www.instagram.com",
-    icon: "ri-instagram-line",
-  },
-  {
-    url: "https://www.facebook.com",
-    icon: "ri-facebook-circle-fill",
-  },
-  {
-    url: "https://www.linkedin.com",
-    icon: "ri-linkedin-box-fill",
-  },
-  {
-    url: "https://www.youtube.com",
-    icon: "ri-youtube-fill",
-  },
-];
-
+export default NavbarClient;
 ```
 
-# src\app\_components\Header\Header.tsx
+# src\app_components\Header\Navbar\Navbar.tsx
 
 ```tsx
 "use client";
 
-import Navbar from "./Navbar";
-import { usePathname } from "@/i18n.config";
-import { IMAGE_BG_ROUTES, SLIDER_BG_ROUTES } from "@/lib/paths";
-import { twMerge } from "tailwind-merge";
-import Topbar from "./Topbar";
-import CustomHoverNavbar from "../News/NavElements";
+import { fetchLinks } from "@/lib/api_services/common-apis";
+import NavbarClient from "./NavbarClient";
+import { useEffect, useState } from "react";
+import { RawContact } from "@/lib/types";
 
-export default function Header() {
-  const pathname = usePathname();
+export default function Navbar() {
+  const [contactInfo, setContactInfo] = useState<RawContact | undefined>();
 
-  return (
-    <header
-      className={twMerge(
-        "relative z-40 flex flex-col bg-primary sm:items-center sm:border-b sm:border-[#D9D9D9]/10",
-        [...IMAGE_BG_ROUTES, ...SLIDER_BG_ROUTES].includes(pathname) &&
-          "sm:bg-transparent",
-      )}
-    >
-      <Topbar></Topbar>
-      <Navbar />
-    </header>
-  );
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setContactInfo(await fetchLinks());
+      } catch (error) {
+        console.error("Failed to fetch contact information:", error);
+      }
+    };
+
+    getData();
+  });
+
+  return <NavbarClient contactInfo={contactInfo} />;
 }
-
 ```
-
-# src\app\_components\News\NewsTags.tsx
-
-```tsx
-import React from 'react'
-import NewsCardButton from './NewsCardButton'
-import { useTranslations } from 'next-intl';
-
-export default function NewsTags() {
-    const t = useTranslations("Home.news");
-
-  return (
-    <div className="flex gap-[6px]">
-    <NewsCardButton>{t("tags.contracts")}</NewsCardButton>
-    <NewsCardButton>{t("tags.alzaeem")}</NewsCardButton>
-  </div>
-  )
-}
-
-```
-
-# src\app\_components\News\NewsCardButton.tsx
-
-```tsx
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n.config";
-import { NEWS_ROUTE } from "@/lib/paths";
-import React from "react";
-
-interface NewsCardButtonProps {
-  children: React.ReactNode;
-}
-
-const NewsCardButton: React.FC<NewsCardButtonProps> = ({ children }) => {
-  return (
-    <Button
-      variant={"outline"}
-      className="!px-[12px] !py-[5px] !text-[14px] !font-normal leading-[20px] pointer-events-none ltr:sm:!text-[14px] ltr:!text-[11px]"
-    >
-      {children}
-    </Button>
-  );
-};
-
-export default NewsCardButton;
-
-```
-
-# src\app\_components\News\NewsCard.tsx
-
-```tsx
-import React from "react";
-import { NewsItem } from "@/lib/types";
-
-const NewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
-  return (
-    <div className="flex flex-col  bg-white ">
-      <img
-        src={item.image}
-        alt={item.title}
-        className="w-full sm:h-[238px] 1920:h-[314px]  object-cover  "
-      />
-      <div className="sm:p-[22px] 1920:p-[30px]">
-        <h4 className="text-base sm:text-xs 1920:text-base  text-primary  font-medium mb-[24px] sm:mb-[18px] 1920:mb-[24px]">
-          {item.subtitle}
-        </h4>
-        <h3 className="text-[18px] 1920:text-[24px] font-medium">
-          {item.title}
-        </h3>
-      </div>
-    </div>
-  );
-};
-
-export default NewsCard;
-
-```
-
-# src\app\_components\News\News.tsx
-
-```tsx
-import React, { useRef } from "react";
-import { useTranslations } from "next-intl";
-import Section from "../../../components/Section";
-import ScrollArrows from "@/components/ScrollArrows";
-import { Button } from "@/components/ui/button";
-import { twMerge } from "tailwind-merge";
-import MainNewsCard from "./MainNewsCard";
-import NewsCard from "./NewsCard";
-import { NewsItem } from "@/lib/types";
-import { newsItems } from "@/lib/data";
-import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollElement from "@/components/ScrollElement";
-
-const NewsSection: React.FC = () => {
-  const t = useTranslations("Home.news");
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <Section>
-      <div className="flex-col">
-        <ScrollableContainerUpperSection
-          title={t("title")}
-          containerRef={containerRef}
-          titleClass="text-[28px] sm:text-[47px] font-normal 1920:text-[62px] "
-          className="sm:mb-[50px] 1920:mb-[66px]"
-        ></ScrollableContainerUpperSection>
-
-        <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
-          <ScrollableCardsContainer ref={containerRef}>
-            {newsItems([]).map((item, index) => (
-              <ScrollElement className="flex justify-center" key={index}>
-                <MainNewsCard item={item} />
-              </ScrollElement>
-            ))}
-          </ScrollableCardsContainer>
-          <Section
-            className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
-            wrapperClass="sm:flex hidden"
-          >
-            {newsItems([])
-              .slice(1, 4)
-              .map((item) => (
-                <NewsCard key={item.id} item={item} />
-              ))}
-          </Section>
-        </div>
-      </div>
-    </Section>
-  );
-};
-
-export default NewsSection;
-
-```
-
-# src\app\_components\News\NavElements.tsx
-
-```tsx
-import React from "react";
-import { Link, usePathname } from "@/i18n.config";
-import { useTranslations } from "next-intl";
-import { twMerge } from "tailwind-merge";
-import { navItems } from "@/lib/data";
-import HoverMenu from "@/components/HoverMenu";
-import { MenuItem } from "@/lib/types";
-
-const NavElements: React.FC = () => {
-  const t = useTranslations("Header.navLinks");
-  const items = navItems(t);
-
-  return (
-    <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
-      {items.map((item, index) => (
-        <React.Fragment key={item.path}>
-          <NavItem title={item.label} path={item.path} items={item.items} />
-          {index !== items.length - 1 && (
-            <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>
-          )}
-        </React.Fragment>
-      ))}
-    </nav>
-  );
-};
-
-const NavItem: React.FC<{
-  title: string;
-  path?: string;
-  items?: MenuItem[];
-}> = ({ title, path, items }) => {
-  const pathname = usePathname();
-
-  let classes = twMerge(
-    "text-base font-light tracking-[-0.004em] transition-all duration-300 hover:opacity-60 sm:flex sm:h-full sm:items-center sm:px-[20px] sm:text-sm 1920:px-[30px] 1920:text-base",
-    pathname === path &&
-      "relative after:absolute after:bottom-0 after:start-0 after:h-0.5 after:bg-secondary after:content-[''] sm:after:ms-[20px] sm:after:w-[calc((100%-40px)*0.8)] 1920:after:ms-[30px] 1920:after:w-[calc((100%-60px)*0.8)]",
-  );
-
-  return (
-    <div className="group relative sm:h-full">
-      {path ? (
-        <Link href={path} className={classes}>
-          {title}
-        </Link>
-      ) : (
-        <span className={classes}>{title}</span>
-      )}
-      {items && <HoverMenu items={items} />}
-    </div>
-  );
-};
-
-export default NavElements;
-
-```
-
-# src\app\_components\News\MainNewsCard.tsx
-
-```tsx
-import { Button } from "@/components/ui/button";
-import { NewsItem } from "@/lib/types";
-
-const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
-  return (
-    <div className="flex flex-col sm:flex-row gap-[20px] sm:gap-[38px] w-full max-w-mobile sm:max-w-desktop 1920:max-w-desktop-lg bg-white sm:h-[451px] 1920:h-[596px] text-start">
-      <div className="flex-1 p-[19px] sm:p-[33px] 1920:p-[44px]">
-        <div className="max-w-[240px] sm:max-w-[413px] 1920:max-w-[545px]">
-          <h4 className="text-[14px] sm:text-[16px] mb-[10px]  sm:mb-[18px] 1920:mb-[24px] font-bold text-primary">
-            {item.subtitle}
-          </h4>
-          <h3 className="text-[21px] sm:text-[36px] 1920:text-[48px]  leading-[1.4em]    font-bold mb-[35px] sm:mb-[56px] 1920:mb-[74px]">
-            {item.title}
-          </h3>
-          <Button className="text-xs 1920:text-base w-fit px-[14px] py-[7px] sm:px-[24px] sm:py-[12px] 1920:px-[32px] 1920:py-[16px]">
-            اقرأ المزيد
-          </Button>
-        </div>
-      </div>
-
-      <img
-        src={item.image}
-        alt={item.title}
-        className="w-full flex-1 h-full sm:h-full object-cover "
-      />
-    </div>
-  );
-};
-
-export default MainNewsCard;
-
-```
-
-# src\app\_components\AcademicRankings\AcademicRankings.tsx
-
-```tsx
-import Section from "@/components/Section";
-import Image from "next/image";
-
-export default function AcademicRankings() {
-  return (
-    <div className="flex flex-col sm:flex-row text-start  w-full mt-[57px] sm:mt-[200px]">
-      <div className="flex-1 flex items-center justify-center p-4 sm:p-8 bg-primary py-[44px] 1920:py-[106px] sm:py-[80px]">
-        <div className="max-w-[348px] 1920:max-w-[460px]">
-          <h3 className="text-[20px] sm:text-[15px] 1920:text-[20px] font-bold leading-[1.25em] mb-6 sm:mb-10 1920:mb-[40px] text-secondary">
-            التصنيفات الأكاديمية
-          </h3>
-          <h2 className="text-[44px] sm:text-[36px] 1920:text-[48px] font-medium  leading-[72px] sm:leading-[54px] 1920:leading-[72px] mb-11 sm:mb-[69px] 1920:mb-[80px] text-white">
-            جامعة كلكامش ضمن التصنيفــات الاكاديميــة
-          </h2>
-          <div className="flex  sm:flex-row gap-6 sm:gap-7 1920:gap-[37px] mb-[34px] sm:mb-10 1920:mb-[53px]">
-            {["984", "29031"].map((num) => (
-              <a
-                key={num}
-                href={`https://www.timeshighereducation.com/world-university-rankings/university-of-kufa/`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative  max-w-[158px] 1920:max-w-[211px] w-full h-[110px] sm:h-[115px] 1920:h-[153px] flex items-center justify-center bg-white transition-all duration-300 hover:shadow-lg hover:scale-105 hover:opacity-70"
-              >
-                <span className="absolute top-0 end-0 bg-[#252525] text-white text-[14px] leading-[1.22em] px-[6px] py-1 font-medium">
-                  #{num}
-                </span>
-                <Image
-                  fill
-                  src={`/images/college-logo.png`}
-                  alt={`Ranking ${num}`}
-                  className="w-full h-full object-contain px-3 py-6 sm:px-[12px] sm:py-[24px]"
-                />
-              </a>
-            ))}
-          </div>
-          <p className="text-[#F2F2F2]/70 leading-[1.75em] font-normal text-[16px] sm:text-[14px] 1920:text-[18px] max-w-[242px] sm:max-w-[276px]">
-            للاطلاع على مرتبة الجامعة اضغط على شعار التصنيف
-          </p>
-        </div>
-      </div>
-      <div className="relative h-[275px] sm:h-auto sm:w-[calc(50%+63px)] 1920:w-[calc(50%+85px)]">
-        <Image
-          src="/images/hero-bg.jpg"
-          alt="University Building"
-          fill
-          className="object-cover h-full w-full"
-        />
-      </div>
-    </div>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\HomepageCards.tsx
-
-```tsx
-import React from "react";
-import CardsMobile from "./CardsMobile";
-import CardsDesktop from "./CardsDesktop";
-
-export default function HomepageCards() {
-  return (
-    <>
-      <CardsMobile />
-      <CardsDesktop />
-    </>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\CommonCard.tsx
-
-```tsx
-import { Link } from "@/i18n.config";
-import { CardData } from "@/lib/types";
-import { twMerge } from "tailwind-merge";
-
-export default function CommonCard({
-  el,
-  index,
-  className,
-  uniqueFirstCard = true,
-}: {
-  el: CardData;
-  index: number;
-  className?: string;
-  uniqueFirstCard?: boolean;
-}) {
-  return (
-    <Link
-      href={el.href}
-      className={twMerge(
-        "flex h-[243px] w-full max-w-[343px] flex-col items-start justify-between p-[35px] text-center transition-all duration-300 hover:opacity-90 hover:shadow-lg sm:h-[265px] sm:max-w-none 1920:h-[349px]",
-        index == 0 && uniqueFirstCard ? "bg-secondary" : "bg-white",
-        className,
-      )}
-    >
-      <img
-        src={el.imgUrl}
-        alt={el.title}
-        className="h-[48px] w-[48px] object-contain sm:h-[60px] sm:w-[60px] 1920:h-[80px] 1920:w-[80px]"
-      />
-      <div className="flex w-full items-center justify-between gap-[20px]">
-        <h4 className="text-start text-[24px] font-medium leading-[1.3em] sm:text-[27px] 1920:text-[36px]">
-          {el.title}
-        </h4>
-        <i className="ri-arrow-left-line text-[32px] flippable 1920:text-[45px]"></i>
-      </div>
-    </Link>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\CardsMobile.tsx
-
-```tsx
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
-import CommonCard from "./CommonCard";
-import { ScrollableCardsContainer } from "../../../components/scrollable-container/ScrollableContainer";
-import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
-import ScrollElement from "@/components/ScrollElement";
-
-export default function CardsMobile() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("Common.cards");
-
-  const cardsData = [
-    {
-      title: "uniLife",
-      href: "#uniLife",
-      imgUrl: "/images/common/cards/uni-life.svg",
-    },
-    {
-      title: "about",
-      href: "#about",
-      imgUrl: "/images/common/cards/about.svg",
-    },
-    {
-      title: "academicClassifications",
-      href: "#academicClassifications",
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-    },
-    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
-  ];
-
-  const translatedElements = cardsData.map((card) => ({
-    ...card,
-    title: t(card.title),
-  }));
-
-  return (
-    <div className="mb-[54px] mt-[30px] w-full flex-col overflow-hidden sm:hidden">
-      <ScrollableContainerUpperSection
-        containerRef={containerRef}
-        title2="جامعة كلكامش"
-        title="الخدمات الالكترونية"
-      />
-      <ScrollableCardsContainer ref={containerRef}>
-        {translatedElements.map((el, index) => (
-          <ScrollElement className="flex justify-center" key={index}>
-            <CommonCard el={el} index={index} />
-          </ScrollElement>
-        ))}
-      </ScrollableCardsContainer>
-    </div>
-  );
-}
-
-```
-
-# src\app\_components\CardsSection\CardsDesktop.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import Section from "../../../components/Section";
-import { useTranslations } from "next-intl";
-import { twMerge } from "tailwind-merge";
-import { CardData } from "@/lib/types";
-import CommonCard from "./CommonCard";
-
-export default function CardsDesktop() {
-  const t = useTranslations("Common.cards");
-
-  const cardsData = [
-    {
-      title: "uniLife",
-      href: "#uniLife",
-      imgUrl: "/images/common/cards/uni-life.svg",
-    },
-    {
-      title: "about",
-      href: "#about",
-      imgUrl: "/images/common/cards/about.svg",
-    },
-    {
-      title: "academicClassifications",
-      href: "#academicClassifications",
-      imgUrl: "/images/common/cards/academic-classifications.svg",
-    },
-    { title: "news", href: "#news", imgUrl: "/images/common/cards/news.svg" },
-  ];
-
-  const translatedElements = cardsData.map((card) => ({
-    ...card,
-    title: t(card.title),
-  }));
-
-  return (
-    <Section className="mt-[-405px] 1920:mt-[-580px] hidden sm:block relative z-10">
-      <CardsGrid translatedElements={translatedElements} />
-    </Section>
-  );
-}
-
-function CardsGrid({ translatedElements }: { translatedElements: CardData[] }) {
-  return (
-    <div className="grid grid-cols-3  gap-[38px] 1920:gap-[50px] max-w-desktop 1920:max-w-desktop-lg mx-auto mb-[125px]">
-      {translatedElements.map((el, index) => (
-        <div
-          key={index}
-          className={twMerge(
-            index == 0 &&
-              "col-span-full grid grid-cols-3 gap-[38px] 1920:gap-[50px] items-end justify-end"
-          )}
-        >
-          <CommonCard
-            key={index}
-            el={el}
-            index={index}
-            className="col-start-3"
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-```
-
-# src\components\page\FirstTitleSection\FirstTitleSection.tsx
-
-```tsx
-"use client";
-
-import React from "react";
-import { usePathname } from "@/i18n.config";
-// import { getTitleComponent } from "@/lib/utils";
-import Wrapper from "@/components/Wrapper";
-
-export default function FirstTitleSection() {
-  const pathname = usePathname();
-
-  // const TitleComponent = getTitleComponent(pathname);
-
-  // return TitleComponent ? (
-  //   <Wrapper>
-  //     <TitleComponent />
-  //   </Wrapper>
-  // ) : (
-  //   <></>
-  // );
-}
-
-```
-
-# src\components\page\FirstTitleSection\CenterizedTitle.tsx
-
-```tsx
-import React from "react";
-import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n.config";
-import { getPageTitle } from "@/lib/utils";
-
-export default function CenterizedTitle() {
-  const t = useTranslations();
-  const pathname = usePathname();
-  const pageTitle = getPageTitle({ t, pathname });
-
-  return (
-    <h1 className="title-lg mb-[23px] !text-center leading-[1.25] sm:mb-[96px]">
-      {pageTitle}
-    </h1>
-  );
-}
-
-```
-
-# src\components\page\FirstTitleSection\ActionsTitle.tsx
-
-```tsx
-import FileOperations from "@/components/FileOperations";
-import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import Wrapper from "@/components/Wrapper";
-import { Link } from "@/i18n.config";
-import { NEWS_ROUTE } from "@/lib/paths";
-import { ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
-
-export default function ActionsTitle({
-  showBackButton = false,
-  backHref = "",
-  title,
-  description,
-  className,
-  fileOperations,
-}: {
-  showBackButton?: boolean;
-  title?: string;
-  description?: string;
-  backHref?: string;
-  className?: string;
-  fileOperations?: ReactNode;
-}) {
-  return (
-    <Section className="mt-[61px] !max-w-none flex-col items-center sm:mt-[160px]">
-      <Wrapper>
-        <div
-          className={twMerge(
-            "flex justify-between",
-            !description &&
-              !showBackButton &&
-              !fileOperations &&
-              "sm:justify-center",
-          )}
-        >
-          <div
-            className={twMerge("mb-[12px] text-start sm:mb-[53px]", className)}
-          >
-            {showBackButton && (
-              <Link href={backHref}>
-                <Button className="w-fit gap-1">
-                  <i className="ri-arrow-right-s-line text-[22px] text-[#99AFC9]"></i>
-                  <span>الرجــوع</span>
-                </Button>
-              </Link>
-            )}
-
-            {title && (
-              <h1
-                className={twMerge(
-                  "mt-[35px] text-[24px] font-bold leading-[1.22em] sm:mt-[43px] sm:text-[40px] 1920:text-[48px]",
-                  !description &&
-                    !showBackButton &&
-                    "text-center sm:text-start",
-
-                  !description &&
-                    !showBackButton &&
-                    !fileOperations &&
-                    "sm:text-center",
-                )}
-              >
-                {title}
-              </h1>
-            )}
-            {description && <p>{description}</p>}
-
-            {/* <div className="mt-[48px] flex items-center gap-[16px] font-bold text-primary sm:mt-[33px]">
-            <span>اكاديمية الماجستير</span>
-            <span>—</span>
-            <span>قبل 6 ساعات</span>
-          </div> */}
-          </div>
-          {fileOperations}
-        </div>
-      </Wrapper>
-    </Section>
-  );
-}
-
-```
-
-# public\images\home\News\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\2.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\News\1.jpg
-
-This is a binary file of the type: Image
-
-# public\images\common\cards\uni-life.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\news.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\academic-classifications.svg
-
-This is a file of the type: SVG Image
-
-# public\images\common\cards\about.svg
-
-This is a file of the type: SVG Image
-
-# public\images\home\Goals\6.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\5.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\4.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\3.jpg
-
-This is a binary file of the type: Image
-
-# public\images\home\Goals\2.jpg
-
-This is a binary file of the type: Image
 
 # src\app\[locale]\university-and-community\qualification-employment\page.tsx
 
@@ -8027,7 +9100,6 @@ export default function QualificationEmploymentPage() {
     ></FormattedTextViewer>
   );
 }
-
 ```
 
 # src\app\[locale]\university-and-community\ministry-inquiries\page.tsx
@@ -8043,7 +9115,6 @@ export default function MinistryInquiriesPage() {
     ></FormattedTextViewer>
   );
 }
-
 ```
 
 # src\app\[locale]\university-and-community\graduates\page.tsx
@@ -8059,7 +9130,6 @@ export default function GraduatesPage() {
     ></FormattedTextViewer>
   );
 }
-
 ```
 
 # src\app\[locale]\university-and-community\consulting-clinic\page.tsx
@@ -8075,10 +9145,303 @@ export default function ConsultingClinicPage() {
     ></FormattedTextViewer>
   );
 }
-
 ```
 
-# src\app\[locale]\news\_components\MainSubjects.tsx
+# src\app\[locale]\about\university-council\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import UniversityCouncilClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+}
+```
+
+# src\app\[locale]\about\university-council\ClientPage.tsx
+
+```tsx
+"use client";
+
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
+import React from "react";
+
+export default function UniversityCouncilClientPage() {
+  return (
+    <main>
+      <ActionsTitle title="مجلس الجامعة"></ActionsTitle>
+      <Section className="text-start">
+        <Wrapper>
+          <div className="1920:grid-cols-5 grid w-full grid-cols-1 gap-[8px] sm:grid-cols-4 sm:gap-[22px]">
+            <PresidentCard></PresidentCard>
+            {[...Array(12)].map((_, index) => (
+              <MemberCard key={index} />
+            ))}
+          </div>
+        </Wrapper>
+      </Section>
+    </main>
+  );
+}
+
+function PresidentCard() {
+  return (
+    <div className="flex flex-col justify-between bg-white sm:col-span-3 sm:px-[20px]">
+      <div className="flex h-full items-center">
+        <div className="text-primary flex flex-col gap-[25px] sm:flex-row sm:py-[20px]">
+          <img
+            src="/images/hero-bg.jpg"
+            className="w-full object-cover sm:w-[35%]"
+          ></img>
+          <div className="1920:px-[20px] flex flex-col justify-center px-[8px] py-[20px] sm:w-[65%] sm:items-start sm:px-[12px] sm:py-[40px]">
+            <h2 className="text-foreground 1920:text-[34px] text-[18px] font-bold sm:text-[22px]">
+              أ.د.انور صبحي عبد الحسين
+            </h2>
+            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
+            <p className="1920:mt-[58px] mt-[16px] text-[16px] leading-[24px] sm:mt-[28px]">
+              تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم
+              عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح
+              للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث
+              والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد المشكلات،
+              والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل كلية،
+              وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
+              التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح
+              لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-secondary h-[5px] w-full"></div>
+    </div>
+  );
+}
+
+function MemberCard() {
+  return (
+    <div className="flex flex-col justify-between bg-white sm:px-[18px]">
+      <div className="flex flex-col gap-[35px] pb-[57px] pt-[18px]">
+        <img
+          src="/images/person-placeholder.svg"
+          className="w-full object-cover"
+        ></img>
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-foreground text-[21px] font-medium">
+            الاسم الكامل
+          </h2>
+          <h3 className="text-primary mt-[12px] max-w-[200px] text-[16px] font-medium leading-[24px]">
+            وصف المنصب الاداري ضمن الجامعة
+          </h3>
+        </div>
+      </div>
+
+      <div className="bg-secondary h-[5px] w-full"></div>
+    </div>
+  );
+}
+```
+
+# src\app\[locale]\about\president-speech\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import UniversityCouncilClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+}
+```
+
+# src\app\[locale]\about\president-speech\ClientPage.tsx
+
+```tsx
+"use client";
+
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
+import React from "react";
+
+export default function UniversityCouncilClientPage() {
+  return (
+    <main>
+      <ActionsTitle title="كلمة رئيس الجامعة"></ActionsTitle>
+      <Section className="text-start">
+        <Wrapper>
+          <PresidentCard></PresidentCard>
+        </Wrapper>
+      </Section>
+    </main>
+  );
+}
+
+function PresidentCard() {
+  return (
+    <div className="flex flex-col justify-between bg-white">
+      <div className="text-primary 1920:gap-[140px] flex flex-col gap-[31px] sm:flex-row-reverse sm:gap-[70px] sm:p-[50px]">
+        <div className="flex flex-col gap-[50px] sm:w-[378px] sm:min-w-[378px]">
+          <img src="/images/hero-bg.jpg" className="w-full object-cover"></img>
+          <div className="flex flex-col px-[20px] sm:px-0">
+            <h2 className="text-foreground 1920:text-[34px] text-[18px] font-bold sm:text-[22px]">
+              أ.د.انور صبحي عبد الحسين
+            </h2>
+            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
+          </div>
+        </div>
+        <p className="px-[20px] text-justify text-[16px] leading-[1.75em] sm:px-0 sm:text-[20px]">
+          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
+          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
+          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
+          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
+          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
+          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
+          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
+          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
+          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
+          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
+          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
+          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
+          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
+          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
+          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
+          العمل المختلفة. تأسست جامعة كلكامش بموجب الأمر الوزاري (1443)
+          27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم
+          والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في
+          أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد
+          المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل
+          كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
+          التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم
+          ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست
+          جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
+          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
+          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
+          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
+          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
+          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
+          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
+          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
+          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
+          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
+          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
+          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
+          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
+          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
+          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
+          العمل المختلفة.
+        </p>
+      </div>
+
+      <div className="bg-secondary mx-auto mt-[20px] h-[5px] w-[calc(100%-40px)] sm:mt-0 sm:w-[calc(100%-100px)]"></div>
+    </div>
+  );
+}
+```
+
+# src\app\[locale]\about\organizational-structure\page.tsx
+
+```tsx
+import { getTranslations } from "next-intl/server";
+import OrganizationalStructureClientPage from "./ClientPage";
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({
+    locale,
+    namespace: "Layout.metaData",
+  });
+
+  return {
+    title: t("newsTitle"),
+  };
+}
+
+export default function Page() {
+  return (
+    <OrganizationalStructureClientPage></OrganizationalStructureClientPage>
+  );
+}
+```
+
+# src\app\[locale]\about\organizational-structure\ClientPage.tsx
+
+```tsx
+"use client";
+
+import FileOperations from "@/components/FileOperations";
+import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
+
+import Section from "@/components/Section";
+import Wrapper from "@/components/Wrapper";
+
+import React from "react";
+
+export default function OrganizationalStructureClientPage() {
+  return (
+    <main>
+      <ActionsTitle
+        title="الهيكل التنظيمي"
+        fileOperations={
+          <FileOperations
+            showDownloadButton={true}
+            pdfStyles={{ body: { flexDirection: "column" } }}
+          ></FileOperations>
+        }
+      ></ActionsTitle>
+      <Section className="text-start">
+        <Wrapper>
+          <img
+            id="print-section"
+            src="/images/hero-bg.jpg"
+            alt="hero-bg"
+            className="w-full"
+          />
+        </Wrapper>
+      </Section>
+    </main>
+  );
+}
+```
+
+# src\app\[locale]\news_components\MainSubjects.tsx
 
 ```tsx
 "use client";
@@ -8126,13 +9489,13 @@ ScrollableCardsContainer.displayName = "ScrollableCardsContainer";
 
 function Card({ el }: { el: MainSubjectData }) {
   return (
-    <div className="flex   flex-col items-center gap-[16px] text-center   sm:gap-[42px]">
+    <div className="flex flex-col items-center gap-[16px] text-center sm:gap-[42px]">
       <img
         src={el.src}
         alt={el.alt}
         className="max-w-[323px] rounded-[18px] sm:max-w-[431px] sm:rounded-[25px]"
       />
-      <h4 className="text-[18px]  leading-[28px] text-foreground/60 sm:max-w-[250px] sm:text-[24px] sm:leading-[38px]">
+      <h4 className="text-foreground/60 text-[18px] leading-[28px] sm:max-w-[250px] sm:text-[24px] sm:leading-[38px]">
         {el.title}
       </h4>
     </div>
@@ -8145,8 +9508,8 @@ function UpperSection({
   containerRef: React.RefObject<HTMLDivElement>;
 }) {
   return (
-    <div className="flex w-full max-w-[1660px] items-center justify-between   sm:justify-between ">
-      <h2 className="1920:ps-[10px] max-w-[207px] text-[18px] font-semibold leading-[24px] sm:max-w-none sm:text-[50px]  sm:leading-[73px]">
+    <div className="flex w-full max-w-[1660px] items-center justify-between sm:justify-between">
+      <h2 className="1920:ps-[10px] max-w-[207px] text-[18px] font-semibold leading-[24px] sm:max-w-none sm:text-[50px] sm:leading-[73px]">
         المواضيع الرئيسية
       </h2>
       <ScrollArrows containerRef={containerRef} />
@@ -8182,10 +9545,9 @@ const mainSubjects: MainSubjectData[] = [
     src: "/images/about/main-subjects/4.jpg",
   },
 ];
-
 ```
 
-# src\app\[locale]\news\_components\ConferenceImportance.tsx
+# src\app\[locale]\news_components\ConferenceImportance.tsx
 
 ```tsx
 import React from "react";
@@ -8193,8 +9555,8 @@ import { twMerge } from "tailwind-merge";
 
 const ConferenceImportance: React.FC = () => {
   return (
-    <section className="mt-[82px] flex flex-col items-center  gap-[21px] px-[8px] sm:mt-[171px] sm:gap-[60px] sm:px-[60px]">
-      <h2 className="lg-title   text-center sm:max-w-[494px]">
+    <section className="mt-[82px] flex flex-col items-center gap-[21px] px-[8px] sm:mt-[171px] sm:gap-[60px] sm:px-[60px]">
+      <h2 className="lg-title text-center sm:max-w-[494px]">
         أهمـــــية مــــعـــــرض ومؤتمر العراق للتعليم
       </h2>
       <div className="flex flex-col gap-[19px] sm:gap-[70px]">
@@ -8214,16 +9576,12 @@ const ConferenceImportance: React.FC = () => {
   );
 };
 
-const CheckedPoint: React.FC<CheckedPointProps> = ({
-  text,
-}) => (
+const CheckedPoint: React.FC<CheckedPointProps> = ({ text }) => (
   <div className="flex items-start gap-[20px]">
-    <div className="mt-[6px] flex h-[25px] min-h-[25px] w-[25px] min-w-[25px] items-center justify-center rounded-full bg-primary sm:mt-0">
-      <i className="fa-solid fa-check text-[15px] text-foreground"></i>
+    <div className="bg-primary mt-[6px] flex h-[25px] min-h-[25px] w-[25px] min-w-[25px] items-center justify-center rounded-full sm:mt-0">
+      <i className="fa-solid fa-check text-foreground text-[15px]"></i>
     </div>
-    <p className="text-[18px] font-medium leading-[29px]">
-      {text}
-    </p>
+    <p className="text-[18px] font-medium leading-[29px]">{text}</p>
   </div>
 );
 
@@ -8239,7 +9597,7 @@ const Section: React.FC<SectionProps> = ({
       className,
     )}
   >
-    <div className="flex flex-col gap-[40px] rounded-[30px] bg-[#F2F2F2] px-[20px] py-[25px] sm:gap-[20px] sm:px-[30px] sm:py-[30px] ">
+    <div className="flex flex-col gap-[40px] rounded-[30px] bg-[#F2F2F2] px-[20px] py-[25px] sm:gap-[20px] sm:px-[30px] sm:py-[30px]">
       {points.map((point, index) => (
         <CheckedPoint key={index} text={point} />
       ))}
@@ -8292,7 +9650,6 @@ type CheckedPointProps = {
 };
 
 export default ConferenceImportance;
-
 ```
 
 # src\app\[locale]\news\[news_id]\page.tsx
@@ -8388,307 +9745,6 @@ export default function SingleNewsPage() {
     </main>
   );
 }
-
-```
-
-# src\app\[locale]\about\university-council\page.tsx
-
-```tsx
-import { getTranslations } from "next-intl/server";
-import UniversityCouncilClientPage from "./ClientPage";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({
-    locale,
-    namespace: "Layout.metaData",
-  });
-
-  return {
-    title: t("newsTitle"),
-  };
-}
-
-export default function Page() {
-  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
-}
-
-```
-
-# src\app\[locale]\about\university-council\ClientPage.tsx
-
-```tsx
-"use client";
-
-import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-
-import React from "react";
-
-export default function UniversityCouncilClientPage() {
-  return (
-    <main>
-      <ActionsTitle title="مجلس الجامعة"></ActionsTitle>
-      <Section className="text-start">
-        <Wrapper>
-          <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-4 sm:gap-[22px] 1920:grid-cols-5">
-            <PresidentCard></PresidentCard>
-            {[...Array(12)].map((_, index) => (
-              <MemberCard key={index} />
-            ))}
-          </div>
-        </Wrapper>
-      </Section>
-    </main>
-  );
-}
-
-function PresidentCard() {
-  return (
-    <div className="flex flex-col justify-between bg-white sm:col-span-3 sm:px-[20px]">
-      <div className="flex h-full items-center">
-        <div className="flex flex-col gap-[25px] text-primary sm:flex-row sm:py-[20px]">
-          <img
-            src="/images/hero-bg.jpg"
-            className="w-full object-cover sm:w-[35%]"
-          ></img>
-          <div className="flex flex-col justify-center px-[8px] py-[20px] sm:w-[65%] sm:items-start sm:px-[12px] sm:py-[40px] 1920:px-[20px]">
-            <h2 className="text-[18px] font-bold text-foreground sm:text-[22px] 1920:text-[34px]">
-              أ.د.انور صبحي عبد الحسين
-            </h2>
-            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
-            <p className="mt-[16px] text-[16px] leading-[24px] sm:mt-[28px] 1920:mt-[58px]">
-              تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم
-              عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح
-              للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث
-              والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد المشكلات،
-              والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل كلية،
-              وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
-              التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح
-              لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="h-[5px] w-full bg-secondary"></div>
-    </div>
-  );
-}
-
-function MemberCard() {
-  return (
-    <div className="flex flex-col justify-between bg-white sm:px-[18px]">
-      <div className="flex flex-col gap-[35px] pb-[57px] pt-[18px]">
-        <img
-          src="/images/person-placeholder.svg"
-          className="w-full object-cover"
-        ></img>
-        <div className="flex flex-col items-center text-center">
-          <h2 className="text-[21px] font-medium text-foreground">
-            الاسم الكامل
-          </h2>
-          <h3 className="mt-[12px] max-w-[200px] text-[16px] font-medium leading-[24px] text-primary">
-            وصف المنصب الاداري ضمن الجامعة
-          </h3>
-        </div>
-      </div>
-
-      <div className="h-[5px] w-full bg-secondary"></div>
-    </div>
-  );
-}
-
-```
-
-# src\app\[locale]\about\president-speech\page.tsx
-
-```tsx
-import { getTranslations } from "next-intl/server";
-import UniversityCouncilClientPage from "./ClientPage";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({
-    locale,
-    namespace: "Layout.metaData",
-  });
-
-  return {
-    title: t("newsTitle"),
-  };
-}
-
-export default function Page() {
-  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
-}
-
-```
-
-# src\app\[locale]\about\president-speech\ClientPage.tsx
-
-```tsx
-"use client";
-
-import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-
-import React from "react";
-
-export default function UniversityCouncilClientPage() {
-  return (
-    <main>
-      <ActionsTitle title="كلمة رئيس الجامعة"></ActionsTitle>
-      <Section className="text-start">
-        <Wrapper>
-          <PresidentCard></PresidentCard>
-        </Wrapper>
-      </Section>
-    </main>
-  );
-}
-
-function PresidentCard() {
-  return (
-    <div className="flex flex-col justify-between bg-white">
-      <div className="flex flex-col gap-[31px] text-primary sm:flex-row-reverse sm:gap-[70px] sm:p-[50px] 1920:gap-[140px]">
-        <div className="flex flex-col gap-[50px] sm:w-[378px] sm:min-w-[378px]">
-          <img src="/images/hero-bg.jpg" className="w-full object-cover"></img>
-          <div className="flex flex-col px-[20px] sm:px-0">
-            <h2 className="text-[18px] font-bold text-foreground sm:text-[22px] 1920:text-[34px]">
-              أ.د.انور صبحي عبد الحسين
-            </h2>
-            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
-          </div>
-        </div>
-        <p className="px-[20px] text-justify text-[16px] leading-[1.75em] sm:px-0 sm:text-[20px]">
-          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
-          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
-          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
-          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
-          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
-          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
-          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
-          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
-          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
-          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
-          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
-          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
-          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
-          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
-          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
-          العمل المختلفة. تأسست جامعة كلكامش بموجب الأمر الوزاري (1443)
-          27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم
-          والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في
-          أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد
-          المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل
-          كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
-          التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم
-          ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست
-          جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
-          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
-          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
-          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
-          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
-          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
-          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
-          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
-          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
-          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
-          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
-          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
-          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
-          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
-          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
-          العمل المختلفة.
-        </p>
-      </div>
-
-      <div className="mx-auto mt-[20px] h-[5px] w-[calc(100%-40px)] bg-secondary sm:mt-0 sm:w-[calc(100%-100px)]"></div>
-    </div>
-  );
-}
-
-```
-
-# src\app\[locale]\about\organizational-structure\page.tsx
-
-```tsx
-import { getTranslations } from "next-intl/server";
-import OrganizationalStructureClientPage from "./ClientPage";
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations({
-    locale,
-    namespace: "Layout.metaData",
-  });
-
-  return {
-    title: t("newsTitle"),
-  };
-}
-
-export default function Page() {
-  return (
-    <OrganizationalStructureClientPage></OrganizationalStructureClientPage>
-  );
-}
-
-```
-
-# src\app\[locale]\about\organizational-structure\ClientPage.tsx
-
-```tsx
-"use client";
-
-import FileOperations from "@/components/FileOperations";
-import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
-import Section from "@/components/Section";
-import Wrapper from "@/components/Wrapper";
-
-import React from "react";
-
-export default function OrganizationalStructureClientPage() {
-  return (
-    <main>
-      <ActionsTitle
-        title="الهيكل التنظيمي"
-        fileOperations={
-          <FileOperations
-            showDownloadButton={true}
-            pdfStyles={{ body: { flexDirection: "column" } }}
-          ></FileOperations>
-        }
-      ></ActionsTitle>
-      <Section className="text-start">
-        <Wrapper>
-          <img
-            id="print-section"
-            src="/images/hero-bg.jpg"
-            alt="hero-bg"
-            className="w-full"
-          />
-        </Wrapper>
-      </Section>
-    </main>
-  );
-}
-
 ```
 
 # src\app\[locale]\university-and-community\surveys\graduate-survey\page.tsx
@@ -8703,7 +9759,6 @@ export default function GraduatesSurveyPage() {
 
   return <SurveyForm title={tNavLinks("graduateSurvey")} />;
 }
-
 ```
 
 # src\app\[locale]\university-and-community\surveys\employer-survey\page.tsx
@@ -8718,6 +9773,4 @@ export default function EmployerSurveyPage() {
 
   return <SurveyForm title={tNavLinks("employerSurvey")} />;
 }
-
 ```
-

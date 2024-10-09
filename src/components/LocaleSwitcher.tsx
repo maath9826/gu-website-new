@@ -27,7 +27,6 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
   const dir = useTextDirection();
 
   const changeLocale = (newLocale: Locale) => {
-    Cookies.set("language", newLocale, { expires: 365 });
     router.replace(pathname, { locale: newLocale });
   };
 

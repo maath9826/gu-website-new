@@ -43,6 +43,7 @@
   },
   "Header": {
     "appTitle": "Taalem",
+    "googleMapsLocation": "location on Google Maps",
     "localSwitcher": {
       "select a language": "select a language"
     },

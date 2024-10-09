@@ -9,6 +9,7 @@ import ScrollableContainerUpperSection from "@/components/scrollable-container/U
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
 import CommonCard from "@/app/_components/CardsSection/CommonCard";
+import { getImageUrl } from "@/lib/utils";
 
 interface EServicesSectionProps {
   eServices: EService[] | undefined;
@@ -52,7 +53,7 @@ const EServicesSection: React.FC<EServicesSectionProps> = ({ eServices }) => {
                 <CommonCard
                   el={{
                     href: service.link,
-                    imgUrl: service.icon,
+                    imgUrl: getImageUrl(service.icon),
                     title: service.title,
                   }}
                   index={index}

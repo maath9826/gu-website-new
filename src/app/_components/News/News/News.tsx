@@ -2,11 +2,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { NewsItem } from "@/lib/types";
 import { fetchNews } from "@/lib/api_services/news-apis";
 import NewsSectionClientSide from "./ClientSide";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 
 const NewsSection: React.FC = async () => {
-  const cookieStore = cookies();
-  const lang = cookieStore.get("language")?.value || "ar";
+  const lang = headers().get("x-locale") || "ar";
 
   let newsItems: NewsItem[] = [];
 

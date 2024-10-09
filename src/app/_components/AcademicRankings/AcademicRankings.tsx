@@ -1,10 +1,9 @@
 import { fetchRankings } from "@/lib/api_services/rankings-apis";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import AcademicRankingsClientSide from "./AcademicRankingsClientSide";
 
 const AcademicRankings: React.FC = async () => {
-  const cookieStore = cookies();
-  const lang = cookieStore.get("language")?.value || "ar";
+  const lang = headers().get("x-locale") || "ar";
 
   let rankingsData;
 

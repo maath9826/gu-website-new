@@ -1,10 +1,9 @@
 import { fetchColleges } from "@/lib/api_services/colleges-apis";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import OurCollegesClientSide from "./OurCollegesClientSide";
 
 const OurColleges: React.FC = async () => {
-  const cookieStore = cookies();
-  const lang = cookieStore.get("language")?.value || "ar";
+  const lang = headers().get("x-locale") || "ar";
 
   let collegesData;
 

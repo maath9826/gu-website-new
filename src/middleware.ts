@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { locales } from "./i18n.config";
 import { NextRequest } from "next/server";
+import { getLocaleFromPathname } from "./lib/utils";
 
 // export default createMiddleware({
 //   // A list of all locales that are supported
@@ -17,11 +18,19 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+  const locale = getLocaleFromPathname(pathname);
+
   // Call the intlMiddleware
   const response = intlMiddleware(request);
 
+  if (locale?.trim()) {
+    // Add the custom header to the response
+    response.headers.set("x-locale", locale);
+  }
+
   // Add the custom header to the response
-  response.headers.set("x-pathname", request.nextUrl.pathname);
+  response.headers.set("x-pathname", pathname);
 
   return response;
 }

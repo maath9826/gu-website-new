@@ -1,12 +1,11 @@
 import { fetchEServices, fetchContact } from "@/lib/api_services/common-apis";
 import EServicesSection from "./EServicesSection";
 import ContactSection from "./ContactSection";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import MapSection from "./MapSection";
 
 const CommonSections: React.FC = async () => {
-  const cookieStore = cookies();
-  const lang = cookieStore.get("language")?.value || "ar";
+  const lang = headers().get("x-locale") || "ar";
 
   let eServicesData;
   let contactData;

@@ -34,7 +34,7 @@ const TopbarNavigation: React.FC = () => {
   return (
     <ul className="flex items-center">
       {navItems.map((item, index) => (
-        <React.Fragment key={item.path}>
+        <React.Fragment key={index}>
           {index !== 0 && (
             <div className="mx-2.5 hidden h-4 border-e border-white/10 sm:block"></div>
           )}
@@ -69,7 +69,7 @@ const TopbarContact: React.FC<{ contactInfo: RawContact | undefined }> = ({
   contactInfo,
 }) => {
   const locale = useLocale() as Locale;
-  const t = useTranslations("Header.topbar");
+  const t = useTranslations("Header");
 
   if (!contactInfo) return null;
 
@@ -86,7 +86,10 @@ const TopbarContact: React.FC<{ contactInfo: RawContact | undefined }> = ({
         />
       </div>
 
-      <ContactElement href="#" label={t("googleMapsLocation")} />
+      <ContactElement
+        href="https://www.google.com/maps/place/Gilgamesh+National+University/@33.2228317,44.3878671,17.75z/data=!4m6!3m5!1s0x1559d51e5f965023:0x269c2efce4992572!8m2!3d33.222307!4d44.3888341!16s%2Fg%2F11flrhj7xw?entry=ttu&g_ep=EgoyMDI0MTAwNS4yIKXMDSoASAFQAw%3D%3D"
+        label={t("googleMapsLocation")}
+      />
       <LocaleSwitcher locale={locale} />
     </div>
   );
@@ -97,7 +100,7 @@ const ContactElement: React.FC<{ href: string; label: string }> = ({
   label,
 }) => {
   return (
-    <a href={href} className="text-white hover:text-secondary">
+    <a target="_blank" href={href} className="text-white hover:text-secondary">
       {label}
     </a>
   );

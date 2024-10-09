@@ -4,20 +4,20 @@ import Statistics from "../_components/Statistics/Statistics";
 import HomepageCards from "../_components/CardsSection/HomepageCards";
 import OurColleges from "../_components/OurColleges/OurColleges";
 import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
-import SliderBg from "@/components/page/SliderBg";
-import dynamic from "next/dynamic";
 
-export default function Home() {
+import HomeSliderBg from "../_components/HomeSliderBg";
+
+export default async function Home() {
   return (
     <>
-      <SliderBg></SliderBg>
+      <HomeSliderBg></HomeSliderBg>
       <main className="relative z-30 flex flex-col items-center">
-        <HomepageCards></HomepageCards>
-        <News></News>
-        <Statistics></Statistics>
-        <OurGoals></OurGoals>
-        <OurColleges></OurColleges>
-        <AcademicRankings></AcademicRankings>
+        <HomepageCards />
+        <News />
+        <Statistics />
+        <OurGoals />
+        <OurColleges />
+        <AcademicRankings />
       </main>
     </>
   );
