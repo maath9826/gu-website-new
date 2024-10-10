@@ -1,3 +1,5 @@
+import { SharedPage } from "./types";
+
 export const HOME_ROUTE = "/";
 export const ABOUT_UNIVERSITY_ROUTE = "/about";
 export const COLLEGES_ROUTE = "/colleges";
@@ -94,12 +96,17 @@ export const TRANSCRIPT_REQUEST_ROUTE = `${GRADUATES_PORTAL_ROUTE}/transcript-re
 export const UNIVERSITY_ID_ISSUANCE_ROUTE = `${E_SERVICES_ROUTE}/university-id-issuance`;
 export const ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE = `${E_SERVICES_ROUTE}/electronic-participation-certificates`;
 
+// shared pages
+export const SHARED_PAGES_ROUTE = "/shared-pages";
+export const getSharedPageRoute = (name: SharedPage) =>
+  `${SHARED_PAGES_ROUTE}/${name}`;
+
 // Topbar navigation
 export const CONTACT_ROUTE = "/contact";
 export const NEWS_ROUTE = "/news";
 export const SUSTAINABILITY_ROUTE = "/sustainability";
 export const UNIVERSITY_AND_COMMUNITY_ROUTE = "/university-and-community";
-export const GRADUATES_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/graduates`;
+
 export const QUALIFICATION_EMPLOYMENT_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/qualification-employment`;
 export const CONSULTING_CLINIC_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/consulting-clinic`;
 export const MINISTRY_INQUIRIES_ROUTE = `${UNIVERSITY_AND_COMMUNITY_ROUTE}/ministry-inquiries`;

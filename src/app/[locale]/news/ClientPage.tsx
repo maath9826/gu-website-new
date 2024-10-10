@@ -1,22 +1,14 @@
 "use client";
 
 import MainNewsCard from "@/app/_components/News/MainNewsCard";
-import NewsSection from "@/app/_components/News/News/News";
 import NewsCard from "@/app/_components/News/NewsCard";
-import NewsTags from "@/app/_components/News/NewsTags";
-import PageWithFirstSection from "@/components/page/Page";
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import ScrollElement from "@/components/ScrollElement";
 import Section from "@/components/Section";
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n.config";
-import { newsItems } from "@/lib/data";
-import { NEWS_ROUTE } from "@/lib/paths";
-import { NewsItem } from "@/lib/types";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+// import { newsItems } from "@/lib/data";
+import { useTranslations } from "next-intl";
+import React, { useRef } from "react";
 
 export default function NewsClientPage() {
   const t = useTranslations("Home.news");

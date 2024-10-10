@@ -258,3 +258,19 @@ export interface Contact {
 export interface ContactsResponse {
   contacts: RawContact[];
 }
+
+export type SharedPage = "graduates";
+
+export interface SharedPageData {
+  id: number;
+  category: string;
+  en_title: string;
+  ar_title: string;
+  en_description: string;
+  ar_description: string;
+  images: string[];
+}
+
+export interface SharedPageResponse {
+  data: SharedPageData[];
+}
