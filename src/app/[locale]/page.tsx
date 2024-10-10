@@ -5,7 +5,7 @@ import HomepageCards from "../_components/CardsSection/HomepageCards";
 import OurColleges from "../_components/OurColleges/OurColleges";
 import AcademicRankings from "../_components/AcademicRankings/AcademicRankings";
 
-import HomeSliderBg from "../_components/HomeSliderBg";
+import HomeSliderBg from "../_components/HomeSlider/HomeSliderBg";
 
 export default async function Home() {
   return (

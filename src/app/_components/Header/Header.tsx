@@ -8,6 +8,7 @@ import { fetchLinks } from "@/lib/api_services/common-apis";
 import { RawContact } from "@/lib/types";
 import TopbarClient from "./Topbar/TopbarClient";
 import NavbarClient from "./Navbar/NavbarClient";
+import DynamicImage from "@/components/DynamicImage";
 
 export default async function Header() {
   const pathname = removeLocaleFromPathname(
