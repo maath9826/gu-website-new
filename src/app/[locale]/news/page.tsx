@@ -2,7 +2,15 @@ import { getTranslations } from "next-intl/server";
 import NewsClientPage from "./ClientPage";
 import { NewsResponse } from "@/lib/types";
 import { getLatestNews } from "@/lib/api_services/news-apis";
-import { useNewsStore } from "@/lib/zustand/newsStore";
+import AppInitializer from "./AppInitializer";
+import { CounterStoreProvider } from "@/lib/providers/counter-store-provider";
+import {
+  NewsStoreContext,
+  NewsStoreProvider,
+  NewsStoreProviderProps,
+} from "../../../lib/providers/news-provider";
+import { createContext } from "react";
+import { MyContextProvider } from "./test";
 
 export async function generateMetadata({
   params: { locale },
@@ -24,16 +32,18 @@ export default async function NewsPage() {
 
   try {
     newsResponse = await getLatestNews(1);
-    useNewsStore.getState().initializeState(newsResponse);
-
-    console.log(useNewsStore.getState().news);
   } catch (error) {
     console.error("Failed to fetch news:", error);
   }
 
   return (
     newsResponse && (
-      <NewsClientPage newsResponse={newsResponse}></NewsClientPage>
+      <NewsStoreProvider newsResponse={newsResponse}>
+        <NewsClientPage></NewsClientPage>
+      </NewsStoreProvider>
+      // <NewsStoreProvider newsResponse={newsResponse}>
+      //   <NewsClientPage></NewsClientPage>
+      // </NewsStoreProvider>
     )
   );
 }

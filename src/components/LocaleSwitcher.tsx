@@ -46,13 +46,7 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
       </SelectTrigger>
       <SelectContent>
         {locales.map((loc) => (
-          <SelectItem
-            key={loc}
-            value={loc}
-            onClick={(e) => {
-              console.log("sdasdsad");
-            }}
-          >
+          <SelectItem key={loc} value={loc} onClick={(e) => {}}>
             {loc.toUpperCase()}
           </SelectItem>
         ))}

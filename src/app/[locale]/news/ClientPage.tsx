@@ -6,35 +6,39 @@ import { ScrollableCardsContainer } from "@/components/scrollable-container/Scro
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import ScrollElement from "@/components/ScrollElement";
 import Section from "@/components/Section";
-import { useNewsStore } from "@/lib/zustand/newsStore";
 import { useTranslations } from "next-intl";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { NewsResponse } from "@/lib/types";
 import Pagination from "@/components/Pagination";
+import { useCounterStore } from "@/lib/providers/counter-store-provider";
+import { NewsStoreContext, useNewsStore } from "@/lib/providers/news-provider";
+import { MyContext, useMyContext } from "./test";
 
-interface NewsClientPageProps {
-  newsResponse: NewsResponse;
-}
-
-export default function NewsClientPage({ newsResponse }: NewsClientPageProps) {
+export default function NewsClientPage() {
   const t = useTranslations("Home.news");
   const containerRef = useRef<HTMLDivElement>(null);
-  const { news, pagination, isLoading, fetchNews, setPage, initializeState } =
-    useNewsStore();
+  // const { news, pagination, isLoading, fetchNews, setPage, initializeState } =
+  //   useNewsContextStore();
 
-  console.log(useNewsStore.getState().news);
-  useEffect(() => {
-    // initializeState(newsResponse);
-  }, [initializeState, newsResponse]);
+  const { test } = useNewsStore();
 
-  const handlePageChange = (newPage: number) => {
-    setPage(newPage);
-    fetchNews();
-  };
+  console.log("useNewsStore 0 0 0 00 0 0", useNewsStore().news);
+
+  // const { news: newsNew } = useContext(NewsStoreContext)();
+
+  // console.log(useContext(NewsStoreContext)());
+
+  // const handlePageChange = (newPage: number) => {
+  //   setPage(newPage);
+  //   fetchNews();
+  // };
 
   return (
     <main className="mt-[36px] sm:mt-[180px]">
-      <Section>
+      <div>{test}</div>
+      {/* <div>{useNewsStore().news[0]?.ar_title}</div> */}
+      {/* <div>{newsNew[0].ar_title}</div> */}
+      {/* <Section>
         <div className="flex-col">
           <ScrollableContainerUpperSection
             title={t("title")}
@@ -69,7 +73,7 @@ export default function NewsClientPage({ newsResponse }: NewsClientPageProps) {
             totalItems={pagination.total}
           />
         </div>
-      </Section>
+      </Section> */}
     </main>
   );
 }
