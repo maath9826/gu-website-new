@@ -165,4 +165,15 @@ export function getLocaleFromPathname(pathname: string): string | null {
   return match ? match[1] : null;
 }
 
+export function isEmptyHtml(htmlString: string) {
+  // Parse the HTML string
+  const parsedHtml = htmlString.replace(/>\s+</g, "><").trim();
+
+  // Remove all valid empty HTML tags
+  const withoutEmptyTags = parsedHtml.replace(/<[^>]*><\/[^>]*>/g, "");
+
+  // Check if anything remains
+  return withoutEmptyTags.length === 0;
+}
+
 export { getPrintProps };

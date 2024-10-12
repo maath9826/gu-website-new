@@ -1,7 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { locales } from "./i18n.config";
 import { NextRequest } from "next/server";
-import { getLocaleFromPathname } from "./lib/utils";
+import { getLocaleFromPathname, removeLocaleFromPathname } from "./lib/utils";
 
 // export default createMiddleware({
 //   // A list of all locales that are supported
@@ -18,7 +18,8 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const pathname = removeLocaleFromPathname(request.nextUrl.pathname);
+
   const locale = getLocaleFromPathname(pathname);
 
   // Call the intlMiddleware

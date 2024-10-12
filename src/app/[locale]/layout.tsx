@@ -10,6 +10,7 @@ import Footer from "../_components/Footer/Footer";
 import Script from "next/script";
 import CommonSections from "@/components/common-sections/CommonSections";
 import SuccessModal from "@/components/modals/SuccessModal";
+import { usePathname } from "@/i18n.config";
 
 export const metadata: Metadata = {
   title: "Create Next App",

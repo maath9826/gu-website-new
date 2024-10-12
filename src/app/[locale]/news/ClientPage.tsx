@@ -6,13 +6,31 @@ import { ScrollableCardsContainer } from "@/components/scrollable-container/Scro
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import ScrollElement from "@/components/ScrollElement";
 import Section from "@/components/Section";
-// import { newsItems } from "@/lib/data";
+import { useNewsStore } from "@/lib/zustand/newsStore";
 import { useTranslations } from "next-intl";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { NewsResponse } from "@/lib/types";
+import Pagination from "@/components/Pagination";
 
-export default function NewsClientPage() {
+interface NewsClientPageProps {
+  newsResponse: NewsResponse;
+}
+
+export default function NewsClientPage({ newsResponse }: NewsClientPageProps) {
   const t = useTranslations("Home.news");
   const containerRef = useRef<HTMLDivElement>(null);
+  const { news, pagination, isLoading, fetchNews, setPage, initializeState } =
+    useNewsStore();
+
+  console.log(useNewsStore.getState().news);
+  useEffect(() => {
+    // initializeState(newsResponse);
+  }, [initializeState, newsResponse]);
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+    fetchNews();
+  };
 
   return (
     <main className="mt-[36px] sm:mt-[180px]">
@@ -23,11 +41,11 @@ export default function NewsClientPage() {
             containerRef={containerRef}
             titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
             className="sm:mb-[50px] 1920:mb-[66px]"
-          ></ScrollableContainerUpperSection>
+          />
 
           <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
             <ScrollableCardsContainer ref={containerRef}>
-              {newsItems([]).map((item, index) => (
+              {news.map((item, index) => (
                 <ScrollElement className="flex justify-center" key={index}>
                   <MainNewsCard item={item} />
                 </ScrollElement>
@@ -37,13 +55,19 @@ export default function NewsClientPage() {
               className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
               wrapperClass="sm:flex hidden"
             >
-              {newsItems([])
-                .slice(1, 4)
-                .map((item) => (
-                  <NewsCard key={item.id} item={item} />
-                ))}
+              {news.slice(1, 4).map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
             </Section>
           </div>
+
+          <Pagination
+            currentPage={pagination.currentPage}
+            totalPages={pagination.totalPages}
+            onPageChange={handlePageChange}
+            itemsPerPage={pagination.perPage}
+            totalItems={pagination.total}
+          />
         </div>
       </Section>
     </main>

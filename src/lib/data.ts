@@ -8,6 +8,7 @@ import {
 
 import * as paths from "./paths";
 import { TranslationFunction } from "./utils";
+import { sharedPageNames } from "./api_services/api-paths";
 
 // export const newsItems: (transNews: TransNewsItem[]) => NewsItem[] = (
 //   transNews: TransNewsItem[],
@@ -403,19 +404,23 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
     items: [
       {
         path: paths.getSharedPageRoute("graduates"),
-        label: t("Header.navLinks.graduates"),
+        label: t("SharedPages.graduates"),
       },
       {
-        path: paths.QUALIFICATION_EMPLOYMENT_ROUTE,
-        label: t("Header.navLinks.qualificationEmployment"),
+        path: paths.getSharedPageRoute(
+          sharedPageNames.rehabilitationAndEmployment,
+        ),
+        label: t("SharedPages.rehabilitationAndEmployment"),
       },
       {
-        path: paths.CONSULTING_CLINIC_ROUTE,
-        label: t("Header.navLinks.consultingClinic"),
+        path: paths.getSharedPageRoute(sharedPageNames.consultingClinics),
+        label: t("SharedPages.consultingClinics"),
       },
       {
-        path: paths.MINISTRY_INQUIRIES_ROUTE,
-        label: t("Header.navLinks.ministryInquiries"),
+        path: paths.getSharedPageRoute(
+          sharedPageNames.electronicInquiriesMinistryHigherEducation,
+        ),
+        label: t("SharedPages.electronicInquiriesMinistryHigherEducation"),
       },
       {
         label: t("Header.navLinks.surveys"),
@@ -433,8 +438,8 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
     ],
   },
   {
-    path: paths.SUSTAINABILITY_ROUTE,
-    label: t("Header.navLinks.sustainability"),
+    path: paths.getSharedPageRoute(sharedPageNames.sustainability),
+    label: t("SharedPages.sustainability"),
   },
   { path: paths.NEWS_ROUTE, label: t("Header.navLinks.news") },
   { path: paths.CONTACT_ROUTE, label: t("Header.navLinks.contact") },

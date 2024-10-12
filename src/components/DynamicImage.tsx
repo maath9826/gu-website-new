@@ -17,6 +17,7 @@ export default async function DynamicImage({
   src,
   placeholderData,
   alt,
+  id,
   containerClass,
   sizes,
   priority,
@@ -25,6 +26,7 @@ export default async function DynamicImage({
   src?: string;
   placeholderData?: PlaceholderImgData;
   alt?: string;
+  id?: string;
   containerClass?: string;
   sizes?: string;
   priority?: boolean;
@@ -36,6 +38,7 @@ export default async function DynamicImage({
     <div className={cn("relative", containerClass)}>
       <Image
         {...data}
+        id={id}
         alt={alt || ""}
         placeholder="blur"
         blurDataURL={base64}

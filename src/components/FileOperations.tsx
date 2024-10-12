@@ -7,7 +7,12 @@ import { useReactToPrint } from "react-to-print";
 import { useTranslations } from "next-intl";
 import useTextDirection from "@/app/_hooks/useTextDirection";
 import { twMerge } from "tailwind-merge";
-import PDFDownloadButton, { PDFStyles } from "./PDFDownloadButton";
+import { PDFStyles } from "./PDFDownloadButton";
+import dynamic from "next/dynamic";
+
+const PDFDownloadButton = dynamic(() => import("./PDFDownloadButton"), {
+  ssr: false,
+});
 
 export default function FileOperations({
   className,

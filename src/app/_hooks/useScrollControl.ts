@@ -46,7 +46,7 @@ function useScrollControl({
         if (useMultiples) {
           const currentMultiple = Math.round(
             Math.abs(scrollLeft) /
-              (baseScrollAmount ?? containerRef.current.clientWidth)
+              (baseScrollAmount ?? containerRef.current.clientWidth),
           );
 
           targetScroll =
@@ -56,8 +56,8 @@ function useScrollControl({
                   ? 1
                   : -1
                 : direction === "left"
-                ? 1
-                : -1)) *
+                  ? 1
+                  : -1)) *
             (baseScrollAmount ?? containerRef.current.clientWidth);
           // (baseScrollAmount * (isLTR ? -1 : 1));
 
@@ -72,13 +72,13 @@ function useScrollControl({
             left:
               direction === "left"
                 ? -(baseScrollAmount ?? baseScrollAmountFallback)
-                : baseScrollAmount ?? baseScrollAmountFallback,
+                : (baseScrollAmount ?? baseScrollAmountFallback),
             behavior: "smooth",
           });
         }
       }
     },
-    [containerRef, useMultiples, baseScrollAmount]
+    [containerRef, useMultiples, baseScrollAmount],
   );
 
   const resetScrollPosition = useCallback(() => {

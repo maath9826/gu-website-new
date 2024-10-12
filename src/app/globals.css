@@ -184,10 +184,6 @@ input[type="tel" i] {
   @apply pointer-events-none bg-[#D9D9D9]/30;
 }
 
-.scroll-button {
-  @apply h-[31px] w-[31px] rounded-full text-[18px] text-foreground sm:h-[36px] sm:!w-[36px] sm:text-[18px] 1920:h-[48px] 1920:!w-[48px] 1920:text-[24px];
-}
-
 .scroller {
   overflow: hidden;
   -webkit-mask: linear-gradient(

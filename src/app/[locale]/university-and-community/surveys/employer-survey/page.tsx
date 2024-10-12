@@ -5,5 +5,10 @@ import SurveyForm from "@/components/SurveyForm";
 export default function EmployerSurveyPage() {
   const tNavLinks = useTranslations("Header.navLinks");
 
-  return <SurveyForm title={tNavLinks("employerSurvey")} />;
+  return (
+    <SurveyForm
+      title={tNavLinks("employerSurvey")}
+      endpoint="/employer_survey"
+    />
+  );
 }

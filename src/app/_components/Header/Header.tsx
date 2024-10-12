@@ -9,12 +9,10 @@ import { RawContact } from "@/lib/types";
 import TopbarClient from "./Topbar/TopbarClient";
 import NavbarClient from "./Navbar/NavbarClient";
 import DynamicImage from "@/components/DynamicImage";
+import Head from "next/head";
+import HeaderClient from "./HeaderClient";
 
 export default async function Header() {
-  const pathname = removeLocaleFromPathname(
-    headers().get("x-pathname") ?? HOME_ROUTE,
-  );
-
   let contactInfo: RawContact | undefined;
 
   try {
@@ -23,16 +21,5 @@ export default async function Header() {
     console.error("Failed to fetch contact information:", error);
   }
 
-  return (
-    <header
-      className={twMerge(
-        "relative z-40 flex flex-col bg-primary sm:items-center sm:border-b sm:border-[#D9D9D9]/10",
-        [...IMAGE_BG_ROUTES, ...SLIDER_BG_ROUTES].includes(pathname) &&
-          "sm:bg-transparent",
-      )}
-    >
-      <TopbarClient contactInfo={contactInfo}></TopbarClient>
-      <NavbarClient contactInfo={contactInfo}></NavbarClient>
-    </header>
-  );
+  return <HeaderClient contactInfo={contactInfo}></HeaderClient>;
 }

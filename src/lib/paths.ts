@@ -1,4 +1,4 @@
-import { SharedPage } from "./types";
+import { SharedPage } from "./api_services/api-paths";
 
 export const HOME_ROUTE = "/";
 export const ABOUT_UNIVERSITY_ROUTE = "/about";
@@ -119,7 +119,10 @@ export const NOT_FOUND_ROUTE = "/not_found";
 // // FirstSection path arrays
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
-export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
+export const IMAGE_BG_ROUTES: string[] = [
+  RELATED_LOCATIONS_ROUTE,
+  CONTACT_ROUTE,
+];
 
 // export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [
 //   SUSTAINABILITY_ROUTE,

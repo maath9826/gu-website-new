@@ -115,6 +115,16 @@ const config = {
             transform: "scaleX(-1)",
           },
         },
+
+        ".center-vertically": {
+          top: "50%",
+          transform: "translateY(-50%)",
+        },
+
+        ".center-horizontally": {
+          left: "50%",
+          transform: "translateX(-50%)",
+        },
       };
 
       addUtilities(newUtilities);

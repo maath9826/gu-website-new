@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "./ui/button";
 import useTextDirection from "@/app/_hooks/useTextDirection";
+import ScrollArrowButton from "./ScrollArrowButton";
 
 export default function ScrollArrows({
   containerRef,
@@ -11,6 +12,8 @@ export default function ScrollArrows({
   resetTimer,
   wrapperClassName,
   className,
+  buttonWrapperClass,
+  isChevron,
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
   scrollAmount?: number;
@@ -18,6 +21,8 @@ export default function ScrollArrows({
   resetTimer?: () => void;
   className?: string;
   wrapperClassName?: string;
+  buttonWrapperClass?: string;
+  isChevron?: boolean;
 }) {
   const dir = useTextDirection();
 
@@ -45,30 +50,23 @@ export default function ScrollArrows({
         wrapperClassName,
       )}
     >
-      <Button
-        variant={"secondary"}
-        className={twMerge(
-          "scroll-button flippable",
-          !canScrollStart && "disabled-scroll-button",
-          className,
-        )}
-        size="icon"
+      <ScrollArrowButton
+        isChevron={isChevron}
+        wrapperClass={buttonWrapperClass}
+        direction="right"
+        canScroll={canScrollStart}
         onClick={() => scroll({ direction: "right", isLTR: dir == "ltr" })}
-      >
-        <i className="ri-arrow-right-line"></i>
-      </Button>
-      <Button
-        variant={"secondary"}
-        className={twMerge(
-          "scroll-button flippable",
-          !canScrollEnd && "disabled-scroll-button",
-          className,
-        )}
-        size="icon"
+        className={className}
+      />
+
+      <ScrollArrowButton
+        isChevron={isChevron}
+        wrapperClass={buttonWrapperClass}
+        direction="left"
+        canScroll={canScrollEnd}
         onClick={() => scroll({ direction: "left", isLTR: dir == "ltr" })}
-      >
-        <i className="ri-arrow-left-line"></i>
-      </Button>
+        className={className}
+      />
     </div>
   );
 }

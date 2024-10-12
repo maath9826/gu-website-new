@@ -5,5 +5,10 @@ import SurveyForm from "@/components/SurveyForm";
 export default function GraduatesSurveyPage() {
   const tNavLinks = useTranslations("Header.navLinks");
 
-  return <SurveyForm title={tNavLinks("graduateSurvey")} />;
+  return (
+    <SurveyForm
+      title={tNavLinks("graduateSurvey")}
+      endpoint="/graduate_survey"
+    />
+  );
 }

@@ -1,3 +1,5 @@
+import { sharedPageNames } from "./api_services/api-paths";
+
 export type SliderElement = {
   image: string;
   title: string;
@@ -60,18 +62,18 @@ export type Location = {
   googleMapsLink: string;
 };
 
-// types.ts
+// // types.ts
 
-export interface NewsItem {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-}
+// export interface NewsItem {
+//   id: number;
+//   title: string;
+//   image: string;
+//   description: string;
+// }
 
-export interface NewsResponse {
-  landingpage: NewsItem[];
-}
+// export interface NewsResponse {
+//   landingpage: NewsItem[];
+// }
 
 export interface StatisticsItem {
   id: number;
@@ -259,7 +261,12 @@ export interface ContactsResponse {
   contacts: RawContact[];
 }
 
-export type SharedPage = "graduates";
+export type UploadedImage = {
+  id: number;
+  static_pages_id: number;
+  photo_library_id: number;
+  image: string;
+};
 
 export interface SharedPageData {
   id: number;
@@ -268,9 +275,45 @@ export interface SharedPageData {
   ar_title: string;
   en_description: string;
   ar_description: string;
-  images: string[];
+  images: UploadedImage[];
 }
 
 export interface SharedPageResponse {
   data: SharedPageData[];
 }
+
+export type NewsItem = {
+  id: number;
+  category: string;
+  en_title: string;
+  ar_title: string;
+  video: string;
+  en_subtext: string;
+  ar_subtext: string;
+  en_description: string;
+  ar_description: string;
+  image: string;
+  colleges_id: number;
+  departments_id: number | null;
+  created_at: string;
+  updated_at: string;
+  publish: number;
+};
+
+export type NewsResponse = {
+  latestnews: {
+    current_page: number;
+    data: NewsItem[];
+    first_page_url: string;
+    from: number;
+    last_page: number;
+    last_page_url: string;
+    next_page_url: string | null;
+    path: string;
+    per_page: number;
+    prev_page_url: string | null;
+    to: number;
+    total: number;
+  };
+  pages: number;
+};
