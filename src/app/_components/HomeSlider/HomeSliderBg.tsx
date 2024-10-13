@@ -1,25 +1,24 @@
 import { PlaceholderImgData } from "@/components/DynamicImage";
 import SliderBg from "@/components/page/SliderBg";
-import { fetchNews } from "@/lib/api_services/news-apis";
 import { getImagePlaceholder } from "@/lib/server-utils";
-import { NewsItem } from "@/lib/types";
+import { SliderItem, NewsItem } from "@/lib/types";
 import { headers } from "next/headers";
 import React from "react";
-import { newsItems } from "../../../lib/data";
 import { getImageUrl } from "@/lib/utils";
+import { fetchSliderItems } from "@/lib/api_services/homepage-apis";
 
 export default async function HomeSliderBg() {
   const lang = headers().get("x-locale") || "ar";
 
-  let newsItems: NewsItem[] = [];
+  let sliderItems: SliderItem[] = [];
   try {
-    newsItems = await fetchNews(lang);
+    sliderItems = await fetchSliderItems(lang);
   } catch (error) {
     console.error("Failed to fetch news:", error);
   }
 
   // const placeholdersData: PlaceholderImgData[] = await Promise.all(
-  //   newsItems.map(async (item) => {
+  //   sliderItems.map(async (item) => {
   //     const { base64, data } = await getImagePlaceholder(
   //       getImageUrl(item.image),
   //     );
@@ -30,6 +29,6 @@ export default async function HomeSliderBg() {
   //   }),
   // );
 
-  // return <SliderBg homeSliderData={{ newsItems, placeholdersData }} />;
-  return <SliderBg newsItems={newsItems} />;
+  // return <SliderBg homeSliderData={{ sliderItems, placeholdersData }} />;
+  return <SliderBg sliderItems={sliderItems} />;
 }

@@ -54,16 +54,16 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex w-full flex-col items-end justify-between gap-4 sm:flex-row">
+    <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
       <div className="flex items-center justify-center gap-3">
         <Button
           variant="white"
           size="icon"
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="h-10 w-10 border-b-2 p-0 text-sm"
+          className="h-10 w-10 p-0 text-sm"
         >
-          <i className="ri-arrow-right-line"></i>
+          <i className="ri-arrow-right-line flippable"></i>
         </Button>
         {getPageNumbers().map((pageNumber, index) => (
           <React.Fragment key={index}>
@@ -74,9 +74,9 @@ const Pagination: React.FC<PaginationProps> = ({
                 variant="white"
                 onClick={() => onPageChange(pageNumber as number)}
                 className={cn(
-                  "h-10 w-10 border-b-2 p-0 text-sm",
+                  "h-10 w-10 p-0 text-sm",
                   currentPage === pageNumber
-                    ? "border-blue-800 bg-blue-600 text-white"
+                    ? "bg-primary text-white"
                     : "bg-white",
                 )}
               >
@@ -90,9 +90,9 @@ const Pagination: React.FC<PaginationProps> = ({
           size="icon"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="h-10 w-10 border-b-2 p-0 text-sm"
+          className="h-10 w-10 p-0 text-sm"
         >
-          <i className="ri-arrow-left-line"></i>
+          <i className="ri-arrow-left-line flippable"></i>
         </Button>
       </div>
     </div>

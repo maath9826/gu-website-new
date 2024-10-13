@@ -64,16 +64,16 @@ export type Location = {
 
 // // types.ts
 
-// export interface NewsItem {
-//   id: number;
-//   title: string;
-//   image: string;
-//   description: string;
-// }
+export interface SliderItem {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+}
 
-// export interface NewsResponse {
-//   landingpage: NewsItem[];
-// }
+export interface HomepageSliderItemsResponse {
+  landingpage: SliderItem[];
+}
 
 export interface StatisticsItem {
   id: number;

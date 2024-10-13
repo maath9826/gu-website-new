@@ -3,18 +3,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import ScrollArrows from "@/components/ScrollArrows";
-import { NewsItem } from "@/lib/types";
+import { NewsItem, SliderItem } from "@/lib/types";
 import useScrollControl from "@/app/_hooks/useScrollControl";
 import useTextDirection from "../../app/_hooks/useTextDirection";
 import { getImageUrl } from "@/lib/utils";
 import Image from "next/image";
 
 interface SliderBgProps {
-  newsItems: NewsItem[];
+  sliderItems: SliderItem[];
 }
 
-export default function SliderBg({ newsItems }: SliderBgProps) {
-  return <ScrollableCardsContainer newsItems={newsItems} />;
+export default function SliderBg({ sliderItems }: SliderBgProps) {
+  return <ScrollableCardsContainer sliderItems={sliderItems} />;
 }
 
 const ImageSection = ({ image }: { image: string }) => {
@@ -34,7 +34,11 @@ const ImageSection = ({ image }: { image: string }) => {
   );
 };
 
-function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
+function ScrollableCardsContainer({
+  sliderItems,
+}: {
+  sliderItems: SliderItem[];
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const dir = useTextDirection();
   const [scrollAmount, setScrollAmount] = useState<number>();
@@ -95,7 +99,7 @@ function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
       <TextSection
         containerRef={containerRef}
         resetTimer={resetInterval}
-        newsItems={newsItems}
+        sliderItems={sliderItems}
       />
       <div
         ref={containerRef}
@@ -105,7 +109,7 @@ function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
         )}
       >
         <div className="flex h-full w-fit">
-          {newsItems.map((newsItem, index) => (
+          {sliderItems.map((newsItem, index) => (
             <ImageSection key={index} image={newsItem.image} />
           ))}
         </div>
@@ -117,11 +121,11 @@ function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
 function TextSection({
   containerRef,
   resetTimer,
-  newsItems,
+  sliderItems,
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
   resetTimer: () => void;
-  newsItems: NewsItem[];
+  sliderItems: SliderItem[];
 }) {
   const [scrollAmount, setScrollAmount] = useState<number>();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -146,7 +150,7 @@ function TextSection({
       containerRef.current?.removeEventListener("scroll", handleScroll);
   }, [scrollAmount]);
 
-  const currentNews = newsItems[currentIndex];
+  const currentNews = sliderItems[currentIndex];
 
   return (
     <div className="relative z-30 w-full max-w-mobile pt-[51px] text-start sm:mx-auto sm:max-w-desktop sm:px-[30px] sm:pt-[116px] 1920:max-w-desktop-lg 1920:pt-[318px]">

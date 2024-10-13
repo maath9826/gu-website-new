@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Section from "../../../../components/Section";
 import MainNewsCard from "../MainNewsCard";
 import NewsCard from "../NewsCard";
@@ -9,7 +9,6 @@ import { NewsItem } from "@/lib/types";
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
-import { fetchNews } from "@/lib/api_services/news-apis";
 
 const NewsSectionClientSide: React.FC<{ newsItems: NewsItem[] }> = ({
   newsItems,
@@ -29,7 +28,7 @@ const NewsSectionClientSide: React.FC<{ newsItems: NewsItem[] }> = ({
 
         <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
           <ScrollableCardsContainer ref={containerRef}>
-            {newsItems.map((item, index) => (
+            {newsItems.slice(0, 4).map((item, index) => (
               <ScrollElement className="flex justify-center" key={index}>
                 <MainNewsCard item={item} />
               </ScrollElement>

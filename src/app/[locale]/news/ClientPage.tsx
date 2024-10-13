@@ -12,33 +12,22 @@ import { NewsResponse } from "@/lib/types";
 import Pagination from "@/components/Pagination";
 import { useCounterStore } from "@/lib/providers/counter-store-provider";
 import { NewsStoreContext, useNewsStore } from "@/lib/providers/news-provider";
-import { MyContext, useMyContext } from "./test";
+import Wrapper from "@/components/Wrapper";
 
 export default function NewsClientPage() {
   const t = useTranslations("Home.news");
   const containerRef = useRef<HTMLDivElement>(null);
-  // const { news, pagination, isLoading, fetchNews, setPage, initializeState } =
-  //   useNewsContextStore();
 
-  const { test } = useNewsStore();
+  const { news, setPage, fetchNews, isLoading, pagination } = useNewsStore();
 
-  console.log("useNewsStore 0 0 0 00 0 0", useNewsStore().news);
-
-  // const { news: newsNew } = useContext(NewsStoreContext)();
-
-  // console.log(useContext(NewsStoreContext)());
-
-  // const handlePageChange = (newPage: number) => {
-  //   setPage(newPage);
-  //   fetchNews();
-  // };
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+    fetchNews();
+  };
 
   return (
     <main className="mt-[36px] sm:mt-[180px]">
-      <div>{test}</div>
-      {/* <div>{useNewsStore().news[0]?.ar_title}</div> */}
-      {/* <div>{newsNew[0].ar_title}</div> */}
-      {/* <Section>
+      <Section>
         <div className="flex-col">
           <ScrollableContainerUpperSection
             title={t("title")}
@@ -59,21 +48,24 @@ export default function NewsClientPage() {
               className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
               wrapperClass="sm:flex hidden"
             >
-              {news.slice(1, 4).map((item) => (
+              {news.slice(1).map((item) => (
                 <NewsCard key={item.id} item={item} />
               ))}
             </Section>
+            <Section className="mt-[50px] sm:mt-[50px]">
+              <Wrapper>
+                <Pagination
+                  currentPage={pagination.currentPage}
+                  totalPages={pagination.totalPages}
+                  onPageChange={handlePageChange}
+                  itemsPerPage={pagination.perPage}
+                  totalItems={pagination.total}
+                />
+              </Wrapper>
+            </Section>
           </div>
-
-          <Pagination
-            currentPage={pagination.currentPage}
-            totalPages={pagination.totalPages}
-            onPageChange={handlePageChange}
-            itemsPerPage={pagination.perPage}
-            totalItems={pagination.total}
-          />
         </div>
-      </Section> */}
+      </Section>
     </main>
   );
 }

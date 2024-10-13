@@ -1,38 +1,36 @@
-// src/providers/counter-store-provider.tsx
 "use client";
 
-import { type ReactNode, createContext, useRef, useContext } from "react";
+import { type ReactNode, createContext, useContext } from "react";
 import { useStore } from "zustand";
-
 import { NewsResponse } from "../types";
 import { createNewsStore, NewsState } from "../zustand/newsStore";
 
-export const NewsStoreContext = createContext<any>(undefined);
+export const NewsStoreContext = createContext<ReturnType<
+  typeof createNewsStore
+> | null>(null);
 
 export interface NewsStoreProviderProps {
   children: ReactNode;
-  newsResponse: NewsResponse;
+  initialState: Partial<NewsState>;
 }
 
 export const NewsStoreProvider = ({
   children,
-  newsResponse,
+  initialState,
 }: NewsStoreProviderProps) => {
-  const useNewsStore = createNewsStore("test from 8 9 21");
+  const store = createNewsStore(initialState);
 
   return (
-    <NewsStoreContext.Provider value={{ useNewsStore }}>
+    <NewsStoreContext.Provider value={store}>
       {children}
     </NewsStoreContext.Provider>
   );
 };
 
 export const useNewsStore = () => {
-  const newsStoreContext = useContext(NewsStoreContext);
-
-  if (!newsStoreContext) {
-    throw new Error(`useNewsStore must be used within CounterStoreProvider`);
+  const store = useContext(NewsStoreContext);
+  if (!store) {
+    throw new Error("useNewsStore must be used within NewsStoreProvider");
   }
-
-  return useStore(newsStoreContext.useNewsStore);
+  return useStore(store);
 };

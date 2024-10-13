@@ -1,7 +1,7 @@
 import { ValueOf } from "next/dist/shared/lib/constants";
 
 export const API_PATHS = {
-  NEWS: "/landingpage",
+  LANDING_PAGE: "/landingpage",
   STATISTICS: "/statistics",
   GOALS: "/goals",
   COLLEGES: "/colleges",

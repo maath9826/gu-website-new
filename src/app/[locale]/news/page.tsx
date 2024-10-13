@@ -2,15 +2,7 @@ import { getTranslations } from "next-intl/server";
 import NewsClientPage from "./ClientPage";
 import { NewsResponse } from "@/lib/types";
 import { getLatestNews } from "@/lib/api_services/news-apis";
-import AppInitializer from "./AppInitializer";
-import { CounterStoreProvider } from "@/lib/providers/counter-store-provider";
-import {
-  NewsStoreContext,
-  NewsStoreProvider,
-  NewsStoreProviderProps,
-} from "../../../lib/providers/news-provider";
-import { createContext } from "react";
-import { MyContextProvider } from "./test";
+import { NewsStoreProvider } from "../../../lib/providers/news-provider";
 
 export async function generateMetadata({
   params: { locale },
@@ -38,12 +30,19 @@ export default async function NewsPage() {
 
   return (
     newsResponse && (
-      <NewsStoreProvider newsResponse={newsResponse}>
-        <NewsClientPage></NewsClientPage>
+      <NewsStoreProvider
+        initialState={{
+          news: newsResponse.latestnews.data,
+          pagination: {
+            currentPage: newsResponse.latestnews.current_page,
+            totalPages: newsResponse.latestnews.last_page,
+            perPage: newsResponse.latestnews.per_page,
+            total: newsResponse.latestnews.total,
+          },
+        }}
+      >
+        <NewsClientPage />
       </NewsStoreProvider>
-      // <NewsStoreProvider newsResponse={newsResponse}>
-      //   <NewsClientPage></NewsClientPage>
-      // </NewsStoreProvider>
     )
   );
 }
