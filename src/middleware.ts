@@ -18,7 +18,7 @@ const intlMiddleware = createMiddleware({
 });
 
 export default function middleware(request: NextRequest) {
-  const pathname = removeLocaleFromPathname(request.nextUrl.pathname);
+  const pathname = request.nextUrl.pathname;
 
   const locale = getLocaleFromPathname(pathname);
 
@@ -31,7 +31,7 @@ export default function middleware(request: NextRequest) {
   }
 
   // Add the custom header to the response
-  response.headers.set("x-pathname", pathname);
+  response.headers.set("x-pathname", removeLocaleFromPathname(pathname));
 
   return response;
 }

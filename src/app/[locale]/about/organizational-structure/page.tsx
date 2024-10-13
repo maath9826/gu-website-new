@@ -1,5 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import OrganizationalStructureClientPage from "./ClientPage";
+import {
+  fetchOrganizationalStructure,
+  OrganizationalStructure,
+} from "@/lib/api_services/organizational-structure-apis";
 
 export async function generateMetadata({
   params: { locale },
@@ -12,12 +16,24 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("organizationalStructureTitle"),
   };
 }
 
-export default function Page() {
+export default async function Page() {
+  let organizationalStructure: OrganizationalStructure | undefined;
+
+  try {
+    organizationalStructure = await fetchOrganizationalStructure();
+  } catch (error) {
+    console.error("Failed to fetch organizational structure:", error);
+  }
+
   return (
-    <OrganizationalStructureClientPage></OrganizationalStructureClientPage>
+    organizationalStructure && (
+      <OrganizationalStructureClientPage
+        organizationalStructure={organizationalStructure}
+      />
+    )
   );
 }

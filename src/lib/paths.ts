@@ -122,6 +122,7 @@ export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 export const IMAGE_BG_ROUTES: string[] = [
   RELATED_LOCATIONS_ROUTE,
   CONTACT_ROUTE,
+  ABOUT_UNIVERSITY_ROUTE,
 ];
 
 // export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [

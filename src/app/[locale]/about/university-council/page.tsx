@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import UniversityCouncilClientPage from "./ClientPage";
+import { fetchCouncilMembers } from "@/lib/api_services/council-apis";
+import { headers } from "next/headers";
 
 export async function generateMetadata({
   params: { locale },
@@ -12,10 +14,20 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("universityCouncilTitle"),
   };
 }
 
-export default function Page() {
-  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+export default async function Page() {
+  const lang = headers().get("x-locale") || "ar";
+  let councilMembers;
+
+  try {
+    councilMembers = await fetchCouncilMembers(lang);
+    console.log("councilMembers -- --", councilMembers);
+  } catch (error) {
+    console.error("Failed to fetch council members:", error);
+  }
+
+  return <UniversityCouncilClientPage councilMembers={councilMembers} />;
 }

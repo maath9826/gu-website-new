@@ -3,6 +3,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getPlaiceholder } from "plaiceholder";
 import { getImagePlaceholder } from "@/lib/server-utils";
+import { twMerge } from "tailwind-merge";
 
 export type PlaceholderImgData = {
   base64: string;
@@ -18,7 +19,7 @@ export default async function DynamicImage({
   placeholderData,
   alt,
   id,
-  containerClass,
+  wrapperClass,
   sizes,
   priority,
   className,
@@ -27,7 +28,7 @@ export default async function DynamicImage({
   placeholderData?: PlaceholderImgData;
   alt?: string;
   id?: string;
-  containerClass?: string;
+  wrapperClass?: string;
   sizes?: string;
   priority?: boolean;
   className?: string;
@@ -35,7 +36,7 @@ export default async function DynamicImage({
   const { base64, data } = placeholderData ?? (await getImagePlaceholder(src!));
 
   return (
-    <div className={cn("relative", containerClass)}>
+    <div className={cn("relative", wrapperClass)}>
       <Image
         {...data}
         id={id}
@@ -44,7 +45,7 @@ export default async function DynamicImage({
         blurDataURL={base64}
         sizes={"(max-width: 768px) 100vw, " + sizes}
         priority={priority}
-        className={className}
+        className={twMerge("h-full w-full object-cover", className)}
       />
     </div>
   );

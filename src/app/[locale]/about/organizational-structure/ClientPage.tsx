@@ -1,14 +1,25 @@
 "use client";
 
+import React from "react";
 import FileOperations from "@/components/FileOperations";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
+import { OrganizationalStructure } from "@/lib/api_services/organizational-structure-apis";
+import { getImageUrl } from "@/lib/utils";
+import Image from "next/image";
 
-import React from "react";
+interface OrganizationalStructureClientPageProps {
+  organizationalStructure: OrganizationalStructure | undefined;
+}
 
-export default function OrganizationalStructureClientPage() {
+export default function OrganizationalStructureClientPage({
+  organizationalStructure,
+}: OrganizationalStructureClientPageProps) {
+  if (!organizationalStructure) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
       <ActionsTitle
@@ -17,15 +28,17 @@ export default function OrganizationalStructureClientPage() {
           <FileOperations
             showDownloadButton={true}
             pdfStyles={{ body: { flexDirection: "column" } }}
-          ></FileOperations>
+          />
         }
-      ></ActionsTitle>
+      />
       <Section className="text-start">
         <Wrapper>
-          <img
+          <Image
             id="print-section"
-            src="/images/hero-bg.jpg"
-            alt="hero-bg"
+            src={getImageUrl(organizationalStructure.file)}
+            alt="Organizational Structure"
+            width={1200}
+            height={800}
             className="w-full"
           />
         </Wrapper>

@@ -18,7 +18,7 @@ export default function ImageBg({
 
 function TextSection({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <div className="relative z-30 w-full max-w-mobile pt-[71px] text-start sm:mx-auto sm:max-w-desktop sm:px-[30px] sm:pt-[96px] 1920:max-w-desktop-lg 1920:pt-[138px]">
+    <div className="relative z-30 w-full max-w-mobile pt-[71px] text-start sm:mx-auto sm:max-w-desktop sm:px-[30px] sm:pt-[96px] xl:px-0 1920:max-w-desktop-lg 1920:pt-[138px]">
       <div className="mt-[30px] max-w-[654px] sm:mt-[24px] 1920:mt-[34px] 1920:max-w-[789px]">
         <h3 className="text-[16px] font-light leading-[22px] text-white/70 sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px]">
           {subtitle}

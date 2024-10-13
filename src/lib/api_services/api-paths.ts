@@ -9,6 +9,10 @@ export const API_PATHS = {
   E_SERVICES: "/service",
   CONTACT: "/contacts",
   LATEST_NEWS: "/latestnews",
+  ABOUT: "/about",
+  COUNCIL: "/council",
+  PRESIDENT_SPEECH: "/presidentspeech",
+  ORGANIZATIONAL_STRUCTURE: "/crganizationalchar",
 };
 
 export const sharedPageNames = {

@@ -1,5 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import UniversityCouncilClientPage from "./ClientPage";
+import PresidentSpeechClientPage from "./ClientPage";
+import { fetchPresidentSpeech } from "@/lib/api_services/president-speech-apis";
+import { headers } from "next/headers";
 
 export async function generateMetadata({
   params: { locale },
@@ -12,10 +14,19 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("presidentSpeechTitle"),
   };
 }
 
-export default function Page() {
-  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+export default async function Page() {
+  const lang = headers().get("x-locale") || "ar";
+  let presidentSpeech;
+
+  try {
+    presidentSpeech = await fetchPresidentSpeech(lang);
+  } catch (error) {
+    console.error("Failed to fetch president's speech:", error);
+  }
+
+  return <PresidentSpeechClientPage presidentSpeech={presidentSpeech} />;
 }

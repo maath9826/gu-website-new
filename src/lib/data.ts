@@ -79,19 +79,19 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
         items: [
           {
             label: t("universityPresident"),
-            path: paths.UNIVERSITY_PRESIDENT_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
           {
             label: t("assistantPresidentScientific"),
-            path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
           {
             label: t("assistantPresidentAdministrative"),
-            path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
           {
             label: t("collegeDeans"),
-            path: paths.COLLEGE_DEANS_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
         ],
       },
