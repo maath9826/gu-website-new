@@ -105,22 +105,25 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
       },
       {
         label: t("infrastructure"),
-        path: paths.INFRASTRUCTURE_ROUTE,
+        path: paths.getSharedPageRoute(sharedPageNames.infrastructure),
         items: [
-          { label: t("halls"), path: paths.HALLS_ROUTE },
+          {
+            label: t("halls"),
+            path: paths.getSharedPageRoute(sharedPageNames.halls),
+          },
           {
             label: t("laboratories"),
-            path: paths.LABORATORIES_ROUTE,
+            path: paths.getSharedPageRoute(sharedPageNames.laboratories),
           },
           {
             label: t("greenAreas"),
-            path: paths.GREEN_AREAS_ROUTE,
+            path: paths.getSharedPageRoute(sharedPageNames["green areas"]),
           },
         ],
       },
       {
         label: t("universityLife"),
-        path: paths.UNIVERSITY_LIFE_ROUTE,
+        path: paths.getSharedPageRoute(sharedPageNames["university life"]),
         items: [
           {
             label: t("photoLibrary"),
@@ -403,7 +406,7 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
     label: t("Header.navLinks.universityAndCommunity"),
     items: [
       {
-        path: paths.getSharedPageRoute("graduates"),
+        path: paths.getSharedPageRoute(sharedPageNames.graduates),
         label: t("SharedPages.graduates"),
       },
       {

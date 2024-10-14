@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { CONTACT_ROUTE, HOME_ROUTE, NEWS_ROUTE } from "./paths";
 import { TextDirection } from "@/app/_hooks/useTextDirection";
 import { IReactToPrintProps } from "react-to-print";
-import { locales } from "@/i18n.config";
+import { Locale, locales } from "@/i18n.config";
 import { RefObject } from "react";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -174,6 +174,81 @@ export function isEmptyHtml(htmlString: string) {
 
   // Check if anything remains
   return withoutEmptyTags.length === 0;
+}
+
+export function formatElapsedTime(dateString: string, locale: Locale): string {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+  const timeUnits = {
+    en: {
+      justNow: "Just now",
+      minute: "minute",
+      minutes: "minutes",
+      hour: "hour",
+      hours: "hours",
+      day: "day",
+      days: "days",
+      month: "month",
+      months: "months",
+      year: "year",
+      years: "years",
+      ago: "ago",
+    },
+    ar: {
+      justNow: "قبل لحظات",
+      minute: "دقيقة",
+      minutes: "دقائق",
+      hour: "ساعة",
+      hours: "ساعات",
+      day: "يوم",
+      days: "أيام",
+      month: "شهر",
+      months: "أشهر",
+      year: "سنة",
+      years: "سنوات",
+      ago: "قبل",
+    },
+  };
+
+  const units = locale === "en" ? timeUnits.en : timeUnits.ar;
+
+  if (diffInSeconds < 60) return units.justNow;
+
+  const formatTime = (value: number, singular: string, plural: string) => {
+    if (locale === "en") {
+      return `${value} ${value === 1 ? singular : plural} ${units.ago}`;
+    } else {
+      return `${units.ago} ${value} ${value === 1 || value > 10 ? singular : plural}`;
+    }
+  };
+
+  if (diffInSeconds < 3600)
+    return formatTime(
+      Math.floor(diffInSeconds / 60),
+      units.minute,
+      units.minutes,
+    );
+  if (diffInSeconds < 86400)
+    return formatTime(
+      Math.floor(diffInSeconds / 3600),
+      units.hour,
+      units.hours,
+    );
+  if (diffInSeconds < 2592000)
+    return formatTime(Math.floor(diffInSeconds / 86400), units.day, units.days);
+  if (diffInSeconds < 31536000)
+    return formatTime(
+      Math.floor(diffInSeconds / 2592000),
+      units.month,
+      units.months,
+    );
+  return formatTime(
+    Math.floor(diffInSeconds / 31536000),
+    units.year,
+    units.years,
+  );
 }
 
 export { getPrintProps };

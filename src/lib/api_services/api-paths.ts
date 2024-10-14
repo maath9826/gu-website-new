@@ -12,7 +12,8 @@ export const API_PATHS = {
   ABOUT: "/about",
   COUNCIL: "/council",
   PRESIDENT_SPEECH: "/presidentspeech",
-  ORGANIZATIONAL_STRUCTURE: "/crganizationalchar",
+  ORGANIZATIONAL_STRUCTURE: "/crganizationalchart",
+  PHOTO_LIBRARY: "/photolibrary",
 };
 
 export const sharedPageNames = {

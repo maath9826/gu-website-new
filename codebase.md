@@ -55,16 +55,26 @@
   "Layout": {
     "metaData": {
       "title": "تعليم",
-      "description": "موقع الكتروني لتعليم"
+      "description": "موقع الكتروني لتعليم",
+      "aboutTitle": "عن الجامعة",
+      "universityCouncilTitle": "مجلس الجامعة",
+      "presidentSpeechTitle": "كلمة رئيس الجامعة"
     },
     "firstTitle": "الزعيم للتـوصيـل السـريـع"
+  },
+  "PresidentSpeech": {
+    "title": "كلمة رئيس الجامعة"
+  },
+  "UniversityCouncil": {
+    "title": "مجلس الجامعة",
+    "presidentPosition": "رئيس الجامعة"
   },
   "Common": {
     "generalSuccessMessage": "تم الارسال بنجاح! ",
     "centerizedTitle": "عنوانك المركزي هنا",
     "print": "طباعة",
     "share": "مشاركة",
-    "download": "جار التحميل",
+    "download": "تحميل",
     "loading": "جار الارسال",
     "readMore": "قراءة المزيد",
     "viewMore": "عرض المزيد",
@@ -124,7 +134,7 @@
       "videoLibrary": "المكتبة الفيديوية",
       "agreementsPartnerships": "الاتفاقيات والشراكات",
       "transparencyPrinciple": "مبدأ الشفافية",
-      "universityStrategy": "استراتيجية جامعة كلكامش",
+      "universityStrategy": "استراتيجية الجامعة",
       "colleges": "الكليات",
       "academicAffairs": "الشؤون العلمية",
       "scientificPromotions": "الترقيات العلمية",
@@ -267,19 +277,11 @@
     "relatedSites": "مواقع ذات صلة"
   },
   "About": {
-    "title": "الزعيم للتوصيل السريع",
-    "whoWeAre": "من نحن؟",
-    "beginningAndChallenges": "البداية والتحديات",
-    "beginningText": "يمثل عام 2020 الانطلاقة الأولى لشركة الزعيم، حيث انبثقت من حاجة السوق العراقي لشركات النقل العام والبريد السريع، بأيد شبابية تعي المشكلات الموجودة في السوق المحلي، والخاصة بقطاع نقل البريد، عملت بإصرار لتقدم الحلول، وتأخذ زمام المبادرة والريادة.\n\nخاضت شركة الزعيم منذ تأسيسها تجارب وتحديات عدة؛ حيث كان العراق يعيش أزمة جائحة كورونا، وما رافقها من إغلاقات وحظر للتجول وتوقف لحركة المواصلات، فضلا عن تحديات التجارة العالمية، تحديات لم تـﺜﻦ عزيمة الشركة ومؤسسيها الذين أيقنوا أن الاستمرار هو ما سيجلب الخطوة القادمة، وأن إكمال الطريق هو أساس الوصول.",
-    "expansionText": "خلال ثلاثة أشهر من تأسيسها، نجحت الشركة في توسيع فروعها إلى محافظات مثل بابل وكركوك، بالإضافة إلى بغداد، انطلاقاً من رؤيتها لتعزيز وجودها وتلبية متطلبات السوق. تبنت الشركة استراتيجية التحول الرقمي منذ البداية، حيث طورت تطبيقاً خاصاً للعملاء والمندوبين، يوفر نظاماً شاملاً لخدمة العملاء. هذه المنصة تتيح للعملاء تتبع طلباتهم، مما يوفر لهم الوقت والجهد.\n\nرغم التحديات العديدة، استمرت الشركة في تسليم الطلبات وتوسيع عملياتها بثبات، معززة قدراتها ووجودها الفعال في قطاع النقل والتوصيل السريع. تواصل شركة الزعيم تلبية متطلبات السوق، ساعية لتحسين خدماتها وترسيخ سمعة فريدة في الصناعة.",
-    "companyVision": "رؤية الشركة للمستقبل",
-    "visionStatement": "أن نكون الشركة الرائدة في تقديم خدمات نقل البريد إقليمياً وعالمياً",
-    "companyValues": "قيم الشركة",
-    "valuesDescription": "تتخصص شركة الزعيم في نقل البضائع وتوصيل البريد السريع، حيث تقدم خدمات متخصصة مصممة لتلبية متطلبات السوق والعملاء.",
-    "trust": "الثقة",
-    "socialResponsibility": "المسؤولية المجتمعية",
-    "innovation": "الابتكار",
-    "excellence": "الإتقان"
+    "aboutGilgameshUniversity": "عن جامعة كلكامش",
+    "theVision": "الرؤيــة",
+    "universityVision": "رؤية الجامعة",
+    "theMessage": "الرسالــة",
+    "universityGoals": "أهداف الجامعة"
   },
   "Branches": {
     "searchPlaceholder": "اكتب اسم المدينة للبحث",
@@ -533,6 +535,61 @@
     "writeHere": "اكتب هنا",
     "writeYourMessage": "اكتب رسالتك هنا",
     "send": "إرسال"
+  },
+  "SharedPages": {
+    "infrastructure": "البنى التحتية",
+    "halls": "القاعات",
+    "laboratories": "المختبرات",
+    "green areas": "المساحات الخضراء",
+    "university life": "الحياة الجامعية",
+    "promotions form": "استمارات الترقية",
+    "guides": "ادلة وتعليمات",
+    "organizing promotion transactions": "تنظيم معاملات الترقية",
+    "scientificJournals": "المجلات العلمية",
+    "practicalAndIntellectualOutput": "النتاج العلمي والفكري",
+    "teachers research": "بحوث التدريسيين",
+    "authored books": "الكتب المؤلفة",
+    "scientific articles": "المقالات العلمية",
+    "quality and performance": "الجودة والأداء الجامعي",
+    "scopus": "سكوباس",
+    "scientificResearcher": "الباحث العلمي",
+    "scientificResearchPortal": "بوابة البحث العلمي",
+    "scientific activities": "الأنشطة العلمية",
+    "seminars": "الندوات",
+    "workshops": "الورش",
+    "courses": "الدورات",
+    "forums": "الملتقيات",
+    "admissionAndRegistration": "القبول والتسجيل",
+    "registrationTerms": "شروط التسجيل",
+    "registrationMechanism": "آلية التسجيل",
+    "tuitionFees": "الأجور الدراسية",
+    "discountsAndScholarships": "التخفيضات والمنح الدراسية",
+    "patents": "براءات الاختراع",
+    "universityCalendar": "التقويم الجامعي",
+    "examInstructions": "التعليمات الامتحانية",
+    "studentDisciplineInstructions": "تعليمات انضباط الطلبة",
+    "studentGuidelines": "إرشادات الطلبة",
+    "topStudents": "الطلبة الاوائل",
+    "examSchedules": "الجداول الامتحانية",
+    "studentActivities": "الأنشطة الطلابية",
+    "studentTeams": "الفرق الطلابية",
+    "ashurbanipalLibrary": "مكتبة آشوربانيبال",
+    "continuingEducationCenter": "مركز التعليم المستمر",
+    "urukCulturalCenter": "مركز الثقافي اوروك",
+    "fitnessCenter": "مركز اللياقة البدنية",
+    "gilgameshTheater": "مسرح كلكامش",
+    "celebrationHallsAridoun": "قاعات الاحتفالات أريدوونيبور",
+    "olympicSwimmingpool": "المسبح الأولمبي",
+    "fiveasidePitches": "الملاعب الخماسية",
+    "trainingHalls": "قاعات التدريب",
+    "dentalClinics": "عيادات طب الاسنان",
+    "cloningLibrary": "مكتبة الاستنساخ",
+    "cafeteria": "الكافيتريا",
+    "graduates": "خريجونا",
+    "rehabilitationAndEmployment": "التأهيل والتوظيف",
+    "consultingClinics": "العيادات الاستشارية",
+    "electronicInquiriesMinistryHigherEducation": "الاستعلامات الإلكترونية لوزارة التعليم العالي",
+    "sustainability": "الاستدامة"
   }
 }
 
@@ -545,9 +602,19 @@
   "Layout": {
     "metaData": {
       "title": "Taalem",
-      "description": "Taalem website"
+      "description": "Taalem website",
+      "aboutTitle": "About",
+      "universityCouncilTitle": "University Council",
+      "presidentSpeechTitle": "President's Speech"
     },
     "firstTitle": "AlZAEEM Express Delivery"
+  },
+  "PresidentSpeech": {
+    "title": "President's Speech"
+  },
+  "UniversityCouncil": {
+    "title": "University Council",
+    "presidentPosition": "University President"
   },
   "Common": {
     "generalSuccessMessage": "Sent Successfully!",
@@ -610,7 +677,7 @@
       "videoLibrary": "Video Library",
       "agreementsPartnerships": "Agreements and Partnerships",
       "transparencyPrinciple": "Transparency Principle",
-      "universityStrategy": "Gilgamesh University Strategy",
+      "universityStrategy": "University Strategy",
       "colleges": "Colleges",
       "academicAffairs": "Academic Affairs",
       "scientificPromotions": "Scientific Promotions",
@@ -755,19 +822,11 @@
     "relatedSites": "Related Sites"
   },
   "About": {
-    "title": "AlZAEEM Express Delivery",
-    "whoWeAre": "Who are we?",
-    "beginningAndChallenges": "The beginning and the challenges",
-    "beginningText": "In 2020, Al-Za'eem made its initial launch, emerging from the Iraqi market's demand for public transport and express mail services. Founded by a young team that understands the challenges within the local market, especially in the postal transport sector, the company worked diligently to provide solutions and take initiative in leadership.\n\nSince its inception, Al-Za'eem has faced several trials and challenges. The company navigated through the COVID-19 pandemic crisis, which brought closures, curfews, and disruptions in transportation, alongside global trade challenges. These obstacles did not deter the company and its founders, who were determined that persistence would pave the way forward and completing the journey was essential to achieving their goals.",
-    "expansionText": "Within three months of its establishment, the company successfully expanded its branches to provinces such as Babylon and Kirkuk, in addition to Baghdad, driven by its vision to strengthen its presence and meet market demands. Embracing a digital transformation strategy from the outset, Al-Za'eem developed a dedicated application for customers and delegates, providing a comprehensive system for customer service. This platform allows customers to track their orders, saving them time and effort.\n\nDespite numerous challenges, the company persevered in delivering orders and steadily expanding its operations, enhancing its capabilities and active presence in the transport and express delivery sector. Al-Za'eem continues to meet market demands, striving to improve its services and establish a unique reputation in the industry.",
-    "companyVision": "The company's vision for the future",
-    "visionStatement": "To lead in providing regional and global postal transportation services",
-    "companyValues": "The company's values",
-    "valuesDescription": "AlZaeem specializes in cargo transportation and express mail delivery, offering specialized services tailored to meet market and customer requirements.",
-    "trust": "Trust",
-    "socialResponsibility": "Social responsibility",
-    "innovation": "Innovation",
-    "excellence": "Excellence"
+    "aboutGilgameshUniversity": "About Gilgamesh University",
+    "theVision": "The Vision",
+    "universityVision": "University Vision",
+    "theMessage": "The Mission",
+    "universityGoals": "University Goals"
   },
   "Branches": {
     "searchPlaceholder": "Write the name of the city",
@@ -1019,6 +1078,61 @@
     "writeHere": "Write here",
     "writeYourMessage": "Write your message here",
     "send": "Send"
+  },
+  "SharedPages": {
+    "infrastructure": "Infrastructure",
+    "halls": "Halls",
+    "laboratories": "Laboratories",
+    "green areas": "Green Areas",
+    "university life": "University Life",
+    "promotions form": "Promotion Forms",
+    "guides": "Guides and Instructions",
+    "organizing promotion transactions": "Organizing Promotion Transactions",
+    "scientificJournals": "Scientific Journals",
+    "practicalAndIntellectualOutput": "Practical and Intellectual Output",
+    "teachers research": "Teachers' Research",
+    "authored books": "Authored Books",
+    "scientific articles": "Scientific Articles",
+    "quality and performance": "Quality and University Performance",
+    "scopus": "Scopus",
+    "scientificResearcher": "Scientific Researcher",
+    "scientificResearchPortal": "Scientific Research Portal",
+    "scientific activities": "Scientific Activities",
+    "seminars": "Seminars",
+    "workshops": "Workshops",
+    "courses": "Courses",
+    "forums": "Forums",
+    "admissionAndRegistration": "Admission and Registration",
+    "registrationTerms": "Registration Terms",
+    "registrationMechanism": "Registration Mechanism",
+    "tuitionFees": "Tuition Fees",
+    "discountsAndScholarships": "Discounts and Scholarships",
+    "patents": "Patents",
+    "universityCalendar": "University Calendar",
+    "examInstructions": "Exam Instructions",
+    "studentDisciplineInstructions": "Student Discipline Instructions",
+    "studentGuidelines": "Student Guidelines",
+    "topStudents": "Top Students",
+    "examSchedules": "Exam Schedules",
+    "studentActivities": "Student Activities",
+    "studentTeams": "Student Teams",
+    "ashurbanipalLibrary": "Ashurbanipal Library",
+    "continuingEducationCenter": "Continuing Education Center",
+    "urukCulturalCenter": "Uruk Cultural Center",
+    "fitnessCenter": "Fitness Center",
+    "gilgameshTheater": "Gilgamesh Theater",
+    "celebrationHallsAridoun": "Aridoun Celebration Halls",
+    "olympicSwimmingpool": "Olympic Swimming Pool",
+    "fiveasidePitches": "Five-a-side Pitches",
+    "trainingHalls": "Training Halls",
+    "dentalClinics": "Dental Clinics",
+    "cloningLibrary": "Cloning Library",
+    "cafeteria": "Cafeteria",
+    "graduates": "Our Graduates",
+    "rehabilitationAndEmployment": "Rehabilitation and Employment",
+    "consultingClinics": "Consulting Clinics",
+    "electronicInquiriesMinistryHigherEducation": "Electronic Inquiries for Ministry of Higher Education",
+    "sustainability": "Sustainability"
   }
 }
 
@@ -1884,12 +1998,10 @@ import { RawContact } from "@/lib/types";
 import TopbarClient from "./Topbar/TopbarClient";
 import NavbarClient from "./Navbar/NavbarClient";
 import DynamicImage from "@/components/DynamicImage";
+import Head from "next/head";
+import HeaderClient from "./HeaderClient";
 
 export default async function Header() {
-  const pathname = removeLocaleFromPathname(
-    headers().get("x-pathname") ?? HOME_ROUTE,
-  );
-
   let contactInfo: RawContact | undefined;
 
   try {
@@ -1897,6 +2009,31 @@ export default async function Header() {
   } catch (error) {
     console.error("Failed to fetch contact information:", error);
   }
+
+  return <HeaderClient contactInfo={contactInfo}></HeaderClient>;
+}
+
+```
+
+# src\app\_components\Header\HeaderClient.tsx
+
+```tsx
+"use client";
+
+import React from "react";
+import TopbarClient from "./Topbar/TopbarClient";
+import NavbarClient from "./Navbar/NavbarClient";
+import { twMerge } from "tailwind-merge";
+import { IMAGE_BG_ROUTES, SLIDER_BG_ROUTES } from "@/lib/paths";
+import { RawContact } from "@/lib/types";
+import { usePathname } from "@/i18n.config";
+
+export default function HeaderClient({
+  contactInfo,
+}: {
+  contactInfo: RawContact | undefined;
+}) {
+  const pathname = usePathname();
 
   return (
     <header
@@ -2324,26 +2461,25 @@ export default TopbarClient;
 ```tsx
 import { PlaceholderImgData } from "@/components/DynamicImage";
 import SliderBg from "@/components/page/SliderBg";
-import { fetchNews } from "@/lib/api_services/news-apis";
 import { getImagePlaceholder } from "@/lib/server-utils";
-import { NewsItem } from "@/lib/types";
+import { SliderItem, NewsItem } from "@/lib/types";
 import { headers } from "next/headers";
 import React from "react";
-import { newsItems } from "../../../lib/data";
 import { getImageUrl } from "@/lib/utils";
+import { fetchSliderItems } from "@/lib/api_services/homepage-apis";
 
 export default async function HomeSliderBg() {
   const lang = headers().get("x-locale") || "ar";
 
-  let newsItems: NewsItem[] = [];
+  let sliderItems: SliderItem[] = [];
   try {
-    newsItems = await fetchNews(lang);
+    sliderItems = await fetchSliderItems(lang);
   } catch (error) {
     console.error("Failed to fetch news:", error);
   }
 
   // const placeholdersData: PlaceholderImgData[] = await Promise.all(
-  //   newsItems.map(async (item) => {
+  //   sliderItems.map(async (item) => {
   //     const { base64, data } = await getImagePlaceholder(
   //       getImageUrl(item.image),
   //     );
@@ -2354,8 +2490,8 @@ export default async function HomeSliderBg() {
   //   }),
   // );
 
-  // return <SliderBg homeSliderData={{ newsItems, placeholdersData }} />;
-  return <SliderBg newsItems={newsItems} />;
+  // return <SliderBg homeSliderData={{ sliderItems, placeholdersData }} />;
+  return <SliderBg sliderItems={sliderItems} />;
 }
 
 ```
@@ -2366,20 +2502,25 @@ export default async function HomeSliderBg() {
 import { Button } from "@/components/ui/button";
 import { NewsItem } from "@/lib/types";
 import { getImageUrl } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
   const t = useTranslations("Common");
+  const locale = useLocale();
+
+  const title = locale === "en" ? item.en_title : item.ar_title;
+  const description =
+    locale === "en" ? item.en_description : item.ar_description;
 
   return (
     <div className="flex w-full max-w-mobile flex-col gap-[20px] bg-white text-start sm:h-[451px] sm:max-w-desktop sm:flex-row sm:gap-[38px] 1920:h-[596px] 1920:max-w-desktop-lg">
       <div className="flex-1 p-[19px] sm:p-[33px] 1920:p-[44px]">
         <div className="max-w-[240px] sm:max-w-[413px] 1920:max-w-[545px]">
           <h4 className="mb-[10px] text-[14px] font-bold text-primary sm:mb-[18px] sm:text-[16px] 1920:mb-[24px]">
-            {item.description}
+            {description}
           </h4>
           <h3 className="mb-[35px] text-[21px] font-bold leading-[1.4em] sm:mb-[56px] sm:text-[36px] 1920:mb-[74px] 1920:text-[48px]">
-            {item.title}
+            {title}
           </h3>
           <Button className="w-fit px-[14px] py-[7px] text-xs sm:px-[24px] sm:py-[12px] 1920:px-[32px] 1920:py-[16px] 1920:text-base">
             {t("readMore")}
@@ -2389,7 +2530,7 @@ const MainNewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
 
       <img
         src={getImageUrl(item.image)}
-        alt={item.title}
+        alt={item.ar_title}
         className="h-full w-full flex-1 object-cover sm:h-full"
       />
     </div>
@@ -2466,7 +2607,7 @@ export default NavElements;
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Section from "../../../../components/Section";
 import MainNewsCard from "../MainNewsCard";
 import NewsCard from "../NewsCard";
@@ -2474,7 +2615,6 @@ import { NewsItem } from "@/lib/types";
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
-import { fetchNews } from "@/lib/api_services/news-apis";
 
 const NewsSectionClientSide: React.FC<{ newsItems: NewsItem[] }> = ({
   newsItems,
@@ -2494,7 +2634,7 @@ const NewsSectionClientSide: React.FC<{ newsItems: NewsItem[] }> = ({
 
         <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
           <ScrollableCardsContainer ref={containerRef}>
-            {newsItems.map((item, index) => (
+            {newsItems.slice(0, 4).map((item, index) => (
               <ScrollElement className="flex justify-center" key={index}>
                 <MainNewsCard item={item} />
               </ScrollElement>
@@ -2522,25 +2662,27 @@ export default NewsSectionClientSide;
 
 ```tsx
 import { useLocale, useTranslations } from "next-intl";
-import { NewsItem } from "@/lib/types";
-import { fetchNews } from "@/lib/api_services/news-apis";
+import { NewsItem, NewsResponse } from "@/lib/types";
 import NewsSectionClientSide from "./ClientSide";
 import { cookies, headers } from "next/headers";
+import { getLatestNews } from "@/lib/api_services/news-apis";
 
 const NewsSection: React.FC = async () => {
   const lang = headers().get("x-locale") || "ar";
 
-  let newsItems: NewsItem[] = [];
+  let newsItems: NewsResponse | undefined;
 
   try {
-    newsItems = await fetchNews(lang);
+    newsItems = await getLatestNews(1);
   } catch (error) {
     console.error("Failed to fetch news:", error);
   }
   return (
     newsItems &&
-    newsItems.length > 0 && (
-      <NewsSectionClientSide newsItems={newsItems}></NewsSectionClientSide>
+    newsItems.latestnews.data.length > 0 && (
+      <NewsSectionClientSide
+        newsItems={newsItems.latestnews.data}
+      ></NewsSectionClientSide>
     )
   );
 };
@@ -2555,22 +2697,27 @@ export default NewsSection;
 import React from "react";
 import { NewsItem } from "@/lib/types";
 import { getImageUrl } from "@/lib/utils";
+import { useLocale } from "next-intl";
 
 const NewsCard: React.FC<{ item: NewsItem }> = ({ item }) => {
+  const locale = useLocale();
+
+  const title = locale === "en" ? item.en_title : item.ar_title;
+  const description =
+    locale === "en" ? item.en_description : item.ar_description;
+
   return (
     <div className="flex flex-col bg-white">
       <img
         src={getImageUrl(item.image)}
-        alt={item.title}
+        alt={title}
         className="w-full object-cover sm:h-[238px] 1920:h-[314px]"
       />
       <div className="sm:p-[22px] 1920:p-[30px]">
         <h4 className="mb-[24px] text-base font-medium text-primary sm:mb-[18px] sm:text-xs 1920:mb-[24px] 1920:text-base">
-          {item.description}
+          {description}
         </h4>
-        <h3 className="text-[18px] font-medium 1920:text-[24px]">
-          {item.title}
-        </h3>
+        <h3 className="text-[18px] font-medium 1920:text-[24px]">{title}</h3>
       </div>
     </div>
   );
@@ -3199,122 +3346,110 @@ export default function useTextDirection(): TextDirection {
 ```tsx
 "use client";
 
-import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import OurGoals from "@/app/_components/OurGoals/OurGoals";
-import PageWithFirstSection from "@/components/page/Page";
-import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
-import ScrollElement from "@/components/ScrollElement";
+import React, { useRef } from "react";
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
+import { AboutData } from "@/lib/api_services/about-apis";
 import {
   AGREEMENTS_PARTNERSHIPS_ROUTE,
   ORGANIZATIONAL_STRUCTURE_ROUTE,
   UNIVERSITY_STRATEGY_ROUTE,
 } from "@/lib/paths";
-import React, { useRef } from "react";
+import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
+import ScrollElement from "@/components/ScrollElement";
+import CommonCard from "@/app/_components/CardsSection/CommonCard";
+import { useTranslations } from "next-intl";
 
-const list = [
-  "تسعى جامعة كاكامش إلى إعداد خريجين تتناسب مؤهلاتهم وخبراتهم مع متطلبات سوق العمل (القطاع الحكومي، القطاع الخاص).",
-  "تؤكد الجامعة التزامها التام بتطبيق نظام إدارة الجودة وفق متطلبات المواصفة ISO9001:2015 من أجل تحقيق مستويات عالية بالأداء ورفع كفاء العاملين والجامعة ككل.",
-  "توفر الجامعة الدعم الكامل لجميع الإجراءات التي تهدف إلى التحسين والتطوير المستمر.",
-  "تسعى الجامعة إلى تحقيق رضا المستفيدين وأصحاب المصلحة وضمان زيادتهم بشكل مستمر.",
-  "تلتزم الجامعة بأن تكون سياسة الجودة مفهومة من قبل جميع العاملين في الجامعة وأن يتم مراجعتها دوريا لتتأكد من ملاءمتها ومتطلباتها للعمل.",
-];
+interface AboutClientPageProps {
+  aboutData: AboutData | undefined;
+}
 
-export default function AboutClientPage() {
+export default function AboutClientPage({ aboutData }: AboutClientPageProps) {
+  if (!aboutData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
       <Section className="mt-[10px] text-start sm:mt-[146px]">
         <Wrapper>
           <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-7 sm:gap-[22px] 1920:gap-[52px]">
-            <MainSection></MainSection>
-            <VisionSection></VisionSection>
-            <MessageSection></MessageSection>
+            <MainSection about={aboutData.about} />
+            <VisionSection vision={aboutData.vision} />
+            <MessageSection message={aboutData.message} />
           </div>
-          <QualitySection></QualitySection>
+          <GoalsSection goals={aboutData.goals} />
         </Wrapper>
       </Section>
       <CardsSection></CardsSection>
-      {/* <OurGoals></OurGoals> */}
     </main>
   );
 }
 
-function MainSection() {
+function MainSection({ about }: { about: string }) {
+  const t = useTranslations("About");
   return (
     <div className="col-span-full flex flex-col text-primary sm:flex-row">
-      <div className="flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[65%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
+      <div className="flex flex-col justify-center gap-[14px] bg-white px-[16px] py-[32px] sm:w-[60%] sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[50px] 1920:px-[80px]">
         <h2 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
-          عن جامعة كلكامش
+          {t("aboutGilgameshUniversity")}
         </h2>
         <p className="text-[16px] leading-[1.8em] sm:text-[20px] 1920:text-[24px]">
-          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
-          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
-          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
-          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
-          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
-          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
-          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
-          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. وباحتوائها على نخبة
-          متميزة من أعضاء هيئة التدريس تسهم من خلال بحوثهم في تعزيز المعرفة
-          لإيجاد حلول كفيلة بمعالجة المشكلات المعقدة وخلْق أفكار جديدة، وتطوير
-          طرق التعليم وأساليبه ووجود حرم جامعي جديد ومتطور، ومجموعة كاملة من
-          الخدمات التي توفر الدعم للطلبة، فإن الجامعة توفر بيئة تعليمية مثالية
-          لطلبتها تطبق معايير الجودة المؤسساتية والتعليمية.
+          {about}
         </p>
       </div>
       <img
         src="/images/hero-bg.jpg"
-        className="w-full object-cover sm:w-[35%]"
-      ></img>
+        className="w-full object-cover sm:w-[40%]"
+        alt="University background"
+      />
     </div>
   );
 }
 
-function VisionSection() {
+function VisionSection({ vision }: { vision: string }) {
+  const t = useTranslations("About");
   return (
     <div className="flex flex-col justify-center gap-[14px] bg-[#0F4023] px-[16px] py-[32px] text-white sm:col-span-3 sm:items-start sm:gap-[28px] sm:px-[44px] sm:py-[54px] 1920:gap-[44px] 1920:px-[64px]">
       <h3 className="text-[18px] font-bold sm:text-[22px] 1920:text-[28px]">
-        الرؤيــة
+        {t("theVision")}
       </h3>
       <h2 className="text-[32px] sm:text-[40px] 1920:text-[68px]">
-        رؤية الجامعة
+        {t("universityVision")}
       </h2>
       <p className="mt-[20px] text-justify text-[16px] leading-[1.8em] text-[#F2F2F2]/70 sm:mt-auto sm:text-[18px]">
-        تنطلق جامعة كلكامش من رؤية شاملة تلتزم بالتميز في نشر المعرفة وإنتاجها
-        وخدمة المجتمع العراقي للارتقاء الى مصاف الجامعات المتقدمة محليا وإقليميا
-        وعالميا.
+        {vision}
       </p>
     </div>
   );
 }
 
-function MessageSection() {
+function MessageSection({ message }: { message: string }) {
+  const t = useTranslations("About");
   return (
     <div className="flex flex-col justify-center gap-[14px] bg-primary px-[16px] py-[32px] text-white sm:col-span-4 sm:items-start sm:gap-[28px] sm:px-[64px] sm:py-[64px] 1920:gap-[58px] 1920:px-[108px]">
       <h3 className="text-[18px] font-bold text-secondary sm:text-[22px] 1920:text-[28px]">
-        الرسالــة
+        {t("theMessage")}
       </h3>
-
       <p className="text-[16px] leading-[1.8em] sm:text-[26px] 1920:text-[35px]">
-        لجامعة كلكامش رسالة تعمد عن طريقها الى: تقديم برامج أكاديمية عالية
-        الجودة في مختلف فروع المعرفة ودعم البحوث وتطويرها بما يسهم في تحقيق
-        أهداف التنمية وتعزيز دور الجامعة في خدمة المجتمع العراقي وتهيأة بيئة
-        جامعية داعمة للإنتاج والتميز.
+        {message}
       </p>
     </div>
   );
 }
 
-function QualitySection() {
+function GoalsSection({ goals }: { goals: string }) {
+  const goalsList = goals.split("\r\n").filter((goal) => goal.trim() !== "");
+  const t = useTranslations("About");
+
   return (
     <div className="col-span-full mt-[64px] flex flex-col sm:mt-[180px] sm:flex-row">
       <div className="flex flex-col justify-center gap-[24px] py-[32px] pe-[16px] sm:w-1/2 sm:items-start sm:gap-[28px] sm:py-[64px] sm:pe-[64px] 1920:gap-[58px] 1920:pe-[108px]">
         <h2 className="text-[18px] font-bold sm:text-[32px] 1920:text-[48px]">
-          سياسة الجودة
+          {t("universityGoals")}
         </h2>
         <div className="flex flex-col gap-[14px] sm:gap-[24px]">
-          {list.map((item, index) => (
+          {goalsList.map((goal, index) => (
             <div
               className="flex items-start gap-[12px] sm:gap-[24px]"
               key={index}
@@ -3323,7 +3458,7 @@ function QualitySection() {
                 {index + 1}
               </div>
               <span className="text-justify text-[16px] sm:text-[18px]">
-                {item}
+                {goal}
               </span>
             </div>
           ))}
@@ -3332,46 +3467,36 @@ function QualitySection() {
       <img
         src="/images/hero-bg.jpg"
         className="w-full object-cover sm:w-1/2"
-      ></img>
+        alt="University goals"
+      />
     </div>
   );
 }
 
 function CardsSection() {
+  const t = useTranslations("Header.navLinks");
+
   const containerRef = useRef<HTMLDivElement>(null);
   const services = [
     {
       imgUrl: "/images/about/3.svg",
-      title: "الهيكل التنظيمي",
+      title: t("organizationalStructure"),
       href: ORGANIZATIONAL_STRUCTURE_ROUTE,
     },
     {
       imgUrl: "/images/about/2.svg",
-      title: "استراتيجية الجامعة",
+      title: t("universityStrategy"),
       href: UNIVERSITY_STRATEGY_ROUTE,
     },
     {
       imgUrl: "/images/about/1.svg",
-      title: "الاتفاقيات والشراكــــــات",
+      title: t("agreementsPartnerships"),
       href: AGREEMENTS_PARTNERSHIPS_ROUTE,
     },
   ];
 
   return (
     <div className="mt-[60px] sm:mt-[150px]">
-      {/* <Section>
-          <Wrapper>
-            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
-              <ScrollableContainerUpperSection
-                arrowButtonsClass="sm:hidden"
-                containerRef={containerRef}
-                title2="جامعة كلكامش"
-                title="الخدمات الالكترونية"
-                className="sm:w-fit sm:items-center"
-              />
-            </div>
-          </Wrapper>
-        </Section> */}
       <Section className="max-w-none">
         <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
           <ScrollableCardsContainer
@@ -3402,17 +3527,27 @@ function CardsSection() {
 # src\app\[locale]\about\organizational-structure\ClientPage.tsx
 
 ```tsx
-"use client";
-
+import React from "react";
 import FileOperations from "@/components/FileOperations";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
+import { OrganizationalStructure } from "@/lib/api_services/organizational-structure-apis";
+import { getImageUrl } from "@/lib/utils";
+import Image from "next/image";
+import DynamicImage from "@/components/DynamicImage";
 
-import React from "react";
+interface OrganizationalStructureClientPageProps {
+  organizationalStructure: OrganizationalStructure | undefined;
+}
 
-export default function OrganizationalStructureClientPage() {
+export default function OrganizationalStructureClientPage({
+  organizationalStructure,
+}: OrganizationalStructureClientPageProps) {
+  if (!organizationalStructure) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
       <ActionsTitle
@@ -3421,16 +3556,15 @@ export default function OrganizationalStructureClientPage() {
           <FileOperations
             showDownloadButton={true}
             pdfStyles={{ body: { flexDirection: "column" } }}
-          ></FileOperations>
+          />
         }
-      ></ActionsTitle>
+      />
       <Section className="text-start">
         <Wrapper>
-          <img
+          <DynamicImage
             id="print-section"
-            src="/images/hero-bg.jpg"
-            alt="hero-bg"
-            className="w-full"
+            src={getImageUrl(organizationalStructure.file)}
+            alt="Organizational Structure"
           />
         </Wrapper>
       </Section>
@@ -3445,6 +3579,10 @@ export default function OrganizationalStructureClientPage() {
 ```tsx
 import { getTranslations } from "next-intl/server";
 import OrganizationalStructureClientPage from "./ClientPage";
+import {
+  fetchOrganizationalStructure,
+  OrganizationalStructure,
+} from "@/lib/api_services/organizational-structure-apis";
 
 export async function generateMetadata({
   params: { locale },
@@ -3457,13 +3595,25 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("organizationalStructureTitle"),
   };
 }
 
-export default function Page() {
+export default async function Page() {
+  let organizationalStructure: OrganizationalStructure | undefined;
+
+  try {
+    organizationalStructure = await fetchOrganizationalStructure();
+  } catch (error) {
+    console.error("Failed to fetch organizational structure:", error);
+  }
+
   return (
-    <OrganizationalStructureClientPage></OrganizationalStructureClientPage>
+    organizationalStructure && (
+      <OrganizationalStructureClientPage
+        organizationalStructure={organizationalStructure}
+      />
+    )
   );
 }
 
@@ -3474,6 +3624,9 @@ export default function Page() {
 ```tsx
 import { getTranslations } from "next-intl/server";
 import AboutClientPage from "./ClientPage";
+import { fetchAboutData } from "@/lib/api_services/about-apis";
+import { headers } from "next/headers";
+import ImageBg from "@/components/page/ImageBg";
 
 export async function generateMetadata({
   params: { locale },
@@ -3486,12 +3639,26 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("aboutTitle"),
   };
 }
 
-export default function Page() {
-  return <AboutClientPage></AboutClientPage>;
+export default async function Page() {
+  const lang = headers().get("x-locale") || "ar";
+  let aboutData;
+
+  try {
+    aboutData = await fetchAboutData(lang);
+  } catch (error) {
+    console.error("Failed to fetch about data:", error);
+  }
+
+  return (
+    <>
+      <ImageBg title="عن جامعة كلكامش الأهلية" subtitle="حول الجامعة"></ImageBg>
+      <AboutClientPage aboutData={aboutData} />
+    </>
+  );
 }
 
 ```
@@ -3499,84 +3666,77 @@ export default function Page() {
 # src\app\[locale]\about\president-speech\ClientPage.tsx
 
 ```tsx
-"use client";
-
+import React from "react";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
+import { PresidentSpeech } from "@/lib/api_services/president-speech-apis";
+import { getImageUrl } from "@/lib/utils";
+import Image from "next/image";
+import FileOperations from "@/components/FileOperations";
+import DynamicImage from "@/components/DynamicImage";
 
-import React from "react";
+interface PresidentSpeechClientPageProps {
+  presidentSpeech: PresidentSpeech | undefined;
+}
 
-export default function UniversityCouncilClientPage() {
+export default function PresidentSpeechClientPage({
+  presidentSpeech,
+}: PresidentSpeechClientPageProps) {
+  console.log(presidentSpeech);
+  if (!presidentSpeech) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
-      <ActionsTitle title="كلمة رئيس الجامعة"></ActionsTitle>
+      <ActionsTitle
+        title="كلمة رئيس الجامعة"
+        fileOperations={
+          <FileOperations
+            showDownloadButton={true}
+            pdfStyles={{ body: { flexDirection: "column" } }}
+          ></FileOperations>
+        }
+      />
       <Section className="text-start">
         <Wrapper>
-          <PresidentCard></PresidentCard>
+          <PresidentCard presidentSpeech={presidentSpeech} />
         </Wrapper>
       </Section>
     </main>
   );
 }
 
-function PresidentCard() {
+function PresidentCard({
+  presidentSpeech,
+}: {
+  presidentSpeech: PresidentSpeech;
+}) {
   return (
-    <div className="flex flex-col justify-between bg-white">
-      <div className="flex flex-col gap-[31px] text-primary sm:flex-row-reverse sm:gap-[70px] sm:p-[50px] 1920:gap-[140px]">
+    <div className="print flex flex-col justify-between bg-white">
+      <div
+        className="flex flex-col gap-[31px] text-primary sm:flex-row-reverse sm:gap-[70px] sm:p-[50px] 1920:gap-[140px] print:flex-col"
+        id="print-section"
+      >
         <div className="flex flex-col gap-[50px] sm:w-[378px] sm:min-w-[378px]">
-          <img src="/images/hero-bg.jpg" className="w-full object-cover"></img>
+          <DynamicImage
+            src={getImageUrl(presidentSpeech.image)}
+            alt={presidentSpeech.name}
+          />
           <div className="flex flex-col px-[20px] sm:px-0">
             <h2 className="text-[18px] font-bold text-foreground sm:text-[22px] 1920:text-[34px]">
-              أ.د.انور صبحي عبد الحسين
+              {presidentSpeech.name}
             </h2>
-            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
+            <h3 className="mt-[10px] text-[14px] font-medium">
+              {presidentSpeech.position}
+            </h3>
           </div>
         </div>
         <p className="px-[20px] text-justify text-[16px] leading-[1.75em] sm:px-0 sm:text-[20px]">
-          تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
-          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
-          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
-          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
-          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
-          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
-          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
-          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
-          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
-          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
-          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
-          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
-          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
-          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
-          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
-          العمل المختلفة. تأسست جامعة كلكامش بموجب الأمر الوزاري (1443)
-          27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم
-          والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في
-          أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد
-          المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل
-          كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
-          التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم
-          ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست
-          جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من
-          الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة
-          من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم
-          على تعميق البُعد الفكري من خلال تحديد المشكلات، والعمل على إيجاد
-          الحلول التي تُقدِّمها التخصصات داخل كل كلية، وتعمل على تخريج طلبة
-          متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل التفكير النقدي، حل
-          المشكلات، العمل الجماعي، والاتصالات مما يتيح لهم ذلك فرص المنافسة
-          بقوة، وتحقيق النجاح في أسواق العمل المختلفة. تأسست جامعة كلكامش بموجب
-          الأمر الوزاري (1443) 27/1/2019 حيث تضم عدد من الكليات تؤلِّف مجتمعاً
-          متميزاً للتعلُّم والبحوث، يتيح للطلبة الاستفادة من مزايا التعلُّم
-          البحثي والمشاركة في أنشطة البحث والاكتشاف، وتشجعهم على تعميق البُعد
-          الفكري من خلال تحديد المشكلات، والعمل على إيجاد الحلول التي تُقدِّمها
-          التخصصات داخل كل كلية، وتعمل على تخريج طلبة متميزين يتمتعون بمهارات
-          تعلُّم مستدامة، مثل التفكير النقدي، حل المشكلات، العمل الجماعي،
-          والاتصالات مما يتيح لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق
-          العمل المختلفة.
+          {presidentSpeech.description}
         </p>
       </div>
-
       <div className="mx-auto mt-[20px] h-[5px] w-[calc(100%-40px)] bg-secondary sm:mt-0 sm:w-[calc(100%-100px)]"></div>
     </div>
   );
@@ -3588,7 +3748,9 @@ function PresidentCard() {
 
 ```tsx
 import { getTranslations } from "next-intl/server";
-import UniversityCouncilClientPage from "./ClientPage";
+import PresidentSpeechClientPage from "./ClientPage";
+import { fetchPresidentSpeech } from "@/lib/api_services/president-speech-apis";
+import { headers } from "next/headers";
 
 export async function generateMetadata({
   params: { locale },
@@ -3601,12 +3763,21 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("presidentSpeechTitle"),
   };
 }
 
-export default function Page() {
-  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+export default async function Page() {
+  const lang = headers().get("x-locale") || "ar";
+  let presidentSpeech;
+
+  try {
+    presidentSpeech = await fetchPresidentSpeech(lang);
+  } catch (error) {
+    console.error("Failed to fetch president's speech:", error);
+  }
+
+  return <PresidentSpeechClientPage presidentSpeech={presidentSpeech} />;
 }
 
 ```
@@ -3614,25 +3785,35 @@ export default function Page() {
 # src\app\[locale]\about\university-council\ClientPage.tsx
 
 ```tsx
-"use client";
-
+import React from "react";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
+import { CouncilMember } from "@/lib/api_services/council-apis";
+import { getImageUrl } from "@/lib/utils";
+import Image from "next/image";
+import DynamicImage from "@/components/DynamicImage";
 
-import React from "react";
+interface UniversityCouncilClientPageProps {
+  councilMembers: CouncilMember[] | undefined;
+}
 
-export default function UniversityCouncilClientPage() {
+export default function UniversityCouncilClientPage({
+  councilMembers,
+}: UniversityCouncilClientPageProps) {
+  if (!councilMembers) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
-      <ActionsTitle title="مجلس الجامعة"></ActionsTitle>
+      <ActionsTitle title="مجلس الجامعة" />
       <Section className="text-start">
         <Wrapper>
           <div className="grid w-full grid-cols-1 gap-[8px] sm:grid-cols-4 sm:gap-[22px] 1920:grid-cols-5">
-            <PresidentCard></PresidentCard>
-            {[...Array(12)].map((_, index) => (
-              <MemberCard key={index} />
+            <PresidentCard member={councilMembers[0]} />
+            {councilMembers.slice(1).map((member) => (
+              <MemberCard key={member.id} member={member} />
             ))}
           </div>
         </Wrapper>
@@ -3641,57 +3822,55 @@ export default function UniversityCouncilClientPage() {
   );
 }
 
-function PresidentCard() {
+function PresidentCard({ member }: { member: CouncilMember }) {
   return (
     <div className="flex flex-col justify-between bg-white sm:col-span-3 sm:px-[20px]">
       <div className="flex h-full items-center">
-        <div className="flex flex-col gap-[25px] text-primary sm:flex-row sm:py-[20px]">
-          <img
-            src="/images/hero-bg.jpg"
-            className="w-full object-cover sm:w-[35%]"
-          ></img>
-          <div className="flex flex-col justify-center px-[8px] py-[20px] sm:w-[65%] sm:items-start sm:px-[12px] sm:py-[40px] 1920:px-[20px]">
-            <h2 className="text-[18px] font-bold text-foreground sm:text-[22px] 1920:text-[34px]">
-              أ.د.انور صبحي عبد الحسين
+        <div className="flex h-full w-full flex-col gap-[25px] text-primary sm:flex-row sm:py-[20px]">
+          <DynamicImage
+            src={getImageUrl(member.image)}
+            alt={member.name}
+            wrapperClass="w-full sm:w-[40%]"
+          />
+          <div className="flex flex-col justify-center px-[8px] py-[20px] sm:w-[60%] sm:items-start sm:justify-start sm:px-[12px] sm:py-[40px] 1920:px-[20px]">
+            <h2 className="text-[18px] font-bold text-foreground sm:text-[26px] 1920:text-[34px]">
+              {member.name}
             </h2>
-            <h3 className="mt-[10px] text-[14px] font-medium">رئيس الجامعة</h3>
+            <h3 className="mt-[10px] text-[14px] font-medium">
+              {member.position}
+            </h3>
             <p className="mt-[16px] text-[16px] leading-[24px] sm:mt-[28px] 1920:mt-[58px]">
-              تأسست جامعة كلكامش بموجب الأمر الوزاري (1443) 27/1/2019 حيث تضم
-              عدد من الكليات تؤلِّف مجتمعاً متميزاً للتعلُّم والبحوث، يتيح
-              للطلبة الاستفادة من مزايا التعلُّم البحثي والمشاركة في أنشطة البحث
-              والاكتشاف، وتشجعهم على تعميق البُعد الفكري من خلال تحديد المشكلات،
-              والعمل على إيجاد الحلول التي تُقدِّمها التخصصات داخل كل كلية،
-              وتعمل على تخريج طلبة متميزين يتمتعون بمهارات تعلُّم مستدامة، مثل
-              التفكير النقدي، حل المشكلات، العمل الجماعي، والاتصالات مما يتيح
-              لهم ذلك فرص المنافسة بقوة، وتحقيق النجاح في أسواق العمل المختلفة.
+              {member.description}
             </p>
           </div>
         </div>
       </div>
-
       <div className="h-[5px] w-full bg-secondary"></div>
     </div>
   );
 }
 
-function MemberCard() {
+function MemberCard({ member }: { member: CouncilMember }) {
   return (
-    <div className="flex flex-col justify-between bg-white sm:px-[18px]">
+    <div className="flex flex-col justify-between bg-white px-[18px]">
       <div className="flex flex-col gap-[35px] pb-[57px] pt-[18px]">
-        <img
-          src="/images/person-placeholder.svg"
+        <DynamicImage
+          src={getImageUrl(member.image)}
+          alt={member.name}
           className="w-full object-cover"
-        ></img>
+        />
         <div className="flex flex-col items-center text-center">
           <h2 className="text-[21px] font-medium text-foreground">
-            الاسم الكامل
+            {member.name}
           </h2>
           <h3 className="mt-[12px] max-w-[200px] text-[16px] font-medium leading-[24px] text-primary">
-            وصف المنصب الاداري ضمن الجامعة
+            {member.position}
           </h3>
+          <p className="mt-[12px] text-[14px] text-muted">
+            {member.description}
+          </p>
         </div>
       </div>
-
       <div className="h-[5px] w-full bg-secondary"></div>
     </div>
   );
@@ -3704,6 +3883,8 @@ function MemberCard() {
 ```tsx
 import { getTranslations } from "next-intl/server";
 import UniversityCouncilClientPage from "./ClientPage";
+import { fetchCouncilMembers } from "@/lib/api_services/council-apis";
+import { headers } from "next/headers";
 
 export async function generateMetadata({
   params: { locale },
@@ -3716,12 +3897,34 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    title: t("universityCouncilTitle"),
   };
 }
 
-export default function Page() {
-  return <UniversityCouncilClientPage></UniversityCouncilClientPage>;
+export default async function Page() {
+  const lang = headers().get("x-locale") || "ar";
+  let councilMembers;
+
+  try {
+    councilMembers = await fetchCouncilMembers(lang);
+    console.log("councilMembers -- --", councilMembers);
+  } catch (error) {
+    console.error("Failed to fetch council members:", error);
+  }
+
+  return <UniversityCouncilClientPage councilMembers={councilMembers} />;
+}
+
+```
+
+# src\app\[locale]\contact\page.tsx
+
+```tsx
+import ImageBg from "@/components/page/ImageBg";
+import React from "react";
+
+export default function page() {
+  return <ImageBg subtitle="جامعة كلكامش" title="اتصل بنــــا"></ImageBg>;
 }
 
 ```
@@ -3741,6 +3944,7 @@ import Footer from "../_components/Footer/Footer";
 import Script from "next/script";
 import CommonSections from "@/components/common-sections/CommonSections";
 import SuccessModal from "@/components/modals/SuccessModal";
+import { usePathname } from "@/i18n.config";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -4110,13 +4314,24 @@ import { ScrollableCardsContainer } from "@/components/scrollable-container/Scro
 import ScrollableContainerUpperSection from "@/components/scrollable-container/UpperSection";
 import ScrollElement from "@/components/ScrollElement";
 import Section from "@/components/Section";
-// import { newsItems } from "@/lib/data";
 import { useTranslations } from "next-intl";
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { NewsResponse } from "@/lib/types";
+import Pagination from "@/components/Pagination";
+import { useCounterStore } from "@/lib/providers/counter-store-provider";
+import { NewsStoreContext, useNewsStore } from "@/lib/providers/news-provider";
+import Wrapper from "@/components/Wrapper";
 
 export default function NewsClientPage() {
   const t = useTranslations("Home.news");
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { news, setPage, fetchNews, isLoading, pagination } = useNewsStore();
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+    fetchNews();
+  };
 
   return (
     <main className="mt-[36px] sm:mt-[180px]">
@@ -4127,11 +4342,11 @@ export default function NewsClientPage() {
             containerRef={containerRef}
             titleClass="text-[28px] sm:text-[47px] !font-normal 1920:text-[62px] "
             className="sm:mb-[50px] 1920:mb-[66px]"
-          ></ScrollableContainerUpperSection>
+          />
 
           <div className="flex w-fit flex-col sm:gap-[38px] 1920:gap-[50px]">
             <ScrollableCardsContainer ref={containerRef}>
-              {newsItems([]).map((item, index) => (
+              {news.map((item, index) => (
                 <ScrollElement className="flex justify-center" key={index}>
                   <MainNewsCard item={item} />
                 </ScrollElement>
@@ -4141,11 +4356,20 @@ export default function NewsClientPage() {
               className="gird-cols-1 grid w-full max-w-mobile sm:max-w-desktop sm:grid-cols-3 sm:gap-[38px] 1920:max-w-desktop-lg 1920:gap-[50px]"
               wrapperClass="sm:flex hidden"
             >
-              {newsItems([])
-                .slice(1, 4)
-                .map((item) => (
-                  <NewsCard key={item.id} item={item} />
-                ))}
+              {news.slice(1).map((item) => (
+                <NewsCard key={item.id} item={item} />
+              ))}
+            </Section>
+            <Section className="mt-[50px] sm:mt-[50px]">
+              <Wrapper>
+                <Pagination
+                  currentPage={pagination.currentPage}
+                  totalPages={pagination.totalPages}
+                  onPageChange={handlePageChange}
+                  itemsPerPage={pagination.perPage}
+                  totalItems={pagination.total}
+                />
+              </Wrapper>
             </Section>
           </div>
         </div>
@@ -4161,6 +4385,9 @@ export default function NewsClientPage() {
 ```tsx
 import { getTranslations } from "next-intl/server";
 import NewsClientPage from "./ClientPage";
+import { NewsResponse } from "@/lib/types";
+import { getLatestNews } from "@/lib/api_services/news-apis";
+import { NewsStoreProvider } from "../../../lib/providers/news-provider";
 
 export async function generateMetadata({
   params: { locale },
@@ -4173,12 +4400,36 @@ export async function generateMetadata({
   });
 
   return {
-    title: t("newsTitle"),
+    // title: t("newsTitle"),
   };
 }
 
-export default function NewsPage() {
-  return <NewsClientPage></NewsClientPage>;
+export default async function NewsPage() {
+  let newsResponse: NewsResponse | undefined;
+
+  try {
+    newsResponse = await getLatestNews(1);
+  } catch (error) {
+    console.error("Failed to fetch news:", error);
+  }
+
+  return (
+    newsResponse && (
+      <NewsStoreProvider
+        initialState={{
+          news: newsResponse.latestnews.data,
+          pagination: {
+            currentPage: newsResponse.latestnews.current_page,
+            totalPages: newsResponse.latestnews.last_page,
+            perPage: newsResponse.latestnews.per_page,
+            total: newsResponse.latestnews.total,
+          },
+        }}
+      >
+        <NewsClientPage />
+      </NewsStoreProvider>
+    )
+  );
 }
 
 ```
@@ -4307,16 +4558,13 @@ export default async function Page({ params }: { params: { name: string } }) {
 
 import FormattedTextViewer from "@/components/FormattedTextViewer";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
-import React, { useRef } from "react";
-import { useLocale } from "next-intl";
+import React from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { SharedPageData } from "@/lib/types";
 import { getImageUrl, isEmptyHtml } from "@/lib/utils";
-import DynamicImage from "@/components/DynamicImage";
 import Image from "next/image";
 import { ScrollableCardsContainer } from "@/components/scrollable-container/ScrollableContainer";
 import ScrollElement from "@/components/ScrollElement";
-import CommonCard from "@/app/_components/CardsSection/CommonCard";
-import ScrollArrows from "@/components/ScrollArrows";
 
 export default function SharedPageClient({
   pageData,
@@ -4324,18 +4572,19 @@ export default function SharedPageClient({
   pageData: SharedPageData | null;
 }) {
   const locale = useLocale();
+  const t = useTranslations("SharedPages");
 
   if (!pageData) {
     return <div>No data available</div>;
   }
 
-  const title = locale === "en" ? pageData.en_title : pageData.ar_title;
+  const title = t(pageData.category as keyof typeof t);
   const description =
     locale === "en" ? pageData.en_description : pageData.ar_description;
 
   return (
     <main>
-      {title.trim() && <ActionsTitle title={title}></ActionsTitle>}
+      {title && <ActionsTitle title={title}></ActionsTitle>}
       {pageData.images.length > 0 &&
         (pageData.images.length > 1 ? (
           <ScrollableCardsContainer showArrows>
@@ -4367,7 +4616,7 @@ export default function SharedPageClient({
           </div>
         ))}
 
-      {isEmptyHtml(description) == false && (
+      {isEmptyHtml(description) === false && (
         <FormattedTextViewer>{description}</FormattedTextViewer>
       )}
     </main>
@@ -4476,7 +4725,12 @@ import SurveyForm from "@/components/SurveyForm";
 export default function EmployerSurveyPage() {
   const tNavLinks = useTranslations("Header.navLinks");
 
-  return <SurveyForm title={tNavLinks("employerSurvey")} />;
+  return (
+    <SurveyForm
+      title={tNavLinks("employerSurvey")}
+      endpoint="/employer_survey"
+    />
+  );
 }
 
 ```
@@ -4491,7 +4745,12 @@ import SurveyForm from "@/components/SurveyForm";
 export default function GraduatesSurveyPage() {
   const tNavLinks = useTranslations("Header.navLinks");
 
-  return <SurveyForm title={tNavLinks("graduateSurvey")} />;
+  return (
+    <SurveyForm
+      title={tNavLinks("graduateSurvey")}
+      endpoint="/graduate_survey"
+    />
+  );
 }
 
 ```
@@ -5196,12 +5455,15 @@ import { ScrollableCardsContainer } from "@/components/scrollable-container/Scro
 import ScrollElement from "@/components/ScrollElement";
 import CommonCard from "@/app/_components/CardsSection/CommonCard";
 import { getImageUrl } from "@/lib/utils";
+import { usePathname } from "@/i18n.config";
+import { CONTACT_ROUTE } from "@/lib/paths";
 
 interface EServicesSectionProps {
   eServices: EService[] | undefined;
 }
 
 const EServicesSection: React.FC<EServicesSectionProps> = ({ eServices }) => {
+  const pathname = usePathname();
   const t = useTranslations("Common");
   const tHome = useTranslations("Home");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -5211,50 +5473,63 @@ const EServicesSection: React.FC<EServicesSectionProps> = ({ eServices }) => {
   }
 
   return (
-    <div className="mt-[60px] sm:mt-[150px]">
-      <Section>
-        <Wrapper>
-          <div className="flex flex-col justify-between sm:flex-row sm:items-center">
-            <ScrollableContainerUpperSection
-              arrowButtonsClass="sm:hidden"
-              containerRef={containerRef}
-              title2={t("gilgameshUniversity")}
-              title={tHome("eServices")}
-              className="sm:w-fit sm:items-center"
-            />
-          </div>
-        </Wrapper>
-      </Section>
-      <Section className="max-w-none">
-        <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
-          <ScrollableCardsContainer
-            ref={containerRef}
-            className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
-          >
-            {eServices.map((service, index) => (
-              <ScrollElement
-                className="flex justify-center sm:w-auto"
-                key={index}
-              >
-                <CommonCard
-                  el={{
-                    href: service.link,
-                    imgUrl: getImageUrl(service.icon),
-                    title: service.title,
-                  }}
-                  index={index}
-                  uniqueFirstCard={false}
-                />
-              </ScrollElement>
-            ))}
-          </ScrollableCardsContainer>
-        </Wrapper>
-      </Section>
-    </div>
+    pathname !== CONTACT_ROUTE && (
+      <div className="mt-[60px] sm:mt-[150px]">
+        <Section>
+          <Wrapper>
+            <div className="flex flex-col justify-between sm:flex-row sm:items-center">
+              <ScrollableContainerUpperSection
+                arrowButtonsClass="sm:hidden"
+                containerRef={containerRef}
+                title2={t("gilgameshUniversity")}
+                title={tHome("eServices")}
+                className="sm:w-fit sm:items-center"
+              />
+            </div>
+          </Wrapper>
+        </Section>
+        <Section className="max-w-none">
+          <Wrapper className="mx-0 max-w-none sm:mx-[16px]">
+            <ScrollableCardsContainer
+              ref={containerRef}
+              className="grid grid-cols-[repeat(3,auto)] sm:w-full sm:grid-cols-3 sm:gap-[40px] 1920:gap-[49px]"
+            >
+              {eServices.map((service, index) => (
+                <ScrollElement
+                  className="flex justify-center sm:w-auto"
+                  key={index}
+                >
+                  <CommonCard
+                    el={{
+                      href: service.link,
+                      imgUrl: getImageUrl(service.icon),
+                      title: service.title,
+                    }}
+                    index={index}
+                    uniqueFirstCard={false}
+                  />
+                </ScrollElement>
+              ))}
+            </ScrollableCardsContainer>
+          </Wrapper>
+        </Section>
+      </div>
+    )
   );
 };
 
 export default EServicesSection;
+
+```
+
+# src\components\common-sections\EServicesSectionClient.tsx
+
+```tsx
+import React from "react";
+
+export default function EServicesSectionClient() {
+  return <div>EServicesSectionClient</div>;
+}
 
 ```
 
@@ -5302,6 +5577,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getPlaiceholder } from "plaiceholder";
 import { getImagePlaceholder } from "@/lib/server-utils";
+import { twMerge } from "tailwind-merge";
 
 export type PlaceholderImgData = {
   base64: string;
@@ -5317,7 +5593,7 @@ export default async function DynamicImage({
   placeholderData,
   alt,
   id,
-  containerClass,
+  wrapperClass,
   sizes,
   priority,
   className,
@@ -5326,7 +5602,7 @@ export default async function DynamicImage({
   placeholderData?: PlaceholderImgData;
   alt?: string;
   id?: string;
-  containerClass?: string;
+  wrapperClass?: string;
   sizes?: string;
   priority?: boolean;
   className?: string;
@@ -5334,7 +5610,7 @@ export default async function DynamicImage({
   const { base64, data } = placeholderData ?? (await getImagePlaceholder(src!));
 
   return (
-    <div className={cn("relative", containerClass)}>
+    <div className={cn("relative", wrapperClass)}>
       <Image
         {...data}
         id={id}
@@ -5343,7 +5619,7 @@ export default async function DynamicImage({
         blurDataURL={base64}
         sizes={"(max-width: 768px) 100vw, " + sizes}
         priority={priority}
-        className={className}
+        className={twMerge("h-full w-full object-cover", className)}
       />
     </div>
   );
@@ -5590,13 +5866,7 @@ export default function LocaleSwitcher({ locale }: { locale: Locale }) {
       </SelectTrigger>
       <SelectContent>
         {locales.map((loc) => (
-          <SelectItem
-            key={loc}
-            value={loc}
-            onClick={(e) => {
-              console.log("sdasdsad");
-            }}
-          >
+          <SelectItem key={loc} value={loc} onClick={(e) => {}}>
             {loc.toUpperCase()}
           </SelectItem>
         ))}
@@ -5951,24 +6221,30 @@ export default function FirstTitleSection() {
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export default function ImageBg() {
+export default function ImageBg({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) {
   return (
-    <div className="min-h-[260px] sm:min-h-[420px] 1920:min-h-[592px] relative flex justify-center">
-      <TextSection />
+    <div className="relative flex min-h-[260px] justify-center sm:min-h-[420px] 1920:min-h-[592px]">
+      <TextSection title={title} subtitle={subtitle} />
       <ImageSection />
     </div>
   );
 }
 
-function TextSection() {
+function TextSection({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <div className="relative z-30 sm:max-w-desktop 1920:max-w-desktop-lg w-full sm:mx-auto sm:px-[30px] pt-[71px] sm:pt-[96px] 1920:pt-[138px] text-start max-w-mobile">
-      <div className="max-w-[654px] 1920:max-w-[789px] mt-[30px] sm:mt-[24px] 1920:mt-[34px]">
-        <h3 className="text-[16px] leading-[22px] sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px] text-white/70 font-light">
-          الرئيسية
+    <div className="relative z-30 w-full max-w-mobile pt-[71px] text-start sm:mx-auto sm:max-w-desktop sm:px-[30px] sm:pt-[96px] xl:px-0 1920:max-w-desktop-lg 1920:pt-[138px]">
+      <div className="mt-[30px] max-w-[654px] sm:mt-[24px] 1920:mt-[34px] 1920:max-w-[789px]">
+        <h3 className="text-[16px] font-light leading-[22px] text-white/70 sm:text-[26px] sm:leading-[31px] 1920:text-[40px] 1920:leading-[48px]">
+          {subtitle}
         </h3>
-        <h1 className="text-[25px] leading-[30px] sm:text-[48px] sm:leading-[54px] 1920:text-[60px] 1920:leading-[72px] text-white mt-[9px] sm:mt-[22px] 1920:mt-[32px] line-clamp-3">
-          مواقع ذات صلة
+        <h1 className="mt-[9px] line-clamp-3 text-[25px] leading-[30px] text-white sm:mt-[22px] sm:text-[48px] sm:leading-[54px] 1920:mt-[32px] 1920:text-[60px] 1920:leading-[72px]">
+          {title}
         </h1>
       </div>
     </div>
@@ -5981,7 +6257,7 @@ function ImageSection() {
       <img
         src="/images/hero-bg.jpg"
         alt="hero bg"
-        className="w-full h-full object-cover"
+        className="h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-black/70"></div>
     </div>
@@ -6047,18 +6323,18 @@ export default function PageWithFirstSection({
 import React, { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import ScrollArrows from "@/components/ScrollArrows";
-import { NewsItem } from "@/lib/types";
+import { NewsItem, SliderItem } from "@/lib/types";
 import useScrollControl from "@/app/_hooks/useScrollControl";
 import useTextDirection from "../../app/_hooks/useTextDirection";
 import { getImageUrl } from "@/lib/utils";
 import Image from "next/image";
 
 interface SliderBgProps {
-  newsItems: NewsItem[];
+  sliderItems: SliderItem[];
 }
 
-export default function SliderBg({ newsItems }: SliderBgProps) {
-  return <ScrollableCardsContainer newsItems={newsItems} />;
+export default function SliderBg({ sliderItems }: SliderBgProps) {
+  return <ScrollableCardsContainer sliderItems={sliderItems} />;
 }
 
 const ImageSection = ({ image }: { image: string }) => {
@@ -6078,7 +6354,11 @@ const ImageSection = ({ image }: { image: string }) => {
   );
 };
 
-function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
+function ScrollableCardsContainer({
+  sliderItems,
+}: {
+  sliderItems: SliderItem[];
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const dir = useTextDirection();
   const [scrollAmount, setScrollAmount] = useState<number>();
@@ -6139,7 +6419,7 @@ function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
       <TextSection
         containerRef={containerRef}
         resetTimer={resetInterval}
-        newsItems={newsItems}
+        sliderItems={sliderItems}
       />
       <div
         ref={containerRef}
@@ -6149,7 +6429,7 @@ function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
         )}
       >
         <div className="flex h-full w-fit">
-          {newsItems.map((newsItem, index) => (
+          {sliderItems.map((newsItem, index) => (
             <ImageSection key={index} image={newsItem.image} />
           ))}
         </div>
@@ -6161,11 +6441,11 @@ function ScrollableCardsContainer({ newsItems }: { newsItems: NewsItem[] }) {
 function TextSection({
   containerRef,
   resetTimer,
-  newsItems,
+  sliderItems,
 }: {
   containerRef: React.RefObject<HTMLDivElement>;
   resetTimer: () => void;
-  newsItems: NewsItem[];
+  sliderItems: SliderItem[];
 }) {
   const [scrollAmount, setScrollAmount] = useState<number>();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -6190,7 +6470,7 @@ function TextSection({
       containerRef.current?.removeEventListener("scroll", handleScroll);
   }, [scrollAmount]);
 
-  const currentNews = newsItems[currentIndex];
+  const currentNews = sliderItems[currentIndex];
 
   return (
     <div className="relative z-30 w-full max-w-mobile pt-[51px] text-start sm:mx-auto sm:max-w-desktop sm:px-[30px] sm:pt-[116px] 1920:max-w-desktop-lg 1920:pt-[318px]">
@@ -6433,6 +6713,114 @@ export default function TitleAndImage() {
     </Section>
   );
 }
+
+```
+
+# src\components\Pagination.tsx
+
+```tsx
+import React from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
+
+interface PaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  itemsPerPage: number;
+  totalItems: number;
+}
+
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+  itemsPerPage,
+  totalItems,
+}) => {
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const maxVisiblePages = 5;
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pageNumbers.push(i);
+        }
+        pageNumbers.push("...");
+        pageNumbers.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pageNumbers.push(1);
+        pageNumbers.push("...");
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pageNumbers.push(i);
+        }
+      } else {
+        pageNumbers.push(1);
+        pageNumbers.push("...");
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pageNumbers.push(i);
+        }
+        pageNumbers.push("...");
+        pageNumbers.push(totalPages);
+      }
+    }
+
+    return pageNumbers;
+  };
+
+  return (
+    <div className="flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+      <div className="flex items-center justify-center gap-3">
+        <Button
+          variant="white"
+          size="icon"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="h-10 w-10 p-0 text-sm"
+        >
+          <i className="ri-arrow-right-line flippable"></i>
+        </Button>
+        {getPageNumbers().map((pageNumber, index) => (
+          <React.Fragment key={index}>
+            {pageNumber === "..." ? (
+              <span className={cn("h-10 w-10 bg-white p-0 text-sm")}>...</span>
+            ) : (
+              <Button
+                variant="white"
+                onClick={() => onPageChange(pageNumber as number)}
+                className={cn(
+                  "h-10 w-10 p-0 text-sm",
+                  currentPage === pageNumber
+                    ? "bg-primary text-white"
+                    : "bg-white",
+                )}
+              >
+                {pageNumber}
+              </Button>
+            )}
+          </React.Fragment>
+        ))}
+        <Button
+          variant="white"
+          size="icon"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="h-10 w-10 p-0 text-sm"
+        >
+          <i className="ri-arrow-left-line flippable"></i>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Pagination;
 
 ```
 
@@ -6893,7 +7281,9 @@ export default function SharedPage() {
 # src\components\SurveyForm.tsx
 
 ```tsx
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Input, InputProps } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6901,16 +7291,61 @@ import { Button } from "@/components/ui/button";
 import Section from "@/components/Section";
 import Wrapper from "@/components/Wrapper";
 import { twMerge } from "tailwind-merge";
+import axiosInstance from "@/lib/axios";
+import useCommonStore from "@/lib/zustand/common";
 
 interface SurveyFormProps {
   title: string;
+  endpoint: string;
 }
 
-export default function SurveyForm({ title }: SurveyFormProps) {
+export default function SurveyForm({ title, endpoint }: SurveyFormProps) {
   const t = useTranslations("Survey");
+  const tCommon = useTranslations("Common");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    college: "",
+    department: "",
+    message: "",
+  });
+
+  const openSuccessModal = useCommonStore((state) => state.openSuccessModal);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      const response = await axiosInstance.post(endpoint, formData);
+      if (response.status === 200) {
+        openSuccessModal(tCommon("generalSuccessMessage"));
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          college: "",
+          department: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const inputFields = [
-    { name: "fullName", label: t("fullName"), type: "text", fullWidth: true },
+    { name: "name", label: t("fullName"), type: "text", fullWidth: true },
     { name: "email", label: t("email"), type: "email" },
     { name: "phone", label: t("phone"), type: "tel" },
     { name: "college", label: t("college"), type: "text" },
@@ -6919,11 +7354,14 @@ export default function SurveyForm({ title }: SurveyFormProps) {
 
   return (
     <Section className="mt-[60px] bg-white py-[40px] sm:mt-[150px] sm:max-w-[1225px] sm:py-[87px] 1920:mt-[180px] 1920:max-w-[1316px]">
-      <Wrapper className="max-w-none sm:max-w-[740px] 1920:max-w-[740px]">
+      <Wrapper className="!max-w-none sm:!max-w-[740px] 1920:!max-w-[740px]">
         <h1 className="mb-[30px] text-center text-[28px] font-medium text-primary sm:mb-[60px] sm:text-[38px]">
           {title}
         </h1>
-        <form className="grid grid-cols-1 gap-y-[28px] sm:grid-cols-2 sm:gap-x-[21px] sm:gap-y-[30px] 1920:gap-x-[28px] 1920:gap-y-[39px]">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 gap-y-[28px] sm:grid-cols-2 sm:gap-x-[21px] sm:gap-y-[30px] 1920:gap-x-[28px] 1920:gap-y-[39px]"
+        >
           {inputFields.map((field) => (
             <div
               key={field.name}
@@ -6941,6 +7379,8 @@ export default function SurveyForm({ title }: SurveyFormProps) {
                 type={field.type}
                 id={field.name}
                 name={field.name}
+                value={formData[field.name as keyof typeof formData]}
+                onChange={handleChange}
                 placeholder={t("writeHere")}
               />
             </div>
@@ -6955,13 +7395,15 @@ export default function SurveyForm({ title }: SurveyFormProps) {
             <Textarea
               id="message"
               name="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder={t("writeYourMessage")}
               className="min-h-[280px] bg-[#EFEFEF]"
             />
           </div>
           <div className="flex justify-end sm:col-span-2">
-            <Button type="submit" className="!w-full">
-              {t("send")}
+            <Button type="submit" className="!w-full" disabled={isSubmitting}>
+              {isSubmitting ? t("loading") : t("send")}
             </Button>
           </div>
         </form>
@@ -7274,6 +7716,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:opacity-80",
+        white:
+          "bg-white text-foreground hover:opacity-80 group-hover:opacity-80 ",
         destructive:
           "bg-destructive text-destructive-foreground hover:opacity-80",
         outline: "border bg-transparent hover:opacity-80 text-foreground",
@@ -8307,18 +8751,139 @@ export default getRequestConfig(async ({ locale }) => {
 
 ```
 
+# src\lib\api_services\about-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import axiosInstance from "../axios";
+
+export interface RawAboutData {
+  id: number;
+  ar_about: string;
+  en_about: string;
+  ar_message: string;
+  en_message: string;
+  ar_vision: string;
+  en_vision: string;
+  ar_goals: string;
+  en_goals: string;
+}
+
+export interface AboutData {
+  id: number;
+  about: string;
+  message: string;
+  vision: string;
+  goals: string;
+}
+
+export interface AboutResponse {
+  about: RawAboutData[];
+}
+
+function fixFieldNames(item: RawAboutData, lang: string): AboutData {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    about: isEnglish ? item.en_about : item.ar_about,
+    message: isEnglish ? item.en_message : item.ar_message,
+    vision: isEnglish ? item.en_vision : item.ar_vision,
+    goals: isEnglish ? item.en_goals : item.ar_goals,
+  };
+}
+
+export const fetchAboutData = async (lang: string): Promise<AboutData> => {
+  try {
+    const response = await axiosInstance.get<AboutResponse>(
+      `${API_PATHS.ABOUT}?lang=${lang}`,
+    );
+    return fixFieldNames(response.data.about[0], lang);
+  } catch (error) {
+    console.error("Error fetching about data:", error);
+    throw error;
+  }
+};
+
+```
+
 # src\lib\api_services\api-paths.ts
 
 ```ts
+import { ValueOf } from "next/dist/shared/lib/constants";
+
 export const API_PATHS = {
-  NEWS: "/landingpage",
+  LANDING_PAGE: "/landingpage",
   STATISTICS: "/statistics",
   GOALS: "/goals",
   COLLEGES: "/colleges",
   RANKINGS: "/classification",
   E_SERVICES: "/service",
   CONTACT: "/contacts",
+  LATEST_NEWS: "/latestnews",
+  ABOUT: "/about",
+  COUNCIL: "/council",
+  PRESIDENT_SPEECH: "/presidentspeech",
+  ORGANIZATIONAL_STRUCTURE: "/crganizationalchart",
 };
+
+export const sharedPageNames = {
+  infrastructure: "infrastructure",
+  halls: "halls",
+  laboratories: "laboratories",
+  "green areas": "green areas",
+  "university life": "university life",
+  "promotions form": "promotions form",
+  guides: "guides",
+  "organizing promotion transactions": "organizing promotion transactions",
+  scientificJournals: "scientificJournals",
+  practicalAndIntellectualOutput: "practicalAndIntellectualOutput",
+  "teachers research": "teachers research",
+  "authored books": "authored books",
+  "scientific articles": "scientific articles",
+  "quality and performance": "quality and performance",
+  scopus: "scopus",
+  scientificResearcher: "scientificResearcher",
+  scientificResearchPortal: "scientificResearchPortal",
+  "scientific activities": "scientific activities",
+  seminars: "seminars",
+  workshops: "workshops",
+  courses: "courses",
+  forums: "forums",
+  admissionAndRegistration: "admissionAndRegistration",
+  registrationTerms: "registrationTerms",
+  registrationMechanism: "registrationMechanism",
+  tuitionFees: "tuitionFees",
+  discountsAndScholarships: "discountsAndScholarships",
+  patents: "patents",
+  universityCalendar: "universityCalendar",
+  examInstructions: "examInstructions",
+  studentDisciplineInstructions: "studentDisciplineInstructions",
+  studentGuidelines: "studentGuidelines",
+  topStudents: "topStudents",
+  examSchedules: "examSchedules",
+  studentActivities: "studentActivities",
+  studentTeams: "studentTeams",
+  ashurbanipalLibrary: "ashurbanipalLibrary",
+  continuingEducationCenter: "continuingEducationCenter",
+  urukCulturalCenter: "urukCulturalCenter",
+  fitnessCenter: "fitnessCenter",
+  gilgameshTheater: "gilgameshTheater",
+  celebrationHallsAridoun: "celebrationHallsAridoun",
+  olympicSwimmingpool: "olympicSwimmingpool",
+  fiveasidePitches: "fiveasidePitches",
+  trainingHalls: "trainingHalls",
+  dentalClinics: "dentalClinics",
+  cloningLibrary: "cloningLibrary",
+  cafeteria: "cafeteria",
+  graduates: "graduates",
+  rehabilitationAndEmployment: "rehabilitationAndEmployment",
+  consultingClinics: "consultingClinics",
+  electronicInquiriesMinistryHigherEducation:
+    "electronicInquiriesMinistryHigherEducation",
+  sustainability: "sustainability",
+};
+
+export type SharedPage = (typeof sharedPageNames)[keyof typeof sharedPageNames];
 
 ```
 
@@ -8481,6 +9046,66 @@ export const fetchLinks = async (): Promise<RawContact> => {
 
 ```
 
+# src\lib\api_services\council-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import axiosInstance from "../axios";
+
+export interface RawCouncilMember {
+  id: number;
+  ar_name: string;
+  en_name?: string;
+  ar_position: string;
+  en_position?: string;
+  image: string;
+  ar_description: string;
+  en_description?: string;
+}
+
+export interface CouncilMember {
+  id: number;
+  name: string;
+  position: string;
+  image: string;
+  description: string;
+}
+
+export interface CouncilResponse {
+  council: RawCouncilMember[];
+}
+
+function fixFieldNames(item: RawCouncilMember, lang: string): CouncilMember {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    name: isEnglish ? item.en_name || item.ar_name : item.ar_name,
+    position: isEnglish
+      ? item.en_position || item.ar_position
+      : item.ar_position,
+    image: item.image,
+    description: isEnglish
+      ? item.en_description || item.ar_description
+      : item.ar_description,
+  };
+}
+
+export const fetchCouncilMembers = async (
+  lang: string,
+): Promise<CouncilMember[]> => {
+  try {
+    const response = await axiosInstance.get<CouncilResponse>(
+      `${API_PATHS.COUNCIL}?lang=${lang}`,
+    );
+    return response.data.council.map((member) => fixFieldNames(member, lang));
+  } catch (error) {
+    console.error("Error fetching council members:", error);
+    throw error;
+  }
+};
+
+```
+
 # src\lib\api_services\goals-apis.ts
 
 ```ts
@@ -8512,14 +9137,14 @@ export const fetchGoals = async (lang: string): Promise<GoalItem[]> => {
 
 ```
 
-# src\lib\api_services\news-apis.ts
+# src\lib\api_services\homepage-apis.ts
 
 ```ts
-import { API_PATHS } from "./api-paths";
-import { NewsItem, NewsResponse } from "../types";
 import axiosInstance from "../axios";
+import { HomepageSliderItemsResponse, SliderItem } from "../types";
+import { API_PATHS } from "./api-paths";
 
-interface RawNewsItem {
+interface RawHomepageSliderItem {
   id: number;
   l_artitle?: string;
   l_entitle?: string;
@@ -8528,27 +9153,133 @@ interface RawNewsItem {
   en_description?: string;
 }
 
-function fixFieldNames(item: RawNewsItem, lang: string): NewsItem {
+function fixFieldNames(item: RawHomepageSliderItem, lang: string): SliderItem {
   const isEnglish = lang === "en";
   return {
     id: item.id,
     title: isEnglish ? item.l_entitle : item.l_artitle,
     image: item.image,
     description: isEnglish ? item.en_description : item.ar_description,
-  } as NewsItem;
+  } as SliderItem;
 }
 
-export const fetchNews = async (lang: string): Promise<NewsItem[]> => {
+export const fetchSliderItems = async (lang: string): Promise<SliderItem[]> => {
+  try {
+    const response = await axiosInstance.get<HomepageSliderItemsResponse>(
+      `${API_PATHS.LANDING_PAGE}?lang=${lang}`,
+    );
+    return response.data.landingpage.map((item) => fixFieldNames(item, lang));
+  } catch (error) {
+    console.error("Error fetching academic rankings:", error);
+    throw error;
+  }
+};
+
+```
+
+# src\lib\api_services\news-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import { NewsItem, NewsResponse } from "../types";
+import axiosInstance from "../axios";
+
+export const getLatestNews = async (page: number): Promise<NewsResponse> => {
   try {
     const response = await axiosInstance.get<NewsResponse>(
-      `${API_PATHS.NEWS}?lang=${lang}`,
+      `${API_PATHS.LATEST_NEWS}?page=${page}`,
     );
-
-    const rawNewsItems: RawNewsItem[] = response.data.landingpage;
-
-    return rawNewsItems.map((item) => fixFieldNames(item, lang));
+    return response.data;
   } catch (error) {
-    console.error("Error fetching news:", error);
+    console.error("Error fetching latest news:", error);
+    throw error;
+  }
+};
+
+```
+
+# src\lib\api_services\organizational-structure-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import axiosInstance from "../axios";
+
+export interface OrganizationalStructure {
+  id: number;
+  file: string;
+}
+
+export interface OrganizationalStructureResponse
+  extends Array<OrganizationalStructure> {}
+
+export const fetchOrganizationalStructure =
+  async (): Promise<OrganizationalStructure> => {
+    try {
+      const response = await axiosInstance.get<OrganizationalStructureResponse>(
+        API_PATHS.ORGANIZATIONAL_STRUCTURE,
+      );
+      return response.data[0]; // Return the first element of the array
+    } catch (error) {
+      console.error("Error fetching organizational structure:", error);
+      throw error;
+    }
+  };
+
+```
+
+# src\lib\api_services\president-speech-apis.ts
+
+```ts
+import { API_PATHS } from "./api-paths";
+import axiosInstance from "../axios";
+
+export interface RawPresidentSpeech {
+  id: number;
+  en_name: string;
+  ar_name: string;
+  en_position: string;
+  ar_position: string;
+  image: string;
+  en_description: string;
+  ar_description: string;
+}
+
+export interface PresidentSpeech {
+  id: number;
+  name: string;
+  position: string;
+  image: string;
+  description: string;
+}
+
+export interface PresidentSpeechResponse {
+  data: RawPresidentSpeech;
+}
+
+function fixFieldNames(
+  item: RawPresidentSpeech,
+  lang: string,
+): PresidentSpeech {
+  const isEnglish = lang === "en";
+  return {
+    id: item.id,
+    name: isEnglish ? item.en_name : item.ar_name,
+    position: isEnglish ? item.en_position : item.ar_position,
+    image: item.image,
+    description: isEnglish ? item.en_description : item.ar_description,
+  };
+}
+
+export const fetchPresidentSpeech = async (
+  lang: string,
+): Promise<PresidentSpeech> => {
+  try {
+    const response = await axiosInstance.get<PresidentSpeechResponse>(
+      `${API_PATHS.PRESIDENT_SPEECH}`,
+    );
+    return fixFieldNames(response.data.data, lang);
+  } catch (error) {
+    console.error("Error fetching president's speech:", error);
     throw error;
   }
 };
@@ -8600,6 +9331,7 @@ export const fetchSharedPageData = async (
     const response = await axiosInstance.get<SharedPageResponse>(
       `/staticpages?category=${category}`,
     );
+    console.log("response.data", response.data);
     return response.data.data[0] || null;
   } catch (error) {
     console.error("Error fetching shared page data:", error);
@@ -8680,6 +9412,7 @@ import {
 
 import * as paths from "./paths";
 import { TranslationFunction } from "./utils";
+import { sharedPageNames } from "./api_services/api-paths";
 
 // export const newsItems: (transNews: TransNewsItem[]) => NewsItem[] = (
 //   transNews: TransNewsItem[],
@@ -8750,19 +9483,19 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
         items: [
           {
             label: t("universityPresident"),
-            path: paths.UNIVERSITY_PRESIDENT_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
           {
             label: t("assistantPresidentScientific"),
-            path: paths.ASSISTANT_PRESIDENT_SCIENTIFIC_AFFAIRS_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
           {
             label: t("assistantPresidentAdministrative"),
-            path: paths.ASSISTANT_PRESIDENT_ADMINISTRATIVE_AFFAIRS_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
           {
             label: t("collegeDeans"),
-            path: paths.COLLEGE_DEANS_ROUTE,
+            path: paths.UNIVERSITY_COUNCIL_ROUTE,
           },
         ],
       },
@@ -8776,22 +9509,25 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
       },
       {
         label: t("infrastructure"),
-        path: paths.INFRASTRUCTURE_ROUTE,
+        path: paths.getSharedPageRoute(sharedPageNames.infrastructure),
         items: [
-          { label: t("halls"), path: paths.HALLS_ROUTE },
+          {
+            label: t("halls"),
+            path: paths.getSharedPageRoute(sharedPageNames.halls),
+          },
           {
             label: t("laboratories"),
-            path: paths.LABORATORIES_ROUTE,
+            path: paths.getSharedPageRoute(sharedPageNames.laboratories),
           },
           {
             label: t("greenAreas"),
-            path: paths.GREEN_AREAS_ROUTE,
+            path: paths.getSharedPageRoute(sharedPageNames["green areas"]),
           },
         ],
       },
       {
         label: t("universityLife"),
-        path: paths.UNIVERSITY_LIFE_ROUTE,
+        path: paths.getSharedPageRoute(sharedPageNames["university life"]),
         items: [
           {
             label: t("photoLibrary"),
@@ -9074,20 +9810,24 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
     label: t("Header.navLinks.universityAndCommunity"),
     items: [
       {
-        path: paths.getSharedPageRoute("graduates"),
-        label: t("Header.navLinks.graduates"),
+        path: paths.getSharedPageRoute(sharedPageNames.graduates),
+        label: t("SharedPages.graduates"),
       },
       {
-        path: paths.QUALIFICATION_EMPLOYMENT_ROUTE,
-        label: t("Header.navLinks.qualificationEmployment"),
+        path: paths.getSharedPageRoute(
+          sharedPageNames.rehabilitationAndEmployment,
+        ),
+        label: t("SharedPages.rehabilitationAndEmployment"),
       },
       {
-        path: paths.CONSULTING_CLINIC_ROUTE,
-        label: t("Header.navLinks.consultingClinic"),
+        path: paths.getSharedPageRoute(sharedPageNames.consultingClinics),
+        label: t("SharedPages.consultingClinics"),
       },
       {
-        path: paths.MINISTRY_INQUIRIES_ROUTE,
-        label: t("Header.navLinks.ministryInquiries"),
+        path: paths.getSharedPageRoute(
+          sharedPageNames.electronicInquiriesMinistryHigherEducation,
+        ),
+        label: t("SharedPages.electronicInquiriesMinistryHigherEducation"),
       },
       {
         label: t("Header.navLinks.surveys"),
@@ -9105,8 +9845,8 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
     ],
   },
   {
-    path: paths.SUSTAINABILITY_ROUTE,
-    label: t("Header.navLinks.sustainability"),
+    path: paths.getSharedPageRoute(sharedPageNames.sustainability),
+    label: t("SharedPages.sustainability"),
   },
   { path: paths.NEWS_ROUTE, label: t("Header.navLinks.news") },
   { path: paths.CONTACT_ROUTE, label: t("Header.navLinks.contact") },
@@ -9117,7 +9857,7 @@ export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [
 # src\lib\paths.ts
 
 ```ts
-import { SharedPage } from "./types";
+import { SharedPage } from "./api_services/api-paths";
 
 export const HOME_ROUTE = "/";
 export const ABOUT_UNIVERSITY_ROUTE = "/about";
@@ -9238,7 +9978,11 @@ export const NOT_FOUND_ROUTE = "/not_found";
 // // FirstSection path arrays
 export const SLIDER_BG_ROUTES: string[] = [HOME_ROUTE];
 
-export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
+export const IMAGE_BG_ROUTES: string[] = [
+  RELATED_LOCATIONS_ROUTE,
+  CONTACT_ROUTE,
+  ABOUT_UNIVERSITY_ROUTE,
+];
 
 // export const TITLE_AND_IMAGE_ROUTE_PATTERNS: string[] = [
 //   SUSTAINABILITY_ROUTE,
@@ -9264,6 +10008,104 @@ export const IMAGE_BG_ROUTES: string[] = [RELATED_LOCATIONS_ROUTE];
 //   "/news/\\d+", // This will match /news/ followed by one or more digits
 //   UNIVERSITY_COUNCIL_ROUTE,
 // ];
+
+```
+
+# src\lib\providers\counter-store-provider.tsx
+
+```tsx
+// src/providers/counter-store-provider.tsx
+"use client";
+
+import { type ReactNode, createContext, useRef, useContext } from "react";
+import { useStore } from "zustand";
+import {
+  CounterStore,
+  createCounterStore,
+  initCounterStore,
+} from "../zustand/newtitle-store";
+import { NewsResponse } from "../types";
+
+export type CounterStoreApi = ReturnType<typeof createCounterStore>;
+
+export const CounterStoreContext = createContext<CounterStoreApi | undefined>(
+  undefined,
+);
+
+export interface CounterStoreProviderProps {
+  children: ReactNode;
+  newsResponse: NewsResponse;
+}
+
+export const CounterStoreProvider = ({
+  children,
+  newsResponse,
+}: CounterStoreProviderProps) => {
+  const storeRef = useRef<CounterStoreApi>();
+  if (!storeRef.current) {
+    storeRef.current = createCounterStore(initCounterStore(newsResponse));
+  }
+
+  return (
+    <CounterStoreContext.Provider value={storeRef.current}>
+      {children}
+    </CounterStoreContext.Provider>
+  );
+};
+
+export const useCounterStore = <T,>(
+  selector: (store: CounterStore) => T,
+): T => {
+  const counterStoreContext = useContext(CounterStoreContext);
+
+  if (!counterStoreContext) {
+    throw new Error(`useCounterStore must be used within CounterStoreProvider`);
+  }
+
+  return useStore(counterStoreContext, selector);
+};
+
+```
+
+# src\lib\providers\news-provider.tsx
+
+```tsx
+"use client";
+
+import { type ReactNode, createContext, useContext } from "react";
+import { useStore } from "zustand";
+import { NewsResponse } from "../types";
+import { createNewsStore, NewsState } from "../zustand/newsStore";
+
+export const NewsStoreContext = createContext<ReturnType<
+  typeof createNewsStore
+> | null>(null);
+
+export interface NewsStoreProviderProps {
+  children: ReactNode;
+  initialState: Partial<NewsState>;
+}
+
+export const NewsStoreProvider = ({
+  children,
+  initialState,
+}: NewsStoreProviderProps) => {
+  const store = createNewsStore(initialState);
+
+  return (
+    <NewsStoreContext.Provider value={store}>
+      {children}
+    </NewsStoreContext.Provider>
+  );
+};
+
+export const useNewsStore = () => {
+  const store = useContext(NewsStoreContext);
+  if (!store) {
+    throw new Error("useNewsStore must be used within NewsStoreProvider");
+  }
+  return useStore(store);
+};
 
 ```
 
@@ -9295,6 +10137,8 @@ export async function getImagePlaceholder(src: string) {
 # src\lib\types.ts
 
 ```ts
+import { sharedPageNames } from "./api_services/api-paths";
+
 export type SliderElement = {
   image: string;
   title: string;
@@ -9357,17 +10201,17 @@ export type Location = {
   googleMapsLink: string;
 };
 
-// types.ts
+// // types.ts
 
-export interface NewsItem {
+export interface SliderItem {
   id: number;
   title: string;
   image: string;
   description: string;
 }
 
-export interface NewsResponse {
-  landingpage: NewsItem[];
+export interface HomepageSliderItemsResponse {
+  landingpage: SliderItem[];
 }
 
 export interface StatisticsItem {
@@ -9563,8 +10407,6 @@ export type UploadedImage = {
   image: string;
 };
 
-export type SharedPage = "graduates";
-
 export interface SharedPageData {
   id: number;
   category: string;
@@ -9578,6 +10420,42 @@ export interface SharedPageData {
 export interface SharedPageResponse {
   data: SharedPageData[];
 }
+
+export type NewsItem = {
+  id: number;
+  category: string;
+  en_title: string;
+  ar_title: string;
+  video: string;
+  en_subtext: string;
+  ar_subtext: string;
+  en_description: string;
+  ar_description: string;
+  image: string;
+  colleges_id: number;
+  departments_id: number | null;
+  created_at: string;
+  updated_at: string;
+  publish: number;
+};
+
+export type NewsResponse = {
+  latestnews: {
+    current_page: number;
+    data: NewsItem[];
+    first_page_url: string;
+    from: number;
+    last_page: number;
+    last_page_url: string;
+    next_page_url: string | null;
+    path: string;
+    per_page: number;
+    prev_page_url: string | null;
+    to: number;
+    total: number;
+  };
+  pages: number;
+};
 
 ```
 
@@ -9822,13 +10700,160 @@ export default useCommonStore;
 
 ```
 
+# src\lib\zustand\newsStore.ts
+
+```ts
+import { create } from "zustand";
+import { NewsItem, NewsResponse } from "@/lib/types";
+import { getLatestNews } from "@/lib/api_services/news-apis";
+
+export interface NewsState {
+  news: NewsItem[];
+  pagination: {
+    currentPage: number;
+    totalPages: number;
+    perPage: number;
+    total: number;
+  };
+  isLoading: boolean;
+  fetchNews: () => Promise<void>;
+  setPage: (page: number) => void;
+}
+
+export const createNewsStore = (initialState: Partial<NewsState> = {}) =>
+  create<NewsState>((set, get) => ({
+    news: [],
+    pagination: {
+      currentPage: 1,
+      totalPages: 1,
+      perPage: 15,
+      total: 0,
+    },
+    isLoading: false,
+    fetchNews: async () => {
+      set({ isLoading: true });
+      const { pagination } = get();
+      try {
+        const response: NewsResponse = await getLatestNews(
+          pagination.currentPage,
+        );
+        set({
+          news: response.latestnews.data,
+          pagination: {
+            currentPage: response.latestnews.current_page,
+            totalPages: response.latestnews.last_page,
+            perPage: response.latestnews.per_page,
+            total: response.latestnews.total,
+          },
+          isLoading: false,
+        });
+      } catch (error) {
+        console.error("Failed to fetch news:", error);
+        set({ isLoading: false });
+      }
+    },
+    setPage: (page) =>
+      set((state) => ({
+        pagination: { ...state.pagination, currentPage: page },
+      })),
+    ...initialState,
+  }));
+
+// export const useNewsStore =  create<NewsState>((set, get) => ({
+//   test: "",
+//   setTest: (value) => set({ test: value }),
+//   news: [],
+//   pagination: {
+//     currentPage: 1,
+//     totalPages: 1,
+//     perPage: 15,
+//     total: 0,
+//   },
+//   isLoading: false,
+//   fetchNews: async () => {
+//     set({ isLoading: true });
+//     const { pagination } = get();
+//     try {
+//       const response: NewsResponse = await getLatestNews(
+//         pagination.currentPage,
+//       );
+//       set({
+//         news: response.latestnews.data,
+//         pagination: {
+//           currentPage: response.latestnews.current_page,
+//           totalPages: response.latestnews.last_page,
+//           perPage: response.latestnews.per_page,
+//           total: response.latestnews.total,
+//         },
+//         isLoading: false,
+//       });
+//     } catch (error) {
+//       console.error("Failed to fetch news:", error);
+//       set({ isLoading: false });
+//     }
+//   },
+//   setPage: (page) =>
+//     set((state) => ({
+//       pagination: { ...state.pagination, currentPage: page },
+//     })),
+//   initializeState: (initialData: NewsResponse) =>
+//     set({
+//       news: initialData.latestnews.data,
+//       pagination: {
+//         currentPage: initialData.latestnews.current_page,
+//         totalPages: initialData.latestnews.last_page,
+//         perPage: initialData.latestnews.per_page,
+//         total: initialData.latestnews.total,
+//       },
+//     }),
+// }));
+
+```
+
+# src\lib\zustand\newtitle-store.ts
+
+```ts
+// src/stores/counter-store.ts
+import { createStore } from "zustand/vanilla";
+import { NewsResponse } from "../types";
+
+export type CounterState = {
+  count: string;
+  newsResponse?: NewsResponse;
+};
+
+export type CounterActions = {
+  setCount: (value: string) => void;
+};
+
+export type CounterStore = CounterState & CounterActions;
+
+export const initCounterStore = (newsResponse: NewsResponse): CounterState => {
+  return { count: "initCounterStore", newsResponse };
+};
+
+export const defaultInitState: CounterState = {
+  count: "init",
+};
+
+export const createCounterStore = (
+  initState: CounterState = defaultInitState,
+) => {
+  return createStore<CounterStore>()((set) => ({
+    ...initState,
+    setCount: (value) => set((state) => ({ count: value })),
+  }));
+};
+
+```
+
 # src\middleware.ts
 
 ```ts
 import createMiddleware from "next-intl/middleware";
 import { locales } from "./i18n.config";
 import { NextRequest } from "next/server";
-import { getLocaleFromPathname } from "./lib/utils";
+import { getLocaleFromPathname, removeLocaleFromPathname } from "./lib/utils";
 
 // export default createMiddleware({
 //   // A list of all locales that are supported
@@ -9846,6 +10871,7 @@ const intlMiddleware = createMiddleware({
 
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
   const locale = getLocaleFromPathname(pathname);
 
   // Call the intlMiddleware
@@ -9857,7 +10883,7 @@ export default function middleware(request: NextRequest) {
   }
 
   // Add the custom header to the response
-  response.headers.set("x-pathname", pathname);
+  response.headers.set("x-pathname", removeLocaleFromPathname(pathname));
 
   return response;
 }

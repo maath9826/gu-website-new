@@ -8,6 +8,7 @@ export const fetchSharedPageData = async (
     const response = await axiosInstance.get<SharedPageResponse>(
       `/staticpages?category=${category}`,
     );
+    console.log("response.data", response.data);
     return response.data.data[0] || null;
   } catch (error) {
     console.error("Error fetching shared page data:", error);

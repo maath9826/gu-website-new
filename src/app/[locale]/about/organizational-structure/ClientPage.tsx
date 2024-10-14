@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import FileOperations from "@/components/FileOperations";
 import ActionsTitle from "@/components/page/FirstTitleSection/ActionsTitle";
@@ -8,6 +6,7 @@ import Wrapper from "@/components/Wrapper";
 import { OrganizationalStructure } from "@/lib/api_services/organizational-structure-apis";
 import { getImageUrl } from "@/lib/utils";
 import Image from "next/image";
+import DynamicImage from "@/components/DynamicImage";
 
 interface OrganizationalStructureClientPageProps {
   organizationalStructure: OrganizationalStructure | undefined;
@@ -33,13 +32,10 @@ export default function OrganizationalStructureClientPage({
       />
       <Section className="text-start">
         <Wrapper>
-          <Image
+          <DynamicImage
             id="print-section"
             src={getImageUrl(organizationalStructure.file)}
             alt="Organizational Structure"
-            width={1200}
-            height={800}
-            className="w-full"
           />
         </Wrapper>
       </Section>
