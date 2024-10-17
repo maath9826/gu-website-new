@@ -88,7 +88,7 @@ export default function SurveyForm({ title, endpoint }: SurveyFormProps) {
             >
               <label
                 htmlFor={field.name}
-                className="text-right text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
+                className="text-start text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
               >
                 {field.label}
               </label>
@@ -105,7 +105,7 @@ export default function SurveyForm({ title, endpoint }: SurveyFormProps) {
           <div className="flex flex-col gap-[18px] sm:col-span-2 sm:gap-[10px] 1920:gap-[18px]">
             <label
               htmlFor="message"
-              className="text-right text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
+              className="text-start text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
             >
               {t("message")}
             </label>

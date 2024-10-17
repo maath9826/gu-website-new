@@ -22,7 +22,10 @@ export default function SharedPageClient({
     return <div>No data available</div>;
   }
 
+  console.log(pageData.category);
+  console.log(decodeURIComponent(pageData.category));
   const title = t(pageData.category as keyof typeof t);
+  console.log(title);
   const description =
     locale === "en" ? pageData.en_description : pageData.ar_description;
 

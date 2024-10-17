@@ -63,7 +63,10 @@ export const ratingsItems: (transRatings: TransRating[]) => Rating[] = (
     id: index + 1,
   }));
 
-export const navItems = (t: TranslationFunction): MenuItem[] => [
+export const navItems = (
+  t: TranslationFunction,
+  sharedPagesT: TranslationFunction,
+): MenuItem[] => [
   { label: t("home"), path: paths.HOME_ROUTE },
   {
     label: t("aboutUniversity"),
@@ -76,24 +79,24 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
       {
         label: t("universityCouncil"),
         path: paths.UNIVERSITY_COUNCIL_ROUTE,
-        items: [
-          {
-            label: t("universityPresident"),
-            path: paths.UNIVERSITY_COUNCIL_ROUTE,
-          },
-          {
-            label: t("assistantPresidentScientific"),
-            path: paths.UNIVERSITY_COUNCIL_ROUTE,
-          },
-          {
-            label: t("assistantPresidentAdministrative"),
-            path: paths.UNIVERSITY_COUNCIL_ROUTE,
-          },
-          {
-            label: t("collegeDeans"),
-            path: paths.UNIVERSITY_COUNCIL_ROUTE,
-          },
-        ],
+        // items: [
+        //   {
+        //     label: t("universityPresident"),
+        //     path: paths.UNIVERSITY_COUNCIL_ROUTE,
+        //   },
+        //   {
+        //     label: t("assistantPresidentScientific"),
+        //     path: paths.UNIVERSITY_COUNCIL_ROUTE,
+        //   },
+        //   {
+        //     label: t("assistantPresidentAdministrative"),
+        //     path: paths.UNIVERSITY_COUNCIL_ROUTE,
+        //   },
+        //   {
+        //     label: t("collegeDeans"),
+        //     path: paths.UNIVERSITY_COUNCIL_ROUTE,
+        //   },
+        // ],
       },
       {
         label: t("presidentSpeech"),
@@ -104,101 +107,127 @@ export const navItems = (t: TranslationFunction): MenuItem[] => [
         path: paths.ORGANIZATIONAL_STRUCTURE_ROUTE,
       },
       {
-        label: t("infrastructure"),
+        label: sharedPagesT(sharedPageNames.infrastructure),
         path: paths.getSharedPageRoute(sharedPageNames.infrastructure),
         items: [
           {
-            label: t("halls"),
+            label: sharedPagesT(sharedPageNames.halls),
             path: paths.getSharedPageRoute(sharedPageNames.halls),
           },
           {
-            label: t("laboratories"),
+            label: sharedPagesT(sharedPageNames.laboratories),
             path: paths.getSharedPageRoute(sharedPageNames.laboratories),
           },
           {
-            label: t("greenAreas"),
+            label: sharedPagesT(sharedPageNames["green areas"]),
             path: paths.getSharedPageRoute(sharedPageNames["green areas"]),
           },
         ],
       },
       {
-        label: t("universityLife"),
+        label: sharedPagesT(sharedPageNames["university life"]),
         path: paths.getSharedPageRoute(sharedPageNames["university life"]),
-        items: [
-          {
-            label: t("photoLibrary"),
-            path: paths.PHOTO_LIBRARY_ROUTE,
-          },
-          {
-            label: t("videoLibrary"),
-            path: paths.VIDEO_LIBRARY_ROUTE,
-          },
-        ],
+        // items: [
+        //   {
+        //     label: t("photoLibrary"),
+        //     path: paths.PHOTO_LIBRARY_ROUTE,
+        //   },
+        //   {
+        //     label: t("videoLibrary"),
+        //     path: paths.VIDEO_LIBRARY_ROUTE,
+        //   },
+        // ],
       },
       {
         label: t("agreementsPartnerships"),
         path: paths.AGREEMENTS_PARTNERSHIPS_ROUTE,
       },
+      // {
+      //   label: t("transparencyPrinciple"),
+      //   path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
+      // },
       {
-        label: t("transparencyPrinciple"),
-        path: paths.TRANSPARENCY_PRINCIPLE_ROUTE,
-      },
-      {
-        label: t("universityStrategy"),
-        path: paths.UNIVERSITY_STRATEGY_ROUTE,
+        label: sharedPagesT(sharedPageNames["GilgameshUniversityStrategy"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["GilgameshUniversityStrategy"],
+        ),
       },
     ],
   },
-  {
-    label: t("colleges"),
-    path: paths.COLLEGES_ROUTE,
-    items: [
-      { label: "College 1", path: paths.COLLEGE_ROUTE("1") },
-      { label: "College 2", path: paths.COLLEGE_ROUTE("2") },
-    ],
-  },
+  // {
+  //   label: t("colleges"),
+  //   path: paths.COLLEGES_ROUTE,
+  //   items: [
+  //     { label: "College 1", path: paths.COLLEGE_ROUTE("1") },
+  //     { label: "College 2", path: paths.COLLEGE_ROUTE("2") },
+  //   ],
+  // },
   {
     label: t("academicAffairs"),
-    path: paths.ACADEMIC_AFFAIRS_ROUTE,
     items: [
       {
-        label: t("scientificPromotions"),
-        path: paths.SCIENTIFIC_PROMOTIONS_ROUTE,
+        label: sharedPagesT(sharedPageNames["academic promotions"]),
+        path: paths.getSharedPageRoute(sharedPageNames["academic promotions"]),
         items: [
           {
-            label: t("guidelines"),
-            path: paths.SCIENTIFIC_PROMOTIONS_GUIDELINES_ROUTE,
+            label: sharedPagesT(sharedPageNames["guides"]),
+            path: paths.getSharedPageRoute(sharedPageNames["guides"]),
           },
           {
-            label: t("forms"),
-            path: paths.PROMOTION_FORMS_ROUTE,
+            label: sharedPagesT(sharedPageNames["upgrade forms"]),
+            path: paths.getSharedPageRoute(sharedPageNames["upgrade forms"]),
           },
           {
-            label: t("instructions"),
-            path: paths.PROMOTION_INSTRUCTIONS_ROUTE,
+            label: sharedPagesT(sharedPageNames["organizing promotion"]),
+
+            path: paths.getSharedPageRoute(
+              sharedPageNames["organizing promotion"],
+            ),
           },
         ],
       },
+      // {
+      //   label: t("scientificConferences"),
+      //   path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
+      // },
       {
-        label: t("scientificConferences"),
-        path: paths.SCIENTIFIC_CONFERENCES_ROUTE,
+        label: sharedPagesT("scientificJournals"),
+        path: paths.getSharedPageRoute(sharedPageNames["scientificJournals"]),
       },
       {
-        label: t("scientificJournals"),
-        path: paths.SCIENTIFIC_JOURNALS_ROUTE,
+        label: sharedPagesT("practicalAndIntellectualOutput"),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["practicalAndIntellectualOutput"],
+        ),
+        items: [
+          {
+            label: sharedPagesT(sharedPageNames["facultyResearch"]),
+            path: paths.getSharedPageRoute(sharedPageNames["facultyResearch"]),
+          },
+          {
+            label: sharedPagesT("authoredBooks"),
+            path: paths.getSharedPageRoute(sharedPageNames["authoredBooks"]),
+          },
+          {
+            label: sharedPagesT("scientificArticles"),
+            path: paths.getSharedPageRoute(
+              sharedPageNames["scientificArticles"],
+            ),
+          },
+          {
+            label: sharedPagesT("patents"),
+            path: paths.getSharedPageRoute(sharedPageNames["patents"]),
+          },
+        ],
       },
-      {
-        label: t("electronicScientificProduction"),
-        path: paths.ELECTRONIC_SCIENTIFIC_PRODUCTION_ROUTE,
-      },
-      {
-        label: t("facultyResearch"),
-        path: paths.FACULTY_RESEARCH_ROUTE,
-      },
-      {
-        label: t("approvedBooks"),
-        path: paths.APPROVED_BOOKS_ROUTE,
-      },
+      // {
+      //   label: t("facultyResearch"),
+      //   path: paths.FACULTY_RESEARCH_ROUTE,
+      // },
+      // {
+      //   label: t("approvedBooks"),
+      //   path: paths.APPROVED_BOOKS_ROUTE,
+      // },
       {
         label: t("scientificMissions"),
         path: paths.SCIENTIFIC_MISSIONS_ROUTE,

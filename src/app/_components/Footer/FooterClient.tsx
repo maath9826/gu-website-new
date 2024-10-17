@@ -66,12 +66,12 @@ const FooterLeft = () => {
 
   return (
     <div className="flex w-full sm:max-w-[450px] 1920:max-w-[487px]">
-      <Link
+      {/* <Link
         href={RELATED_LOCATIONS_ROUTE}
         className="text-[16px] leading-[1.22em] text-secondary sm:text-[18px]"
       >
         {t("relatedSites")}
-      </Link>
+      </Link> */}
       {/* <div className="mb-[58px] flex flex-col gap-[10px] sm:mb-[89px] sm:flex-row sm:items-center sm:gap-[24px]">
         <label className="text-[18px] leading-[1.22em]">
           {t("subscribeNewsletter")}

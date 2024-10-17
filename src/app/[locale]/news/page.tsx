@@ -29,7 +29,8 @@ export default async function NewsPage() {
   }
 
   return (
-    newsResponse && (
+    newsResponse &&
+    newsResponse.latestnews.data.length > 0 && (
       <NewsStoreProvider
         initialState={{
           news: newsResponse.latestnews.data,

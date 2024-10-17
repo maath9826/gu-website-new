@@ -11,6 +11,7 @@ import Script from "next/script";
 import CommonSections from "@/components/common-sections/CommonSections";
 import SuccessModal from "@/components/modals/SuccessModal";
 import { usePathname } from "@/i18n.config";
+import Loading from "@/components/Loading";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -43,6 +44,7 @@ export default function RootLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
+          {/* <Loading></Loading> */}
           <Header />
           {children}
           <CommonSections></CommonSections>

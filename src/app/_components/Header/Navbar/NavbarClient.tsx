@@ -93,6 +93,7 @@ function NavDrawer({ contactInfo }: { contactInfo: RawContact | undefined }) {
   const locale = useLocale() as Locale;
   const dir = useTextDirection();
   const tNavLinks = useTranslations("Header.navLinks");
+  const sharedPagesT = useTranslations("SharedPages");
   const t = useTranslations();
 
   const renderMenuItem = (item: MenuItem, index: number, depth: number = 0) => {
@@ -172,7 +173,7 @@ function NavDrawer({ contactInfo }: { contactInfo: RawContact | undefined }) {
                 type="multiple"
                 className="flex w-full flex-col items-start"
               >
-                {navItems(tNavLinks).map((item, index) =>
+                {navItems(tNavLinks, sharedPagesT).map((item, index) =>
                   renderMenuItem(item, index),
                 )}
               </Accordion>

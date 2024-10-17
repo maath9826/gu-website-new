@@ -8,7 +8,8 @@ import { MenuItem } from "@/lib/types";
 
 const NavElements: React.FC = () => {
   const t = useTranslations("Header.navLinks");
-  const items = navItems(t);
+  const SharedPagesT = useTranslations("SharedPages");
+  const items = navItems(t, SharedPagesT);
 
   return (
     <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">

@@ -36,7 +36,7 @@ const ContactInfoSection: React.FC<{ contact: Contact }> = ({ contact }) => {
 
   return (
     <div className="w-full bg-white px-4 py-[49px] sm:w-1/2 sm:px-[83px] sm:py-[109px] 1920:px-[110px] 1920:py-[145px]">
-      <h2 className="mb-[30px] text-right text-[28px] font-medium leading-[1.22em] text-primary sm:mb-[122px] sm:text-[50px] 1920:mb-[162px] 1920:text-[70px]">
+      <h2 className="mb-[30px] text-start text-[28px] font-medium leading-[1.22em] text-primary sm:mb-[122px] sm:text-[50px] 1920:mb-[162px] 1920:text-[70px]">
         {tContact("title")}
       </h2>
       <div className="mb-[40px] space-y-[40px] sm:mb-[53px] sm:space-y-[53px] 1920:mb-[60px] 1920:space-y-[60px]">
@@ -45,7 +45,7 @@ const ContactInfoSection: React.FC<{ contact: Contact }> = ({ contact }) => {
         <ContactInfo title={t("address")} value={contact.address} />
       </div>
       {/* <div>
-        <p className="mb-[40px] text-right text-[24px] leading-[1.33em] text-primary/60 sm:mb-[25px] sm:text-[22px] 1920:mb-[38px] 1920:text-[26px]">
+        <p className="mb-[40px] text-start text-[24px] leading-[1.33em] text-primary/60 sm:mb-[25px] sm:text-[22px] 1920:mb-[38px] 1920:text-[26px]">
           {t("downloadApp")}
         </p>
         <div className="flex justify-start gap-[14px]">
@@ -118,7 +118,7 @@ const ContactFormSection: React.FC = () => {
 
   return (
     <div className="w-full bg-[#F0F1EC] px-4 py-[49px] sm:w-1/2 sm:px-[83px] sm:py-[109px] 1920:px-[110px] 1920:py-[145px]">
-      <h2 className="mb-[20px] text-right text-[28px] font-medium leading-[1.35em] text-primary sm:mb-[54px] sm:text-[28px] 1920:mb-[71px] 1920:text-[38px]">
+      <h2 className="mb-[20px] text-start text-[28px] font-medium leading-[1.35em] text-primary sm:mb-[54px] sm:text-[28px] 1920:mb-[71px] 1920:text-[38px]">
         {t("title")}
       </h2>
       <form
@@ -134,7 +134,7 @@ const ContactFormSection: React.FC = () => {
           >
             <label
               htmlFor={field.name}
-              className="text-right text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
+              className="text-start text-[16px] font-medium leading-[1.35em] text-primary sm:text-[18px] 1920:text-[21px]"
             >
               {field.label}
             </label>
@@ -172,7 +172,7 @@ const ContactInfo: React.FC<{ title: string; value: string }> = ({
   value,
 }) => {
   return (
-    <div className="text-right">
+    <div className="text-start">
       <p className="text-[24px] leading-[1.33em] text-primary/60 sm:text-[22px] 1920:text-[26px]">
         {title}
       </p>

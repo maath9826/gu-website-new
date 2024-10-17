@@ -17,19 +17,22 @@ export const API_PATHS = {
 };
 
 export const sharedPageNames = {
+  facultyResearch: "facultyResearch",
+
   infrastructure: "infrastructure",
   halls: "halls",
   laboratories: "laboratories",
   "green areas": "green areas",
+  "academic promotions": "academic promotions",
   "university life": "university life",
   "promotions form": "promotions form",
   guides: "guides",
-  "organizing promotion transactions": "organizing promotion transactions",
+  "organizing promotion": "organizing promotion",
   scientificJournals: "scientificJournals",
   practicalAndIntellectualOutput: "practicalAndIntellectualOutput",
   "teachers research": "teachers research",
-  "authored books": "authored books",
-  "scientific articles": "scientific articles",
+  authoredBooks: "authoredBooks",
+  scientificArticles: "scientificArticles",
   "quality and performance": "quality and performance",
   scopus: "scopus",
   scientificResearcher: "scientificResearcher",
@@ -39,6 +42,7 @@ export const sharedPageNames = {
   workshops: "workshops",
   courses: "courses",
   forums: "forums",
+  "upgrade forms": "upgrade forms",
   admissionAndRegistration: "admissionAndRegistration",
   registrationTerms: "registrationTerms",
   registrationMechanism: "registrationMechanism",
@@ -71,6 +75,7 @@ export const sharedPageNames = {
   electronicInquiriesMinistryHigherEducation:
     "electronicInquiriesMinistryHigherEducation",
   sustainability: "sustainability",
+  GilgameshUniversityStrategy: "GilgameshUniversityStrategy",
 };
 
 export type SharedPage = (typeof sharedPageNames)[keyof typeof sharedPageNames];
