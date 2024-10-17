@@ -1,12 +1,12 @@
-// src/lib/zustand/photoLibraryStore.ts
-
 import { create } from "zustand";
-import { getPhotoLibrary } from "@/lib/api_services/photo-library-apis";
-import debounce from "lodash/debounce";
 import {
+  getPhotoLibrary,
   PhotoLibraryItem,
   PhotoLibraryResponse,
-} from "../api_services/news-apis";
+  PhotoLibraryQueryParams,
+} from "@/lib/api_services/photo-library-apis";
+import debounce from "lodash/debounce";
+import { College, CollegesResponse, RawCollege } from "../types";
 
 export interface PhotoLibraryState {
   photoLibrary: PhotoLibraryItem[];
@@ -18,9 +18,14 @@ export interface PhotoLibraryState {
   };
   isLoading: boolean;
   searchTerm: string;
+  selectedCollegeId: number | null;
+  selectedDepartmentId: number | null;
+  colleges: College[];
   fetchPhotoLibrary: () => Promise<void>;
   setPage: (page: number) => void;
   setSearchTerm: (term: string) => void;
+  setSelectedCollegeId: (id: number | null) => void;
+  setSelectedDepartmentId: (id: number | null) => void;
   debouncedSearch: (term: string) => void;
   initializeFromUrl: (searchParam: string | null) => void;
 }
@@ -38,14 +43,26 @@ export const createPhotoLibraryStore = (
     },
     isLoading: false,
     searchTerm: "",
+    selectedCollegeId: null,
+    selectedDepartmentId: null,
+    colleges: [],
     fetchPhotoLibrary: async () => {
       set({ isLoading: true });
-      const { pagination, searchTerm } = get();
+      const {
+        pagination,
+        searchTerm,
+        selectedCollegeId,
+        selectedDepartmentId,
+      } = get();
       try {
-        const response: PhotoLibraryResponse = await getPhotoLibrary(
-          pagination.currentPage,
-          searchTerm,
-        );
+        const queryParams: PhotoLibraryQueryParams = {
+          page: pagination.currentPage,
+          search: searchTerm,
+          college_id: selectedCollegeId,
+          department_id: selectedDepartmentId,
+        };
+        const response: PhotoLibraryResponse =
+          await getPhotoLibrary(queryParams);
         set({
           photoLibrary: response.data,
           pagination: {
@@ -67,6 +84,9 @@ export const createPhotoLibraryStore = (
       }));
     },
     setSearchTerm: (term) => set({ searchTerm: term }),
+    setSelectedCollegeId: (id) =>
+      set({ selectedCollegeId: id, selectedDepartmentId: null }),
+    setSelectedDepartmentId: (id) => set({ selectedDepartmentId: id }),
     debouncedSearch: debounce((term: string) => {
       const { fetchPhotoLibrary } = get();
       fetchPhotoLibrary();

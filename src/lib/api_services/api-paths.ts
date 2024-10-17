@@ -17,8 +17,10 @@ export const API_PATHS = {
 };
 
 export const sharedPageNames = {
+  scopus: "scopus",
+  "google scholar": "google scholar",
   facultyResearch: "facultyResearch",
-
+  universitydigitalidentity: "universitydigitalidentity",
   infrastructure: "infrastructure",
   halls: "halls",
   laboratories: "laboratories",
@@ -34,7 +36,6 @@ export const sharedPageNames = {
   authoredBooks: "authoredBooks",
   scientificArticles: "scientificArticles",
   "quality and performance": "quality and performance",
-  scopus: "scopus",
   scientificResearcher: "scientificResearcher",
   scientificResearchPortal: "scientificResearchPortal",
   "scientific activities": "scientific activities",

@@ -17,6 +17,7 @@
     "presidentPosition": "University President"
   },
   "Common": {
+    "eServices": "E-Services",
     "generalSuccessMessage": "Sent Successfully!",
     "share": "Share",
     "print": "Print",
@@ -60,6 +61,7 @@
     "navLinks": {
       "home": "Home",
       "aboutUniversity": "About University",
+      "studentsLife": "Students Life",
       "aboutUs": "About Us",
       "universityCouncil": "University Council",
       "universityPresident": "University President",
@@ -88,8 +90,6 @@
       "inventionPatents": "Invention Patents",
       "qualityAssurance": "Quality Assurance",
       "universityRankings": "University Rankings",
-      "scopus": "Scopus",
-      "googleScholar": "Google Scholar",
       "researchGate": "Research Gate",
       "scientificActivities": "Scientific Activities",
       "seminars": "Seminars",
@@ -489,8 +489,9 @@
     "scientificArticles": "Scientific Articles",
     "quality and performance": "Quality and University Performance",
     "scopus": "Scopus",
+    "google scholar": "Google Scholar",
     "scientificResearcher": "Scientific Researcher",
-    "scientificResearchPortal": "Scientific Research Portal",
+    "scientificResearchPortal": "Research Gate",
     "scientific activities": "Scientific Activities",
     "seminars": "Seminars",
     "workshops": "Workshops",
@@ -530,6 +531,7 @@
     "GilgameshUniversityStrategy": "Gilgamesh University Strategy",
     "facultyResearch": "Faculty Research",
     "authoredBooks": "Authored Books",
-    "scientificConferences": "Scientific Conferences"
+    "scientificConferences": "Scientific Conferences",
+    "universitydigitalidentity": "Digital Identity"
   }
 }

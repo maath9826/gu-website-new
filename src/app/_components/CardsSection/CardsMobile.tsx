@@ -10,6 +10,7 @@ import ScrollElement from "@/components/ScrollElement";
 export default function CardsMobile() {
   const containerRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("Common.cards");
+  const tCommon = useTranslations("Common");
 
   const cardsData = [
     {
@@ -39,8 +40,8 @@ export default function CardsMobile() {
     <div className="mb-[54px] mt-[30px] w-full flex-col overflow-hidden sm:hidden">
       <ScrollableContainerUpperSection
         containerRef={containerRef}
-        title2="جامعة كلكامش"
-        title="الخدمات الالكترونية"
+        title2={tCommon("gilgameshUniversity")}
+        title={tCommon("eServices")}
       />
       <ScrollableCardsContainer ref={containerRef}>
         {translatedElements.map((el, index) => (

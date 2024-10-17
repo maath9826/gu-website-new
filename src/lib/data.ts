@@ -220,214 +220,247 @@ export const navItems = (
           },
         ],
       },
-      // {
-      //   label: t("facultyResearch"),
-      //   path: paths.FACULTY_RESEARCH_ROUTE,
-      // },
-      // {
-      //   label: t("approvedBooks"),
-      //   path: paths.APPROVED_BOOKS_ROUTE,
-      // },
       {
-        label: t("scientificMissions"),
-        path: paths.SCIENTIFIC_MISSIONS_ROUTE,
+        label: sharedPagesT(sharedPageNames["quality and performance"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["quality and performance"],
+        ),
       },
       {
-        label: t("inventionPatents"),
-        path: paths.INVENTION_PATENTS_ROUTE,
-      },
-      {
-        label: t("qualityAssurance"),
-        path: paths.QUALITY_ASSURANCE_ROUTE,
-      },
-      {
-        label: t("universityRankings"),
-        path: paths.UNIVERSITY_RANKINGS_ROUTE,
+        label: sharedPagesT(sharedPageNames["universitydigitalidentity"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["universitydigitalidentity"],
+        ),
         items: [
-          { label: t("scopus"), path: paths.SCOPUS_ROUTE },
           {
-            label: t("googleScholar"),
-            path: paths.GOOGLE_SCHOLAR_ROUTE,
+            label: sharedPagesT(sharedPageNames["scopus"]),
+            path: paths.getSharedPageRoute(sharedPageNames["scopus"]),
           },
           {
-            label: t("researchGate"),
-            path: paths.RESEARCH_GATE_ROUTE,
+            label: sharedPagesT(sharedPageNames["google scholar"]),
+            path: paths.getSharedPageRoute(sharedPageNames["google scholar"]),
+          },
+          {
+            label: sharedPagesT(sharedPageNames["scientificResearchPortal"]),
+            path: paths.getSharedPageRoute(
+              sharedPageNames["scientificResearchPortal"],
+            ),
           },
         ],
       },
       {
-        label: t("scientificActivities"),
-        path: paths.SCIENTIFIC_ACTIVITIES_ROUTE,
+        label: sharedPagesT(sharedPageNames["scientific activities"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["scientific activities"],
+        ),
         items: [
           {
-            label: t("seminars"),
-            path: paths.SEMINARS_ROUTE,
+            label: sharedPagesT(sharedPageNames["seminars"]),
+            path: paths.getSharedPageRoute(sharedPageNames["seminars"]),
           },
           {
-            label: t("workshops"),
-            path: paths.WORKSHOPS_ROUTE,
+            label: sharedPagesT(sharedPageNames["workshops"]),
+            path: paths.getSharedPageRoute(sharedPageNames["workshops"]),
           },
-          { label: t("courses"), path: paths.COURSES_ROUTE },
-          { label: t("forums"), path: paths.FORUMS_ROUTE },
+          {
+            label: sharedPagesT(sharedPageNames["courses"]),
+            path: paths.getSharedPageRoute(sharedPageNames["courses"]),
+          },
+          {
+            label: sharedPagesT(sharedPageNames["forums"]),
+            path: paths.getSharedPageRoute(sharedPageNames["forums"]),
+          },
         ],
       },
     ],
   },
   {
     label: t("studentAffairs"),
-    path: paths.STUDENT_AFFAIRS_ROUTE,
     items: [
       {
-        label: t("admissionRegistration"),
-        path: paths.ADMISSION_REGISTRATION_ROUTE,
+        label: sharedPagesT(sharedPageNames["admissionAndRegistration"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["admissionAndRegistration"],
+        ),
         items: [
           {
-            label: t("admissionConditions"),
-            path: paths.ADMISSION_CONDITIONS_ROUTE,
+            label: sharedPagesT(sharedPageNames["registrationTerms"]),
+            path: paths.getSharedPageRoute(
+              sharedPageNames["registrationTerms"],
+            ),
           },
           {
-            label: t("registrationMechanism"),
-            path: paths.REGISTRATION_MECHANISM_ROUTE,
+            label: sharedPagesT(sharedPageNames["registrationMechanism"]),
+            path: paths.getSharedPageRoute(
+              sharedPageNames["registrationMechanism"],
+            ),
           },
           {
-            label: t("studyFees"),
-            path: paths.STUDY_FEES_ROUTE,
+            label: sharedPagesT(sharedPageNames["tuitionFees"]),
+            path: paths.getSharedPageRoute(sharedPageNames["tuitionFees"]),
+          },
+          {
+            label: sharedPagesT(sharedPageNames["discountsAndScholarships"]),
+            path: paths.getSharedPageRoute(
+              sharedPageNames["discountsAndScholarships"],
+            ),
           },
         ],
       },
+
+      // {
+      //   label: t("academicCalendar"),
+      //   path: paths.ACADEMIC_CALENDAR_ROUTE,
+      // },
       {
-        label: t("scholarshipsGrants"),
-        path: paths.SCHOLARSHIPS_GRANTS_ROUTE,
+        label: sharedPagesT(sharedPageNames["examInstructions"]),
+        path: paths.getSharedPageRoute(sharedPageNames["examInstructions"]),
       },
       {
-        label: t("academicCalendar"),
-        path: paths.ACADEMIC_CALENDAR_ROUTE,
+        label: sharedPagesT(sharedPageNames["studentDisciplineInstructions"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["studentDisciplineInstructions"],
+        ),
       },
       {
-        label: t("universityInstructions"),
-        path: paths.UNIVERSITY_INSTRUCTIONS_ROUTE,
+        label: sharedPagesT(sharedPageNames["studentGuidelines"]),
+        path: paths.getSharedPageRoute(sharedPageNames["studentGuidelines"]),
       },
       {
-        label: t("studentGuide"),
-        path: paths.STUDENT_GUIDE_ROUTE,
+        label: sharedPagesT(sharedPageNames["topStudents"]),
+        path: paths.getSharedPageRoute(sharedPageNames["topStudents"]),
       },
       {
-        label: t("outstandingStudents"),
-        path: paths.OUTSTANDING_STUDENTS_ROUTE,
+        label: sharedPagesT(sharedPageNames["examSchedules"]),
+        path: paths.getSharedPageRoute(sharedPageNames["examSchedules"]),
       },
       {
-        label: t("studentActivities"),
-        path: paths.STUDENT_ACTIVITIES_ROUTE,
-      },
-      {
-        label: t("studentClubs"),
-        path: paths.STUDENT_CLUBS_ROUTE,
+        label: t("studentsLife"),
+        items: [
+          {
+            label: sharedPagesT(sharedPageNames["studentActivities"]),
+            path: paths.getSharedPageRoute(
+              sharedPageNames["studentActivities"],
+            ),
+          },
+          {
+            label: sharedPagesT(sharedPageNames["studentTeams"]),
+            path: paths.getSharedPageRoute(sharedPageNames["studentTeams"]),
+          },
+        ],
       },
     ],
   },
   {
     label: t("serviceCenters"),
-    path: paths.SERVICE_CENTERS_ROUTE,
+
     items: [
       {
-        label: t("digitalLibrary"),
-        path: paths.DIGITAL_LIBRARY_ROUTE,
+        label: sharedPagesT(sharedPageNames["ashurbanipalLibrary"]),
+        path: paths.getSharedPageRoute(sharedPageNames["ashurbanipalLibrary"]),
       },
       {
-        label: t("continuingEducationCenter"),
-        path: paths.CONTINUING_EDUCATION_CENTER_ROUTE,
+        label: sharedPagesT(sharedPageNames["continuingEducationCenter"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["continuingEducationCenter"],
+        ),
       },
       {
-        label: t("careerGuidanceCenter"),
-        path: paths.CAREER_GUIDANCE_CENTER_ROUTE,
+        label: sharedPagesT(sharedPageNames["urukCulturalCenter"]),
+        path: paths.getSharedPageRoute(sharedPageNames["urukCulturalCenter"]),
       },
       {
-        label: t("physicalFitnessCenter"),
-        path: paths.PHYSICAL_FITNESS_CENTER_ROUTE,
+        label: sharedPagesT(sharedPageNames["fitnessCenter"]),
+        path: paths.getSharedPageRoute(sharedPageNames["fitnessCenter"]),
       },
       {
-        label: t("gilgameshTheater"),
-        path: paths.GILGAMESH_THEATER_ROUTE,
+        label: sharedPagesT(sharedPageNames["gilgameshTheater"]),
+        path: paths.getSharedPageRoute(sharedPageNames["gilgameshTheater"]),
       },
       {
-        label: t("audiovisualHalls"),
-        path: paths.AUDIOVISUAL_HALLS_ROUTE,
+        label: sharedPagesT(sharedPageNames["celebrationHallsAridoun"]),
+        path: paths.getSharedPageRoute(
+          sharedPageNames["celebrationHallsAridoun"],
+        ),
       },
       {
-        label: t("sportsStadium"),
-        path: paths.SPORTS_STADIUM_ROUTE,
+        label: sharedPagesT(sharedPageNames["olympicSwimmingpool"]),
+        path: paths.getSharedPageRoute(sharedPageNames["olympicSwimmingpool"]),
       },
       {
-        label: t("fiveSidePlaygrounds"),
-        path: paths.FIVE_SIDE_PLAYGROUNDS_ROUTE,
+        label: sharedPagesT(sharedPageNames["fiveasidePitches"]),
+        path: paths.getSharedPageRoute(sharedPageNames["fiveasidePitches"]),
       },
       {
-        label: t("trainingHalls"),
-        path: paths.TRAINING_HALLS_ROUTE,
+        label: sharedPagesT(sharedPageNames["trainingHalls"]),
+        path: paths.getSharedPageRoute(sharedPageNames["trainingHalls"]),
       },
       {
-        label: t("dentalClinics"),
-        path: paths.DENTAL_CLINICS_ROUTE,
+        label: sharedPagesT(sharedPageNames["dentalClinics"]),
+        path: paths.getSharedPageRoute(sharedPageNames["dentalClinics"]),
       },
       {
-        label: t("centralLibrary"),
-        path: paths.CENTRAL_LIBRARY_ROUTE,
-      },
-      { label: t("cafeteria"), path: paths.CAFETERIA_ROUTE },
-    ],
-  },
-  {
-    label: t("eServices"),
-    path: paths.E_SERVICES_ROUTE,
-    items: [
-      {
-        label: t("studentPortal"),
-        path: paths.STUDENT_PORTAL_ROUTE,
+        label: sharedPagesT(sharedPageNames["cloningLibrary"]),
+        path: paths.getSharedPageRoute(sharedPageNames["cloningLibrary"]),
       },
       {
-        label: t("facultyPortal"),
-        path: paths.FACULTY_PORTAL_ROUTE,
-      },
-      {
-        label: t("massarPlatform"),
-        path: paths.MASSAR_PLATFORM_ROUTE,
-      },
-      {
-        label: t("universityDigitalRepository"),
-        path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
-      },
-      {
-        label: t("electronicPayment"),
-        path: paths.ELECTRONIC_PAYMENT_ROUTE,
-      },
-      {
-        label: t("graduatesPortal"),
-        path: paths.GRADUATES_PORTAL_ROUTE,
-        items: [
-          {
-            label: t("graduationConfirmationRequest"),
-            path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
-          },
-          {
-            label: t("graduationDocumentRequest"),
-            path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
-          },
-          {
-            label: t("transcriptRequest"),
-            path: paths.TRANSCRIPT_REQUEST_ROUTE,
-          },
-        ],
-      },
-      {
-        label: t("universityIdIssuance"),
-        path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
-      },
-      {
-        label: t("electronicParticipationCertificates"),
-        path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
+        label: sharedPagesT(sharedPageNames["cafeteria"]),
+        path: paths.getSharedPageRoute(sharedPageNames["cafeteria"]),
       },
     ],
   },
+  // {
+  //   label: t("eServices"),
+  //   path: paths.E_SERVICES_ROUTE,
+  //   items: [
+  //     {
+  //       label: t("studentPortal"),
+  //       path: paths.STUDENT_PORTAL_ROUTE,
+  //     },
+  //     {
+  //       label: t("facultyPortal"),
+  //       path: paths.FACULTY_PORTAL_ROUTE,
+  //     },
+  //     {
+  //       label: t("massarPlatform"),
+  //       path: paths.MASSAR_PLATFORM_ROUTE,
+  //     },
+  //     {
+  //       label: t("universityDigitalRepository"),
+  //       path: paths.UNIVERSITY_DIGITAL_REPOSITORY_ROUTE,
+  //     },
+  //     {
+  //       label: t("electronicPayment"),
+  //       path: paths.ELECTRONIC_PAYMENT_ROUTE,
+  //     },
+  //     {
+  //       label: t("graduatesPortal"),
+  //       path: paths.GRADUATES_PORTAL_ROUTE,
+  //       items: [
+  //         {
+  //           label: t("graduationConfirmationRequest"),
+  //           path: paths.GRADUATION_CONFIRMATION_REQUEST_ROUTE,
+  //         },
+  //         {
+  //           label: t("graduationDocumentRequest"),
+  //           path: paths.GRADUATION_DOCUMENT_REQUEST_ROUTE,
+  //         },
+  //         {
+  //           label: t("transcriptRequest"),
+  //           path: paths.TRANSCRIPT_REQUEST_ROUTE,
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       label: t("universityIdIssuance"),
+  //       path: paths.UNIVERSITY_ID_ISSUANCE_ROUTE,
+  //     },
+  //     {
+  //       label: t("electronicParticipationCertificates"),
+  //       path: paths.ELECTRONIC_PARTICIPATION_CERTIFICATES_ROUTE,
+  //     },
+  //   ],
+  // },
 ];
 
 export const topbarNavItems = (t: TranslationFunction): MenuItem[] => [

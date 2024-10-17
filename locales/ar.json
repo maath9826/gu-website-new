@@ -17,6 +17,7 @@
     "presidentPosition": "رئيس الجامعة"
   },
   "Common": {
+    "eServices": "الخدمات الالكترونية",
     "generalSuccessMessage": "تم الارسال بنجاح! ",
     "centerizedTitle": "عنوانك المركزي هنا",
     "print": "طباعة",
@@ -64,6 +65,7 @@
     "navLinks": {
       "home": "الرئيسية",
       "aboutUniversity": "حول الجامعة",
+      "studentsLife": "الحياة الطلابية",
       "aboutUs": "عن الجامعة",
       "universityCouncil": "مجلس الجامعة",
       "universityPresident": "رئيس الجامعة",
@@ -91,7 +93,6 @@
       "inventionPatents": "براءات الاختراع",
       "qualityAssurance": "الجودة والأداء الجامعي",
       "universityRankings": "التصنيفات الجامعية",
-      "scopus": "سكوبس",
       "googleScholar": "الباحث العلمي",
       "researchGate": "بوابة البحث العلمي",
       "scientificActivities": "الأنشطة العلمية",
@@ -491,9 +492,9 @@
     "teachers research": "بحوث التدريسيين",
     "scientificArticles": "المقالات العلمية",
     "quality and performance": "الجودة والأداء الجامعي",
-    "scopus": "سكوباس",
-    "scientificResearcher": "الباحث العلمي",
-    "scientificResearchPortal": "بوابة البحث العلمي",
+    "scopus": "سكوباس  ( Scopus )",
+    "google scholar": "الباحث العلمي  ( Google Scholar )",
+    "scientificResearchPortal": "بوابة البحث العلمي  ( Research Gate )",
     "scientific activities": "الأنشطة العلمية",
     "seminars": "الندوات",
     "workshops": "الورش",
@@ -534,6 +535,7 @@
     "GilgameshUniversityStrategy": "استراتيجية جامعة كلكامش",
     "facultyResearch": "بحوث التدريسيين",
     "authoredBooks": "الكتب المؤلفة",
-    "scientificConferences": "المؤتمرات العلمية"
+    "scientificConferences": "المؤتمرات العلمية",
+    "universitydigitalidentity": "الهوية الرقمية للجامعة"
   }
 }
