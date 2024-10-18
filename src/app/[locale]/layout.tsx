@@ -40,7 +40,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-        <script src="/js/scrollbarWidth.js" />
+        <script async src="/js/scrollbarWidth.js" />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>

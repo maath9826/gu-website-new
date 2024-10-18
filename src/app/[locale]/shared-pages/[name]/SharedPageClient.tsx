@@ -64,7 +64,7 @@ export default function SharedPageClient({
         ))}
 
       {isEmptyHtml(description) === false && (
-        <FormattedTextViewer>{description}</FormattedTextViewer>
+        <FormattedTextViewer content={description}></FormattedTextViewer>
       )}
     </main>
   );

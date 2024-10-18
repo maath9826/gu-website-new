@@ -14,7 +14,7 @@ const NavElements: React.FC = () => {
   return (
     <nav className="mt-[61px] flex h-fit flex-col items-center gap-[30px] border-0 bg-transparent text-center sm:mt-0 sm:h-full sm:flex-row sm:gap-0">
       {items.map((item, index) => (
-        <React.Fragment key={item.path}>
+        <React.Fragment key={(item.path ?? "") + index}>
           <NavItem title={item.label} path={item.path} items={item.items} />
           {index !== items.length - 1 && (
             <div className="mx-0 hidden h-4 border-e border-white/10 sm:block"></div>

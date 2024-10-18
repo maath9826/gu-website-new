@@ -138,3 +138,5 @@ const InputWithBg = React.forwardRef<HTMLInputElement, InputProps>(
     />
   ),
 );
+
+InputWithBg.displayName = "InputWithBg";

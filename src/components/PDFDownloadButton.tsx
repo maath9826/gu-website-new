@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+//@ts-ignore
 import html2pdf from "html2pdf.js";
 import { useTranslations } from "next-intl";
 

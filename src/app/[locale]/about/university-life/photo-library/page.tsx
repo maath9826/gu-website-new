@@ -2,9 +2,11 @@
 
 import { getTranslations } from "next-intl/server";
 import { PhotoLibraryStoreProvider } from "@/lib/providers/photo-library-provider";
-import { PhotoLibraryResponse } from "@/lib/api_services/news-apis";
 import PhotoLibraryClientPage from "./ClientPage";
-import { getPhotoLibrary } from "@/lib/api_services/photo-library-apis";
+import {
+  getPhotoLibrary,
+  PhotoLibraryResponse,
+} from "@/lib/api_services/photo-library-apis";
 
 export async function generateMetadata({
   params: { locale },
@@ -25,7 +27,7 @@ export default async function PhotoLibraryPage() {
   let photoLibraryResponse: PhotoLibraryResponse | undefined;
 
   try {
-    photoLibraryResponse = await getPhotoLibrary(1);
+    photoLibraryResponse = await getPhotoLibrary({ page: 1 });
   } catch (error) {
     console.error("Failed to fetch photo library:", error);
   }
